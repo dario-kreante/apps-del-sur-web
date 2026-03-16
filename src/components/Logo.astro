@@ -8,12 +8,14 @@ const { size = 32, class: className } = Astro.props;
 ---
 
 <!--
-  Apps del Sur Logo
-  Concept: A leaf/sprout growing upward from structured data rows,
-  with a subtle compass arrow pointing south (↓) integrated into
-  the stem — representing "del Sur" (from the South).
-  The data grid rows at the bottom represent cuarteles/fields.
-  Agriculture + Technology + South.
+  Apps del Sur — Logomark
+
+  Three terraced rows cascading downward:
+  · Vineyard terraces on a Chilean hillside
+  · A stylized "S" for Sur
+  · Stacked data bars from a dashboard
+
+  One form. Triple meaning. Reads at 16px.
 -->
 <svg
   width={size}
@@ -24,71 +26,10 @@ const { size = 32, class: className } = Astro.props;
   class={className}
   aria-hidden="true"
 >
-  <!-- Background rounded square -->
   <rect width="40" height="40" rx="10" fill="#047857"/>
 
-  <!-- Data grid rows at the bottom (cuarteles/structured fields) -->
-  <rect x="8" y="30" width="24" height="2" rx="1" fill="white" opacity="0.2"/>
-  <rect x="8" y="34" width="24" height="2" rx="1" fill="white" opacity="0.12"/>
-
-  <!-- Main stem with south-pointing arrow at the bottom -->
-  <path
-    d="M20 8 L20 27"
-    stroke="white"
-    stroke-width="2.2"
-    stroke-linecap="round"
-  />
-
-  <!-- South arrow (↓) at the base of the stem — "del Sur" -->
-  <path
-    d="M16 24 L20 28.5 L24 24"
-    stroke="white"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    fill="none"
-  />
-
-  <!-- Left leaf -->
-  <path
-    d="M20 19 C16 17.5, 12 15.5, 9 11 C13 11.5, 17 13.5, 20 17"
-    fill="white"
-    opacity="0.85"
-  />
-
-  <!-- Right leaf (larger, primary) -->
-  <path
-    d="M20 13 C24 10, 28 7, 32 4 C31.5 9, 27 13, 20 15"
-    fill="white"
-    opacity="0.95"
-  />
-
-  <!-- Leaf vein on left leaf -->
-  <path
-    d="M19.5 18.5 C16.5 17, 13.5 15, 11 12.5"
-    stroke="#047857"
-    stroke-width="0.5"
-    opacity="0.3"
-    stroke-linecap="round"
-  />
-
-  <!-- Leaf vein on right leaf -->
-  <path
-    d="M20 14 C23 11.5, 27 8.5, 30 6"
-    stroke="#047857"
-    stroke-width="0.5"
-    opacity="0.25"
-    stroke-linecap="round"
-  />
-
-  <!-- Small "S" compass marker near the arrow -->
-  <text
-    x="27.5"
-    y="28"
-    fill="white"
-    font-size="5.5"
-    font-weight="700"
-    font-family="system-ui, sans-serif"
-    opacity="0.5"
-  >S</text>
+  <!-- Three terraced rows — descending south, widening like hillside vineyards -->
+  <rect x="14" y="10" width="12" height="4" rx="2" fill="white" opacity="0.55"/>
+  <rect x="11" y="18" width="18" height="4" rx="2" fill="white" opacity="0.75"/>
+  <rect x="8"  y="26" width="24" height="4" rx="2" fill="white"/>
 </svg>
