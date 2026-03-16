@@ -164,7 +164,7 @@ export const financing = {
       instrument: 'SERCOTEC CRECE',
       projectCost: '$5M',
       funded: '98%',
-      clientPays: '$100K',
+      clientPays: '< $1M',
       highlight: true,
     },
     {
