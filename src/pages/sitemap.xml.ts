@@ -1,23 +1,10 @@
 import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
 
 const BASE_URL = 'https://appsdelsur.cl';
 
-const blogPosts = [
-  {
-    slug: 'guia-financiamiento-corfo-fia-digitalizacion-agricola-2026',
-    priority: '0.9',
-  },
-  {
-    slug: 'costo-mano-de-obra-por-hectarea-vinas-chile',
-    priority: '0.8',
-  },
-  {
-    slug: 'software-agricola-chile-comparativa-2026',
-    priority: '0.8',
-  },
-];
-
-export const GET: APIRoute = () => {
+export const GET: APIRoute = async () => {
+  const posts = await getCollection('blog');
   const today = new Date().toISOString().split('T')[0];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -34,13 +21,13 @@ export const GET: APIRoute = () => {
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-${blogPosts
+${posts
   .map(
     (post) => `  <url>
-    <loc>${BASE_URL}/blog/${post.slug}/</loc>
-    <lastmod>${today}</lastmod>
+    <loc>${BASE_URL}/blog/${post.id}/</loc>
+    <lastmod>${(post.data.updatedDate ?? post.data.pubDate).toISOString().split('T')[0]}</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>${post.priority}</priority>
+    <priority>0.8</priority>
   </url>`
   )
   .join('\n')}

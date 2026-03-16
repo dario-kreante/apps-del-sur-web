@@ -39,9 +39,11 @@ const posts = (await getCollection('blog')).sort(
         {posts.map((post) => (
           <a
             href={`/blog/${post.id}`}
-            class="block group bg-white border border-gray-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-md transition-all"
+            class="block group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-emerald-300 hover:shadow-md transition-all"
           >
-            <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <!-- Visual accent bar -->
+            <div class="h-1.5 bg-gradient-to-r from-emerald-400 to-emerald-600"></div>
+            <div class="p-6 flex flex-col md:flex-row md:items-start gap-4">
               <div class="flex-1">
                 <h2 class="text-xl font-bold text-gray-900 group-hover:text-emerald-700 transition-colors mb-2">
                   {post.data.title}
@@ -77,6 +79,7 @@ const posts = (await getCollection('blog')).sort(
               </div>
             </div>
           </a>
+
         ))}
       </div>
     </div>

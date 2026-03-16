@@ -1,6 +1,29 @@
 ---
 import Layout from './Layout.astro';
 
+// Hero illustrations — imported statically for Astro SSG
+import HeroCuadernoCampo from '../components/blog-heroes/HeroCuadernoCampo.astro';
+import HeroCalendarioAgricola from '../components/blog-heroes/HeroCalendarioAgricola.astro';
+import HeroSenalesDigitalizar from '../components/blog-heroes/HeroSenalesDigitalizar.astro';
+import HeroSustentavid from '../components/blog-heroes/HeroSustentavid.astro';
+import HeroVendimia from '../components/blog-heroes/HeroVendimia.astro';
+import HeroEcosistemaAgtech from '../components/blog-heroes/HeroEcosistemaAgtech.astro';
+import HeroFinanciamiento from '../components/blog-heroes/HeroFinanciamiento.astro';
+import HeroCostoManoObra from '../components/blog-heroes/HeroCostoManoObra.astro';
+import HeroComparativaSoftware from '../components/blog-heroes/HeroComparativaSoftware.astro';
+
+const heroComponents: Record<string, any> = {
+  'cuaderno-de-campo-digital-vinas-chile': HeroCuadernoCampo,
+  'calendario-agricola-2026-vinas-centro-sur-chile': HeroCalendarioAgricola,
+  'senales-digitalizar-gestion-mano-obra-vina': HeroSenalesDigitalizar,
+  'sustentavid-globalg-a-p-registros-trazabilidad-software': HeroSustentavid,
+  'vendimia-2026-gestion-temporeros-costos': HeroVendimia,
+  'ecosistema-agtech-maule-thinkagro-inia-recursos': HeroEcosistemaAgtech,
+  'guia-financiamiento-corfo-fia-digitalizacion-agricola-2026': HeroFinanciamiento,
+  'costo-mano-de-obra-por-hectarea-vinas-chile': HeroCostoManoObra,
+  'software-agricola-chile-comparativa-2026': HeroComparativaSoftware,
+};
+
 interface Props {
   title: string;
   description: string;
@@ -15,6 +38,8 @@ interface Props {
 }
 
 const { title, description, pubDate, updatedDate, author, readingTime, heroAlt, tags, relatedPosts, slug } = Astro.props;
+
+const HeroComponent = heroComponents[slug];
 
 const formattedDate = pubDate.toLocaleDateString('es-CL', {
   year: 'numeric',
@@ -88,6 +113,15 @@ const jsonLd = JSON.stringify({
         <span class="text-gray-400">{title.length > 50 ? title.slice(0, 50) + '...' : title}</span>
       </nav>
     </div>
+
+    <!-- Hero Illustration -->
+    {HeroComponent && (
+      <div class="max-w-3xl mx-auto px-6 mb-8">
+        <div class="rounded-2xl overflow-hidden" role="img" aria-label={heroAlt}>
+          <HeroComponent class="w-full h-auto" />
+        </div>
+      </div>
+    )}
 
     <!-- Article -->
     <article class="max-w-3xl mx-auto px-6">

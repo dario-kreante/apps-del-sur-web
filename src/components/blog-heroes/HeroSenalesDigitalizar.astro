@@ -1,0 +1,73 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Transicion de Excel a herramientas digitales">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Left side: red-tinted "before" area -->
+  <rect x="40" y="30" width="310" height="200" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+
+  <!-- Crumpled spreadsheet -->
+  <g transform="translate(195, 100)">
+    <!-- Paper shape (slightly skewed to look crumpled) -->
+    <path d="M-50,-45 L40,-48 L45,-40 L45,45 L-48,48 Z" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+    <path d="M40,-48 L45,-40 L36,-40 Z" fill="#e5e7eb"/>
+    <!-- Grid lines -->
+    <line x1="-40" y1="-28" x2="36" y2="-28" stroke="#e5e7eb" stroke-width="0.8"/>
+    <line x1="-40" y1="-12" x2="36" y2="-12" stroke="#e5e7eb" stroke-width="0.8"/>
+    <line x1="-40" y1="4" x2="36" y2="4" stroke="#e5e7eb" stroke-width="0.8"/>
+    <line x1="-40" y1="20" x2="36" y2="20" stroke="#e5e7eb" stroke-width="0.8"/>
+    <line x1="-10" y1="-40" x2="-10" y2="40" stroke="#e5e7eb" stroke-width="0.8"/>
+    <line x1="16" y1="-40" x2="16" y2="40" stroke="#e5e7eb" stroke-width="0.8"/>
+    <!-- Red X marks -->
+    <g stroke="#ef4444" stroke-width="2.5" stroke-linecap="round">
+      <line x1="-30" y1="-22" x2="-18" y2="-14"/>
+      <line x1="-18" y1="-22" x2="-30" y2="-14"/>
+      <line x1="2" y1="-6" x2="14" y2="2"/>
+      <line x1="14" y1="-6" x2="2" y2="2"/>
+      <line x1="-30" y1="10" x2="-18" y2="18"/>
+      <line x1="-18" y1="10" x2="-30" y2="18"/>
+    </g>
+    <!-- Crumple lines -->
+    <path d="M-20,-35 Q-15,-25 -25,-15" fill="none" stroke="#d1d5db" stroke-width="0.6"/>
+    <path d="M20,10 Q25,20 15,30" fill="none" stroke="#d1d5db" stroke-width="0.6"/>
+  </g>
+  <text x="195" y="185" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#dc2626">Excel</text>
+  <text x="195" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#ef4444">Errores y retrasos</text>
+
+  <!-- Arrow in the middle -->
+  <g transform="translate(400, 130)">
+    <circle r="22" fill="#047857"/>
+    <path d="M-10,-6 L6,-6 L6,-12 L16,0 L6,12 L6,6 L-10,6 Z" fill="#ffffff"/>
+  </g>
+
+  <!-- Right side: green-tinted "after" area -->
+  <rect x="450" y="30" width="310" height="200" rx="10" fill="#d1fae5" stroke="#6ee7b7" stroke-width="1"/>
+
+  <!-- Clean dashboard -->
+  <g transform="translate(605, 85)">
+    <!-- Dashboard frame -->
+    <rect x="-70" y="-35" width="140" height="90" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+    <!-- Header bar -->
+    <rect x="-70" y="-35" width="140" height="16" rx="6" fill="#059669"/>
+    <rect x="-70" y="-25" width="140" height="6" fill="#059669"/>
+    <circle cx="-58" cy="-27" r="3" fill="#34d399"/>
+    <circle cx="-48" cy="-27" r="3" fill="#6ee7b7"/>
+    <!-- Bar chart -->
+    <rect x="-55" y="10" width="16" height="30" rx="2" fill="#10b981"/>
+    <rect x="-33" y="0" width="16" height="40" rx="2" fill="#059669"/>
+    <rect x="-11" y="15" width="16" height="25" rx="2" fill="#34d399"/>
+    <rect x="11" y="5" width="16" height="35" rx="2" fill="#047857"/>
+    <!-- Checkmarks -->
+    <g transform="translate(48, 5)">
+      <circle r="8" fill="#d1fae5"/>
+      <polyline points="-4,0 -1,4 5,-4" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(48, 25)">
+      <circle r="8" fill="#d1fae5"/>
+      <polyline points="-4,0 -1,4 5,-4" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="605" y="185" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">Digital</text>
+  <text x="605" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#059669">Control en tiempo real</text>
+</svg>

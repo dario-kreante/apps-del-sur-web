@@ -1,0 +1,47 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Grafico de barras horizontales de costos de mano de obra agricola">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <defs>
+    <pattern id="stripes" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#f3f4f6" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <!-- Chart labels and bars -->
+  <!-- Bar 1: Directo (widest) -->
+  <text x="140" y="62" text-anchor="end" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1f2937">Directo</text>
+  <rect x="160" y="45" width="420" height="30" rx="4" fill="#047857"/>
+
+  <!-- Bar 2: Indirecto -->
+  <text x="140" y="112" text-anchor="end" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1f2937">Indirecto</text>
+  <rect x="160" y="95" width="300" height="30" rx="4" fill="#059669"/>
+
+  <!-- Bar 3: Overhead -->
+  <text x="140" y="162" text-anchor="end" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1f2937">Overhead</text>
+  <rect x="160" y="145" width="190" height="30" rx="4" fill="#10b981"/>
+
+  <!-- Bar 4: Ineficiencia (with diagonal stripes) -->
+  <text x="140" y="212" text-anchor="end" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1f2937">Ineficiencia</text>
+  <rect x="160" y="195" width="120" height="30" rx="4" fill="#34d399"/>
+  <rect x="160" y="195" width="120" height="30" rx="4" fill="url(#stripes)" opacity="0.4"/>
+
+  <!-- Vertical dashed line at $/ha marker -->
+  <line x1="580" y1="30" x2="580" y2="235" stroke="#1f2937" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- $/ha label -->
+  <rect x="548" y="16" width="64" height="20" rx="4" fill="#1f2937"/>
+  <text x="580" y="30" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#ffffff">$/ha</text>
+
+  <!-- Value label -->
+  <rect x="600" y="100" width="90" height="28" rx="6" fill="#1f2937"/>
+  <text x="645" y="119" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#34d399">$1.9M</text>
+
+  <!-- Scale markers on x-axis -->
+  <line x1="160" y1="235" x2="700" y2="235" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="160" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ee7b7">$0</text>
+  <text x="370" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ee7b7">$500K</text>
+  <text x="580" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6ee7b7">$1M</text>
+</svg>

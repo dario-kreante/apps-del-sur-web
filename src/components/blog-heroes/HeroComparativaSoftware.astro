@@ -1,0 +1,74 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Tabla comparativa de software agricola con funcionalidades">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Table container -->
+  <rect x="120" y="25" width="560" height="210" rx="10" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+
+  <!-- Header row -->
+  <rect x="120" y="25" width="560" height="45" rx="10" fill="#047857"/>
+  <rect x="120" y="50" width="560" height="20" fill="#047857"/>
+
+  <!-- Column headers -->
+  <text x="250" y="53" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Feature</text>
+
+  <!-- Highlighted column header (Apps del Sur) -->
+  <text x="430" y="53" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">ADS</text>
+  <!-- Checkmark icon in header -->
+  <polyline points="458,44 462,50 470,40" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="580" y="53" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Otro</text>
+
+  <!-- Highlighted column background (Apps del Sur column) -->
+  <rect x="380" y="70" width="100" height="165" rx="0" fill="#d1fae5" opacity="0.5"/>
+
+  <!-- Row dividers -->
+  <line x1="140" y1="112" x2="660" y2="112" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="140" y1="152" x2="660" y2="152" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="140" y1="192" x2="660" y2="192" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Column dividers -->
+  <line x1="380" y1="70" x2="380" y2="235" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="480" y1="70" x2="480" y2="235" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Row 1 -->
+  <text x="250" y="96" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1f2937">Cuaderno de campo</text>
+  <!-- ADS: check -->
+  <circle cx="430" cy="91" r="10" fill="#d1fae5"/>
+  <polyline points="424,91 428,96 437,85" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Otro: check -->
+  <circle cx="580" cy="91" r="10" fill="#d1fae5"/>
+  <polyline points="574,91 578,96 587,85" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Row 2 -->
+  <text x="250" y="136" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1f2937">Control de costos</text>
+  <!-- ADS: check -->
+  <circle cx="430" cy="131" r="10" fill="#d1fae5"/>
+  <polyline points="424,131 428,136 437,125" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Otro: X -->
+  <circle cx="580" cy="131" r="10" fill="#fef2f2"/>
+  <line x1="574" y1="125" x2="586" y2="137" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="586" y1="125" x2="574" y2="137" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Row 3 -->
+  <text x="250" y="176" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1f2937">Mano de obra</text>
+  <!-- ADS: check -->
+  <circle cx="430" cy="171" r="10" fill="#d1fae5"/>
+  <polyline points="424,171 428,176 437,165" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Otro: X -->
+  <circle cx="580" cy="171" r="10" fill="#fef2f2"/>
+  <line x1="574" y1="165" x2="586" y2="177" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="586" y1="165" x2="574" y2="177" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Row 4 -->
+  <text x="250" y="216" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1f2937">Soporte local CL</text>
+  <!-- ADS: check -->
+  <circle cx="430" cy="211" r="10" fill="#d1fae5"/>
+  <polyline points="424,211 428,216 437,205" fill="none" stroke="#059669" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Otro: X -->
+  <circle cx="580" cy="211" r="10" fill="#fef2f2"/>
+  <line x1="574" y1="205" x2="586" y2="217" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="586" y1="205" x2="574" y2="217" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
