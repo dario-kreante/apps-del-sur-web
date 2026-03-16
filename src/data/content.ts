@@ -254,7 +254,7 @@ export const contactForm = {
     message: 'Mensaje (opcional)',
   },
   submit: 'Enviar solicitud',
-  formAction: 'https://formspree.io/f/YOUR_FORM_ID',
+  formAction: 'https://formsubmit.co/dramirezr.gysactiva@gmail.com',
   sideTitle: '¿Prefiere contacto directo?',
   sideItems: [
     {
