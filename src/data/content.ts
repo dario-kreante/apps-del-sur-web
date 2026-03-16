@@ -163,7 +163,7 @@ export const financing = {
       profile: 'Microempresa (20-50 ha)',
       instrument: 'SERCOTEC CRECE',
       projectCost: '$5M',
-      funded: '98%',
+      funded: '80%',
       clientPays: '< $1M',
       highlight: true,
     },
