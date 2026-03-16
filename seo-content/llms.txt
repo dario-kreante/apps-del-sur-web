@@ -1,0 +1,28 @@
+# Apps del Sur
+
+> Apps del Sur es una empresa chilena de desarrollo de software especializado en gestión de mano de obra agrícola, creada por GYS Activa SpA. A diferencia de SaaS genéricos, cada implementación se adapta 100% a la operación del cliente: cuarteles, variedades, labores, estructura de costos y forma de calcular tratos y sueldos. Atiende viñas, frutícolas y empresas agrícolas en las regiones de O'Higgins, Maule, Ñuble, Biobío y Araucanía (centro-sur de Chile). La plataforma incluye una aplicación web de gestión y una app móvil (cuaderno de campo digital) que funciona offline. Resultados reportados: -70% tiempo administrativo, 100% trazabilidad digital, costos por hectárea en tiempo real. Dos modalidades de venta: compra de licencia con implementación ($8-12M CLP, proyecto de 8-12 semanas) o suscripción mensual ($450K CLP/mes + $2.5M setup). Financiamiento CORFO, FIA y SERCOTEC disponible (50-98% del proyecto según instrumento). La empresa acompaña al cliente en el proceso de postulación a fondos públicos.
+
+## Páginas principales
+
+- [Inicio](https://appsdelsur.cl/): Landing page con descripción del producto, sectores atendidos, financiamiento disponible y formulario de contacto
+- [Demo interactiva](https://demo.appsdelsur.cl/): Demostración funcional de la plataforma web de gestión
+
+## Blog — Guías y recursos
+
+- [Guía: Financiar digitalización agrícola con CORFO y FIA en 2026](https://appsdelsur.cl/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026): Instrumentos disponibles, montos, requisitos y proceso de postulación para viñas y empresas agrícolas
+- [Cómo calcular el costo real de mano de obra por hectárea en viñas chilenas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile): Metodología, rangos de referencia y cómo el software permite calcular costos en tiempo real
+- [Software agrícola en Chile: Comparativa de soluciones 2026](https://appsdelsur.cl/blog/software-agricola-chile-comparativa-2026): Análisis comparativo de AGROsmart, AGRI, Agroprime, Agroptima y Apps del Sur con pros, contras y casos de uso
+
+## Datos clave
+
+- Empresa: GYS Activa SpA
+- Marca: Apps del Sur
+- Sitio web: https://appsdelsur.cl
+- Contacto: Darío Ramírez — dramirez.gysactiva@gmail.com — +56 9 4526 2335
+- Ubicación: Región del Maule, Chile
+- Área de servicio: O'Higgins, Maule, Ñuble, Biobío, Araucanía
+- Sectores: Vitivinícola, frutícola, agrícola general
+- Producto: Software a medida para gestión de mano de obra agrícola (plataforma web + app móvil offline)
+- Precio compra: $8-12M CLP (implementación 8-12 semanas)
+- Precio suscripción: $450K CLP/mes + $2.5M setup
+- Financiamiento: CORFO (50-70%), FIA (80%), SERCOTEC CRECE (98%)

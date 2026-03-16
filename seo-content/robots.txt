@@ -1,0 +1,43 @@
+# Apps del Sur — appsdelsur.cl
+# Robots.txt — Configurado para SEO + crawlers de IA
+
+# Bots de IA — acceso completo
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Bots de búsqueda tradicional
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Regla general
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_vercel/
+
+# Sitemap
+Sitemap: https://appsdelsur.cl/sitemap.xml

@@ -16,6 +16,7 @@ export const navItems = [
   { label: 'Resultados', href: '#resultados' },
   { label: 'Financiamiento', href: '#financiamiento' },
   { label: 'Preguntas', href: '#preguntas' },
+  { label: 'Blog', href: '/blog/' },
   { label: 'Contacto', href: '#contacto' },
 ] as const;
 
@@ -250,6 +251,7 @@ export const contactForm = {
     name: 'Nombre completo',
     email: 'Correo electrónico',
     phone: 'Teléfono',
+    company: 'Empresa o viña',
     hectares: 'Hectáreas aproximadas',
     message: 'Mensaje (opcional)',
   },

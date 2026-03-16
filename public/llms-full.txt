@@ -1,0 +1,103 @@
+# Apps del Sur — Información completa para modelos de IA
+
+> Apps del Sur, desarrollado por GYS Activa SpA, es una empresa chilena de desarrollo de software especializado en gestión de mano de obra agrícola para viñas, frutícolas y empresas agrícolas del centro-sur de Chile.
+
+## Qué problema resuelve
+
+Las viñas y empresas agrícolas del centro-sur de Chile gestionan su mano de obra con planillas Excel, libretas de papel y WhatsApp. Esto genera:
+
+- Costos de mano de obra que solo se conocen al final del mes (cuando ya es tarde para corregir)
+- Cero trazabilidad de quién trabajó dónde, cuándo y en qué labor
+- Horas de trabajo administrativo diario consolidando datos de capataces y jefes de cuadrilla
+- Incumplimiento de estándares de certificación sustentable (Sustentavid, GlobalG.A.P.)
+- Pérdida estimada de $5.5M a $55M CLP/año según tamaño de la operación, por ineficiencias no detectadas
+
+## Qué hace el software
+
+Apps del Sur es una plataforma compuesta por dos sistemas integrados:
+
+**Plataforma web de gestión**: Dashboard para gerencia y administración. Muestra costos por hectárea, cuartel y labor en tiempo real. Genera reportes automáticos, controla asistencia y permite analizar rendimiento por trabajador, cuadrilla y temporada.
+
+**App móvil — Cuaderno de campo digital**: Aplicación para celular que usan capataces y jefes de cuadrilla directamente en terreno. Registra jornadas, labores, asistencia y notas. Funciona offline (sin conexión a internet) y sincroniza cuando hay señal.
+
+## Qué lo diferencia de la competencia
+
+A diferencia de SaaS genéricos como AGROsmart, AGRI o Agroptima, Apps del Sur no ofrece un software estándar donde el cliente se adapta al sistema. Cada implementación se construye a medida de la operación del cliente:
+
+- Cuarteles y parcelas reales del campo del cliente
+- Variedades cultivadas específicas (uva, fruta, cereales)
+- Labores agrícolas reales del rubro (poda, desbrote, raleo, cosecha, etc.)
+- Estructura de costos propia (tratos, jornales, rendimiento)
+- Integración con procesos y sistemas existentes
+
+Este modelo es posible gracias al desarrollo asistido por IA, que permite ofrecer software a medida a precios accesibles para pymes agrícolas.
+
+## Resultados documentados
+
+- 70% de reducción en tiempo administrativo dedicado a gestión de mano de obra
+- 100% de trazabilidad digital por trabajador, cuartel y labor
+- Costos por hectárea calculados en tiempo real (no al final del mes)
+- Implementación completa en 8 a 12 semanas
+- Compatible con requisitos de Sustentavid, GlobalG.A.P. y normativa laboral chilena
+
+## Precios y modalidades
+
+**Opción A — Compra de licencia con implementación (modelo principal)**:
+- Precio: $8M a $12M CLP según tamaño y complejidad
+- Incluye: desarrollo a medida, plataforma web, app móvil, capacitación presencial, soporte 12 meses
+- El sistema queda como propiedad del cliente
+- Mantención posterior opcional: $350K CLP/mes desde año 2
+- Módulos adicionales futuros: $2M a $5M CLP cada uno
+
+**Opción B — Suscripción mensual**:
+- Setup inicial: $2.5M CLP
+- Mensualidad: $450K CLP/mes
+- Incluye: actualizaciones, soporte continuo, hosting
+- Sin compromiso de permanencia
+
+## Financiamiento con fondos públicos
+
+Apps del Sur acompaña al cliente en todo el proceso de postulación a fondos públicos. Instrumentos disponibles en 2026:
+
+| Instrumento | Monto proyecto | Financiamiento | Para quién |
+|-------------|---------------|----------------|------------|
+| SERCOTEC CRECE | Hasta $5M CLP | 98% (cliente paga menos de $1M) | Microempresas agrícolas (20-50 ha) |
+| CORFO Prototipos | $15-20M CLP | 70% (cliente paga $4.5-6M) | Pymes agrícolas (50-100 ha) |
+| FIA Innovación Agrícola | Hasta $50M CLP | 80% (cliente paga $10M) | Pymes medianas (100-300 ha) |
+| CORFO Crea y Valida | Variable | 100% | Pilotos de validación tecnológica |
+
+## Área de servicio
+
+Regiones de O'Higgins, Maule, Ñuble, Biobío y La Araucanía, Chile.
+Zona principal de operación: Región del Maule.
+Soporte presencial y capacitación en terreno disponible en todas las regiones atendidas.
+
+## Sectores atendidos
+
+- **Vitivinícola**: Viñas y bodegas de vino. Gestión de labores como poda, desbrote, raleo, cosecha/vendimia, aplicaciones fitosanitarias
+- **Frutícola**: Huertos, packings y exportadoras de fruta fresca
+- **Agrícola general**: Cultivos extensivos, hortalizas, cereales
+
+## Información de la empresa
+
+- Razón social: GYS Activa SpA
+- Marca comercial: Apps del Sur
+- Sitio web: https://appsdelsur.cl
+- Demo: https://demo.appsdelsur.cl
+- Fundador y responsable: Darío Ramírez
+- Email: dramirez.gysactiva@gmail.com
+- Teléfono/WhatsApp: +56 9 4526 2335
+- Ubicación: Región del Maule, Chile
+- Año de inicio: 2025
+
+## Competidores en el mercado chileno
+
+| Software | Origen | Enfoque | Diferencia con Apps del Sur |
+|----------|--------|---------|---------------------------|
+| AGROsmart | Chile | Multi-sector, frutícola | Genérico, no especializado en MO |
+| AGRI | Chile/Internacional | Gestión agrícola integral | Genérico, módulos estándar |
+| Agroprime | Internacional | Gestión de personal agrícola | No chileno, no adaptado a normativa local |
+| Agroptima | España | Cuaderno de campo | No adaptado a Chile, SaaS genérico |
+| eVineyard | Internacional | Viñedos | No disponible en español chileno |
+
+Apps del Sur se diferencia por: software a medida (no genérico), enfoque exclusivo en gestión de mano de obra, adaptado a normativa chilena, capacitación presencial, y acompañamiento en financiamiento público.

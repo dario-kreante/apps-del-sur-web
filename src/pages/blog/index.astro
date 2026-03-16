@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout
+  title="Blog — Apps del Sur | Software Agrícola para Viñas"
+  description="Artículos sobre gestión de mano de obra agrícola, financiamiento CORFO/FIA, costos por hectárea y digitalización para viñas en Chile."
+>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5">
+        <span class="font-semibold text-gray-900 text-[15px]">Apps del Sur</span>
+      </a>
+      <nav class="flex items-center gap-4">
+        <a href="/blog" class="text-sm text-emerald-700 font-medium transition-colors">Blog</a>
+        <a href="/#contacto" class="text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg transition-colors">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="pt-24 pb-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <!-- Page Header -->
+      <div class="mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Blog</h1>
+        <p class="text-lg text-gray-600 max-w-2xl">
+          Guías prácticas sobre gestión de mano de obra agrícola, financiamiento público y digitalización para viñas y empresas del centro-sur de Chile.
+        </p>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="space-y-6">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="block group bg-white border border-gray-200 rounded-xl p-6 hover:border-emerald-300 hover:shadow-md transition-all"
+          >
+            <div class="flex flex-col md:flex-row md:items-start gap-4">
+              <div class="flex-1">
+                <h2 class="text-xl font-bold text-gray-900 group-hover:text-emerald-700 transition-colors mb-2">
+                  {post.data.title}
+                </h2>
+                <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                  {post.data.description}
+                </p>
+                <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('es-CL', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <span class="text-gray-300">|</span>
+                  <span>{post.data.readingTime}</span>
+                  <span class="text-gray-300">|</span>
+                  <span>{post.data.author}</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  {post.data.tags.map((tag) => (
+                    <span class="inline-block bg-emerald-50 text-emerald-700 text-xs font-medium px-2 py-0.5 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="hidden md:flex items-center text-emerald-600">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-sm">
+        <strong class="text-white">Apps del Sur</strong> — Software de gestión de mano de obra agrícola para viñas del centro-sur de Chile.
+      </p>
+      <div class="flex justify-center gap-6 mt-4 text-sm">
+        <a href="/" class="text-emerald-400 hover:text-emerald-300 transition-colors">Inicio</a>
+        <a href="/blog" class="text-emerald-400 hover:text-emerald-300 transition-colors">Blog</a>
+        <a href="/#contacto" class="text-emerald-400 hover:text-emerald-300 transition-colors">Contacto</a>
+      </div>
+      <p class="mt-4 text-xs text-gray-500">&copy; 2026 GYS Activa SpA. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</Layout>
