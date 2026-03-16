@@ -28,7 +28,7 @@ export const hero = {
   ctaPrimary: 'Solicitar diagnóstico gratuito',
   ctaPrimaryHref: '#contacto',
   ctaSecondary: 'Ver demo interactiva',
-  ctaSecondaryHref: 'https://presentacion-delta-gray.vercel.app',
+  ctaSecondaryHref: 'https://demo.appsdelsur.cl/',
   subtext:
     'Sin compromiso · Implementación en 8-12 semanas · Financiamiento CORFO/FIA disponible',
 } as const;
