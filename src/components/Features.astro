@@ -19,15 +19,165 @@ const iconMap: Record<string, any> = {
 };
 ---
 
-<section id="solucion" class="py-24 bg-white">
+<section id="solucion" class="py-24 bg-white overflow-hidden">
   <div class="max-w-[1200px] mx-auto px-6">
-    <SectionHeader
-      label={features.label}
-      title={features.title}
-      description={features.description}
-      class="max-w-[540px]"
-    />
+    <!-- Top: Header + Phone Mockup side by side -->
+    <div class="flex flex-col lg:flex-row items-start gap-12 lg:gap-20 mb-16">
+      <!-- Left: Section header -->
+      <div class="lg:w-1/2">
+        <SectionHeader
+          label={features.label}
+          title={features.title}
+          description={features.description}
+          class="max-w-[540px] mb-0"
+        />
+      </div>
 
+      <!-- Right: Mobile App Mockup — Cuaderno de Campo -->
+      <div class="lg:w-1/2 flex justify-center">
+        <div class="relative">
+          <!-- Phone frame -->
+          <div class="w-[280px] bg-white rounded-[2.5rem] border-[3px] border-gray-800 shadow-2xl overflow-hidden">
+            <!-- Status bar -->
+            <div class="bg-gray-800 px-6 pt-3 pb-2 flex items-center justify-between">
+              <span class="text-white text-[11px] font-medium">9:41</span>
+              <div class="absolute left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-800 rounded-b-2xl"></div>
+              <div class="flex items-center gap-1">
+                <div class="flex gap-[2px]">
+                  <div class="w-[3px] h-[6px] bg-white/70 rounded-full"></div>
+                  <div class="w-[3px] h-[8px] bg-white/70 rounded-full"></div>
+                  <div class="w-[3px] h-[10px] bg-white rounded-full"></div>
+                  <div class="w-[3px] h-[12px] bg-white rounded-full"></div>
+                </div>
+                <svg class="w-4 h-4 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                <div class="w-6 h-3 bg-emerald-500 rounded-sm ml-1 relative">
+                  <div class="absolute right-[2px] top-[2px] w-[6px] h-[8px] bg-white rounded-[1px]"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- App header -->
+            <div class="bg-emerald-700 px-5 py-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center">
+                    <span class="text-white text-[10px] font-bold">AS</span>
+                  </div>
+                  <span class="text-white text-sm font-semibold">Cuaderno de Campo</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <div class="w-2 h-2 bg-emerald-300 rounded-full"></div>
+                  <span class="text-emerald-200 text-[10px]">Sincronizado</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- App content -->
+            <div class="bg-gray-50 px-4 py-4 space-y-3">
+              <!-- Date header -->
+              <div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-wider">Sábado</div>
+                <div class="text-lg font-bold text-gray-900 leading-tight">15 de marzo, 2026</div>
+                <div class="text-[11px] text-gray-500 mt-0.5">Cuadrilla de Juan Pérez · 4 trabajadores</div>
+              </div>
+
+              <!-- Stats -->
+              <div class="grid grid-cols-2 gap-2">
+                <div class="bg-white rounded-lg p-3 border border-gray-100">
+                  <div class="text-[10px] text-gray-400">Registrados hoy</div>
+                  <div class="text-xl font-bold text-gray-900">3<span class="text-gray-300 text-sm">/4</span></div>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-gray-100">
+                  <div class="text-[10px] text-gray-400">Costo del día</div>
+                  <div class="text-xl font-bold text-emerald-700">$86.400</div>
+                </div>
+              </div>
+
+              <!-- Workers list -->
+              <div>
+                <div class="text-xs font-medium text-gray-700 mb-2">Trabajadores hoy</div>
+                <div class="space-y-1.5">
+                  <!-- Worker 1 - registered -->
+                  <div class="bg-white rounded-lg px-3 py-2.5 border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-[10px] font-bold text-emerald-700">JP</div>
+                      <div>
+                        <div class="text-xs font-medium text-gray-900">Juan Pérez</div>
+                        <div class="text-[10px] text-gray-400">Poda · C3B</div>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Registrado</span>
+                  </div>
+                  <!-- Worker 2 - registered -->
+                  <div class="bg-white rounded-lg px-3 py-2.5 border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-700">PS</div>
+                      <div>
+                        <div class="text-xs font-medium text-gray-900">Pedro Soto</div>
+                        <div class="text-[10px] text-gray-400">Poda · C3B</div>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Registrado</span>
+                  </div>
+                  <!-- Worker 3 - registered -->
+                  <div class="bg-white rounded-lg px-3 py-2.5 border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-[10px] font-bold text-amber-700">AM</div>
+                      <div>
+                        <div class="text-xs font-medium text-gray-900">Ana Muñoz</div>
+                        <div class="text-[10px] text-gray-400">Desbrote · C1A</div>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Registrado</span>
+                  </div>
+                  <!-- Worker 4 - pending -->
+                  <div class="bg-white rounded-lg px-3 py-2.5 border border-amber-100 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-[10px] font-bold text-gray-500">LR</div>
+                      <div>
+                        <div class="text-xs font-medium text-gray-900">Luis Rojas</div>
+                        <div class="text-[10px] text-gray-400">Sin registrar</div>
+                      </div>
+                    </div>
+                    <span class="text-[10px] font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">Pendiente</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA Button -->
+              <button class="w-full bg-emerald-700 text-white text-xs font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+                Registrar labor
+              </button>
+            </div>
+
+            <!-- Bottom nav -->
+            <div class="bg-white border-t border-gray-100 px-2 py-2 flex justify-around">
+              {[
+                { icon: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z', label: 'Hoy', active: true },
+                { icon: 'M12 4v16m8-8H4', label: 'Registrar', active: false },
+                { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label: 'Cuadrilla', active: false },
+                { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', label: 'Historial', active: false },
+                { icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', label: 'Notas', active: false },
+              ].map((tab) => (
+                <div class="flex flex-col items-center gap-0.5">
+                  <svg class:list={['w-4 h-4', tab.active ? 'text-emerald-700' : 'text-gray-400']} fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <path d={tab.icon} />
+                  </svg>
+                  <span class:list={['text-[9px]', tab.active ? 'text-emerald-700 font-semibold' : 'text-gray-400']}>{tab.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Decorative blobs -->
+          <div class="absolute -bottom-6 -left-6 w-28 h-28 bg-emerald-50 rounded-full -z-10"></div>
+          <div class="absolute -top-4 -right-4 w-16 h-16 bg-emerald-100/60 rounded-full -z-10"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom: Feature cards grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       {features.items.map((feature) => {
         const IconComponent = iconMap[feature.icon];

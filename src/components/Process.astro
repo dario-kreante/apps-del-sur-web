@@ -1,6 +1,17 @@
 ---
 import { process } from '../data/content';
 import SectionHeader from './ui/SectionHeader.astro';
+
+const stepIcons = [
+  // 01 - Diagnóstico: magnifying glass
+  'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+  // 02 - Desarrollo: code brackets
+  'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+  // 03 - Capacitación: users/people
+  'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  // 04 - Crecimiento: chart trending up
+  'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+];
 ---
 
 <section class="py-24 bg-white">
@@ -11,18 +22,21 @@ import SectionHeader from './ui/SectionHeader.astro';
       class="max-w-[540px]"
     />
 
-    <!-- Desktop: horizontal stepper -->
-    <div class="hidden md:grid md:grid-cols-4 gap-8 relative">
+    <!-- Desktop: horizontal stepper with icon cards -->
+    <div class="hidden md:grid md:grid-cols-4 gap-6 relative">
       <!-- Connecting line -->
-      <div class="absolute top-5 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-0.5 bg-emerald-200"></div>
+      <div class="absolute top-8 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 bg-emerald-200 z-0"></div>
 
       {process.steps.map((step, i) => (
         <div class="relative">
-          <!-- Step number circle -->
-          <div class="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm mb-4 relative z-10">
-            {step.step}
+          <!-- Step circle with icon -->
+          <div class="w-16 h-16 rounded-2xl bg-emerald-700 text-white flex items-center justify-center mb-5 relative z-10 shadow-md shadow-emerald-700/20">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d={stepIcons[i]} />
+            </svg>
           </div>
-          <h3 class="font-semibold text-gray-900 mb-2">{step.title}</h3>
+          <div class="text-xs font-mono text-emerald-600 font-bold mb-1.5">Paso {step.step}</div>
+          <h3 class="font-semibold text-gray-900 mb-2 text-lg">{step.title}</h3>
           <p class="text-sm text-gray-500 leading-relaxed">
             {step.description}
           </p>
@@ -33,18 +47,21 @@ import SectionHeader from './ui/SectionHeader.astro';
     <!-- Mobile: vertical timeline -->
     <div class="md:hidden space-y-0">
       {process.steps.map((step, i) => (
-        <div class="flex gap-4">
+        <div class="flex gap-5">
           <!-- Timeline -->
           <div class="flex flex-col items-center">
-            <div class="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm shrink-0">
-              {step.step}
+            <div class="w-12 h-12 rounded-xl bg-emerald-700 text-white flex items-center justify-center shrink-0 shadow-md shadow-emerald-700/20">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d={stepIcons[i]} />
+              </svg>
             </div>
             {i < process.steps.length - 1 && (
               <div class="w-0.5 bg-emerald-200 flex-1 my-2"></div>
             )}
           </div>
           <!-- Content -->
-          <div class:list={['pb-8', i === process.steps.length - 1 && 'pb-0']}>
+          <div class:list={['pb-10', i === process.steps.length - 1 && 'pb-0']}>
+            <div class="text-xs font-mono text-emerald-600 font-bold mb-1">Paso {step.step}</div>
             <h3 class="font-semibold text-gray-900 mb-2">{step.title}</h3>
             <p class="text-sm text-gray-500 leading-relaxed">
               {step.description}
