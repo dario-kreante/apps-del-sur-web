@@ -1,5 +1,6 @@
 ---
 import { footer } from '../data/content';
+import Logo from './Logo.astro';
 import ArrowRight from './icons/ArrowRight.astro';
 ---
 
@@ -9,9 +10,7 @@ import ArrowRight from './icons/ArrowRight.astro';
       <!-- Company Info -->
       <div class="md:col-span-2">
         <div class="flex items-center gap-2.5 mb-4">
-          <div class="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center">
-            <span class="text-white font-bold text-sm">AS</span>
-          </div>
+          <Logo size={36} />
           <span class="font-semibold text-white text-[15px]">
             {footer.companyName}
           </span>
