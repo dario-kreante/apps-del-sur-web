@@ -1,0 +1,84 @@
+---
+import { navItems } from '../data/content';
+import Button from './ui/Button.astro';
+import Menu from './icons/Menu.astro';
+import X from './icons/X.astro';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center">
+        <span class="text-white font-bold text-sm">AS</span>
+      </div>
+      <span class="font-semibold text-gray-900 text-[15px]">Apps del Sur</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-1" aria-label="Navegación principal">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors rounded-md hover:bg-gray-50"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex items-center">
+      <Button href="#contacto" size="sm">Agendar demo</Button>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="menu-toggle"
+      class="md:hidden p-2 text-gray-600 min-w-[44px] min-h-[44px] flex items-center justify-center"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+    >
+      <Menu class="w-6 h-6 menu-icon-open" />
+      <X class="w-6 h-6 menu-icon-close hidden" />
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1 hidden">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="block py-2.5 text-sm text-gray-600 hover:text-gray-900 mobile-nav-link"
+      >
+        {item.label}
+      </a>
+    ))}
+    <hr class="my-3 border-gray-100" />
+    <Button href="#contacto" class="w-full">Agendar demo</Button>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const openIcon = menuBtn?.querySelector('.menu-icon-open');
+  const closeIcon = menuBtn?.querySelector('.menu-icon-close');
+
+  menuBtn?.addEventListener('click', () => {
+    const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', String(!expanded));
+    mobileMenu?.classList.toggle('hidden');
+    openIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      openIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

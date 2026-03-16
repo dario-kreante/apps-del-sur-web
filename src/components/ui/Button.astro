@@ -1,0 +1,59 @@
+---
+interface Props {
+  variant?: 'primary' | 'outline' | 'ghost' | 'whatsapp' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  target?: string;
+  rel?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  target,
+  rel,
+  type = 'button',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const baseClasses =
+  'inline-flex items-center justify-center gap-2 font-medium transition-colors duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer whitespace-nowrap';
+
+const variantClasses: Record<string, string> = {
+  primary: 'bg-emerald-700 hover:bg-emerald-800 text-white',
+  outline: 'border border-gray-200 text-gray-700 hover:bg-gray-50 bg-white',
+  ghost: 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+  whatsapp: 'bg-white text-emerald-800 hover:bg-emerald-50 font-semibold',
+  secondary:
+    'bg-transparent border-2 border-emerald-400 text-white hover:bg-emerald-700',
+};
+
+const sizeClasses: Record<string, string> = {
+  sm: 'text-sm h-9 px-4',
+  md: 'text-[15px] h-10 px-5',
+  lg: 'text-[15px] h-12 px-6',
+};
+
+const classes = [baseClasses, variantClasses[variant], sizeClasses[size], className]
+  .filter(Boolean)
+  .join(' ');
+
+const Tag = href ? 'a' : 'button';
+---
+
+{
+  href ? (
+    <a href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : rel} class={classes} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} {...rest}>
+      <slot />
+    </button>
+  )
+}

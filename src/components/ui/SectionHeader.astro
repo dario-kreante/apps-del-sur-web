@@ -1,0 +1,25 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  description?: string;
+  centered?: boolean;
+  class?: string;
+}
+
+const { label, title, description, centered = false, class: className } = Astro.props;
+---
+
+<div class:list={[centered ? 'text-center' : '', 'mb-14', className]}>
+  {label && <p class="text-sm font-medium text-emerald-700 mb-2">{label}</p>}
+  <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+    <slot name="title">
+      {title}
+    </slot>
+  </h2>
+  {description && (
+    <p class:list={['text-gray-500 text-lg', centered ? 'mx-auto' : '', 'max-w-[600px]']}>
+      {description}
+    </p>
+  )}
+</div>

@@ -1,0 +1,50 @@
+---
+import { features } from '../data/content';
+import SectionHeader from './ui/SectionHeader.astro';
+import Card from './ui/Card.astro';
+import BarChart from './icons/BarChart.astro';
+import Smartphone from './icons/Smartphone.astro';
+import Clock from './icons/Clock.astro';
+import Layers from './icons/Layers.astro';
+import Shield from './icons/Shield.astro';
+import TrendingUp from './icons/TrendingUp.astro';
+
+const iconMap: Record<string, any> = {
+  'bar-chart': BarChart,
+  smartphone: Smartphone,
+  clock: Clock,
+  layers: Layers,
+  shield: Shield,
+  'trending-up': TrendingUp,
+};
+---
+
+<section id="solucion" class="py-24 bg-white">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <SectionHeader
+      label={features.label}
+      title={features.title}
+      description={features.description}
+      class="max-w-[540px]"
+    />
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.items.map((feature) => {
+        const IconComponent = iconMap[feature.icon];
+        return (
+          <Card highlight={feature.highlight}>
+            <div class="p-6">
+              <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4">
+                {IconComponent && <IconComponent class="w-5 h-5" />}
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-2">{feature.title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          </Card>
+        );
+      })}
+    </div>
+  </div>
+</section>

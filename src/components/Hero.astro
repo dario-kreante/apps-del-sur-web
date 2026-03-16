@@ -1,0 +1,104 @@
+---
+import { hero } from '../data/content';
+import Badge from './ui/Badge.astro';
+import Button from './ui/Button.astro';
+import MapPin from './icons/MapPin.astro';
+import ArrowRight from './icons/ArrowRight.astro';
+---
+
+<section class="pt-28 md:pt-36 pb-20 md:pb-28 bg-white">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+      <!-- Text Column (60%) -->
+      <div class="md:w-3/5">
+        <Badge class="mb-5">
+          <MapPin class="w-4 h-4" />
+          <span>{hero.badge}</span>
+        </Badge>
+
+        <h1 class="text-4xl md:text-[52px] md:leading-[1.12] font-bold text-gray-900 tracking-tight mb-5">
+          {hero.titleLine1}{' '}
+          <span class="text-emerald-700">{hero.titleHighlight}</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-[600px]">
+          {hero.description}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <Button href={hero.ctaPrimaryHref} size="lg">
+            {hero.ctaPrimary}
+            <ArrowRight class="w-5 h-5" />
+          </Button>
+          <Button href={hero.ctaSecondaryHref} variant="outline" size="lg" target="_blank">
+            {hero.ctaSecondary}
+          </Button>
+        </div>
+
+        <p class="mt-4 text-sm text-gray-500">{hero.subtext}</p>
+      </div>
+
+      <!-- Mockup Column (40%) -->
+      <div class="md:w-2/5">
+        <div class="relative">
+          <!-- Dashboard mockup placeholder -->
+          <div class="bg-gray-50 rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+            <!-- Browser chrome -->
+            <div class="bg-gray-100 border-b border-gray-200 px-4 py-3 flex items-center gap-2">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+                <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+                <div class="w-3 h-3 rounded-full bg-gray-300"></div>
+              </div>
+              <div class="flex-1 bg-white rounded-md px-3 py-1 text-xs text-gray-400 ml-2">
+                app.appsdelsur.cl
+              </div>
+            </div>
+            <!-- Dashboard content -->
+            <div class="p-6 space-y-4">
+              <!-- Top stat cards -->
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-white rounded-lg p-3 border border-gray-100">
+                  <div class="text-xs text-gray-400 mb-1">Costo/ha hoy</div>
+                  <div class="text-lg font-bold text-emerald-700">$142.800</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-gray-100">
+                  <div class="text-xs text-gray-400 mb-1">Trabajadores</div>
+                  <div class="text-lg font-bold text-gray-900">24</div>
+                </div>
+                <div class="bg-white rounded-lg p-3 border border-gray-100">
+                  <div class="text-xs text-gray-400 mb-1">Cuarteles</div>
+                  <div class="text-lg font-bold text-gray-900">12</div>
+                </div>
+              </div>
+              <!-- Chart placeholder -->
+              <div class="bg-white rounded-lg p-4 border border-gray-100">
+                <div class="text-xs font-medium text-gray-500 mb-3">Costos por cuartel — Marzo 2026</div>
+                <div class="flex items-end gap-2 h-24">
+                  <div class="flex-1 bg-emerald-100 rounded-t-sm" style="height: 60%"></div>
+                  <div class="flex-1 bg-emerald-200 rounded-t-sm" style="height: 85%"></div>
+                  <div class="flex-1 bg-emerald-300 rounded-t-sm" style="height: 45%"></div>
+                  <div class="flex-1 bg-emerald-400 rounded-t-sm" style="height: 70%"></div>
+                  <div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 95%"></div>
+                  <div class="flex-1 bg-emerald-600 rounded-t-sm" style="height: 55%"></div>
+                  <div class="flex-1 bg-emerald-700 rounded-t-sm" style="height: 75%"></div>
+                  <div class="flex-1 bg-emerald-200 rounded-t-sm" style="height: 40%"></div>
+                </div>
+              </div>
+              <!-- Activity row -->
+              <div class="bg-white rounded-lg p-3 border border-gray-100">
+                <div class="flex items-center gap-3">
+                  <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Poda — Cuartel 3B — 6 trabajadores activos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Decorative elements -->
+          <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-emerald-50 rounded-full -z-10"></div>
+          <div class="absolute -top-4 -left-4 w-16 h-16 bg-emerald-100 rounded-full -z-10"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

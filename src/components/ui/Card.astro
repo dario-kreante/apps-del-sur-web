@@ -1,0 +1,20 @@
+---
+interface Props {
+  highlight?: boolean;
+  dark?: boolean;
+  class?: string;
+}
+
+const { highlight = false, dark = false, class: className } = Astro.props;
+
+const base = 'rounded-xl border transition-all duration-200';
+const styles = dark
+  ? 'border-emerald-300 bg-emerald-700 text-white'
+  : highlight
+    ? 'border-emerald-200 bg-white shadow-sm'
+    : 'border-gray-100 bg-white hover:border-emerald-200 hover:shadow-sm';
+---
+
+<div class:list={[base, styles, className]}>
+  <slot />
+</div>

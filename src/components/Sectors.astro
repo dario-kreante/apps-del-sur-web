@@ -1,0 +1,62 @@
+---
+import { sectors } from '../data/content';
+import SectionHeader from './ui/SectionHeader.astro';
+import Card from './ui/Card.astro';
+import Check from './icons/Check.astro';
+import Grape from './icons/Grape.astro';
+import Apple from './icons/Apple.astro';
+import Wheat from './icons/Wheat.astro';
+
+const iconMap: Record<string, any> = {
+  grape: Grape,
+  apple: Apple,
+  wheat: Wheat,
+};
+---
+
+<section id="sectores" class="py-24 bg-gray-50">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <SectionHeader
+      label={sectors.label}
+      title={sectors.title}
+      description={sectors.description}
+      class="max-w-[540px]"
+    />
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {sectors.items.map((sector) => {
+        const IconComponent = iconMap[sector.icon];
+        return (
+          <Card>
+            <div class="p-6">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-5">
+                {IconComponent && <IconComponent class="w-6 h-6" />}
+              </div>
+              <h3 class="font-semibold text-gray-900 mb-1 text-lg">
+                {sector.name}
+              </h3>
+              <p class="text-sm text-gray-500">{sector.description}</p>
+            </div>
+          </Card>
+        );
+      })}
+    </div>
+
+    <!-- Why Local Section -->
+    <div class="mt-16 bg-white rounded-xl border border-gray-100 p-8">
+      <h3 class="font-semibold text-gray-900 mb-4">
+        {sectors.whyLocalTitle}
+      </h3>
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-3">
+        {sectors.checklist.map((item) => (
+          <div class="flex items-start gap-2.5 py-1.5">
+            <div class="text-emerald-600 mt-0.5 shrink-0">
+              <Check />
+            </div>
+            <span class="text-sm text-gray-600">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

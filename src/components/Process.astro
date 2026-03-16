@@ -1,0 +1,57 @@
+---
+import { process } from '../data/content';
+import SectionHeader from './ui/SectionHeader.astro';
+---
+
+<section class="py-24 bg-white">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <SectionHeader
+      label={process.label}
+      title={process.title}
+      class="max-w-[540px]"
+    />
+
+    <!-- Desktop: horizontal stepper -->
+    <div class="hidden md:grid md:grid-cols-4 gap-8 relative">
+      <!-- Connecting line -->
+      <div class="absolute top-5 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-0.5 bg-emerald-200"></div>
+
+      {process.steps.map((step, i) => (
+        <div class="relative">
+          <!-- Step number circle -->
+          <div class="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm mb-4 relative z-10">
+            {step.step}
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">{step.title}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            {step.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mobile: vertical timeline -->
+    <div class="md:hidden space-y-0">
+      {process.steps.map((step, i) => (
+        <div class="flex gap-4">
+          <!-- Timeline -->
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm shrink-0">
+              {step.step}
+            </div>
+            {i < process.steps.length - 1 && (
+              <div class="w-0.5 bg-emerald-200 flex-1 my-2"></div>
+            )}
+          </div>
+          <!-- Content -->
+          <div class:list={['pb-8', i === process.steps.length - 1 && 'pb-0']}>
+            <h3 class="font-semibold text-gray-900 mb-2">{step.title}</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
