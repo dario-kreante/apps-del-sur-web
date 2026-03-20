@@ -63,7 +63,7 @@ const iconMap: Record<string, any> = {
                   <div class="w-7 h-7 rounded-md bg-white/20 flex items-center justify-center">
                     <svg width="14" height="14" viewBox="0 0 40 40" fill="none"><rect x="14" y="10" width="12" height="4" rx="2" fill="white" opacity="0.55"/><rect x="11" y="18" width="18" height="4" rx="2" fill="white" opacity="0.75"/><rect x="8" y="26" width="24" height="4" rx="2" fill="white"/></svg>
                   </div>
-                  <span class="text-white text-sm font-semibold">Cuaderno de Campo</span>
+                  <span class="text-white text-sm font-semibold">Registro Diario</span>
                 </div>
                 <div class="flex items-center gap-1.5">
                   <div class="w-2 h-2 bg-emerald-300 rounded-full"></div>
@@ -78,7 +78,7 @@ const iconMap: Record<string, any> = {
               <div>
                 <div class="text-[10px] text-gray-400 uppercase tracking-wider">Sábado</div>
                 <div class="text-lg font-bold text-gray-900 leading-tight">15 de marzo, 2026</div>
-                <div class="text-[11px] text-gray-500 mt-0.5">Cuadrilla de Juan Pérez · 4 trabajadores</div>
+                <div class="text-[11px] text-gray-500 mt-0.5">Equipo de trabajo · 4 integrantes</div>
               </div>
 
               <!-- Stats -->
@@ -103,7 +103,7 @@ const iconMap: Record<string, any> = {
                       <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-[10px] font-bold text-emerald-700">JP</div>
                       <div>
                         <div class="text-xs font-medium text-gray-900">Juan Pérez</div>
-                        <div class="text-[10px] text-gray-400">Poda · C3B</div>
+                        <div class="text-[10px] text-gray-400">Tarea A · Zona 3</div>
                       </div>
                     </div>
                     <span class="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Registrado</span>
@@ -114,7 +114,7 @@ const iconMap: Record<string, any> = {
                       <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-bold text-blue-700">PS</div>
                       <div>
                         <div class="text-xs font-medium text-gray-900">Pedro Soto</div>
-                        <div class="text-[10px] text-gray-400">Poda · C3B</div>
+                        <div class="text-[10px] text-gray-400">Tarea A · Zona 3</div>
                       </div>
                     </div>
                     <span class="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Registrado</span>
@@ -125,7 +125,7 @@ const iconMap: Record<string, any> = {
                       <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-[10px] font-bold text-amber-700">AM</div>
                       <div>
                         <div class="text-xs font-medium text-gray-900">Ana Muñoz</div>
-                        <div class="text-[10px] text-gray-400">Desbrote · C1A</div>
+                        <div class="text-[10px] text-gray-400">Tarea B · Zona 1</div>
                       </div>
                     </div>
                     <span class="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">Registrado</span>
@@ -147,7 +147,7 @@ const iconMap: Record<string, any> = {
               <!-- CTA Button -->
               <button class="w-full bg-emerald-700 text-white text-xs font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
-                Registrar labor
+                Registrar actividad
               </button>
             </div>
 
@@ -156,7 +156,7 @@ const iconMap: Record<string, any> = {
               {[
                 { icon: 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z', label: 'Hoy', active: true },
                 { icon: 'M12 4v16m8-8H4', label: 'Registrar', active: false },
-                { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label: 'Cuadrilla', active: false },
+                { icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z', label: 'Equipo', active: false },
                 { icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z', label: 'Historial', active: false },
                 { icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z', label: 'Notas', active: false },
               ].map((tab) => (

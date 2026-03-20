@@ -1,0 +1,187 @@
+---
+import { solutions } from '../data/content';
+import SectionHeader from './ui/SectionHeader.astro';
+import Card from './ui/Card.astro';
+import Check from './icons/Check.astro';
+import Grape from './icons/Grape.astro';
+import Wrench from './icons/Wrench.astro';
+import Sparkle from './icons/Sparkle.astro';
+import ArrowRight from './icons/ArrowRight.astro';
+
+const iconMap: Record<string, any> = {
+  grape: Grape,
+  wrench: Wrench,
+  sparkle: Sparkle,
+};
+---
+
+<section id="soluciones" class="py-24 bg-gray-50 overflow-hidden">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <!-- Top: Header + Map side by side -->
+    <div class="flex flex-col lg:flex-row items-start gap-12 lg:gap-16 mb-14">
+      <!-- Left: Section header -->
+      <div class="lg:w-1/2">
+        <SectionHeader
+          label={solutions.label}
+          title={solutions.title}
+          description={solutions.description}
+          class="max-w-[540px] mb-0"
+        />
+      </div>
+
+      <!-- Right: Terrain Map Visualization -->
+      <div class="lg:w-1/2 flex justify-center">
+        <div class="relative w-full max-w-[420px]">
+          <!-- Map container -->
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+            <!-- Map header bar -->
+            <div class="bg-emerald-700 px-5 py-3 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="text-white text-sm font-medium">Mapa de operaciones</span>
+              </div>
+              <span class="text-emerald-200 text-[10px]">Centro-Sur de Chile</span>
+            </div>
+
+            <!-- SVG Map -->
+            <div class="relative bg-emerald-50/30 p-4">
+              <svg viewBox="0 0 380 300" class="w-full" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background terrain texture -->
+                <defs>
+                  <linearGradient id="terrainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ecfdf5;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#d1fae5;stop-opacity:0.5" />
+                  </linearGradient>
+                  <pattern id="vineRows" patternUnits="userSpaceOnUse" width="8" height="8">
+                    <line x1="0" y1="4" x2="8" y2="4" stroke="#059669" stroke-width="0.5" opacity="0.15"/>
+                  </pattern>
+                  <pattern id="orchardDots" patternUnits="userSpaceOnUse" width="12" height="12">
+                    <circle cx="6" cy="6" r="1.5" fill="#059669" opacity="0.12"/>
+                  </pattern>
+                </defs>
+
+                <!-- Chile central-south silhouette -->
+                <path d="M120,20 C130,15 145,18 155,25 C165,32 170,45 175,60 C180,75 178,90 180,105 C182,120 190,130 195,145 C200,160 198,175 200,190 C202,205 210,215 215,230 C220,245 218,260 220,275 C222,285 225,290 220,295 L160,295 C155,288 158,275 155,260 C152,245 145,235 140,220 C135,205 138,190 135,175 C132,160 125,150 120,135 C115,120 118,105 115,90 C112,75 105,65 108,50 C111,35 115,25 120,20 Z" fill="url(#terrainGrad)" stroke="#a7f3d0" stroke-width="1.5"/>
+
+                <!-- Region: O'Higgins -->
+                <rect x="130" y="40" width="35" height="35" rx="4" fill="url(#vineRows)" stroke="#6ee7b7" stroke-width="1" opacity="0.9"/>
+                <rect x="130" y="40" width="35" height="35" rx="4" fill="#d1fae5" opacity="0.4"/>
+
+                <!-- Region: Maule -->
+                <rect x="135" y="90" width="40" height="45" rx="4" fill="url(#orchardDots)" stroke="#6ee7b7" stroke-width="1" opacity="0.9"/>
+                <rect x="135" y="90" width="40" height="45" rx="4" fill="#a7f3d0" opacity="0.3"/>
+
+                <!-- Region: Ñuble -->
+                <rect x="140" y="150" width="35" height="30" rx="4" fill="url(#vineRows)" stroke="#6ee7b7" stroke-width="1" opacity="0.9"/>
+                <rect x="140" y="150" width="35" height="30" rx="4" fill="#d1fae5" opacity="0.4"/>
+
+                <!-- Region: Biobío -->
+                <rect x="145" y="195" width="40" height="35" rx="4" fill="url(#orchardDots)" stroke="#6ee7b7" stroke-width="1" opacity="0.9"/>
+                <rect x="145" y="195" width="40" height="35" rx="4" fill="#a7f3d0" opacity="0.3"/>
+
+                <!-- Region: Araucanía -->
+                <rect x="150" y="245" width="35" height="30" rx="4" fill="url(#vineRows)" stroke="#6ee7b7" stroke-width="1" opacity="0.9"/>
+                <rect x="150" y="245" width="35" height="30" rx="4" fill="#d1fae5" opacity="0.4"/>
+
+                <!-- Andes mountains -->
+                <path d="M185,30 L195,15 L205,35 L215,10 L225,40 L232,20 L240,45 L248,25 L255,50 L260,35 L265,55 L270,40 L275,60 L275,295 L185,295 Z" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="0.5" opacity="0.5"/>
+                <path d="M195,15 L205,35 M215,10 L225,40 M232,20 L240,45 M248,25 L255,50" stroke="#86efac" stroke-width="0.3" opacity="0.5"/>
+
+                <!-- Pacific Ocean -->
+                <rect x="0" y="0" width="115" height="300" fill="#f0fdf4" opacity="0.3"/>
+                <text x="55" y="150" text-anchor="middle" fill="#a7f3d0" font-size="9" font-family="system-ui" transform="rotate(-90, 55, 150)">Océano Pacífico</text>
+
+                <!-- Region labels with pins -->
+                <!-- O'Higgins -->
+                <circle cx="148" cy="57" r="4" fill="#047857"/>
+                <circle cx="148" cy="57" r="1.5" fill="white"/>
+                <line x1="168" y1="57" x2="230" y2="47" stroke="#047857" stroke-width="0.5" stroke-dasharray="2,2"/>
+                <rect x="232" y="35" width="110" height="26" rx="6" fill="white" stroke="#e5e7eb" stroke-width="0.5"/>
+                <text x="242" y="46" fill="#047857" font-size="9" font-weight="600" font-family="system-ui">O'Higgins</text>
+                <text x="242" y="56" fill="#9ca3af" font-size="7" font-family="system-ui">Agro · Servicios</text>
+
+                <!-- Maule -->
+                <circle cx="155" cy="112" r="5" fill="#047857"/>
+                <circle cx="155" cy="112" r="2" fill="white"/>
+                <line x1="178" y1="112" x2="230" y2="102" stroke="#047857" stroke-width="0.5" stroke-dasharray="2,2"/>
+                <rect x="232" y="89" width="130" height="30" rx="6" fill="#047857"/>
+                <text x="242" y="101" fill="white" font-size="10" font-weight="600" font-family="system-ui">Maule</text>
+                <text x="242" y="113" fill="#a7f3d0" font-size="7" font-family="system-ui">Sede principal · Operaciones activas</text>
+
+                <!-- Ñuble -->
+                <circle cx="158" cy="165" r="4" fill="#047857"/>
+                <circle cx="158" cy="165" r="1.5" fill="white"/>
+                <line x1="178" y1="165" x2="230" y2="158" stroke="#047857" stroke-width="0.5" stroke-dasharray="2,2"/>
+                <rect x="232" y="146" width="100" height="26" rx="6" fill="white" stroke="#e5e7eb" stroke-width="0.5"/>
+                <text x="242" y="157" fill="#047857" font-size="9" font-weight="600" font-family="system-ui">Ñuble</text>
+                <text x="242" y="167" fill="#9ca3af" font-size="7" font-family="system-ui">Agro · Servicios</text>
+
+                <!-- Biobío -->
+                <circle cx="165" cy="212" r="4" fill="#047857"/>
+                <circle cx="165" cy="212" r="1.5" fill="white"/>
+                <line x1="188" y1="212" x2="230" y2="207" stroke="#047857" stroke-width="0.5" stroke-dasharray="2,2"/>
+                <rect x="232" y="195" width="100" height="26" rx="6" fill="white" stroke="#e5e7eb" stroke-width="0.5"/>
+                <text x="242" y="206" fill="#047857" font-size="9" font-weight="600" font-family="system-ui">Biobío</text>
+                <text x="242" y="216" fill="#9ca3af" font-size="7" font-family="system-ui">Servicios · Agro</text>
+
+                <!-- Araucanía -->
+                <circle cx="168" cy="260" r="4" fill="#047857"/>
+                <circle cx="168" cy="260" r="1.5" fill="white"/>
+                <line x1="188" y1="260" x2="230" y2="256" stroke="#047857" stroke-width="0.5" stroke-dasharray="2,2"/>
+                <rect x="232" y="244" width="110" height="26" rx="6" fill="white" stroke="#e5e7eb" stroke-width="0.5"/>
+                <text x="242" y="255" fill="#047857" font-size="9" font-weight="600" font-family="system-ui">Araucanía</text>
+                <text x="242" y="265" fill="#9ca3af" font-size="7" font-family="system-ui">Agro · Consultoría</text>
+
+                <!-- Cordillera label -->
+                <text x="260" y="290" fill="#a7f3d0" font-size="8" font-family="system-ui" font-style="italic">Cordillera de los Andes →</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Decorative -->
+          <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-emerald-100/50 rounded-full -z-10"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solution cards -->
+    <div class="grid md:grid-cols-3 gap-6">
+      {solutions.items.map((solution) => {
+        const IconComponent = iconMap[solution.icon];
+        return (
+          <a href={solution.href} class="group">
+            <Card class="h-full">
+              <div class="p-6">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-5 group-hover:bg-emerald-100 transition-colors">
+                  {IconComponent && <IconComponent class="w-6 h-6" />}
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-1 text-lg flex items-center gap-2">
+                  {solution.name}
+                  <ArrowRight class="w-4 h-4 text-gray-300 group-hover:text-emerald-600 transition-colors" />
+                </h3>
+                <p class="text-sm text-gray-500">{solution.description}</p>
+              </div>
+            </Card>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Why Local Section -->
+    <div class="mt-16 bg-white rounded-xl border border-gray-100 p-8">
+      <h3 class="font-semibold text-gray-900 mb-4">
+        {solutions.whyLocalTitle}
+      </h3>
+      <div class="grid md:grid-cols-2 gap-x-12 gap-y-3">
+        {solutions.checklist.map((item) => (
+          <div class="flex items-start gap-2.5 py-1.5">
+            <div class="text-emerald-600 mt-0.5 shrink-0">
+              <Check />
+            </div>
+            <span class="text-sm text-gray-600">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

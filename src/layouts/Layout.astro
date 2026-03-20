@@ -27,8 +27,8 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Apps del Sur — Software de Gestión de Mano de Obra Agrícola">
-    <meta name="twitter:description" content="Sepa exactamente cuánto cuesta cada hectárea, cuartel y labor — todos los días. Software agrícola a medida para el centro-sur de Chile.">
+    <meta name="twitter:title" content={siteConfig.ogTitle}>
+    <meta name="twitter:description" content={siteConfig.ogDescription}>
 
     <!-- Open Graph -->
     <meta property="og:url" content="https://appsdelsur.cl/">
@@ -62,7 +62,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           },
           "url": "https://appsdelsur.cl",
           "logo": "https://appsdelsur.cl/logo.png",
-          "description": "Empresa chilena de desarrollo de software especializado en gestión de mano de obra agrícola. Atendemos viñas, frutícolas y empresas agrícolas en O'Higgins, Maule, Ñuble, Biobío y Araucanía.",
+          "description": "Empresa chilena de desarrollo de software a medida para empresas del centro-sur de Chile. Soluciones para agro, servicios y consultoría IA con Claude. Atendemos O'Higgins, Maule, Ñuble, Biobío y Araucanía.",
           "foundingDate": "2025",
           "founder": {
             "@type": "Person",
@@ -95,7 +95,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "name": "Apps del Sur",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web, Android, iOS",
-          "description": "Software a medida para gestión de mano de obra agrícola. Plataforma web de gestión + app móvil (cuaderno de campo digital) que funciona offline. Costos por hectárea, cuartel y labor en tiempo real. Adaptado a viñas y empresas agrícolas del centro-sur de Chile.",
+          "description": "Software a medida para empresas del centro-sur de Chile. Plataforma web de gestión + app móvil que funciona offline. Desarrollo asistido por Claude AI. Soluciones para agro, servicios y consultoría IA.",
           "url": "https://appsdelsur.cl",
           "provider": {"@id": "https://appsdelsur.cl/#organization"},
           "offers": [
@@ -122,14 +122,15 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
             }
           ],
           "featureList": [
-            "Costos en tiempo real por hectárea, cuartel y labor",
-            "Cuaderno de campo digital que funciona offline",
-            "Trazabilidad 100% por trabajador, cuartel y labor",
+            "Costos en tiempo real por área, proyecto y actividad",
+            "App móvil de registro que funciona offline",
+            "Trazabilidad 100% por trabajador, área y actividad",
             "70% reducción en tiempo administrativo",
             "Reportes automáticos para gerencia y administración",
-            "Compatible con Sustentavid, GlobalG.A.P. y normativa laboral chilena",
+            "Cumplimiento normativo laboral chilena",
+            "Desarrollo asistido por Claude AI",
             "Capacitación presencial en terreno",
-            "Análisis predictivo de rendimiento y necesidades de MO"
+            "Consultoría para integración de IA en procesos de negocio"
           ]
         },
         {
@@ -137,7 +138,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "@id": "https://appsdelsur.cl/#website",
           "url": "https://appsdelsur.cl",
           "name": "Apps del Sur",
-          "description": "Software a medida para gestión de mano de obra agrícola en viñas del centro-sur de Chile",
+          "description": "Software a medida para empresas del centro-sur de Chile. Agro, servicios y consultoría IA con Claude.",
           "publisher": {"@id": "https://appsdelsur.cl/#organization"},
           "inLanguage": "es-CL"
         },
@@ -145,8 +146,8 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "@type": "WebPage",
           "@id": "https://appsdelsur.cl/#webpage",
           "url": "https://appsdelsur.cl",
-          "name": "Apps del Sur — Software de Gestión de Mano de Obra Agrícola | Maule, Chile",
-          "description": "Apps del Sur desarrolla software a medida para gestión de mano de obra agrícola en viñas del centro-sur de Chile. Costos en tiempo real por hectárea, cuartel y labor. Financiamiento CORFO/FIA hasta 80%.",
+          "name": "Apps del Sur — Software a Medida para Empresas del Sur de Chile | Maule",
+          "description": "Apps del Sur desarrolla software a medida para empresas del centro-sur de Chile. Gestión agrícola, servicios y consultoría IA con Claude. Financiamiento CORFO/FIA disponible.",
           "isPartOf": {"@id": "https://appsdelsur.cl/#website"},
           "about": {"@id": "https://appsdelsur.cl/#software"},
           "inLanguage": "es-CL"
@@ -166,15 +167,23 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "name": "¿Qué hace diferente a Apps del Sur de un SaaS genérico?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Apps del Sur no es un software genérico donde el usuario se adapta al sistema. Cada implementación se desarrolla a medida de la operación del cliente: sus cuarteles, variedades, labores y estructura de costos reales. Esto es posible gracias al desarrollo asistido por IA, que permite ofrecer software personalizado a precios accesibles para pymes agrícolas."
+            "text": "No ofrecemos un software genérico donde usted se adapta al sistema. Desarrollamos una plataforma a medida que se configura con sus procesos, equipos, áreas y estructura de costos reales. Gracias al desarrollo asistido por Claude AI, podemos ofrecer esta personalización a precios accesibles."
           }
         },
         {
           "@type": "Question",
-          "name": "¿Funciona sin conexión a internet en el campo?",
+          "name": "¿Qué es Claude AI y cómo lo usan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. La aplicación móvil de Apps del Sur (cuaderno de campo digital) está diseñada para funcionar offline. Los datos se registran sin conexión y se sincronizan automáticamente cuando hay señal de internet disponible."
+            "text": "Claude AI es un modelo de inteligencia artificial desarrollado por Anthropic. Lo usamos como herramienta de desarrollo para acelerar cada etapa del proyecto: desde el análisis de su operación hasta la generación de código. Esto nos permite entregar software custom en 8-12 semanas en vez de 6+ meses, a una fracción del costo tradicional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Funciona sin conexión a internet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Nuestras aplicaciones móviles están diseñadas para funcionar offline. Los datos se sincronizan automáticamente cuando el dispositivo recupera la conexión, ideal para zonas rurales del centro-sur de Chile."
           }
         },
         {
@@ -182,15 +191,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "name": "¿Cuánto tiempo toma implementar el sistema en mi operación?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma, configuración de cuarteles y labores, capacitación presencial del equipo de campo y período de acompañamiento."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "¿Es compatible con los requisitos de certificación sustentable?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Sí. Apps del Sur genera registros digitales trazables que cumplen con los estándares de Sustentavid, GlobalG.A.P. y la normativa laboral chilena, facilitando auditorías y procesos de certificación."
+            "text": "El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma web y app móvil, configuración de procesos y estructura de costos, y capacitación del equipo."
           }
         },
         {
@@ -198,7 +199,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "name": "¿Cuánto cuesta y qué modalidades ofrecen?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ofrecemos dos modalidades: (1) Compra de licencia con implementación completa por $8-12M CLP, que incluye plataforma web, app móvil, capacitación presencial y 12 meses de soporte. (2) Suscripción mensual de $450K CLP/mes con setup inicial de $2.5M CLP. Ambas modalidades son financiables con fondos públicos CORFO, FIA y SERCOTEC (50-98% del proyecto)."
+            "text": "Ofrecemos dos modalidades: (1) Compra de licencia con implementación completa por $8-12M CLP, que incluye plataforma web, app móvil, capacitación presencial y 12 meses de soporte. (2) Suscripción mensual de $450K CLP/mes con setup inicial de $2.5M CLP. Ambas modalidades son financiables con fondos públicos CORFO, FIA y SERCOTEC (50-80% del proyecto)."
           }
         },
         {
@@ -206,7 +207,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
           "name": "¿Existen fondos públicos para financiar la implementación?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sí. Instrumentos como CORFO Crea y Valida, FIA Innovación Agrícola y SERCOTEC CRECE pueden financiar entre el 50% y el 98% del proyecto, dependiendo del tamaño de la empresa. Apps del Sur acompaña al cliente en todo el proceso de postulación al fondo público."
+            "text": "Sí. Instrumentos como CORFO Crea y Valida, FIA Innovación y SERCOTEC CRECE pueden financiar entre el 50% y el 80% del proyecto. En algunos casos, el cliente piloto puede acceder al sistema a costo $0. Asesoramos en la postulación."
           }
         }
       ]
@@ -220,7 +221,7 @@ const { title = siteConfig.title, description = siteConfig.description } = Astro
       "@type": "LocalBusiness",
       "@id": "https://appsdelsur.cl/#localbusiness",
       "name": "Apps del Sur — GYS Activa SpA",
-      "description": "Desarrollo de software a medida para gestión de mano de obra agrícola en viñas y empresas del centro-sur de Chile",
+      "description": "Desarrollo de software a medida para empresas del centro-sur de Chile. Soluciones para agro, servicios y consultoría IA con Claude AI.",
       "url": "https://appsdelsur.cl",
       "telephone": "+56-9-4526-2335",
       "email": "dramirez.gysactiva@gmail.com",
