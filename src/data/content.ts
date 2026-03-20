@@ -78,10 +78,11 @@ export const features = {
         'Genera automáticamente los registros que exige la normativa laboral chilena y los estándares de su industria.',
     },
     {
-      icon: 'trending-up',
-      title: 'Análisis predictivo',
+      icon: 'sparkle',
+      title: 'IA para su equipo',
       description:
-        'Identifique patrones de rendimiento y anticipe necesidades de personal para cada temporada con datos históricos.',
+        'Cada implementación incluye un taller práctico de IA y 3 meses de Claude Pro para que su equipo aproveche la inteligencia artificial en su trabajo diario.',
+      highlight: true,
     },
   ],
 } as const;
@@ -143,9 +144,9 @@ export const process = {
     },
     {
       step: '03',
-      title: 'Capacitación en terreno',
+      title: 'Capacitación + IA aplicada',
       description:
-        'Capacitamos a su equipo en el uso del sistema. Acompañamiento presencial hasta que operen con autonomía.',
+        'Capacitamos a su equipo en el uso del sistema y en herramientas de IA para su trabajo diario. Incluye taller práctico de inteligencia artificial + 3 meses de Claude Pro para cada participante.',
     },
     {
       step: '04',
@@ -294,6 +295,15 @@ export const claudePartner = {
   ],
   cta: 'Conocer más sobre Claude AI',
   ctaHref: '#',
+} as const;
+
+export const aiTrainingCallout = {
+  headline: 'Incluido en cada proyecto',
+  title: 'Taller de IA + 3 meses de Claude Pro',
+  description:
+    'Cada implementación incluye capacitación práctica en inteligencia artificial y una suscripción de 3 meses a Claude Pro para cada participante. Su equipo no solo recibe un sistema nuevo — aprende a trabajar con IA desde el día uno.',
+  cta: 'Consultar beneficio',
+  ctaHref: '#contacto',
 } as const;
 
 export const footer = {
