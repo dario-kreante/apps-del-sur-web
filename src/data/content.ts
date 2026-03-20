@@ -1,43 +1,41 @@
 export const siteConfig = {
-  title: 'Apps del Sur — Software de Gestión de Mano de Obra Agrícola | Maule, Chile',
+  title: 'Apps del Sur — Software a Medida para Empresas del Sur de Chile | Maule',
   description:
-    'Apps del Sur desarrolla software a medida para gestión de mano de obra agrícola en viñas del centro-sur de Chile. Costos en tiempo real por hectárea, cuartel y labor. Financiamiento CORFO/FIA hasta 80%. Regiones del Maule, O\'Higgins, Ñuble, Biobío y Araucanía.',
+    'Apps del Sur desarrolla software a medida para empresas del centro-sur de Chile. Gestión agrícola, servicios y consultoría IA con Claude. Desarrollo custom potenciado por IA a precio accesible. Financiamiento CORFO/FIA. Regiones de O\'Higgins, Maule, Ñuble, Biobío y Araucanía.',
   keywords:
-    'software agrícola Chile, gestión mano de obra agrícola, software viñas, cuaderno de campo digital, trazabilidad agrícola, Apps del Sur, Maule, O\'Higgins, Ñuble, Biobío, Araucanía, CORFO agrícola, FIA innovación agrícola, digitalización agrícola fondos públicos',
-  ogTitle: 'Apps del Sur — Gestión de Mano de Obra Agrícola en Tiempo Real',
+    'software a medida Chile, software empresas sur Chile, desarrollo software IA, Claude AI Chile, software CORFO, digitalización empresas Chile, software agrícola Chile, gestión mano de obra, software viñas, consultoría IA Chile, Apps del Sur, Maule, O\'Higgins, Ñuble, Biobío, Araucanía',
+  ogTitle: 'Apps del Sur — Software a Medida Potenciado por IA',
   ogDescription:
-    'Sepa exactamente cuánto cuesta cada hectárea, cada cuartel y cada labor — todos los días. Software agrícola para el centro-sur de Chile.',
+    'Desarrollamos software a medida para empresas del centro-sur de Chile. Claude AI nos permite entregar software custom a precio de SaaS, en semanas en vez de meses.',
   canonical: 'https://appsdelsur.cl',
 } as const;
 
 export const navItems = [
-  { label: 'Solución', href: '#solucion' },
-  { label: 'Sectores', href: '#sectores' },
-  { label: 'Resultados', href: '#resultados' },
+  { label: 'Soluciones', href: '#soluciones' },
+  { label: 'Cómo trabajamos', href: '#proceso' },
   { label: 'Financiamiento', href: '#financiamiento' },
-  { label: 'Preguntas', href: '#preguntas' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contacto', href: '#contacto' },
 ] as const;
 
 export const hero = {
-  badge: 'Software agrícola · Maule a Araucanía',
+  badge: 'Software a medida · Sur de Chile · Potenciado por IA',
   titleLine1: 'Software a medida para',
-  titleHighlight: 'gestión agrícola',
+  titleHighlight: 'empresas del sur de Chile',
   description:
-    'Desarrollamos su sistema de gestión de mano de obra adaptado 100% a su operación — sus cuarteles, sus variedades, sus labores, su estructura de costos. No es un SaaS genérico: es su herramienta.',
+    'Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software custom a precio de SaaS, en semanas en vez de meses. No es un SaaS genérico: es su herramienta.',
   ctaPrimary: 'Solicitar diagnóstico gratuito',
   ctaPrimaryHref: '#contacto',
-  ctaSecondary: 'Ver demo interactiva',
-  ctaSecondaryHref: 'https://demo.appsdelsur.cl/',
+  ctaSecondary: 'Ver soluciones',
+  ctaSecondaryHref: '#soluciones',
   subtext:
     'Sin compromiso · Implementación en 8-12 semanas · Financiamiento CORFO/FIA disponible',
 } as const;
 
 export const metrics = [
   { value: '-70%', label: 'Tiempo administrativo' },
-  { value: '100%', label: 'Trazabilidad digital' },
-  { value: '$/ha', label: 'Costos por hectárea en tiempo real' },
+  { value: '100%', label: 'Adaptado a su operación' },
+  { value: '3+', label: 'Sectores atendidos' },
   { value: '8-12', label: 'Semanas de implementación' },
 ] as const;
 
@@ -45,20 +43,20 @@ export const features = {
   label: 'Desarrollo a medida',
   title: 'Construimos la herramienta que su operación necesita',
   description:
-    'Cada implementación se adapta a su realidad: sus cuarteles, variedades, labores y forma de calcular costos. No configuramos un software genérico — construimos el suyo.',
+    'Cada implementación se adapta a su realidad: sus procesos, equipos, áreas y estructura de costos. No configuramos un software genérico — construimos el suyo.',
   items: [
     {
       icon: 'bar-chart',
       title: 'Costos en tiempo real',
       description:
-        'Conozca el costo exacto por hectárea, cuartel y labor cada día — no al final del mes. Decisiones con datos, no con supuestos.',
+        'Conozca el costo exacto por área, proyecto y actividad cada día — no al final del mes. Decisiones con datos, no con supuestos.',
       highlight: true,
     },
     {
       icon: 'smartphone',
-      title: 'Cuaderno de campo digital',
+      title: 'App móvil de registro',
       description:
-        'App móvil que reemplaza planillas en papel. Registro de jornadas, labores y asistencia desde el campo, incluso sin señal.',
+        'App móvil que reemplaza planillas en papel. Registro de jornadas, actividades y asistencia desde terreno, incluso sin señal.',
       highlight: true,
     },
     {
@@ -71,83 +69,89 @@ export const features = {
       icon: 'layers',
       title: 'Trazabilidad completa',
       description:
-        'Registro digital 100% trazable por trabajador, cuartel y labor. Ideal para auditorías, certificaciones y cumplimiento normativo.',
+        'Registro digital 100% trazable por trabajador, área y actividad. Ideal para auditorías, certificaciones y cumplimiento normativo.',
     },
     {
       icon: 'shield',
       title: 'Cumplimiento normativo',
       description:
-        'Genera automáticamente los registros que exige la normativa laboral chilena y los estándares de sustentabilidad del sector.',
+        'Genera automáticamente los registros que exige la normativa laboral chilena y los estándares de su industria.',
     },
     {
       icon: 'trending-up',
       title: 'Análisis predictivo',
       description:
-        'Identifique patrones de rendimiento y anticipe necesidades de mano de obra para cada temporada con datos históricos.',
+        'Identifique patrones de rendimiento y anticipe necesidades de personal para cada temporada con datos históricos.',
     },
   ],
 } as const;
 
-export const sectors = {
-  label: 'Sectores que atendemos',
-  title: 'Software especializado para el agro chileno',
+export const solutions = {
+  label: 'Soluciones',
+  title: 'Software especializado para cada sector',
   description:
-    'Trabajamos con viñas, frutícolas y empresas agrícolas desde O\'Higgins hasta La Araucanía — Maule, Ñuble, Biobío y Araucanía.',
+    'Cada negocio es distinto. Por eso no vendemos software genérico: construimos el suyo, adaptado a su operación y su industria.',
   items: [
     {
       icon: 'grape',
-      name: 'Vitivinícola',
-      description: 'Viñas y bodegas del centro-sur de Chile',
+      name: 'Agro',
+      description:
+        'Gestión de mano de obra, cuadernos de campo, trazabilidad y costos en tiempo real para viñas, frutícolas y agrícolas.',
+      href: '#',
     },
     {
-      icon: 'apple',
-      name: 'Frutícola',
-      description: 'Packings, huertos y exportadoras',
+      icon: 'wrench',
+      name: 'Servicios',
+      description:
+        'Control de operaciones en terreno, mantención, agendamiento, RRHH y gestión de equipos para empresas de servicios.',
+      href: '#',
     },
     {
-      icon: 'wheat',
-      name: 'Agrícola general',
-      description: 'Cultivos, hortalizas y cereales',
+      icon: 'sparkle',
+      name: 'Consultoría Claude AI',
+      description:
+        'Diagnóstico e implementación de inteligencia artificial en sus procesos de negocio con Claude AI.',
+      href: '#',
     },
   ],
-  whyLocalTitle: '¿Por qué elegir un software de gestión agrícola local?',
+  whyLocalTitle: '¿Por qué elegir un software local?',
   checklist: [
     'Soporte técnico en español, en tu zona horaria',
     'Entendemos la normativa laboral chilena',
-    'Configurado para labores vitivinícolas y frutícolas reales',
-    'Integración con procesos de certificación sustentable',
-    'Capacitación presencial para equipos de campo',
-    'Financiamiento con fondos CORFO y FIA',
+    'Configurado para las operaciones reales de tu industria',
+    'Desarrollo asistido por IA para entregas más rápidas',
+    'Capacitación presencial para equipos en terreno',
+    'Financiamiento con fondos CORFO, FIA y SERCOTEC',
   ],
 } as const;
 
 export const process = {
-  label: 'Cómo funciona',
+  label: 'Cómo trabajamos',
   title: 'De planillas en papel a datos en tiempo real',
   steps: [
     {
       step: '01',
       title: 'Diagnóstico gratuito',
       description:
-        'Analizamos su operación: hectáreas, cuarteles, trabajadores, labores y cómo gestiona hoy los costos. Sin compromiso.',
+        'Analizamos su operación: áreas, equipos, procesos y cómo gestiona hoy los costos y la información. Sin compromiso.',
     },
     {
       step: '02',
-      title: 'Desarrollo a medida',
+      title: 'Desarrollo IA-asistido',
       description:
-        'En 8-12 semanas construimos su sistema: plataforma web + app móvil, con sus cuarteles, variedades, labores y estructura de costos reales.',
+        'En 8-12 semanas construimos su sistema con Claude AI: plataforma web + app móvil, con sus procesos, estructura de costos y reglas de negocio.',
     },
     {
       step: '03',
       title: 'Capacitación en terreno',
       description:
-        'Capacitamos a su equipo de campo en el uso de la app. Acompañamiento presencial hasta que operen con autonomía.',
+        'Capacitamos a su equipo en el uso del sistema. Acompañamiento presencial hasta que operen con autonomía.',
     },
     {
       step: '04',
       title: 'Crecimiento modular',
       description:
-        'El sistema crece con usted: cosecha, insumos, mapas, integración contable. Cada módulo se agrega cuando lo necesite.',
+        'El sistema crece con usted: nuevos módulos, integraciones y funcionalidades se agregan cuando los necesite.',
     },
   ],
 } as const;
@@ -158,10 +162,10 @@ export const financing = {
   titleHighlight: '80%',
   titleEnd: 'de su proyecto con fondos públicos',
   description:
-    'Existen instrumentos CORFO, FIA y SERCOTEC que cofinancian la digitalización agrícola. Nosotros le asesoramos en la postulación sin costo adicional.',
+    'Existen instrumentos CORFO, FIA y SERCOTEC que cofinancian la digitalización de empresas. Nosotros le asesoramos en la postulación sin costo adicional.',
   cards: [
     {
-      profile: 'Microempresa (20-50 ha)',
+      profile: 'Microempresa',
       instrument: 'SERCOTEC CRECE',
       projectCost: '$5M',
       funded: '80%',
@@ -169,7 +173,7 @@ export const financing = {
       highlight: true,
     },
     {
-      profile: 'Pyme (50-100 ha)',
+      profile: 'Pyme',
       instrument: 'CORFO Prototipos',
       projectCost: '$15-20M',
       funded: '70%',
@@ -177,7 +181,7 @@ export const financing = {
       highlight: false,
     },
     {
-      profile: 'Pyme mediana (100-300 ha)',
+      profile: 'Pyme mediana',
       instrument: 'FIA Innovación',
       projectCost: '$50M',
       funded: '80%',
@@ -205,19 +209,19 @@ export const faq = {
   items: [
     {
       q: '¿Qué hace diferente a Apps del Sur de un SaaS genérico?',
-      a: 'No ofrecemos un software genérico donde usted se adapta al sistema. Desarrollamos una plataforma a medida que se configura con sus cuarteles, variedades, labores y estructura de costos reales. Gracias al desarrollo asistido por IA, podemos ofrecer esta personalización a precios accesibles — como si fuera software hecho a medida, pero sin el costo tradicional de un proyecto custom.',
+      a: 'No ofrecemos un software genérico donde usted se adapta al sistema. Desarrollamos una plataforma a medida que se configura con sus procesos, equipos, áreas y estructura de costos reales. Gracias al desarrollo asistido por Claude AI, podemos ofrecer esta personalización a precios accesibles — como si fuera software hecho a medida, pero sin el costo tradicional de un proyecto custom.',
+    },
+    {
+      q: '¿Qué es Claude AI y cómo lo usan?',
+      a: 'Claude AI es un modelo de inteligencia artificial desarrollado por Anthropic. Lo usamos como herramienta de desarrollo para acelerar cada etapa del proyecto: desde el análisis de su operación hasta la generación de código. Esto nos permite entregar software custom en 8-12 semanas en vez de 6+ meses, a una fracción del costo tradicional. También ofrecemos consultoría para integrar IA directamente en los procesos de su empresa.',
     },
     {
       q: '¿Funciona sin conexión a internet en el campo?',
-      a: 'Sí. La aplicación móvil de Apps del Sur está diseñada para funcionar offline. Los datos se sincronizan automáticamente cuando el dispositivo recupera la conexión, ideal para zonas rurales del Maule, O\'Higgins, Ñuble, Biobío y Araucanía.',
+      a: 'Sí. Nuestras aplicaciones móviles están diseñadas para funcionar offline. Los datos se sincronizan automáticamente cuando el dispositivo recupera la conexión, ideal para zonas rurales del Maule, O\'Higgins, Ñuble, Biobío y Araucanía.',
     },
     {
       q: '¿Cuánto tiempo toma implementar el sistema en mi operación?',
-      a: 'El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma web y app móvil, configuración de cuarteles, labores, estructura de costos, y capacitación del equipo. No es un SaaS genérico que se configura en un día — es un sistema construido para su operación específica.',
-    },
-    {
-      q: '¿Es compatible con los requisitos de certificación sustentable?',
-      a: 'Sí. Apps del Sur genera registros digitales trazables que cumplen con los estándares de Sustentavid, GlobalG.A.P. y otras certificaciones de sustentabilidad requeridas por mercados de exportación.',
+      a: 'El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma web y app móvil, configuración de procesos y estructura de costos, y capacitación del equipo. No es un SaaS genérico que se configura en un día — es un sistema construido para su operación específica.',
     },
     {
       q: '¿Cuánto cuesta y qué modalidades ofrecen?',
@@ -225,15 +229,15 @@ export const faq = {
     },
     {
       q: '¿Existen fondos públicos para financiar la implementación?',
-      a: 'Sí. Instrumentos como CORFO Crea y Valida, FIA Innovación Agrícola y SERCOTEC CRECE pueden financiar entre el 50% y el 80% del proyecto. En algunos casos, el cliente piloto puede acceder al sistema a costo $0 mientras se valida con fondos públicos. Asesoramos en la postulación.',
+      a: 'Sí. Instrumentos como CORFO Crea y Valida, FIA Innovación y SERCOTEC CRECE pueden financiar entre el 50% y el 80% del proyecto. En algunos casos, el cliente piloto puede acceder al sistema a costo $0 mientras se valida con fondos públicos. Asesoramos en la postulación.',
     },
   ],
 } as const;
 
 export const contactCTA = {
-  title: 'Digitalice su operación agrícola hoy',
+  title: 'Digitalice su empresa hoy',
   description:
-    'Solicite un diagnóstico gratuito y descubra cuánto puede ahorrar con gestión de mano de obra en tiempo real.',
+    'Solicite un diagnóstico gratuito y descubra cómo un sistema a medida puede transformar su operación.',
   ctaPrimary: 'Solicitar diagnóstico gratuito',
   ctaPrimaryHref: '#contact-form',
   ctaWhatsApp: 'Contactar por WhatsApp',
@@ -246,15 +250,16 @@ export const contactCTA = {
 export const contactForm = {
   title: 'Solicite su diagnóstico gratuito',
   description:
-    'Cuéntenos sobre su operación y le contactaremos en menos de 24 horas.',
+    'Cuéntenos sobre su empresa y le contactaremos en menos de 24 horas.',
   fields: {
     name: 'Nombre completo',
     email: 'Correo electrónico',
     phone: 'Teléfono',
-    company: 'Empresa o viña',
-    hectares: 'Hectáreas aproximadas',
+    company: 'Empresa',
+    sector: 'Sector de su empresa',
     message: 'Mensaje (opcional)',
   },
+  sectorOptions: ['Agrícola', 'Servicios', 'Consultoría IA', 'Otro'],
   submit: 'Enviar solicitud',
   formAction: 'https://formsubmit.co/dramirezr.gysactiva@gmail.com',
   sideTitle: '¿Prefiere contacto directo?',
@@ -277,14 +282,28 @@ export const contactForm = {
   ],
 } as const;
 
+export const claudePartner = {
+  badge: 'Potenciado por IA',
+  title: 'Desarrollo asistido por Claude AI',
+  description:
+    'Somos la primera software house del sur de Chile que integra Claude AI en todo su ciclo de desarrollo. Esto nos permite:',
+  bullets: [
+    'Entregar software custom en semanas, no meses',
+    'Ofrecer desarrollo a medida al precio de un SaaS',
+    'Integrar inteligencia artificial directamente en su software',
+  ],
+  cta: 'Conocer más sobre Claude AI',
+  ctaHref: '#',
+} as const;
+
 export const footer = {
   companyName: 'Apps del Sur',
   companyLegal: 'GYS Activa SpA',
   tagline:
-    'Desarrollamos software a medida para gestión de mano de obra agrícola. Viñas, frutícolas y agrícolas del centro-sur de Chile.',
+    'Desarrollamos software a medida para empresas del centro-sur de Chile. Agro, servicios y consultoría IA.',
   copyright:
     '© 2026 Apps del Sur — GYS Activa SpA. Todos los derechos reservados.',
-  madeIn: 'Software agrícola hecho en Chile',
+  madeIn: 'Software hecho en Chile',
   contact: {
     name: 'Darío Ramírez',
     phone: '+56 9 4526 2335',
@@ -294,9 +313,9 @@ export const footer = {
       'https://wa.me/56945262335?text=Hola%2C%20me%20interesa%20conocer%20Apps%20del%20Sur',
   },
   solutionLinks: [
-    { label: 'Plataforma web', href: '#solucion' },
-    { label: 'App de campo móvil', href: '#solucion' },
-    { label: 'Resultados medibles', href: '#resultados' },
+    { label: 'Agro', href: '#soluciones' },
+    { label: 'Servicios', href: '#soluciones' },
+    { label: 'Consultoría Claude AI', href: '#soluciones' },
     { label: 'Financiamiento CORFO/FIA', href: '#financiamiento' },
     { label: 'Preguntas frecuentes', href: '#preguntas' },
   ],

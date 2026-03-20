@@ -2,7 +2,7 @@
 import { hero } from '../data/content';
 import Badge from './ui/Badge.astro';
 import Button from './ui/Button.astro';
-import MapPin from './icons/MapPin.astro';
+import Sparkle from './icons/Sparkle.astro';
 import ArrowRight from './icons/ArrowRight.astro';
 ---
 
@@ -12,7 +12,7 @@ import ArrowRight from './icons/ArrowRight.astro';
       <!-- Text Column (60%) -->
       <div class="md:w-3/5">
         <Badge class="mb-5">
-          <MapPin class="w-4 h-4" />
+          <Sparkle class="w-4 h-4" />
           <span>{hero.badge}</span>
         </Badge>
 
@@ -30,7 +30,7 @@ import ArrowRight from './icons/ArrowRight.astro';
             {hero.ctaPrimary}
             <ArrowRight class="w-5 h-5" />
           </Button>
-          <Button href={hero.ctaSecondaryHref} variant="outline" size="lg" target="_blank">
+          <Button href={hero.ctaSecondaryHref} variant="outline" size="lg">
             {hero.ctaSecondary}
           </Button>
         </div>
@@ -59,21 +59,21 @@ import ArrowRight from './icons/ArrowRight.astro';
               <!-- Top stat cards -->
               <div class="grid grid-cols-3 gap-3">
                 <div class="bg-white rounded-lg p-3 border border-gray-100">
-                  <div class="text-xs text-gray-400 mb-1">Costo/ha hoy</div>
-                  <div class="text-lg font-bold text-emerald-700">$142.800</div>
+                  <div class="text-xs text-gray-400 mb-1">Costos del mes</div>
+                  <div class="text-lg font-bold text-emerald-700">$4.2M</div>
                 </div>
                 <div class="bg-white rounded-lg p-3 border border-gray-100">
                   <div class="text-xs text-gray-400 mb-1">Trabajadores</div>
                   <div class="text-lg font-bold text-gray-900">24</div>
                 </div>
                 <div class="bg-white rounded-lg p-3 border border-gray-100">
-                  <div class="text-xs text-gray-400 mb-1">Cuarteles</div>
+                  <div class="text-xs text-gray-400 mb-1">Áreas activas</div>
                   <div class="text-lg font-bold text-gray-900">12</div>
                 </div>
               </div>
               <!-- Chart placeholder -->
               <div class="bg-white rounded-lg p-4 border border-gray-100">
-                <div class="text-xs font-medium text-gray-500 mb-3">Costos por cuartel — Marzo 2026</div>
+                <div class="text-xs font-medium text-gray-500 mb-3">Costos por área — Marzo 2026</div>
                 <div class="flex items-end gap-2 h-24">
                   <div class="flex-1 bg-emerald-100 rounded-t-sm" style="height: 60%"></div>
                   <div class="flex-1 bg-emerald-200 rounded-t-sm" style="height: 85%"></div>
@@ -89,7 +89,7 @@ import ArrowRight from './icons/ArrowRight.astro';
               <div class="bg-white rounded-lg p-3 border border-gray-100">
                 <div class="flex items-center gap-3">
                   <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                  <span class="text-xs text-gray-500">Poda — Cuartel 3B — 6 trabajadores activos</span>
+                  <span class="text-xs text-gray-500">Registro activo — Zona 3 — 6 trabajadores en terreno</span>
                 </div>
               </div>
             </div>
