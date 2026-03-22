@@ -1,0 +1,131 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Paisaje del Biobío con industria, logística y panel de gestión digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="85" rx="12" fill="#f0fdf4" opacity="0.4"/>
+
+  <!-- Mountains -->
+  <path d="M0,98 L80,65 L160,80 L240,50 L320,78 L400,55 L480,72 L560,45 L640,70 L720,55 L800,78 L800,108 L0,108 Z" fill="#d1fae5" opacity="0.4"/>
+
+  <!-- City skyline (Concepción) -->
+  <g transform="translate(20, 100)" opacity="0.6">
+    <rect x="0" y="30" width="22" height="50" rx="2" fill="#047857" opacity="0.2"/>
+    <rect x="28" y="15" width="18" height="65" rx="2" fill="#047857" opacity="0.25"/>
+    <rect x="50" y="25" width="20" height="55" rx="2" fill="#047857" opacity="0.2"/>
+    <rect x="76" y="35" width="16" height="45" rx="2" fill="#047857" opacity="0.22"/>
+    <rect x="96" y="20" width="24" height="60" rx="2" fill="#047857" opacity="0.18"/>
+    <rect x="124" y="40" width="18" height="40" rx="2" fill="#047857" opacity="0.2"/>
+  </g>
+
+  <!-- Windows on buildings -->
+  <g fill="#059669" opacity="0.15">
+    <rect x="24" y="140" width="5" height="4" rx="0.5"/><rect x="32" y="140" width="5" height="4" rx="0.5"/>
+    <rect x="24" y="148" width="5" height="4" rx="0.5"/><rect x="32" y="148" width="5" height="4" rx="0.5"/>
+    <rect x="52" y="122" width="5" height="4" rx="0.5"/><rect x="60" y="122" width="5" height="4" rx="0.5"/>
+    <rect x="52" y="130" width="5" height="4" rx="0.5"/><rect x="60" y="130" width="5" height="4" rx="0.5"/>
+  </g>
+
+  <!-- Port/container area -->
+  <g transform="translate(170, 145)">
+    <rect x="0" y="15" width="20" height="14" rx="1" fill="#047857" opacity="0.25"/>
+    <rect x="24" y="15" width="20" height="14" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="0" y="32" width="20" height="14" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="24" y="32" width="20" height="14" rx="1" fill="#047857" opacity="0.25"/>
+    <!-- Crane -->
+    <rect x="50" y="0" width="3" height="46" rx="0.5" fill="#047857" opacity="0.2"/>
+    <rect x="35" y="0" width="30" height="3" rx="0.5" fill="#047857" opacity="0.18"/>
+    <rect x="35" y="3" width="1.5" height="10" fill="#047857" opacity="0.15"/>
+  </g>
+
+  <!-- Truck -->
+  <g transform="translate(250, 195)">
+    <rect x="0" y="3" width="32" height="14" rx="3" fill="#047857" opacity="0.3"/>
+    <rect x="26" y="0" width="12" height="10" rx="2" fill="#047857" opacity="0.25"/>
+    <circle cx="8" cy="19" r="5" fill="#047857" opacity="0.2" stroke="#047857" stroke-width="0.8" stroke-opacity="0.3"/>
+    <circle cx="31" cy="17" r="4" fill="#047857" opacity="0.2" stroke="#047857" stroke-width="0.8" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- Hospital/health -->
+  <g transform="translate(310, 155)">
+    <rect x="0" y="5" width="35" height="28" rx="3" fill="#047857" opacity="0.18"/>
+    <rect x="14" y="9" width="7" height="3" rx="0.5" fill="#059669" opacity="0.4"/>
+    <rect x="16" y="7" width="3" height="7" rx="0.5" fill="#059669" opacity="0.4"/>
+    <rect x="5" y="18" width="7" height="5" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="20" y="18" width="7" height="5" rx="1" fill="#059669" opacity="0.2"/>
+  </g>
+
+  <!-- Road -->
+  <rect x="0" y="220" width="400" height="6" rx="2" fill="#047857" opacity="0.1"/>
+  <g opacity="0.15">
+    <rect x="20" y="222" width="15" height="2" rx="1" fill="#047857"/>
+    <rect x="50" y="222" width="15" height="2" rx="1" fill="#047857"/>
+    <rect x="80" y="222" width="15" height="2" rx="1" fill="#047857"/>
+    <rect x="110" y="222" width="15" height="2" rx="1" fill="#047857"/>
+    <rect x="140" y="222" width="15" height="2" rx="1" fill="#047857"/>
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="240" width="400" height="20" rx="0" fill="#d1fae5" opacity="0.3"/>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Región del Biobío — 2º polo económico</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Stats -->
+  <g transform="translate(436, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">72K+</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Pymes activas</text>
+  </g>
+  <g transform="translate(544, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">2º</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Polo económico</text>
+  </g>
+  <g transform="translate(652, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">7</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Rubros atendidos</text>
+  </g>
+
+  <!-- Sector list -->
+  <g transform="translate(436, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Logística</text>
+  </g>
+  <g transform="translate(596, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Agroindustria</text>
+  </g>
+  <g transform="translate(436, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Salud</text>
+  </g>
+  <g transform="translate(596, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Hotelería</text>
+  </g>
+  <g transform="translate(436, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Comercio</text>
+  </g>
+  <g transform="translate(596, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Construcción</text>
+  </g>
+
+  <rect x="436" y="212" width="120" height="10" rx="5" fill="#047857" opacity="0.6"/>
+  <text x="450" y="220" font-family="system-ui,sans-serif" font-size="6" font-weight="600" fill="#ffffff">Diagnóstico gratis</text>
+</svg>

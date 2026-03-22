@@ -1,0 +1,117 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Paisaje de Ñuble con campos, comercio y panel de gestión digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="85" rx="12" fill="#f0fdf4" opacity="0.4"/>
+
+  <!-- Cordillera -->
+  <path d="M0,100 L60,70 L120,88 L190,52 L260,80 L340,48 L420,75 L500,55 L580,78 L660,50 L800,85 L800,110 L0,110 Z" fill="#d1fae5" opacity="0.4"/>
+
+  <!-- Agricultural fields (patchwork) -->
+  <g opacity="0.5">
+    <rect x="15" y="115" width="80" height="35" rx="3" fill="#10b981" opacity="0.25"/>
+    <rect x="100" y="115" width="70" height="35" rx="3" fill="#059669" opacity="0.2"/>
+    <rect x="15" y="155" width="70" height="35" rx="3" fill="#059669" opacity="0.2"/>
+    <rect x="90" y="155" width="80" height="35" rx="3" fill="#10b981" opacity="0.25"/>
+  </g>
+
+  <!-- Church/plaza (Chillán) -->
+  <g transform="translate(200, 130)">
+    <rect x="5" y="20" width="40" height="35" rx="2" fill="#047857" opacity="0.2"/>
+    <polygon points="25,5 5,22 45,22" fill="#047857" opacity="0.18"/>
+    <rect x="20" y="42" width="10" height="13" rx="1" fill="#047857" opacity="0.25"/>
+    <rect x="10" y="28" width="8" height="8" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="30" y="28" width="8" height="8" rx="1" fill="#059669" opacity="0.2"/>
+  </g>
+
+  <!-- Small shops row -->
+  <g transform="translate(265, 160)">
+    <rect x="0" y="0" width="22" height="18" rx="2" fill="#047857" opacity="0.2"/>
+    <rect x="3" y="3" width="16" height="8" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="28" y="2" width="20" height="16" rx="2" fill="#047857" opacity="0.18"/>
+    <rect x="31" y="5" width="14" height="7" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="54" y="0" width="24" height="18" rx="2" fill="#047857" opacity="0.2"/>
+    <rect x="57" y="3" width="18" height="8" rx="1" fill="#059669" opacity="0.15"/>
+  </g>
+
+  <!-- School -->
+  <g transform="translate(340, 138)">
+    <rect x="0" y="8" width="40" height="25" rx="2" fill="#047857" opacity="0.18"/>
+    <rect x="0" y="5" width="40" height="5" rx="1" fill="#047857" opacity="0.12"/>
+    <rect x="4" y="14" width="7" height="7" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="16" y="14" width="7" height="7" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="28" y="14" width="7" height="7" rx="1" fill="#059669" opacity="0.2"/>
+    <rect x="14" y="25" width="12" height="8" rx="1" fill="#047857" opacity="0.25"/>
+  </g>
+
+  <!-- Rising arrow (growth) -->
+  <g transform="translate(100, 200)" opacity="0.25">
+    <path d="M0,20 L15,12 L30,15 L45,5" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <polygon points="45,5 40,3 42,8" fill="#047857"/>
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="240" width="400" height="20" rx="0" fill="#d1fae5" opacity="0.3"/>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Región de Ñuble — Región nueva</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Stats -->
+  <g transform="translate(436, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">18K+</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Pymes activas</text>
+  </g>
+  <g transform="translate(544, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">2018</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Región nueva</text>
+  </g>
+  <g transform="translate(652, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">3x</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Fondos públicos</text>
+  </g>
+
+  <!-- Sector list -->
+  <g transform="translate(436, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Agrícola</text>
+  </g>
+  <g transform="translate(596, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Comercio</text>
+  </g>
+  <g transform="translate(436, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Salud</text>
+  </g>
+  <g transform="translate(596, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Servicios</text>
+  </g>
+  <g transform="translate(436, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Turismo</text>
+  </g>
+  <g transform="translate(596, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Educación</text>
+  </g>
+
+  <rect x="436" y="212" width="120" height="10" rx="5" fill="#047857" opacity="0.6"/>
+  <text x="450" y="220" font-family="system-ui,sans-serif" font-size="6" font-weight="600" fill="#ffffff">Diagnóstico gratis</text>
+</svg>

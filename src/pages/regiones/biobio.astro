@@ -1,0 +1,11 @@
+---
+import RegionPage from '../../layouts/RegionPage.astro';
+import HeroBiobio from '../../components/page-heroes/HeroBiobio.astro';
+import { biobio } from '../../data/regiones';
+---
+
+<RegionPage regionData={biobio}>
+  <div slot="hero-illustration" class="rounded-2xl overflow-hidden" role="img" aria-label="Ilustración Región del Biobío">
+    <HeroBiobio class="w-full h-auto" />
+  </div>
+</RegionPage>

@@ -1,0 +1,343 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import type { RegionData } from '../data/regiones/types';
+import { getRubrosForRegion } from '../data/rubros';
+
+interface Props {
+  regionData: RegionData;
+}
+
+const { regionData } = Astro.props;
+const { meta, hero, painPoints, process, stats, funding } = regionData;
+const regionRubros = getRubrosForRegion(regionData.rubroSlugs);
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `https://appsdelsur.cl/regiones/${regionData.slug}#localbusiness`,
+  name: 'Apps del Sur — GYS Activa SpA',
+  description: meta.description,
+  url: `https://appsdelsur.cl/regiones/${regionData.slug}`,
+  telephone: '+56-9-4526-2335',
+  email: 'dramirez.gysactiva@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Maule',
+    addressCountry: 'CL',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: `Región ${regionData.nameWithArticle}`,
+  },
+  priceRange: '$$$',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '18:00',
+  },
+});
+
+const breadcrumbLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: 'https://appsdelsur.cl',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Regiones',
+      item: 'https://appsdelsur.cl/regiones',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: regionData.name,
+      item: `https://appsdelsur.cl/regiones/${regionData.slug}`,
+    },
+  ],
+});
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`https://appsdelsur.cl/regiones/${regionData.slug}`}
+  keywords={meta.keywords}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+>
+  <script type="application/ld+json" set:html={jsonLd} />
+  <script type="application/ld+json" set:html={breadcrumbLd} />
+
+  <Header />
+
+  <main id="main-content" class="pt-24">
+    <!-- Breadcrumb -->
+    <div class="max-w-[1200px] mx-auto px-6 mb-6">
+      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">Regiones</span>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">{regionData.name}</span>
+      </nav>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 1 — Hero regional                                  -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="pt-4 pb-16">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2">
+            <Badge class="mb-4">Software a medida · Región {regionData.nameWithArticle}</Badge>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+              {hero.title.split(regionData.name)[0]}
+              <span class="text-emerald-700">{regionData.name.includes("O'Higgins") ? "O'Higgins" : regionData.name}</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+              {hero.subtitle}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <Button href={`/#contacto`} size="lg">
+                Solicitar diagnóstico gratuito
+              </Button>
+              <Button href="/enfoque" variant="outline" size="lg">
+                Ver cómo trabajamos
+              </Button>
+            </div>
+          </div>
+          <div class="lg:w-1/2">
+            <slot name="hero-illustration" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 2 — Rubros que atendemos en la región              -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label={`Rubros en ${regionData.name}`}
+          title={`Sectores que atendemos en la Región ${regionData.nameWithArticle}`}
+          description="Cada empresa es distinta. Construimos sistemas adaptados a la realidad de su rubro."
+          centered
+        />
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {regionRubros.map((rubro) => (
+            <a
+              href={rubro.sectorHref || `/#contacto`}
+              class="group bg-white rounded-xl border border-gray-100 p-6 hover:border-emerald-200 hover:shadow-sm transition-all"
+            >
+              <div class="w-11 h-11 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-4">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d={rubro.iconPath} />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 text-[15px] mb-2 group-hover:text-emerald-700 transition-colors">
+                {rubro.name}
+              </h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{rubro.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 3 — El problema                                    -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="El problema"
+          title="Desafíos que enfrentan las empresas hoy"
+          centered
+        />
+        <div class="grid md:grid-cols-2 gap-8">
+          {painPoints.map((point, i) => (
+            <div class="bg-gray-50 rounded-xl border border-gray-100 p-8">
+              <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center mb-5 font-bold text-sm">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+              <h3 class="font-semibold text-gray-900 text-lg mb-3">{point.title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{point.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 4 — Cómo trabajamos                                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="Cómo trabajamos"
+          title="De la idea a su sistema en semanas"
+          centered
+        />
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl border border-gray-100 p-8 text-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-5 font-bold text-lg">
+              1
+            </div>
+            <h3 class="font-semibold text-gray-900 text-lg mb-3">Diagnóstico gratuito</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              {process.step1Detail}
+            </p>
+          </div>
+          <div class="bg-white rounded-xl border border-gray-100 p-8 text-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-5 font-bold text-lg">
+              2
+            </div>
+            <h3 class="font-semibold text-gray-900 text-lg mb-3">Desarrollo a medida con IA</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Claude AI nos permite construir su sistema en semanas, no meses. Cada pantalla, cada reporte, cada flujo se diseña para su empresa.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl border border-gray-100 p-8 text-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-5 font-bold text-lg">
+              3
+            </div>
+            <h3 class="font-semibold text-gray-900 text-lg mb-3">Soporte local</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              {process.step3Detail}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 5 — Contexto económico de la región                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label={`Región ${regionData.nameWithArticle}`}
+          title={`La economía ${regionData.nameWithArticle} en números`}
+          centered
+        />
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat) => (
+            <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 text-center">
+              <div class="text-3xl md:text-4xl font-bold text-emerald-700 mb-2">{stat.value}</div>
+              <p class="text-sm text-gray-600 font-medium">{stat.label}</p>
+              {stat.source && (
+                <p class="text-xs text-gray-400 mt-1">Fuente: {stat.source}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 6 — Fondos públicos disponibles                    -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="Financiamiento"
+          title={`Fondos públicos disponibles en ${regionData.name}`}
+          description="Estos instrumentos financian la digitalización de empresas de todos los rubros. Le ayudamos a postular."
+          centered
+        />
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {funding.map((fund) => (
+            <div class="bg-white rounded-xl border border-gray-100 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-semibold text-gray-900 text-[15px]">{fund.name}</h3>
+                <span
+                  class:list={[
+                    'text-xs font-medium px-2.5 py-0.5 rounded-full',
+                    fund.status === 'abierto'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : fund.status === 'por abrir'
+                        ? 'bg-amber-50 text-amber-700'
+                        : 'bg-gray-100 text-gray-500',
+                  ]}
+                >
+                  {fund.status === 'abierto' ? 'Abierto' : fund.status === 'por abrir' ? 'Por abrir' : 'Cerrado'}
+                </span>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-gray-500">Monto máximo</span>
+                  <span class="font-medium text-gray-900">{fund.amount}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-500">Cofinanciamiento</span>
+                  <span class="font-medium text-emerald-700">{fund.cofinancing}</span>
+                </div>
+              </div>
+              <div class="mt-4 pt-4 border-t border-gray-100">
+                <p class="text-xs text-gray-500">
+                  <span class="font-medium">Rubros elegibles:</span>{' '}
+                  {fund.rubrosElegibles.join('. ')}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="bg-emerald-800 rounded-xl p-6 md:p-8 text-center">
+          <h3 class="text-white font-semibold text-lg mb-2">
+            ¿No sabe cuál instrumento le corresponde?
+          </h3>
+          <p class="text-emerald-200 text-sm mb-5">
+            Le ayudamos a identificar el fondo correcto y le acompañamos en todo el proceso de postulación — sin costo adicional.
+          </p>
+          <Button href="/#contacto" variant="secondary" size="lg">
+            Te ayudamos a postular
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 7 — CTA final                                      -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[720px] mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+          ¿Listo para tener un sistema hecho para su empresa?
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Diagnóstico gratuito + evaluación de financiamiento público. Sin compromiso.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+          <Button href="/#contacto" size="lg">
+            Solicitar diagnóstico
+          </Button>
+          <Button href="tel:+56945262335" variant="outline" size="lg">
+            Llamar ahora
+          </Button>
+        </div>
+        <p class="text-sm text-gray-400">
+          Equipo basado en la Región del Maule. Atendemos todo el centro-sur de Chile.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <ContactCTA />
+  <ContactForm />
+  <Footer />
+</Layout>
