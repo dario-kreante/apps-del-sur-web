@@ -6,7 +6,7 @@ export const siteConfig = {
     'software a medida Chile, software empresas sur Chile, desarrollo software IA, Claude AI Chile, software CORFO, digitalización empresas Chile, software agrícola Chile, gestión mano de obra, software viñas, consultoría IA Chile, Apps del Sur, Maule, O\'Higgins, Ñuble, Biobío, Araucanía',
   ogTitle: 'Apps del Sur — Software a Medida Potenciado por IA',
   ogDescription:
-    'Desarrollamos software a medida para empresas del centro-sur de Chile. Claude AI nos permite entregar software custom a precio de SaaS, en semanas en vez de meses.',
+    'Desarrollamos software a medida para empresas del centro-sur de Chile. Claude AI nos permite entregar software custom a una fracción del costo tradicional, en semanas en vez de meses.',
   canonical: 'https://appsdelsur.cl',
 } as const;
 
@@ -23,7 +23,7 @@ export const hero = {
   titleLine1: 'Software a medida para',
   titleHighlight: 'empresas del sur de Chile',
   description:
-    'Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software custom a precio de SaaS, en semanas en vez de meses. No es un SaaS genérico: es su herramienta.',
+    'Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software a medida en semanas, no meses, y a una fracción del costo tradicional. No es un sistema genérico: es su herramienta, adaptada a su operación.',
   ctaPrimary: 'Solicitar diagnóstico gratuito',
   ctaPrimaryHref: '#contacto',
   ctaSecondary: 'Ver soluciones',
@@ -209,7 +209,7 @@ export const faq = {
   title: 'Todo lo que necesita saber',
   items: [
     {
-      q: '¿Qué hace diferente a Apps del Sur de un SaaS genérico?',
+      q: '¿Qué hace diferente a Apps del Sur de un sistema genérico?',
       a: 'No ofrecemos un software genérico donde usted se adapta al sistema. Desarrollamos una plataforma a medida que se configura con sus procesos, equipos, áreas y estructura de costos reales. Gracias al desarrollo asistido por Claude AI, podemos ofrecer esta personalización a precios accesibles — como si fuera software hecho a medida, pero sin el costo tradicional de un proyecto custom.',
     },
     {
@@ -222,7 +222,7 @@ export const faq = {
     },
     {
       q: '¿Cuánto tiempo toma implementar el sistema en mi operación?',
-      a: 'El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma web y app móvil, configuración de procesos y estructura de costos, y capacitación del equipo. No es un SaaS genérico que se configura en un día — es un sistema construido para su operación específica.',
+      a: 'El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma web y app móvil, configuración de procesos y estructura de costos, y capacitación del equipo. No es un sistema genérico que se configura en un día — es un sistema construido para su operación específica.',
     },
     {
       q: '¿Cuánto cuesta y qué modalidades ofrecen?',
@@ -290,7 +290,7 @@ export const claudePartner = {
     'Somos la primera software house del sur de Chile que integra Claude AI en todo su ciclo de desarrollo. Esto nos permite:',
   bullets: [
     'Entregar software custom en semanas, no meses',
-    'Ofrecer desarrollo a medida al precio de un SaaS',
+    'Ofrecer desarrollo a medida a precio accesible',
     'Integrar inteligencia artificial directamente en su software',
   ],
   cta: 'Conocer más sobre Claude AI',
@@ -592,7 +592,7 @@ export const sectorPages = {
       },
       {
         q: '¿Qué diferencia hay con un software agrícola genérico?',
-        a: 'Un SaaS genérico ofrece funcionalidades estándar que no se adaptan a su operación. Nosotros construimos un sistema a medida: con sus sectores, cultivos, estructura de costos y reglas de negocio. Gracias a Claude AI, lo entregamos en 8-12 semanas a precio accesible.',
+        a: 'Un sistema genérico ofrece funcionalidades estándar que no se adaptan a su operación. Nosotros construimos un sistema a medida: con sus sectores, cultivos, estructura de costos y reglas de negocio. Gracias a Claude AI, lo entregamos en 8-12 semanas a precio accesible.',
       },
       {
         q: '¿Necesito infraestructura tecnológica especial?',
@@ -717,28 +717,28 @@ export const cuadernoDeCampoPage = {
 
 export const enfoquePage = {
   meta: {
-    title: 'Nuestro Enfoque | Software a Medida vs SaaS Genérico — Apps del Sur',
+    title: 'Nuestro Enfoque | Software a Medida vs Sistema Genérico — Apps del Sur',
     description:
-      'Por qué el software a medida potenciado por IA es mejor que un SaaS genérico para empresas del sur de Chile. Comparamos costos, plazos y resultados.',
+      'Por qué el software a medida potenciado por IA es mejor que un sistema genérico para empresas del sur de Chile. Comparamos costos, plazos y resultados.',
     keywords:
-      'software a medida vs SaaS, desarrollo software IA, Claude AI desarrollo, software personalizado chile, por qué software a medida, software accesible chile',
+      'software a medida chile, desarrollo software IA, Claude AI desarrollo, software personalizado chile, por qué software a medida, software accesible chile',
     ogTitle: 'Nuestro Enfoque — Software a Medida Accesible con IA',
     ogDescription:
-      'Gracias a Claude AI, entregamos software custom en 8-12 semanas al precio de un SaaS. Sin limitaciones genéricas, sin costos de consultora tradicional.',
+      'Gracias a Claude AI, entregamos software custom en 8-12 semanas a una fracción del costo tradicional. Sin limitaciones genéricas, sin costos de consultora tradicional.',
   },
   hero: {
     badge: 'Nuestro enfoque',
-    titleLine1: 'Software a medida, al',
-    titleHighlight: 'precio de un SaaS',
+    titleLine1: 'Software a medida, a',
+    titleHighlight: 'precio accesible',
     description:
-      'Tradicionalmente, el software a medida era caro y lento. Los SaaS genéricos eran baratos pero limitados. Con Claude AI, eliminamos esa disyuntiva: entregamos software 100% personalizado en semanas, no meses.',
+      'Tradicionalmente, el software a medida era caro y lento. Los sistemas genéricos eran baratos pero limitados. Con Claude AI, eliminamos esa disyuntiva: entregamos software 100% personalizado en semanas, no meses.',
   },
   comparison: {
-    title: '¿SaaS genérico o software a medida?',
+    title: '¿Sistema genérico o software a medida?',
     description: 'La mayoría de las empresas enfrentan esta disyuntiva. Nosotros la resolvemos con un tercer camino.',
     columns: [
       {
-        name: 'SaaS genérico',
+        name: 'Sistema genérico',
         icon: 'layers',
         verdict: 'Limitado',
         items: [

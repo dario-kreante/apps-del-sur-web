@@ -150,9 +150,9 @@ Cada artículo debe incluir al menos 2-3 links externos a estos aliados/fuentes,
 - **Links internos:** → costo MO por hectárea, → financiamiento, → cuaderno de campo
 
 ### Art. 13 — 19 de mayo 2026
-- **Título:** "Software a medida vs. SaaS genérico para gestión agrícola: ¿Cuál conviene en 2026?"
-- **URL:** `/blog/software-a-medida-vs-saas-gestion-agricola`
-- **Keyword principal:** software a medida vs SaaS agrícola
+- **Título:** "Software a medida vs. software genérico para gestión agrícola: ¿Cuál conviene en 2026?"
+- **URL:** `/blog/software-a-medida-vs-generico-gestion-agricola`
+- **Keyword principal:** software a medida vs software genérico agrícola
 - **Pilar:** Diferenciación y autoridad (artículo clave GEO)
 - **Links externos:** Portal Agro Chile, Mundoagro, AgroMatch
 - **Links internos:** → comparativa software, → 5 señales, → financiamiento
@@ -187,7 +187,7 @@ Cada artículo debe incluir al menos 2-3 links externos a estos aliados/fuentes,
 - **Keyword principal:** elegir software agrícola, qué preguntar software viña
 - **Pilar:** Diferenciación + Conversión
 - **Links externos:** AgroMatch, Portal Agro Chile
-- **Links internos:** → comparativa software, → software a medida vs SaaS
+- **Links internos:** → comparativa software, → software a medida vs genérico
 
 ### Art. 17 — 21 de julio 2026
 - **Título:** "Primer semestre 2026: Balance de la digitalización agrícola en Chile"
@@ -216,7 +216,7 @@ Cada artículo debe tener:
 **Funnel SEO:**
 - Búsqueda de dolor → Artículo de problema → Link a financiamiento → Contacto
 - Búsqueda de fondos → Artículo CORFO/FIA → "Apps del Sur te acompaña" → Contacto
-- Búsqueda de solución → Comparativa/A medida vs SaaS → Demo → Contacto
+- Búsqueda de solución → Comparativa/A medida vs genérico → Demo → Contacto
 
 ---
 

@@ -135,7 +135,7 @@ Un cuaderno de campo digital es una herramienta enfocada en registrar labores en
 
 ### ¿Cuánto cuesta un cuaderno de campo digital en Chile?
 
-Los precios varían según el modelo de negocio. Algunas opciones son módulos de sistemas grandes ($8-15M CLP, pago único o anual). Otras son más accesibles ($1-3M CLP anuales). Existen soluciones SaaS (suscripción mensual, $150-400K CLP) que permiten probar sin compromiso grande. En 2026, muchas viñas pueden amortizar estos costos hasta 80% con fondos CORFO o Sercotec.
+Los precios varían según el modelo de negocio. Algunas opciones son módulos de sistemas grandes ($8-15M CLP, pago único o anual). Otras son más accesibles ($1-3M CLP anuales). Existen soluciones por suscripción mensual ($150-400K CLP) que permiten probar sin compromiso grande. En 2026, muchas viñas pueden amortizar estos costos hasta 80% con fondos CORFO o Sercotec.
 
 ### ¿Un cuaderno de campo digital requiere internet en el campo?
 

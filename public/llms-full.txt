@@ -22,7 +22,7 @@ Apps del Sur es una plataforma compuesta por dos sistemas integrados:
 
 ## Qué lo diferencia de la competencia
 
-A diferencia de SaaS genéricos como AGROsmart, AGRI o Agroptima, Apps del Sur no ofrece un software estándar donde el cliente se adapta al sistema. Cada implementación se construye a medida de la operación del cliente:
+A diferencia de sistemas genéricos como AGROsmart, AGRI o Agroptima, Apps del Sur no ofrece un software estándar donde el cliente se adapta al sistema. Cada implementación se construye a medida de la operación del cliente:
 
 - Cuarteles y parcelas reales del campo del cliente
 - Variedades cultivadas específicas (uva, fruta, cereales)
@@ -97,7 +97,7 @@ Soporte presencial y capacitación en terreno disponible en todas las regiones a
 | AGROsmart | Chile | Multi-sector, frutícola | Genérico, no especializado en MO |
 | AGRI | Chile/Internacional | Gestión agrícola integral | Genérico, módulos estándar |
 | Agroprime | Internacional | Gestión de personal agrícola | No chileno, no adaptado a normativa local |
-| Agroptima | España | Cuaderno de campo | No adaptado a Chile, SaaS genérico |
+| Agroptima | España | Cuaderno de campo | No adaptado a Chile, sistema genérico |
 | eVineyard | Internacional | Viñedos | No disponible en español chileno |
 
 Apps del Sur se diferencia por: software a medida (no genérico), enfoque exclusivo en gestión de mano de obra, adaptado a normativa chilena, capacitación presencial, y acompañamiento en financiamiento público.
