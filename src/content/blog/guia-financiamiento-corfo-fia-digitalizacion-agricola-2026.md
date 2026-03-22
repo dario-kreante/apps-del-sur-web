@@ -253,7 +253,7 @@ Sí. Las cooperativas tienen tasas de cofinanciamiento mejores en algunos fondos
 
 ### ¿Qué sucede después de que termina el financiamiento? ¿Tengo que seguir pagando?
 
-Depende del modelo elegido. Si compraste una **licencia única** (venta única), el software es tuyo; pagas una cuota de mantenimiento anual opcional (típicamente 10-15% del costo original). Si elegiste **SaaS** (suscripción), pagas mensualmente mientras uses. No hay obligación de seguir comprando tras el financiamiento.
+Depende del modelo elegido. Si compraste una **licencia única** (venta única), el software es tuyo; pagas una cuota de mantenimiento anual opcional (típicamente 10-15% del costo original). Si elegiste **suscripción mensual**, pagas mensualmente mientras uses. No hay obligación de seguir comprando tras el financiamiento.
 
 ### ¿Existe fondo público para cooperativas en específico?
 

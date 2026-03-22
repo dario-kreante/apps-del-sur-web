@@ -150,7 +150,7 @@ Una solución que integra cuaderno de campo, registros fitosanitarios, trazabili
 
 **Ventajas:** Cobertura completa, reportes listos para auditoría, trazabilidad radical, integración con sistemas de bodega (si es viña + bodega).
 
-**Costo:** Venta única ($3.5M-10M CLP según escala) o SaaS ($200K-400K/mes).
+**Costo:** Venta única ($3.5M-10M CLP según escala) o suscripción mensual ($200K-400K/mes).
 
 ## Qué Genera Automáticamente un Software de Trazabilidad
 
@@ -182,7 +182,7 @@ Sustentavid es más accesible para pymes. Exige los mismos registros, pero es m�
 
 ### ¿Cuánto cuesta un software de trazabilidad?
 
-Varía mucho. Desde $200K/mes como SaaS en soluciones genéricas (AgroData, Fielda) hasta $5M-10M de venta única en soluciones especializadas. El ROI típicamente viene de: (a) menos tiempo de auditoría, (b) menos no conformidades, (c) mejor control de costos de MO. Una viña que reduce 20 horas de trabajo administrativo por mes ya recupera la inversión.
+Varía mucho. Desde $200K/mes en suscripción mensual en soluciones genéricas (AgroData, Fielda) hasta $5M-10M de venta única en soluciones especializadas. El ROI típicamente viene de: (a) menos tiempo de auditoría, (b) menos no conformidades, (c) mejor control de costos de MO. Una viña que reduce 20 horas de trabajo administrativo por mes ya recupera la inversión.
 
 ### ¿Debo certificarme en Sustentavid si quiero exportar?
 

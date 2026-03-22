@@ -164,12 +164,12 @@ En esta comparativa, analizamos 6 soluciones disponibles en Chile: su origen, en
 - Precio accesible vía fondos públicos (SERCOTEC, CORFO, FIA) — financiamiento hasta 80-98%
 - Geofencing integrado — sabe exactamente dónde trabajó cada persona
 - ROI tangible: -70% tiempo de registro, costos en tiempo real por hectárea
-- Modelo flexible: venta única ($3-12M CLP) o SaaS ($150-400K/mes)
+- Modelo flexible: venta única ($3-12M CLP) o suscripción mensual ($150-400K/mes)
 
 #### Limitaciones
 
 - Empresa nueva — menos recorrido de marca que competidores establecidos
-- Equipo pequeño — ciclo de implementación más lento (8-12 semanas vs SaaS instant setup)
+- Equipo pequeño — ciclo de implementación más lento (8-12 semanas vs software por suscripción con setup instantáneo)
 - Customización requiere acuerdo en requisitos (no plug-and-play)
 - Dependencia de datos locales — requiere que tengas mapas digitales de cuarteles o que los digitalicemos juntos
 - No es ERP completo — es especialista en labor management, no contabilidad integral
@@ -190,11 +190,11 @@ En esta comparativa, analizamos 6 soluciones disponibles en Chile: su origen, en
 | **eVineyard** | Internacional | Viñedo specialty | Baja | No | No | $250-400K/mes | Viñas premium que exportan |
 | **Apps del Sur** | Chile | Labor mgmt custom | Alta | Si | Si | $3-12M (1x) o $150-400K/mes | Viñas CH que quieren custom local |
 
-## Software a medida vs. SaaS genérico: ¿Cuál elegir?
+## Software a medida vs. software por suscripción genérico: ¿Cuál elegir?
 
-Esta es la pregunta fundamental. Muchas empresas agrícolas enfrentan el dilema: **¿Compro un SaaS listo que funciona hoy, o invierto en un software custom que hace exactamente lo que necesito?**
+Esta es la pregunta fundamental. Muchas empresas agrícolas enfrentan el dilema: **¿Contrato un sistema genérico por suscripción que funciona hoy, o invierto en un software custom que hace exactamente lo que necesito?**
 
-### Ventajas del SaaS genérico (AGROsmart, AGRI, eVineyard)
+### Ventajas del software por suscripción genérico (AGROsmart, AGRI, eVineyard)
 
 - **Setup inmediato:** Comienzas en días, no semanas
 - **Menos riesgo inicial:** Pruebas antes de comprometer grandes presupuestos
@@ -207,11 +207,11 @@ Esta es la pregunta fundamental. Muchas empresas agrícolas enfrentan el dilema:
 - **ROI más alto:** No pagas por features que no usas; solo pagas por lo que necesitas
 - **Offline-first:** Funciona sin conexión (crítico en viña con mala cobertura)
 - **Integración con tu realidad:** Si hoy usas fotos, WhatsApp y Excel para ciertos datos, podemos integrar eso
-- **Financiamiento público:** En Chile, fondos como SERCOTEC y CORFO financian soft custom, no SaaS cloud
+- **Financiamiento público:** En Chile, fondos como SERCOTEC y CORFO financian software custom, no suscripciones cloud
 
-> ### Marco de decisión: ¿Custom o SaaS?
+> ### Marco de decisión: ¿Custom o sistema genérico?
 >
-> **Elige SaaS si:** Necesitas algo funcional hoy, tu operación es estándar (no muchas particularidades), tienes buena conexión en campo, y tu presupuesto es bajo y mensual.
+> **Elige sistema genérico por suscripción si:** Necesitas algo funcional hoy, tu operación es estándar (no muchas particularidades), tienes buena conexión en campo, y tu presupuesto es bajo y mensual.
 >
 > **Elige Custom si:** Tu operación es única (cuarteles muy específicos, labores customizadas), no tienes buena conexión en campo, tienes presupuesto para implementación (vía fondos públicos), y planeas usar el sistema 3+ años.
 
@@ -231,17 +231,17 @@ Esta es la pregunta fundamental. Muchas empresas agrícolas enfrentan el dilema:
 
 **¿Tiene buena cobertura de internet en campo?**
 
-- SI — SaaS puede funcionar bien (AGRI, eVineyard, Agroprime)
+- SI — Software por suscripción puede funcionar bien (AGRI, eVineyard, Agroprime)
 - NO — Debe ser offline-first (Apps del Sur, Agroptima)
 
 **¿Su operación es estándar o muy específica?**
 
-- Estándar (labores similares a otros fundos) — SaaS genérico (AGRI, AGROsmart)
+- Estándar (labores similares a otros fundos) — Sistema genérico por suscripción (AGRI, AGROsmart)
 - Muy específica (cuarteles únicos, variedades particulares, labores customizadas) — Apps del Sur (custom)
 
 **¿Tiene presupuesto capex o preferiblemente opex?**
 
-- Opex (pagar mensual) — SaaS (AGROsmart $50-150K/mes, eVineyard $250-400K/mes)
+- Opex (pagar mensual) — Suscripción mensual (AGROsmart $50-150K/mes, eVineyard $250-400K/mes)
 - Capex (pagar una vez) + financiamiento público — Apps del Sur venta única ($3-12M, 60-98% financiado)
 
 ### Paso 3: Pruebe antes de decidir
@@ -265,27 +265,27 @@ Apps del Sur tiene offline-first nativo en mobile — funciona sin conexión y s
 
 ### ¿Cómo se financia un software agrícola en Chile en 2026?
 
-Fondos disponibles en 2026: SERCOTEC CRECE (98% financiado, microempresas), CORFO Digitalización Agro (50-60% en O'Higgins, Maule), FIA Interés Privado (80% para proyectos conjuntos 24-36 meses). Apps del Sur está diseñado para ser financiable. AGRI, Agroprime y eVineyard no encajan bien en estos fondos (son SaaS, no proyecto de implementación).
+Fondos disponibles en 2026: SERCOTEC CRECE (98% financiado, microempresas), CORFO Digitalización Agro (50-60% en O'Higgins, Maule), FIA Interés Privado (80% para proyectos conjuntos 24-36 meses). Apps del Sur está diseñado para ser financiable. AGRI, Agroprime y eVineyard no encajan bien en estos fondos (son software por suscripción, no proyecto de implementación).
 
 ### ¿Cuál es el software ideal para una viña de 40 hectáreas?
 
 Depende de tus prioridades:
 
 - **Si buscas especialización + costo bajo:** Apps del Sur (vía SERCOTEC financia 98%, cliente paga ~$700K)
-- **Si buscas SaaS flexible:** AGROsmart ($100-150K/mes)
+- **Si buscas suscripción mensual flexible:** AGROsmart ($100-150K/mes)
 - **Si solo necesitas cuaderno móvil:** Agroptima ($50-150 EUR/mes)
 
 Para 40 ha con objetivo de labor costing real, Apps del Sur es la más recomendada en Chile.
 
 ### ¿Es seguro confiar datos de trabajadores a un software agrícola?
 
-Todos los softwares listados cumplen con protección de datos LGPD/GDPR (salvo Agroptima que es muy simple). Apps del Sur almacena datos en servidores chilenos con encriptación. Recomendamos: (1) revisar la política de privacidad, (2) asegurar que el proveedor no vende datos a terceros, (3) validar backups automáticos. Para datos sensibles, considera SaaS con certificación ISO 27001.
+Todos los softwares listados cumplen con protección de datos LGPD/GDPR (salvo Agroptima que es muy simple). Apps del Sur almacena datos en servidores chilenos con encriptación. Recomendamos: (1) revisar la política de privacidad, (2) asegurar que el proveedor no vende datos a terceros, (3) validar backups automáticos. Para datos sensibles, considera software por suscripción con certificación ISO 27001.
 
 ### ¿Puedo cambiarme de software si elijo uno y no me gusta?
 
-**SaaS:** Fácil — cancelas la suscripción y migras datos (usualmente exportables a CSV/Excel).
+**Suscripción mensual:** Fácil — cancelas la suscripción y migras datos (usualmente exportables a CSV/Excel).
 
-**Custom (Apps del Sur):** Más complejo — requiere acuerdo sobre los datos (son tuyos) y cómo exportarlos. Recomendamos pactar una cláusula de "datos portátiles" desde el inicio. En general, es más caro cambiar de custom que de SaaS, así que invierte tiempo en la selección inicial.
+**Custom (Apps del Sur):** Más complejo — requiere acuerdo sobre los datos (son tuyos) y cómo exportarlos. Recomendamos pactar una cláusula de "datos portátiles" desde el inicio. En general, es más caro cambiar de custom que de suscripción, así que invierte tiempo en la selección inicial.
 
 > ### ¿Listo para implementar software de labor management en tu viña?
 >

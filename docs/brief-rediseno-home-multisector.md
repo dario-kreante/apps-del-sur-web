@@ -9,7 +9,7 @@
 
 ## 1. Objetivo
 
-Transformar el home de appsdelsur.cl de "producto de gestión agrícola" a **"fábrica de software a medida para empresas del sur de Chile, potenciada por Claude AI"**. El sitio actual posiciona a Apps del Sur como un SaaS agrícola vertical; el nuevo home debe comunicar capacidad multisector manteniendo el posicionamiento territorial (centro-sur) y el diferenciador tecnológico (desarrollo asistido por IA con Claude).
+Transformar el home de appsdelsur.cl de "producto de gestión agrícola" a **"fábrica de software a medida para empresas del sur de Chile, potenciada por Claude AI"**. El sitio actual posiciona a Apps del Sur como un software agrícola vertical; el nuevo home debe comunicar capacidad multisector manteniendo el posicionamiento territorial (centro-sur) y el diferenciador tecnológico (desarrollo asistido por IA con Claude).
 
 ### Objetivos específicos
 
@@ -98,7 +98,7 @@ Transformar el home de appsdelsur.cl de "producto de gestión agrícola" a **"f�
 │                                                                 │
 │  Desarrollamos sistemas de gestión adaptados 100% a su          │
 │  operación. Claude AI nos permite entregar software custom      │
-│  a precio de SaaS, en semanas en vez de meses.                  │
+│  a una fracción del costo tradicional, en semanas en vez de meses.                  │
 │                                                                 │
 │  [Solicitar diagnóstico gratuito]  [Ver soluciones]             │
 │                                                                 │
@@ -113,7 +113,7 @@ Transformar el home de appsdelsur.cl de "producto de gestión agrícola" a **"f�
 
 **Copy principal:**
 - **Título:** "Software a medida para **empresas del sur de Chile**"
-- **Subtítulo:** "Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software custom a precio de SaaS, en semanas en vez de meses."
+- **Subtítulo:** "Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software custom a una fracción del costo tradicional, en semanas en vez de meses."
 - **CTA primario:** "Solicitar diagnóstico gratuito" → `#contacto`
 - **CTA secundario:** "Ver soluciones" → `#soluciones`
 
@@ -171,7 +171,7 @@ Transformar el home de appsdelsur.cl de "producto de gestión agrícola" a **"f�
 ┌─────────────────────────────────────────────────────────────────┐
 │  [Section Header] Desarrollo custom, potenciado por IA          │
 │  "Claude AI nos permite desarrollar software a medida al        │
-│   costo y velocidad de un SaaS estándar."                       │
+│   costo y velocidad de un sistema estándar."                       │
 │                                                                 │
 │  ① Diagnóstico     ② Desarrollo        ③ Entrega          ④ Crecimiento  │
 │     gratuito          IA-asistido         + Capacitación      modular      │
@@ -238,7 +238,7 @@ Mantener la sección actual tal cual. Las 4 cards de CORFO/FIA/SERCOTEC aplican 
 │               desarrollo. Esto nos permite:                     │
 │                                                                 │
 │               • Entregar en semanas, no meses                   │
-│               • Código a medida al precio de un SaaS            │
+│               • Código a medida a precio accesible            │
 │               • Implementar IA directamente en su software      │
 │                                                                 │
 │               [Conocer más sobre Claude AI →]  → /claude        │
@@ -304,7 +304,7 @@ empresas del sur de Chile   Servicios        Financiamiento    Maule            
 
 ### Subtítulo hero
 
-> "Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software custom a precio de SaaS, en semanas en vez de meses."
+> "Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software custom a una fracción del costo tradicional, en semanas en vez de meses."
 
 ### Diferenciador IA (para sección Cómo lo hacemos)
 
