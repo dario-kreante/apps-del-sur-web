@@ -1,0 +1,121 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Paisaje de O'Higgins con frutales, turismo y panel de gestión digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="85" rx="12" fill="#f0fdf4" opacity="0.4"/>
+
+  <!-- Mountains -->
+  <path d="M0,95 L70,65 L140,82 L210,50 L290,78 L370,52 L450,75 L530,48 L610,76 L690,58 L800,85 L800,108 L0,108 Z" fill="#d1fae5" opacity="0.4"/>
+
+  <!-- Fruit trees (orchards) -->
+  <g opacity="0.6">
+    <circle cx="40" cy="125" r="14" fill="#10b981" opacity="0.3"/>
+    <rect x="38" y="135" width="4" height="12" rx="1" fill="#047857" opacity="0.3"/>
+    <circle cx="80" cy="128" r="12" fill="#10b981" opacity="0.25"/>
+    <rect x="78" y="136" width="4" height="10" rx="1" fill="#047857" opacity="0.3"/>
+    <circle cx="120" cy="124" r="14" fill="#10b981" opacity="0.3"/>
+    <rect x="118" y="134" width="4" height="12" rx="1" fill="#047857" opacity="0.3"/>
+    <circle cx="160" cy="127" r="13" fill="#10b981" opacity="0.28"/>
+    <rect x="158" y="136" width="4" height="11" rx="1" fill="#047857" opacity="0.3"/>
+    <circle cx="200" cy="125" r="14" fill="#10b981" opacity="0.3"/>
+    <rect x="198" y="135" width="4" height="12" rx="1" fill="#047857" opacity="0.3"/>
+  </g>
+
+  <!-- Fruit dots on trees -->
+  <g fill="#ef4444" opacity="0.3">
+    <circle cx="35" cy="120" r="2.5"/><circle cx="45" cy="122" r="2"/><circle cx="40" cy="128" r="2.5"/>
+    <circle cx="115" cy="119" r="2.5"/><circle cx="125" cy="121" r="2"/><circle cx="120" cy="127" r="2.5"/>
+    <circle cx="195" cy="120" r="2.5"/><circle cx="205" cy="122" r="2"/><circle cx="200" cy="128" r="2.5"/>
+  </g>
+
+  <!-- Wine barrels -->
+  <g transform="translate(250, 155)">
+    <ellipse cx="15" cy="20" rx="14" ry="10" fill="#047857" opacity="0.15"/>
+    <rect x="3" y="10" width="24" height="20" rx="10" fill="#047857" opacity="0.2"/>
+    <ellipse cx="15" cy="10" rx="12" ry="4" fill="#047857" opacity="0.12"/>
+  </g>
+  <g transform="translate(285, 158)">
+    <ellipse cx="12" cy="16" rx="11" ry="8" fill="#047857" opacity="0.15"/>
+    <rect x="3" y="8" width="18" height="16" rx="8" fill="#047857" opacity="0.18"/>
+    <ellipse cx="12" cy="8" rx="9" ry="3.5" fill="#047857" opacity="0.12"/>
+  </g>
+
+  <!-- Tourism kayak -->
+  <g transform="translate(100, 195)">
+    <path d="M0,10 Q25,-3 50,10" stroke="#047857" stroke-width="2.5" fill="none" opacity="0.3"/>
+    <rect x="20" y="2" width="2" height="15" rx="0.5" fill="#047857" opacity="0.25"/>
+    <circle cx="21" cy="0" r="3" fill="#047857" opacity="0.2"/>
+  </g>
+
+  <!-- Shop -->
+  <g transform="translate(320, 170)">
+    <rect x="0" y="5" width="28" height="18" rx="2" fill="#047857" opacity="0.18"/>
+    <rect x="3" y="8" width="22" height="8" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="9" y="17" width="10" height="6" rx="1" fill="#047857" opacity="0.25"/>
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="240" width="400" height="20" rx="0" fill="#d1fae5" opacity="0.3"/>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Región de O'Higgins — Multi-sector</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Stats -->
+  <g transform="translate(436, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">38K+</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Pymes activas</text>
+  </g>
+  <g transform="translate(544, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">2ª</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Región frutícola</text>
+  </g>
+  <g transform="translate(652, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">6</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Rubros atendidos</text>
+  </g>
+
+  <!-- Sector list -->
+  <g transform="translate(436, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Frutícola</text>
+  </g>
+  <g transform="translate(596, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Vitivinícola</text>
+  </g>
+  <g transform="translate(436, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Turismo</text>
+  </g>
+  <g transform="translate(596, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Salud</text>
+  </g>
+  <g transform="translate(436, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Comercio</text>
+  </g>
+  <g transform="translate(596, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Servicios</text>
+  </g>
+
+  <rect x="436" y="212" width="120" height="10" rx="5" fill="#047857" opacity="0.6"/>
+  <text x="450" y="220" font-family="system-ui,sans-serif" font-size="6" font-weight="600" fill="#ffffff">Diagnóstico gratis</text>
+</svg>

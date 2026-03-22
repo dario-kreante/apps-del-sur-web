@@ -1,0 +1,139 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Paisaje de La Araucanía con volcán, lago, turismo y panel de gestión digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="85" rx="12" fill="#f0fdf4" opacity="0.4"/>
+
+  <!-- Volcano (Villarrica) -->
+  <g opacity="0.5">
+    <polygon points="180,30 130,105 230,105" fill="#047857" opacity="0.3"/>
+    <polygon points="180,30 168,50 192,50" fill="#ffffff" opacity="0.3"/>
+  </g>
+
+  <!-- Mountains -->
+  <path d="M0,100 L60,75 L120,90 L230,105 L300,80 L370,60 L440,82 L520,68 L600,85 L680,60 L800,88 L800,110 L0,110 Z" fill="#d1fae5" opacity="0.35"/>
+
+  <!-- Lake -->
+  <ellipse cx="180" cy="140" rx="100" ry="20" fill="#059669" opacity="0.12"/>
+  <ellipse cx="180" cy="140" rx="80" ry="14" fill="#059669" opacity="0.08"/>
+
+  <!-- Pine trees (Araucanías) -->
+  <g opacity="0.5">
+    <polygon points="30,90 25,115 35,115" fill="#047857" opacity="0.35"/>
+    <rect x="29" y="115" width="3" height="8" fill="#047857" opacity="0.3"/>
+    <polygon points="60,85 54,112 66,112" fill="#047857" opacity="0.3"/>
+    <rect x="58" y="112" width="3" height="8" fill="#047857" opacity="0.25"/>
+    <polygon points="90,88 83,114 97,114" fill="#047857" opacity="0.35"/>
+    <rect x="88" y="114" width="3" height="8" fill="#047857" opacity="0.3"/>
+    <polygon points="300,82 293,110 307,110" fill="#047857" opacity="0.3"/>
+    <rect x="298" y="110" width="3" height="8" fill="#047857" opacity="0.25"/>
+    <polygon points="335,85 328,112 342,112" fill="#047857" opacity="0.35"/>
+    <rect x="333" y="112" width="3" height="8" fill="#047857" opacity="0.3"/>
+  </g>
+
+  <!-- Cabin/lodge -->
+  <g transform="translate(40, 155)">
+    <polygon points="22,0 0,18 44,18" fill="#047857" opacity="0.25"/>
+    <rect x="5" y="18" width="34" height="20" rx="1" fill="#047857" opacity="0.2"/>
+    <rect x="14" y="25" width="10" height="13" rx="1" fill="#047857" opacity="0.3"/>
+    <rect x="30" y="22" width="6" height="6" rx="1" fill="#059669" opacity="0.2"/>
+  </g>
+
+  <!-- Restaurant -->
+  <g transform="translate(120, 165)">
+    <rect x="0" y="5" width="35" height="20" rx="2" fill="#047857" opacity="0.2"/>
+    <rect x="3" y="8" width="12" height="8" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="19" y="8" width="12" height="8" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="12" y="18" width="10" height="7" rx="1" fill="#047857" opacity="0.25"/>
+    <!-- Smoke/chimney -->
+    <rect x="28" y="0" width="3" height="6" rx="0.5" fill="#047857" opacity="0.15"/>
+  </g>
+
+  <!-- Kayak on lake -->
+  <g transform="translate(200, 135)">
+    <path d="M0,5 Q12,-2 24,5" stroke="#047857" stroke-width="2" fill="none" opacity="0.2"/>
+    <rect x="10" y="0" width="1.5" height="8" rx="0.5" fill="#047857" opacity="0.18"/>
+  </g>
+
+  <!-- Farm -->
+  <g transform="translate(280, 158)">
+    <rect x="0" y="5" width="30" height="20" rx="2" fill="#047857" opacity="0.18"/>
+    <rect x="5" y="10" width="8" height="6" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="18" y="10" width="8" height="6" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="10" y="18" width="10" height="7" rx="1" fill="#047857" opacity="0.22"/>
+    <!-- Silo -->
+    <rect x="35" y="0" width="10" height="25" rx="5" fill="#047857" opacity="0.15"/>
+  </g>
+
+  <!-- Shop -->
+  <g transform="translate(340, 168)">
+    <rect x="0" y="3" width="25" height="16" rx="2" fill="#047857" opacity="0.18"/>
+    <rect x="3" y="6" width="19" height="7" rx="1" fill="#059669" opacity="0.15"/>
+    <rect x="8" y="14" width="9" height="5" rx="1" fill="#047857" opacity="0.22"/>
+  </g>
+
+  <!-- Ground -->
+  <rect x="0" y="240" width="400" height="20" rx="0" fill="#d1fae5" opacity="0.3"/>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Región de La Araucanía — Turismo</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Stats -->
+  <g transform="translate(436, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">35K+</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Pymes activas</text>
+  </g>
+  <g transform="translate(544, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">4.5M</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Turistas anuales</text>
+  </g>
+  <g transform="translate(652, 80)">
+    <rect x="0" y="0" width="100" height="44" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="0.5"/>
+    <text x="10" y="18" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#047857">1ª</text>
+    <text x="10" y="32" font-family="system-ui,sans-serif" font-size="7" fill="#6b7280">Turismo naturaleza</text>
+  </g>
+
+  <!-- Sector list -->
+  <g transform="translate(436, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Turismo</text>
+  </g>
+  <g transform="translate(596, 138)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Hotelería</text>
+  </g>
+  <g transform="translate(436, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Gastronomía</text>
+  </g>
+  <g transform="translate(596, 162)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Agrícola</text>
+  </g>
+  <g transform="translate(436, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Comercio</text>
+  </g>
+  <g transform="translate(596, 186)">
+    <rect x="0" y="0" width="152" height="18" rx="4" fill="#ecfdf5"/>
+    <circle cx="10" cy="9" r="3" fill="#10b981"/>
+    <text x="20" y="12" font-family="system-ui,sans-serif" font-size="8" fill="#374151">Servicios</text>
+  </g>
+
+  <rect x="436" y="212" width="120" height="10" rx="5" fill="#047857" opacity="0.6"/>
+  <text x="450" y="220" font-family="system-ui,sans-serif" font-size="6" font-weight="600" fill="#ffffff">Diagnóstico gratis</text>
+</svg>

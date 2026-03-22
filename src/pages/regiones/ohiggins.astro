@@ -1,0 +1,11 @@
+---
+import RegionPage from '../../layouts/RegionPage.astro';
+import HeroOhiggins from '../../components/page-heroes/HeroOhiggins.astro';
+import { ohiggins } from '../../data/regiones';
+---
+
+<RegionPage regionData={ohiggins}>
+  <div slot="hero-illustration" class="rounded-2xl overflow-hidden" role="img" aria-label="Ilustración Región de O'Higgins">
+    <HeroOhiggins class="w-full h-auto" />
+  </div>
+</RegionPage>
