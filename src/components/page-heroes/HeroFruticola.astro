@@ -1,0 +1,100 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Huerto frutícola con árboles y panel de cosecha digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="90" rx="12" fill="#f0fdf4" opacity="0.4"/>
+
+  <!-- Mountains -->
+  <path d="M0,110 L100,65 L200,90 L300,50 L400,80 L500,55 L600,85 L700,60 L800,95 L800,120 L0,120 Z" fill="#d1fae5" opacity="0.4"/>
+
+  <!-- Fruit trees -->
+  <g>
+    <!-- Tree 1 -->
+    <rect x="55" y="150" width="6" height="40" rx="2" fill="#92400e" opacity="0.5"/>
+    <circle cx="58" cy="140" r="22" fill="#a7f3d0"/>
+    <circle cx="48" cy="135" r="4" fill="#dc2626" opacity="0.6"/>
+    <circle cx="65" cy="132" r="4" fill="#dc2626" opacity="0.6"/>
+    <circle cx="55" cy="148" r="4" fill="#dc2626" opacity="0.6"/>
+
+    <!-- Tree 2 -->
+    <rect x="135" y="150" width="6" height="40" rx="2" fill="#92400e" opacity="0.5"/>
+    <circle cx="138" cy="140" r="22" fill="#86efac"/>
+    <circle cx="128" cy="136" r="4" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="148" cy="133" r="4" fill="#f59e0b" opacity="0.6"/>
+    <circle cx="135" cy="149" r="4" fill="#f59e0b" opacity="0.6"/>
+
+    <!-- Tree 3 -->
+    <rect x="215" y="150" width="6" height="40" rx="2" fill="#92400e" opacity="0.5"/>
+    <circle cx="218" cy="140" r="22" fill="#a7f3d0"/>
+    <circle cx="208" cy="137" r="3.5" fill="#7c3aed" opacity="0.6"/>
+    <circle cx="225" cy="134" r="3.5" fill="#7c3aed" opacity="0.6"/>
+    <circle cx="215" cy="148" r="3.5" fill="#7c3aed" opacity="0.6"/>
+    <circle cx="228" cy="145" r="3.5" fill="#7c3aed" opacity="0.6"/>
+
+    <!-- Tree 4 -->
+    <rect x="295" y="150" width="6" height="40" rx="2" fill="#92400e" opacity="0.5"/>
+    <circle cx="298" cy="140" r="22" fill="#86efac"/>
+    <circle cx="288" cy="135" r="4" fill="#dc2626" opacity="0.6"/>
+    <circle cx="305" cy="132" r="4" fill="#dc2626" opacity="0.6"/>
+    <circle cx="295" cy="148" r="4" fill="#dc2626" opacity="0.6"/>
+
+    <!-- Row 2 trees -->
+    <rect x="95" y="195" width="5" height="35" rx="2" fill="#92400e" opacity="0.4"/>
+    <circle cx="97" cy="187" r="18" fill="#a7f3d0" opacity="0.7"/>
+
+    <rect x="175" y="195" width="5" height="35" rx="2" fill="#92400e" opacity="0.4"/>
+    <circle cx="177" cy="187" r="18" fill="#86efac" opacity="0.7"/>
+
+    <rect x="255" y="195" width="5" height="35" rx="2" fill="#92400e" opacity="0.4"/>
+    <circle cx="257" cy="187" r="18" fill="#a7f3d0" opacity="0.7"/>
+  </g>
+
+  <!-- Harvest bins -->
+  <rect x="50" y="230" width="30" height="18" rx="3" fill="#047857" opacity="0.3"/>
+  <rect x="90" y="230" width="30" height="18" rx="3" fill="#047857" opacity="0.3"/>
+  <rect x="250" y="230" width="30" height="18" rx="3" fill="#047857" opacity="0.3"/>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Panel header -->
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Control de Cosecha</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Metrics -->
+  <rect x="435" y="78" width="95" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="445" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Kilos hoy</text>
+  <text x="445" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">12.4K</text>
+
+  <rect x="540" y="78" width="95" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="550" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Temporeros</text>
+  <text x="550" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">64</text>
+
+  <rect x="645" y="78" width="100" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="655" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Costo/kg</text>
+  <text x="655" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">$285</text>
+
+  <!-- Species rows -->
+  <rect x="435" y="140" width="310" height="26" rx="4" fill="#f9fafb"/>
+  <circle cx="450" cy="153" r="5" fill="#dc2626" opacity="0.6"/>
+  <text x="462" y="157" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Cerezas — Lote 4 · Lapins · 3.2K kg</text>
+  <text x="700" y="157" font-family="system-ui,sans-serif" font-size="8" fill="#059669" font-weight="600">Activo</text>
+
+  <rect x="435" y="172" width="310" height="26" rx="4" fill="#ffffff"/>
+  <circle cx="450" cy="185" r="5" fill="#7c3aed" opacity="0.6"/>
+  <text x="462" y="189" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Arándanos — Lote 2 · Duke · 1.8K kg</text>
+  <text x="700" y="189" font-family="system-ui,sans-serif" font-size="8" fill="#059669" font-weight="600">Activo</text>
+
+  <rect x="435" y="200" width="310" height="22" rx="4" fill="#f9fafb"/>
+  <circle cx="450" cy="211" r="5" fill="#f59e0b" opacity="0.5"/>
+  <text x="462" y="215" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Manzanas — Lote 7 · Gala · 5.4K kg</text>
+  <text x="700" y="215" font-family="system-ui,sans-serif" font-size="8" fill="#9ca3af">Ayer</text>
+
+  <!-- Ground -->
+  <rect x="0" y="248" width="400" height="12" rx="0" fill="#d1fae5" opacity="0.3"/>
+</svg>

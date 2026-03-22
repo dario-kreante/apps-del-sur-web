@@ -1,0 +1,97 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Comparación visual entre SaaS genérico rígido y software a medida flexible">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Left side: SaaS genérico (rigid, gray) -->
+  <g transform="translate(60, 30)">
+    <!-- Label -->
+    <rect x="20" y="0" width="120" height="22" rx="11" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+    <text x="80" y="15" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#6b7280">SaaS genérico</text>
+
+    <!-- Rigid blocks that don't fit -->
+    <rect x="0" y="35" width="160" height="170" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+    <!-- Square rigid modules -->
+    <rect x="15" y="50" width="55" height="40" rx="4" fill="#e5e7eb"/>
+    <text x="42" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#9ca3af">Módulo A</text>
+
+    <rect x="80" y="50" width="65" height="40" rx="4" fill="#e5e7eb"/>
+    <text x="112" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#9ca3af">Módulo B</text>
+
+    <rect x="15" y="100" width="130" height="35" rx="4" fill="#e5e7eb"/>
+    <text x="80" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" fill="#9ca3af">Funciones que no usa</text>
+
+    <rect x="15" y="145" width="55" height="40" rx="4" fill="#e5e7eb"/>
+    <text x="42" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#9ca3af">No configurable</text>
+
+    <rect x="80" y="145" width="65" height="40" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="112" y="163" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#dc2626">Le falta lo</text>
+    <text x="112" y="173" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#dc2626">que necesita</text>
+
+    <!-- X marks -->
+    <circle cx="150" cy="70" r="8" fill="#fef2f2" stroke="#fca5a5" stroke-width="1"/>
+    <text x="150" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#dc2626">✗</text>
+  </g>
+
+  <!-- Center: VS badge -->
+  <rect x="310" y="105" width="40" height="40" rx="20" fill="#047857"/>
+  <text x="330" y="130" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#ffffff">vs</text>
+
+  <!-- Arrow from left to right -->
+  <line x1="270" y1="125" x2="305" y2="125" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="355" y1="125" x2="390" y2="125" stroke="#047857" stroke-width="1.5"/>
+  <polygon points="388,120 398,125 388,130" fill="#047857"/>
+
+  <!-- Right side: Apps del Sur (flexible, green) -->
+  <g transform="translate(410, 30)">
+    <!-- Label -->
+    <rect x="25" y="0" width="180" height="22" rx="11" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="115" y="15" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#047857">Apps del Sur + Claude AI</text>
+
+    <!-- Flexible container -->
+    <rect x="0" y="35" width="320" height="170" rx="8" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.5"/>
+
+    <!-- Custom-fit modules (varied sizes, organic shapes) -->
+    <rect x="15" y="50" width="90" height="45" rx="8" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="60" y="69" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#047857">Sus procesos</text>
+    <text x="60" y="81" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#059669">Configurado a medida</text>
+
+    <rect x="115" y="50" width="80" height="45" rx="8" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="155" y="69" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#047857">Sus equipos</text>
+    <text x="155" y="81" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#059669">Roles y permisos</text>
+
+    <rect x="205" y="50" width="100" height="45" rx="8" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="255" y="69" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#047857">Sus costos</text>
+    <text x="255" y="81" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#059669">Estructura real</text>
+
+    <rect x="15" y="105" width="140" height="40" rx="8" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="85" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#047857">App móvil offline</text>
+    <text x="85" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#059669">Diseñada para su terreno</text>
+
+    <rect x="165" y="105" width="140" height="40" rx="8" fill="#d1fae5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="235" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#047857">Reportes a medida</text>
+    <text x="235" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#059669">Lo que gerencia necesita</text>
+
+    <rect x="15" y="155" width="95" height="38" rx="8" fill="#047857"/>
+    <text x="62" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#ffffff">8-12 semanas</text>
+    <text x="62" y="183" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#a7f3d0">Entrega rápida</text>
+
+    <rect x="120" y="155" width="90" height="38" rx="8" fill="#047857"/>
+    <text x="165" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#ffffff">50-80%</text>
+    <text x="165" y="183" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#a7f3d0">Financiable</text>
+
+    <rect x="220" y="155" width="85" height="38" rx="8" fill="#047857"/>
+    <text x="262" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7" font-weight="600" fill="#ffffff">Suyo</text>
+    <text x="262" y="183" text-anchor="middle" font-family="system-ui,sans-serif" font-size="6" fill="#a7f3d0">Licencia perpetua</text>
+
+    <!-- Check mark -->
+    <circle cx="305" cy="50" r="10" fill="#059669"/>
+    <polyline points="300,50 303,54 311,46" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Bottom labels -->
+  <text x="155" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">Se adapta usted al sistema</text>
+  <text x="570" y="248" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#047857">El sistema se adapta a usted</text>
+</svg>

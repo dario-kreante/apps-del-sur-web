@@ -1,0 +1,185 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import Check from '../components/icons/Check.astro';
+import HeroEnfoque from '../components/page-heroes/HeroEnfoque.astro';
+import { enfoquePage } from '../data/content';
+
+// Icon map for pillars
+import Sparkle from '../components/icons/Sparkle.astro';
+import MapPin from '../components/icons/MapPin.astro';
+import Shield from '../components/icons/Shield.astro';
+import TrendingUp from '../components/icons/TrendingUp.astro';
+
+const pillarIconMap: Record<string, any> = {
+  sparkle: Sparkle,
+  'map-pin': MapPin,
+  shield: Shield,
+  'trending-up': TrendingUp,
+};
+
+const { meta, hero, comparison, pillars } = enfoquePage;
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: meta.ogTitle,
+  description: meta.description,
+  url: 'https://appsdelsur.cl/enfoque',
+  publisher: { '@id': 'https://appsdelsur.cl/#organization' },
+});
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical="https://appsdelsur.cl/enfoque"
+  keywords={meta.keywords}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+>
+  <script type="application/ld+json" set:html={jsonLd} />
+
+  <Header />
+
+  <main id="main-content" class="pt-24">
+    <!-- Breadcrumb -->
+    <div class="max-w-[1200px] mx-auto px-6 mb-6">
+      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">Nuestro Enfoque</span>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-4 pb-16">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <!-- Left: Content -->
+          <div class="lg:w-1/2">
+            <Badge class="mb-4">{hero.badge}</Badge>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+              {hero.titleLine1}{' '}
+              <span class="text-emerald-700">{hero.titleHighlight}</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              {hero.description}
+            </p>
+          </div>
+          <!-- Right: Hero SVG -->
+          <div class="lg:w-1/2">
+            <div class="rounded-2xl overflow-hidden" role="img" aria-label="Ilustración nuestro enfoque">
+              <HeroEnfoque class="w-full h-auto" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+            {comparison.title}
+          </h2>
+          <p class="text-gray-500 text-lg max-w-[600px] mx-auto">
+            {comparison.description}
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {comparison.columns.map((column) => (
+            <div
+              class:list={[
+                'rounded-xl border p-8 flex flex-col',
+                column.highlight
+                  ? 'border-emerald-300 bg-emerald-50 ring-2 ring-emerald-200'
+                  : 'border-gray-200 bg-white',
+              ]}
+            >
+              <!-- Card Header -->
+              <div class="mb-6 pb-6 border-b border-gray-200">
+                <h3 class:list={[
+                  'text-lg font-bold mb-1',
+                  column.highlight ? 'text-emerald-800' : 'text-gray-900',
+                ]}>
+                  {column.name}
+                </h3>
+                <span class:list={[
+                  'text-sm font-medium',
+                  column.highlight ? 'text-emerald-600' : 'text-gray-400',
+                ]}>
+                  {column.verdict}
+                </span>
+              </div>
+
+              <!-- Items List -->
+              <ul class="space-y-4 flex-1">
+                {column.items.map((item) => (
+                  <li>
+                    <span class="block text-xs text-gray-400 uppercase tracking-wider mb-0.5">
+                      {item.label}
+                    </span>
+                    <span class:list={[
+                      'text-sm',
+                      column.highlight ? 'text-emerald-900 font-medium' : 'text-gray-600',
+                    ]}>
+                      {item.value}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {column.highlight && (
+                <div class="mt-6 pt-6 border-t border-emerald-200">
+                  <Button href="/#contacto" size="md" class="w-full">
+                    Solicitar diagn&oacute;stico gratuito
+                  </Button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+            Nuestros pilares
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {pillars.map((pillar) => {
+            const IconComponent = pillarIconMap[pillar.icon];
+            return (
+              <div class="bg-gray-50 rounded-xl border border-gray-100 p-8 text-center">
+                {IconComponent && (
+                  <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-5 mx-auto">
+                    <IconComponent class="w-6 h-6" />
+                  </div>
+                )}
+                <h3 class="font-semibold text-gray-900 text-lg mb-3">{pillar.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{pillar.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <ContactCTA />
+  <ContactForm />
+  <Footer />
+</Layout>

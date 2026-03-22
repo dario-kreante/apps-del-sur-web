@@ -1,0 +1,103 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Viñedo con hileras de vides y panel de gestión digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky gradient -->
+  <rect x="0" y="0" width="800" height="100" rx="12" fill="#f0fdf4" opacity="0.5"/>
+
+  <!-- Mountains background -->
+  <path d="M0,120 L80,70 L160,95 L240,55 L320,85 L400,50 L480,80 L560,60 L640,90 L720,65 L800,100 L800,130 L0,130 Z" fill="#d1fae5" opacity="0.5"/>
+
+  <!-- Vine rows -->
+  <g opacity="0.9">
+    <!-- Row 1 -->
+    <line x1="40" y1="140" x2="340" y2="140" stroke="#059669" stroke-width="2" opacity="0.3"/>
+    <circle cx="60" cy="140" r="6" fill="#a7f3d0"/><circle cx="60" cy="140" r="3" fill="#059669"/>
+    <circle cx="100" cy="140" r="6" fill="#a7f3d0"/><circle cx="100" cy="140" r="3" fill="#059669"/>
+    <circle cx="140" cy="140" r="6" fill="#a7f3d0"/><circle cx="140" cy="140" r="3" fill="#059669"/>
+    <circle cx="180" cy="140" r="6" fill="#a7f3d0"/><circle cx="180" cy="140" r="3" fill="#059669"/>
+    <circle cx="220" cy="140" r="6" fill="#a7f3d0"/><circle cx="220" cy="140" r="3" fill="#059669"/>
+    <circle cx="260" cy="140" r="6" fill="#a7f3d0"/><circle cx="260" cy="140" r="3" fill="#059669"/>
+    <circle cx="300" cy="140" r="6" fill="#a7f3d0"/><circle cx="300" cy="140" r="3" fill="#059669"/>
+
+    <!-- Row 2 -->
+    <line x1="40" y1="165" x2="340" y2="165" stroke="#059669" stroke-width="2" opacity="0.3"/>
+    <circle cx="80" cy="165" r="6" fill="#d1fae5"/><circle cx="80" cy="165" r="3" fill="#047857"/>
+    <circle cx="120" cy="165" r="6" fill="#d1fae5"/><circle cx="120" cy="165" r="3" fill="#047857"/>
+    <circle cx="160" cy="165" r="6" fill="#d1fae5"/><circle cx="160" cy="165" r="3" fill="#047857"/>
+    <circle cx="200" cy="165" r="6" fill="#d1fae5"/><circle cx="200" cy="165" r="3" fill="#047857"/>
+    <circle cx="240" cy="165" r="6" fill="#d1fae5"/><circle cx="240" cy="165" r="3" fill="#047857"/>
+    <circle cx="280" cy="165" r="6" fill="#d1fae5"/><circle cx="280" cy="165" r="3" fill="#047857"/>
+    <circle cx="320" cy="165" r="6" fill="#d1fae5"/><circle cx="320" cy="165" r="3" fill="#047857"/>
+
+    <!-- Row 3 -->
+    <line x1="40" y1="190" x2="340" y2="190" stroke="#059669" stroke-width="2" opacity="0.3"/>
+    <circle cx="60" cy="190" r="6" fill="#a7f3d0"/><circle cx="60" cy="190" r="3" fill="#059669"/>
+    <circle cx="100" cy="190" r="6" fill="#a7f3d0"/><circle cx="100" cy="190" r="3" fill="#059669"/>
+    <circle cx="140" cy="190" r="6" fill="#a7f3d0"/><circle cx="140" cy="190" r="3" fill="#059669"/>
+    <circle cx="180" cy="190" r="6" fill="#a7f3d0"/><circle cx="180" cy="190" r="3" fill="#059669"/>
+    <circle cx="220" cy="190" r="6" fill="#a7f3d0"/><circle cx="220" cy="190" r="3" fill="#059669"/>
+    <circle cx="260" cy="190" r="6" fill="#a7f3d0"/><circle cx="260" cy="190" r="3" fill="#059669"/>
+    <circle cx="300" cy="190" r="6" fill="#a7f3d0"/><circle cx="300" cy="190" r="3" fill="#059669"/>
+
+    <!-- Row 4 -->
+    <line x1="40" y1="215" x2="340" y2="215" stroke="#059669" stroke-width="2" opacity="0.3"/>
+    <circle cx="80" cy="215" r="6" fill="#d1fae5"/><circle cx="80" cy="215" r="3" fill="#047857"/>
+    <circle cx="120" cy="215" r="6" fill="#d1fae5"/><circle cx="120" cy="215" r="3" fill="#047857"/>
+    <circle cx="160" cy="215" r="6" fill="#d1fae5"/><circle cx="160" cy="215" r="3" fill="#047857"/>
+    <circle cx="200" cy="215" r="6" fill="#d1fae5"/><circle cx="200" cy="215" r="3" fill="#047857"/>
+    <circle cx="240" cy="215" r="6" fill="#d1fae5"/><circle cx="240" cy="215" r="3" fill="#047857"/>
+    <circle cx="280" cy="215" r="6" fill="#d1fae5"/><circle cx="280" cy="215" r="3" fill="#047857"/>
+  </g>
+
+  <!-- Grape clusters decoration -->
+  <g transform="translate(55, 125)">
+    <circle cx="0" cy="0" r="3" fill="#047857" opacity="0.6"/>
+    <circle cx="5" cy="3" r="3" fill="#047857" opacity="0.6"/>
+    <circle cx="-3" cy="4" r="3" fill="#047857" opacity="0.6"/>
+    <circle cx="2" cy="7" r="3" fill="#047857" opacity="0.6"/>
+  </g>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Panel header -->
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Panel Vitivinícola</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Metrics row -->
+  <rect x="435" y="78" width="95" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="445" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Costo/ha hoy</text>
+  <text x="445" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">$842K</text>
+
+  <rect x="540" y="78" width="95" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="550" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Cuarteles</text>
+  <text x="550" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">24</text>
+
+  <rect x="645" y="78" width="100" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="655" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Trabajadores</text>
+  <text x="655" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">38</text>
+
+  <!-- Activity rows -->
+  <rect x="435" y="140" width="310" height="26" rx="4" fill="#f9fafb"/>
+  <circle cx="450" cy="153" r="5" fill="#059669"/>
+  <text x="462" y="157" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Poda — Cuartel C3B · Cab. Sauvignon</text>
+  <text x="700" y="157" font-family="system-ui,sans-serif" font-size="8" fill="#059669" font-weight="600">Activo</text>
+
+  <rect x="435" y="172" width="310" height="26" rx="4" fill="#ffffff"/>
+  <circle cx="450" cy="185" r="5" fill="#d1fae5"/>
+  <text x="462" y="189" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Desbrote — Cuartel C1A · Merlot</text>
+  <text x="700" y="189" font-family="system-ui,sans-serif" font-size="8" fill="#9ca3af">08:42</text>
+
+  <rect x="435" y="200" width="310" height="22" rx="4" fill="#f9fafb"/>
+  <circle cx="450" cy="211" r="5" fill="#d1fae5"/>
+  <text x="462" y="215" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Riego — Cuartel C5 · Carmenere</text>
+  <text x="700" y="215" font-family="system-ui,sans-serif" font-size="8" fill="#9ca3af">07:15</text>
+
+  <!-- Ground -->
+  <rect x="0" y="240" width="400" height="20" rx="0" fill="#d1fae5" opacity="0.3"/>
+</svg>

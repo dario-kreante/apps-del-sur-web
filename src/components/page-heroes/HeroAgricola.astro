@@ -1,0 +1,82 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Campo agrícola con cultivos y panel de gestión digital">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="800" height="90" rx="12" fill="#f0fdf4" opacity="0.4"/>
+
+  <!-- Mountains -->
+  <path d="M0,105 L60,75 L130,90 L200,60 L280,85 L360,55 L440,80 L520,65 L600,88 L680,58 L800,90 L800,115 L0,115 Z" fill="#d1fae5" opacity="0.4"/>
+
+  <!-- Crop rows - perspective lines -->
+  <g opacity="0.8">
+    <rect x="20" y="125" width="350" height="5" rx="2" fill="#059669" opacity="0.25"/>
+    <rect x="20" y="140" width="350" height="5" rx="2" fill="#10b981" opacity="0.3"/>
+    <rect x="20" y="155" width="350" height="5" rx="2" fill="#059669" opacity="0.25"/>
+    <rect x="20" y="170" width="350" height="5" rx="2" fill="#10b981" opacity="0.3"/>
+    <rect x="20" y="185" width="350" height="5" rx="2" fill="#059669" opacity="0.25"/>
+    <rect x="20" y="200" width="350" height="5" rx="2" fill="#10b981" opacity="0.3"/>
+    <rect x="20" y="215" width="350" height="5" rx="2" fill="#059669" opacity="0.25"/>
+    <rect x="20" y="230" width="350" height="5" rx="2" fill="#10b981" opacity="0.3"/>
+  </g>
+
+  <!-- Wheat/crop icons scattered -->
+  <g fill="#047857" opacity="0.4">
+    <ellipse cx="70" cy="118" rx="3" ry="8"/>
+    <ellipse cx="130" cy="118" rx="3" ry="8"/>
+    <ellipse cx="190" cy="118" rx="3" ry="8"/>
+    <ellipse cx="250" cy="118" rx="3" ry="8"/>
+    <ellipse cx="310" cy="118" rx="3" ry="8"/>
+  </g>
+
+  <!-- Tractor icon -->
+  <g transform="translate(280, 195)">
+    <rect x="0" y="5" width="35" height="18" rx="4" fill="#047857" opacity="0.5"/>
+    <rect x="28" y="0" width="14" height="12" rx="2" fill="#047857" opacity="0.4"/>
+    <circle cx="8" cy="25" r="8" fill="#047857" opacity="0.3" stroke="#047857" stroke-width="1" stroke-opacity="0.5"/>
+    <circle cx="33" cy="22" r="6" fill="#047857" opacity="0.3" stroke="#047857" stroke-width="1" stroke-opacity="0.5"/>
+  </g>
+
+  <!-- Dashboard panel -->
+  <rect x="420" y="30" width="340" height="200" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Panel header -->
+  <rect x="420" y="30" width="340" height="36" rx="12" fill="#047857"/>
+  <rect x="420" y="54" width="340" height="12" fill="#047857"/>
+  <text x="440" y="53" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">Gestión Agrícola</text>
+  <circle cx="738" cy="48" r="4" fill="#a7f3d0"/>
+
+  <!-- Metrics -->
+  <rect x="435" y="78" width="95" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="445" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Costos/ha mes</text>
+  <text x="445" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">$524K</text>
+
+  <rect x="540" y="78" width="95" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="550" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Sectores</text>
+  <text x="550" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">12</text>
+
+  <rect x="645" y="78" width="100" height="50" rx="6" fill="#f0fdf4" stroke="#d1fae5" stroke-width="1"/>
+  <text x="655" y="96" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Trabajadores</text>
+  <text x="655" y="115" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#047857">22</text>
+
+  <!-- Activity rows -->
+  <rect x="435" y="140" width="310" height="26" rx="4" fill="#f9fafb"/>
+  <circle cx="450" cy="153" r="5" fill="#059669"/>
+  <text x="462" y="157" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Riego — Sector 4 · Hortalizas · 8 ha</text>
+  <text x="700" y="157" font-family="system-ui,sans-serif" font-size="8" fill="#059669" font-weight="600">Activo</text>
+
+  <rect x="435" y="172" width="310" height="26" rx="4" fill="#ffffff"/>
+  <circle cx="450" cy="185" r="5" fill="#d1fae5"/>
+  <text x="462" y="189" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Fertilización — Sector 2 · Cereales · 15 ha</text>
+  <text x="700" y="189" font-family="system-ui,sans-serif" font-size="8" fill="#9ca3af">09:30</text>
+
+  <rect x="435" y="200" width="310" height="22" rx="4" fill="#f9fafb"/>
+  <circle cx="450" cy="211" r="5" fill="#d1fae5"/>
+  <text x="462" y="215" font-family="system-ui,sans-serif" font-size="9" fill="#374151">Siembra — Sector 7 · Semillero · 5 ha</text>
+  <text x="700" y="215" font-family="system-ui,sans-serif" font-size="8" fill="#9ca3af">07:45</text>
+
+  <!-- Ground -->
+  <rect x="0" y="245" width="400" height="15" rx="0" fill="#d1fae5" opacity="0.2"/>
+</svg>

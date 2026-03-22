@@ -1,0 +1,341 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import Check from '../components/icons/Check.astro';
+import Clock from '../components/icons/Clock.astro';
+import DollarSign from '../components/icons/DollarSign.astro';
+import Shield from '../components/icons/Shield.astro';
+import Smartphone from '../components/icons/Smartphone.astro';
+import BarChart from '../components/icons/BarChart.astro';
+import Layers from '../components/icons/Layers.astro';
+
+// Hero illustrations — imported statically for Astro SSG
+import HeroViticola from '../components/page-heroes/HeroViticola.astro';
+import HeroFruticola from '../components/page-heroes/HeroFruticola.astro';
+import HeroAgricola from '../components/page-heroes/HeroAgricola.astro';
+import HeroCuadernoDeCampo from '../components/page-heroes/HeroCuadernoDeCampo.astro';
+
+const heroComponents: Record<string, any> = {
+  viticola: HeroViticola,
+  fruticola: HeroFruticola,
+  agricola: HeroAgricola,
+  'cuaderno-de-campo': HeroCuadernoDeCampo,
+};
+
+const iconMap: Record<string, any> = {
+  clock: Clock,
+  'dollar-sign': DollarSign,
+  shield: Shield,
+  smartphone: Smartphone,
+  'bar-chart': BarChart,
+  layers: Layers,
+};
+
+interface Props {
+  sectorData: {
+    slug: string;
+    url: string;
+    name: string;
+    meta: {
+      title: string;
+      description: string;
+      keywords: string;
+      ogTitle: string;
+      ogDescription: string;
+    };
+    hero: {
+      badge: string;
+      titleLine1: string;
+      titleHighlight: string;
+      description: string;
+    };
+    painPoints: Array<{
+      icon: string;
+      title: string;
+      description: string;
+    }>;
+    features: Array<{
+      icon: string;
+      title: string;
+      description: string;
+    }>;
+    faq: Array<{
+      q: string;
+      a: string;
+    }>;
+    relatedBlogSlugs: string[];
+    comparison?: {
+      title: string;
+      headers: string[];
+      rows: string[][];
+    };
+  };
+}
+
+const { sectorData } = Astro.props;
+const { meta, hero, painPoints, features, faq, relatedBlogSlugs, comparison } = sectorData;
+
+const HeroComponent = heroComponents[sectorData.slug];
+
+const isCuaderno = sectorData.slug === 'cuaderno-de-campo';
+
+const jsonLd = isCuaderno
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: meta.ogTitle,
+      description: meta.description,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web, Android, iOS',
+      provider: { '@id': 'https://appsdelsur.cl/#organization' },
+      url: `https://appsdelsur.cl${sectorData.url}`,
+    })
+  : JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: meta.ogTitle,
+      serviceType: meta.description.length > 120 ? meta.description.slice(0, 120) + '...' : meta.description,
+      description: meta.description,
+      provider: { '@id': 'https://appsdelsur.cl/#organization' },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: "Regi\u00f3n de O'Higgins" },
+        { '@type': 'AdministrativeArea', name: 'Regi\u00f3n del Maule' },
+        { '@type': 'AdministrativeArea', name: 'Regi\u00f3n de \u00d1uble' },
+        { '@type': 'AdministrativeArea', name: 'Regi\u00f3n del Biob\u00edo' },
+        { '@type': 'AdministrativeArea', name: 'Regi\u00f3n de La Araucan\u00eda' },
+      ],
+      url: `https://appsdelsur.cl${sectorData.url}`,
+    });
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={`https://appsdelsur.cl${sectorData.url}`}
+  keywords={meta.keywords}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+>
+  <script type="application/ld+json" set:html={jsonLd} />
+
+  <Header />
+
+  <main id="main-content" class="pt-24">
+    <!-- Breadcrumb -->
+    <div class="max-w-[1200px] mx-auto px-6 mb-6">
+      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
+        {!isCuaderno && (
+          <>
+            <span class="mx-2">/</span>
+            <span class="text-gray-400">Sectores</span>
+          </>
+        )}
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">{sectorData.name}</span>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-4 pb-16">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <!-- Left: Content -->
+          <div class="lg:w-1/2">
+            <Badge class="mb-4">{hero.badge}</Badge>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+              {hero.titleLine1}{' '}
+              <span class="text-emerald-700">{hero.titleHighlight}</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+              {hero.description}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <Button href="/#contacto" size="lg">
+                Solicitar diagn&oacute;stico gratuito
+              </Button>
+              <Button href="/#financiamiento" variant="outline" size="lg">
+                Conocer financiamiento
+              </Button>
+            </div>
+          </div>
+          <!-- Right: Hero SVG -->
+          <div class="lg:w-1/2">
+            {HeroComponent && (
+              <div class="rounded-2xl overflow-hidden" role="img" aria-label={`Ilustraci\u00f3n ${sectorData.name}`}>
+                <HeroComponent class="w-full h-auto" />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="El problema"
+          title="Desaf&iacute;os que enfrentan las empresas hoy"
+          centered
+        />
+        <div class="grid md:grid-cols-3 gap-8">
+          {painPoints.map((point) => {
+            const IconComponent = iconMap[point.icon];
+            return (
+              <div class="bg-white rounded-xl border border-gray-100 p-8">
+                {IconComponent && (
+                  <div class="w-12 h-12 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-5">
+                    <IconComponent class="w-6 h-6" />
+                  </div>
+                )}
+                <h3 class="font-semibold text-gray-900 text-lg mb-3">{point.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{point.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="La soluci&oacute;n"
+          title="Lo que Apps del Sur le ofrece"
+          centered
+        />
+        <div class="grid md:grid-cols-2 gap-8">
+          {features.map((feature) => {
+            const IconComponent = iconMap[feature.icon];
+            return (
+              <div class="bg-gray-50 rounded-xl border border-gray-100 p-8">
+                {IconComponent && (
+                  <div class="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center mb-5">
+                    <IconComponent class="w-6 h-6" />
+                  </div>
+                )}
+                <h3 class="font-semibold text-gray-900 text-lg mb-3">{feature.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table (only if data exists) -->
+    {comparison && (
+      <section class="py-20 bg-gray-50">
+        <div class="max-w-[1200px] mx-auto px-6">
+          <SectionHeader
+            title={comparison.title}
+            centered
+          />
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead>
+                <tr>
+                  {comparison.headers.map((header, i) => (
+                    <th
+                      class:list={[
+                        'px-6 py-4 text-left font-semibold',
+                        i === comparison.headers.length - 1
+                          ? 'bg-emerald-700 text-white rounded-tr-lg'
+                          : 'bg-gray-800 text-white',
+                        i === 0 ? 'rounded-tl-lg' : '',
+                      ]}
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.rows.map((row, rowIndex) => (
+                  <tr class={rowIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    {row.map((cell, cellIndex) => (
+                      <td
+                        class:list={[
+                          'px-6 py-4 border-b border-gray-200',
+                          cellIndex === 0 ? 'font-medium text-gray-900' : 'text-gray-600',
+                          cellIndex === row.length - 1 ? 'bg-emerald-50 text-emerald-800 font-medium' : '',
+                        ]}
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[720px] mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-10 text-center">
+          Preguntas frecuentes
+        </h2>
+        <div class="space-y-3">
+          {faq.map((item) => (
+            <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+              <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer min-h-[44px] select-none">
+                <span class="font-medium text-gray-900 text-[15px]">
+                  {item.q}
+                </span>
+                <svg
+                  class="w-5 h-5 text-gray-400 transition-transform duration-200 shrink-0 ml-4 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Blog Posts -->
+    {relatedBlogSlugs && relatedBlogSlugs.length > 0 && (
+      <section class="py-16 bg-white">
+        <div class="max-w-[720px] mx-auto px-6">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Art&iacute;culos relacionados</h2>
+          <div class="space-y-3">
+            {relatedBlogSlugs.map((postSlug) => (
+              <a
+                href={`/blog/${postSlug}`}
+                class="block p-4 bg-gray-50 hover:bg-emerald-50 rounded-lg border-l-3 border-emerald-500 transition-colors"
+              >
+                <span class="text-emerald-600 font-medium">{postSlug.replace(/-/g, ' ')}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <ContactCTA />
+  <ContactForm />
+  <Footer />
+</Layout>
