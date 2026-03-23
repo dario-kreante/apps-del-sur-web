@@ -272,8 +272,8 @@ export const contactForm = {
     },
     {
       label: 'Email',
-      value: 'dramirez.gysactiva@gmail.com',
-      href: 'mailto:dramirez.gysactiva@gmail.com',
+      value: 'contacto@appsdelsur.cl',
+      href: 'mailto:contacto@appsdelsur.cl',
     },
     {
       label: 'Teléfono',
@@ -318,7 +318,7 @@ export const footer = {
     name: 'Darío Ramírez',
     phone: '+56 9 4526 2335',
     phoneHref: 'tel:+56945262335',
-    email: 'dramirez.gysactiva@gmail.com',
+    email: 'contacto@appsdelsur.cl',
     whatsappUrl:
       'https://wa.me/56945262335?text=Hola%2C%20me%20interesa%20conocer%20Apps%20del%20Sur',
   },
