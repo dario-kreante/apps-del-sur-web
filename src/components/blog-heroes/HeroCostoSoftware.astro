@@ -1,0 +1,61 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Rangos de inversión en software a medida según complejidad">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#1f2937">Inversión en Software a Medida</text>
+
+  <!-- Three tiers as stacked cards -->
+  <!-- MVP Básico -->
+  <rect x="40" y="48" width="220" height="180" rx="10" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+  <rect x="40" y="48" width="220" height="36" rx="10" fill="#047857"/>
+  <rect x="40" y="74" width="220" height="10" fill="#047857"/>
+  <text x="150" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">MVP Básico</text>
+  <text x="150" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#047857">200–600</text>
+  <text x="150" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280">UF aprox.</text>
+  <line x1="80" y1="142" x2="220" y2="142" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="150" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">1-3 módulos</text>
+  <text x="150" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Usuarios limitados</text>
+  <text x="150" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">4-8 semanas</text>
+  <circle cx="150" cy="215" r="8" fill="#d1fae5"/>
+  <text x="150" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#047857">$</text>
+
+  <!-- Sistema Completo -->
+  <rect x="290" y="48" width="220" height="180" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+  <rect x="290" y="48" width="220" height="36" rx="10" fill="#059669"/>
+  <rect x="290" y="74" width="220" height="10" fill="#059669"/>
+  <text x="400" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Sistema Completo</text>
+  <text x="400" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#059669">600–2.000</text>
+  <text x="400" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280">UF aprox.</text>
+  <line x1="330" y1="142" x2="470" y2="142" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="400" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Múltiples módulos</text>
+  <text x="400" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Integraciones</text>
+  <text x="400" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">3-6 meses</text>
+  <circle cx="385" cy="215" r="8" fill="#d1fae5"/>
+  <text x="385" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#059669">$</text>
+  <circle cx="400" cy="215" r="8" fill="#d1fae5"/>
+  <text x="400" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#059669">$</text>
+
+  <!-- Plataforma SaaS -->
+  <rect x="540" y="48" width="220" height="180" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="540" y="48" width="220" height="36" rx="10" fill="#10b981"/>
+  <rect x="540" y="74" width="220" height="10" fill="#10b981"/>
+  <text x="650" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Plataforma SaaS</text>
+  <text x="650" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#10b981">2.000+</text>
+  <text x="650" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280">UF aprox.</text>
+  <line x1="580" y1="142" x2="720" y2="142" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="650" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Multi-tenant</text>
+  <text x="650" y="178" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Escalable</text>
+  <text x="650" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">6-12+ meses</text>
+  <circle cx="635" cy="215" r="8" fill="#d1fae5"/>
+  <text x="635" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#10b981">$</text>
+  <circle cx="650" cy="215" r="8" fill="#d1fae5"/>
+  <text x="650" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#10b981">$</text>
+  <circle cx="665" cy="215" r="8" fill="#d1fae5"/>
+  <text x="665" y="219" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#10b981">$</text>
+
+  <!-- Footer note -->
+  <text x="400" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">* Rangos referenciales en UF (1 UF ≈ $38.000 CLP). Varía según requerimientos.</text>
+</svg>
