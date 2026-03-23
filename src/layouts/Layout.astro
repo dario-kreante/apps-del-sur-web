@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { siteConfig } from '../data/content';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 interface Props {
   title?: string;
@@ -275,5 +276,6 @@ const {
     <!-- End Google Tag Manager (noscript) -->
     <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     <slot />
+    <WhatsAppButton />
   </body>
 </html>
