@@ -1,0 +1,426 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+import ArrowRight from '../components/icons/ArrowRight.astro';
+import Sparkle from '../components/icons/Sparkle.astro';
+import Check from '../components/icons/Check.astro';
+
+const meta = {
+  title: 'Consultoría Claude AI para Empresas en Chile | Apps del Sur',
+  description:
+    'Implementamos Claude AI de Anthropic en su empresa. Software a medida, agentes inteligentes y automatización para pymes en Maule, O\'Higgins, Ñuble, Biobío y Araucanía. Diagnóstico gratuito.',
+  keywords:
+    'Claude AI Chile, implementar Claude AI empresa, partner Claude Chile, inteligencia artificial para empresas Chile, Claude AI en español, automatización con IA Chile, consultoría IA Chile, agentes IA empresas',
+  ogTitle: 'Consultoría Claude AI para Empresas en Chile | Apps del Sur',
+  ogDescription:
+    'Implementamos Claude AI de Anthropic en su empresa. Software a medida, agentes inteligentes y automatización para pymes del centro-sur de Chile.',
+  canonical: 'https://appsdelsur.cl/claude-ai-chile',
+};
+
+const stats = [
+  { value: '220M+', label: 'Visitas mensuales a claude.ai', source: 'SimilarWeb 2025' },
+  { value: '$100M', label: 'Inversión en Partner Network', source: 'Anthropic 2025' },
+  { value: '200K', label: 'Tokens por contexto', source: 'Claude 4 Sonnet' },
+  { value: '46%', label: 'Pymes Chile buscan IA', source: 'Corfo 2025' },
+];
+
+const services = [
+  {
+    title: 'Software a medida con IA',
+    description: 'Sistemas de gestión construidos con Claude AI: plataforma web + app móvil en 8-12 semanas, adaptados 100% a su operación.',
+    icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  },
+  {
+    title: 'Agentes inteligentes',
+    description: 'Automatice tareas repetitivas con agentes IA que procesan documentos, responden consultas y coordinan flujos de trabajo.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    title: 'Integración MCP',
+    description: 'Conecte Claude AI con sus sistemas existentes mediante el protocolo MCP: ERP, CRM, bases de datos y herramientas internas.',
+    icon: 'M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zm5-5v4m6-4v4M9 16h6m-3-3v6',
+  },
+  {
+    title: 'Capacitación en IA',
+    description: 'Talleres prácticos para que su equipo aprenda a usar Claude AI en su trabajo diario. Incluye 3 meses de Claude Pro.',
+    icon: 'M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222',
+  },
+  {
+    title: 'Consultoría IA estratégica',
+    description: 'Diagnóstico de su operación para identificar dónde la IA genera mayor impacto. Plan de implementación con ROI estimado.',
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  },
+  {
+    title: 'Prototipado rápido',
+    description: 'Valide su idea en días, no meses. Prototipos funcionales con IA para probar con usuarios reales antes de invertir.',
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+];
+
+const sectors = [
+  'Agrícola', 'Vitivinícola', 'Frutícola', 'Hotelería', 'Salud', 'Estética',
+  'Turismo', 'Logística', 'Comercio', 'Educación', 'Construcción', 'Servicios profesionales',
+];
+
+const whyUs = [
+  {
+    title: 'Presencia local',
+    description: 'Equipo basado en el Maule. Atendemos presencialmente en O\'Higgins, Maule, Ñuble, Biobío y Araucanía.',
+    icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+  {
+    title: 'Especialistas en Claude AI',
+    description: 'Primera software house del sur de Chile que integra Claude AI en todo su ciclo de desarrollo.',
+    icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z',
+  },
+  {
+    title: 'Software 100% a medida',
+    description: 'No vendemos licencias genéricas. Cada sistema se construye para su operación, sus procesos y su equipo.',
+    icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+  },
+  {
+    title: 'Financiamiento público',
+    description: 'Le ayudamos a postular a CORFO, FIA y SERCOTEC. Hasta el 80% de su proyecto puede ser financiado.',
+    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+];
+
+const faqItems = [
+  {
+    q: '¿Qué es Claude AI?',
+    a: 'Claude AI es un modelo de inteligencia artificial desarrollado por Anthropic, una de las empresas líderes en IA a nivel mundial. Se destaca por su capacidad de razonamiento, comprensión de contexto extenso y su enfoque en seguridad. Lo usamos como herramienta central de desarrollo y como base para soluciones de IA para empresas.',
+  },
+  {
+    q: '¿Cuánto cuesta implementar Claude AI en mi empresa?',
+    a: 'Depende del alcance del proyecto. Un software a medida con IA cuesta entre $8M y $12M CLP (compra de licencia) o $450K CLP/mes (suscripción). La consultoría estratégica parte desde un diagnóstico gratuito. Además, hasta el 80% puede financiarse con fondos públicos CORFO, FIA o SERCOTEC.',
+  },
+  {
+    q: '¿Atienden fuera de la Región del Maule?',
+    a: 'Sí. Atendemos presencialmente en las regiones de O\'Higgins, Maule, Ñuble, Biobío y Araucanía. Para el resto de Chile trabajamos de forma remota con reuniones presenciales en hitos clave del proyecto.',
+  },
+  {
+    q: '¿Necesito conocimientos técnicos para trabajar con IA?',
+    a: 'No. Nos encargamos de toda la parte técnica. Cada proyecto incluye capacitación práctica para que su equipo aprenda a usar las herramientas de IA en su trabajo diario, sin necesidad de conocimientos previos en programación.',
+  },
+  {
+    q: '¿Qué es el Anthropic Partner Network?',
+    a: 'Es el programa oficial de Anthropic que certifica empresas con experiencia demostrada en implementación de Claude AI. Anthropic invirtió $100M USD en este programa para garantizar que las empresas reciban implementaciones de calidad.',
+  },
+  {
+    q: '¿Cuánto tiempo toma un proyecto típico?',
+    a: 'Un proyecto de software a medida con IA toma entre 8 y 12 semanas desde el diagnóstico hasta la entrega. Esto incluye desarrollo de plataforma web y app móvil, capacitación del equipo y 12 meses de soporte. Gracias a Claude AI, entregamos en semanas lo que tradicionalmente toma 6+ meses.',
+  },
+];
+
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+});
+
+const serviceJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://appsdelsur.cl/claude-ai-chile#service',
+  name: 'Consultoría e Implementación de Claude AI',
+  description: meta.description,
+  url: 'https://appsdelsur.cl/claude-ai-chile',
+  provider: { '@id': 'https://appsdelsur.cl/#organization' },
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: "Región de O'Higgins" },
+    { '@type': 'AdministrativeArea', name: 'Región del Maule' },
+    { '@type': 'AdministrativeArea', name: 'Región de Ñuble' },
+    { '@type': 'AdministrativeArea', name: 'Región del Biobío' },
+    { '@type': 'AdministrativeArea', name: 'Región de La Araucanía' },
+  ],
+  serviceType: [
+    'Consultoría en inteligencia artificial',
+    'Desarrollo de software con IA',
+    'Implementación de agentes inteligentes',
+    'Capacitación en IA para empresas',
+  ],
+  offers: {
+    '@type': 'Offer',
+    name: 'Diagnóstico gratuito de IA',
+    price: '0',
+    priceCurrency: 'CLP',
+    description: 'Análisis de su operación y propuesta de implementación de Claude AI sin compromiso.',
+  },
+});
+
+const breadcrumbLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://appsdelsur.cl' },
+    { '@type': 'ListItem', position: 2, name: 'Claude AI Chile', item: 'https://appsdelsur.cl/claude-ai-chile' },
+  ],
+});
+---
+
+<Layout
+  title={meta.title}
+  description={meta.description}
+  canonical={meta.canonical}
+  keywords={meta.keywords}
+  ogTitle={meta.ogTitle}
+  ogDescription={meta.ogDescription}
+>
+  <script type="application/ld+json" set:html={serviceJsonLd} />
+  <script type="application/ld+json" set:html={faqJsonLd} />
+  <script type="application/ld+json" set:html={breadcrumbLd} />
+
+  <Header />
+
+  <main id="main-content" class="pt-24">
+    <!-- Breadcrumb -->
+    <div class="max-w-[1200px] mx-auto px-6 mb-6">
+      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">Claude AI Chile</span>
+      </nav>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 1 — Hero                                           -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="pt-4 pb-20">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-3/5">
+            <Badge class="mb-4">
+              <Sparkle class="w-4 h-4" />
+              <span>Consultoría Claude AI · Chile</span>
+            </Badge>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+              Implementación de <span class="text-emerald-700">Claude AI</span> para empresas en Chile
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+              Somos la primera software house del sur de Chile especializada en Claude AI de Anthropic.
+              Desarrollamos software a medida, agentes inteligentes y automatización para empresas
+              de todos los rubros en O'Higgins, Maule, Ñuble, Biobío y Araucanía.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <Button href="#contacto" size="lg">
+                Solicitar diagnóstico gratuito
+              </Button>
+              <Button href="#servicios" variant="outline" size="lg">
+                Ver servicios
+                <ArrowRight class="w-5 h-5" />
+              </Button>
+            </div>
+          </div>
+          <div class="lg:w-2/5 flex justify-center">
+            <div class="relative">
+              <div class="w-48 h-48 md:w-56 md:h-56 rounded-3xl bg-emerald-700 flex items-center justify-center shadow-xl shadow-emerald-700/20">
+                <Sparkle class="w-20 h-20 md:w-24 md:h-24 text-white" />
+              </div>
+              <div class="absolute -top-4 -right-4 w-16 h-16 bg-emerald-100 rounded-full -z-10"></div>
+              <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-emerald-50 rounded-full -z-10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 2 — ¿Qué es Claude AI?                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="Inteligencia artificial de clase mundial"
+          title="¿Qué es Claude AI y por qué lo elegimos?"
+          description="Claude AI es el modelo de inteligencia artificial de Anthropic, una de las empresas líderes en IA a nivel mundial. Lo elegimos por su capacidad de razonamiento avanzado, comprensión de contexto extenso y su enfoque en seguridad."
+          centered
+        />
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat) => (
+            <div class="bg-white rounded-xl border border-gray-100 p-6 text-center">
+              <div class="text-3xl md:text-4xl font-bold text-emerald-700 mb-2">{stat.value}</div>
+              <p class="text-sm text-gray-600 font-medium">{stat.label}</p>
+              {stat.source && (
+                <p class="text-xs text-gray-400 mt-1">Fuente: {stat.source}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 3 — Servicios (6 cards)                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section id="servicios" class="py-20 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="Servicios"
+          title="¿Qué podemos hacer con Claude AI en su empresa?"
+          description="Desde software a medida hasta agentes autónomos. Implementamos soluciones de IA que generan impacto real en su operación."
+          centered
+        />
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <div class="bg-gray-50 rounded-xl border border-gray-100 p-6 hover:border-emerald-200 hover:shadow-sm transition-all">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                  <path d={service.icon} />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 text-lg mb-2">{service.title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 4 — Sectores (compact tags)                        -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="Multi-sector"
+          title="Claude AI para todos los rubros"
+          description="La inteligencia artificial no es solo para empresas de tecnología. Implementamos soluciones de IA en empresas de todos los sectores."
+          centered
+        />
+
+        <div class="flex flex-wrap justify-center gap-3">
+          {sectors.map((sector) => (
+            <span class="bg-white border border-gray-200 text-gray-700 font-medium text-sm px-5 py-2.5 rounded-full hover:border-emerald-300 hover:text-emerald-700 transition-colors">
+              {sector}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 5 — Por qué Apps del Sur (4 cards)                 -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="Por qué elegirnos"
+          title="La ventaja de trabajar con Apps del Sur"
+          centered
+        />
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {whyUs.map((item) => (
+            <div class="bg-gray-50 rounded-xl border border-gray-100 p-6">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center mb-5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                  <path d={item.icon} />
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900 text-[15px] mb-2">{item.title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 6 — Financiamiento (resumen)                       -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="bg-emerald-800 rounded-xl p-8 md:p-12">
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-2/3">
+              <p class="text-emerald-300 text-sm font-medium mb-2">Financiamiento disponible</p>
+              <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4">
+                Financie hasta el 80% de su proyecto con fondos públicos
+              </h2>
+              <p class="text-emerald-200 leading-relaxed mb-6">
+                Instrumentos como CORFO Crea y Valida, FIA Innovación y SERCOTEC CRECE financian
+                proyectos de digitalización e innovación con IA. Le asesoramos en la postulación
+                sin costo adicional.
+              </p>
+              <div class="flex flex-wrap gap-3">
+                {['CORFO 70%', 'FIA 80%', 'SERCOTEC 80%', 'Crea y Valida 100%'].map((fund) => (
+                  <span class="bg-emerald-700/50 text-emerald-100 text-sm font-medium px-4 py-1.5 rounded-full border border-emerald-600/30">
+                    {fund}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div class="md:w-1/3 flex justify-center">
+              <Button href="/#financiamiento" variant="secondary" size="lg">
+                Ver fondos disponibles
+                <ArrowRight class="w-5 h-5" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 7 — FAQ                                            -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[720px] mx-auto px-6">
+        <SectionHeader
+          label="Preguntas frecuentes"
+          title="Sobre Claude AI y nuestros servicios"
+          centered
+        />
+
+        <div class="space-y-3">
+          {faqItems.map((item) => (
+            <details class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden group">
+              <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer min-h-[44px] select-none">
+                <span class="font-medium text-gray-900 text-[15px]">
+                  {item.q}
+                </span>
+                <svg
+                  class="w-5 h-5 text-gray-400 transition-transform duration-200 shrink-0 ml-4 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <div class="faq-answer px-6 pb-5">
+                <p class="text-sm text-gray-500 leading-relaxed">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 8 — CTA + Contact Form                             -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+  </main>
+
+  <ContactCTA />
+  <ContactForm />
+  <Footer />
+</Layout>

@@ -112,7 +112,7 @@ export const solutions = {
       name: 'Consultoría Claude AI',
       description:
         'Diagnóstico e implementación de inteligencia artificial en sus procesos de negocio con Claude AI.',
-      href: '#',
+      href: '/claude-ai-chile',
     },
   ],
   whyLocalTitle: '¿Por qué elegir un software local?',
@@ -294,7 +294,7 @@ export const claudePartner = {
     'Integrar inteligencia artificial directamente en su software',
   ],
   cta: 'Conocer más sobre Claude AI',
-  ctaHref: '#',
+  ctaHref: '/claude-ai-chile',
 } as const;
 
 export const aiTrainingCallout = {
@@ -326,6 +326,7 @@ export const footer = {
     { label: 'Vitivinícola', href: '/sectores/viticola' },
     { label: 'Frutícola', href: '/sectores/fruticola' },
     { label: 'Agrícola', href: '/sectores/agricola' },
+    { label: 'Claude AI Chile', href: '/claude-ai-chile' },
     { label: 'Cuaderno de Campo', href: '/cuaderno-de-campo' },
     { label: 'Nuestro Enfoque', href: '/enfoque' },
     { label: 'Financiamiento CORFO/FIA', href: '/#financiamiento' },
