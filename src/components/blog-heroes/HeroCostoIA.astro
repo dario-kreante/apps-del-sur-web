@@ -1,0 +1,67 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Rangos de inversión en inteligencia artificial para PyMEs chilenas">
+  <rect width="800" height="260" rx="12" fill="#ecfdf5"/>
+
+  <!-- Title -->
+  <text x="400" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#1f2937">Inversión en IA para PyMEs</text>
+
+  <!-- Three levels as ascending steps -->
+  <!-- Level 1: Chatbot Básico -->
+  <rect x="40" y="130" width="220" height="100" rx="10" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+  <!-- Chat bubble icon -->
+  <rect x="110" y="50" width="80" height="60" rx="12" fill="#047857"/>
+  <circle cx="135" cy="80" r="4" fill="#ffffff"/>
+  <circle cx="150" cy="80" r="4" fill="#ffffff"/>
+  <circle cx="165" cy="80" r="4" fill="#ffffff"/>
+  <!-- Arrow down -->
+  <line x1="150" y1="112" x2="150" y2="128" stroke="#047857" stroke-width="2"/>
+  <polygon points="144,124 150,132 156,124" fill="#047857"/>
+
+  <text x="150" y="152" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#047857">Chatbot Básico</text>
+  <text x="150" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="800" fill="#047857">50–200 UF</text>
+  <text x="150" y="190" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Respuestas FAQ</text>
+  <text x="150" y="204" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Flujos predefinidos</text>
+  <text x="150" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">+ Claude Pro $20 USD/mes</text>
+
+  <!-- Level 2: Automatización -->
+  <rect x="290" y="90" width="220" height="140" rx="10" fill="#ffffff" stroke="#059669" stroke-width="2"/>
+  <!-- Gear + brain icon -->
+  <circle cx="400" cy="56" r="24" fill="#059669" opacity="0.15"/>
+  <circle cx="400" cy="56" r="14" fill="#059669"/>
+  <text x="400" y="61" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#ffffff">⚙</text>
+  <!-- Arrow -->
+  <line x1="400" y1="82" x2="400" y2="88" stroke="#059669" stroke-width="2"/>
+
+  <text x="400" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#059669">Automatización</text>
+  <text x="400" y="135" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="800" fill="#059669">200–800 UF</text>
+  <text x="400" y="155" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Procesamiento documentos</text>
+  <text x="400" y="169" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Clasificación automática</text>
+  <text x="400" y="183" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Integración con sistemas</text>
+  <text x="400" y="197" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Reportes inteligentes</text>
+  <text x="400" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">+ costos API según uso</text>
+
+  <!-- Level 3: Sistema Inteligente -->
+  <rect x="540" y="48" width="220" height="182" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <!-- Brain network icon -->
+  <circle cx="650" cy="30" r="4" fill="#10b981"/>
+  <circle cx="630" cy="42" r="3" fill="#10b981" opacity="0.6"/>
+  <circle cx="670" cy="42" r="3" fill="#10b981" opacity="0.6"/>
+  <line x1="650" y1="30" x2="630" y2="42" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+  <line x1="650" y1="30" x2="670" y2="42" stroke="#10b981" stroke-width="1" opacity="0.4"/>
+
+  <text x="650" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#10b981">Sistema Inteligente</text>
+  <text x="650" y="95" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="800" fill="#10b981">800–3.000+ UF</text>
+  <text x="650" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Agentes autónomos</text>
+  <text x="650" y="129" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Modelos entrenados</text>
+  <text x="650" y="143" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Análisis predictivo</text>
+  <text x="650" y="157" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Multi-integración</text>
+  <text x="650" y="171" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Dashboards IA</text>
+  <text x="650" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">+ infraestructura cloud</text>
+
+  <!-- Ascending arrow across -->
+  <line x1="80" y1="240" x2="720" y2="240" stroke="#d1fae5" stroke-width="2"/>
+  <polygon points="720,236 730,240 720,244" fill="#10b981"/>
+  <text x="400" y="254" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">Complejidad e inversión →</text>
+</svg>
