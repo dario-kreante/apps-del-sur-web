@@ -11,11 +11,11 @@ export const siteConfig = {
 } as const;
 
 export const navItems = [
-  { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Cómo trabajamos', href: '#proceso' },
-  { label: 'Financiamiento', href: '#financiamiento' },
+  { label: 'Soluciones', href: '/#soluciones' },
+  { label: 'Cómo trabajamos', href: '/#proceso' },
+  { label: 'Financiamiento', href: '/#financiamiento' },
   { label: 'Blog', href: '/blog/' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Contacto', href: '/#contacto' },
 ] as const;
 
 export const hero = {
