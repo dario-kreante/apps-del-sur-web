@@ -51,7 +51,7 @@ const {
     <meta name="twitter:description" content={ogDescription}>
 
     <!-- Open Graph -->
-    <meta property="og:url" content="https://appsdelsur.cl/">
+    <meta property="og:url" content={canonical}>
     <meta property="og:site_name" content="Apps del Sur">
 
     <!-- Robots -->
@@ -67,8 +67,8 @@ const {
     <meta name="ICBM" content="-35.4264, -71.6554">
 
     <!-- Idioma alternativo -->
-    <link rel="alternate" hreflang="es-CL" href="https://appsdelsur.cl/">
-    <link rel="alternate" hreflang="es" href="https://appsdelsur.cl/">
+    <link rel="alternate" hreflang="es-CL" href={canonical}>
+    <link rel="alternate" hreflang="es" href={canonical}>
 
     <!-- Schema JSON-LD: Organization + SoftwareApplication -->
     <script type="application/ld+json" is:inline>
@@ -85,7 +85,7 @@ const {
           },
           "url": "https://appsdelsur.cl",
           "logo": "https://appsdelsur.cl/logo.png",
-          "description": "Empresa chilena de desarrollo de software a medida para empresas del centro-sur de Chile. Soluciones para agro, servicios y consultoría IA con Claude. Atendemos O'Higgins, Maule, Ñuble, Biobío y Araucanía.",
+          "description": "Empresa chilena creadora de Apps del Sur, un cuaderno de campo digital para viñas y empresas agrícolas del centro-sur de Chile. Reemplaza planillas de papel y Excel por registro móvil offline, trazabilidad y costos por hectárea en tiempo real.",
           "foundingDate": "2025",
           "founder": {
             "@type": "Person",
@@ -118,7 +118,7 @@ const {
           "name": "Apps del Sur",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web, Android, iOS",
-          "description": "Software a medida para empresas del centro-sur de Chile. Plataforma web de gestión + app móvil que funciona offline. Desarrollo asistido por Claude AI. Soluciones para agro, servicios y consultoría IA.",
+          "description": "Cuaderno de campo digital para viñas y empresas agrícolas del centro-sur de Chile. Plataforma web + app móvil offline para registrar trabajadores, cuarteles y labores, calcular costos por hectárea y entregar datos listos para contabilidad.",
           "url": "https://appsdelsur.cl",
           "provider": {"@id": "https://appsdelsur.cl/#organization"},
           "offers": [
@@ -145,15 +145,15 @@ const {
             }
           ],
           "featureList": [
-            "Costos en tiempo real por área, proyecto y actividad",
-            "App móvil de registro que funciona offline",
-            "Trazabilidad 100% por trabajador, área y actividad",
+            "Costos por hectárea, cuartel y labor en tiempo real",
+            "App móvil de registro que funciona offline en terreno",
+            "Trazabilidad 100% por trabajador, cuartel y labor",
             "70% reducción en tiempo administrativo",
             "Reportes automáticos para gerencia y administración",
             "Cumplimiento normativo laboral chilena",
-            "Desarrollo asistido por Claude AI",
+            "Integración con sistemas contables existentes",
             "Capacitación presencial en terreno",
-            "Consultoría para integración de IA en procesos de negocio"
+            "Desarrollo asistido por IA para adaptar el sistema a cada operación"
           ]
         },
         {
@@ -161,7 +161,7 @@ const {
           "@id": "https://appsdelsur.cl/#website",
           "url": "https://appsdelsur.cl",
           "name": "Apps del Sur",
-          "description": "Software a medida para empresas del centro-sur de Chile. Agro, servicios y consultoría IA con Claude.",
+          "description": "Cuaderno de campo digital para viñas y agrícolas del centro-sur de Chile. Registro offline, trazabilidad y costos por hectárea en tiempo real.",
           "publisher": {"@id": "https://appsdelsur.cl/#organization"},
           "inLanguage": "es-CL"
         },
@@ -169,8 +169,8 @@ const {
           "@type": "WebPage",
           "@id": "https://appsdelsur.cl/#webpage",
           "url": "https://appsdelsur.cl",
-          "name": "Apps del Sur — Software a Medida para Empresas del Sur de Chile | Maule",
-          "description": "Apps del Sur desarrolla software a medida para empresas del centro-sur de Chile. Gestión agrícola, servicios y consultoría IA con Claude. Financiamiento CORFO/FIA disponible.",
+          "name": "Apps del Sur — Cuaderno de Campo Digital para Viñas Chile",
+          "description": "Apps del Sur reemplaza planillas de papel y Excel por un cuaderno de campo digital con app móvil offline, costos por hectárea y datos listos para contabilidad.",
           "isPartOf": {"@id": "https://appsdelsur.cl/#website"},
           "about": {"@id": "https://appsdelsur.cl/#software"},
           "inLanguage": "es-CL"
@@ -244,7 +244,7 @@ const {
       "@type": "LocalBusiness",
       "@id": "https://appsdelsur.cl/#localbusiness",
       "name": "Apps del Sur — GYS Activa SpA",
-      "description": "Desarrollo de software a medida para empresas del centro-sur de Chile. Soluciones para agro, servicios y consultoría IA con Claude AI.",
+      "description": "Cuaderno de campo digital para viñas y empresas agrícolas del centro-sur de Chile. Registro móvil offline, trazabilidad, costos por hectárea y conexión con sistemas contables existentes.",
       "url": "https://appsdelsur.cl",
       "telephone": "+56-9-4526-2335",
       "email": "contacto@appsdelsur.cl",

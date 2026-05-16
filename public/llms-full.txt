@@ -1,6 +1,6 @@
 # Apps del Sur — Información completa para modelos de IA
 
-> Apps del Sur, desarrollado por GYS Activa SpA, es una empresa chilena de desarrollo de software especializado en gestión de mano de obra agrícola para viñas, frutícolas y empresas agrícolas del centro-sur de Chile.
+> Apps del Sur, desarrollado por GYS Activa SpA, es un cuaderno de campo digital para viñas, frutícolas y empresas agrícolas del centro-sur de Chile. Reemplaza planillas de papel, Excel y WhatsApp por una app móvil offline para registrar trabajadores, cuarteles y labores en terreno. No reemplaza la contabilidad del cliente: se conecta con ella y entrega datos listos para sistemas como Rexmas, SAP o QAD.
 
 ## Qué problema resuelve
 
@@ -19,6 +19,14 @@ Apps del Sur es una plataforma compuesta por dos sistemas integrados:
 **Plataforma web de gestión**: Dashboard para gerencia y administración. Muestra costos por hectárea, cuartel y labor en tiempo real. Genera reportes automáticos, controla asistencia y permite analizar rendimiento por trabajador, cuadrilla y temporada.
 
 **App móvil — Cuaderno de campo digital**: Aplicación para celular que usan capataces y jefes de cuadrilla directamente en terreno. Registra jornadas, labores, asistencia y notas. Funciona offline (sin conexión a internet) y sincroniza cuando hay señal.
+
+## Páginas comerciales principales
+
+- https://appsdelsur.cl/cuaderno-de-campo/ — Página principal del cuaderno de campo digital.
+- https://appsdelsur.cl/cuaderno-de-campo-vinas-chile/ — Página pilar para viñas que buscan reemplazar papel y Excel.
+- https://appsdelsur.cl/software-mano-obra-vinas-chile/ — Gestión de temporeros, labores, tratos y costos por hectárea.
+- https://appsdelsur.cl/costo-mano-obra-hectarea-vinas/ — Cálculo y control de costo de mano de obra por hectárea.
+- https://appsdelsur.cl/sectores/viticola/ — Solución vitivinícola para viñas del centro-sur de Chile.
 
 ## Qué lo diferencia de la competencia
 
@@ -100,4 +108,4 @@ Soporte presencial y capacitación en terreno disponible en todas las regiones a
 | Agroptima | España | Cuaderno de campo | No adaptado a Chile, sistema genérico |
 | eVineyard | Internacional | Viñedos | No disponible en español chileno |
 
-Apps del Sur se diferencia por: software a medida (no genérico), enfoque exclusivo en gestión de mano de obra, adaptado a normativa chilena, capacitación presencial, y acompañamiento en financiamiento público.
+Apps del Sur se diferencia por: cuaderno de campo digital hecho para terreno, registro offline, enfoque en costos por hectárea y mano de obra, adaptación a normativa chilena, capacitación presencial, conexión con la contabilidad existente y acompañamiento en financiamiento público.

@@ -1,12 +1,12 @@
 export const siteConfig = {
-  title: 'Apps del Sur — Software a Medida para Empresas del Sur de Chile | Maule',
+  title: 'Cuaderno de Campo Digital para Viñas Chile | Apps del Sur',
   description:
-    'Apps del Sur desarrolla software a medida para empresas del centro-sur de Chile. Gestión agrícola, servicios y consultoría IA con Claude. Desarrollo custom potenciado por IA a precio accesible. Financiamiento CORFO/FIA. Regiones de O\'Higgins, Maule, Ñuble, Biobío y Araucanía.',
+    'Cuaderno de campo digital para viñas del centro-sur de Chile. Reemplace planillas de papel y Excel, registre labores offline y vea costos por hectárea en tiempo real. No reemplaza su contabilidad: se conecta con ella.',
   keywords:
-    'software a medida Chile, software empresas sur Chile, desarrollo software IA, Claude AI Chile, software CORFO, digitalización empresas Chile, software agrícola Chile, gestión mano de obra, software viñas, consultoría IA Chile, Apps del Sur, Maule, O\'Higgins, Ñuble, Biobío, Araucanía',
-  ogTitle: 'Apps del Sur — Software a Medida Potenciado por IA',
+    'cuaderno de campo digital, cuaderno de campo viñas chile, software mano de obra viñas, costo por hectárea viñas, gestión temporeros viñas, software agrícola Chile, app agrícola offline, Apps del Sur, Maule, O\'Higgins, Ñuble',
+  ogTitle: 'Apps del Sur — Cuaderno de Campo Digital para Viñas',
   ogDescription:
-    'Desarrollamos software a medida para empresas del centro-sur de Chile. Claude AI nos permite entregar software custom a una fracción del costo tradicional, en semanas en vez de meses.',
+    'App móvil offline para registrar trabajadores, cuarteles y labores en terreno. Costos por hectárea en tiempo real, trazabilidad y datos listos para su contabilidad.',
   canonical: 'https://appsdelsur.cl',
 } as const;
 
@@ -19,44 +19,44 @@ export const navItems = [
 ] as const;
 
 export const hero = {
-  badge: 'Software a medida · Sur de Chile · Potenciado por IA',
-  titleLine1: 'Software a medida para',
-  titleHighlight: 'empresas del sur de Chile',
+  badge: 'Cuaderno de campo digital · Viñas · Centro-sur de Chile',
+  titleLine1: 'Cuaderno de campo digital para',
+  titleHighlight: 'viñas del centro-sur de Chile',
   description:
-    'Desarrollamos sistemas de gestión adaptados 100% a su operación. Claude AI nos permite entregar software a medida en semanas, no meses, y a una fracción del costo tradicional. No es un sistema genérico: es su herramienta, adaptada a su operación.',
-  ctaPrimary: 'Solicitar diagnóstico gratuito',
+    'Reemplace planillas de papel y Excel por una app móvil que funciona sin señal. Registre trabajadores, cuarteles y labores en terreno, y vea costos por hectárea en tiempo real. No reemplaza su contabilidad: se conecta con ella y le envía los datos listos.',
+  ctaPrimary: 'Calcular mi costo por hectárea',
   ctaPrimaryHref: '#contacto',
-  ctaSecondary: 'Ver soluciones',
-  ctaSecondaryHref: '#soluciones',
+  ctaSecondary: 'Ver cuaderno de campo',
+  ctaSecondaryHref: '/cuaderno-de-campo',
   subtext:
-    'Sin compromiso · Implementación en 8-12 semanas · Financiamiento CORFO/FIA disponible',
+    'Diagnóstico gratuito · App offline para terreno · Financiamiento CORFO/FIA/SERCOTEC disponible',
 } as const;
 
 export const metrics = [
-  { value: '-70%', label: 'Tiempo administrativo' },
-  { value: '100%', label: 'Adaptado a su operación' },
-  { value: '3+', label: 'Sectores atendidos' },
-  { value: '8-12', label: 'Semanas de implementación' },
+  { value: '-70%', label: 'Tiempo de registro' },
+  { value: '$/ha', label: 'Costo por hectárea' },
+  { value: '100%', label: 'Trazabilidad en terreno' },
+  { value: 'Offline', label: 'Funciona sin señal' },
 ] as const;
 
 export const features = {
-  label: 'Desarrollo a medida',
-  title: 'Construimos la herramienta que su operación necesita',
+  label: 'Cuaderno de campo digital',
+  title: 'Del cuaderno de papel al costo por hectárea en tiempo real',
   description:
-    'Cada implementación se adapta a su realidad: sus procesos, equipos, áreas y estructura de costos. No configuramos un software genérico — construimos el suyo.',
+    'Apps del Sur es una herramienta de terreno para registrar labores, asistencia y costos desde el celular. Alimenta sus sistemas contables actuales; no intenta reemplazarlos.',
   items: [
     {
       icon: 'bar-chart',
-      title: 'Costos en tiempo real',
+      title: 'Costos por hectárea en tiempo real',
       description:
-        'Conozca el costo exacto por área, proyecto y actividad cada día — no al final del mes. Decisiones con datos, no con supuestos.',
+        'Sepa cuánto costó la poda, el desbrote o la vendimia por cuartel y hectárea mientras la temporada sigue en curso.',
       highlight: true,
     },
     {
       icon: 'smartphone',
-      title: 'App móvil de registro',
+      title: 'Registro móvil offline',
       description:
-        'App móvil que reemplaza planillas en papel. Registro de jornadas, actividades y asistencia desde terreno, incluso sin señal.',
+        'El jefe de campo registra trabajadores, labores, cuarteles y producción desde el celular, incluso sin señal.',
       highlight: true,
     },
     {
@@ -79,9 +79,9 @@ export const features = {
     },
     {
       icon: 'sparkle',
-      title: 'IA para su equipo',
+      title: 'Implementación a medida con IA',
       description:
-        'Cada implementación incluye un taller práctico de IA y 3 meses de Claude Pro para que su equipo aproveche la inteligencia artificial en su trabajo diario.',
+        'Adaptamos el sistema a sus cuarteles, labores, tratos e integraciones. La IA acelera el desarrollo; el foco sigue siendo la operación agrícola.',
       highlight: true,
     },
   ],
@@ -89,15 +89,15 @@ export const features = {
 
 export const solutions = {
   label: 'Soluciones',
-  title: 'Software especializado para cada sector',
+  title: 'Software de terreno para operaciones agrícolas',
   description:
-    'Cada negocio es distinto. Por eso no vendemos software genérico: construimos el suyo, adaptado a su operación y su industria.',
+    'Partimos por el problema crítico: registrar bien lo que ocurre en terreno. Desde ahí se calculan costos, trazabilidad y reportes para gerencia y contabilidad.',
   items: [
     {
       icon: 'grape',
-      name: 'Agro',
+      name: 'Viñas y agrícolas',
       description:
-        'Gestión de mano de obra, cuadernos de campo, trazabilidad y costos en tiempo real para viñas, frutícolas y agrícolas.',
+        'Cuaderno de campo digital, gestión de mano de obra, trazabilidad y costos por hectárea para viñas, frutícolas y agrícolas.',
       href: '/sectores/viticola',
     },
     {
@@ -120,7 +120,7 @@ export const solutions = {
     'Soporte técnico en español, en tu zona horaria',
     'Entendemos la normativa laboral chilena',
     'Configurado para las operaciones reales de tu industria',
-    'Desarrollo asistido por IA para entregas más rápidas',
+    'No reemplaza su contabilidad: se conecta con Rexmas, SAP, QAD o su sistema actual',
     'Capacitación presencial para equipos en terreno',
     'Financiamiento con fondos CORFO, FIA y SERCOTEC',
   ],
@@ -132,27 +132,27 @@ export const process = {
   steps: [
     {
       step: '01',
-      title: 'Diagnóstico gratuito',
+      title: 'Diagnóstico de terreno',
       description:
-        'Analizamos su operación: áreas, equipos, procesos y cómo gestiona hoy los costos y la información. Sin compromiso.',
+        'Revisamos cómo registra hoy asistencia, labores, cuarteles, tratos y costos. Identificamos dónde se pierde tiempo y dinero.',
     },
     {
       step: '02',
-      title: 'Desarrollo IA-asistido',
+      title: 'Configuración del cuaderno digital',
       description:
-        'En 8-12 semanas construimos su sistema con Claude AI: plataforma web + app móvil, con sus procesos, estructura de costos y reglas de negocio.',
+        'Cargamos sus cuarteles, labores, trabajadores, modalidades de pago y estructura de costos. La app queda adaptada a su operación real.',
     },
     {
       step: '03',
-      title: 'Capacitación + IA aplicada',
+      title: 'Capacitación en campo',
       description:
-        'Capacitamos a su equipo en el uso del sistema y en herramientas de IA para su trabajo diario. Incluye taller práctico de inteligencia artificial + 3 meses de Claude Pro para cada participante.',
+        'Capacitamos a jefes de campo, capataces y administración para registrar en terreno y revisar costos por hectárea sin depender de planillas.',
     },
     {
       step: '04',
-      title: 'Crecimiento modular',
+      title: 'Integración y reportes',
       description:
-        'El sistema crece con usted: nuevos módulos, integraciones y funcionalidades se agregan cuando los necesite.',
+        'Exportamos datos listos para contabilidad y sistemas existentes. El sistema crece con módulos de trazabilidad, certificaciones e IA cuando los necesite.',
     },
   ],
 } as const;
@@ -236,10 +236,10 @@ export const faq = {
 } as const;
 
 export const contactCTA = {
-  title: 'Digitalice su empresa hoy',
+  title: 'Calcule cuánto le cuesta hoy el registro en papel',
   description:
-    'Solicite un diagnóstico gratuito y descubra cómo un sistema a medida puede transformar su operación.',
-  ctaPrimary: 'Solicitar diagnóstico gratuito',
+    'Solicite un diagnóstico gratuito y vea cuánto puede ahorrar al pasar del cuaderno de papel al costo por hectárea en tiempo real.',
+  ctaPrimary: 'Solicitar diagnóstico de costos',
   ctaPrimaryHref: '#contact-form',
   ctaWhatsApp: 'Contactar por WhatsApp',
   whatsappUrl:
@@ -249,9 +249,9 @@ export const contactCTA = {
 } as const;
 
 export const contactForm = {
-  title: 'Solicite su diagnóstico gratuito',
+  title: 'Solicite su diagnóstico gratuito de costos',
   description:
-    'Cuéntenos sobre su empresa y le contactaremos en menos de 24 horas.',
+    'Cuéntenos cómo registra hoy labores, temporeros y cuarteles. Le contactaremos en menos de 24 horas.',
   fields: {
     name: 'Nombre completo',
     email: 'Correo electrónico',
@@ -262,7 +262,7 @@ export const contactForm = {
   },
   sectorOptions: ['Agrícola', 'Servicios', 'Consultoría IA', 'Otro'],
   submit: 'Enviar solicitud',
-  formAction: 'https://formsubmit.co/dramirezr.gysactiva@gmail.com',
+  formAction: 'https://formsubmit.co/dramirez.gysactiva@gmail.com',
   sideTitle: '¿Prefiere contacto directo?',
   sideItems: [
     {
@@ -285,9 +285,9 @@ export const contactForm = {
 
 export const claudePartner = {
   badge: 'Potenciado por IA',
-  title: 'Desarrollo asistido por Claude AI',
+  title: 'Desarrollo asistido por IA, enfocado en terreno',
   description:
-    'Somos la primera software house del sur de Chile que integra Claude AI en todo su ciclo de desarrollo. Esto nos permite:',
+    'Usamos Claude AI para acelerar el desarrollo y adaptar Apps del Sur a cada operación agrícola. La promesa principal no es la IA: es que el jefe de campo registre bien y gerencia vea costos reales.',
   bullets: [
     'Entregar software custom en semanas, no meses',
     'Ofrecer desarrollo a medida a precio accesible',
@@ -310,7 +310,7 @@ export const footer = {
   companyName: 'Apps del Sur',
   companyLegal: 'GYS Activa SpA',
   tagline:
-    'Desarrollamos software a medida para empresas del centro-sur de Chile. Agro, servicios y consultoría IA.',
+    'Cuaderno de campo digital para viñas y agrícolas del centro-sur de Chile. Registro offline, trazabilidad y costos por hectárea en tiempo real.',
   copyright:
     '© 2026 Apps del Sur — GYS Activa SpA. Todos los derechos reservados.',
   madeIn: 'Software hecho en Chile',
@@ -712,6 +712,281 @@ export const cuadernoDeCampoPage = {
   relatedBlogSlugs: [
     'cuaderno-de-campo-digital-vinas-chile',
     'sustentavid-globalg-a-p-registros-trazabilidad-software',
+    'software-agricola-chile-comparativa-2026',
+  ],
+} as const;
+
+export const cuadernoCampoVinasPage = {
+  slug: 'cuaderno-de-campo-vinas',
+  url: '/cuaderno-de-campo-vinas-chile',
+  name: 'Cuaderno de Campo para Viñas',
+  meta: {
+    title: 'Cuaderno de Campo Digital para Viñas Chile | Apps del Sur',
+    description:
+      'Cuaderno de campo digital para viñas chilenas. Reemplace papel y Excel por una app offline para registrar labores, trabajadores, cuarteles y costos por hectárea.',
+    keywords:
+      'cuaderno de campo digital viñas chile, app cuaderno campo viña, registro labores viñedo, trazabilidad viñas chile, software cuaderno campo agrícola',
+    ogTitle: 'Cuaderno de Campo Digital para Viñas en Chile',
+    ogDescription:
+      'App offline para registrar labores, trabajadores y cuarteles en viñas. Datos trazables, costos por hectárea y reportes listos para gerencia.',
+  },
+  hero: {
+    badge: 'Página pilar · Viñas',
+    titleLine1: 'Cuaderno de campo digital para',
+    titleHighlight: 'viñas chilenas',
+    description:
+      'El jefe de campo registra desde el celular quién trabajó, en qué cuartel y qué labor realizó, incluso sin señal. Administración recibe datos listos para calcular costos por hectárea y preparar auditorías.',
+  },
+  painPoints: [
+    {
+      icon: 'clock',
+      title: 'El papel llega tarde a administración',
+      description:
+        'Los datos se anotan en terreno y se transcriben después. Entre errores, omisiones y WhatsApp, el costo real aparece cuando ya no se puede corregir.',
+    },
+    {
+      icon: 'layers',
+      title: 'Excel no muestra lo que pasa por cuartel',
+      description:
+        'Una planilla consolida datos, pero no captura fecha, geolocalización, responsable ni evidencia en terreno.',
+    },
+    {
+      icon: 'shield',
+      title: 'Auditorías y trazabilidad toman demasiado tiempo',
+      description:
+        'Sustentavid, GlobalG.A.P. y controles internos requieren registros claros. Con papel, preparar evidencia consume días.',
+    },
+  ],
+  features: [
+    {
+      icon: 'smartphone',
+      title: 'App offline para jefes de campo',
+      description:
+        'Registro de trabajadores, labores, cuarteles, horas y producción desde el celular. Sin señal, la app guarda y sincroniza después.',
+    },
+    {
+      icon: 'bar-chart',
+      title: 'Costo por hectárea en tiempo real',
+      description:
+        'Cada registro alimenta reportes de costo por cuartel, hectárea, labor y temporada para tomar decisiones antes de fin de mes.',
+    },
+    {
+      icon: 'shield',
+      title: 'No reemplaza la contabilidad',
+      description:
+        'Apps del Sur alimenta Rexmas, SAP, QAD o el sistema contable del cliente con datos limpios y listos para procesar.',
+    },
+    {
+      icon: 'layers',
+      title: 'Implementación adaptada a la viña',
+      description:
+        'Se configura con sus cuarteles, variedades, labores, tratos, cuadrillas y reglas de operación reales.',
+    },
+  ],
+  comparison: {
+    title: 'Papel vs Excel vs Apps del Sur',
+    headers: ['Necesidad', 'Papel', 'Excel', 'Apps del Sur'],
+    rows: [
+      ['Registro en terreno', 'Manual y frágil', 'Posterior a la jornada', 'Móvil y offline'],
+      ['Costo por hectárea', 'No disponible', 'Tardío y manual', 'En tiempo real'],
+      ['Trazabilidad', 'Difícil de auditar', 'Parcial', 'Por trabajador, cuartel y labor'],
+      ['Integración contable', 'Transcripción manual', 'Carga manual', 'Datos listos para enviar'],
+      ['Auditorías', 'Carpetas y búsqueda', 'Planillas dispersas', 'Reportes automáticos'],
+    ],
+  },
+  faq: [
+    {
+      q: '¿Sirve para viñas pequeñas de 20 a 50 hectáreas?',
+      a: 'Sí. Es precisamente donde el papel y Excel suelen producir más dependencia de una sola persona. La implementación puede partir con mano de obra y crecer a trazabilidad o reportes.',
+    },
+    {
+      q: '¿Funciona durante poda, vendimia y labores intermedias?',
+      a: 'Sí. Se configura con las labores reales de la viña: poda, desbrote, raleo, cosecha, aplicaciones, mantención y otras actividades propias.',
+    },
+    {
+      q: '¿Se puede financiar con fondos públicos?',
+      a: 'Sí. Dependiendo del tamaño y región, puede postular a SERCOTEC, CORFO o FIA. Apps del Sur ayuda a identificar el instrumento adecuado.',
+    },
+  ],
+  relatedBlogSlugs: [
+    'cuaderno-de-campo-digital-vinas-chile',
+    'costo-mano-de-obra-por-hectarea-vinas-chile',
+    'senales-digitalizar-gestion-mano-obra-vina',
+  ],
+} as const;
+
+export const softwareManoObraVinasPage = {
+  slug: 'software-mano-obra-vinas',
+  url: '/software-mano-obra-vinas-chile',
+  name: 'Software de Mano de Obra para Viñas',
+  meta: {
+    title: 'Software de Mano de Obra para Viñas Chile | Apps del Sur',
+    description:
+      'Software para gestionar mano de obra en viñas chilenas: asistencia, labores, tratos, cuarteles, costos por hectárea y reportes para administración.',
+    keywords:
+      'software mano de obra viñas chile, gestión temporeros viñas, control labores viñedo, costos mano de obra agrícola, software temporeros agrícolas',
+    ogTitle: 'Software de Gestión de Mano de Obra para Viñas',
+    ogDescription:
+      'Controle temporeros, labores, tratos y costos por hectárea desde una app móvil offline conectada a reportes de gerencia.',
+  },
+  hero: {
+    badge: 'Gestión de mano de obra',
+    titleLine1: 'Software para controlar',
+    titleHighlight: 'mano de obra en viñas',
+    description:
+      'Registre asistencia, labores, cuadrillas, tratos y producción desde terreno. Sepa cada día cuánto está costando cada cuartel y qué cuadrilla está rindiendo mejor.',
+  },
+  painPoints: [
+    {
+      icon: 'clock',
+      title: 'Temporeros y cuadrillas cambian todos los días',
+      description:
+        'Sin registro digital, la asistencia y el rendimiento dependen de cuadernos, mensajes y memoria del capataz.',
+    },
+    {
+      icon: 'dollar-sign',
+      title: 'Los tratos se calculan tarde',
+      description:
+        'Cuando el pago por producción se consolida días después, aparecen diferencias, reclamos y ajustes manuales.',
+    },
+    {
+      icon: 'bar-chart',
+      title: 'Gerencia no ve costos a tiempo',
+      description:
+        'La desviación presupuestaria aparece a fin de mes o al cierre de temporada, no cuando aún se puede ajustar.',
+    },
+  ],
+  features: [
+    {
+      icon: 'smartphone',
+      title: 'Asistencia y labores desde terreno',
+      description:
+        'El jefe de campo registra quién trabajó, dónde, en qué labor, cuántas horas y bajo qué modalidad de pago.',
+    },
+    {
+      icon: 'dollar-sign',
+      title: 'Tratos, jornales y rendimiento',
+      description:
+        'Configure reglas de pago por día, hora, trato o unidad de producción según la operación real de la viña.',
+    },
+    {
+      icon: 'bar-chart',
+      title: 'Reportes por trabajador y cuartel',
+      description:
+        'Compare cuadrillas, costos y rendimiento por labor, cuartel y temporada sin reconstruir planillas manualmente.',
+    },
+    {
+      icon: 'shield',
+      title: 'Datos listos para contabilidad',
+      description:
+        'No reemplaza su sistema contable o de remuneraciones. Le entrega datos ordenados para integrarlos o exportarlos.',
+    },
+  ],
+  faq: [
+    {
+      q: '¿Sirve para pagos por trato?',
+      a: 'Sí. El sistema puede configurarse con unidades de trato, tarifas, rendimiento y reglas específicas por labor.',
+    },
+    {
+      q: '¿Puede usarlo un capataz sin experiencia digital?',
+      a: 'Sí. La app se diseña para terreno, con flujos simples, capacitación presencial y operación offline.',
+    },
+    {
+      q: '¿Entrega reportes para administración?',
+      a: 'Sí. Los datos se consolidan en una plataforma web con reportes por trabajador, cuadrilla, labor, cuartel y costo por hectárea.',
+    },
+  ],
+  relatedBlogSlugs: [
+    'costo-mano-de-obra-por-hectarea-vinas-chile',
+    'vendimia-2026-gestion-temporeros-costos',
+    'senales-digitalizar-gestion-mano-obra-vina',
+  ],
+} as const;
+
+export const costoManoObraHectareaPage = {
+  slug: 'costo-mano-obra-hectarea',
+  url: '/costo-mano-obra-hectarea-vinas',
+  name: 'Costo de Mano de Obra por Hectárea',
+  meta: {
+    title: 'Costo de Mano de Obra por Hectárea en Viñas | Apps del Sur',
+    description:
+      'Calcule el costo real de mano de obra por hectárea en viñas. Apps del Sur registra labores, temporeros y cuarteles para mostrar costos en tiempo real.',
+    keywords:
+      'costo mano de obra por hectárea viñas, calcular costo mano de obra viña, costos por cuartel viñedo, gestión costos agrícolas, costos viñas chile',
+    ogTitle: 'Calcule el Costo de Mano de Obra por Hectárea en Viñas',
+    ogDescription:
+      'Deje de esperar al cierre de mes. Con Apps del Sur, cada registro de terreno alimenta costos por hectárea, cuartel y labor.',
+  },
+  hero: {
+    badge: 'Costos agrícolas',
+    titleLine1: 'Calcule el costo real de',
+    titleHighlight: 'mano de obra por hectárea',
+    description:
+      'Si la poda del cuartel 12 costó más de lo presupuestado, debería saberlo durante la semana, no al final del mes. Apps del Sur convierte cada registro de terreno en datos de costo accionables.',
+  },
+  painPoints: [
+    {
+      icon: 'dollar-sign',
+      title: 'El costo aparece cuando ya es tarde',
+      description:
+        'Con papel y Excel, los costos se reconstruyen después. Cuando aparece la desviación, la labor ya terminó.',
+    },
+    {
+      icon: 'layers',
+      title: 'No se compara por cuartel ni labor',
+      description:
+        'Sin datos ordenados, es difícil saber si el problema está en una cuadrilla, un cuartel, una variedad o una modalidad de pago.',
+    },
+    {
+      icon: 'clock',
+      title: 'Administración pierde horas consolidando',
+      description:
+        'La información llega por WhatsApp, papel y planillas. Consolidar costos consume tiempo que podría usarse para decidir.',
+    },
+  ],
+  features: [
+    {
+      icon: 'bar-chart',
+      title: 'Costo por hectárea en tiempo real',
+      description:
+        'Cada registro de trabajo se asigna a cuartel, labor y trabajador. El sistema calcula el costo por hectárea automáticamente.',
+    },
+    {
+      icon: 'layers',
+      title: 'Comparación por cuartel y temporada',
+      description:
+        'Identifique qué cuarteles, labores o cuadrillas están desviándose del presupuesto mientras aún puede ajustar.',
+    },
+    {
+      icon: 'smartphone',
+      title: 'Datos desde el origen',
+      description:
+        'El dato nace en terreno, no en una planilla reconstruida. Eso reduce errores y mejora la confianza en los reportes.',
+    },
+    {
+      icon: 'shield',
+      title: 'Base para financiamiento y ROI',
+      description:
+        'Con costos claros, puede justificar inversión, postular a fondos y demostrar ahorro frente al copago del proyecto.',
+    },
+  ],
+  faq: [
+    {
+      q: '¿Qué necesito para calcular costo por hectárea?',
+      a: 'Necesita registrar trabajador, labor, cuartel, horas o producción, modalidad de pago y superficie asociada. Apps del Sur ordena esos datos desde terreno.',
+    },
+    {
+      q: '¿Puedo partir con una sola labor?',
+      a: 'Sí. Muchas viñas comienzan con poda, vendimia o una labor crítica para probar el modelo de costos y luego amplían el sistema.',
+    },
+    {
+      q: '¿Esto sirve para justificar una inversión con CORFO o FIA?',
+      a: 'Sí. Un diagnóstico de pérdidas y ahorro esperado ayuda a defender el proyecto y mostrar compromiso económico del cliente.',
+    },
+  ],
+  relatedBlogSlugs: [
+    'costo-mano-de-obra-por-hectarea-vinas-chile',
+    'guia-financiamiento-corfo-fia-digitalizacion-agricola-2026',
     'software-agricola-chile-comparativa-2026',
   ],
 } as const;
