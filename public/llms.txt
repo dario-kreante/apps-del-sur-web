@@ -1,25 +1,24 @@
 # Apps del Sur
 
-> Apps del Sur es una empresa chilena de desarrollo de software especializado en gestión de mano de obra agrícola, creada por GYS Activa SpA. A diferencia de sistemas genéricos, cada implementación se adapta 100% a la operación del cliente: cuarteles, variedades, labores, estructura de costos y forma de calcular tratos y sueldos. Atiende viñas, frutícolas y empresas agrícolas en las regiones de O'Higgins, Maule, Ñuble, Biobío y Araucanía (centro-sur de Chile). La plataforma incluye una aplicación web de gestión y una app móvil (cuaderno de campo digital) que funciona offline. Resultados reportados: -70% tiempo administrativo, 100% trazabilidad digital, costos por hectárea en tiempo real. Dos modalidades de venta: compra de licencia con implementación ($8-12M CLP, proyecto de 8-12 semanas) o suscripción mensual ($450K CLP/mes + $2.5M setup). Financiamiento CORFO, FIA y SERCOTEC disponible (50-98% del proyecto según instrumento). La empresa acompaña al cliente en el proceso de postulación a fondos públicos.
+> Apps del Sur es una empresa chilena de desarrollo de software a medida, creada por GYS Activa SpA. Diseña sistemas web, apps móviles, integraciones, automatizaciones e IA aplicada para pymes y empresas del sur de Chile que operan con Excel, papel, WhatsApp o herramientas desconectadas. No es un software genérico ni un producto único: cada implementación se adapta al proceso real del cliente. El cuaderno de campo digital es un módulo/caso agrícola específico; Apps del Sur es la línea de software a medida.
 
 ## Páginas principales
 
-- [Inicio](https://appsdelsur.cl/): Landing page con descripción del producto, sectores atendidos, financiamiento disponible y formulario de contacto
-- [Cuaderno de campo digital](https://appsdelsur.cl/cuaderno-de-campo/): Página principal del producto para reemplazar planillas de papel y Excel en viñas y agrícolas
-- [Cuaderno de campo para viñas](https://appsdelsur.cl/cuaderno-de-campo-vinas-chile/): Página pilar para viñas que necesitan registro móvil offline y trazabilidad de labores
+- [Inicio](https://appsdelsur.cl/): Landing page de software a medida, sectores atendidos, financiamiento disponible y formulario de contacto
+- [Nuestro enfoque](https://appsdelsur.cl/enfoque): Diferencia entre software genérico y software a medida asistido por IA
+- [Claude AI Chile](https://appsdelsur.cl/claude-ai-chile): Consultoría e implementación de Claude AI para pymes chilenas
+- [Sector vitivinícola](https://appsdelsur.cl/sectores/viticola/): Caso de uso agrícola para gestión de mano de obra, labores, cuarteles y costos por hectárea
+- [Cuaderno de campo digital](https://appsdelsur.cl/cuaderno-de-campo/): Módulo/caso de uso agrícola, no definición completa de Apps del Sur
 - [Software de mano de obra para viñas](https://appsdelsur.cl/software-mano-obra-vinas-chile/): Control de temporeros, tratos, labores, cuarteles y costos por hectárea
 - [Costo de mano de obra por hectárea](https://appsdelsur.cl/costo-mano-obra-hectarea-vinas/): Página para calcular y controlar costos por hectárea en viñas
-- [Sector vitivinícola](https://appsdelsur.cl/sectores/viticola/): Solución para gestión de mano de obra, labores, cuarteles y costos por hectárea en viñas
-- [Financiamiento CORFO/FIA/SERCOTEC](https://appsdelsur.cl/#financiamiento): Alternativas de cofinanciamiento público para digitalización agrícola
-- [Claude AI Chile](https://appsdelsur.cl/claude-ai-chile): Consultoría e implementación de Claude AI para pymes chilenas
-- [Demo interactiva](https://demo.appsdelsur.cl/): Demostración funcional de la plataforma web de gestión
+- [Demo interactiva](https://demo.appsdelsur.cl/): Demostración funcional de plataforma web de gestión
 
 ## Blog — Guías y recursos
 
 ### Financiamiento público
 - [Guía: Financiar digitalización agrícola con CORFO y FIA en 2026](https://appsdelsur.cl/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026): Instrumentos disponibles, montos, requisitos y proceso de postulación para viñas y empresas agrícolas
 
-### Gestión de mano de obra
+### Gestión agrícola y mano de obra
 - [Cómo calcular el costo real de mano de obra por hectárea en viñas chilenas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile): Metodología, rangos de referencia y cómo el software permite calcular costos en tiempo real
 - [Vendimia 2026: Cómo gestionar 100+ temporeros sin perder el control de costos](https://appsdelsur.cl/blog/vendimia-2026-gestion-temporeros-costos): Desafíos de la vendimia, control de asistencia, esquemas de pago y costos por hectárea
 - [5 señales de que tu viña necesita digitalizar la gestión de mano de obra](https://appsdelsur.cl/blog/senales-digitalizar-gestion-mano-obra-vina): Problemas comunes con planillas Excel, pérdida de datos y falta de trazabilidad
@@ -36,9 +35,11 @@
 - Contacto: Darío Ramírez — contacto@appsdelsur.cl — +56 9 4526 2335
 - Ubicación: Región del Maule, Chile
 - Área de servicio: O'Higgins, Maule, Ñuble, Biobío, Araucanía
-- Sectores: Vitivinícola, frutícola, agrícola general
-- Producto: Cuaderno de campo digital para gestión de mano de obra agrícola (plataforma web + app móvil offline)
-- Anti-objeción: no reemplaza la contabilidad del cliente; se conecta con ella y entrega datos listos
+- Oferta principal: software a medida para empresas
+- Entregables típicos: plataforma web, app móvil, dashboard, automatizaciones, integraciones e IA aplicada
+- Sectores: agrícola, vitivinícola, frutícola, servicios, pymes operativas
+- Cuaderno de campo digital: módulo/caso agrícola específico asociado a gestión de terreno
+- Apps del Sur: línea de desarrollo de software a medida
 - Precio compra: $8-12M CLP (implementación 8-12 semanas)
 - Precio suscripción: $450K CLP/mes + $2.5M setup
 - Financiamiento: CORFO (50-70%), FIA (80%), SERCOTEC CRECE (98%)

@@ -1,12 +1,12 @@
 export const siteConfig = {
-  title: 'Cuaderno de Campo Digital para Viñas Chile | Apps del Sur',
+  title: 'Software a Medida para Empresas del Sur de Chile | Apps del Sur',
   description:
-    'Cuaderno de campo digital para viñas del centro-sur de Chile. Reemplace planillas de papel y Excel, registre labores offline y vea costos por hectárea en tiempo real. No reemplaza su contabilidad: se conecta con ella.',
+    'Software a medida para empresas del sur de Chile. Apps del Sur desarrolla sistemas web, apps móviles e integraciones adaptadas a operaciones agrícolas, servicios y pymes.',
   keywords:
-    'cuaderno de campo digital, cuaderno de campo viñas chile, software mano de obra viñas, costo por hectárea viñas, gestión temporeros viñas, software agrícola Chile, app agrícola offline, Apps del Sur, Maule, O\'Higgins, Ñuble',
-  ogTitle: 'Apps del Sur — Cuaderno de Campo Digital para Viñas',
+    'software a medida Chile, desarrollo software a medida, software para pymes Chile, aplicaciones web a medida, apps móviles empresas Chile, automatización procesos, software agrícola Chile, Apps del Sur, Maule, O\'Higgins, Ñuble',
+  ogTitle: 'Apps del Sur — Software a Medida para Empresas del Sur de Chile',
   ogDescription:
-    'App móvil offline para registrar trabajadores, cuarteles y labores en terreno. Costos por hectárea en tiempo real, trazabilidad y datos listos para su contabilidad.',
+    'Diseñamos y desarrollamos sistemas web, apps móviles e integraciones a medida para empresas que ya no pueden seguir operando con Excel, papel y WhatsApp.',
   canonical: 'https://appsdelsur.cl',
 } as const;
 
@@ -19,69 +19,69 @@ export const navItems = [
 ] as const;
 
 export const hero = {
-  badge: 'Cuaderno de campo digital · Viñas · Centro-sur de Chile',
-  titleLine1: 'Cuaderno de campo digital para',
-  titleHighlight: 'viñas del centro-sur de Chile',
+  badge: 'Software a medida · IA aplicada · Empresas del sur de Chile',
+  titleLine1: 'Software a medida para',
+  titleHighlight: 'empresas que operan en terreno',
   description:
-    'Reemplace planillas de papel y Excel por una app móvil que funciona sin señal. Registre trabajadores, cuarteles y labores en terreno, y vea costos por hectárea en tiempo real. No reemplaza su contabilidad: se conecta con ella y le envía los datos listos.',
-  ctaPrimary: 'Calcular mi costo por hectárea',
+    'Creamos sistemas web, apps móviles e integraciones para pymes que gestionan operaciones reales con planillas, papel y WhatsApp. No vendemos un software genérico: construimos una solución adaptada a su proceso, su equipo y su forma de trabajar.',
+  ctaPrimary: 'Diagnosticar mi operación',
   ctaPrimaryHref: '#contacto',
-  ctaSecondary: 'Ver cuaderno de campo',
-  ctaSecondaryHref: '/cuaderno-de-campo',
+  ctaSecondary: 'Ver enfoque a medida',
+  ctaSecondaryHref: '/enfoque',
   subtext:
-    'Diagnóstico gratuito · App offline para terreno · Financiamiento CORFO/FIA/SERCOTEC disponible',
+    'Diagnóstico gratuito · Desarrollo asistido por IA · Financiamiento CORFO/FIA/SERCOTEC disponible',
 } as const;
 
 export const metrics = [
-  { value: '-70%', label: 'Tiempo de registro' },
-  { value: '$/ha', label: 'Costo por hectárea' },
-  { value: '100%', label: 'Trazabilidad en terreno' },
-  { value: 'Offline', label: 'Funciona sin señal' },
+  { value: '8-12', label: 'Semanas de implementación' },
+  { value: '100%', label: 'Adaptado a su proceso' },
+  { value: 'Web + App', label: 'Sistemas integrados' },
+  { value: 'IA', label: 'Desarrollo acelerado' },
 ] as const;
 
 export const features = {
-  label: 'Cuaderno de campo digital',
-  title: 'Del cuaderno de papel al costo por hectárea en tiempo real',
+  label: 'Software a medida',
+  title: 'Sistemas construidos alrededor de su operación real',
   description:
-    'Apps del Sur es una herramienta de terreno para registrar labores, asistencia y costos desde el celular. Alimenta sus sistemas contables actuales; no intenta reemplazarlos.',
+    'Apps del Sur desarrolla software para empresas que necesitan ordenar procesos críticos sin forzar su operación dentro de un sistema estándar.',
   items: [
     {
       icon: 'bar-chart',
-      title: 'Costos por hectárea en tiempo real',
+      title: 'Procesos convertidos en datos',
       description:
-        'Sepa cuánto costó la poda, el desbrote o la vendimia por cuartel y hectárea mientras la temporada sigue en curso.',
+        'Transformamos registros dispersos en indicadores útiles para tomar decisiones: costos, avance, productividad, cumplimiento y trazabilidad.',
       highlight: true,
     },
     {
       icon: 'smartphone',
-      title: 'Registro móvil offline',
+      title: 'Aplicaciones web y móviles',
       description:
-        'El jefe de campo registra trabajadores, labores, cuarteles y producción desde el celular, incluso sin señal.',
+        'Construimos paneles web para administración y apps móviles para equipos en terreno, incluyendo modo offline cuando la operación lo requiere.',
       highlight: true,
     },
     {
       icon: 'clock',
-      title: '70% menos tiempo administrativo',
+      title: 'Automatización administrativa',
       description:
-        'Automatiza la consolidación de datos que hoy toma días. Reportes listos al instante para gerencia y contabilidad.',
+        'Reducimos doble digitación, errores manuales y horas perdidas consolidando información desde Excel, correos, WhatsApp o papel.',
     },
     {
       icon: 'layers',
-      title: 'Trazabilidad completa',
+      title: 'Integración con sistemas existentes',
       description:
-        'Registro digital 100% trazable por trabajador, área y actividad. Ideal para auditorías, certificaciones y cumplimiento normativo.',
+        'El software puede conectarse con ERP, contabilidad, RRHH, planillas o herramientas internas. No obliga a partir desde cero.',
     },
     {
       icon: 'shield',
-      title: 'Cumplimiento normativo',
+      title: 'Trazabilidad y control',
       description:
-        'Genera automáticamente los registros que exige la normativa laboral chilena y los estándares de su industria.',
+        'Cada acción relevante queda registrada con responsable, fecha, estado e historial para auditorías, operación y gestión interna.',
     },
     {
       icon: 'sparkle',
-      title: 'Implementación a medida con IA',
+      title: 'Desarrollo asistido por IA',
       description:
-        'Adaptamos el sistema a sus cuarteles, labores, tratos e integraciones. La IA acelera el desarrollo; el foco sigue siendo la operación agrícola.',
+        'Usamos Claude AI para acelerar análisis, desarrollo y pruebas. La IA reduce plazos; la solución sigue siendo diseñada para su negocio.',
       highlight: true,
     },
   ],
@@ -89,15 +89,15 @@ export const features = {
 
 export const solutions = {
   label: 'Soluciones',
-  title: 'Software de terreno para operaciones agrícolas',
+  title: 'Software a medida para operaciones que no calzan en un sistema genérico',
   description:
-    'Partimos por el problema crítico: registrar bien lo que ocurre en terreno. Desde ahí se calculan costos, trazabilidad y reportes para gerencia y contabilidad.',
+    'Atendemos empresas del centro-sur de Chile que necesitan digitalizar procesos operativos, administrativos o comerciales sin perder su forma propia de trabajar.',
   items: [
     {
       icon: 'grape',
-      name: 'Viñas y agrícolas',
+      name: 'Agro, viñas y terreno',
       description:
-        'Cuaderno de campo digital, gestión de mano de obra, trazabilidad y costos por hectárea para viñas, frutícolas y agrícolas.',
+        'Sistemas a medida para mano de obra, cuaderno de campo, trazabilidad, costos por hectárea y reportes agrícolas. Es un caso de uso dentro de Apps del Sur, no la definición completa de la marca.',
       href: '/sectores/viticola',
     },
     {
@@ -118,41 +118,41 @@ export const solutions = {
   whyLocalTitle: '¿Por qué elegir un software local?',
   checklist: [
     'Soporte técnico en español, en tu zona horaria',
-    'Entendemos la normativa laboral chilena',
-    'Configurado para las operaciones reales de tu industria',
-    'No reemplaza su contabilidad: se conecta con Rexmas, SAP, QAD o su sistema actual',
-    'Capacitación presencial para equipos en terreno',
+    'Levantamiento directo de procesos con el equipo que usa el sistema',
+    'Configurado para las operaciones reales de su industria',
+    'No reemplaza sus sistemas actuales: puede conectarse con ellos',
+    'Capacitación presencial o remota para usuarios reales',
     'Financiamiento con fondos CORFO, FIA y SERCOTEC',
   ],
 } as const;
 
 export const process = {
   label: 'Cómo trabajamos',
-  title: 'De planillas en papel a datos en tiempo real',
+  title: 'De proceso manual a software operativo',
   steps: [
     {
       step: '01',
-      title: 'Diagnóstico de terreno',
+      title: 'Diagnóstico del proceso',
       description:
-        'Revisamos cómo registra hoy asistencia, labores, cuarteles, tratos y costos. Identificamos dónde se pierde tiempo y dinero.',
+        'Mapeamos cómo trabaja hoy su equipo: planillas, formularios, aprobaciones, reportes, responsables, puntos de dolor y decisiones críticas.',
     },
     {
       step: '02',
-      title: 'Configuración del cuaderno digital',
+      title: 'Diseño de la solución',
       description:
-        'Cargamos sus cuarteles, labores, trabajadores, modalidades de pago y estructura de costos. La app queda adaptada a su operación real.',
+        'Definimos módulos, pantallas, flujos, roles, datos e integraciones. Priorizamos lo que genera impacto operativo primero.',
     },
     {
       step: '03',
-      title: 'Capacitación en campo',
+      title: 'Desarrollo e implementación',
       description:
-        'Capacitamos a jefes de campo, capataces y administración para registrar en terreno y revisar costos por hectárea sin depender de planillas.',
+        'Construimos el sistema con ciclos cortos de validación. Puede incluir plataforma web, app móvil, automatizaciones e integraciones.',
     },
     {
       step: '04',
-      title: 'Integración y reportes',
+      title: 'Capacitación y mejora continua',
       description:
-        'Exportamos datos listos para contabilidad y sistemas existentes. El sistema crece con módulos de trazabilidad, certificaciones e IA cuando los necesite.',
+        'Capacitamos usuarios, medimos adopción y dejamos una base preparada para crecer con nuevos módulos, reportes o IA aplicada.',
     },
   ],
 } as const;
@@ -236,10 +236,10 @@ export const faq = {
 } as const;
 
 export const contactCTA = {
-  title: 'Calcule cuánto le cuesta hoy el registro en papel',
+  title: 'Convierta su proceso manual en software a medida',
   description:
-    'Solicite un diagnóstico gratuito y vea cuánto puede ahorrar al pasar del cuaderno de papel al costo por hectárea en tiempo real.',
-  ctaPrimary: 'Solicitar diagnóstico de costos',
+    'Solicite un diagnóstico gratuito. Revisamos su operación actual y proponemos una solución concreta, financiable y construida por etapas.',
+  ctaPrimary: 'Solicitar diagnóstico',
   ctaPrimaryHref: '#contact-form',
   ctaWhatsApp: 'Contactar por WhatsApp',
   whatsappUrl:
@@ -249,9 +249,9 @@ export const contactCTA = {
 } as const;
 
 export const contactForm = {
-  title: 'Solicite su diagnóstico gratuito de costos',
+  title: 'Solicite su diagnóstico gratuito',
   description:
-    'Cuéntenos cómo registra hoy labores, temporeros y cuarteles. Le contactaremos en menos de 24 horas.',
+    'Cuéntenos qué proceso quiere digitalizar, qué herramientas usa hoy y dónde se pierde más tiempo. Le contactaremos en menos de 24 horas.',
   fields: {
     name: 'Nombre completo',
     email: 'Correo electrónico',
@@ -285,9 +285,9 @@ export const contactForm = {
 
 export const claudePartner = {
   badge: 'Potenciado por IA',
-  title: 'Desarrollo asistido por IA, enfocado en terreno',
+  title: 'Desarrollo asistido por IA para software a medida',
   description:
-    'Usamos Claude AI para acelerar el desarrollo y adaptar Apps del Sur a cada operación agrícola. La promesa principal no es la IA: es que el jefe de campo registre bien y gerencia vea costos reales.',
+    'Usamos Claude AI para acelerar diagnóstico, arquitectura, desarrollo y pruebas. La promesa principal no es la IA: es entregar software útil, personalizado y viable para pymes chilenas.',
   bullets: [
     'Entregar software custom en semanas, no meses',
     'Ofrecer desarrollo a medida a precio accesible',
@@ -310,7 +310,7 @@ export const footer = {
   companyName: 'Apps del Sur',
   companyLegal: 'GYS Activa SpA',
   tagline:
-    'Cuaderno de campo digital para viñas y agrícolas del centro-sur de Chile. Registro offline, trazabilidad y costos por hectárea en tiempo real.',
+    'Software a medida para empresas del sur de Chile. Sistemas web, apps móviles, automatización e IA aplicada.',
   copyright:
     '© 2026 Apps del Sur — GYS Activa SpA. Todos los derechos reservados.',
   madeIn: 'Software hecho en Chile',
