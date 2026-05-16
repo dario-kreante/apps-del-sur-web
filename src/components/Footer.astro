@@ -1,6 +1,6 @@
 ---
 import { footer } from '../data/content';
-import Logo from './Logo.astro';
+import LogoLockup from './LogoLockup.astro';
 import ArrowRight from './icons/ArrowRight.astro';
 ---
 
@@ -9,11 +9,8 @@ import ArrowRight from './icons/ArrowRight.astro';
     <div class="grid md:grid-cols-5 gap-10 mb-10">
       <!-- Company Info -->
       <div class="md:col-span-2">
-        <div class="flex items-center gap-2.5 mb-4">
-          <Logo size={36} />
-          <span class="font-bold text-white text-[15px] tracking-tight">
-            {footer.companyName}
-          </span>
+        <div class="mb-4">
+          <LogoLockup variant="light" class="h-16 w-[176px]" />
         </div>
         <p class="text-sm leading-relaxed mb-4">{footer.tagline}</p>
         <p class="text-xs text-gray-500">

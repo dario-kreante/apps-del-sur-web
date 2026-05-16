@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import Logo from '../../components/Logo.astro';
+import LogoLockup from '../../components/LogoLockup.astro';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -15,9 +15,8 @@ const posts = (await getCollection('blog')).sort(
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
     <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5" aria-label="Apps del Sur — Inicio">
-        <Logo size={36} />
-        <span class="font-bold text-emerald-950 text-[15px] tracking-tight">Apps del Sur</span>
+      <a href="/" class="flex items-center shrink-0" aria-label="Apps del Sur — Inicio">
+        <LogoLockup class="h-12 w-[132px] sm:w-[148px]" />
       </a>
       <nav class="flex items-center gap-4">
         <a href="/blog" class="text-sm text-emerald-700 font-medium transition-colors">Blog</a>
