@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+
+const title = 'Servicios de consultoría e implementación de IA para pymes chilenas';
+const description = 'Tres servicios para implementar el framework Apps del Sur: workshop de 1 día, sprint de diagnóstico con postulación a fondos públicos, y acompañamiento estratégico de 6-12 meses. CORFO, FIA y SERCOTEC.';
+
+const services = [
+  {
+    slug: 'workshop-brujula-ia',
+    badge: 'WORKSHOP',
+    title: 'Brújula IA',
+    subtitle: 'Workshop intensivo de 1 día',
+    description: 'Tu equipo directivo sale con la matriz de madurez de su empresa, 3 quick wins identificados y un plan de 90 días para empezar a moverse. Hecho en formato taller, no presentación.',
+    duration: '1 día (8 horas)',
+    price: '$800K – $1,5M CLP',
+    subsidy: 'Gasto operativo (no subsidiable)',
+    target: 'Equipos directivos en Etapa 1-2 que recién están explorando IA',
+    color: 'amber',
+  },
+  {
+    slug: 'sprint-diagnostico-postulacion-fondos',
+    badge: 'CONSULTORÍA',
+    title: 'Sprint Diagnóstico + Postulación a Fondo',
+    subtitle: '4 a 6 semanas',
+    description: 'Aplicamos el framework completo en tu empresa, construimos el business case en CLP y dejamos lista la postulación al fondo público que aplica (Kit Digital, SERCOTEC, CORFO o FIA). Parte de la tarifa es success-based.',
+    duration: '4 a 6 semanas',
+    price: '$2,5M – $5M CLP',
+    subsidy: 'Parte success-based al adjudicar el fondo',
+    target: 'Pymes Etapa 2-3 listas para invertir y postular',
+    color: 'emerald',
+    featured: true,
+  },
+  {
+    slug: 'acompanamiento-copiloto-estrategico',
+    badge: 'IMPLEMENTACIÓN',
+    title: 'Copiloto Estratégico',
+    subtitle: 'Acompañamiento de 6 a 12 meses',
+    description: 'Implementamos el roadmap completo: integración con proveedores tecnológicos, gestión del cambio, capacitación al equipo, medición trimestral del ROI. Trabajamos como tu equipo de transformación, sin que tengas que contratar gente interna.',
+    duration: '6 a 12 meses',
+    price: '$8M – $25M CLP',
+    subsidy: '60-80% financiable con CORFO o FIA',
+    target: 'Pymes con fondo aprobado o capacidad propia de inversión',
+    color: 'teal',
+  },
+];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Servicios Apps del Sur',
+  description,
+  itemListElement: services.map((s, i) => ({
+    '@type': 'Service',
+    position: i + 1,
+    name: s.title,
+    description: s.description,
+    provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' },
+    areaServed: { '@type': 'Country', name: 'Chile' },
+    url: `https://appsdelsur.cl/servicios/${s.slug}/`,
+  })),
+});
+---
+
+<Layout title={`${title} | Apps del Sur`} description={description}>
+  <script type="application/ld+json" set:html={jsonLd} />
+  <Header />
+
+  <main id="main-content" class="pt-24 pb-16">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700">Inicio</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">Servicios</span>
+      </nav>
+
+      <div class="max-w-3xl mb-12">
+        <span class="inline-block text-xs font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full mb-4">3 servicios · 1 framework</span>
+        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">Tres formas de implementar el framework Apps del Sur en tu pyme</h1>
+        <p class="text-lg text-gray-600 leading-relaxed">Workshop intensivo para alinear al equipo directivo. Sprint de consultoría que termina con la postulación al fondo público. Acompañamiento estratégico para ejecutar el roadmap completo. Cada servicio se conecta con el siguiente — entras por donde tu pyme lo necesita.</p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="/diagnostico-madurez-ia/" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm text-sm">¿No sabes por dónde empezar? Toma el diagnóstico (6 min) →</a>
+          <a href="/blog/framework-ia-pymes-chile/" class="text-emerald-700 border border-gray-200 hover:bg-emerald-50 font-medium px-5 py-2.5 rounded-full transition-colors text-sm">Conocer el framework</a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        {services.map((s) => (
+          <a href={`/servicios/${s.slug}/`} class={`group block bg-white border-2 ${s.featured ? 'border-emerald-600 shadow-md' : 'border-gray-200'} rounded-2xl p-6 hover:shadow-lg hover:border-emerald-400 transition-all relative`}>
+            {s.featured && (
+              <span class="absolute -top-3 right-4 bg-emerald-600 text-white text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full shadow-sm">Recomendado</span>
+            )}
+            <span class={`inline-block text-xs font-bold tracking-wider uppercase mb-3 px-2.5 py-1 rounded-full ${s.color === 'amber' ? 'text-amber-700 bg-amber-50' : s.color === 'emerald' ? 'text-emerald-700 bg-emerald-50' : 'text-teal-700 bg-teal-50'}`}>{s.badge}</span>
+            <h2 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-emerald-700 transition-colors">{s.title}</h2>
+            <p class="text-sm font-medium text-gray-500 mb-3">{s.subtitle}</p>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">{s.description}</p>
+            <dl class="space-y-1.5 text-xs mb-5">
+              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Duración</dt><dd class="text-gray-700 font-medium">{s.duration}</dd></div>
+              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Inversión</dt><dd class="text-gray-700 font-medium">{s.price}</dd></div>
+              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Subsidio</dt><dd class="text-gray-700">{s.subsidy}</dd></div>
+              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Para</dt><dd class="text-gray-700">{s.target}</dd></div>
+            </dl>
+            <span class="inline-flex items-center gap-1.5 text-emerald-700 font-semibold text-sm group-hover:gap-2 transition-all">
+              Ver detalle <span aria-hidden="true">→</span>
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-7 mb-12">
+        <h2 class="text-2xl font-bold text-emerald-900 mb-3">¿Cuál servicio necesita tu pyme?</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">Los tres servicios se alimentan entre sí. La mayoría de nuestros clientes empieza con Workshop o Sprint, y avanzan a Copiloto cuando el fondo está aprobado. Pero también puedes entrar directo al servicio que mejor calza con tu situación actual.</p>
+        <ul class="space-y-2 text-gray-700 text-sm leading-relaxed">
+          <li><strong class="text-emerald-700">→ Si estás explorando IA y no sabes por dónde empezar:</strong> Workshop "Brújula IA"</li>
+          <li><strong class="text-emerald-700">→ Si ya tienes claridad y quieres acceder a un fondo público:</strong> Sprint Diagnóstico + Postulación</li>
+          <li><strong class="text-emerald-700">→ Si ya tienes fondo aprobado o presupuesto y quieres ejecutar:</strong> Copiloto Estratégico</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <ContactCTA />
+  <Footer />
+</Layout>

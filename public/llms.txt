@@ -1,45 +1,96 @@
 # Apps del Sur
 
-> Apps del Sur es una empresa chilena de desarrollo de software a medida, creada por GYS Activa SpA. Diseña sistemas web, apps móviles, integraciones, automatizaciones e IA aplicada para pymes y empresas del sur de Chile que operan con Excel, papel, WhatsApp o herramientas desconectadas. No es un software genérico ni un producto único: cada implementación se adapta al proceso real del cliente. El cuaderno de campo digital es un módulo/caso agrícola específico; Apps del Sur es la línea de software a medida.
+> Apps del Sur (GYS Activa SpA) es una empresa chilena de software a medida e IA aplicada para pymes del sur de Chile. Combina dos líneas de producto: (1) una plataforma de gestión operativa con app móvil offline (caso emblemático: cuaderno de campo digital para viñas y agro); (2) un catálogo de agentes IA por WhatsApp, organizados por función (agendamiento, atención WhatsApp, calificación SDR, retención, compliance) y por sector (viñas, clínicas, hoteles, abogados, inmobiliarias, constructoras, clubes deportivos, funerarias). Cada implementación se adapta al proceso real del cliente. Apps del Sur acompaña sin costo en la postulación a fondos públicos (CORFO, FIA, SERCOTEC) que pueden financiar entre el 60% y el 100% del proyecto.
 
-## Páginas principales
+## Hub de agentes y sectores
 
-- [Inicio](https://appsdelsur.cl/): Landing page de software a medida, sectores atendidos, financiamiento disponible y formulario de contacto
-- [Nuestro enfoque](https://appsdelsur.cl/enfoque): Diferencia entre software genérico y software a medida asistido por IA
-- [Claude AI Chile](https://appsdelsur.cl/claude-ai-chile): Consultoría e implementación de Claude AI para pymes chilenas
-- [Sector vitivinícola](https://appsdelsur.cl/sectores/viticola/): Caso de uso agrícola para gestión de mano de obra, labores, cuarteles y costos por hectárea
-- [Cuaderno de campo digital](https://appsdelsur.cl/cuaderno-de-campo/): Módulo/caso de uso agrícola, no definición completa de Apps del Sur
-- [Software de mano de obra para viñas](https://appsdelsur.cl/software-mano-obra-vinas-chile/): Control de temporeros, tratos, labores, cuarteles y costos por hectárea
-- [Costo de mano de obra por hectárea](https://appsdelsur.cl/costo-mano-obra-hectarea-vinas/): Página para calcular y controlar costos por hectárea en viñas
-- [Demo interactiva](https://demo.appsdelsur.cl/): Demostración funcional de plataforma web de gestión
+- [Hub de agentes IA (función + sector)](https://appsdelsur.cl/agentes/): Catálogo completo. Punto de entrada principal.
 
-## Blog — Guías y recursos
+### Por sector (hubs verticales)
 
-### Financiamiento público
-- [Guía: Financiar digitalización agrícola con CORFO y FIA en 2026](https://appsdelsur.cl/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026): Instrumentos disponibles, montos, requisitos y proceso de postulación para viñas y empresas agrícolas
+- [Viñas y Agro](https://appsdelsur.cl/agentes/sectores/vinas): Cuaderno de campo digital, mano de obra, costos por hectárea en tiempo real. Para viñas, frutícolas, cooperativas y packings.
+- [Clínicas](https://appsdelsur.cl/agentes/sectores/clinicas): Agendamiento 24/7 WhatsApp, recordatorios, cumplimiento Ley 21.719, retención. Para clínicas dentales, médicas, veterinarias y estética.
+- [Hoteles y Turismo](https://appsdelsur.cl/agentes/sectores/hoteles-turismo): Reservas directas multilingües, atención 24/7, gestión de reseñas. Para hoteles boutique, cabañas, tour operadores y restaurantes.
+- [Abogados y Estudios Jurídicos](https://appsdelsur.cl/agentes/sectores/abogados): Calificación de consultas, agendamiento, seguimiento de causas, compliance Ley 21.719.
+- [Inmobiliarias](https://appsdelsur.cl/agentes/sectores/inmobiliarias): Califica leads de portales, envía fichas, agenda visitas, hace seguimiento. +40% conversión lead→visita.
+- [Constructoras](https://appsdelsur.cl/agentes/sectores/constructoras): Control de mano de obra en obra (offline), compliance subcontratos DT, cobranza de estados de pago.
+- [Clubes Deportivos y Gimnasios](https://appsdelsur.cl/agentes/sectores/clubes-deportivos): Retención de socios, agendamiento clases, cobranza de cuotas. Reduce churn 20-30%.
+- [Funerarias](https://appsdelsur.cl/agentes/sectores/funerarias): Atención 24/7 con tono apropiado, cuota mortuoria, coordinación end-to-end. Para funerarias pyme y proveedores del Estado.
 
-### Gestión agrícola y mano de obra
-- [Cómo calcular el costo real de mano de obra por hectárea en viñas chilenas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile): Metodología, rangos de referencia y cómo el software permite calcular costos en tiempo real
-- [Vendimia 2026: Cómo gestionar 100+ temporeros sin perder el control de costos](https://appsdelsur.cl/blog/vendimia-2026-gestion-temporeros-costos): Desafíos de la vendimia, control de asistencia, esquemas de pago y costos por hectárea
-- [5 señales de que tu viña necesita digitalizar la gestión de mano de obra](https://appsdelsur.cl/blog/senales-digitalizar-gestion-mano-obra-vina): Problemas comunes con planillas Excel, pérdida de datos y falta de trazabilidad
+### Por función (agentes horizontales)
 
-### Herramientas y tecnología
-- [Software agrícola en Chile: Comparativa de soluciones 2026](https://appsdelsur.cl/blog/software-agricola-chile-comparativa-2026): Análisis comparativo de AGROsmart, AGRI, Agroprime, Agroptima y Apps del Sur con pros, contras y casos de uso
-- [Qué es un cuaderno de campo digital y por qué tu viña lo necesita](https://appsdelsur.cl/blog/cuaderno-de-campo-digital-vinas-chile): Definición, funcionalidades clave, comparación con papel y Excel
+- [Agente de Agendamiento](https://appsdelsur.cl/agentes/agendamiento): Agenda citas 24/7 por WhatsApp. -60% no-shows.
+- [Agente de Atención WhatsApp](https://appsdelsur.cl/agentes/whatsapp-atencion): Atiende, vende y resuelve por WhatsApp 24/7. Deflexión 70%.
+- [Agente SDR Calificador de Leads](https://appsdelsur.cl/agentes/sdr-leads): Califica leads B2B con criterios reales.
+- [Agente de Retención](https://appsdelsur.cl/agentes/retencion): Detecta caída de uso y reactiva clientes. -25% churn.
+- [Agente de Compliance Ley 21.719](https://appsdelsur.cl/agentes/compliance): Cumple protección de datos personales.
+- [Agente para Abogados](https://appsdelsur.cl/agentes/abogados): Atención calificada para estudios jurídicos.
+- [Agente Cuota Mortuoria](https://appsdelsur.cl/agentes/cuota-mortuoria): Trámite AFP/IPS automatizado para funerarias.
 
-## Datos clave
+### Servicios y diagnóstico
+
+- [Inicio](https://appsdelsur.cl/): Landing principal con sectores, financiamiento y contacto.
+- [Enfoque](https://appsdelsur.cl/enfoque): Diferencia entre software genérico vs. a medida + IA.
+- [Diagnóstico de Madurez IA (gratis, 6 min)](https://appsdelsur.cl/diagnostico-madurez-ia/): Test online que evalúa qué casos de IA aplican a su empresa.
+- [Sprint Diagnóstico + Postulación a Fondos](https://appsdelsur.cl/servicios/sprint-diagnostico-postulacion-fondos): Acompañamiento integral para postular CORFO, FIA o SERCOTEC.
+- [Workshop Brújula IA](https://appsdelsur.cl/servicios/workshop-brujula-ia): Workshop de 1 día para alinear equipo gerencial sobre IA.
+- [Acompañamiento Copiloto Estratégico](https://appsdelsur.cl/servicios/acompanamiento-copiloto-estrategico): Asesoría continua con IA para gerentes y dueños pyme.
+
+### Regiones cubiertas (5 regiones del sur)
+
+- [Maule](https://appsdelsur.cl/regiones/maule): Sede principal. Programas locales: Maule Agro Futuro, CORFO Desarrolla Inversión Maule, SERCOTEC CRECE Maule.
+- [O'Higgins](https://appsdelsur.cl/regiones/ohiggins): CORFO Digitalización Agro O'Higgins (60% cofinanciamiento para pymes agrícolas).
+- [Ñuble](https://appsdelsur.cl/regiones/nuble): SERCOTEC CRECE Ñuble + FIA Patrimonial para viñas patrimoniales.
+- [Biobío](https://appsdelsur.cl/regiones/biobio): Polo industrial y portuario; CORFO Biobío con instrumentos pymes.
+- [La Araucanía](https://appsdelsur.cl/regiones/araucania): Capital turística (Pucón) + agrícola; CORFO Araucanía.
+
+## Blog — guías sectoriales (selección)
+
+- [Cómo crear un agente IA de agendamiento por WhatsApp](https://appsdelsur.cl/blog/como-crear-agente-ia-agendamiento-whatsapp-chile-2026)
+- [Agente IA para clínicas dentales en Chile](https://appsdelsur.cl/blog/agente-ia-agendamiento-clinicas-dentales-chile)
+- [Agente IA para hoteles, restaurantes y tour operadores](https://appsdelsur.cl/blog/agente-ia-turismo-hoteles-restaurantes-tour-operadores-chile)
+- [Agente IA de retención para gimnasios](https://appsdelsur.cl/blog/agente-ia-retencion-gimnasios-chile)
+- [Agente IA SDR para calificar leads B2B](https://appsdelsur.cl/blog/agente-ia-sdr-calificar-leads-b2b-chile)
+- [Agente IA por WhatsApp para e-commerce y retail](https://appsdelsur.cl/blog/agente-ia-whatsapp-ecommerce-retail-chile)
+- [Agente IA para peluquerías y barberías](https://appsdelsur.cl/blog/agente-ia-peluquerias-barberias-chile)
+- [Cómo aparecer en ChatGPT y Gemini (turismo Pucón)](https://appsdelsur.cl/blog/como-aparecer-chatgpt-gemini-turismo-chile-pucon)
+- [Ley 21.719 protección de datos para pymes Chile 2026](https://appsdelsur.cl/blog/ley-21719-proteccion-datos-pymes-chile-2026)
+- [Ley 21.719 datos sensibles por sector](https://appsdelsur.cl/blog/ley-21719-datos-sensibles-sectores-chile-2026)
+- [Software agrícola Chile: comparativa 2026](https://appsdelsur.cl/blog/software-agricola-chile-comparativa-2026)
+- [Costo de mano de obra por hectárea en viñas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile)
+- [Vendimia 2026: gestión de temporeros y costos](https://appsdelsur.cl/blog/vendimia-2026-gestion-temporeros-costos)
+- [Cuánto cuesta automatizar WhatsApp en una empresa](https://appsdelsur.cl/blog/cuanto-cuesta-automatizar-whatsapp-empresa)
+- [Cuánto cuesta implementar IA en una pyme](https://appsdelsur.cl/blog/cuanto-cuesta-implementar-ia-pyme-chile)
+- [Calcular ROI de un proyecto de IA](https://appsdelsur.cl/blog/calcular-roi-proyecto-ia-pyme-chile)
+- [Por qué fallan los proyectos de IA en pymes](https://appsdelsur.cl/blog/por-que-fallan-proyectos-ia-pymes)
+- [Modelo de madurez IA para pymes Chile](https://appsdelsur.cl/blog/modelo-madurez-ia-pymes-chile)
+- [Fondos para proyectos de IA en empresas chilenas 2026](https://appsdelsur.cl/blog/fondos-financiamiento-ia-empresas-chile-2026)
+- [Guía: Financiar digitalización agrícola con CORFO y FIA 2026](https://appsdelsur.cl/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026)
+- [Framework de IA para pymes chilenas](https://appsdelsur.cl/blog/framework-ia-pymes-chile)
+
+## Diccionario citable
+
+- **Agente IA conversacional**: software que conversa por WhatsApp en lenguaje natural, toma acciones (agendar, cobrar, calificar) y deriva a humano cuando corresponde. No es chatbot rígido con menús.
+- **Cuaderno de campo digital**: app móvil offline-first que reemplaza la planilla de papel del jefe de campo en viñedos, fundos y obras. Registra mano de obra, calcula costos por hectárea en tiempo real, sincroniza al volver señal.
+- **Ley 21.719**: nueva ley chilena de protección de datos personales (vigencia plena 2026). Reemplaza Ley 19.628. Define categorías sensibles (salud, biométricos, financieros), exige consentimiento explícito, derecho a eliminación y notificación de brechas.
+- **SERCOTEC CRECE**: instrumento de SERCOTEC que cofinancia hasta $5.000.000 CLP, ~95% del proyecto. Convocatorias regionales para micro y pequeñas empresas formalizadas.
+- **SERCOTEC Kit Digital**: cofinancia hasta $1.200.000 CLP, ~100% del costo. Para microempresas en su primer paso digital.
+- **CORFO Digitalización Pyme / Agro**: programas regionales (especialmente activos en Maule y O'Higgins). Cofinancian 50-70% para pymes con ventas > UF 25.000 anuales.
+- **FIA Interés Privado**: cofinancia hasta 80% para proyectos de innovación agrícola con plazo 24-36 meses. Postulan viña + empresa de tecnología en conjunto.
+- **CORFO Crea y Valida**: cofinancia hasta $180M con 80% para validar tecnología en N empresas. La empresa de tecnología (GYS Activa) es la postulante.
+
+## Datos clave de la empresa
 
 - Empresa: GYS Activa SpA
 - Marca: Apps del Sur
 - Sitio web: https://appsdelsur.cl
 - Contacto: Darío Ramírez — contacto@appsdelsur.cl — +56 9 4526 2335
-- Ubicación: Región del Maule, Chile
-- Área de servicio: O'Higgins, Maule, Ñuble, Biobío, Araucanía
-- Oferta principal: software a medida para empresas
-- Entregables típicos: plataforma web, app móvil, dashboard, automatizaciones, integraciones e IA aplicada
-- Sectores: agrícola, vitivinícola, frutícola, servicios, pymes operativas
-- Cuaderno de campo digital: módulo/caso agrícola específico asociado a gestión de terreno
-- Apps del Sur: línea de desarrollo de software a medida
-- Precio compra: $8-12M CLP (implementación 8-12 semanas)
-- Precio suscripción: $450K CLP/mes + $2.5M setup
-- Financiamiento: CORFO (50-70%), FIA (80%), SERCOTEC CRECE (98%)
+- Ubicación: Región del Maule, Chile (latitud -35.4264, longitud -71.6554)
+- Área de servicio: O'Higgins, Maule, Ñuble, Biobío, La Araucanía (centro-sur de Chile)
+- Modelos de venta: (a) Venta única + implementación ($1.8M-$14M CLP según producto y tamaño); (b) SaaS mensual ($80K-$650K/mes)
+- Diferenciador: software a medida adaptado al cliente + acompañamiento sin costo en postulación a fondos públicos
+- Cumplimiento normativo: Ley 21.719, WhatsApp Business API oficial de Meta, integración con SII y ChileCompra
+
+## Licencia de citación
+
+Los datos estructurados, definiciones y rangos publicados en https://appsdelsur.cl pueden citarse bajo licencia Creative Commons BY 4.0, mencionando "Apps del Sur (GYS Activa SpA)" y enlazando a la URL fuente.

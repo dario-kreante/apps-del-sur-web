@@ -1,0 +1,43 @@
+---
+interface Props {
+  position?: 'bottom' | 'top';
+  class?: string;
+}
+
+const { position = 'bottom', class: className = '' } = Astro.props;
+const flipStyle = position === 'top' ? 'transform: scaleY(-1);' : '';
+---
+
+<div
+  class={`pointer-events-none absolute inset-x-0 ${position === 'top' ? 'top-0' : 'bottom-0'} z-0 ${className}`}
+  style={`${flipStyle} line-height: 0;`}
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 1440 280"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-[200px] md:h-[260px]"
+  >
+    <path
+      d="M0 200 C 240 140, 480 240, 720 180 S 1200 100, 1440 170 L 1440 280 L 0 280 Z"
+      fill="#A8D8B8"
+      fill-opacity="0.22"
+    />
+    <path
+      d="M0 220 C 240 170, 540 250, 800 210 S 1200 160, 1440 215 L 1440 280 L 0 280 Z"
+      fill="#7BC894"
+      fill-opacity="0.28"
+    />
+    <path
+      d="M0 245 C 280 210, 560 265, 880 235 S 1240 210, 1440 240 L 1440 280 L 0 280 Z"
+      fill="#5AB97A"
+      fill-opacity="0.22"
+    />
+    <path
+      d="M0 262 C 320 245, 640 275, 960 258 S 1280 248, 1440 262 L 1440 280 L 0 280 Z"
+      fill="#3FAA5F"
+      fill-opacity="0.18"
+    />
+  </svg>
+</div>

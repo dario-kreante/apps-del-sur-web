@@ -9,6 +9,9 @@
 
 ## Blog — Guías y recursos
 
+- [Fondos para proyectos de IA en empresas chilenas 2026](https://appsdelsur.cl/blog/fondos-financiamiento-ia-empresas-chile-2026): Instrumentos CORFO, FIA, Sercotec, SENCE y Ley I+D para financiar adopción, pilotos, I+D, talento e IA aplicada
+- [Framework de IA para pymes chilenas](https://appsdelsur.cl/blog/framework-ia-pymes-chile): Método Apps del Sur para diagnosticar madurez, elegir casos de uso, ejecutar pilotos y medir valor
+- [Cómo crear un agente IA de agendamiento por WhatsApp en Chile](https://appsdelsur.cl/blog/como-crear-agente-ia-agendamiento-whatsapp-chile-2026): Arquitectura, paso a paso, Google Calendar, WhatsApp Cloud API, sectores y GEO local para crear agentes de reservas
 - [Guía: Financiar digitalización agrícola con CORFO y FIA en 2026](https://appsdelsur.cl/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026): Instrumentos disponibles, montos, requisitos y proceso de postulación para viñas y empresas agrícolas
 - [Cómo calcular el costo real de mano de obra por hectárea en viñas chilenas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile): Metodología, rangos de referencia y cómo el software permite calcular costos en tiempo real
 - [Software agrícola en Chile: Comparativa de soluciones 2026](https://appsdelsur.cl/blog/software-agricola-chile-comparativa-2026): Análisis comparativo de AGROsmart, AGRI, Agroprime, Agroptima y Apps del Sur con pros, contras y casos de uso

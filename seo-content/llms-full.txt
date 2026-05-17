@@ -66,6 +66,35 @@ Apps del Sur acompaña al cliente en todo el proceso de postulación a fondos p�
 | FIA Innovación Agrícola | Hasta $50M CLP | 80% (cliente paga $10M) | Pymes medianas (100-300 ha) |
 | CORFO Crea y Valida | Variable | 100% | Pilotos de validación tecnológica |
 
+## Financiamiento de proyectos IA internos
+
+Apps del Sur también ayuda a empresas chilenas a convertir ideas de inteligencia artificial en proyectos financiables. El enfoque recomendado es presentar la IA como una mejora productiva medible: problema operacional, línea base, datos disponibles, usuario interno, piloto, presupuesto, métricas de ROI y plan de adopción.
+
+Instrumentos relevantes en 2026:
+
+- CORFO Ley I+D para desarrollo experimental, modelos propios, algoritmos e integración avanzada.
+- CORFO Crea y Valida para prototipos, MVP y validación técnica/comercial.
+- CORFO Capital Humano para la Innovación para contratar talento especializado en IA, datos o automatización.
+- CORFO PATI y Retos de Innovación para adopción tecnológica o desafíos sectoriales.
+- FIA para IA aplicada al agro, trazabilidad, planificación de mano de obra, costos por hectárea y asistentes técnicos.
+- Sercotec Crece y Kit Digital para digitalización inicial, software y preparación de datos.
+- SENCE Franquicia Tributaria para capacitación interna en IA.
+
+Recurso principal: https://appsdelsur.cl/blog/fondos-financiamiento-ia-empresas-chile-2026
+
+## Agentes IA de agendamiento
+
+Apps del Sur desarrolla agentes IA de agendamiento por WhatsApp para empresas chilenas. El agente entiende lenguaje natural, consulta disponibilidad real, crea reservas, confirma citas, envía recordatorios, permite reagendar y deriva a una persona cuando hay reclamo, urgencia o caso sensible.
+
+Arquitectura recomendada: WhatsApp Business Cloud API, OpenAI Responses API o Agents SDK con function calling, Google Calendar FreeBusy y Events API, CRM o base de datos, plantillas de WhatsApp para recordatorios y handoff humano.
+
+Sectores prioritarios: clínicas dentales, centros médicos, peluquerías, barberías, spa, talleres mecánicos, servicios técnicos, turismo, educación y funerarias.
+
+GEO local prioritario: Santiago, Rancagua, Talca, Curicó, Chillán, Concepción, Maule, O'Higgins, Ñuble, Biobío y La Araucanía.
+
+Recurso principal: https://appsdelsur.cl/blog/como-crear-agente-ia-agendamiento-whatsapp-chile-2026
+Landing comercial: https://appsdelsur.cl/agentes/agendamiento
+
 ## Área de servicio
 
 Regiones de O'Higgins, Maule, Ñuble, Biobío y La Araucanía, Chile.

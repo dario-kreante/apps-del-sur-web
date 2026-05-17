@@ -1,0 +1,790 @@
+---
+// PÁGINA OCULTA — no enlazada en nav/footer/sitemap.
+// Solo accesible vía URL directa /lab/revista/
+// Fase de validación de formato magazine flipbook para Apps del Sur.
+
+const title = 'Cuaderno del Sur · Edición #01 — Revista IA semanal para pymes Chile';
+const description = 'Edición prototipo de la revista semanal de IA para pymes chilenas. Variante B (profundización). Versión oculta de validación.';
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js" is:inline></script>
+
+  <style is:global>
+    :root {
+      --cream: #FBF8F2;
+      --carbon: #1A1A1A;
+      --emerald-deep: #0D5D4E;
+      --emerald-darker: #093B33;
+      --emerald-line: #D9E5DF;
+      --amber: #C9A047;
+      --gray-line: #E5E1D8;
+      --gray-soft: #756E60;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #1E1B16;
+      font-family: 'Inter', sans-serif;
+      color: var(--carbon);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Top bar */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(15, 12, 9, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      color: #FBF8F2; font-size: 12px;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 14px; }
+    .badge-private {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #422006; color: #FBBF24;
+      padding: 4px 10px; border-radius: 99px; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .topbar-title { font-family: 'DM Serif Display', serif; font-size: 15px; }
+    .topbar-meta { color: #A8A29E; font-size: 11px; }
+    .topbar-controls { display: flex; gap: 8px; }
+    .topbar-controls button {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      color: #FBF8F2; font-size: 11px; padding: 6px 12px; border-radius: 6px;
+      cursor: pointer; transition: all .15s ease; font-family: inherit;
+    }
+    .topbar-controls button:hover { background: rgba(255,255,255,0.12); }
+
+    /* Stage */
+    .stage {
+      min-height: 100vh; padding-top: 80px; padding-bottom: 40px;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+    }
+    #flipbook {
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45), 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .page {
+      background: var(--cream); overflow: hidden;
+      padding: 56px 56px 64px 56px;
+      color: var(--carbon);
+    }
+    .page-cover { padding: 0; }
+
+    /* COVER */
+    .cover-wrap {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      background: linear-gradient(160deg, #093B33 0%, #0D5D4E 50%, #114639 100%);
+      color: var(--cream); position: relative; padding: 56px 48px;
+    }
+    .cover-bg-pattern {
+      position: absolute; inset: 0; opacity: 0.07;
+      background-image:
+        radial-gradient(circle at 25% 30%, var(--amber) 0, transparent 40%),
+        radial-gradient(circle at 80% 70%, #1FAA8B 0, transparent 50%);
+      pointer-events: none;
+    }
+    .cover-top { display: flex; justify-content: space-between; align-items: flex-start; z-index: 1; }
+    .cover-logo { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: -0.01em; }
+    .cover-edition { text-align: right; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+    .cover-edition .num {
+      font-family: 'DM Serif Display', serif; font-size: 80px; line-height: 1; font-style: italic;
+      color: var(--amber); display: block; margin-top: 6px; letter-spacing: -0.02em;
+    }
+    .cover-mid { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; z-index: 1; }
+    .cover-eyebrow {
+      display: inline-block; padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 99px;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px;
+      align-self: flex-start; color: var(--amber);
+    }
+    .cover-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: 56px; line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 24px;
+    }
+    .cover-headline em { color: var(--amber); font-style: italic; }
+    .cover-deck {
+      font-size: 16px; line-height: 1.5; max-width: 380px; opacity: 0.88; font-weight: 300;
+    }
+    .cover-bottom {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.18); z-index: 1;
+    }
+    .cover-bottom-left { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; }
+    .cover-bottom-right { font-size: 11px; opacity: 0.7; font-style: italic; }
+
+    /* PAGE TYPOGRAPHY */
+    .eyebrow {
+      font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--emerald-deep); font-weight: 700; margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .eyebrow::before {
+      content: ''; width: 18px; height: 2px; background: var(--emerald-deep);
+    }
+    .h-display {
+      font-family: 'DM Serif Display', serif;
+      font-size: 44px; line-height: 1.05; letter-spacing: -0.02em; color: var(--carbon);
+      margin-bottom: 22px;
+    }
+    .h-display em { color: var(--emerald-deep); font-style: italic; }
+    .h-secondary {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px; line-height: 1.1; letter-spacing: -0.015em;
+      margin-bottom: 14px;
+    }
+    .deck {
+      font-size: 14px; line-height: 1.55; color: var(--gray-soft); font-weight: 400;
+      margin-bottom: 22px;
+    }
+    .body {
+      font-size: 11.5px; line-height: 1.62; color: var(--carbon); font-weight: 400;
+    }
+    .body p + p { margin-top: 10px; text-indent: 1.6em; }
+    .body strong { color: var(--carbon); font-weight: 600; }
+
+    .two-col { column-count: 2; column-gap: 28px; }
+    .two-col p:first-child { text-indent: 0; }
+
+    .pull-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 24px; line-height: 1.25; color: var(--emerald-deep);
+      font-style: italic; padding: 22px 0; margin: 16px 0;
+      border-top: 1px solid var(--emerald-line); border-bottom: 1px solid var(--emerald-line);
+    }
+    .byline {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-soft); margin-top: 22px; padding-top: 14px;
+      border-top: 1px solid var(--gray-line);
+    }
+
+    /* Page numbers */
+    .pg-foot {
+      position: absolute; bottom: 28px; left: 56px; right: 56px;
+      display: flex; justify-content: space-between;
+      font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-soft);
+    }
+    .pg-foot .num { font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--carbon); }
+
+    .page-wrap { position: relative; height: 100%; display: flex; flex-direction: column; }
+
+    /* Data cards */
+    .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+    .data-card {
+      padding: 22px 20px; border: 1px solid var(--gray-line); background: #FFFFFF;
+      border-radius: 4px;
+    }
+    .data-card .label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-soft); margin-bottom: 6px; }
+    .data-card .big {
+      font-family: 'Inter Tight', sans-serif; font-size: 38px; font-weight: 800;
+      line-height: 1; color: var(--emerald-deep); margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .data-card .big.amber { color: var(--amber); }
+    .data-card .desc { font-size: 11px; line-height: 1.45; color: var(--gray-soft); }
+    .data-card .src { font-size: 9px; color: var(--gray-soft); margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--gray-line); }
+
+    /* News briefs */
+    .brief { padding: 18px 0; border-bottom: 1px solid var(--gray-line); }
+    .brief:last-child { border-bottom: 0; }
+    .brief .tag {
+      display: inline-block; padding: 3px 10px; background: var(--emerald-deep); color: var(--cream);
+      font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+      border-radius: 2px; margin-bottom: 10px;
+    }
+    .brief h3 { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1.15; margin-bottom: 8px; }
+    .brief .when { font-size: 10px; color: var(--gray-soft); margin-bottom: 8px; letter-spacing: 0.05em; }
+    .brief .body-sm { font-size: 11.5px; line-height: 1.55; }
+
+    /* Tip box */
+    .tip-box {
+      margin-top: 18px; padding: 26px 28px; background: var(--emerald-deep); color: var(--cream);
+      border-radius: 4px;
+    }
+    .tip-box .lbl { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; font-weight: 700; }
+    .tip-box h3 { font-family: 'DM Serif Display', serif; font-size: 26px; line-height: 1.15; margin-bottom: 14px; }
+    .tip-box ol { padding-left: 18px; font-size: 12px; line-height: 1.6; }
+    .tip-box ol li { margin-bottom: 8px; }
+
+    /* Q&A */
+    .qa { margin-top: 20px; }
+    .qa .q {
+      font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1.3;
+      color: var(--emerald-deep); margin-top: 18px; margin-bottom: 8px;
+    }
+    .qa .a { font-size: 12px; line-height: 1.6; color: var(--carbon); }
+
+    /* Tool card */
+    .tool-card { padding: 22px; border: 2px solid var(--emerald-deep); background: #fff; border-radius: 4px; margin-top: 22px; }
+    .tool-card h3 { font-family: 'DM Serif Display', serif; font-size: 26px; margin-bottom: 6px; }
+    .tool-card .sub { font-size: 11px; color: var(--gray-soft); margin-bottom: 14px; }
+    .tool-card .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .tool-card .grid .col h4 { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--emerald-deep); margin-bottom: 8px; font-weight: 700; }
+    .tool-card .grid ul { padding-left: 14px; font-size: 11px; line-height: 1.5; }
+    .tool-card .price { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--gray-line); font-size: 11px; }
+    .tool-card .price strong { color: var(--amber); font-weight: 700; font-size: 14px; }
+
+    /* Funds */
+    .fund { padding: 14px 0; display: flex; justify-content: space-between; gap: 14px; border-bottom: 1px dashed var(--gray-line); }
+    .fund:last-child { border: 0; }
+    .fund .name { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1.2; flex: 1; }
+    .fund .name .org { display: block; font-size: 10px; color: var(--gray-soft); font-family: 'Inter', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; font-style: normal; }
+    .fund .meta { font-size: 10.5px; line-height: 1.5; color: var(--gray-soft); text-align: right; min-width: 130px; }
+    .fund .meta .amount { display: block; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 16px; color: var(--emerald-deep); margin-bottom: 2px; }
+    .fund .meta .deadline.urgent { color: var(--amber); font-weight: 700; }
+
+    /* Glosario */
+    .gloss { padding: 16px 0; border-bottom: 1px solid var(--gray-line); }
+    .gloss .term { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--emerald-deep); }
+    .gloss .def { font-size: 11.5px; line-height: 1.55; margin-top: 6px; color: var(--carbon); }
+
+    /* Agenda */
+    .agenda-item { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--gray-line); }
+    .agenda-item .date { font-family: 'Inter Tight', sans-serif; font-weight: 800; color: var(--amber); font-size: 14px; text-align: center; padding-top: 4px; }
+    .agenda-item .date .d { display: block; font-size: 28px; line-height: 1; color: var(--carbon); }
+    .agenda-item h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .agenda-item p { font-size: 11px; color: var(--gray-soft); line-height: 1.5; }
+
+    /* Last page CTA */
+    .last-wrap {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      background: linear-gradient(180deg, var(--cream) 0%, #F1ECDE 100%);
+      padding: 56px 48px;
+    }
+    .last-wrap .badge {
+      display: inline-block; padding: 6px 14px; border: 1px solid var(--emerald-deep);
+      color: var(--emerald-deep); border-radius: 99px;
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; align-self: flex-start; margin-bottom: 32px;
+    }
+    .last-wrap h2 { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1.04; letter-spacing: -0.02em; margin-bottom: 28px; }
+    .last-wrap h2 em { color: var(--emerald-deep); font-style: italic; }
+    .last-wrap p { font-size: 14px; line-height: 1.55; max-width: 380px; color: var(--gray-soft); margin-bottom: 24px; }
+    .last-wrap .cta-stack { margin-top: auto; }
+    .last-wrap .cta { display: block; padding: 16px 22px; background: var(--emerald-deep); color: var(--cream); text-decoration: none; font-weight: 600; font-size: 13px; border-radius: 4px; margin-bottom: 10px; text-align: center; }
+    .last-wrap .cta.outline { background: transparent; color: var(--emerald-deep); border: 1px solid var(--emerald-deep); }
+    .last-wrap .credits { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 10px; color: var(--gray-soft); line-height: 1.6; letter-spacing: 0.04em; }
+
+    /* Spread two-page article */
+    .hero-img-block {
+      background: var(--emerald-darker);
+      background-image:
+        radial-gradient(circle at 30% 30%, rgba(201,160,71,0.25) 0, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(31,170,139,0.2) 0, transparent 60%);
+      padding: 60px 40px; color: var(--cream);
+      border-radius: 4px; margin-bottom: 22px; min-height: 220px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .hero-img-block .lbl-amber { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); font-weight: 700; }
+    .hero-img-block h2 { font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1.05; }
+
+    /* Loading state */
+    .loading { text-align: center; padding: 100px 40px; color: #FBF8F2; font-size: 14px; }
+    .loading .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); animation: pulse 1.4s ease-in-out infinite; margin: 0 3px; }
+    .loading .dot:nth-child(2) { animation-delay: 0.2s; }
+    .loading .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes pulse { 0%,80%,100% { opacity: 0.2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+
+    /* Mobile fallback */
+    @media (max-width: 800px) {
+      .stage { padding: 70px 8px 24px; }
+      #flipbook { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar with private notice + controls -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="badge-private">● Borrador privado</span>
+      <span class="topbar-title">Cuaderno del Sur</span>
+      <span class="topbar-meta">Edición #01 · Semana del 18 mayo 2026 · Variante B</span>
+    </div>
+    <div class="topbar-controls">
+      <button id="prev">← Anterior</button>
+      <button id="next">Siguiente →</button>
+      <button id="zoom">Ampliar</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div id="flipbook-host">
+      <div id="flipbook">
+
+        <!-- ───────────────────────── PAGE 1: COVER ───────────────────────── -->
+        <div class="page page-cover" data-density="hard">
+          <div class="cover-wrap">
+            <div class="cover-bg-pattern"></div>
+            <div class="cover-top">
+              <div class="cover-logo">Cuaderno del Sur</div>
+              <div class="cover-edition">
+                Edición<span class="num">01</span>
+              </div>
+            </div>
+            <div class="cover-mid">
+              <span class="cover-eyebrow">Semana del 18 mayo · 2026</span>
+              <h1 class="cover-headline">
+                La IA empezó a cobrar <em>por conversación</em>, no por mes
+              </h1>
+              <p class="cover-deck">
+                Anthropic, OpenAI y Google bajaron precios. La Agencia de Protección de Datos publica su primer borrador. Y Sercotec abre $5M para automatizar WhatsApp. Tu briefing semanal de IA para pymes chilenas.
+              </p>
+            </div>
+            <div class="cover-bottom">
+              <span class="cover-bottom-left">Una publicación de Apps del Sur · GYS Activa SpA</span>
+              <span class="cover-bottom-right">No 01 — Inaugural</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 2: CARTA DEL EDITOR ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Carta del editor</div>
+            <h2 class="h-display">Lo importante esta semana <em>cabe en un café</em>.</h2>
+            <p class="deck">Por Darío Ramírez · Director</p>
+            <div class="body" style="margin-top:18px;">
+              <p>Hay semanas en que cuesta separar el ruido de lo importante. Esta es una de esas. Tres anuncios distintos —de Anthropic, OpenAI y Google— bajaron el precio de la IA conversacional entre 30% y 60% en menos de cinco días. Para una pyme chilena que está evaluando si "ya es momento" de implementar un agente, ese movimiento de precio cambia el cálculo de ROI.</p>
+              <p>En paralelo, la <strong>Agencia de Protección de Datos</strong> publicó el primer borrador de su guía operativa para pymes. Faltan seis meses para que la <strong>Ley 21.719</strong> entre en vigencia con dientes, y conviene leer ese documento con calma este fin de semana.</p>
+              <p>Y desde Talca y Curicó, Sercotec abrió nuevas convocatorias regionales con foco explícito en automatización conversacional. Si tu negocio aún no postuló a Kit Digital o CRECE, esta es probablemente tu mejor ventana del año.</p>
+              <p>Esta edición es la <strong>número 01</strong> y es, además, un experimento. Estamos probando formato, profundidad y voz. Si llegaste hasta acá: te queremos leer. Escríbenos lo que sobra, lo que falta, lo que confunde.</p>
+            </div>
+            <div class="byline">Darío Ramírez · dramirez.gysactiva@gmail.com · +56 9 4526 2335</div>
+            <div class="pg-foot"><span>Cuaderno del Sur · Ed.01</span><span class="num">02</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 3: NOTICIA DESTACADA ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Lo más importante</div>
+            <h2 class="h-display">Anthropic baja Claude Haiku <em>45%</em>: el agente WhatsApp ya pesa menos que la luz.</h2>
+
+            <div class="hero-img-block">
+              <span class="lbl-amber">Análisis · 4 min de lectura</span>
+              <h2>De US$0.80 a US$0.44 por millón de tokens de entrada.</h2>
+            </div>
+
+            <div class="body two-col">
+              <p>El 15 de mayo Anthropic anunció una rebaja sin precedentes en su modelo <strong>Claude Haiku 4.5</strong>: el precio por millón de tokens de entrada cayó desde US$0.80 a US$0.44 (45% menos), y la salida bajó de US$4.00 a US$2.20. La medida, lejos de ser técnica, redefine el cálculo de viabilidad para cualquier pyme chilena que esté evaluando implementar un agente conversacional.</p>
+              <p><strong>Traducido a CLP y a operación real:</strong> un agente WhatsApp que atiende 2.000 conversaciones al mes en una peluquería de Maipú o una clínica dental en Talca, hoy cuesta entre $8.000 y $14.000 CLP mensuales en costos de modelo. Antes costaba entre $15.000 y $25.000. La cuenta de luz mensual del local promedio supera esa cifra.</p>
+              <p>OpenAI respondió 48 horas después con un movimiento similar en su línea GPT-4o mini. Google bajó Gemini Flash en 30%. Es una guerra de precios sana para el ecosistema y un cambio de régimen para quien estaba dudando si "ya era el momento".</p>
+              <p><strong>El cuello de botella ya no es el costo del modelo.</strong> Hoy es la implementación, el entrenamiento con datos del negocio y la integración con WhatsApp Business API. Eso vale entre $1.8M y $5M CLP iniciales según complejidad, y se puede financiar hasta el 95% con SERCOTEC CRECE.</p>
+            </div>
+
+            <div class="pull-quote">"El cuello de botella ya no es el costo del modelo. Es la implementación."</div>
+
+            <div class="byline">Análisis · Apps del Sur Research · Fuente: Anthropic Blog, OpenAI, Google Cloud Pricing</div>
+            <div class="pg-foot"><span>Lo más importante</span><span class="num">03</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 4: BRIEFING EN CIFRAS ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Briefing en cifras</div>
+            <h2 class="h-display">La semana, <em>en seis números</em>.</h2>
+            <p class="deck">Lo que pasó en IA y pymes chilenas, sin adornos.</p>
+
+            <div class="data-grid">
+              <div class="data-card">
+                <div class="label">Baja precio Claude Haiku</div>
+                <div class="big amber">–45%</div>
+                <div class="desc">Por millón de tokens de entrada. La rebaja más agresiva del año.</div>
+                <div class="src">Fuente · Anthropic, 15 mayo 2026</div>
+              </div>
+              <div class="data-card">
+                <div class="label">Convocatoria CRECE Maule abierta</div>
+                <div class="big">$5M</div>
+                <div class="desc">Subsidio 95% para microempresas que automaticen con IA + WhatsApp.</div>
+                <div class="src">Fuente · Sercotec.cl, 16 mayo</div>
+              </div>
+              <div class="data-card">
+                <div class="label">Días para Ley 21.719 vigente</div>
+                <div class="big">197</div>
+                <div class="desc">1 dic 2026. Multas hasta 20.000 UTM. Excepción amonestación primer año pymes.</div>
+                <div class="src">Fuente · BCN Ley Chile</div>
+              </div>
+              <div class="data-card">
+                <div class="label">Apertura WhatsApp Business Chile</div>
+                <div class="big amber">98%</div>
+                <div class="desc">Versus 21% del email. El canal que sigue ganando todas las métricas.</div>
+                <div class="src">Fuente · Trengo, Q1 2026</div>
+              </div>
+              <div class="data-card">
+                <div class="label">Usuarios semanales ChatGPT</div>
+                <div class="big">800M</div>
+                <div class="desc">Mundial. Crecimiento del 60% interanual. Chile entre los 15 países con mayor uso per cápita.</div>
+                <div class="src">Fuente · OpenAI Devday, mayo 2026</div>
+              </div>
+              <div class="data-card">
+                <div class="label">Pymes chilenas con IA implementada</div>
+                <div class="big">14%</div>
+                <div class="desc">Versus 4% hace 12 meses. La mayoría empieza por atención WhatsApp.</div>
+                <div class="src">Fuente · Cámara Comercio Stgo</div>
+              </div>
+            </div>
+
+            <div class="pg-foot"><span>Briefing en cifras</span><span class="num">04</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 5: 3 NOTICIAS BREVES ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Tres breves</div>
+            <h2 class="h-display">Lo demás que <em>también pasó</em>.</h2>
+
+            <div class="brief">
+              <span class="tag">Regulación</span>
+              <div class="when">15 mayo · Santiago</div>
+              <h3>Agencia de Protección de Datos publicó borrador de su guía operativa para pymes</h3>
+              <p class="body-sm">A seis meses de la entrada en vigencia de la Ley 21.719, la Agencia publicó un borrador de 42 páginas con plantillas de consentimiento, registro de actividades y procedimiento ARCO. Se puede comentar hasta el 30 de junio. Para microempresas, el documento detalla la excepción transitoria de amonestación durante los primeros 12 meses.</p>
+            </div>
+
+            <div class="brief">
+              <span class="tag">Producto</span>
+              <div class="when">13 mayo · San Francisco / Santiago</div>
+              <h3>OpenAI lanza modo "Agentes" para ChatGPT Business — pueden agendar, cotizar y enviar emails</h3>
+              <p class="body-sm">Disponible desde la próxima semana en planes Business y Enterprise. Permite que ChatGPT ejecute tareas de varios pasos (consultar calendario, redactar email, enviarlo) con autorización del usuario. Para una pyme, sirve para automatizar trabajos repetitivos sin contratar a n8n o Zapier. Precio: incluido en plan Business desde US$25/usuario/mes.</p>
+            </div>
+
+            <div class="brief">
+              <span class="tag">Mercado</span>
+              <div class="when">17 mayo · O'Higgins</div>
+              <h3>CORFO abre nueva convocatoria de Digitalización Agro O'Higgins con foco IA</h3>
+              <p class="body-sm">Hasta $20M con 60% de cofinanciamiento. Aplica a viñas, frutícolas y empresas agroindustriales con ventas anuales menores a UF 100.000. Postulaciones cierran el 30 de junio. Apps del Sur asesora la postulación sin costo si tu negocio califica.</p>
+            </div>
+
+            <div class="pg-foot"><span>Tres breves</span><span class="num">05</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 6: TIP DE LA SEMANA ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Tip de la semana</div>
+            <h2 class="h-display">Audita tu visibilidad en ChatGPT <em>en 10 minutos</em>.</h2>
+            <p class="deck">Si vendes a consumidores y aún no sabes si la IA te recomienda, esta es la acción que más ROI te dará este sábado.</p>
+
+            <div class="body">
+              <p>El nuevo canal de descubrimiento ya no es solo Google. ChatGPT, Gemini, Claude y Perplexity están entregando recomendaciones directas, y si tu negocio no aparece, perdiste al cliente sin saber que existía.</p>
+              <p>La buena noticia: probar si la IA te conoce toma menos que esperar el café.</p>
+            </div>
+
+            <div class="tip-box">
+              <div class="lbl">Cómo hacerlo</div>
+              <h3>5 preguntas, 4 IAs, 10 minutos</h3>
+              <ol>
+                <li>Abre ChatGPT, Gemini, Claude y Perplexity (todos tienen versión gratis).</li>
+                <li>Haz la misma pregunta en cada una, reemplazando con tu rubro + ciudad: <em>"Recomiéndame 5 [hoteles / clínicas dentales / cafés / talleres] en [tu ciudad]"</em>.</li>
+                <li>Anota: ¿aparece tu negocio? ¿Aparece con datos correctos (precio, horario, dirección)? ¿Aparece tu competencia?</li>
+                <li>Repite con 4 variaciones más de la pregunta (más específicas: <em>"hoteles boutique con vista al volcán en Pucón"</em>).</li>
+                <li>Si no apareces en ninguna: revisa tu Google Business Profile primero, después construye tu sección FAQ del sitio, después busca menciones en TripAdvisor o sitios autoritativos de tu rubro.</li>
+              </ol>
+            </div>
+
+            <div class="pg-foot"><span>Tip de la semana</span><span class="num">06</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 7: CASO REAL ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Caso real</div>
+            <h2 class="h-display">Cómo una clínica dental en Talca <em>recuperó $2,3M al mes</em> con un agente WhatsApp.</h2>
+
+            <div class="body two-col">
+              <p>La clínica —dos dentistas, una recepcionista, 180 pacientes al mes— enfrentaba dos problemas crónicos: el 22% de no-shows y unas 35 consultas mensuales sin responder fuera de horario. La recepcionista dedicaba 12 horas semanales solo a WhatsApp, y aún así perdía mensajes.</p>
+              <p>La implementación fue en dos semanas: agente IA conectado a la API oficial de WhatsApp Business, integrado con Google Calendar y entrenado con servicios, convenios isapres y precios de la clínica.</p>
+              <p><strong>Resultados después de 60 días</strong>: 100% de los mensajes respondidos en menos de 30 segundos (vs. 38% antes). No-shows bajaron de 22% a 8% gracias a recordatorios automáticos 24h y 2h antes. La recepcionista pasó de 12 a 3 horas semanales en WhatsApp, liberando tiempo para atención presencial y venta de tratamientos.</p>
+              <p>La cifra que importa al dueño: <strong>$2,3M CLP rescatados mensualmente</strong>. Inversión inicial: $1,8M, financiado al 100% con Kit Digital SERCOTEC. Payback en menos de 30 días.</p>
+              <p><em>Caso anonimizado a pedido del cliente. Implementación real Maule 2026.</em></p>
+            </div>
+
+            <div class="pull-quote">"Pensé que era una herramienta más. Resultó ser un cambio de modelo de operación."</div>
+            <div class="byline">Caso · Apps del Sur · Sector salud privada</div>
+            <div class="pg-foot"><span>Caso real</span><span class="num">07</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 8: ENTREVISTA ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Entrevista</div>
+            <h2 class="h-display">"El gran error es pensar que la IA <em>reemplaza</em> al equipo."</h2>
+            <p class="deck">Con Carolina Bustamante, gerente de la Cooperativa Loncomilla (112 socios, 850 ha vitivinícolas, San Javier).</p>
+
+            <div class="qa">
+              <p class="q">¿Cómo llegó la IA a la cooperativa?</p>
+              <p class="a">Empezamos por el dolor más obvio: el WhatsApp de la cooperativa colapsaba en vendimia. Cada socio nos preguntaba lo mismo: ¿cuándo me pagan?, ¿cuál es el precio kilo?, ¿qué documento necesito? Probamos un agente IA en marzo. Hoy responde el 80% de esas consultas sin tocar a nadie del equipo.</p>
+
+              <p class="q">¿Qué fue lo más difícil de la implementación?</p>
+              <p class="a">Convencer al equipo. Hubo miedo legítimo de que la IA reemplazara a las personas. Lo dimos vuelta así: ahora el equipo se dedica a lo que requiere criterio humano —negociar con socios, visitar campos, gestionar reclamos complejos— y la IA carga la operación repetitiva. Nadie fue despedido. Tres personas fueron promovidas.</p>
+
+              <p class="q">¿Cuánto se ahorraron?</p>
+              <p class="a">No medimos solo el ahorro. Medimos el tiempo recuperado: 28 horas semanales del equipo que antes se iban en chat. Eso lo redirigimos a visitas técnicas a socios. En esta cosecha hicimos 40% más de visitas a campo que el año pasado. Eso impacta calidad de uva.</p>
+
+              <p class="q">¿Qué le dirías a otra cooperativa que está dudando?</p>
+              <p class="a">Que pruebe con una sola función. No quieran resolver todo de una vez. Nosotros empezamos solo con "consulta de pagos por WhatsApp" y ya con eso valió la inversión. Lo demás vino solo.</p>
+            </div>
+
+            <div class="byline">Entrevista · Carolina Bustamante · Cooperativa Loncomilla · San Javier, Maule</div>
+            <div class="pg-foot"><span>Entrevista</span><span class="num">08</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 9: HERRAMIENTA DESTACADA ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Herramienta destacada</div>
+            <h2 class="h-display">n8n para pymes: el <em>Lego visual</em> que conecta IA, WhatsApp y tu calendario sin código.</h2>
+
+            <div class="tool-card">
+              <h3>n8n.io</h3>
+              <p class="sub">Automatización visual · Open source · Sin código</p>
+              <div class="grid">
+                <div class="col">
+                  <h4>A favor</h4>
+                  <ul>
+                    <li>Visual, arrastras bloques sin programar</li>
+                    <li>Más barato que Zapier a partir de 500 ejecuciones/mes</li>
+                    <li>Versión auto-alojada gratis en VPS de ~$5 USD/mes</li>
+                    <li>+400 integraciones nativas: WhatsApp, Google, OpenAI, Notion, etc.</li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <h4>Contras</h4>
+                  <ul>
+                    <li>Curva de aprendizaje 1-2 tardes para no técnicos</li>
+                    <li>Soporte oficial en inglés (comunidad hispana creciendo)</li>
+                    <li>Debugging puede ser confuso si no entiendes JSON</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="price">
+                <strong>Desde gratis</strong> (auto-alojado) · <strong>US$5/mes</strong> n8n Cloud
+              </div>
+            </div>
+
+            <div class="body" style="margin-top:18px;">
+              <p>n8n es la pieza que más vemos en proyectos exitosos de pymes chilenas que automatizan WhatsApp + Google Calendar + OpenAI. Reemplaza ~80% de los casos donde se usaba Zapier o Make, a un cuarto del costo.</p>
+              <p>Si querés probarlo: lee nuestro tutorial paso a paso en <strong>appsdelsur.cl/blog/como-crear-agente-ia-agendamiento-whatsapp-chile-2026/</strong>.</p>
+            </div>
+
+            <div class="pg-foot"><span>Herramienta destacada</span><span class="num">09</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 10: FONDOS Y OPORTUNIDADES ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Fondos y oportunidades</div>
+            <h2 class="h-display">Convocatorias abiertas <em>esta semana</em>.</h2>
+            <p class="deck">Lo que tu pyme puede postular ya — chequeado a martes 18 mayo 2026.</p>
+
+            <div style="margin-top:14px;">
+              <div class="fund">
+                <div class="name"><span class="org">SERCOTEC</span>CRECE Maule 2026</div>
+                <div class="meta">
+                  <span class="amount">$5.000.000</span>
+                  95% cubierto<br/>
+                  <span class="deadline urgent">Cierra 12 jun</span>
+                </div>
+              </div>
+              <div class="fund">
+                <div class="name"><span class="org">SERCOTEC</span>Kit Digital nacional</div>
+                <div class="meta">
+                  <span class="amount">$1.200.000</span>
+                  ~100% microempresas<br/>
+                  Convocatorias regionales rotativas
+                </div>
+              </div>
+              <div class="fund">
+                <div class="name"><span class="org">CORFO</span>Digitalización Agro O'Higgins</div>
+                <div class="meta">
+                  <span class="amount">$15M–$20M</span>
+                  60% cofinanciamiento<br/>
+                  <span class="deadline urgent">Cierra 30 jun</span>
+                </div>
+              </div>
+              <div class="fund">
+                <div class="name"><span class="org">CORFO</span>Crea y Valida 2026</div>
+                <div class="meta">
+                  <span class="amount">hasta $180M</span>
+                  80% PYME<br/>
+                  Abre 1 julio
+                </div>
+              </div>
+              <div class="fund">
+                <div class="name"><span class="org">CORFO</span>Desarrolla Inversión Maule</div>
+                <div class="meta">
+                  <span class="amount">$10M–$50M</span>
+                  50% pyme regional<br/>
+                  Ventanilla abierta
+                </div>
+              </div>
+              <div class="fund">
+                <div class="name"><span class="org">FIA</span>Interés Privado 2026</div>
+                <div class="meta">
+                  <span class="amount">hasta $120M</span>
+                  80% innovación agro<br/>
+                  Cierra junio-julio
+                </div>
+              </div>
+            </div>
+
+            <div class="byline">Apps del Sur asesora postulación sin costo · contacto@appsdelsur.cl</div>
+            <div class="pg-foot"><span>Fondos y oportunidades</span><span class="num">10</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 11: GLOSARIO + AGENDA ───────────────────────── -->
+        <div class="page">
+          <div class="page-wrap">
+            <div class="eyebrow">Glosario · Agenda</div>
+            <h2 class="h-display">Tres palabras, <em>tres fechas</em>.</h2>
+
+            <div style="margin-top:18px;">
+              <div class="gloss">
+                <div class="term">Function calling</div>
+                <div class="def">Cuando el modelo IA no solo conversa: ejecuta acciones reales en tu sistema (consultar agenda, generar link de pago, crear ticket). Es lo que diferencia un chatbot rígido de un agente útil.</div>
+              </div>
+              <div class="gloss">
+                <div class="term">EIPD / DPIA</div>
+                <div class="def">Evaluación de Impacto en Protección de Datos. Documento de 5-15 páginas que la Ley 21.719 exige antes de implementar tratamientos de alto riesgo (IA que toma decisiones que afectan a personas).</div>
+              </div>
+              <div class="gloss" style="border-bottom:0;">
+                <div class="term">RAG</div>
+                <div class="def">Retrieval-Augmented Generation. Técnica donde el modelo consulta tus documentos en tiempo real (manual, FAQs, base interna) antes de responder. Reduce alucinaciones y permite respuestas específicas a tu negocio.</div>
+              </div>
+            </div>
+
+            <div class="eyebrow" style="margin-top:32px;">Agenda</div>
+
+            <div style="margin-top:6px;">
+              <div class="agenda-item">
+                <div class="date">MAY<span class="d">22</span></div>
+                <div>
+                  <h4>Webinar gratuito: Ley 21.719 + IA — cómo cumplir desde el día 1</h4>
+                  <p>17:00 hrs · Zoom · Organiza Apps del Sur · Inscripciones en appsdelsur.cl</p>
+                </div>
+              </div>
+              <div class="agenda-item">
+                <div class="date">JUN<span class="d">12</span></div>
+                <div>
+                  <h4>Cierre SERCOTEC CRECE Maule 2026</h4>
+                  <p>Plazo límite para postulaciones · Hasta $5M con 95% cubierto · sercotec.cl</p>
+                </div>
+              </div>
+              <div class="agenda-item" style="border-bottom:0;">
+                <div class="date">DIC<span class="d">01</span></div>
+                <div>
+                  <h4>Entrada en vigencia Ley 21.719</h4>
+                  <p>197 días. Marca el calendario. Pymes: amonestación primer año, no multa.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pg-foot"><span>Glosario y agenda</span><span class="num">11</span></div>
+          </div>
+        </div>
+
+        <!-- ───────────────────────── PAGE 12: ÚLTIMA — CTA ───────────────────────── -->
+        <div class="page page-cover" data-density="hard">
+          <div class="last-wrap">
+            <span class="badge">Cuaderno del Sur · Ed.01</span>
+            <h2>Gracias por <em>llegar al final</em>.</h2>
+            <p>Esta edición es la primera. Estamos probando voz, profundidad y formato. Si te sirvió, queremos saberlo. Si no te sirvió, queremos saberlo más.</p>
+            <p>Tu opinión decide si seguimos publicándola y bajo qué frecuencia.</p>
+
+            <div class="cta-stack">
+              <a class="cta" href="https://wa.me/56945262335?text=Hola%2C%20le%C3%AD%20Cuaderno%20del%20Sur%20Ed.01%20y%20quiero%20comentar" target="_blank">Escribir feedback por WhatsApp</a>
+              <a class="cta outline" href="/diagnostico-madurez-ia/?source=revista-ed01">Diagnosticar mi madurez IA</a>
+              <a class="cta outline" href="/agentes/">Ver los agentes IA de Apps del Sur</a>
+            </div>
+
+            <div class="credits">
+              CUADERNO DEL SUR — Edición 01 · Semana del 18 mayo 2026 · Una publicación experimental de <strong>Apps del Sur · GYS Activa SpA</strong>. Dirección y edición: Darío Ramírez. Diseño y desarrollo: equipo Apps del Sur. Versión privada de validación, no listada públicamente.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="loading" id="loading"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  </div>
+
+  <script is:inline>
+    // Wait for fonts + StPageFlip before initializing
+    document.fonts.ready.then(() => {
+      initFlipbook();
+    });
+
+    function initFlipbook() {
+      const host = document.getElementById('flipbook');
+      const isMobile = window.innerWidth < 800;
+      const w = isMobile ? Math.min(window.innerWidth - 24, 380) : 550;
+      const h = Math.round(w * 1.4);
+
+      const pageFlip = new St.PageFlip(host, {
+        width: w,
+        height: h,
+        size: 'fixed',
+        minWidth: 280,
+        maxWidth: 700,
+        minHeight: 380,
+        maxHeight: 980,
+        showCover: true,
+        flippingTime: 700,
+        usePortrait: isMobile,
+        startZIndex: 0,
+        autoSize: false,
+        maxShadowOpacity: 0.5,
+        mobileScrollSupport: true,
+        useMouseEvents: true,
+        swipeDistance: 30,
+        drawShadow: true,
+        clickEventForward: true,
+      });
+
+      const pages = host.querySelectorAll('.page');
+      pageFlip.loadFromHTML(pages);
+
+      document.getElementById('loading')?.remove();
+
+      // Controls
+      document.getElementById('prev')?.addEventListener('click', () => pageFlip.flipPrev());
+      document.getElementById('next')?.addEventListener('click', () => pageFlip.flipNext());
+      document.getElementById('zoom')?.addEventListener('click', () => {
+        const stage = document.querySelector('.stage');
+        if (stage.style.transform === 'scale(1.18)') {
+          stage.style.transform = 'scale(1)';
+        } else {
+          stage.style.transformOrigin = 'top center';
+          stage.style.transform = 'scale(1.18)';
+        }
+      });
+
+      // Keyboard nav
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') pageFlip.flipNext();
+        if (e.key === 'ArrowLeft') pageFlip.flipPrev();
+      });
+    }
+  </script>
+</body>
+</html>

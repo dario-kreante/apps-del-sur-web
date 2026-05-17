@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Infografía Ley 21.719 e inteligencia artificial en empresas chilenas — OpenAI Anthropic transferencia internacional DPA EIPD">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="700" fill="url(#bg2)" rx="16"/>
+
+  <!-- Title -->
+  <text x="700" y="80" font-family="system-ui,sans-serif" font-size="44" font-weight="800" fill="#0c4a6e" text-anchor="middle">Ley 21.719 + Inteligencia Artificial</text>
+  <text x="700" y="120" font-family="system-ui,sans-serif" font-size="22" font-weight="500" fill="#0369a1" text-anchor="middle">Cómo cumplir cuando tu pyme usa ChatGPT, Claude o agentes IA · Chile 2026</text>
+
+  <!-- Flow: Tu empresa → IA externa → Datos en US → Cumplimiento -->
+  <g transform="translate(70, 200)">
+    <!-- Empresa -->
+    <rect width="240" height="140" rx="12" fill="#ffffff" stroke="#a7f3d0" stroke-width="2"/>
+    <text x="120" y="30" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#059669" text-anchor="middle">TU PYME CHILE</text>
+    <text x="120" y="65" font-family="system-ui,sans-serif" font-size="36" text-anchor="middle">🏢</text>
+    <text x="120" y="100" font-family="system-ui,sans-serif" font-size="11" fill="#475569" text-anchor="middle">Recolecta datos</text>
+    <text x="120" y="115" font-family="system-ui,sans-serif" font-size="11" fill="#475569" text-anchor="middle">de clientes chilenos</text>
+    <text x="120" y="130" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">(responsable de tratamiento)</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 320 270 L 400 270" stroke="#059669" stroke-width="3" stroke-dasharray="6 4" fill="none"/>
+  <polygon points="400,270 388,263 388,277" fill="#059669"/>
+
+  <g transform="translate(410, 200)">
+    <!-- AI provider -->
+    <rect width="240" height="140" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="120" y="30" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle">AGENTE / IA</text>
+    <text x="120" y="65" font-family="system-ui,sans-serif" font-size="36" text-anchor="middle">🤖</text>
+    <text x="120" y="100" font-family="system-ui,sans-serif" font-size="11" fill="#1e3a8a" text-anchor="middle">OpenAI · Anthropic</text>
+    <text x="120" y="115" font-family="system-ui,sans-serif" font-size="11" fill="#1e3a8a" text-anchor="middle">Google · Mistral</text>
+    <text x="120" y="130" font-family="system-ui,sans-serif" font-size="10" fill="#3b82f6" text-anchor="middle">(encargado de tratamiento)</text>
+  </g>
+
+  <path d="M 660 270 L 740 270" stroke="#059669" stroke-width="3" stroke-dasharray="6 4" fill="none"/>
+  <polygon points="740,270 728,263 728,277" fill="#059669"/>
+
+  <g transform="translate(750, 200)">
+    <!-- Servers US -->
+    <rect width="240" height="140" rx="12" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="120" y="30" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#b45309" text-anchor="middle">SERVIDORES EXTRANJEROS</text>
+    <text x="120" y="65" font-family="system-ui,sans-serif" font-size="36" text-anchor="middle">🌎</text>
+    <text x="120" y="100" font-family="system-ui,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">EE.UU., Europa, etc.</text>
+    <text x="120" y="115" font-family="system-ui,sans-serif" font-size="11" fill="#78350f" text-anchor="middle">⚠ Transferencia internacional</text>
+    <text x="120" y="130" font-family="system-ui,sans-serif" font-size="10" fill="#92400e" text-anchor="middle">(requiere salvaguardas)</text>
+  </g>
+
+  <path d="M 1000 270 L 1080 270" stroke="#059669" stroke-width="3" stroke-dasharray="6 4" fill="none"/>
+  <polygon points="1080,270 1068,263 1068,277" fill="#059669"/>
+
+  <g transform="translate(1090, 200)">
+    <!-- Cumplimiento -->
+    <rect width="240" height="140" rx="12" fill="#dcfce7" stroke="#10b981" stroke-width="2"/>
+    <text x="120" y="30" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#047857" text-anchor="middle">CUMPLIMIENTO LEY 21.719</text>
+    <text x="120" y="65" font-family="system-ui,sans-serif" font-size="36" text-anchor="middle">🛡️</text>
+    <text x="120" y="100" font-family="system-ui,sans-serif" font-size="11" fill="#064e3b" text-anchor="middle">DPA + Consentimiento</text>
+    <text x="120" y="115" font-family="system-ui,sans-serif" font-size="11" fill="#064e3b" text-anchor="middle">+ EIPD + Transparencia</text>
+    <text x="120" y="130" font-family="system-ui,sans-serif" font-size="10" fill="#059669" text-anchor="middle">(blindaje legal)</text>
+  </g>
+
+  <!-- Bottom: 5 acciones -->
+  <text x="700" y="395" font-family="system-ui,sans-serif" font-size="20" font-weight="700" fill="#0c4a6e" text-anchor="middle">5 acciones mínimas para usar IA con cumplimiento Ley 21.719</text>
+
+  <g transform="translate(80, 420)">
+    <rect width="245" height="200" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <circle cx="40" cy="40" r="20" fill="#0369a1"/>
+    <text x="40" y="48" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="80" y="45" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#0c4a6e">Firmar DPA</text>
+    <text x="20" y="90" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Con OpenAI, Anthropic,</text>
+    <text x="20" y="106" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Google o el proveedor IA</text>
+    <text x="20" y="122" font-family="system-ui,sans-serif" font-size="11" fill="#475569">que uses. Data Processing</text>
+    <text x="20" y="138" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Agreement: obligatorio.</text>
+    <text x="20" y="165" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">→ Conviértete en responsable</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">y el proveedor en encargado.</text>
+  </g>
+
+  <g transform="translate(340, 420)">
+    <rect width="245" height="200" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <circle cx="40" cy="40" r="20" fill="#0369a1"/>
+    <text x="40" y="48" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="80" y="45" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#0c4a6e">Consentimiento</text>
+    <text x="20" y="90" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Si el agente IA conversa</text>
+    <text x="20" y="106" font-family="system-ui,sans-serif" font-size="11" fill="#475569">con clientes, debe declarar</text>
+    <text x="20" y="122" font-family="system-ui,sans-serif" font-size="11" fill="#475569">que es asistente virtual y</text>
+    <text x="20" y="138" font-family="system-ui,sans-serif" font-size="11" fill="#475569">solicitar consentimiento.</text>
+    <text x="20" y="165" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">→ Explícito, revocable,</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">documentado en log.</text>
+  </g>
+
+  <g transform="translate(600, 420)">
+    <rect width="245" height="200" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <circle cx="40" cy="40" r="20" fill="#0369a1"/>
+    <text x="40" y="48" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="80" y="45" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#0c4a6e">EIPD obligatoria</text>
+    <text x="20" y="90" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Si tu IA toma decisiones</text>
+    <text x="20" y="106" font-family="system-ui,sans-serif" font-size="11" fill="#475569">automatizadas con impacto</text>
+    <text x="20" y="122" font-family="system-ui,sans-serif" font-size="11" fill="#475569">en personas (crédito, salud,</text>
+    <text x="20" y="138" font-family="system-ui,sans-serif" font-size="11" fill="#475569">empleo), hace falta DPIA.</text>
+    <text x="20" y="165" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">→ Evaluación de Impacto en</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">Protección de Datos.</text>
+  </g>
+
+  <g transform="translate(860, 420)">
+    <rect width="245" height="200" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <circle cx="40" cy="40" r="20" fill="#0369a1"/>
+    <text x="40" y="48" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="80" y="45" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#0c4a6e">Opt-out training</text>
+    <text x="20" y="90" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Configura "no usar mis</text>
+    <text x="20" y="106" font-family="system-ui,sans-serif" font-size="11" fill="#475569">datos para entrenar" en</text>
+    <text x="20" y="122" font-family="system-ui,sans-serif" font-size="11" fill="#475569">OpenAI/Anthropic. Usa</text>
+    <text x="20" y="138" font-family="system-ui,sans-serif" font-size="11" fill="#475569">cuentas Business/API.</text>
+    <text x="20" y="165" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">→ API y planes Enterprise</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">no entrenan por defecto.</text>
+  </g>
+
+  <g transform="translate(1120, 420)">
+    <rect width="210" height="200" rx="12" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <circle cx="40" cy="40" r="20" fill="#0369a1"/>
+    <text x="40" y="48" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">5</text>
+    <text x="80" y="45" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#0c4a6e">Derecho a humano</text>
+    <text x="20" y="90" font-family="system-ui,sans-serif" font-size="11" fill="#475569">El cliente puede pedir</text>
+    <text x="20" y="106" font-family="system-ui,sans-serif" font-size="11" fill="#475569">revisión humana de la</text>
+    <text x="20" y="122" font-family="system-ui,sans-serif" font-size="11" fill="#475569">decisión automatizada.</text>
+    <text x="20" y="138" font-family="system-ui,sans-serif" font-size="11" fill="#475569">Configura handoff.</text>
+    <text x="20" y="165" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">→ "Hablar con persona"</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="10" fill="#0369a1" font-style="italic">debe funcionar siempre.</text>
+  </g>
+
+  <text x="700" y="670" font-family="system-ui,sans-serif" font-size="12" fill="#475569" text-anchor="middle">appsdelsur.cl · Agentes IA + cumplimiento Ley 21.719 · Maule · O'Higgins · Santiago · Concepción</text>
+</svg>

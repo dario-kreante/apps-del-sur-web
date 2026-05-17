@@ -10,6 +10,9 @@ interface Props {
   keywords?: string;
   ogTitle?: string;
   ogDescription?: string;
+  ogImage?: string;
+  /** When true, emits noindex,follow — used for thin sector×region pages without local differentiator yet. */
+  noindex?: boolean;
 }
 
 const {
@@ -19,7 +22,13 @@ const {
   keywords = siteConfig.keywords,
   ogTitle = siteConfig.ogTitle,
   ogDescription = siteConfig.ogDescription,
+  ogImage,
+  noindex = false,
 } = Astro.props;
+
+const robotsContent = noindex
+  ? 'noindex, follow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 ---
 
 <!doctype html>
@@ -40,6 +49,7 @@ const {
     <meta name="keywords" content={keywords} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CL" />
     <link rel="canonical" href={canonical} />
@@ -54,13 +64,14 @@ const {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content={ogTitle}>
     <meta name="twitter:description" content={ogDescription}>
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
 
     <!-- Open Graph -->
     <meta property="og:url" content={canonical}>
     <meta property="og:site_name" content="Apps del Sur">
 
     <!-- Robots -->
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content={robotsContent}>
 
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="meBKJSxEefxYVx35H0xV4yT0rR9ZOjcBbC101xJZuh8" />
@@ -89,7 +100,7 @@ const {
             "name": "Apps del Sur"
           },
           "url": "https://appsdelsur.cl",
-          "logo": "https://appsdelsur.cl/logo.svg",
+          "logo": "https://appsdelsur.cl/brand/logo-stacked.png",
           "description": "Empresa chilena creadora de Apps del Sur, dedicada al desarrollo de software a medida para empresas del sur de Chile. Construye sistemas web, apps móviles, integraciones, automatizaciones e IA aplicada para operaciones que no calzan en software genérico.",
           "foundingDate": "2025",
           "founder": {
@@ -115,6 +126,15 @@ const {
             "availableLanguage": "Spanish",
             "email": "contacto@appsdelsur.cl"
           },
+          "knowsAbout": [
+            "Claude AI (Anthropic)",
+            "Codex (OpenAI)",
+            "ChatGPT",
+            "Implementación de IA en pymes",
+            "Software a medida con IA",
+            "Agentes inteligentes",
+            "Integración con Microsoft 365"
+          ],
           "sameAs": []
         },
         {

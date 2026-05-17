@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860" role="img" aria-labelledby="title desc">
+  <title id="title">Cómo postular un proyecto de IA en Chile</title>
+  <desc id="desc">Ruta de seis pasos para postular proyectos de inteligencia artificial empresarial a fondos públicos en Chile.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#064E3B"/>
+      <stop offset=".62" stop-color="#059669"/>
+      <stop offset="1" stop-color="#7ED957"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-12%" width="120%" height="132%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#03241F" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="860" fill="#fff"/>
+  <path d="M0 720c205-70 350 88 560 18 178-60 265-164 489-84 147 52 235 24 351-28v234H0Z" fill="#ECFDF5"/>
+  <path d="M0 774c238-54 334 82 548 20 180-52 306-130 506-60 161 56 244 20 346-30v156H0Z" fill="#D1FAE5"/>
+
+  <g transform="translate(64 54)">
+    <path d="M54 0c24.2 0 43.7 19.2 43.7 42.9 0 13.9-7.1 26-15.7 35.9-6.6 7.6-14.3 14-21.8 18a12.5 12.5 0 0 1-12.4 0c-7.5-4-15.2-10.4-21.8-18C17.5 68.9 10.3 56.8 10.3 42.9 10.3 19.2 29.8 0 54 0Z" fill="url(#g)" filter="url(#shadow)"/>
+    <path d="M27 49.5c5.5 6.2 13.5 9.6 23.5 9.6 16.6 0 30.5-9.1 41.8-20.3" stroke="#fff" stroke-width="7.8" stroke-linecap="round"/>
+    <rect x="29" y="40" width="13" height="21" rx="3.5" fill="#fff" opacity=".68"/>
+    <rect x="47" y="32" width="13" height="29" rx="3.5" fill="#fff" opacity=".86"/>
+    <rect x="66" y="20" width="13" height="41" rx="3.5" fill="#fff"/>
+    <path d="M76.3 63.2 96.7 56l-7.2 20.4-4.2-9.2-11.4 11.4-6.7-6.7 11.4-11.4Z" fill="#fff"/>
+    <text x="128" y="42" fill="#064E3B" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">Apps</text>
+    <text x="128" y="82" fill="#064E3B" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">del Sur</text>
+  </g>
+
+  <text x="64" y="206" fill="#0F2D2A" font-family="Inter, Arial, sans-serif" font-size="56" font-weight="850">Cómo postular un proyecto de IA</text>
+  <text x="64" y="256" fill="#047857" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">De una idea operativa a una postulación financiable</text>
+  <text x="64" y="302" fill="#667085" font-family="Inter, Arial, sans-serif" font-size="23">La clave no es “usar IA”, sino demostrar problema medible, datos, piloto y retorno.</text>
+
+  <g transform="translate(70 382)" font-family="Inter, Arial, sans-serif">
+    <path d="M90 80H1180" stroke="#059669" stroke-width="10" stroke-linecap="round" opacity=".3"/>
+    <path d="M90 80H1180" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+
+    <g transform="translate(0 0)">
+      <circle cx="90" cy="80" r="46" fill="#064E3B"/>
+      <text x="90" y="94" text-anchor="middle" fill="#fff" font-size="38" font-weight="800">1</text>
+      <rect x="0" y="150" width="180" height="170" rx="18" fill="#fff" stroke="#D1FAE5" filter="url(#shadow)"/>
+      <text x="90" y="202" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="800">Diagnóstico</text>
+      <text x="90" y="242" text-anchor="middle" fill="#475467" font-size="18">Dolor actual</text>
+      <text x="90" y="272" text-anchor="middle" fill="#475467" font-size="18">costo anual</text>
+    </g>
+
+    <g transform="translate(218 0)">
+      <circle cx="90" cy="80" r="46" fill="#047857"/>
+      <text x="90" y="94" text-anchor="middle" fill="#fff" font-size="38" font-weight="800">2</text>
+      <rect x="0" y="150" width="180" height="170" rx="18" fill="#fff" stroke="#D1FAE5" filter="url(#shadow)"/>
+      <text x="90" y="202" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="800">Caso de uso</text>
+      <text x="90" y="242" text-anchor="middle" fill="#475467" font-size="18">Proceso único</text>
+      <text x="90" y="272" text-anchor="middle" fill="#475467" font-size="18">usuario claro</text>
+    </g>
+
+    <g transform="translate(436 0)">
+      <circle cx="90" cy="80" r="46" fill="#059669"/>
+      <text x="90" y="94" text-anchor="middle" fill="#fff" font-size="38" font-weight="800">3</text>
+      <rect x="0" y="150" width="180" height="170" rx="18" fill="#fff" stroke="#D1FAE5" filter="url(#shadow)"/>
+      <text x="90" y="202" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="800">Datos</text>
+      <text x="90" y="242" text-anchor="middle" fill="#475467" font-size="18">Fuentes reales</text>
+      <text x="90" y="272" text-anchor="middle" fill="#475467" font-size="18">calidad mínima</text>
+    </g>
+
+    <g transform="translate(654 0)">
+      <circle cx="90" cy="80" r="46" fill="#10B981"/>
+      <text x="90" y="94" text-anchor="middle" fill="#fff" font-size="38" font-weight="800">4</text>
+      <rect x="0" y="150" width="180" height="170" rx="18" fill="#fff" stroke="#D1FAE5" filter="url(#shadow)"/>
+      <text x="90" y="202" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="800">Piloto</text>
+      <text x="90" y="242" text-anchor="middle" fill="#475467" font-size="18">MVP 60-90</text>
+      <text x="90" y="272" text-anchor="middle" fill="#475467" font-size="18">días</text>
+    </g>
+
+    <g transform="translate(872 0)">
+      <circle cx="90" cy="80" r="46" fill="#34D399"/>
+      <text x="90" y="94" text-anchor="middle" fill="#064E3B" font-size="38" font-weight="800">5</text>
+      <rect x="0" y="150" width="180" height="170" rx="18" fill="#fff" stroke="#D1FAE5" filter="url(#shadow)"/>
+      <text x="90" y="202" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="800">Fondo</text>
+      <text x="90" y="242" text-anchor="middle" fill="#475467" font-size="18">CORFO, FIA,</text>
+      <text x="90" y="272" text-anchor="middle" fill="#475467" font-size="18">Sercotec</text>
+    </g>
+
+    <g transform="translate(1090 0)">
+      <circle cx="90" cy="80" r="46" fill="#7ED957"/>
+      <text x="90" y="94" text-anchor="middle" fill="#064E3B" font-size="38" font-weight="800">6</text>
+      <rect x="0" y="150" width="180" height="170" rx="18" fill="#fff" stroke="#D1FAE5" filter="url(#shadow)"/>
+      <text x="90" y="202" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="800">Medición</text>
+      <text x="90" y="242" text-anchor="middle" fill="#475467" font-size="18">ROI, adopción</text>
+      <text x="90" y="272" text-anchor="middle" fill="#475467" font-size="18">y escalamiento</text>
+    </g>
+  </g>
+
+  <rect x="64" y="768" width="1272" height="52" rx="26" fill="#064E3B"/>
+  <text x="700" y="803" text-anchor="middle" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="750">Checklist base: línea base + datos + presupuesto + cartas + proveedor + métricas de impacto</text>
+</svg>

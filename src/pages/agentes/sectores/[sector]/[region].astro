@@ -1,0 +1,39 @@
+---
+import AgentLandingPage from '../../../../layouts/AgentLandingPage.astro';
+import { sectorPages } from '../../../../data/sectores';
+import { sectorRegionMatrix } from '../../../../data/sectores-regiones';
+import { allRegions } from '../../../../data/regiones';
+
+export function getStaticPaths() {
+  return sectorRegionMatrix.map((c) => {
+    const sectorData = sectorPages[c.sectorSlug];
+    const regionData = allRegions[c.regionSlug];
+    return {
+      params: { sector: c.sectorSlug, region: c.regionSlug },
+      props: { cell: c, sectorData, regionData },
+    };
+  });
+}
+
+const { cell, sectorData, regionData } = Astro.props;
+
+if (!sectorData || !regionData) {
+  return Astro.redirect('/agentes/');
+}
+
+const canonicalOverride = `https://appsdelsur.cl/agentes/sectores/${cell.sectorSlug}/${cell.regionSlug}`;
+
+const regionContext = {
+  slug: regionData.slug,
+  name: regionData.name,
+  nameWithArticle: regionData.nameWithArticle,
+  localDifferentiator: cell.localDifferentiator ?? undefined,
+  regionalFunding: cell.regionalFunding,
+};
+---
+<AgentLandingPage
+  data={sectorData}
+  regionContext={regionContext}
+  canonicalOverride={canonicalOverride}
+  noindex={!cell.indexable}
+/>

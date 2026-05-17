@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitectura de un agente IA de agendamiento por WhatsApp</title>
+  <desc id="desc">Diagrama Apps del Sur que muestra cómo un agente IA recibe mensajes por WhatsApp, consulta disponibilidad, agenda en calendario, confirma y deriva a humano.</desc>
+  <defs>
+    <linearGradient id="brand" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#064E3B"/>
+      <stop offset=".58" stop-color="#059669"/>
+      <stop offset="1" stop-color="#7ED957"/>
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-12%" width="116%" height="132%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#03241F" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="1536" height="1024" fill="#fff"/>
+  <path d="M0 808c214-78 382 72 600 8 184-54 314-162 558-74 150 54 250 28 378-36v318H0Z" fill="#ECFDF5"/>
+  <path d="M0 884c246-58 370 70 620 8 198-50 328-128 548-54 160 54 252 22 368-32v218H0Z" fill="#D1FAE5"/>
+
+  <g transform="translate(72 54)" font-family="Inter, Arial, sans-serif">
+    <circle cx="48" cy="48" r="48" fill="url(#brand)" filter="url(#shadow)"/>
+    <path d="M24 58c12 11 30 12 52-10" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+    <rect x="24" y="48" width="12" height="24" rx="3" fill="#fff" opacity=".7"/>
+    <rect x="42" y="36" width="12" height="36" rx="3" fill="#fff" opacity=".86"/>
+    <rect x="60" y="24" width="12" height="48" rx="3" fill="#fff"/>
+    <text x="118" y="40" fill="#064E3B" font-size="34" font-weight="850">Apps del Sur</text>
+    <text x="118" y="86" fill="#0F2D2A" font-size="52" font-weight="850">Arquitectura del agente IA de agendamiento</text>
+    <text x="118" y="126" fill="#047857" font-size="26" font-weight="700">WhatsApp + modelo IA + herramientas + calendario + handoff humano</text>
+  </g>
+
+  <g transform="translate(116 258)" font-family="Inter, Arial, sans-serif">
+    <rect x="0" y="98" width="224" height="184" rx="24" fill="#fff" stroke="#D0D5DD" filter="url(#shadow)"/>
+    <text x="112" y="146" text-anchor="middle" fill="#064E3B" font-size="26" font-weight="850">Cliente</text>
+    <text x="112" y="184" text-anchor="middle" fill="#475467" font-size="20">WhatsApp</text>
+    <text x="112" y="218" text-anchor="middle" fill="#475467" font-size="20">mensaje natural</text>
+    <circle cx="112" cy="86" r="38" fill="#D1FAE5"/>
+    <text x="112" y="100" text-anchor="middle" fill="#047857" font-size="34" font-weight="900">1</text>
+
+    <rect x="328" y="56" width="294" height="268" rx="30" fill="#064E3B" filter="url(#shadow)"/>
+    <text x="475" y="118" text-anchor="middle" fill="#fff" font-size="30" font-weight="850">Agente IA</text>
+    <text x="475" y="158" text-anchor="middle" fill="#D1FAE5" font-size="20">entiende intención</text>
+    <text x="475" y="190" text-anchor="middle" fill="#D1FAE5" font-size="20">pide datos faltantes</text>
+    <text x="475" y="222" text-anchor="middle" fill="#D1FAE5" font-size="20">decide siguiente acción</text>
+    <rect x="392" y="250" width="166" height="38" rx="19" fill="#7ED957"/>
+    <text x="475" y="276" text-anchor="middle" fill="#064E3B" font-size="18" font-weight="850">human-in-the-loop</text>
+
+    <rect x="728" y="0" width="264" height="128" rx="24" fill="#fff" stroke="#A7F3D0" filter="url(#shadow)"/>
+    <text x="860" y="48" text-anchor="middle" fill="#064E3B" font-size="25" font-weight="850">Disponibilidad</text>
+    <text x="860" y="84" text-anchor="middle" fill="#475467" font-size="19">FreeBusy / horarios</text>
+
+    <rect x="728" y="184" width="264" height="128" rx="24" fill="#fff" stroke="#A7F3D0" filter="url(#shadow)"/>
+    <text x="860" y="232" text-anchor="middle" fill="#064E3B" font-size="25" font-weight="850">Reserva</text>
+    <text x="860" y="268" text-anchor="middle" fill="#475467" font-size="19">crear evento + Meet</text>
+
+    <rect x="728" y="368" width="264" height="128" rx="24" fill="#fff" stroke="#A7F3D0" filter="url(#shadow)"/>
+    <text x="860" y="416" text-anchor="middle" fill="#064E3B" font-size="25" font-weight="850">CRM / ficha</text>
+    <text x="860" y="452" text-anchor="middle" fill="#475467" font-size="19">lead, cliente, notas</text>
+
+    <rect x="1110" y="74" width="260" height="168" rx="24" fill="#fff" stroke="#D0D5DD" filter="url(#shadow)"/>
+    <text x="1240" y="126" text-anchor="middle" fill="#064E3B" font-size="25" font-weight="850">Confirmación</text>
+    <text x="1240" y="164" text-anchor="middle" fill="#475467" font-size="19">mensaje utility</text>
+    <text x="1240" y="196" text-anchor="middle" fill="#475467" font-size="19">recordatorios 24h + 2h</text>
+
+    <rect x="1110" y="318" width="260" height="168" rx="24" fill="#fff" stroke="#D0D5DD" filter="url(#shadow)"/>
+    <text x="1240" y="370" text-anchor="middle" fill="#064E3B" font-size="25" font-weight="850">Handoff humano</text>
+    <text x="1240" y="408" text-anchor="middle" fill="#475467" font-size="19">reclamos, urgencias,</text>
+    <text x="1240" y="440" text-anchor="middle" fill="#475467" font-size="19">casos sensibles</text>
+
+    <path d="M224 190h92" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+    <path d="M316 190l-18-12v24Z" fill="#059669"/>
+    <path d="M622 190c64-126 88-126 106-126" fill="none" stroke="#059669" stroke-width="7" stroke-linecap="round"/>
+    <path d="M622 190h106" stroke="#059669" stroke-width="7" stroke-linecap="round"/>
+    <path d="M622 190c64 242 88 242 106 242" fill="none" stroke="#059669" stroke-width="7" stroke-linecap="round"/>
+    <path d="M992 248h104" stroke="#059669" stroke-width="7" stroke-linecap="round"/>
+    <path d="M992 432h104" stroke="#059669" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <rect x="118" y="894" width="1300" height="58" rx="29" fill="#064E3B"/>
+  <text x="768" y="931" text-anchor="middle" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="800">Regla de oro: el agente conversa, pero solo agenda cuando tiene datos completos y disponibilidad real.</text>
+</svg>

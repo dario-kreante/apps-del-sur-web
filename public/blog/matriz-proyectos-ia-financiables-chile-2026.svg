@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="940" viewBox="0 0 1400 940" role="img" aria-labelledby="title desc">
+  <title id="title">Matriz de proyectos de IA financiables para empresas chilenas</title>
+  <desc id="desc">Matriz Apps del Sur que clasifica proyectos de IA por nivel de complejidad y tipo de financiamiento público en Chile.</desc>
+  <defs>
+    <linearGradient id="header" x1="0" x2="1" y1="0" y2="0">
+      <stop stop-color="#064E3B"/>
+      <stop offset=".7" stop-color="#059669"/>
+      <stop offset="1" stop-color="#7ED957"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="13" flood-color="#03241F" flood-opacity=".11"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="940" fill="#fff"/>
+  <rect x="0" y="0" width="1400" height="180" fill="#ECFDF5"/>
+  <path d="M0 130c162 32 275-42 420-18 162 27 233 72 400 27 178-48 288-62 580 8V0H0Z" fill="#D1FAE5" opacity=".7"/>
+  <rect x="64" y="54" width="92" height="92" rx="24" fill="url(#header)" filter="url(#shadow)"/>
+  <path d="M91 109c10 10 27 12 49-8" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <rect x="88" y="96" width="12" height="24" rx="3" fill="#fff" opacity=".65"/>
+  <rect x="106" y="84" width="12" height="36" rx="3" fill="#fff" opacity=".85"/>
+  <rect x="124" y="72" width="12" height="48" rx="3" fill="#fff"/>
+  <text x="182" y="92" fill="#064E3B" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="850">Apps del Sur</text>
+  <text x="182" y="132" fill="#0F2D2A" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="850">Matriz de proyectos IA financiables</text>
+  <text x="64" y="226" fill="#475467" font-family="Inter, Arial, sans-serif" font-size="24">Mientras más propio, medible y conectado al negocio sea el proyecto, mejor calza con instrumentos de innovación e I+D.</text>
+
+  <g transform="translate(140 300)" font-family="Inter, Arial, sans-serif">
+    <line x1="0" y1="480" x2="1120" y2="480" stroke="#98A2B3" stroke-width="3"/>
+    <line x1="0" y1="480" x2="0" y2="0" stroke="#98A2B3" stroke-width="3"/>
+    <path d="M1120 480l-20-12v24Z" fill="#98A2B3"/>
+    <path d="M0 0l-12 20h24Z" fill="#98A2B3"/>
+    <text x="382" y="540" fill="#064E3B" font-size="25" font-weight="800">Mayor madurez de datos y adopción interna</text>
+    <text x="-44" y="280" transform="rotate(-90 -44 280)" fill="#064E3B" font-size="25" font-weight="800">Mayor novedad / I+D / riesgo tecnológico</text>
+
+    <rect x="46" y="300" width="260" height="132" rx="20" fill="#fff" stroke="#D0D5DD" filter="url(#shadow)"/>
+    <text x="176" y="342" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="850">Automatización</text>
+    <text x="176" y="376" text-anchor="middle" fill="#475467" font-size="18">chatbots, formularios,</text>
+    <text x="176" y="404" text-anchor="middle" fill="#475467" font-size="18">reportes simples</text>
+    <rect x="86" y="440" width="180" height="34" rx="17" fill="#D1FAE5"/>
+    <text x="176" y="464" text-anchor="middle" fill="#047857" font-size="17" font-weight="750">Kit Digital / Crece</text>
+
+    <rect x="362" y="216" width="282" height="148" rx="20" fill="#fff" stroke="#D0D5DD" filter="url(#shadow)"/>
+    <text x="503" y="258" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="850">Copilotos internos</text>
+    <text x="503" y="292" text-anchor="middle" fill="#475467" font-size="18">asistentes por rol, RAG,</text>
+    <text x="503" y="320" text-anchor="middle" fill="#475467" font-size="18">clasificación documental</text>
+    <rect x="411" y="374" width="184" height="34" rx="17" fill="#D1FAE5"/>
+    <text x="503" y="398" text-anchor="middle" fill="#047857" font-size="17" font-weight="750">Capital Humano</text>
+
+    <rect x="686" y="122" width="296" height="158" rx="20" fill="#fff" stroke="#A7F3D0" filter="url(#shadow)"/>
+    <text x="834" y="164" text-anchor="middle" fill="#064E3B" font-size="24" font-weight="850">IA operacional</text>
+    <text x="834" y="198" text-anchor="middle" fill="#475467" font-size="18">predicción de costos,</text>
+    <text x="834" y="226" text-anchor="middle" fill="#475467" font-size="18">anomalías, planificación</text>
+    <rect x="727" y="290" width="214" height="34" rx="17" fill="#D1FAE5"/>
+    <text x="834" y="314" text-anchor="middle" fill="#047857" font-size="17" font-weight="750">Crea y Valida / FIA</text>
+
+    <rect x="828" y="-16" width="300" height="160" rx="20" fill="#064E3B" filter="url(#shadow)"/>
+    <text x="978" y="30" text-anchor="middle" fill="#fff" font-size="24" font-weight="850">I+D avanzada</text>
+    <text x="978" y="66" text-anchor="middle" fill="#D1FAE5" font-size="18">modelos propios, visión,</text>
+    <text x="978" y="94" text-anchor="middle" fill="#D1FAE5" font-size="18">optimización sectorial</text>
+    <rect x="870" y="154" width="216" height="34" rx="17" fill="#7ED957"/>
+    <text x="978" y="178" text-anchor="middle" fill="#064E3B" font-size="17" font-weight="850">Innova Alta Tecnología</text>
+  </g>
+
+  <g transform="translate(86 830)" font-family="Inter, Arial, sans-serif">
+    <rect x="0" y="0" width="1228" height="58" rx="29" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="614" y="38" text-anchor="middle" fill="#064E3B" font-size="22" font-weight="800">Mejor postulación: IA aplicada a un dolor con línea base, datos reales, piloto y ROI en CLP</text>
+  </g>
+</svg>

@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LogoLockup from '../../components/LogoLockup.astro';
+
+const title = 'Diagnóstico gratuito de madurez en IA para pymes chilenas';
+const description = 'Autoevaluación de 12 preguntas (~6 min) para conocer en qué etapa de transformación digital e IA está tu pyme. 6 dimensiones, 4 etapas, plan de acción personalizado. Sin costo.';
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Diagnóstico de Madurez en IA — Apps del Sur',
+  description,
+  url: 'https://appsdelsur.cl/diagnostico-madurez-ia/',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'CLP' },
+  provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' },
+  inLanguage: 'es-CL',
+  audience: { '@type': 'BusinessAudience', audienceType: 'Pymes chilenas' },
+});
+---
+
+<Layout title={`${title} | Apps del Sur`} description={description}>
+  <script type="application/ld+json" set:html={jsonLd} />
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center shrink-0" aria-label="Apps del Sur — Inicio">
+        <LogoLockup class="h-14 w-auto sm:h-16" />
+      </a>
+      <nav class="flex items-center gap-4">
+        <a href="/blog/" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+        <a href="/#contacto" class="text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg transition-colors">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="pt-24 pb-16 bg-emerald-50/30 min-h-screen">
+    <div class="max-w-3xl mx-auto px-6">
+      <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">Diagnóstico de madurez en IA</span>
+      </nav>
+
+      <div id="panel" class="bg-white border border-gray-200 rounded-2xl p-7 md:p-10 shadow-sm"></div>
+
+      <p class="text-center text-xs text-gray-500 mt-6">
+        Tus respuestas quedan solo en tu navegador. Si recargas la página, retomas donde quedaste.
+      </p>
+    </div>
+  </main>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-900 text-white px-4 py-2 rounded-full text-sm opacity-0 pointer-events-none transition-opacity shadow-lg z-50"></div>
+
+  <style>
+    .opt-card { background: #ecfdf5; border: 1.5px solid transparent; transition: all 0.15s ease; }
+    .opt-card:hover { background: #d1fae5; }
+    .opt-card.selected { background: #d1fae5; border-color: #047857; box-shadow: 0 4px 14px rgba(4, 120, 87, 0.15); }
+    .opt-card .num { background: white; color: #047857; border: 1px solid #6ee7b7; }
+    .opt-card.selected .num { background: #047857; color: white; border-color: #047857; }
+
+    .matrix-cell.s1 { background: #ecfdf5; }
+    .matrix-cell.s2 { background: #a7f3d0; }
+    .matrix-cell.s3 { background: #34d399; color: white; }
+    .matrix-cell.s4 { background: #065f46; color: white; }
+    .matrix-cell.active { outline: 3px solid #ca8a04; outline-offset: -2px; position: relative; }
+    .matrix-cell.active::after { content: 'TÚ'; position: absolute; top: 4px; right: 4px; background: #ca8a04; color: white; font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px; }
+
+    @media print {
+      header, #toast, .no-print { display: none !important; }
+      main { padding-top: 0; background: white; }
+      #panel { box-shadow: none; border: none; padding: 0; }
+    }
+  </style>
+
+  <script src="/diagnostico-app.js" is:inline></script>
+</Layout>
