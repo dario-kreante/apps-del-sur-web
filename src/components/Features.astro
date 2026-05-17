@@ -33,24 +33,22 @@ const iconMap: Record<string, any> = {
           description={features.description}
           class="max-w-[540px] mb-0"
         />
+        <figure class="hidden lg:block mt-10 max-w-[540px] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-lg">
+          <img
+            src="/images/operador-campo-app-terreno.png"
+            alt="Operador de campo usando una app móvil de Apps del Sur en terreno"
+            class="h-[300px] w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
       </div>
 
-      <!-- Right: Field context + Mobile App Mockup — Cuaderno de Campo -->
+      <!-- Right: Mobile App Mockup — Cuaderno de Campo -->
       <div class="lg:w-1/2 w-full flex justify-center lg:justify-end">
-        <div class="relative w-full max-w-[560px] min-h-[620px] sm:min-h-[660px] lg:min-h-[560px] pt-44 sm:pt-52 lg:pt-0">
-          <figure class="absolute inset-x-0 top-0 h-[280px] sm:h-[330px] lg:left-0 lg:right-auto lg:top-10 lg:w-[74%] lg:h-[420px] overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-xl">
-            <img
-              src="/images/operador-campo-app-terreno.png"
-              alt="Operador de campo usando una app móvil de Apps del Sur en terreno"
-              class="h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/0 to-white/40 lg:to-white/55"></div>
-          </figure>
-
+        <div class="relative w-full max-w-[360px]">
           <!-- Phone frame -->
-          <div class="relative z-10 w-[280px] mx-auto lg:ml-auto lg:mr-4 bg-white rounded-[2.5rem] border-[3px] border-gray-800 shadow-2xl overflow-hidden">
+          <div class="relative z-10 w-[280px] mx-auto bg-white rounded-[2.5rem] border-[3px] border-gray-800 shadow-2xl overflow-hidden">
             <!-- Status bar -->
             <div class="bg-gray-800 px-6 pt-3 pb-2 flex items-center justify-between">
               <span class="text-white text-[11px] font-medium">9:41</span>
