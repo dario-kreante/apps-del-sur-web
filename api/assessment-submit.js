@@ -216,10 +216,43 @@ async function airtableRequest(config, method, path, body) {
 
 async function syncHubSpot(config, lead, reportUrl) {
   const name = splitName(lead.nombre);
-  const contactId = await upsertHubSpotContact(config, lead, name);
+  // Create/upsert the company FIRST (with its email domain) so that when the
+  // contact is created HubSpot's auto-association matches this company by domain
+  // instead of creating a duplicate company.
   const companyId = await upsertHubSpotCompany(config, lead);
+  const contactId = await upsertHubSpotContact(config, lead, name);
+
+  // Explicitly associate contact <-> company (the endpoint used to leave them orphaned).
+  if (contactId && companyId) {
+    await associateObjects(config, 'contacts', contactId, 'companies', companyId);
+  }
+
   const dealId = await maybeCreateHubSpotDeal(config, lead, reportUrl);
+  if (dealId) {
+    if (companyId) await associateObjects(config, 'deals', dealId, 'companies', companyId);
+    if (contactId) await associateObjects(config, 'deals', dealId, 'contacts', contactId);
+  }
+
   return { configured: true, contactId, companyId, dealId };
+}
+
+function emailDomain(email) {
+  const at = String(email || '').split('@')[1];
+  return at ? at.trim().toLowerCase() : '';
+}
+
+// Creates a default (unlabeled) association between two CRM objects via the v4 API.
+// Failures are non-fatal: the lead is still captured even if the association call fails.
+async function associateObjects(config, fromType, fromId, toType, toId) {
+  try {
+    await hubspotRequest(
+      config,
+      'PUT',
+      `/crm/v4/objects/${fromType}/${fromId}/associations/default/${toType}/${toId}`,
+    );
+  } catch (error) {
+    console.error('hubspot association failed', fromType, '->', toType, error);
+  }
 }
 
 async function upsertHubSpotContact(config, lead, name) {
@@ -243,11 +276,21 @@ async function upsertHubSpotContact(config, lead, name) {
 
 async function upsertHubSpotCompany(config, lead) {
   if (!lead.empresa) return null;
-  const existing = await hubspotSearch(config, 'companies', 'name', lead.empresa, ['name']);
+  const domain = emailDomain(lead.email);
+
+  // Prefer matching by domain (this is also how HubSpot auto-creates companies,
+  // so matching here prevents duplicates). Fall back to an exact name match.
+  let existing = null;
+  if (domain) existing = await hubspotSearch(config, 'companies', 'domain', domain, ['name', 'domain']);
+  if (!existing) existing = await hubspotSearch(config, 'companies', 'name', lead.empresa, ['name']);
+
   const properties = {
     name: lead.empresa,
     phone: lead.telefono,
   };
+  // Setting the domain is what lets HubSpot associate the contact to THIS company
+  // instead of spawning a domain-based duplicate.
+  if (domain) properties.domain = domain;
   if (config.hubspotOwnerId) properties.hubspot_owner_id = config.hubspotOwnerId;
 
   if (existing) {
