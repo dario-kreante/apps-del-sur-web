@@ -589,17 +589,57 @@
         '<div class="flex flex-wrap gap-3 pt-2"><button type="submit" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-sm">Enviar y recibir reporte →</button><button type="button" id="cancelLead" class="text-emerald-700 border border-gray-200 hover:bg-emerald-50 font-medium px-5 py-3 rounded-full transition-colors">← Volver a resultados</button></div>' +
       '</form>';
     document.getElementById('cancelLead').onclick = function() { state.screen = 'results'; render(); };
+    document.getElementById('leadForm').onsubmit = handleLeadSubmit;
+  }
+
+  async function handleLeadSubmit(event) {
+    event.preventDefault();
+    var form = event.currentTarget;
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var originalLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      var data = {};
+      var formData = new FormData(form);
+      formData.forEach(function(value, key) { data[key] = value; });
+
+      var response = await fetch('/api/assessment-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fields: data })
+      });
+      var result = await response.json().catch(function() { return {}; });
+      if (!response.ok || !result.ok) throw new Error(result.error || 'submit_failed');
+
+      state.reportUnlocked = true;
+      state.reportUrl = result.reportUrl || null;
+      state.screen = 'thanks';
+      saveState();
+      render();
+    } catch (error) {
+      console.warn('Assessment CRM submit failed; falling back to FormSubmit', error);
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      form.onsubmit = null;
+      form.submit();
+    }
   }
 
   // ---------- Screen: Thanks ----------
   function renderThanks() {
+    var reportLink = state.reportUrl
+      ? '<a href="' + esc(state.reportUrl) + '" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm text-sm">Ver reporte</a>'
+      : '';
     panel.innerHTML =
       '<div class="text-center py-8">' +
         '<div class="text-6xl mb-4">✓</div>' +
         '<h2 class="text-3xl font-bold text-emerald-900 mb-3">¡Gracias!</h2>' +
-        '<p class="text-lg text-gray-600 mb-2">Recibimos tu solicitud. Te enviaremos el reporte completo a tu correo en las próximas 24 horas.</p>' +
+        '<p class="text-lg text-gray-600 mb-2">Recibimos tu solicitud. El reporte quedó registrado y te contactaremos para revisar los siguientes pasos.</p>' +
         '<p class="text-sm text-gray-500 mb-8">Mientras tanto, puedes revisar nuestros recursos para empresas.</p>' +
         '<div class="flex flex-wrap gap-3 justify-center">' +
+          reportLink +
           '<a href="/blog/framework-ia-pymes-chile/" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm text-sm">Leer framework completo</a>' +
           '<a href="/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/" class="text-emerald-700 border border-gray-200 hover:bg-emerald-50 font-medium px-5 py-2.5 rounded-full transition-colors text-sm">Ver fondos disponibles</a>' +
           '<a href="/" class="text-emerald-700 border border-gray-200 hover:bg-emerald-50 font-medium px-5 py-2.5 rounded-full transition-colors text-sm">Volver al inicio</a>' +
