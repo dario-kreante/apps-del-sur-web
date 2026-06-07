@@ -89,6 +89,12 @@ El endpoint:
 - crea deal solo si existen `HUBSPOT_DEAL_PIPELINE` y `HUBSPOT_DEAL_STAGE`;
 - guarda los IDs de HubSpot de vuelta en Airtable.
 
+## Email (FormSubmit)
+
+FormSubmit **no acepta llamadas server-side** desde Vercel. La notificación por correo se dispara desde el navegador (`public/diagnostico-app.js`) después de un submit CRM exitoso.
+
+La primera vez que se usa un destinatario en FormSubmit, hay que **activar el formulario** desde el correo de confirmación que envía FormSubmit a `ASSESSMENT_NOTIFY_EMAIL`.
+
 ## Fallback
 
 Si el endpoint `/api/assessment-submit` falla o faltan variables de entorno, el formulario usa el envio tradicional a FormSubmit para que Dario reciba el lead por email y no se pierda la conversion.

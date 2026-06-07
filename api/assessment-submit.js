@@ -17,24 +17,40 @@ export default async function handler(req, res) {
 
     let airtable = { configured: Boolean(config.airtableKey && config.airtableBaseId), recordId: null, reportUrl: null };
     let hubspot = { configured: Boolean(config.hubspotToken), contactId: null, companyId: null, dealId: null };
+    const warnings = [];
 
     if (airtable.configured) {
-      airtable = await createAirtableRecord(config, lead);
+      try {
+        airtable = await createAirtableRecord(config, lead);
+      } catch (error) {
+        console.error('airtable sync failed', error);
+        warnings.push('airtable_sync_failed');
+      }
+    } else {
+      warnings.push('airtable_not_configured');
     }
 
     if (hubspot.configured) {
-      hubspot = await syncHubSpot(config, lead, airtable.reportUrl);
-      if (airtable.configured && airtable.recordId) {
-        await updateAirtableRecord(config, airtable.recordId, {
-          'HubSpot Contact ID': hubspot.contactId || '',
-          'HubSpot Company ID': hubspot.companyId || '',
-          'HubSpot Deal ID': hubspot.dealId || '',
-          'Estado CRM': 'Sincronizado',
-        });
+      try {
+        hubspot = await syncHubSpot(config, lead, airtable.reportUrl);
+        if (airtable.configured && airtable.recordId) {
+          await updateAirtableRecord(config, airtable.recordId, {
+            'HubSpot Contact ID': hubspot.contactId || '',
+            'HubSpot Company ID': hubspot.companyId || '',
+            'HubSpot Deal ID': hubspot.dealId || '',
+            'Estado CRM': 'Sincronizado',
+          });
+        }
+      } catch (error) {
+        console.error('hubspot sync failed', error);
+        warnings.push('hubspot_sync_failed');
       }
+    } else {
+      warnings.push('hubspot_not_configured');
     }
 
     const email = await sendNotification(config, lead, airtable.reportUrl);
+    if (!email.sent && !email.skipped) warnings.push('email_notification_failed');
 
     return sendJson(res, 200, {
       ok: true,
@@ -44,11 +60,7 @@ export default async function handler(req, res) {
       hubspotCompanyId: hubspot.companyId,
       hubspotDealId: hubspot.dealId,
       emailSent: email.sent,
-      warnings: [
-        airtable.configured ? null : 'airtable_not_configured',
-        hubspot.configured ? null : 'hubspot_not_configured',
-        email.sent ? null : 'email_notification_failed',
-      ].filter(Boolean),
+      warnings,
     });
   } catch (error) {
     console.error('assessment-submit failed', error);
@@ -56,16 +68,20 @@ export default async function handler(req, res) {
   }
 }
 
+function normalizeEnv(value) {
+  return String(value || '').trim().replace(/^['"]|['"]$/g, '');
+}
+
 function readConfig(req) {
   const siteUrl = process.env.PUBLIC_SITE_URL || getOrigin(req);
   return {
     siteUrl: siteUrl.replace(/\/$/, ''),
-    notifyEmail: process.env.ASSESSMENT_NOTIFY_EMAIL || DEFAULT_NOTIFY_EMAIL,
-    airtableKey: process.env.AIRTABLE_API_KEY,
-    airtableBaseId: process.env.AIRTABLE_BASE_ID,
-    airtableTable: process.env.AIRTABLE_ASSESSMENT_TABLE || DEFAULT_TABLE_NAME,
-    hubspotToken: process.env.HUBSPOT_PRIVATE_APP_TOKEN,
-    hubspotOwnerId: process.env.HUBSPOT_OWNER_ID,
+    notifyEmail: normalizeEnv(process.env.ASSESSMENT_NOTIFY_EMAIL) || DEFAULT_NOTIFY_EMAIL,
+    airtableKey: normalizeEnv(process.env.AIRTABLE_API_KEY),
+    airtableBaseId: normalizeEnv(process.env.AIRTABLE_BASE_ID),
+    airtableTable: normalizeEnv(process.env.AIRTABLE_ASSESSMENT_TABLE) || DEFAULT_TABLE_NAME,
+    hubspotToken: normalizeEnv(process.env.HUBSPOT_PRIVATE_APP_TOKEN),
+    hubspotOwnerId: normalizeEnv(process.env.HUBSPOT_OWNER_ID),
     hubspotDealPipeline: process.env.HUBSPOT_DEAL_PIPELINE,
     hubspotDealStage: process.env.HUBSPOT_DEAL_STAGE,
   };
@@ -286,35 +302,10 @@ async function hubspotRequest(config, method, path, body) {
   return response.json();
 }
 
-async function sendNotification(config, lead, reportUrl) {
-  try {
-    const body = new URLSearchParams({
-      _subject: `Nuevo lead - Diagnóstico IA - ${lead.empresa}`,
-      _template: 'table',
-      _captcha: 'false',
-      Nombre: lead.nombre,
-      Email: lead.email,
-      Empresa: lead.empresa,
-      Telefono: lead.telefono,
-      Sector: lead.sector,
-      Region: lead.region,
-      Fuente: lead.fuente,
-      'Etapa Global': lead.etapaGlobal,
-      'Puntaje Normalizado': lead.puntajeNormalizado,
-      Fortaleza: lead.fortaleza,
-      Prioridad: lead.prioridad,
-      'Reporte URL': reportUrl || 'Pendiente: Airtable no configurado',
-      Resumen: lead.resumen,
-    });
-    const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(config.notifyEmail)}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body,
-    });
-    return { sent: response.ok };
-  } catch (_error) {
-    return { sent: false };
-  }
+async function sendNotification(_config, _lead, _reportUrl) {
+  // FormSubmit validates browser-origin requests and rejects server-side calls from Vercel.
+  // Email alerts are sent from the browser after a successful CRM sync in diagnostico-app.js.
+  return { sent: false, skipped: true, reason: 'formsubmit_requires_browser' };
 }
 
 function sendJson(res, statusCode, body) {
