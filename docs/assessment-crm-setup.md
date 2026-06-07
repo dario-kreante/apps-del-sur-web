@@ -26,7 +26,12 @@ PUBLIC_SITE_URL=https://appsdelsur.cl
 
 ## Airtable
 
-Crear una base llamada `Apps del Sur - Assessment IA` con una tabla `Assessment Leads`.
+Base creada:
+
+- Base: `Apps del Sur - Assessment IA`
+- Base ID: `appynnZga36MsKGsh`
+- Tabla: `Assessment Leads`
+- Table ID: `tblp1mWPUZybHghHg`
 
 Campos recomendados:
 
