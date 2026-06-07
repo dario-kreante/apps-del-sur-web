@@ -26,3 +26,7 @@ pnpm-debug.log*
 .vercel
 firebase-debug.log
 index.html.bak
+
+# Local env dumps con secretos (no commitear)
+.env.vercel.*
+.env.verify
