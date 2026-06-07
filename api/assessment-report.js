@@ -8,10 +8,11 @@ export default async function handler(req, res) {
     return;
   }
 
+  const normalizeEnv = (value) => String(value || '').trim().replace(/^['"]|['"]$/g, '');
   const config = {
-    airtableKey: process.env.AIRTABLE_API_KEY,
-    airtableBaseId: process.env.AIRTABLE_BASE_ID,
-    airtableTable: process.env.AIRTABLE_ASSESSMENT_TABLE || DEFAULT_TABLE_NAME,
+    airtableKey: normalizeEnv(process.env.AIRTABLE_API_KEY),
+    airtableBaseId: normalizeEnv(process.env.AIRTABLE_BASE_ID),
+    airtableTable: normalizeEnv(process.env.AIRTABLE_ASSESSMENT_TABLE) || DEFAULT_TABLE_NAME,
   };
 
   if (!config.airtableKey || !config.airtableBaseId) {

@@ -592,6 +592,27 @@
     document.getElementById('leadForm').onsubmit = handleLeadSubmit;
   }
 
+  async function notifyViaFormSubmit(fields, reportUrl) {
+    try {
+      var payload = {};
+      Object.keys(fields).forEach(function(key) { payload[key] = fields[key]; });
+      payload._subject = 'Nuevo lead — Diagnóstico Madurez IA — ' + (fields.Empresa || 'Sin empresa');
+      payload._template = 'table';
+      payload._captcha = 'false';
+      payload['Reporte URL'] = reportUrl || 'Pendiente';
+
+      var response = await fetch('https://formsubmit.co/ajax/dramirez.gysactiva@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      var result = await response.json().catch(function() { return {}; });
+      return result.success === true || result.success === 'true';
+    } catch (_error) {
+      return false;
+    }
+  }
+
   async function handleLeadSubmit(event) {
     event.preventDefault();
     var form = event.currentTarget;
@@ -612,6 +633,10 @@
       });
       var result = await response.json().catch(function() { return {}; });
       if (!response.ok || !result.ok) throw new Error(result.error || 'submit_failed');
+
+      notifyViaFormSubmit(data, result.reportUrl).catch(function(error) {
+        console.warn('FormSubmit notification failed', error);
+      });
 
       state.reportUnlocked = true;
       state.reportUrl = result.reportUrl || null;
