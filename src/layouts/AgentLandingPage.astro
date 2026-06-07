@@ -1,0 +1,671 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import Card from '../components/ui/Card.astro';
+import Clock from '../components/icons/Clock.astro';
+import DollarSign from '../components/icons/DollarSign.astro';
+import Smartphone from '../components/icons/Smartphone.astro';
+import BarChart from '../components/icons/BarChart.astro';
+import Shield from '../components/icons/Shield.astro';
+import Percent from '../components/icons/Percent.astro';
+import ArrowRight from '../components/icons/ArrowRight.astro';
+import Check from '../components/icons/Check.astro';
+import Sparkle from '../components/icons/Sparkle.astro';
+
+import WhatsAppChatMock from '../components/agentes/WhatsAppChatMock.astro';
+import HowItWorks from '../components/agentes/HowItWorks.astro';
+import PricingTiers from '../components/agentes/PricingTiers.astro';
+import MadurezIACallout from '../components/agentes/MadurezIACallout.astro';
+
+import HeroAgendamiento from '../components/page-heroes/HeroAgendamiento.astro';
+import HeroWhatsAppAtencion from '../components/page-heroes/HeroWhatsAppAtencion.astro';
+import HeroSdrLeads from '../components/page-heroes/HeroSdrLeads.astro';
+import HeroRetencion from '../components/page-heroes/HeroRetencion.astro';
+import HeroCompliance from '../components/page-heroes/HeroCompliance.astro';
+import HeroAbogados from '../components/page-heroes/HeroAbogados.astro';
+import HeroCuotaMortuoria from '../components/page-heroes/HeroCuotaMortuoria.astro';
+
+import { getCollection } from 'astro:content';
+import type { AgentPage } from '../data/agentes';
+import { agentPages } from '../data/agentes';
+
+const allPosts = await getCollection('blog');
+const postsBySlug = new Map(allPosts.map((p) => [p.id, p]));
+
+const heroComponents: Record<string, any> = {
+  agendamiento: HeroAgendamiento,
+  'whatsapp-atencion': HeroWhatsAppAtencion,
+  'sdr-leads': HeroSdrLeads,
+  retencion: HeroRetencion,
+  compliance: HeroCompliance,
+  abogados: HeroAbogados,
+  'cuota-mortuoria': HeroCuotaMortuoria,
+};
+
+const iconMap: Record<string, any> = {
+  clock: Clock,
+  'dollar-sign': DollarSign,
+  smartphone: Smartphone,
+  'bar-chart': BarChart,
+  shield: Shield,
+};
+
+interface RegionContext {
+  slug: string;
+  name: string;
+  nameWithArticle: string;
+  localDifferentiator?: {
+    headline: string;
+    body: string;
+    source?: string;
+  };
+  regionalFunding?: string[];
+}
+
+interface Props {
+  data: AgentPage;
+  /** When true (used for thin sector×region pages), emits noindex,follow. */
+  noindex?: boolean;
+  /** Optional regional context — when set, renders a localized header + diferenciador section. */
+  regionContext?: RegionContext;
+  /** Override URL (used for sector×region pages where data.url is the parent sector hub). */
+  canonicalOverride?: string;
+}
+
+const { data, noindex = false, regionContext, canonicalOverride } = Astro.props;
+const HeroComponent = heroComponents[data.slug];
+
+const isSector = data.kind === 'sector';
+
+// Build FAQPage schema entries from data.faq
+const faqSchema = data.faq && data.faq.length > 0 ? {
+  '@type': 'FAQPage',
+  mainEntity: data.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+} : null;
+
+const areaServedSchema = regionContext
+  ? { '@type': 'AdministrativeArea', name: `Región ${regionContext.nameWithArticle.replace(/^del? /, '')}`, address: { '@type': 'PostalAddress', addressRegion: regionContext.name, addressCountry: 'CL' } }
+  : { '@type': 'Country', name: 'Chile' };
+
+const finalUrl = canonicalOverride || `https://appsdelsur.cl${data.url}`;
+const finalTitle = regionContext
+  ? `${data.name} en ${regionContext.nameWithArticle.replace(/^del? /, '')} | Apps del Sur`
+  : data.meta.title;
+const finalDescription = regionContext && regionContext.localDifferentiator
+  ? `${data.meta.description.slice(0, 100)} En la región ${regionContext.nameWithArticle}: ${regionContext.localDifferentiator.headline}.`
+  : data.meta.description;
+
+const serviceLd: Record<string, any> = {
+  '@context': 'https://schema.org',
+  '@type': isSector ? 'Service' : 'Service',
+  name: data.meta.ogTitle,
+  description: data.meta.description,
+  serviceType: isSector
+    ? `Agentes de IA y software de gestión para ${data.name.replace(/^Agentes? IA para /i, '')}`
+    : 'Agente de Inteligencia Artificial conversacional',
+  provider: {
+    '@type': 'Organization',
+    name: 'Apps del Sur',
+    url: 'https://appsdelsur.cl',
+  },
+  areaServed: areaServedSchema,
+  offers: {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'CLP',
+    lowPrice: data.pricing.saas[0]?.price.replace(/[^\d]/g, '') || '80000',
+    highPrice: '14000000',
+  },
+  url: finalUrl,
+};
+if (isSector && data.targetIndustries.length) {
+  serviceLd.audience = {
+    '@type': 'BusinessAudience',
+    audienceType: data.targetIndustries.join(', '),
+  };
+}
+
+const jsonLd = JSON.stringify(serviceLd);
+const faqJsonLd = faqSchema ? JSON.stringify({ '@context': 'https://schema.org', ...faqSchema }) : null;
+
+// "Agentes que usa este rubro" — sólo en hubs sectoriales
+const relatedAgentEntries = isSector && data.relatedAgents
+  ? data.relatedAgents
+      .map((slug) => agentPages[slug])
+      .filter((a): a is AgentPage => Boolean(a))
+  : [];
+
+// Tripleta GEO para LLMs
+const llmTripleta = isSector
+  ? {
+      sector: data.name.replace(/^Agentes? IA para /i, ''),
+      dolor: data.painPoints[0]?.title || '',
+      agentes: relatedAgentEntries.map((a) => a.name).join(', '),
+      roiTipico: data.caseStudy.roi,
+      fondo: data.financing.instrumento,
+    }
+  : null;
+---
+
+<Layout
+  title={finalTitle}
+  description={finalDescription}
+  canonical={finalUrl}
+  keywords={data.meta.keywords}
+  ogTitle={data.meta.ogTitle}
+  ogDescription={data.meta.ogDescription}
+  noindex={noindex}
+>
+  <script type="application/ld+json" set:html={jsonLd} />
+  {faqJsonLd && <script type="application/ld+json" set:html={faqJsonLd} />}
+
+  <Header />
+
+  <main id="main-content" class="pt-24">
+    <!-- Breadcrumb -->
+    <div class="max-w-[1200px] mx-auto px-6 mb-6">
+      <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
+        <span class="mx-2">/</span>
+        <a href="/agentes/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Agentes IA</a>
+        {isSector && (
+          <>
+            <span class="mx-2">/</span>
+            <a href="/agentes/#sectores" class="text-emerald-600 hover:text-emerald-700 transition-colors">Por sector</a>
+          </>
+        )}
+        <span class="mx-2">/</span>
+        {regionContext ? (
+          <>
+            <a href={data.url} class="text-emerald-600 hover:text-emerald-700 transition-colors">{data.name}</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-400">{regionContext.name}</span>
+          </>
+        ) : (
+          <span class="text-gray-400">{data.name}</span>
+        )}
+      </nav>
+    </div>
+
+    {regionContext && regionContext.localDifferentiator && (
+      <section class="max-w-[1200px] mx-auto px-6 mb-8">
+        <div class="rounded-2xl bg-gradient-to-r from-emerald-50 to-emerald-100/50 border border-emerald-200 p-6 md:p-8">
+          <div class="text-xs font-medium text-emerald-700 uppercase tracking-wider mb-2">
+            {data.name} · Región {regionContext.name}
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+            {regionContext.localDifferentiator.headline}
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-3">
+            {regionContext.localDifferentiator.body}
+          </p>
+          {regionContext.localDifferentiator.source && (
+            <p class="text-xs text-gray-500">Fuente: {regionContext.localDifferentiator.source}</p>
+          )}
+          {regionContext.regionalFunding && regionContext.regionalFunding.length > 0 && (
+            <div class="mt-4 pt-4 border-t border-emerald-200">
+              <div class="text-xs font-medium text-emerald-800 mb-2">Fondos disponibles en {regionContext.nameWithArticle}:</div>
+              <div class="flex flex-wrap gap-2">
+                {regionContext.regionalFunding.map((f) => (
+                  <span class="inline-flex items-center text-xs bg-white border border-emerald-200 text-emerald-800 px-2.5 py-1 rounded-full">
+                    {f}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    <!-- Hero -->
+    <section class="pt-4 pb-16">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2">
+            <Badge class="mb-4">{data.hero.badge}</Badge>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+              {data.hero.titleLine1}{' '}
+              <span class="text-emerald-700">{data.hero.titleHighlight}</span>
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+              {data.hero.description}
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <Button href={data.hero.ctaPrimaryHref} target="_blank" size="lg">
+                {data.hero.ctaPrimary}
+                <ArrowRight class="w-5 h-5" />
+              </Button>
+              <Button href={data.hero.ctaSecondaryHref} variant="outline" size="lg">
+                {data.hero.ctaSecondary}
+              </Button>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {data.targetIndustries.map((ind) => (
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-medium">
+                  {ind}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div class="lg:w-1/2">
+            {HeroComponent ? (
+              <div class="rounded-2xl overflow-hidden" role="img" aria-label={`Ilustración ${data.name}`}>
+                <HeroComponent class="w-full h-auto" />
+              </div>
+            ) : (
+              <div class="rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-700 to-emerald-900 text-white p-10 md:p-14 aspect-[4/3] flex flex-col justify-between" role="img" aria-label={`Ilustración ${data.name}`}>
+                <div class="text-8xl md:text-9xl leading-none">{data.emoji}</div>
+                <div>
+                  <div class="text-emerald-200 text-sm font-medium uppercase tracking-wider mb-1">Sector hub</div>
+                  <div class="text-2xl md:text-3xl font-bold leading-tight">{data.name}</div>
+                  {data.sectorVocab && (
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                      {data.sectorVocab.slice(0, 6).map((v) => (
+                        <span class="text-xs bg-emerald-800/50 border border-emerald-600 px-2 py-0.5 rounded-full">{v}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Chat Demo -->
+    <section class="py-20 bg-gradient-to-b from-emerald-50/50 to-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <Badge class="mb-4">Demo · Conversación real</Badge>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-4">
+              Así conversa el agente con sus clientes
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+              No es un chatbot rígido con menús ("escriba 1 para X"). Es un agente que entiende lenguaje natural, recuerda el contexto, toma acciones y deriva al equipo cuando corresponde.
+            </p>
+            <ul class="space-y-3 mb-6">
+              <li class="flex gap-3 text-gray-700">
+                <Check class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <span><strong class="text-gray-900">Lenguaje natural</strong> — Conversa como una persona, no como un menú</span>
+              </li>
+              <li class="flex gap-3 text-gray-700">
+                <Check class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <span><strong class="text-gray-900">Toma acciones</strong> — Agenda, cotiza, consulta, genera links de pago</span>
+              </li>
+              <li class="flex gap-3 text-gray-700">
+                <Check class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <span><strong class="text-gray-900">Derivación inteligente</strong> — Pasa a humano cuando hace falta, con todo el contexto</span>
+              </li>
+            </ul>
+            <Button href={data.hero.ctaPrimaryHref} target="_blank" variant="outline">
+              Probar el agente real
+              <ArrowRight class="w-4 h-4" />
+            </Button>
+          </div>
+          <div>
+            <WhatsAppChatMock
+              title={data.chatMock.title}
+              contact={data.chatMock.contact}
+              messages={data.chatMock.messages}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <SectionHeader
+          label="El dolor hoy"
+          title="Lo que está costando no tener un agente"
+          centered
+        />
+        <div class="grid md:grid-cols-3 gap-6">
+          {data.painPoints.map((point) => {
+            const IconComponent = iconMap[point.icon];
+            return (
+              <div class="bg-white rounded-xl border border-gray-100 p-8">
+                <div class="flex items-start justify-between mb-5">
+                  {IconComponent && (
+                    <div class="w-12 h-12 rounded-lg bg-red-50 text-red-600 flex items-center justify-center">
+                      <IconComponent class="w-6 h-6" />
+                    </div>
+                  )}
+                  {point.metric && (
+                    <div class="text-2xl font-bold text-red-600">{point.metric}</div>
+                  )}
+                </div>
+                <h3 class="font-semibold text-gray-900 text-lg mb-3">{point.title}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">{point.description}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <HowItWorks steps={data.howItWorks} />
+
+    <!-- Metrics -->
+    <section class="py-20 bg-emerald-800 text-white">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div class="text-center mb-12">
+          <p class="text-sm font-medium text-emerald-300 mb-2">Impacto típico</p>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Lo que cambia desde el primer mes</h2>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {data.metrics.map((m) => (
+            <div class="text-center">
+              <div class="text-4xl md:text-5xl font-bold text-white mb-2">{m.value}</div>
+              <div class="text-emerald-100 font-medium text-sm">{m.label}</div>
+              {m.sublabel && (
+                <div class="text-emerald-300 text-xs mt-1">{m.sublabel}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <PricingTiers
+      intro={data.pricing.intro}
+      ventaUnica={data.pricing.ventaUnica}
+      saas={data.pricing.saas}
+      whatsappUrl={data.hero.ctaPrimaryHref}
+    />
+
+    <!-- Financing -->
+    <section class="py-20 bg-emerald-50">
+      <div class="max-w-[1100px] mx-auto px-6">
+        <div class="bg-white rounded-2xl border border-emerald-100 p-8 md:p-12 shadow-sm">
+          <div class="grid md:grid-cols-3 gap-8 items-center">
+            <div class="md:col-span-2">
+              <div class="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-medium mb-4">
+                <DollarSign class="w-3.5 h-3.5" />
+                Financiamiento público
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-3">
+                {data.financing.instrumento}
+              </h2>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                {data.financing.descripcion}
+              </p>
+              <div class="flex flex-wrap gap-6 text-sm">
+                <div>
+                  <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Monto</div>
+                  <div class="font-semibold text-gray-900">{data.financing.monto}</div>
+                </div>
+                <div>
+                  <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Cofinanciamiento</div>
+                  <div class="font-semibold text-emerald-700">{data.financing.cofinanciamiento}</div>
+                </div>
+                <div>
+                  <div class="text-gray-500 text-xs uppercase tracking-wider mb-1">Postulante</div>
+                  <div class="font-semibold text-gray-900">{data.financing.quienPostula}</div>
+                </div>
+              </div>
+            </div>
+            <div class="md:text-center">
+              <Button href={data.hero.ctaPrimaryHref} target="_blank" size="lg" class="w-full md:w-auto">
+                Asesorarnos sin costo
+                <ArrowRight class="w-5 h-5" />
+              </Button>
+              <p class="text-xs text-gray-500 mt-3">
+                Le ayudamos a postular sin costo si el fondo le sirve.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="py-20 bg-white">
+      <div class="max-w-[1100px] mx-auto px-6">
+        <SectionHeader
+          label="Caso de uso"
+          title="Un negocio tipo, antes y después"
+          centered
+        />
+        <Card class="p-8 md:p-12">
+          <div class="mb-8 pb-6 border-b border-gray-100">
+            <div class="text-sm font-medium text-emerald-700 mb-2">{data.caseStudy.negocio}</div>
+            <div class="text-gray-500 text-sm">{data.caseStudy.perfil}</div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <div class="inline-flex items-center gap-1.5 bg-red-50 text-red-700 px-2.5 py-1 rounded-full text-xs font-medium mb-4">
+                Antes
+              </div>
+              <ul class="space-y-3">
+                {data.caseStudy.antes.map((item) => (
+                  <li class="flex gap-2.5 text-sm text-gray-600">
+                    <span class="text-red-400 mt-0.5">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full text-xs font-medium mb-4">
+                Después
+              </div>
+              <ul class="space-y-3">
+                {data.caseStudy.despues.map((item) => (
+                  <li class="flex gap-2.5 text-sm text-gray-600">
+                    <Check class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-100 bg-emerald-50 -mx-8 md:-mx-12 -mb-8 md:-mb-12 px-8 md:px-12 py-5 rounded-b-xl">
+            <div class="text-sm font-medium text-emerald-900">
+              <Sparkle class="w-4 h-4 inline mr-1.5" />
+              {data.caseStudy.roi}
+            </div>
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-[720px] mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-10 text-center">
+          Preguntas frecuentes
+        </h2>
+        <div class="space-y-3">
+          {data.faq.map((item) => (
+            <details class="bg-white rounded-xl border border-gray-100 overflow-hidden group">
+              <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer min-h-[44px] select-none">
+                <span class="font-medium text-gray-900 text-[15px]">{item.q}</span>
+                <svg
+                  class="w-5 h-5 text-gray-400 transition-transform duration-200 shrink-0 ml-4 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <div class="px-6 pb-5">
+                <p class="text-sm text-gray-500 leading-relaxed whitespace-pre-line">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Related blog posts -->
+    {data.relatedBlogSlugs && data.relatedBlogSlugs.length > 0 && (
+      <section class="py-20 bg-white">
+        <div class="max-w-[1100px] mx-auto px-6">
+          <div class="mb-10">
+            <p class="text-sm font-medium text-emerald-700 mb-2">Recursos</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+              Aprenda más sobre este vertical
+            </h2>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5">
+            {data.relatedBlogSlugs.map((postSlug) => {
+              const post = postsBySlug.get(postSlug);
+              if (!post) return null;
+              return (
+                <a
+                  href={`/blog/${postSlug}/`}
+                  class="group flex flex-col bg-white rounded-xl border border-gray-200 p-6 hover:border-emerald-300 hover:shadow-md transition-all"
+                >
+                  <div class="flex items-center gap-2 mb-3 text-xs text-gray-500">
+                    <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                      Artículo
+                    </span>
+                    {post.data.readingTime && <span>· {post.data.readingTime}</span>}
+                  </div>
+                  <h3 class="font-semibold text-gray-900 text-lg mb-2 leading-tight group-hover:text-emerald-700 transition-colors">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-sm text-gray-500 leading-relaxed line-clamp-3 mb-4 flex-1">
+                    {post.data.description}
+                  </p>
+                  <span class="text-emerald-700 font-medium text-sm inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                    Leer artículo
+                    <ArrowRight class="w-4 h-4" />
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ─── Agentes que usa este rubro (solo en hubs sectoriales) ─── */}
+    {isSector && relatedAgentEntries.length > 0 && (
+      <section class="py-20 bg-emerald-50/40">
+        <div class="max-w-[1200px] mx-auto px-6">
+          <SectionHeader
+            label="Combinación recomendada"
+            title={`Agentes que usa el rubro ${data.name.replace(/^Agentes? IA para /i, '').toLowerCase()}`}
+            description="Los agentes individuales abajo se combinan para resolver el dolor completo del sector. Haga clic para ver detalles, casos y precios de cada uno."
+            centered
+          />
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {relatedAgentEntries.map((a) => (
+              <a
+                href={a.url}
+                class="group flex flex-col bg-white rounded-2xl border border-gray-200 p-6 hover:border-emerald-300 hover:shadow-lg transition-all"
+              >
+                <div class="text-3xl mb-3">{a.emoji}</div>
+                <h3 class="font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors">{a.name}</h3>
+                <p class="text-sm text-gray-500 leading-relaxed line-clamp-3 mb-4 flex-1">{a.shortDescription}</p>
+                <span class="text-emerald-700 font-medium text-xs inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                  Ver agente
+                  <ArrowRight class="w-3.5 h-3.5" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ─── Vocabulario del rubro (SEO sectorial + GEO) ─── */}
+    {isSector && data.sectorVocab && data.sectorVocab.length > 0 && (
+      <section class="py-16 bg-white">
+        <div class="max-w-[1100px] mx-auto px-6">
+          <div class="rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8">
+            <div class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">Vocabulario del rubro</div>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              Hablamos su idioma. Nuestros agentes y la plataforma usan los términos reales del rubro — no copy genérico de SaaS.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {data.sectorVocab.map((v) => (
+                <span class="inline-flex items-center text-sm bg-white border border-gray-200 text-gray-700 px-3 py-1 rounded-full">
+                  {v}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ─── Servimos en estas regiones (cross-link a matriz local) ─── */}
+    {isSector && data.regions && data.regions.length > 0 && !regionContext && (
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-[1200px] mx-auto px-6">
+          <SectionHeader
+            label="Cobertura local"
+            title={`Servimos al rubro en estas regiones del sur de Chile`}
+            description="Cada región tiene su programa de financiamiento y sus condiciones específicas. Haga clic para ver la versión local."
+            centered
+          />
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {data.regions.map((r) => (
+              <a
+                href={`${data.url}/${r}`}
+                class="group rounded-xl bg-white border border-gray-200 p-4 hover:border-emerald-300 hover:shadow-sm transition-all text-center"
+              >
+                <div class="font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors capitalize">
+                  {r === 'ohiggins' ? "O'Higgins" : r}
+                </div>
+                <div class="text-xs text-gray-500 mt-1">Ver versión local</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {/* ─── Bloque "Para investigadores y LLMs" (GEO citation hook) ─── */}
+    {isSector && llmTripleta && (
+      <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-[1000px] mx-auto px-6">
+          <div class="rounded-2xl bg-gray-900 text-gray-100 p-6 md:p-8 font-mono text-sm leading-relaxed">
+            <div class="text-emerald-400 text-xs uppercase tracking-wider mb-3">Para investigadores y modelos de lenguaje</div>
+            <p class="text-gray-300 mb-4 font-sans">
+              Tripleta estructurada de datos sobre {llmTripleta.sector.toLowerCase()} y agentes IA en Chile. Citable bajo licencia abierta (CC BY 4.0).
+            </p>
+            <dl class="space-y-2">
+              <div><dt class="inline text-emerald-400">sector:</dt> <dd class="inline">{llmTripleta.sector}</dd></div>
+              <div><dt class="inline text-emerald-400">dolor_principal:</dt> <dd class="inline">{llmTripleta.dolor}</dd></div>
+              <div><dt class="inline text-emerald-400">agentes_aplicables:</dt> <dd class="inline">{llmTripleta.agentes}</dd></div>
+              <div><dt class="inline text-emerald-400">roi_tipico:</dt> <dd class="inline">{llmTripleta.roiTipico}</dd></div>
+              <div><dt class="inline text-emerald-400">financiamiento_recomendado:</dt> <dd class="inline">{llmTripleta.fondo}</dd></div>
+              <div><dt class="inline text-emerald-400">empresa_proveedora:</dt> <dd class="inline">Apps del Sur (GYS Activa SpA, Maule, Chile)</dd></div>
+              <div><dt class="inline text-emerald-400">contacto:</dt> <dd class="inline">contacto@appsdelsur.cl · +56 9 4526 2335</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Madurez IA Callout -->
+    <MadurezIACallout slug={data.slug} />
+  </main>
+
+  <ContactCTA />
+  <ContactForm />
+  <Footer />
+</Layout>

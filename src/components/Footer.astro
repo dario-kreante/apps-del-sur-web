@@ -2,20 +2,52 @@
 import { footer } from '../data/content';
 import LogoLockup from './LogoLockup.astro';
 import ArrowRight from './icons/ArrowRight.astro';
+import Waves from './Waves.astro';
 ---
 
-<footer class="bg-gray-900 text-gray-400 py-12">
-  <div class="max-w-[1200px] mx-auto px-6">
-    <div class="grid md:grid-cols-5 gap-10 mb-10">
+<footer class="relative overflow-hidden bg-gray-900 text-gray-400 py-12">
+  <Waves position="top" class="opacity-50" />
+  <div class="relative z-10 max-w-[1200px] mx-auto px-6">
+    <div class="grid md:grid-cols-7 gap-10 mb-10">
       <!-- Company Info -->
       <div class="md:col-span-2">
         <div class="mb-4">
-          <LogoLockup variant="light" class="h-16 w-[184px]" />
+          <LogoLockup variant="light" class="h-20 w-auto" />
         </div>
         <p class="text-sm leading-relaxed mb-4">{footer.tagline}</p>
         <p class="text-xs text-gray-500">
           Un producto de <span class="text-gray-400">{footer.companyLegal}</span>
         </p>
+      </div>
+
+      <!-- Agentes IA -->
+      <div>
+        <h4 class="font-semibold text-white text-sm mb-3">Agentes IA</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/agentes/" class="hover:text-white transition-colors">Todos los agentes</a></li>
+          <li><a href="/agentes/agendamiento" class="hover:text-white transition-colors">Agendamiento</a></li>
+          <li><a href="/agentes/whatsapp-atencion" class="hover:text-white transition-colors">Atención WhatsApp</a></li>
+          <li><a href="/agentes/sdr-leads" class="hover:text-white transition-colors">SDR · Leads B2B</a></li>
+          <li><a href="/agentes/retencion" class="hover:text-white transition-colors">Retención · Win-back</a></li>
+          <li><a href="/agentes/compliance" class="hover:text-white transition-colors">Compliance · SAG</a></li>
+          <li><a href="/agentes/abogados" class="hover:text-white transition-colors">Legal · Abogados</a></li>
+          <li><a href="/agentes/cuota-mortuoria" class="hover:text-white transition-colors">Cuota Mortuoria · Funerario</a></li>
+        </ul>
+      </div>
+
+      <!-- Por sector -->
+      <div>
+        <h4 class="font-semibold text-white text-sm mb-3">Por sector</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/agentes/sectores/vinas" class="hover:text-white transition-colors">Viñas y Agro</a></li>
+          <li><a href="/agentes/sectores/clinicas" class="hover:text-white transition-colors">Clínicas</a></li>
+          <li><a href="/agentes/sectores/hoteles-turismo" class="hover:text-white transition-colors">Hoteles y Turismo</a></li>
+          <li><a href="/agentes/sectores/abogados" class="hover:text-white transition-colors">Abogados</a></li>
+          <li><a href="/agentes/sectores/inmobiliarias" class="hover:text-white transition-colors">Inmobiliarias</a></li>
+          <li><a href="/agentes/sectores/constructoras" class="hover:text-white transition-colors">Constructoras</a></li>
+          <li><a href="/agentes/sectores/clubes-deportivos" class="hover:text-white transition-colors">Clubes y Gimnasios</a></li>
+          <li><a href="/agentes/sectores/funerarias" class="hover:text-white transition-colors">Funerarias</a></li>
+        </ul>
       </div>
 
       <!-- Solution Links -->

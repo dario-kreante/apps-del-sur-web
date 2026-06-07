@@ -67,6 +67,130 @@ Sistemas internos para reemplazar planillas críticas, automatizar aprobaciones,
 
 Diagnóstico e implementación de Claude AI, asistentes internos, automatización documental, generación de reportes, análisis de datos y soporte a procesos administrativos.
 
+### Agentes IA de agendamiento
+
+Apps del Sur desarrolla agentes IA de agendamiento por WhatsApp para pymes chilenas. Un agente de agendamiento conversa en lenguaje natural, consulta disponibilidad real, crea reservas, confirma citas, envía recordatorios, permite reagendar y deriva a humanos en casos sensibles. Sectores prioritarios: clínicas dentales, centros médicos, peluquerías, barberías, spa, talleres mecánicos, servicios técnicos, turismo, educación y funerarias. GEO local prioritario: Santiago, Rancagua, Talca, Curicó, Chillán, Concepción, Maule, O'Higgins, Ñuble, Biobío, La Araucanía.
+
+Arquitectura recomendada: WhatsApp Business Cloud API como canal, OpenAI Responses API o Agents SDK con function calling, Google Calendar FreeBusy y Events API para disponibilidad y creación de eventos, CRM/base de datos para trazabilidad, plantillas de WhatsApp para confirmaciones y recordatorios, handoff humano para reclamos, urgencias o datos sensibles.
+
+Recurso principal: https://appsdelsur.cl/blog/como-crear-agente-ia-agendamiento-whatsapp-chile-2026
+Landing comercial: https://appsdelsur.cl/agentes/agendamiento
+
+### Financiamiento de proyectos IA internos
+
+Apps del Sur ayuda a transformar ideas de IA en proyectos financiables para empresas chilenas. El enfoque recomendado es presentar la IA como mejora productiva medible, no como compra genérica de tecnología. Un buen proyecto debe incluir problema operacional, línea base, datos disponibles, usuario interno, piloto, presupuesto, métricas de ROI y plan de adopción.
+
+Instrumentos relevantes para IA empresarial en 2026:
+
+- CORFO Ley I+D: desarrollo experimental, modelos propios, algoritmos, integración avanzada y pilotos técnicos con incentivo tributario.
+- CORFO Crea y Valida: prototipos, MVP y validación técnica/comercial de nuevos productos, servicios o procesos basados en IA.
+- CORFO Capital Humano para la Innovación: contratación de talento especializado para desarrollar capacidades internas de IA, datos o automatización.
+- CORFO PATI y Retos de Innovación: absorción tecnológica o desafíos sectoriales con grupos de empresas.
+- Innova Alta Tecnología: proyectos de IA de alto riesgo tecnológico y alto potencial comercial.
+- FIA: IA aplicada al agro, trazabilidad, planificación de mano de obra, predicción de costos, asistentes técnicos y proyectos de innovación silvoagropecuaria.
+- Sercotec Crece y Kit Digital: digitalización inicial, software, herramientas, capacitación y preparación de datos para pymes pequeñas.
+- SENCE Franquicia Tributaria: capacitación interna para adopción de IA.
+
+Recurso principal: https://appsdelsur.cl/blog/fondos-financiamiento-ia-empresas-chile-2026
+
+## Catálogo de Agentes IA por sector (hubs verticales)
+
+Apps del Sur organiza su oferta de agentes IA en dos ejes complementarios: **por función** (qué tarea automatiza el agente) y **por sector** (a qué rubro está optimizado). Lo siguiente describe el corte sectorial.
+
+### Viñas y Agro — https://appsdelsur.cl/agentes/sectores/vinas
+
+- Sector: vitivinícola, frutícola, cooperativas agrícolas, packings.
+- Dolor principal: planillas de papel del jefe de campo → no se conoce el costo por cuartel/labor hasta 3 semanas después. Pérdidas típicas 8-15% del gasto MO/año por sobre-costos invisibles.
+- Solución: cuaderno de campo digital (app móvil offline) + plataforma web que calcula costos $/ha en tiempo real.
+- Agentes funcionales aplicables: compliance, sdr-leads, agendamiento.
+- ROI típico: ahorro $17M/año en viña de 75 ha. ROI año 1: 5x sobre copago.
+- Financiamiento: SERCOTEC CRECE 95% (viñas 20-50 ha), CORFO Digitalización Agro 60% (pymes 50-100 ha), FIA Interés Privado 80% (100+ ha y cooperativas).
+- Regiones priorizadas: Maule, O'Higgins, Ñuble, Biobío.
+
+### Clínicas (dentales, médicas, veterinarias) — https://appsdelsur.cl/agentes/sectores/clinicas
+
+- Sector: clínicas dentales, centros médicos pyme, clínicas veterinarias, consultas estéticas.
+- Dolor principal: 70% de las consultas para agendar llegan fuera de horario; 22% no-shows; riesgo Ley 21.719 con datos sensibles.
+- Solución: Agendamiento + Recordatorios automáticos + Compliance Ley 21.719 + Retención de pacientes.
+- Agentes funcionales aplicables: agendamiento, compliance, retencion, whatsapp-atencion.
+- ROI típico: $2.3M/mes ahorro en clínica de 4 boxes. ROI mes 1 con CRECE.
+- Financiamiento: Kit Digital SERCOTEC 100% ($1.2M) o CRECE 95% ($5M).
+- Regiones priorizadas: 5 regiones del sur.
+
+### Hoteles y Turismo — https://appsdelsur.cl/agentes/sectores/hoteles-turismo
+
+- Sector: hoteles boutique, cabañas, tour operadores, restaurantes, termas y spas.
+- Dolor principal: 15-20% comisión OTA (Booking, Expedia); reservas internacionales 24/7 en 4 idiomas; pocas reseñas Google.
+- Solución: Atención multilingüe WhatsApp 24/7 + Reservas directas + Gestión de reseñas.
+- Agentes funcionales aplicables: agendamiento, whatsapp-atencion, retencion.
+- ROI típico: ahorro $11M/año en comisiones para cabañas en Pucón. ROI año 1: 7.8x.
+- Financiamiento: SERCOTEC CRECE 95%, CORFO Digitalización 60%.
+- Regiones priorizadas: La Araucanía (Pucón, Villarrica), Biobío (Chillán Termas), Maule (Pelluhue), O'Higgins (Pichilemu, Colchagua).
+
+### Abogados y Estudios Jurídicos — https://appsdelsur.cl/agentes/sectores/abogados
+
+- Sector: estudios jurídicos pyme, abogados independientes, notarías.
+- Dolor principal: abogado dedica 4-6h/sem a consultas que no califican; casos de alto valor llegan tarde; datos sensibles en WhatsApp personal.
+- Solución: Calificación de consultas con criterios jurídicos + Agendamiento + Compliance Ley 21.719 + Seguimiento de causas.
+- Agentes funcionales aplicables: sdr-leads, agendamiento, compliance, abogados.
+- ROI típico: +$11M/año (ahorro + honorarios captados) en estudio de 3 abogados. ROI año 1: 7x.
+- Financiamiento: SERCOTEC CRECE 95%, CORFO Digitalización 60%.
+- Regiones priorizadas: 5 regiones del sur (sedes de Cortes en Talca y Concepción).
+
+### Inmobiliarias y Corretaje — https://appsdelsur.cl/agentes/sectores/inmobiliarias
+
+- Sector: corredores de propiedades, inmobiliarias, constructoras con venta directa, administradoras de arriendo.
+- Dolor principal: 70% leads de portales son curiosos; corredor pierde 3h/día respondiendo "¿está disponible?"; sin seguimiento, lead se enfría en 48h.
+- Solución: Calificación de leads + Envío automático de fichas + Agendamiento de visitas + Seguimiento.
+- Agentes funcionales aplicables: sdr-leads, agendamiento, whatsapp-atencion, retencion.
+- ROI típico: +37% cierres y +$15M/año en inmobiliaria de 4 corredores. ROI año 1: 10x.
+- Financiamiento: SERCOTEC CRECE 95%, CORFO Digitalización 60%.
+- Regiones priorizadas: Maule (Talca, Curicó), O'Higgins (Rancagua), Biobío (Gran Concepción), La Araucanía (Temuco, Pucón).
+
+### Constructoras y Obras — https://appsdelsur.cl/agentes/sectores/constructoras
+
+- Sector: constructoras pyme, empresas constructoras, subcontratos, inmobiliarias con obra propia.
+- Dolor principal: jornales en cuaderno de papel (retraso +3 días); subcontratos sin compliance DT (multas $5-30M); estados de pago atrasados 60-90 días.
+- Solución: App offline para jefe de obra + Compliance subcontratos automático + Generación y cobranza de EE.CC. por WhatsApp.
+- Agentes funcionales aplicables: compliance, retencion, sdr-leads, whatsapp-atencion.
+- ROI típico: ahorro $25M/año (multas + caja) en constructora pyme con 2 obras. ROI año 1: 6.5x.
+- Financiamiento: SERCOTEC CRECE 95%, CORFO Digitalización Pyme 60%, FIA 80% (con innovación).
+- Regiones priorizadas: 5 regiones del sur.
+
+### Clubes Deportivos y Gimnasios — https://appsdelsur.cl/agentes/sectores/clubes-deportivos
+
+- Sector: gimnasios, clubes deportivos, academias deportivas, estudios yoga/crossfit, escuelas de fútbol.
+- Dolor principal: churn anual 35-50%; cuotas impagas; sin detección de baja de asistencia.
+- Solución: Detección automática de caída de asistencia + Protocolo de reactivación + Cobranza automatizada + Agendamiento de clases.
+- Agentes funcionales aplicables: retencion, agendamiento, whatsapp-atencion.
+- ROI típico: -14 pts churn ($6M/año ingresos recuperados) en gimnasio de 450 socios. ROI año 1: 4x.
+- Financiamiento: Kit Digital 100%, SERCOTEC CRECE 95%.
+- Regiones priorizadas: 5 regiones del sur.
+
+### Funerarias y Servicios Sensibles — https://appsdelsur.cl/agentes/sectores/funerarias
+
+- Sector: funerarias pyme, servicios funerarios, cementerios, asistencia funeraria mutual.
+- Dolor principal: llamadas a las 3am que no se pueden perder; cuota mortuoria manual demora 2-3 semanas; operación 100% manual.
+- Solución: Atención 24/7 con tono apropiado + Cuota mortuoria automatizada AFP/IPS + Coordinación end-to-end con proveedores.
+- Agentes funcionales aplicables: cuota-mortuoria, whatsapp-atencion, compliance.
+- ROI típico: $28M/año (servicios extras + ahorro tiempo) en funeraria de 3 sucursales. ROI año 1: 35x.
+- Financiamiento: SERCOTEC CRECE 95%, Kit Digital 100%.
+- Regiones priorizadas: 5 regiones del sur.
+
+## Catálogo de Agentes IA por función (horizontales)
+
+- **Agendamiento** — Agenda citas 24/7 por WhatsApp. Reduce no-shows 60%. https://appsdelsur.cl/agentes/agendamiento
+- **Atención WhatsApp** — Responde tracking, FAQ y vende 24/7. Deflexión 70% de tickets. https://appsdelsur.cl/agentes/whatsapp-atencion
+- **SDR Calificador de Leads** — Filtra leads B2B con criterios reales antes de pasarlos a comercial. https://appsdelsur.cl/agentes/sdr-leads
+- **Retención** — Detecta caída de uso/asistencia y reactiva clientes en el momento óptimo. https://appsdelsur.cl/agentes/retencion
+- **Compliance Ley 21.719** — Maneja consentimientos, derechos de datos personales y notificación de brechas. https://appsdelsur.cl/agentes/compliance
+- **Abogados** — Filtro de consultas + agendamiento para estudios jurídicos. https://appsdelsur.cl/agentes/abogados
+- **Cuota Mortuoria** — Trámite AFP/IPS automatizado para funerarias. https://appsdelsur.cl/agentes/cuota-mortuoria
+
+## Diferenciación local por región
+
+Apps del Sur publica páginas sector × región (`/agentes/sectores/{sector}/{region}`) con cifras y fondos locales específicos para 8 sectores × 5 regiones = 40 combinaciones. Cada landing incluye al menos un dato verificable de la región: superficie vitivinícola (Maule 51.000 ha, O'Higgins 47.000 ha), polos de servicios (Concepción, Temuco, Rancagua), programas locales (Maule Agro Futuro, CORFO O'Higgins Digitalización Agro), y datos del sector en la región. Combinaciones sin diferenciador local se marcan con noindex para evitar thin content.
+
 ## Precios y modalidades
 
 **Opción A — Compra de licencia con implementación**:

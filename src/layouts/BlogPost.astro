@@ -17,8 +17,15 @@ import HeroCostoWeb from '../components/blog-heroes/HeroCostoWeb.astro';
 import HeroCostoIA from '../components/blog-heroes/HeroCostoIA.astro';
 import HeroCostoVinas from '../components/blog-heroes/HeroCostoVinas.astro';
 import HeroCostoWhatsApp from '../components/blog-heroes/HeroCostoWhatsApp.astro';
+import HeroFrameworkIA from '../components/blog-heroes/HeroFrameworkIA.astro';
+import HeroPorQueFallan from '../components/blog-heroes/HeroPorQueFallan.astro';
+import HeroROI from '../components/blog-heroes/HeroROI.astro';
+import HeroCodex from '../components/blog-heroes/HeroCodex.astro';
 
 const heroComponents: Record<string, any> = {
+  'calcular-roi-proyecto-ia-pyme-chile': HeroROI,
+  'por-que-fallan-proyectos-ia-pymes': HeroPorQueFallan,
+  'framework-ia-pymes-chile': HeroFrameworkIA,
   'cuaderno-de-campo-digital-vinas-chile': HeroCuadernoCampo,
   'calendario-agricola-2026-vinas-centro-sur-chile': HeroCalendarioAgricola,
   'senales-digitalizar-gestion-mano-obra-vina': HeroSenalesDigitalizar,
@@ -32,6 +39,8 @@ const heroComponents: Record<string, any> = {
   'cuanto-cuesta-web-profesional-empresa-chile': HeroCostoWeb,
   'cuanto-cuesta-implementar-ia-pyme-chile': HeroCostoIA,
   'claude-pymes-chile-2026': HeroCostoIA,
+  'codex-pymes-chile-2026': HeroCodex,
+  'claude-vs-codex-chile-2026': HeroCodex,
   'cuanto-cuesta-sistema-gestion-vinas': HeroCostoVinas,
   'cuanto-cuesta-automatizar-whatsapp-empresa': HeroCostoWhatsApp,
 };
@@ -44,12 +53,18 @@ interface Props {
   author: string;
   readingTime: string;
   heroAlt: string;
+  heroImage?: string;
+  images?: Array<{
+    url: string;
+    title: string;
+    caption?: string;
+  }>;
   tags: string[];
   relatedPosts?: string[];
   slug: string;
 }
 
-const { title, description, pubDate, updatedDate, author, readingTime, heroAlt, tags, relatedPosts, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, author, readingTime, heroAlt, heroImage, images, tags, relatedPosts, slug } = Astro.props;
 
 const HeroComponent = heroComponents[slug];
 
@@ -66,13 +81,17 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('es-CL', {
 });
 
 const canonicalUrl = `https://appsdelsur.cl/blog/${slug}`;
+const primaryImage = heroImage ? `https://appsdelsur.cl${heroImage}` : 'https://appsdelsur.cl/og-image-blog.png';
+const articleImages = Array.from(
+  new Set([primaryImage, ...(images ?? []).map((image) => `https://appsdelsur.cl${image.url}`)])
+);
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
   description: description,
-  image: 'https://appsdelsur.cl/og-image-blog.png',
+  image: articleImages,
   datePublished: pubDate.toISOString(),
   dateModified: (updatedDate ?? pubDate).toISOString(),
   author: {
@@ -88,7 +107,7 @@ const jsonLd = JSON.stringify({
     name: 'Apps del Sur',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://appsdelsur.cl/logo.svg',
+      url: 'https://appsdelsur.cl/brand/logo-stacked.png',
     },
   },
   mainEntityOfPage: {
@@ -98,17 +117,24 @@ const jsonLd = JSON.stringify({
 });
 ---
 
-<Layout title={`${title} | Apps del Sur`} description={description}>
+<Layout
+  title={`${title} | Apps del Sur`}
+  description={description}
+  canonical={canonicalUrl}
+  ogTitle={title}
+  ogDescription={description}
+  ogImage={primaryImage}
+>
   <script type="application/ld+json" set:html={jsonLd} />
 
   <!-- Header -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
     <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="flex items-center shrink-0" aria-label="Apps del Sur — Inicio">
-        <LogoLockup class="h-12 w-[136px] sm:w-[156px]" />
+        <LogoLockup class="h-14 w-auto sm:h-16" />
       </a>
       <nav class="flex items-center gap-4">
-        <a href="/blog" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
+        <a href="/blog/" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">Blog</a>
         <a href="/#contacto" class="text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 px-4 py-2 rounded-lg transition-colors">Contacto</a>
       </nav>
     </div>
@@ -120,7 +146,7 @@ const jsonLd = JSON.stringify({
       <nav class="text-sm text-gray-500" aria-label="Breadcrumb">
         <a href="/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Inicio</a>
         <span class="mx-2">/</span>
-        <a href="/blog" class="text-emerald-600 hover:text-emerald-700 transition-colors">Blog</a>
+        <a href="/blog/" class="text-emerald-600 hover:text-emerald-700 transition-colors">Blog</a>
         <span class="mx-2">/</span>
         <span class="text-gray-400">{title.length > 50 ? title.slice(0, 50) + '...' : title}</span>
       </nav>
@@ -132,6 +158,20 @@ const jsonLd = JSON.stringify({
         <div class="rounded-2xl overflow-hidden" role="img" aria-label={heroAlt}>
           <HeroComponent class="w-full h-auto" />
         </div>
+      </div>
+    )}
+    {!HeroComponent && heroImage && (
+      <div class="max-w-3xl mx-auto px-6 mb-8">
+        <img
+          src={heroImage}
+          alt={heroAlt}
+          width="1536"
+          height="1024"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          class="w-full h-auto rounded-2xl border border-gray-100 shadow-sm"
+        />
       </div>
     )}
 
@@ -232,7 +272,7 @@ const jsonLd = JSON.stringify({
       </p>
       <div class="flex justify-center gap-6 mt-4 text-sm">
         <a href="/" class="text-emerald-400 hover:text-emerald-300 transition-colors">Inicio</a>
-        <a href="/blog" class="text-emerald-400 hover:text-emerald-300 transition-colors">Blog</a>
+        <a href="/blog/" class="text-emerald-400 hover:text-emerald-300 transition-colors">Blog</a>
         <a href="/#contacto" class="text-emerald-400 hover:text-emerald-300 transition-colors">Contacto</a>
       </div>
       <p class="mt-4 text-xs text-gray-500">&copy; 2026 GYS Activa SpA. Todos los derechos reservados.</p>

@@ -1,0 +1,96 @@
+<svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Infografía Ley 21.719 datos sensibles por sector en Chile — salud financiero legal funerario retail biometría geolocalización">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fef2f2"/>
+      <stop offset="100%" stop-color="#fef3c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="700" fill="url(#bg3)" rx="16"/>
+
+  <!-- Title -->
+  <text x="700" y="80" font-family="system-ui,sans-serif" font-size="42" font-weight="800" fill="#7f1d1d" text-anchor="middle">Datos sensibles Ley 21.719</text>
+  <text x="700" y="115" font-family="system-ui,sans-serif" font-size="20" font-weight="500" fill="#991b1b" text-anchor="middle">Cumplimiento por sector con IA · Chile 2026</text>
+
+  <!-- Definición datos sensibles -->
+  <g transform="translate(80, 150)">
+    <rect width="1240" height="80" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="32" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#dc2626">⚠️ DATOS SENSIBLES (art. 2 Ley 21.719)</text>
+    <text x="20" y="58" font-family="system-ui,sans-serif" font-size="13" fill="#1e293b">Salud · biometría · origen étnico · creencias religiosas · ideología · afiliación sindical · vida sexual · geolocalización precisa · datos de NNA</text>
+    <text x="20" y="72" font-family="system-ui,sans-serif" font-size="12" font-style="italic" fill="#7f1d1d">Requieren consentimiento EXPRESO + medidas reforzadas + EIPD obligatoria si se procesan masivamente</text>
+  </g>
+
+  <!-- Grid de 6 sectores -->
+  <g transform="translate(80, 260)">
+    <rect width="385" height="170" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="28" text-anchor="start">🏥</text>
+    <text x="60" y="35" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">SALUD</text>
+    <text x="60" y="52" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Clínicas dentales · médicas · isapres</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Historia clínica = DATO SENSIBLE</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Consentimiento expreso por escrito</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Agente IA NO diagnostica</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Cifrado + acceso por roles</text>
+    <text x="20" y="158" font-family="system-ui,sans-serif" font-size="11" fill="#dc2626" font-weight="600">→ EIPD obligatoria</text>
+  </g>
+
+  <g transform="translate(490, 260)">
+    <rect width="385" height="170" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="28" text-anchor="start">💼</text>
+    <text x="60" y="35" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">LEGAL</text>
+    <text x="60" y="52" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Estudios jurídicos · áreas legales</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Secreto profesional + Ley 21.719</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Datos causas judiciales sensibles</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Agente NO opina sobre el caso</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Handoff humano en casos delicados</text>
+    <text x="20" y="158" font-family="system-ui,sans-serif" font-size="11" fill="#dc2626" font-weight="600">→ Audita Colegio de Abogados</text>
+  </g>
+
+  <g transform="translate(900, 260)">
+    <rect width="420" height="170" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="28" text-anchor="start">💳</text>
+    <text x="60" y="35" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">FINANCIERO</text>
+    <text x="60" y="52" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Cobranza · créditos · seguros · fintech</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Datos de deuda = sensibles</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Decisión automatizada → revisión humana</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Cobranza ética: horarios + tono</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Trazabilidad PCI-DSS</text>
+    <text x="20" y="158" font-family="system-ui,sans-serif" font-size="11" fill="#dc2626" font-weight="600">→ CMF fiscaliza también</text>
+  </g>
+
+  <g transform="translate(80, 450)">
+    <rect width="385" height="170" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="28" text-anchor="start">🤍</text>
+    <text x="60" y="35" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">FUNERARIO</text>
+    <text x="60" y="52" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Funerarias · cuota mortuoria · seguros</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• RUT causante = dato personal</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Familia en duelo = consentimiento claro</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Consulta spensiones.cl con permiso</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• No reutilizar para marketing</text>
+    <text x="20" y="158" font-family="system-ui,sans-serif" font-size="11" fill="#dc2626" font-weight="600">→ Caso sensible: derivar humano</text>
+  </g>
+
+  <g transform="translate(490, 450)">
+    <rect width="385" height="170" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="28" text-anchor="start">🛍️</text>
+    <text x="60" y="35" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">RETAIL / E-COMMERCE</text>
+    <text x="60" y="52" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Tiendas online · marketplaces · servicios</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Carrito + historial = comunes</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Geolocalización precisa = sensible</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Marketing requiere consentimiento</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Opt-out fácil obligatorio</text>
+    <text x="20" y="158" font-family="system-ui,sans-serif" font-size="11" fill="#dc2626" font-weight="600">→ Sernac también fiscaliza</text>
+  </g>
+
+  <g transform="translate(900, 450)">
+    <rect width="420" height="170" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="28" text-anchor="start">🏨</text>
+    <text x="60" y="35" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#7f1d1d">TURISMO</text>
+    <text x="60" y="52" font-family="system-ui,sans-serif" font-size="11" fill="#64748b">Hoteles · cabañas · tour operadores</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Pasaporte/RUT/email del huésped</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Geolocalización: solo con consent.</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Datos extranjeros: transferencia int.</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">• Plazo conservación según SII/Sernatur</text>
+    <text x="20" y="158" font-family="system-ui,sans-serif" font-size="11" fill="#dc2626" font-weight="600">→ Comunes pero alto volumen</text>
+  </g>
+
+  <text x="700" y="670" font-family="system-ui,sans-serif" font-size="12" fill="#475569" text-anchor="middle">appsdelsur.cl · Agentes IA con cumplimiento sectorial Ley 21.719 · Maule · O'Higgins · Santiago</text>
+</svg>

@@ -1,0 +1,159 @@
+---
+import type { PricingTier } from '../../data/agentes';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Button from '../ui/Button.astro';
+import Check from '../icons/Check.astro';
+
+interface Props {
+  intro: string;
+  ventaUnica: PricingTier[];
+  saas: PricingTier[];
+  whatsappUrl: string;
+}
+
+const { intro, ventaUnica, saas, whatsappUrl } = Astro.props;
+---
+
+<section class="py-20 bg-gray-50">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <SectionHeader
+      label="Pricing"
+      title="Dos formas de adquirirlo"
+      description={intro}
+      centered
+    />
+
+    <!-- Toggle -->
+    <div class="flex justify-center mb-10">
+      <div class="inline-flex p-1 bg-white border border-gray-200 rounded-full" role="tablist">
+        <button
+          type="button"
+          id="tab-venta"
+          class="pricing-tab px-5 py-2 text-sm font-medium rounded-full bg-emerald-700 text-white transition-colors"
+          aria-selected="true"
+        >
+          Venta única + soporte
+        </button>
+        <button
+          type="button"
+          id="tab-saas"
+          class="pricing-tab px-5 py-2 text-sm font-medium rounded-full text-gray-600 hover:text-gray-900 transition-colors"
+          aria-selected="false"
+        >
+          SaaS mensual
+        </button>
+      </div>
+    </div>
+
+    <!-- Venta Única -->
+    <div id="panel-venta" class="pricing-panel grid md:grid-cols-3 gap-6">
+      {ventaUnica.map((tier) => (
+        <div
+          class:list={[
+            'rounded-xl border p-7 flex flex-col bg-white transition-all',
+            tier.highlight
+              ? 'border-emerald-700 shadow-lg ring-1 ring-emerald-700/20'
+              : 'border-gray-200 hover:border-emerald-300 hover:shadow-sm',
+          ]}
+        >
+          {tier.highlight && (
+            <div class="inline-flex items-center self-start mb-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">
+              Más elegido
+            </div>
+          )}
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{tier.tier}</h3>
+          <div class="text-2xl font-bold text-emerald-700 mb-1">{tier.price}</div>
+          {tier.fondo && (
+            <div class="text-xs text-gray-500 mb-1">via {tier.fondo}</div>
+          )}
+          {tier.copago && (
+            <div class="text-sm font-medium text-emerald-700 mb-5">{tier.copago}</div>
+          )}
+          <ul class="space-y-2.5 mb-7 flex-1">
+            {tier.features.map((f) => (
+              <li class="flex gap-2.5 text-sm text-gray-600">
+                <Check class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <Button
+            href={whatsappUrl}
+            target="_blank"
+            variant={tier.highlight ? 'primary' : 'outline'}
+            class="w-full"
+          >
+            Cotizar este plan
+          </Button>
+        </div>
+      ))}
+    </div>
+
+    <!-- SaaS -->
+    <div id="panel-saas" class="pricing-panel hidden grid md:grid-cols-3 gap-6">
+      {saas.map((tier) => (
+        <div
+          class:list={[
+            'rounded-xl border p-7 flex flex-col bg-white transition-all',
+            tier.highlight
+              ? 'border-emerald-700 shadow-lg ring-1 ring-emerald-700/20'
+              : 'border-gray-200 hover:border-emerald-300 hover:shadow-sm',
+          ]}
+        >
+          {tier.highlight && (
+            <div class="inline-flex items-center self-start mb-3 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-medium">
+              Más elegido
+            </div>
+          )}
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{tier.tier}</h3>
+          <div class="text-2xl font-bold text-emerald-700 mb-5">{tier.price}</div>
+          <ul class="space-y-2.5 mb-7 flex-1">
+            {tier.features.map((f) => (
+              <li class="flex gap-2.5 text-sm text-gray-600">
+                <Check class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <Button
+            href={whatsappUrl}
+            target="_blank"
+            variant={tier.highlight ? 'primary' : 'outline'}
+            class="w-full"
+          >
+            Cotizar este plan
+          </Button>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-sm text-gray-500 mt-8 max-w-[640px] mx-auto">
+      Precios referenciales en CLP, IVA excluido. Costos de WhatsApp Business API (Meta) se cobran aparte (~$10-30 CLP por conversación iniciada). Cotización final tras diagnóstico.
+    </p>
+  </div>
+</section>
+
+<script>
+  const tabVenta = document.getElementById('tab-venta');
+  const tabSaas = document.getElementById('tab-saas');
+  const panelVenta = document.getElementById('panel-venta');
+  const panelSaas = document.getElementById('panel-saas');
+
+  function activate(active: 'venta' | 'saas') {
+    if (!tabVenta || !tabSaas || !panelVenta || !panelSaas) return;
+    const isVenta = active === 'venta';
+    tabVenta.classList.toggle('bg-emerald-700', isVenta);
+    tabVenta.classList.toggle('text-white', isVenta);
+    tabVenta.classList.toggle('text-gray-600', !isVenta);
+    tabVenta.setAttribute('aria-selected', String(isVenta));
+    tabSaas.classList.toggle('bg-emerald-700', !isVenta);
+    tabSaas.classList.toggle('text-white', !isVenta);
+    tabSaas.classList.toggle('text-gray-600', isVenta);
+    tabSaas.setAttribute('aria-selected', String(!isVenta));
+    panelVenta.classList.toggle('hidden', !isVenta);
+    panelSaas.classList.toggle('hidden', isVenta);
+  }
+
+  tabVenta?.addEventListener('click', () => activate('venta'));
+  tabSaas?.addEventListener('click', () => activate('saas'));
+</script>

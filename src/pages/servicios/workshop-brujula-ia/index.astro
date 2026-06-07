@@ -1,0 +1,68 @@
+---
+import ServicePage from '../../../layouts/ServicePage.astro';
+
+const service = {
+  slug: 'workshop-brujula-ia',
+  badge: 'Workshop ejecutivo',
+  title: 'Workshop "Brújula IA"',
+  subtitle: 'Un día. Tu equipo directivo sale con el mapa.',
+  metaTitle: 'Workshop Brújula IA: taller intensivo de 1 día para pymes chilenas | Apps del Sur',
+  metaDescription: 'Taller ejecutivo de 1 día (8 horas) para alinear al equipo directivo sobre IA y transformación digital. Salen con la matriz de madurez de su empresa, 3 quick wins identificados y un plan de 90 días concreto. Workshop facilitado en formato práctico, no presentación.',
+  heroTagline: 'Un workshop de 8 horas, facilitado en formato práctico (no PowerPoint), donde tu equipo directivo aplica el framework Apps del Sur sobre su propia empresa. Salen con la matriz de madurez, 3 quick wins identificados y un plan de 90 días que pueden empezar a ejecutar el lunes siguiente.',
+  duration: '1 día completo',
+  modality: 'Presencial en tu empresa o remoto · 4 a 12 participantes',
+  price: '$800K – $1,5M CLP',
+  priceDetail: 'IVA incluido · gasto operativo · factura inmediata',
+  subsidy: 'No subsidiable · Gasto deducible como capacitación',
+  audience: [
+    'Equipos directivos de pymes (2 a 12 personas) que recién están explorando IA y transformación digital',
+    'Empresas en Etapa 1-2 de madurez (papel, WhatsApp, Excel) que necesitan alinear al equipo antes de invertir',
+    'Dueños / gerentes generales que quieren un espacio fuera de la rutina para pensar estratégicamente',
+    'Comités directivos que llegaron con visiones distintas sobre IA y necesitan converger en un plan común',
+  ],
+  outcomes: [
+    'Matriz de madurez de su empresa completa: 6 dimensiones × 4 etapas, con consenso del equipo',
+    '3 quick wins identificados con dolor real cuantificado en pesos',
+    'Plan de 90 días concreto: qué hacer la semana 1, mes 1, mes 2 y mes 3',
+    'Identificación preliminar del fondo público que aplica a su caso',
+    'Vocabulario común sobre IA para que las conversaciones internas dejen de ser ambiguas',
+    'Material del workshop (workbook + grabación) para retomar lo conversado',
+  ],
+  description: 'El workshop no es una presentación de PowerPoint que dura 8 horas. Es un taller estructurado donde tu equipo trabaja sobre su propia empresa usando plantillas que les entregamos. Salimos con outputs concretos, no con notas.',
+  process: [
+    { step: '1', title: 'Preparación (1 semana antes)', description: 'Llamada de 30 minutos para entender contexto, ronda corta de preguntas a participantes, recopilación de información operativa básica (sin que tengan que producir nada nuevo).' },
+    { step: '2', title: 'Bloque 1 — Diagnóstico (3 horas)', description: 'Aplicamos el framework de 6 pilares × 4 etapas sobre tu empresa. Cada participante responde por escrito primero (para evitar sesgo del jefe), después se discute. Salida: matriz consensuada.' },
+    { step: '3', title: 'Bloque 2 — Quick wins (2 horas)', description: 'Identificamos los 3 dolores operativos más costosos y los traducimos a quick wins ejecutables en 90 días. Cada quick win viene con su estimación de ROI en pesos.' },
+    { step: '4', title: 'Bloque 3 — Plan + fondos (3 horas)', description: 'Construimos el plan de 90 días con responsables y métricas. Revisamos qué fondo público aplica al primer salto (Kit Digital, SERCOTEC, CORFO). Salida: documento de 1 página firmado por el equipo.' },
+    { step: '5', title: 'Seguimiento (2 semanas después)', description: 'Llamada de 30 minutos para revisar cómo van los primeros pasos. Sin venta — es parte del workshop.' },
+  ],
+  deliverables: [
+    'Workbook impreso de 32 páginas con las plantillas del framework',
+    'Matriz de madurez de tu empresa firmada por el equipo directivo',
+    'Plan de 90 días en una página (PDF + Notion compartido)',
+    'Identificación del fondo público aplicable con próximos pasos',
+    'Grabación completa del workshop (formato remoto) o fotos de pizarras (presencial)',
+    '1 hora de soporte por email durante los 90 días post-workshop',
+  ],
+  notForYou: [
+    'Buscas que te entreguemos un PowerPoint de 80 slides para presentar al directorio sin haber hecho el trabajo de pensar.',
+    'Tu equipo directivo está en Etapa 3-4 de madurez y ya tiene clara la estrategia — para ustedes mejor el Sprint o Copiloto.',
+    'Estás buscando capacitación técnica sobre cómo usar Claude o ChatGPT (eso es otro formato, no este).',
+    'Esperas que un workshop solucione todos los problemas. Esto te entrega claridad y un plan; ejecutar el plan es trabajo distinto.',
+  ],
+  faqs: [
+    { q: '¿Cuál es la diferencia entre el Workshop y el diagnóstico gratuito de la web?', a: 'El diagnóstico online (6 minutos) te ubica en una etapa de madurez y te da recomendaciones genéricas. El Workshop aplica el framework completo sobre tu empresa, con tu equipo presente, durante 8 horas. El resultado es un plan firmado y consensuado — no un reporte automático.' },
+    { q: '¿Cuántas personas pueden participar?', a: 'Entre 4 y 12 personas. Bajo 4 pierde el efecto de discusión cruzada que es donde más valor se genera. Sobre 12 se vuelve difícil que todos contribuyan. El sweet spot es 6-8 personas del equipo directivo o líderes de área.' },
+    { q: '¿Se puede hacer remoto?', a: 'Sí. Usamos Miro o FigJam para las plantillas y Google Meet para la facilitación. La experiencia es 80% tan buena como presencial. Recomendamos presencial cuando el equipo está en la misma ciudad y se puede coordinar.' },
+    { q: '¿Por qué $800K mínimo? Parece caro para un taller de 1 día.', a: 'Porque incluye preparación previa (1 semana de trabajo nuestro), facilitación con 2 personas el día del workshop, materiales impresos, y seguimiento posterior. El precio refleja todo eso. Si comparas vs. una consultora tradicional que cobra $2-5M por algo similar, el Workshop es accesible.' },
+    { q: '¿Puedo recuperar la inversión vía SENCE?', a: 'En la mayoría de los casos sí, porque se factura como capacitación. Tu contador / departamento de RRHH te puede confirmar el porcentaje específico según tu situación tributaria.' },
+    { q: '¿Qué pasa si después del Workshop quiero el Sprint o el Copiloto?', a: 'El costo del Workshop se descuenta del primer mes del Sprint o Copiloto si contratas dentro de los 60 días posteriores. Es nuestra forma de que el Workshop sea entrada y no compita con los servicios mayores.' },
+  ],
+  upsellSlug: 'sprint-diagnostico-postulacion-fondos',
+  upsellTitle: 'Sprint Diagnóstico + Postulación a Fondo (4-6 semanas)',
+  upsellTeaser: 'Si después del Workshop tu equipo decide avanzar con financiamiento público, el Sprint toma el plan de 90 días y lo profundiza con business case + postulación al fondo. Descontamos el valor del Workshop del Sprint.',
+  keywords: 'workshop ia pymes chile, taller transformación digital, capacitación inteligencia artificial empresa, brújula ia, workshop ejecutivo, taller diagnóstico digital, formación equipos directivos ia',
+  color: 'amber' as const,
+};
+---
+<ServicePage service={service} />

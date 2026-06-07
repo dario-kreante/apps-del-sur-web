@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Infografía Ley 21.719 Chile cumplimiento pymes 2026 Apps del Sur — fechas clave, multas y obligaciones">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+    <linearGradient id="shield-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="700" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="700" y="80" font-family="system-ui,sans-serif" font-size="46" font-weight="800" fill="#064e3b" text-anchor="middle">Ley 21.719 de Protección de Datos</text>
+  <text x="700" y="120" font-family="system-ui,sans-serif" font-size="22" font-weight="500" fill="#065f46" text-anchor="middle">Guía 2026 para pymes chilenas · Apps del Sur</text>
+
+  <!-- Shield central -->
+  <g transform="translate(625, 170)">
+    <path d="M75 0 L150 30 L150 110 Q150 175 75 200 Q0 175 0 110 L0 30 Z" fill="url(#shield-grad)" stroke="#064e3b" stroke-width="3"/>
+    <text x="75" y="115" font-family="system-ui,sans-serif" font-size="56" font-weight="800" fill="#ffffff" text-anchor="middle">21.719</text>
+    <text x="75" y="140" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#a7f3d0" text-anchor="middle">Vigente 1·DIC·2026</text>
+  </g>
+
+  <!-- Left column: Fechas -->
+  <g transform="translate(80, 420)">
+    <rect width="380" height="200" rx="14" fill="#ffffff" stroke="#a7f3d0" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#059669">📅 FECHAS CLAVE</text>
+    <text x="20" y="65" font-family="system-ui,sans-serif" font-size="13" fill="#475569"><tspan font-weight="700" fill="#0f172a">13 dic 2024</tspan> · publicación Diario Oficial</text>
+    <text x="20" y="92" font-family="system-ui,sans-serif" font-size="13" fill="#475569"><tspan font-weight="700" fill="#0f172a">1 dic 2026</tspan> · entrada en vigencia</text>
+    <text x="20" y="119" font-family="system-ui,sans-serif" font-size="13" fill="#475569"><tspan font-weight="700" fill="#0f172a">Dic 2026 - 2027</tspan> · pymes solo amonestación</text>
+    <text x="20" y="146" font-family="system-ui,sans-serif" font-size="13" fill="#475569"><tspan font-weight="700" fill="#0f172a">A partir 2027</tspan> · multas plenas vigentes</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="11" font-style="italic" fill="#64748b">Reforma íntegra Ley 19.628</text>
+  </g>
+
+  <!-- Center column: Multas -->
+  <g transform="translate(510, 420)">
+    <rect width="380" height="200" rx="14" fill="#7f1d1d" stroke="#991b1b" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#fecaca">⚠️ SANCIONES</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="38" font-weight="800" fill="#ffffff">20.000 UTM</text>
+    <text x="20" y="105" font-family="system-ui,sans-serif" font-size="13" fill="#fecaca">infracción gravísima (~$1.480M CLP)</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#ffffff">+ 4% ingresos</text>
+    <text x="20" y="162" font-family="system-ui,sans-serif" font-size="13" fill="#fecaca">anuales en Chile si reincide</text>
+    <text x="20" y="186" font-family="system-ui,sans-serif" font-size="11" font-style="italic" fill="#fca5a5">Agencia de Protección de Datos fiscaliza</text>
+  </g>
+
+  <!-- Right column: 7 obligaciones -->
+  <g transform="translate(940, 420)">
+    <rect width="380" height="200" rx="14" fill="#ffffff" stroke="#a7f3d0" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#059669">✅ 7 OBLIGACIONES CLAVE</text>
+    <text x="20" y="60" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">1. Registro de actividades de tratamiento</text>
+    <text x="20" y="80" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">2. Consentimiento explícito y revocable</text>
+    <text x="20" y="100" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">3. Delegado de Protección de Datos (DPO)</text>
+    <text x="20" y="120" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">4. Evaluación de impacto (EIPD/DPIA)</text>
+    <text x="20" y="140" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">5. Notificación de brechas a la Agencia</text>
+    <text x="20" y="160" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">6. Derechos ARCO+POBLE para titulares</text>
+    <text x="20" y="180" font-family="system-ui,sans-serif" font-size="12" fill="#1e293b">7. Contratos con encargados (DPA)</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="700" y="670" font-family="system-ui,sans-serif" font-size="12" fill="#475569" text-anchor="middle">appsdelsur.cl · Software a medida + agentes IA para pymes chilenas · Maule · O'Higgins · Ñuble · Santiago</text>
+</svg>

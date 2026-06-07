@@ -1,0 +1,14 @@
+---
+import AgentLandingPage from '../../../layouts/AgentLandingPage.astro';
+import { sectorPages } from '../../../data/sectores';
+
+export function getStaticPaths() {
+  return Object.values(sectorPages).map((s) => ({
+    params: { sector: s.slug },
+    props: { sector: s },
+  }));
+}
+
+const { sector } = Astro.props;
+---
+<AgentLandingPage data={sector} />

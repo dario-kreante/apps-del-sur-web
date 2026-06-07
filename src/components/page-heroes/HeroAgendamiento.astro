@@ -1,0 +1,94 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Agente IA agendando citas por WhatsApp con calendario digital">
+  <rect width="800" height="280" rx="12" fill="#ecfdf5"/>
+
+  <!-- Soft gradient bg -->
+  <defs>
+    <linearGradient id="bg-gradient-ag" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="280" fill="url(#bg-gradient-ag)" rx="12"/>
+
+  <!-- Left: Calendar panel -->
+  <rect x="40" y="35" width="320" height="210" rx="12" fill="#ffffff" stroke="#d1fae5" stroke-width="1.5"/>
+
+  <!-- Calendar header -->
+  <rect x="40" y="35" width="320" height="42" rx="12" fill="#047857"/>
+  <rect x="40" y="65" width="320" height="12" fill="#047857"/>
+  <text x="60" y="62" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#ffffff">📅 Mayo 2026</text>
+  <circle cx="335" cy="56" r="5" fill="#a7f3d0"/>
+
+  <!-- Days of week -->
+  <g font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af" font-weight="500">
+    <text x="65" y="100">L</text><text x="105" y="100">M</text><text x="145" y="100">M</text><text x="185" y="100">J</text><text x="225" y="100">V</text><text x="265" y="100">S</text><text x="305" y="100">D</text>
+  </g>
+
+  <!-- Calendar grid -->
+  <g>
+    <!-- Week 1 -->
+    <text x="65" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#374151">12</text>
+    <text x="105" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#374151">13</text>
+    <circle cx="148" cy="116" r="13" fill="#047857"/>
+    <text x="145" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#ffffff" font-weight="600">14</text>
+    <text x="185" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#374151">15</text>
+    <text x="225" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#374151">16</text>
+    <text x="265" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#9ca3af">17</text>
+    <text x="305" y="120" font-family="system-ui,sans-serif" font-size="11" fill="#9ca3af">18</text>
+  </g>
+
+  <!-- Booking slots -->
+  <rect x="55" y="145" width="290" height="28" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+  <circle cx="70" cy="159" r="4" fill="#059669"/>
+  <text x="82" y="162" font-family="system-ui,sans-serif" font-size="10" fill="#065f46" font-weight="500">09:00 — María González · Limpieza</text>
+  <text x="305" y="162" font-family="system-ui,sans-serif" font-size="9" fill="#059669" font-weight="600">✓</text>
+
+  <rect x="55" y="178" width="290" height="28" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+  <circle cx="70" cy="192" r="4" fill="#059669"/>
+  <text x="82" y="195" font-family="system-ui,sans-serif" font-size="10" fill="#065f46" font-weight="500">11:30 — Pedro Soto · Consulta</text>
+  <text x="305" y="195" font-family="system-ui,sans-serif" font-size="9" fill="#059669" font-weight="600">✓</text>
+
+  <rect x="55" y="211" width="290" height="28" rx="6" fill="#fefce8" stroke="#fde68a" stroke-width="1"/>
+  <circle cx="70" cy="225" r="4" fill="#eab308"/>
+  <text x="82" y="228" font-family="system-ui,sans-serif" font-size="10" fill="#854d0e" font-weight="500">16:00 — Slot libre (próximo)</text>
+
+  <!-- Right: Phone with WhatsApp -->
+  <rect x="430" y="25" width="220" height="240" rx="22" fill="#1f2937" stroke="#0f172a" stroke-width="3"/>
+  <rect x="445" y="40" width="190" height="210" rx="3" fill="#0b141a"/>
+
+  <!-- WhatsApp header on phone -->
+  <rect x="445" y="40" width="190" height="32" fill="#202c33"/>
+  <circle cx="464" cy="56" r="9" fill="#059669"/>
+  <text x="461" y="60" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#ffffff">IA</text>
+  <text x="480" y="55" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#ffffff">Sonrisas Dental</text>
+  <text x="480" y="65" font-family="system-ui,sans-serif" font-size="7" fill="#10b981">● en línea</text>
+
+  <!-- Messages -->
+  <rect x="453" y="84" width="120" height="26" rx="6" fill="#202c33"/>
+  <text x="459" y="95" font-family="system-ui,sans-serif" font-size="7" fill="#e5e7eb">Hola, necesito hora</text>
+  <text x="459" y="104" font-family="system-ui,sans-serif" font-size="7" fill="#e5e7eb">para limpieza</text>
+
+  <rect x="505" y="118" width="125" height="40" rx="6" fill="#005c4b"/>
+  <text x="511" y="130" font-family="system-ui,sans-serif" font-size="7" fill="#ffffff">Hola! 😊 Tengo</text>
+  <text x="511" y="139" font-family="system-ui,sans-serif" font-size="7" fill="#ffffff">disponible jueves</text>
+  <text x="511" y="148" font-family="system-ui,sans-serif" font-size="7" fill="#ffffff">9:00 o 16:00</text>
+
+  <rect x="453" y="166" width="80" height="20" rx="6" fill="#202c33"/>
+  <text x="459" y="180" font-family="system-ui,sans-serif" font-size="7" fill="#e5e7eb">Jueves 9 perfecto</text>
+
+  <rect x="495" y="194" width="135" height="42" rx="6" fill="#005c4b"/>
+  <text x="501" y="206" font-family="system-ui,sans-serif" font-size="7" fill="#ffffff">Listo ✅ Reservada</text>
+  <text x="501" y="215" font-family="system-ui,sans-serif" font-size="7" fill="#ffffff">jueves 09:00.</text>
+  <text x="501" y="224" font-family="system-ui,sans-serif" font-size="7" fill="#ffffff">¿Su nombre?</text>
+
+  <!-- Notification badge -->
+  <circle cx="650" cy="50" r="14" fill="#10b981"/>
+  <text x="643" y="55" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#ffffff">24</text>
+  <text x="668" y="55" font-family="system-ui,sans-serif" font-size="9" fill="#065f46" font-weight="600">citas hoy</text>
+
+  <!-- Connection line -->
+  <path d="M 360 140 Q 400 140 430 140" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" fill="none" opacity="0.6"/>
+</svg>

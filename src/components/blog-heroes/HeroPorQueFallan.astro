@@ -1,0 +1,66 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Por qué fracasan los proyectos de IA: la curva de la muerte entre el entusiasmo y el valor real">
+  <defs>
+    <linearGradient id="hpf-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ecfdf5"/>
+      <stop offset="100%" stop-color="#f0fdf4"/>
+    </linearGradient>
+    <linearGradient id="hpf-curve" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="40%" stop-color="#dc2626"/>
+      <stop offset="60%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="hpf-valley" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fee2e2" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fee2e2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="320" rx="14" fill="url(#hpf-bg)"/>
+
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#064e3b">El valle de la muerte de los proyectos de IA en pymes</text>
+
+  <!-- Y axis label -->
+  <text x="40" y="80" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#6b7280">Energía / valor</text>
+
+  <!-- Valley shaded area -->
+  <path d="M 220,180 Q 350,260 400,265 Q 450,260 580,180 L 580,280 L 220,280 Z" fill="url(#hpf-valley)"/>
+
+  <!-- Main curve -->
+  <path d="M 80,200 Q 180,80 250,160 Q 350,260 400,265 Q 450,260 550,160 Q 620,80 720,180" stroke="url(#hpf-curve)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- X axis -->
+  <line x1="60" y1="280" x2="740" y2="280" stroke="#d1d5db" stroke-width="1.5"/>
+
+  <!-- Phase 1: Excitement -->
+  <circle cx="180" cy="105" r="6" fill="#10b981"/>
+  <text x="180" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#065f46">Entusiasmo</text>
+  <text x="180" y="125" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">"¡Vamos a usar IA!"</text>
+
+  <!-- Phase 2: First reality check -->
+  <circle cx="295" cy="200" r="5" fill="#f59e0b"/>
+  <text x="295" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#92400e">Primer choque</text>
+  <text x="295" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">"no tenemos datos"</text>
+
+  <!-- Phase 3: Death valley -->
+  <circle cx="400" cy="265" r="9" fill="#dc2626" stroke="#fff" stroke-width="2.5"/>
+  <text x="400" y="305" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#991b1b">85% MUERE AQUÍ</text>
+  <text x="400" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#991b1b">Cultura, costos, sin ROI</text>
+
+  <!-- Phase 4: Recovery -->
+  <circle cx="505" cy="200" r="5" fill="#f59e0b"/>
+  <text x="505" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#92400e">Replantear</text>
+  <text x="505" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">framework + fondos</text>
+
+  <!-- Phase 5: Value -->
+  <circle cx="620" cy="105" r="6" fill="#10b981"/>
+  <text x="620" y="92" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#065f46">Valor real</text>
+  <text x="620" y="125" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">ROI medible</text>
+
+  <!-- Bottom arrow guide -->
+  <text x="80" y="306" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">Mes 1</text>
+  <text x="720" y="306" text-anchor="end" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af">Mes 12</text>
+</svg>

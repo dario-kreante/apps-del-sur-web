@@ -11,11 +11,12 @@ export const siteConfig = {
 } as const;
 
 export const navItems = [
-  { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Cómo trabajamos', href: '#proceso' },
-  { label: 'Financiamiento', href: '#financiamiento' },
+  { label: 'Agentes IA', href: '/agentes/' },
+  { label: 'Servicios', href: '/servicios/' },
+  { label: 'Diagnóstico', href: '/diagnostico-madurez-ia/' },
+  { label: 'Financiamiento', href: '/#financiamiento' },
   { label: 'Blog', href: '/blog/' },
-  { label: 'Contacto', href: '#contacto' },
+  { label: 'Contacto', href: '/#contacto' },
 ] as const;
 
 export const hero = {
@@ -109,9 +110,9 @@ export const solutions = {
     },
     {
       icon: 'sparkle',
-      name: 'Consultoría Claude AI',
+      name: 'Consultoría IA (Claude + Codex)',
       description:
-        'Diagnóstico e implementación de inteligencia artificial en sus procesos de negocio con Claude AI.',
+        'Diagnóstico e implementación multi-modelo: Claude (Anthropic) para análisis y razonamiento, Codex/GPT (OpenAI) para integración con Microsoft 365. Elegimos la herramienta correcta para cada caso.',
       href: '/claude-ai-chile',
     },
   ],
@@ -217,6 +218,10 @@ export const faq = {
       a: 'Claude AI es un modelo de inteligencia artificial desarrollado por Anthropic. Lo usamos como herramienta de desarrollo para acelerar cada etapa del proyecto: desde el análisis de su operación hasta la generación de código. Esto nos permite entregar software custom en 8-12 semanas en vez de 6+ meses, a una fracción del costo tradicional. También ofrecemos consultoría para integrar IA directamente en los procesos de su empresa.',
     },
     {
+      q: '¿Trabajan con Codex de OpenAI o solo con Claude?',
+      a: 'Trabajamos multi-modelo. Usamos Claude (Anthropic) y Codex/GPT (OpenAI) según el caso, además de modelos open-source cuando aplican. Claude destaca en razonamiento y análisis de documentos largos; Codex destaca en integración con el ecosistema Microsoft 365 y generación multimodal. En el diagnóstico gratuito le recomendamos cuál calza mejor con su operación. Más detalle en nuestras páginas de Claude AI Chile y Codex Chile, o en la comparativa Claude vs Codex 2026.',
+    },
+    {
       q: '¿Funciona sin conexión a internet en el campo?',
       a: 'Sí. Nuestras aplicaciones móviles están diseñadas para funcionar offline. Los datos se sincronizan automáticamente cuando el dispositivo recupera la conexión, ideal para zonas rurales del Maule, O\'Higgins, Ñuble, Biobío y Araucanía.',
     },
@@ -287,14 +292,28 @@ export const claudePartner = {
   badge: 'Potenciado por IA',
   title: 'Desarrollo asistido por IA para software a medida',
   description:
-    'Usamos Claude AI para acelerar diagnóstico, arquitectura, desarrollo y pruebas. La promesa principal no es la IA: es entregar software útil, personalizado y viable para pymes chilenas.',
+    'Usamos Claude (Anthropic) y Codex (OpenAI) para acelerar diagnóstico, arquitectura, desarrollo y pruebas. Trabajamos multi-modelo: elegimos la herramienta correcta para cada caso, no la de moda.',
   bullets: [
     'Entregar software custom en semanas, no meses',
     'Ofrecer desarrollo a medida a precio accesible',
     'Integrar inteligencia artificial directamente en su software',
   ],
-  cta: 'Conocer más sobre Claude AI',
+  cta: 'Conocer más sobre IA aplicada',
   ctaHref: '/claude-ai-chile',
+} as const;
+
+export const codexChile = {
+  badge: 'Codex · OpenAI · Chile',
+  title: 'Implementación de Codex (OpenAI) para empresas chilenas',
+  description:
+    'Construimos agentes y software a medida con Codex y GPT, integrados al ecosistema Microsoft 365 que su pyme ya usa. Diagnóstico, desarrollo y capacitación con financiamiento público disponible.',
+  bullets: [
+    'Agentes que viven dentro de Excel, Outlook, Teams y WhatsApp',
+    'Prototipado rápido con Codex CLI',
+    'Multi-modelo: Codex, Claude u open-source según el caso',
+  ],
+  cta: 'Conocer más sobre Codex',
+  ctaHref: '/codex-chile',
 } as const;
 
 export const aiTrainingCallout = {

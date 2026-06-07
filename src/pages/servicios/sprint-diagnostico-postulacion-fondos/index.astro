@@ -1,0 +1,70 @@
+---
+import ServicePage from '../../../layouts/ServicePage.astro';
+
+const service = {
+  slug: 'sprint-diagnostico-postulacion-fondos',
+  badge: 'Consultoría con success-fee',
+  title: 'Sprint Diagnóstico + Postulación a Fondo',
+  subtitle: 'En 4 a 6 semanas tienes el plan, el business case y el formulario listo para postular.',
+  metaTitle: 'Sprint de Diagnóstico + Postulación a Fondos CORFO, FIA y SERCOTEC | Apps del Sur',
+  metaDescription: 'Consultoría especializada en transformación digital de pymes chilenas con foco en fondos concursables: CORFO Digitalización, FIA Interés Privado, SERCOTEC CRECE y Kit Digital. 4-6 semanas, business case en CLP, postulación entregada al fondo, parte success-based.',
+  heroTagline: 'Tomamos tu pyme, aplicamos el framework completo de 6 pilares, construimos el business case en pesos chilenos, identificamos el fondo público que mejor se adapta a tu caso, y dejamos lista la postulación entregada al fondo. Parte de la tarifa es success-based: solo cobramos completo si el fondo se adjudica.',
+  duration: '4 a 6 semanas',
+  modality: 'Híbrido · 2 visitas en terreno + reuniones semanales online',
+  price: '$2,5M – $5M CLP',
+  priceDetail: '50% fija al inicio · 50% success-based al adjudicar el fondo',
+  subsidy: 'Parte de la tarifa va contra el monto adjudicado del fondo',
+  audience: [
+    'Pymes en Etapa 2 o 3 de madurez que ya digitalizaron lo básico y quieren dar el siguiente salto',
+    'Empresas con ventas anuales entre $200M y $5.000M CLP y entre 10 y 200 empleados',
+    'Sectores con instrumentos públicos vigentes: agrícola, viticultura, frutícola, servicios, comercio, salud, industria',
+    'Equipos directivos que ya tienen claridad de qué quieren resolver y necesitan la formulación + financiamiento',
+    'Empresas que quieren ahorrarse el costo de un consultor especializado en fondos (que cobra $5-10M solo por la postulación)',
+  ],
+  outcomes: [
+    'Framework Apps del Sur aplicado en tu empresa con diagnóstico profundo en terreno',
+    'Business case en CLP: inversión, ahorro esperado por categoría, payback, ROI a 5 años',
+    'Fondo público objetivo identificado y validado contra bases vigentes del año',
+    'Formulario de postulación completo, redactado y revisado por evaluador',
+    'Carta de intención de proveedor tecnológico (Apps del Sur u otro) anexa a la postulación',
+    'Estrategia de Plan B si el fondo no se adjudica en la primera ventana',
+  ],
+  description: 'El Sprint combina dos cosas que casi ningún proveedor combina en Chile: consultoría estratégica con foco en pymes pequeñas/medianas, y experiencia específica en formulación de proyectos para fondos públicos chilenos (CORFO, FIA, SERCOTEC). Nuestra apuesta: parte del éxito va contra el monto que adjudiquemos.',
+  process: [
+    { step: '1', title: 'Semana 1 — Inmersión + diagnóstico', description: 'Visita de 2 días en terreno. Entrevistas a 6-10 personas clave del equipo. Levantamiento de datos operativos (planillas, sistemas, costos). Mapeo del proceso crítico que se quiere transformar.' },
+    { step: '2', title: 'Semana 2 — Framework + business case', description: 'Aplicación del framework de 6 pilares × 4 etapas con tu equipo directivo. Construcción del business case en pesos: inversión, ahorros por categoría, payback, ROI 5 años. Validación de supuestos con tu contador.' },
+    { step: '3', title: 'Semana 3 — Identificación de fondo + matchmaking', description: 'Análisis de fit con las 5-7 ventanas de fondos vigentes ese trimestre. Selección del fondo objetivo. Si se requiere proveedor tecnológico co-postulante, hacemos matchmaking (puede ser Apps del Sur u otra agtech, según el caso).' },
+    { step: '4', title: 'Semanas 4-5 — Formulación de la postulación', description: 'Redacción del formulario completo según las bases. Construcción de los anexos: cartas, presupuestos, certificados, plan de trabajo. Revisión con un evaluador independiente. Iteración.' },
+    { step: '5', title: 'Semana 6 — Entrega + cierre', description: 'Postulación entregada al fondo dentro del plazo. Documento final con todo el material. Reunión de cierre con el equipo + recomendaciones de Plan B si la postulación no se adjudica.' },
+  ],
+  deliverables: [
+    'Diagnóstico framework completo (15-20 páginas) con matriz de madurez por dimensión',
+    'Business case en Excel y PDF: inversión, ahorros, payback, ROI a 5 años',
+    'Formulario de postulación al fondo elegido, completo y entregado dentro de plazo',
+    'Anexos: plan de trabajo, presupuesto detallado, cartas de compromiso, hoja de vida del equipo',
+    'Roadmap de implementación a 12-18 meses (incluso si el fondo no se adjudica)',
+    'Lista priorizada de Plan B: otros fondos, modelos de pago en cuotas, alternativas',
+  ],
+  notForYou: [
+    'Tu empresa está en Etapa 1 (papel, WhatsApp, sin sistemas). En ese caso primero el Workshop, después el Sprint.',
+    'Buscas que postulemos a un fondo cualquiera "a ver si suena". Trabajamos con probabilidad de éxito declarada — si no la vemos, te lo decimos.',
+    'No tienes flexibilidad para entregar información operativa básica (planillas, costos, facturación). Sin eso no se puede construir un business case creíble.',
+    'Esperas que el fondo se adjudique 100% seguro. Las tasas de adjudicación varían 15-50% según el fondo. Nosotros maximizamos la probabilidad, no la garantizamos.',
+    'Quieres pagar todo al final cuando se adjudique. El 50% inicial cubre el costo real del trabajo; sin eso, el modelo no es viable.',
+  ],
+  faqs: [
+    { q: '¿Cuáles son los fondos públicos a los que típicamente postulamos?', a: 'Los principales son:\n• Kit Digital (SERCOTEC) — micros, ~100% subsidiado, $1,2M\n• SERCOTEC CRECE — micro/pequeña, 98% subsidio, hasta $5M\n• CORFO Digitalización Agro O\'Higgins — pyme agrícola, 60% subsidio, $15-20M\n• CORFO Desarrolla Inversión Maule — pyme regional, 50% subsidio, $10-50M\n• FIA Interés Privado — proyectos de innovación 24-36 meses, 80% subsidio, hasta $120M\n• CORFO Crea y Valida — desarrollo TRL 4-7, 80% subsidio, hasta $180M' },
+    { q: '¿Qué porcentaje del Sprint es fijo y qué porcentaje es success-based?', a: 'El esquema base es 50/50 pero se puede negociar. 50% fijo cubre nuestro tiempo y costos. 50% success-based va contra el monto adjudicado por el fondo, con tope. Si el fondo NO se adjudica, solo pagas el 50% fijo.' },
+    { q: '¿Cuál es la tasa real de adjudicación con ustedes?', a: 'Depende fuertemente del fondo y la calidad del proyecto. Tasas referenciales que vemos en 2026:\n• Kit Digital: 60-70%\n• SERCOTEC CRECE: 20-30% (con proyecto bien formulado)\n• CORFO Digitalización Agro: 35-45%\n• FIA Interés Privado: 15-25%\n• CORFO Crea y Valida: 20-30%\n\nNo prometemos garantía. Sí prometemos mejorar significativamente tus probabilidades vs. postular solo.' },
+    { q: '¿Quién postula al fondo, yo o ustedes?', a: 'En la mayoría de los fondos, la pyme es el postulante principal. Nosotros somos co-postulantes técnicos o proveedores tecnológicos (según el instrumento). En FIA Interés Privado típicamente vamos como co-ejecutores. En SERCOTEC y CORFO Digit. Agro, ustedes postulan y nosotros somos el proveedor formal.' },
+    { q: '¿Qué pasa después de entregar la postulación?', a: 'La evaluación toma 60-120 días según el fondo. Durante ese tiempo, te acompañamos en consultas del evaluador y en posibles defensas. Si se adjudica, tomamos contacto para definir si avanzas con Apps del Sur en el servicio de Implementación (Copiloto) o con otro proveedor.' },
+    { q: '¿Pueden trabajar con cualquier sector?', a: 'Sí, el framework es sectorial-agnóstico. Tenemos más experiencia en agrícola (viñas, frutícola), servicios (funerarias, talleres) y comercio (farmacias, retail). Para sectores nuevos hacemos research adicional la primera semana.' },
+  ],
+  upsellSlug: 'acompanamiento-copiloto-estrategico',
+  upsellTitle: 'Copiloto Estratégico — Implementación de 6 a 12 meses',
+  upsellTeaser: 'Una vez adjudicado el fondo, el Copiloto Estratégico ejecuta el roadmap del Sprint: implementación con proveedores, gestión del cambio, medición trimestral del ROI. 60-80% financiable con el mismo fondo público que postulamos juntos.',
+  keywords: 'consultoria ia pymes chile, postulacion fondos corfo fia sercotec, business case transformacion digital, sprint diagnostico empresarial, formulacion proyectos publicos chile, sercotec crece, corfo digitalizacion agro, fia interes privado, kit digital',
+  color: 'emerald' as const,
+};
+---
+<ServicePage service={service} />

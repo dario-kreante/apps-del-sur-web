@@ -1,0 +1,264 @@
+---
+import Layout from './Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+
+interface ServiceProps {
+  slug: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  metaTitle: string;
+  metaDescription: string;
+  heroTagline: string;
+  duration: string;
+  modality: string;
+  price: string;
+  priceDetail: string;
+  subsidy: string;
+  audience: string[];
+  outcomes: string[];
+  process: { step: string; title: string; description: string }[];
+  deliverables: string[];
+  notForYou: string[];
+  faqs: { q: string; a: string }[];
+  upsellSlug?: string;
+  upsellTitle?: string;
+  upsellTeaser?: string;
+  keywords: string;
+  color: 'amber' | 'emerald' | 'teal';
+  /**
+   * Optional role-specific section (e.g. "Para gerentes", "Para dueños").
+   * Renders a dedicated card under the process timeline.
+   */
+  roleSection?: {
+    badge: string;
+    title: string;
+    description: string;
+    bullets: string[];
+    vocabulary?: string[];
+  };
+}
+
+const { service } = Astro.props as { service: ServiceProps };
+const s = service;
+
+const canonical = `https://appsdelsur.cl/servicios/${s.slug}/`;
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: s.title,
+  description: s.metaDescription,
+  serviceType: s.badge,
+  provider: {
+    '@type': 'Organization',
+    name: 'Apps del Sur',
+    url: 'https://appsdelsur.cl',
+    sameAs: ['https://appsdelsur.cl/'],
+  },
+  areaServed: { '@type': 'Country', name: 'Chile' },
+  audience: { '@type': 'BusinessAudience', audienceType: 'Pymes chilenas' },
+  offers: { '@type': 'Offer', price: s.price, priceCurrency: 'CLP', priceSpecification: s.priceDetail },
+  url: canonical,
+});
+
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: s.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+});
+
+const colorClasses = {
+  amber: {
+    badge: 'text-amber-700 bg-amber-50 border-amber-100',
+    hero: 'from-amber-100 to-amber-50',
+    accent: 'text-amber-700',
+    bgAccent: 'bg-amber-50',
+    border: 'border-amber-200',
+  },
+  emerald: {
+    badge: 'text-emerald-700 bg-emerald-50 border-emerald-100',
+    hero: 'from-emerald-100 to-emerald-50',
+    accent: 'text-emerald-700',
+    bgAccent: 'bg-emerald-50',
+    border: 'border-emerald-200',
+  },
+  teal: {
+    badge: 'text-teal-700 bg-teal-50 border-teal-100',
+    hero: 'from-teal-100 to-teal-50',
+    accent: 'text-teal-700',
+    bgAccent: 'bg-teal-50',
+    border: 'border-teal-200',
+  },
+}[s.color];
+---
+
+<Layout title={s.metaTitle} description={s.metaDescription} canonical={canonical}>
+  <script type="application/ld+json" set:html={jsonLd} />
+  <script type="application/ld+json" set:html={faqJsonLd} />
+
+  <Header />
+
+  <main id="main-content" class="pt-24 pb-16">
+    <div class="max-w-[1100px] mx-auto px-6">
+      <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+        <a href="/" class="text-emerald-600 hover:text-emerald-700">Inicio</a>
+        <span class="mx-2">/</span>
+        <a href="/servicios/" class="text-emerald-600 hover:text-emerald-700">Servicios</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-400">{s.title}</span>
+      </nav>
+
+      <section class={`bg-gradient-to-br ${colorClasses.hero} rounded-3xl p-8 md:p-12 mb-12 border ${colorClasses.border}`}>
+        <span class={`inline-block text-xs font-bold tracking-widest uppercase ${colorClasses.badge} border px-3 py-1 rounded-full mb-4`}>{s.badge}</span>
+        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">{s.title}</h1>
+        <p class="text-xl md:text-2xl text-gray-700 font-medium mb-4">{s.subtitle}</p>
+        <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mb-6">{s.heroTagline}</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/#contacto" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-sm">Agendar conversación de 30 min →</a>
+          <a href="/diagnostico-madurez-ia/" class="text-emerald-700 border border-emerald-300 bg-white hover:bg-emerald-50 font-medium px-5 py-3 rounded-full transition-colors">Hacer diagnóstico antes (6 min)</a>
+        </div>
+      </section>
+
+      <div class="grid md:grid-cols-3 gap-4 mb-12">
+        <div class={`${colorClasses.bgAccent} rounded-xl p-5`}>
+          <div class="text-xs font-bold tracking-wider uppercase text-gray-500 mb-1">Duración</div>
+          <div class={`text-base font-bold ${colorClasses.accent}`}>{s.duration}</div>
+          <div class="text-xs text-gray-600 mt-1">{s.modality}</div>
+        </div>
+        <div class={`${colorClasses.bgAccent} rounded-xl p-5`}>
+          <div class="text-xs font-bold tracking-wider uppercase text-gray-500 mb-1">Inversión</div>
+          <div class={`text-base font-bold ${colorClasses.accent}`}>{s.price}</div>
+          <div class="text-xs text-gray-600 mt-1">{s.priceDetail}</div>
+        </div>
+        <div class={`${colorClasses.bgAccent} rounded-xl p-5`}>
+          <div class="text-xs font-bold tracking-wider uppercase text-gray-500 mb-1">Subsidio público</div>
+          <div class={`text-base font-bold ${colorClasses.accent}`}>{s.subsidy.split('·')[0]?.trim() || s.subsidy}</div>
+          <div class="text-xs text-gray-600 mt-1">{s.subsidy.split('·').slice(1).join(' ·').trim()}</div>
+        </div>
+      </div>
+
+      <section class="grid md:grid-cols-2 gap-8 mb-14">
+        <div>
+          <h2 class="text-xs font-bold tracking-wider uppercase text-emerald-700 mb-3">Para quién es</h2>
+          <ul class="space-y-2.5">
+            {s.audience.map((a) => (
+              <li class="flex items-start gap-2.5 text-gray-700"><span class="text-emerald-600 font-bold mt-0.5 shrink-0">✓</span><span>{a}</span></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-xs font-bold tracking-wider uppercase text-emerald-700 mb-3">Qué te llevas al terminar</h2>
+          <ul class="space-y-2.5">
+            {s.outcomes.map((o) => (
+              <li class="flex items-start gap-2.5 text-gray-700"><span class="text-emerald-600 font-bold mt-0.5 shrink-0">→</span><span>{o}</span></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Cómo trabajamos contigo</h2>
+        <p class="text-gray-600 mb-7">{s.description}</p>
+        <div class="space-y-4">
+          {s.process.map((step) => (
+            <div class="flex gap-5 items-start bg-white border border-gray-200 rounded-xl p-5">
+              <div class={`shrink-0 w-10 h-10 rounded-full ${colorClasses.bgAccent} ${colorClasses.accent} grid place-items-center font-bold text-sm`}>{step.step}</div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">{step.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {s.roleSection && (
+        <section class="mb-14 rounded-2xl bg-gradient-to-br from-emerald-700 to-emerald-900 text-white p-7 md:p-10">
+          <div class="text-emerald-200 text-xs font-bold tracking-wider uppercase mb-3">{s.roleSection.badge}</div>
+          <h2 class="text-2xl md:text-3xl font-bold mb-3 tracking-tight">{s.roleSection.title}</h2>
+          <p class="text-emerald-100 leading-relaxed mb-6 max-w-[750px]">{s.roleSection.description}</p>
+          <ul class="space-y-2.5 mb-6">
+            {s.roleSection.bullets.map((b) => (
+              <li class="flex items-start gap-3 text-emerald-50">
+                <span class="text-emerald-300 font-bold mt-0.5 shrink-0">→</span>
+                <span class="text-sm leading-relaxed">{b}</span>
+              </li>
+            ))}
+          </ul>
+          {s.roleSection.vocabulary && s.roleSection.vocabulary.length > 0 && (
+            <div class="pt-5 border-t border-emerald-700/50">
+              <div class="text-xs text-emerald-300 mb-2 uppercase tracking-wider">Vocabulario del rol</div>
+              <div class="flex flex-wrap gap-1.5">
+                {s.roleSection.vocabulary.map((v) => (
+                  <span class="text-xs bg-emerald-800/60 border border-emerald-700 text-emerald-100 px-2.5 py-1 rounded-full">{v}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+
+      <section class={`${colorClasses.bgAccent} border ${colorClasses.border} rounded-2xl p-7 mb-14`}>
+        <h2 class="text-lg font-bold text-gray-900 mb-3">Entregables específicos</h2>
+        <ul class="grid md:grid-cols-2 gap-3">
+          {s.deliverables.map((d) => (
+            <li class="flex items-start gap-2.5 text-gray-700 text-sm"><span class={`${colorClasses.accent} font-bold mt-0.5 shrink-0`}>📄</span><span>{d}</span></li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="mb-14 bg-gray-50 border border-gray-200 rounded-2xl p-7">
+        <h2 class="text-lg font-bold text-gray-900 mb-3">⚠️ Esto NO es para ti si:</h2>
+        <ul class="space-y-2.5 text-gray-700">
+          {s.notForYou.map((n) => (
+            <li class="flex items-start gap-2.5 text-sm"><span class="text-gray-400 font-bold mt-0.5 shrink-0">✗</span><span>{n}</span></li>
+          ))}
+        </ul>
+        <p class="text-sm text-gray-500 mt-4 italic">Decimos esto porque preferimos un cliente que avance a uno que se quede. Si lo anterior describe tu situación, mejor empieza por el <a href="/diagnostico-madurez-ia/" class="text-emerald-700 underline font-medium">diagnóstico gratuito</a> o conversamos para orientarte.</p>
+      </section>
+
+      <section class="mb-14">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Preguntas frecuentes</h2>
+        <div class="space-y-3">
+          {s.faqs.map((f) => (
+            <details class="bg-white border border-gray-200 rounded-xl p-5 group">
+              <summary class="font-semibold text-gray-900 cursor-pointer flex justify-between items-center list-none">
+                <span>{f.q}</span>
+                <span class="text-emerald-700 group-open:rotate-45 transition-transform text-xl ml-3">+</span>
+              </summary>
+              <p class="text-gray-600 leading-relaxed mt-3 text-sm whitespace-pre-line">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      {s.upsellSlug && (
+        <section class={`bg-gradient-to-br ${colorClasses.hero} rounded-2xl p-7 mb-14 border ${colorClasses.border}`}>
+          <span class="inline-block text-xs font-bold tracking-wider uppercase text-emerald-700 mb-2">Siguiente paso natural</span>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{s.upsellTitle}</h3>
+          <p class="text-gray-700 mb-4">{s.upsellTeaser}</p>
+          <a href={`/servicios/${s.upsellSlug}/`} class="inline-block bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-2.5 rounded-full transition-colors text-sm">Conocer este servicio →</a>
+        </section>
+      )}
+
+      <section class="bg-emerald-700 text-white rounded-2xl p-8 md:p-10 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">¿Conversamos 30 minutos?</h2>
+        <p class="text-emerald-50 mb-6 max-w-xl mx-auto">La primera reunión es siempre sin costo y sin presentación de venta. Es diagnóstico honesto: si el servicio no es para ti, te lo decimos.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <a href="/#contacto" class="bg-white text-emerald-700 hover:bg-emerald-50 font-semibold px-6 py-3 rounded-full transition-colors shadow-sm">Agendar reunión</a>
+          <a href="https://wa.me/56945262335?text=Hola%2C%20me%20interesa%20el%20servicio%20{s.title}" target="_blank" rel="noopener" class="bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400 font-semibold px-6 py-3 rounded-full transition-colors">WhatsApp directo</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

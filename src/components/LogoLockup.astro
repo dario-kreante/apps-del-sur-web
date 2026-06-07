@@ -5,74 +5,18 @@ interface Props {
 }
 
 const { variant = 'default', class: className = '' } = Astro.props;
-const textFill = variant === 'light' ? '#FFFFFF' : '#064E3B';
-const shadowOpacity = variant === 'light' ? '0.28' : '0.2';
+
+const src =
+  variant === 'light'
+    ? '/brand/logo-horizontal-dark.png'
+    : '/brand/logo-horizontal.png';
 ---
 
-<svg
-  viewBox="0 0 380 138"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
+<img
+  src={src}
+  alt="Apps del Sur"
   class={className}
-  role="img"
-  aria-label="Apps del Sur"
->
-  <defs>
-    <linearGradient id={`ads-lockup-mark-${variant}`} x1="22" y1="111" x2="100" y2="15" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#064E3B" />
-      <stop offset="0.52" stop-color="#059669" />
-      <stop offset="1" stop-color="#7ED957" />
-    </linearGradient>
-    <linearGradient id={`ads-lockup-text-${variant}`} x1="136" y1="32" x2="318" y2="105" gradientUnits="userSpaceOnUse">
-      <stop stop-color={textFill} />
-      <stop offset="1" stop-color={variant === 'light' ? '#ECFDF5' : '#0F2D2A'} />
-    </linearGradient>
-    <filter id={`ads-lockup-shadow-${variant}`} x="-16%" y="-18%" width="132%" height="142%" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="3.5" stdDeviation="2.8" flood-color="#03241F" flood-opacity={shadowOpacity} />
-    </filter>
-    <filter id={`ads-wordmark-shadow-${variant}`} x="-10%" y="-16%" width="120%" height="136%" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="4" stdDeviation="2.4" flood-color="#03241F" flood-opacity={variant === 'light' ? '0.2' : '0.18'} />
-    </filter>
-  </defs>
-
-  <g transform="translate(0 2) scale(1.06)" filter={`url(#ads-lockup-shadow-${variant})`}>
-    <path
-      d="M65 10c29.1 0 52.6 23.2 52.6 51.8 0 16.8-8.6 31.4-18.9 43.3-8 9.2-17.2 16.9-26.2 21.7a15.1 15.1 0 0 1-15 0c-9-4.8-18.2-12.5-26.2-21.7-10.3-11.9-18.9-26.5-18.9-43.3C12.4 33.2 35.9 10 65 10Z"
-      fill={`url(#ads-lockup-mark-${variant})`}
-    />
-    <path
-      d="M31.5 69.7c6.6 7.5 16.2 11.6 28.3 11.6 20 0 36.7-11 50.4-24.5"
-      stroke="white"
-      stroke-width="9.5"
-      stroke-linecap="round"
-    />
-    <rect x="34" y="58" width="16" height="26" rx="4.5" fill="white" opacity="0.68" />
-    <rect x="56" y="48" width="16" height="36" rx="4.5" fill="white" opacity="0.86" />
-    <rect x="79" y="34" width="16" height="50" rx="4.5" fill="white" />
-    <path
-      d="M91.5 86.5 116 78l-8.5 24.5-5.1-11.1-13.7 13.7-8.1-8.1 13.7-13.7-2.8 3.2Z"
-      fill="white"
-    />
-  </g>
-
-  <g filter={`url(#ads-wordmark-shadow-${variant})`}>
-    <text
-      x="146"
-      y="61"
-      fill={`url(#ads-lockup-text-${variant})`}
-      font-family="Arial Rounded MT Bold, Nunito, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-      font-size="54"
-      font-weight="800"
-      letter-spacing="-2.2"
-    >Apps</text>
-    <text
-      x="146"
-      y="113"
-      fill={`url(#ads-lockup-text-${variant})`}
-      font-family="Arial Rounded MT Bold, Nunito, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-      font-size="54"
-      font-weight="800"
-      letter-spacing="-2.2"
-    >del Sur</text>
-  </g>
-</svg>
+  loading="eager"
+  decoding="async"
+  style="object-fit: contain; object-position: left center;"
+/>

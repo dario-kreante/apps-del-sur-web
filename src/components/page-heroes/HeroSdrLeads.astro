@@ -1,0 +1,105 @@
+---
+const { class: className } = Astro.props;
+---
+<svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" class={className} role="img" aria-label="Agente IA SDR calificando leads B2B con scoring y agendamiento">
+  <defs>
+    <linearGradient id="bg-gradient-sdr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0fdf4"/>
+      <stop offset="100%" stop-color="#dcfce7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="280" fill="url(#bg-gradient-sdr)" rx="12"/>
+
+  <!-- Leads funnel left side -->
+  <g transform="translate(40, 30)">
+    <text x="0" y="14" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#065f46">📥 Leads inbound (mes)</text>
+
+    <!-- Lead cards -->
+    <g transform="translate(0, 26)">
+      <rect width="200" height="36" rx="6" fill="#ffffff" stroke="#d1fae5"/>
+      <circle cx="18" cy="18" r="9" fill="#dbeafe"/>
+      <text x="18" y="22" font-family="system-ui,sans-serif" font-size="9" fill="#1e40af" text-anchor="middle" font-weight="700">SW</text>
+      <text x="36" y="17" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#111827">SoftCorp · Viña 65ha</text>
+      <text x="36" y="29" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Curicó · pre-vendimia</text>
+      <rect x="160" y="11" width="32" height="14" rx="7" fill="#dcfce7"/>
+      <text x="176" y="21" font-family="system-ui,sans-serif" font-size="8" fill="#166534" text-anchor="middle" font-weight="700">A+</text>
+    </g>
+
+    <g transform="translate(0, 70)">
+      <rect width="200" height="36" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+      <circle cx="18" cy="18" r="9" fill="#fef3c7"/>
+      <text x="18" y="22" font-family="system-ui,sans-serif" font-size="9" fill="#92400e" text-anchor="middle" font-weight="700">MR</text>
+      <text x="36" y="17" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#111827">MaipoRetail · E-com</text>
+      <text x="36" y="29" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">RM · $80M/mes</text>
+      <rect x="160" y="11" width="32" height="14" rx="7" fill="#fef3c7"/>
+      <text x="176" y="21" font-family="system-ui,sans-serif" font-size="8" fill="#92400e" text-anchor="middle" font-weight="700">B</text>
+    </g>
+
+    <g transform="translate(0, 114)">
+      <rect width="200" height="36" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+      <circle cx="18" cy="18" r="9" fill="#fce7f3"/>
+      <text x="18" y="22" font-family="system-ui,sans-serif" font-size="9" fill="#9d174d" text-anchor="middle" font-weight="700">ST</text>
+      <text x="36" y="17" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#111827">StartupX · 3 personas</text>
+      <text x="36" y="29" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">Sin presupuesto</text>
+      <rect x="160" y="11" width="32" height="14" rx="7" fill="#fee2e2"/>
+      <text x="176" y="21" font-family="system-ui,sans-serif" font-size="8" fill="#991b1b" text-anchor="middle" font-weight="700">D</text>
+    </g>
+
+    <g transform="translate(0, 158)">
+      <rect width="200" height="36" rx="6" fill="#ffffff" stroke="#d1fae5"/>
+      <circle cx="18" cy="18" r="9" fill="#e0e7ff"/>
+      <text x="18" y="22" font-family="system-ui,sans-serif" font-size="9" fill="#4338ca" text-anchor="middle" font-weight="700">CV</text>
+      <text x="36" y="17" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#111827">Viña Calyptra · 44ha</text>
+      <text x="36" y="29" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">O'Higgins · premium</text>
+      <rect x="160" y="11" width="32" height="14" rx="7" fill="#dcfce7"/>
+      <text x="176" y="21" font-family="system-ui,sans-serif" font-size="8" fill="#166534" text-anchor="middle" font-weight="700">A</text>
+    </g>
+
+    <text x="0" y="222" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">+ 116 más esta semana</text>
+  </g>
+
+  <!-- AI brain in middle -->
+  <g transform="translate(360, 95)">
+    <circle cx="40" cy="40" r="46" fill="#047857"/>
+    <circle cx="40" cy="40" r="46" fill="none" stroke="#10b981" stroke-width="2" opacity="0.5"/>
+    <circle cx="40" cy="40" r="58" fill="none" stroke="#10b981" stroke-width="1" opacity="0.3"/>
+
+    <!-- Sparkle icon -->
+    <g transform="translate(20, 20)">
+      <path d="M20 0 L24 16 L40 20 L24 24 L20 40 L16 24 L0 20 L16 16 Z" fill="#ffffff"/>
+    </g>
+    <text x="40" y="98" font-family="system-ui,sans-serif" font-size="10" font-weight="700" fill="#065f46" text-anchor="middle">Agente SDR</text>
+  </g>
+
+  <!-- Arrows in -->
+  <path d="M 245 65 Q 320 65 360 110" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="3 3" marker-end="url(#arr-sdr)"/>
+  <path d="M 245 195 Q 320 195 360 165" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="3 3" marker-end="url(#arr-sdr)"/>
+  <defs>
+    <marker id="arr-sdr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Calendar with booked demos right -->
+  <rect x="520" y="35" width="240" height="210" rx="12" fill="#ffffff" stroke="#d1fae5" stroke-width="1.5"/>
+  <rect x="520" y="35" width="240" height="36" rx="12" fill="#047857"/>
+  <rect x="520" y="59" width="240" height="12" fill="#047857"/>
+  <text x="540" y="58" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#ffffff">📅 Demos agendadas</text>
+  <circle cx="738" cy="53" r="5" fill="#a7f3d0"/>
+
+  <!-- Booked demos -->
+  <rect x="535" y="84" width="210" height="44" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="545" y="98" font-family="system-ui,sans-serif" font-size="9" fill="#065f46" font-weight="600">Mar 21 · 15:00 — Viña SoftCorp</text>
+  <text x="545" y="112" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">A+ · 65ha · Pre-vendimia</text>
+  <text x="545" y="122" font-family="system-ui,sans-serif" font-size="7" fill="#059669">Calificado por IA · ICP perfecto</text>
+
+  <rect x="535" y="138" width="210" height="44" rx="6" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="545" y="152" font-family="system-ui,sans-serif" font-size="9" fill="#065f46" font-weight="600">Mié 22 · 11:00 — Calyptra</text>
+  <text x="545" y="166" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">A · 44ha · Premium boutique</text>
+  <text x="545" y="176" font-family="system-ui,sans-serif" font-size="7" fill="#059669">Calificado por IA · CORFO listo</text>
+
+  <rect x="535" y="192" width="210" height="44" rx="6" fill="#fefce8" stroke="#fde68a"/>
+  <text x="545" y="206" font-family="system-ui,sans-serif" font-size="9" fill="#854d0e" font-weight="600">Jue 23 · 09:30 — Loncomilla</text>
+  <text x="545" y="220" font-family="system-ui,sans-serif" font-size="8" fill="#6b7280">A · Cooperativa 112 socios</text>
+  <text x="545" y="230" font-family="system-ui,sans-serif" font-size="7" fill="#92400e">⏳ Esperando confirmación</text>
+</svg>
