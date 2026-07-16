@@ -123,6 +123,12 @@ export const GET: APIRoute = async () => {
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>${BASE_URL}/diagnostico-madurez-digital/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>${BASE_URL}/servicios/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>

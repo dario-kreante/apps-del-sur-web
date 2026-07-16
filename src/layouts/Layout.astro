@@ -13,6 +13,8 @@ interface Props {
   ogImage?: string;
   /** When true, emits noindex,follow — used for thin sector×region pages without local differentiator yet. */
   noindex?: boolean;
+  /** When true, skips the sitewide FAQPage schema — use on pages that define their own FAQPage (Google allows only one per page). */
+  omitFaqSchema?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   ogDescription = siteConfig.ogDescription,
   ogImage,
   noindex = false,
+  omitFaqSchema = false,
 } = Astro.props;
 
 const robotsContent = noindex
@@ -204,7 +207,8 @@ const robotsContent = noindex
     }
     </script>
 
-    <!-- Schema JSON-LD: FAQ -->
+    <!-- Schema JSON-LD: FAQ (omitido si la página define su propio FAQPage) -->
+    {!omitFaqSchema && (
     <script type="application/ld+json" is:inline>
     {
       "@context": "https://schema.org",
@@ -261,6 +265,7 @@ const robotsContent = noindex
       ]
     }
     </script>
+    )}
 
     <!-- Schema JSON-LD: LocalBusiness -->
     <script type="application/ld+json" is:inline>
