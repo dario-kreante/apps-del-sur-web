@@ -3,6 +3,11 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/blog/agente-ia-constructoras-compliance-obras-chile/",
+      "destination": "/agentes/sectores/constructoras/",
+      "permanent": true
+    },
+    {
       "source": "/blog/agente-ia-constructoras-compliance-obras-chile",
       "destination": "/agentes/sectores/constructoras/",
       "permanent": true
