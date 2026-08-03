@@ -178,10 +178,10 @@ Cooperativa de 85 socios querían mejorar trazabilidad. Thinkagro sugirió softw
 
 Para más detalles sobre financiamiento y comparación de soluciones:
 
-- [Guía de financiamiento CORFO y FIA para digitalización agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026)
-- [Comparativa: soluciones de software agrícola en Chile 2026](/blog/software-agricola-chile-comparativa-2026)
-- [5 señales de que necesitas digitalizar la gestión de mano de obra en tu viña](/blog/senales-digitalizar-gestion-mano-obra-vina)
-- [Costo de mano de obra por hectárea en viñas: análisis completo](/blog/costo-mano-de-obra-por-hectarea-vinas-chile)
+- [Guía de financiamiento CORFO y FIA para digitalización agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/)
+- [Comparativa: soluciones de software agrícola en Chile 2026](/blog/software-agricola-chile-comparativa-2026/)
+- [5 señales de que necesitas digitalizar la gestión de mano de obra en tu viña](/blog/senales-digitalizar-gestion-mano-obra-vina/)
+- [Costo de mano de obra por hectárea en viñas: análisis completo](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
 
 También recomendamos seguir [Mundoagro](https://mundoagro.cl/) para noticias de innovación agrícola en Chile.
 

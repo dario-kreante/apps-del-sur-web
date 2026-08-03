@@ -7,7 +7,7 @@ export const siteConfig = {
   ogTitle: 'Apps del Sur — Software a Medida para Empresas del Sur de Chile',
   ogDescription:
     'Diseñamos y desarrollamos sistemas web, apps móviles e integraciones a medida para empresas que ya no pueden seguir operando con Excel, papel y WhatsApp.',
-  canonical: 'https://appsdelsur.cl',
+  canonical: 'https://appsdelsur.cl/',
 } as const;
 
 export const navItems = [
@@ -28,7 +28,7 @@ export const hero = {
   ctaPrimary: 'Diagnosticar mi operación',
   ctaPrimaryHref: '#contacto',
   ctaSecondary: 'Ver enfoque a medida',
-  ctaSecondaryHref: '/enfoque',
+  ctaSecondaryHref: '/enfoque/',
   subtext:
     'Diagnóstico gratuito · Desarrollo asistido por IA · Financiamiento CORFO/FIA/SERCOTEC disponible',
 } as const;
@@ -99,7 +99,7 @@ export const solutions = {
       name: 'Agro, viñas y terreno',
       description:
         'Sistemas a medida para mano de obra, cuaderno de campo, trazabilidad, costos por hectárea y reportes agrícolas. Es un caso de uso dentro de Apps del Sur, no la definición completa de la marca.',
-      href: '/sectores/viticola',
+      href: '/sectores/viticola/',
     },
     {
       icon: 'wrench',
@@ -113,7 +113,7 @@ export const solutions = {
       name: 'Consultoría IA (Claude + Codex)',
       description:
         'Diagnóstico e implementación multi-modelo: Claude (Anthropic) para análisis y razonamiento, Codex/GPT (OpenAI) para integración con Microsoft 365. Elegimos la herramienta correcta para cada caso.',
-      href: '/claude-ai-chile',
+      href: '/claude-ai-chile/',
     },
   ],
   whyLocalTitle: '¿Por qué elegir un software local?',
@@ -299,7 +299,7 @@ export const claudePartner = {
     'Integrar inteligencia artificial directamente en su software',
   ],
   cta: 'Conocer más sobre IA aplicada',
-  ctaHref: '/claude-ai-chile',
+  ctaHref: '/claude-ai-chile/',
 } as const;
 
 export const codexChile = {
@@ -342,12 +342,12 @@ export const footer = {
       'https://wa.me/56945262335?text=Hola%2C%20me%20interesa%20conocer%20Apps%20del%20Sur',
   },
   solutionLinks: [
-    { label: 'Vitivinícola', href: '/sectores/viticola' },
-    { label: 'Frutícola', href: '/sectores/fruticola' },
-    { label: 'Agrícola', href: '/sectores/agricola' },
-    { label: 'Claude AI Chile', href: '/claude-ai-chile' },
-    { label: 'Cuaderno de Campo', href: '/cuaderno-de-campo' },
-    { label: 'Nuestro Enfoque', href: '/enfoque' },
+    { label: 'Vitivinícola', href: '/sectores/viticola/' },
+    { label: 'Frutícola', href: '/sectores/fruticola/' },
+    { label: 'Agrícola', href: '/sectores/agricola/' },
+    { label: 'Claude AI Chile', href: '/claude-ai-chile/' },
+    { label: 'Cuaderno de Campo', href: '/cuaderno-de-campo/' },
+    { label: 'Nuestro Enfoque', href: '/enfoque/' },
     { label: 'Financiamiento CORFO/FIA', href: '/#financiamiento' },
   ],
   regions: ["O'Higgins", 'Maule', 'Ñuble', 'Biobío', 'Araucanía'],

@@ -177,7 +177,7 @@ En esta comparativa, analizamos 6 soluciones disponibles en Chile: su origen, en
 
 **Ideal para:** Viñas y fincas del centro-sur de Chile (Maule, O'Higgins, Ñuble) que buscan solución custom, económica vía fondos públicos, con soporte local y offline-first.
 
-**Opciones de financiamiento:** [Revisa cómo financiar tu implementación con SERCOTEC, CORFO o FIA](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026).
+**Opciones de financiamiento:** [Revisa cómo financiar tu implementación con SERCOTEC, CORFO o FIA](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/).
 
 ## Tabla comparativa simplificada
 

@@ -1,0 +1,106 @@
+---
+// NOTA INTERNA: borrador base de términos de uso del sitio. Revisar con asesoría legal
+// antes de considerarlo definitivo. Creado 3 ago 2026 junto con /privacidad/.
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = 'Términos de Uso | Apps del Sur';
+const description =
+  'Condiciones de uso del sitio appsdelsur.cl, operado por GYS Activa SpA bajo la marca Apps del Sur.';
+const updated = '3 de agosto de 2026';
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical="https://appsdelsur.cl/terminos/"
+  ogTitle={title}
+  ogDescription={description}
+  omitFaqSchema
+>
+  <Header />
+
+  <main class="bg-white">
+    <section class="max-w-[760px] mx-auto px-6 py-16 md:py-24">
+      <p class="text-sm text-emerald-700 font-medium mb-3">Legal</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Términos de Uso</h1>
+      <p class="text-sm text-gray-500 mb-10">Última actualización: {updated}</p>
+
+      <div class="prose prose-gray max-w-none prose-headings:font-semibold prose-headings:text-gray-900 prose-a:text-emerald-700">
+        <h2>1. Titular del sitio</h2>
+        <p>
+          El sitio appsdelsur.cl es operado por <strong>GYS Activa SpA</strong>, sociedad chilena que comercializa sus
+          servicios bajo la marca <strong>Apps del Sur</strong>. Contacto:
+          <a href="mailto:contacto@appsdelsur.cl">contacto@appsdelsur.cl</a>.
+        </p>
+
+        <h2>2. Aceptación</h2>
+        <p>
+          Al navegar por este sitio usted acepta estos términos. Si no está de acuerdo con ellos, le pedimos no utilizar
+          el sitio.
+        </p>
+
+        <h2>3. Carácter informativo del contenido</h2>
+        <p>
+          Los contenidos publicados en este sitio —artículos del blog, guías de financiamiento público, comparativas de
+          herramientas, calculadoras y diagnósticos— tienen finalidad informativa y comercial. No constituyen asesoría
+          legal, tributaria, contable ni financiera. Los montos, plazos, tasas de cofinanciamiento y condiciones de
+          fondos públicos (CORFO, SERCOTEC, FIA y otros) cambian con cada convocatoria: verifique siempre las bases
+          oficiales vigentes antes de tomar una decisión.
+        </p>
+
+        <h2>4. Estimaciones y resultados</h2>
+        <p>
+          Los ahorros, retornos, porcentajes de mejora y resultados de diagnóstico presentados en este sitio son
+          estimaciones basadas en supuestos y en casos de referencia. No constituyen una garantía de resultado. Los
+          resultados reales dependen de las condiciones particulares de cada empresa.
+        </p>
+
+        <h2>5. Propiedad intelectual</h2>
+        <p>
+          Los textos, ilustraciones, marcas, logotipos, código y demás elementos del sitio son propiedad de GYS Activa
+          SpA o se usan con autorización. Puede citar fragmentos con atribución y enlace a la fuente. No se autoriza la
+          reproducción total del contenido ni su uso comercial sin permiso previo por escrito.
+        </p>
+
+        <h2>6. Enlaces a terceros</h2>
+        <p>
+          Este sitio enlaza a recursos externos (organismos públicos, proveedores de software, documentación técnica).
+          No controlamos ni respondemos por el contenido, disponibilidad o políticas de esos sitios.
+        </p>
+
+        <h2>7. Disponibilidad del servicio</h2>
+        <p>
+          Procuramos mantener el sitio disponible y actualizado, pero no garantizamos su funcionamiento ininterrumpido.
+          Podemos modificar, suspender o discontinuar cualquier sección sin aviso previo.
+        </p>
+
+        <h2>8. Relación contractual</h2>
+        <p>
+          Nada de lo publicado en este sitio constituye una oferta vinculante. Los precios referenciales son orientativos
+          y toda contratación de servicios se rige por la propuesta y el contrato específico firmado entre las partes,
+          que prevalecen sobre el contenido de estas páginas.
+        </p>
+
+        <h2>9. Protección de datos</h2>
+        <p>
+          El tratamiento de datos personales se rige por nuestra
+          <a href="/privacidad/">Política de Privacidad</a>.
+        </p>
+
+        <h2>10. Legislación aplicable</h2>
+        <p>
+          Estos términos se rigen por la legislación de la República de Chile. Cualquier controversia se someterá a los
+          tribunales ordinarios de justicia con competencia en la Región del Maule.
+        </p>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-gray-200">
+        <a href="/" class="text-sm text-emerald-700 hover:text-emerald-800 font-medium">← Volver al inicio</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

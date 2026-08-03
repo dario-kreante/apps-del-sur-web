@@ -239,7 +239,7 @@ Si decides pasar de Excel a un sistema integrado de gestión de mano de obra, ha
 - **CORFO Digitalización Agro (Pymes 50-100 ha):** Financia hasta $20M, copago ~50%
 - **FIA Interés Privado (Cooperativas, +100 ha):** Financia hasta $120M, copago variable
 
-Lee más detalles en nuestra guía: [Guía de Financiamiento CORFO y FIA para Digitalización Agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026)
+Lee más detalles en nuestra guía: [Guía de Financiamiento CORFO y FIA para Digitalización Agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/)
 
 ## Conclusión
 

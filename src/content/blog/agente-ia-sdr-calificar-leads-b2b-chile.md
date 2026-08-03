@@ -180,7 +180,7 @@ Si su empresa B2B recibe más de 30 leads inbound al mes, el ROI está práctica
 
 **Pruebe el agente real escribiéndonos por WhatsApp**. El que le responde es el mismo motor que podría calificar sus leads. Verá la velocidad de respuesta, la calidad de las preguntas y el handoff.
 
-**[Ver la landing del Agente SDR →](/agentes/sdr-leads)**
+**[Ver la landing del Agente SDR →](/agentes/sdr-leads/)**
 
 **[Probar el agente por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20vendo%20B2B%20y%20quiero%20ver%20una%20demo%20del%20Agente%20SDR)**
 

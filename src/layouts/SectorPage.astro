@@ -97,7 +97,7 @@ const jsonLd = isCuaderno
       applicationCategory: 'BusinessApplication',
       operatingSystem: 'Web, Android, iOS',
       provider: { '@id': 'https://appsdelsur.cl/#organization' },
-      url: `https://appsdelsur.cl${sectorData.url}`,
+      url: `https://appsdelsur.cl${sectorData.url}/`,
     })
   : JSON.stringify({
       '@context': 'https://schema.org',
@@ -113,14 +113,14 @@ const jsonLd = isCuaderno
         { '@type': 'AdministrativeArea', name: 'Regi\u00f3n del Biob\u00edo' },
         { '@type': 'AdministrativeArea', name: 'Regi\u00f3n de La Araucan\u00eda' },
       ],
-      url: `https://appsdelsur.cl${sectorData.url}`,
+      url: `https://appsdelsur.cl${sectorData.url}/`,
     });
 ---
 
 <Layout
   title={meta.title}
   description={meta.description}
-  canonical={`https://appsdelsur.cl${sectorData.url}`}
+  canonical={`https://appsdelsur.cl${sectorData.url}/`}
   keywords={meta.keywords}
   ogTitle={meta.ogTitle}
   ogDescription={meta.ogDescription}
@@ -326,7 +326,7 @@ const jsonLd = isCuaderno
           <div class="space-y-3">
             {relatedBlogSlugs.map((postSlug) => (
               <a
-                href={`/blog/${postSlug}`}
+                href={`/blog/${postSlug}/`}
                 class="block p-4 bg-gray-50 hover:bg-emerald-50 rounded-lg border-l-3 border-emerald-500 transition-colors"
               >
                 <span class="text-emerald-600 font-medium">{postSlug.replace(/-/g, ' ')}</span>

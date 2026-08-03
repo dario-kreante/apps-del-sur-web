@@ -153,6 +153,6 @@ Si tu viña aún usa papel o Excel para registros de labores, es momento de eval
 
 **Artículos relacionados:**
 
-- [Calendario agrícola 2026: Labores por temporada en viñas del centro-sur](/blog/calendario-agricola-2026-vinas-centro-sur-chile)
-- [Sustentavid y GlobalG.A.P.: Cómo el software asegura trazabilidad total](/blog/sustentavid-globalg-a-p-registros-trazabilidad-software)
-- [Costo de mano de obra por hectárea en viñas del centro-sur: Benchmarks 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile)
+- [Calendario agrícola 2026: Labores por temporada en viñas del centro-sur](/blog/calendario-agricola-2026-vinas-centro-sur-chile/)
+- [Sustentavid y GlobalG.A.P.: Cómo el software asegura trazabilidad total](/blog/sustentavid-globalg-a-p-registros-trazabilidad-software/)
+- [Costo de mano de obra por hectárea en viñas del centro-sur: Benchmarks 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)

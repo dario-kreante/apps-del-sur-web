@@ -124,10 +124,10 @@ Si esperas a mayo, ya perdiste la vendimia 2026. Aplica para la próxima cosecha
 
 Para profundizar en cómo gestionar mano de obra agrícola:
 
-- [Costo de mano de obra por hectárea en viñas chilenas: análisis completo](/blog/costo-mano-de-obra-por-hectarea-vinas-chile)
-- [Cuaderno de campo digital: beneficios para supervisión en viña](/blog/cuaderno-de-campo-digital-vinas-chile)
-- [Calendario agrícola 2026: viñas Maule, O'Higgins y Ñuble](/blog/calendario-agricola-2026-vinas-centro-sur-chile)
-- [5 señales de que necesitas digitalizar la gestión de mano de obra en tu viña](/blog/senales-digitalizar-gestion-mano-obra-vina)
+- [Costo de mano de obra por hectárea en viñas chilenas: análisis completo](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
+- [Cuaderno de campo digital: beneficios para supervisión en viña](/blog/cuaderno-de-campo-digital-vinas-chile/)
+- [Calendario agrícola 2026: viñas Maule, O'Higgins y Ñuble](/blog/calendario-agricola-2026-vinas-centro-sur-chile/)
+- [5 señales de que necesitas digitalizar la gestión de mano de obra en tu viña](/blog/senales-digitalizar-gestion-mano-obra-vina/)
 
 También te recomendamos revisar recursos de [Mundoagro](https://mundoagro.cl/) y [Portal Agro Chile](https://portalagrochile.cl/) para mejores prácticas de vendimia.
 

@@ -166,7 +166,7 @@ Si su gimnasio pierde más de $2M al mes por churn, el ROI está garantizado y s
 
 **Pruebe el agente real escribiéndonos por WhatsApp**. Le respondemos con el mismo motor que después podría rescatar a sus socios — verá la calidad de la conversación y el tono.
 
-**[Ver la landing del Agente de Retención →](/agentes/retencion)**
+**[Ver la landing del Agente de Retención →](/agentes/retencion/)**
 
 **[Probar el agente por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20tengo%20un%20gimnasio%20y%20quiero%20ver%20una%20demo%20del%20Agente%20de%20Retenci%C3%B3n)**
 

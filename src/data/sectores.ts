@@ -641,7 +641,7 @@ export const sectorPages: Record<string, AgentPage> = {
 
   // ─── 4. Abogados y estudios jurídicos ────────────────────────
   abogados: {
-    slug: 'abogados-sector',
+    slug: 'abogados',
     url: '/agentes/sectores/abogados',
     name: 'Agentes IA para Estudios Jurídicos',
     emoji: '⚖️',
@@ -669,9 +669,9 @@ export const sectorPages: Record<string, AgentPage> = {
       description:
         'El 80% de consultas que llegan a un estudio jurídico pyme son fuera de su práctica, sin presupuesto o sin urgencia real. El agente IA hace la primera entrevista, califica con criterios jurídicos (rama, monto, plazos) y agenda solo las que califican.',
       ctaPrimary: 'Probar el agente por WhatsApp',
-      ctaPrimaryHref: wa('abogados-sector', 'Hola, tengo un estudio jurídico y quiero ver el agente IA'),
+      ctaPrimaryHref: wa('abogados', 'Hola, tengo un estudio jurídico y quiero ver el agente IA'),
       ctaSecondary: 'Diagnosticar mi madurez IA (gratis · 6 min)',
-      ctaSecondaryHref: diagnostico('abogados-sector'),
+      ctaSecondaryHref: diagnostico('abogados'),
     },
     chatMock: {
       title: 'Cómo califica el agente una consulta',

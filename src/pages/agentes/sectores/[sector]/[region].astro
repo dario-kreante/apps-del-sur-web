@@ -21,7 +21,7 @@ if (!sectorData || !regionData) {
   return Astro.redirect('/agentes/');
 }
 
-const canonicalOverride = `https://appsdelsur.cl/agentes/sectores/${cell.sectorSlug}/${cell.regionSlug}`;
+const canonicalOverride = `https://appsdelsur.cl/agentes/sectores/${cell.sectorSlug}/${cell.regionSlug}/`;
 
 const regionContext = {
   slug: regionData.slug,

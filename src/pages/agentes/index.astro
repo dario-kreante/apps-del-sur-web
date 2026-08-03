@@ -40,7 +40,7 @@ const jsonLd = JSON.stringify({
     item: {
       '@type': 'Service',
       name: a.name,
-      url: `https://appsdelsur.cl${a.url}`,
+      url: `https://appsdelsur.cl${a.url}/`,
       description: a.shortDescription,
     },
   })),
@@ -125,7 +125,7 @@ const jsonLd = JSON.stringify({
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {sectores.map((s) => (
             <a
-              href={s.url}
+              href={`${s.url}/`}
               class="group rounded-2xl bg-white border border-gray-200 p-6 hover:border-emerald-300 hover:shadow-lg transition-all flex flex-col"
             >
               <div class="text-4xl mb-3">{s.emoji}</div>
@@ -160,7 +160,7 @@ const jsonLd = JSON.stringify({
         <div class="grid md:grid-cols-2 gap-6">
           {agentes.map((a) => (
             <a
-              href={a.url}
+              href={`${a.url}/`}
               class="group rounded-2xl bg-white border border-gray-200 p-7 hover:border-emerald-300 hover:shadow-lg transition-all flex flex-col"
             >
               <div class="flex items-start justify-between mb-4">
@@ -356,7 +356,7 @@ const jsonLd = JSON.stringify({
                     </div>
                   </div>
                   <a
-                    href={a.url}
+                    href={`${a.url}/`}
                     class="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-700 hover:text-emerald-800 transition-colors shrink-0"
                   >
                     Ver landing

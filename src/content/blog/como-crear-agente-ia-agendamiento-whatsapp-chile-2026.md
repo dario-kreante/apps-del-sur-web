@@ -247,7 +247,7 @@ Sí, técnicamente. Pero a volumen real (>1.000 ejecuciones/mes) salen 2-3x más
 
 Hacer tu propio agente IA con n8n es completamente viable. Pero si tu tiempo está mejor invertido en atender clientes que en aprender una herramienta nueva, podemos hacerlo por ti — con tu marca, tu agenda, tu equipo, tu sector. Implementación en 2-4 semanas. Financiamos hasta el 95-100% del costo con SERCOTEC Kit Digital o CRECE para microempresas y pymes chilenas.
 
-**[Ver el Agente de Agendamiento de Apps del Sur →](/agentes/agendamiento)**
+**[Ver el Agente de Agendamiento de Apps del Sur →](/agentes/agendamiento/)**
 
 **[Probar el agente real escribiéndonos por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20quiero%20que%20me%20ayuden%20a%20crear%20un%20agente%20IA%20de%20agendamiento%20para%20mi%20negocio)**
 

@@ -220,7 +220,7 @@ Sí. SERCOTEC CRECE y CORFO Digitalización Pyme pueden cubrir software de cumpl
 
 Si tu pyme ya usa IA o planea hacerlo, el momento correcto para hacer las cosas bien es **ahora**, no en noviembre 2026. En Apps del Sur diseñamos agentes IA que cumplen Ley 21.719 desde el primer día: DPA firmados, EIPD documentada, consentimiento integrado, handoff humano y opt-out de entrenamiento. Sin que tengas que ser experto legal.
 
-**[Ver Agente IA de Compliance (SAG, SII, Ley 21.719) →](/agentes/compliance)**
+**[Ver Agente IA de Compliance (SAG, SII, Ley 21.719) →](/agentes/compliance/)**
 
 **[Ver todos los Agentes IA de Apps del Sur →](/agentes/)**
 

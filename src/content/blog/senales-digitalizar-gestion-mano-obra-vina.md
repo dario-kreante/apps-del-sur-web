@@ -121,6 +121,6 @@ Para profundizar en temas de gestión agrícola y tendencias tecnológicas en el
 
 **Artículos relacionados:**
 
-- [Cuaderno de campo digital: cómo funciona en las viñas modernas](/blog/cuaderno-de-campo-digital-vinas-chile)
-- [Cálculo de costos de mano de obra por hectárea: guía 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile)
-- [Guía de financiamiento CORFO y FIA para digitalización agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026)
+- [Cuaderno de campo digital: cómo funciona en las viñas modernas](/blog/cuaderno-de-campo-digital-vinas-chile/)
+- [Cálculo de costos de mano de obra por hectárea: guía 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
+- [Guía de financiamiento CORFO y FIA para digitalización agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/)

@@ -201,7 +201,7 @@ Para obtener información directa de las certificadoras y entidades reguladoras:
 
 **Artículos relacionados:**
 
-- [Cuaderno de campo digital: cómo funciona en las viñas modernas](/blog/cuaderno-de-campo-digital-vinas-chile)
-- [5 señales de que tu viña necesita digitalizar la gestión de mano de obra](/blog/senales-digitalizar-gestion-mano-obra-vina)
-- [Software agrícola en Chile: comparativa de soluciones 2026](/blog/software-agricola-chile-comparativa-2026)
-- [Guía de financiamiento CORFO y FIA para digitalización 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026)
+- [Cuaderno de campo digital: cómo funciona en las viñas modernas](/blog/cuaderno-de-campo-digital-vinas-chile/)
+- [5 señales de que tu viña necesita digitalizar la gestión de mano de obra](/blog/senales-digitalizar-gestion-mano-obra-vina/)
+- [Software agrícola en Chile: comparativa de soluciones 2026](/blog/software-agricola-chile-comparativa-2026/)
+- [Guía de financiamiento CORFO y FIA para digitalización 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/)

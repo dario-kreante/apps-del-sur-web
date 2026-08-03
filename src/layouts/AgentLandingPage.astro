@@ -97,7 +97,7 @@ const areaServedSchema = regionContext
   ? { '@type': 'AdministrativeArea', name: `Región ${regionContext.nameWithArticle.replace(/^del? /, '')}`, address: { '@type': 'PostalAddress', addressRegion: regionContext.name, addressCountry: 'CL' } }
   : { '@type': 'Country', name: 'Chile' };
 
-const finalUrl = canonicalOverride || `https://appsdelsur.cl${data.url}`;
+const finalUrl = canonicalOverride || `https://appsdelsur.cl${data.url}/`;
 const finalTitle = regionContext
   ? `${data.name} en ${regionContext.nameWithArticle.replace(/^del? /, '')} | Apps del Sur`
   : data.meta.title;
@@ -186,7 +186,7 @@ const llmTripleta = isSector
         <span class="mx-2">/</span>
         {regionContext ? (
           <>
-            <a href={data.url} class="text-emerald-600 hover:text-emerald-700 transition-colors">{data.name}</a>
+            <a href={`${data.url}/`} class="text-emerald-600 hover:text-emerald-700 transition-colors">{data.name}</a>
             <span class="mx-2">/</span>
             <span class="text-gray-400">{regionContext.name}</span>
           </>
@@ -573,7 +573,7 @@ const llmTripleta = isSector
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {relatedAgentEntries.map((a) => (
               <a
-                href={a.url}
+                href={`${a.url}/`}
                 class="group flex flex-col bg-white rounded-2xl border border-gray-200 p-6 hover:border-emerald-300 hover:shadow-lg transition-all"
               >
                 <div class="text-3xl mb-3">{a.emoji}</div>
@@ -624,7 +624,7 @@ const llmTripleta = isSector
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {data.regions.map((r) => (
               <a
-                href={`${data.url}/${r}`}
+                href={`${data.url}/${r}/`}
                 class="group rounded-xl bg-white border border-gray-200 p-4 hover:border-emerald-300 hover:shadow-sm transition-all text-center"
               >
                 <div class="font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors capitalize">

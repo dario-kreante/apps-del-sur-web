@@ -105,13 +105,13 @@ export const GET: APIRoute = async () => {
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/claude-ai-chile</loc>
+    <loc>${BASE_URL}/claude-ai-chile/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/codex-chile</loc>
+    <loc>${BASE_URL}/codex-chile/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -199,6 +199,24 @@ export const GET: APIRoute = async () => {
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/privacidad/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/terminos/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/regiones/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>${BASE_URL}/regiones/maule/</loc>

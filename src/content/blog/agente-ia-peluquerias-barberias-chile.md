@@ -162,7 +162,7 @@ Si su peluquería recibe más de 100 mensajes al mes por WhatsApp, el ROI está 
 
 **Pruebe el agente real** escribiéndonos por WhatsApp. Le respondemos con el mismo motor que después podría tener su negocio — verá la velocidad, el tono y las acciones reales.
 
-**[Ver la landing del Agente de Agendamiento →](/agentes/agendamiento)**
+**[Ver la landing del Agente de Agendamiento →](/agentes/agendamiento/)**
 
 **[Probar el agente por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20tengo%20una%20peluquer%C3%ADa%2Fbarber%C3%ADa%20y%20quiero%20ver%20una%20demo%20del%20Agente%20de%20Agendamiento)**
 

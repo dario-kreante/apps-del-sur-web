@@ -210,9 +210,9 @@ Si tu negocio turístico recibe más de 200 mensajes/mes en temporada o lleva a�
 
 **Pruebe el agente real escribiéndonos por WhatsApp**. Le respondemos con el mismo motor que después podría atender tus huéspedes — verás la velocidad, el tono, el manejo de idiomas y las acciones reales.
 
-**[Ver el Agente de Atención WhatsApp →](/agentes/whatsapp-atencion)**
+**[Ver el Agente de Atención WhatsApp →](/agentes/whatsapp-atencion/)**
 
-**[Ver el Agente de Agendamiento (para tours y restaurantes) →](/agentes/agendamiento)**
+**[Ver el Agente de Agendamiento (para tours y restaurantes) →](/agentes/agendamiento/)**
 
 **[Probar el agente por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20tengo%20un%20negocio%20tur%C3%ADstico%20en%20Chile%20y%20quiero%20ver%20una%20demo%20del%20agente%20IA)**
 

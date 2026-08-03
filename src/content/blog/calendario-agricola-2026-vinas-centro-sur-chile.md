@@ -172,6 +172,6 @@ Este calendario es tu hoja de ruta para 2026. Úsalo para presupuestar, reclutar
 
 **Artículos relacionados:**
 
-- [Qué es un cuaderno de campo digital y por qué tu viña lo necesita en 2026](/blog/cuaderno-de-campo-digital-vinas-chile)
-- [Costo de mano de obra por hectárea en viñas del centro-sur: Benchmarks 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile)
-- [Guía de financiamiento CORFO + FIA para digitalización agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026)
+- [Qué es un cuaderno de campo digital y por qué tu viña lo necesita en 2026](/blog/cuaderno-de-campo-digital-vinas-chile/)
+- [Costo de mano de obra por hectárea en viñas del centro-sur: Benchmarks 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
+- [Guía de financiamiento CORFO + FIA para digitalización agrícola 2026](/blog/guia-financiamiento-corfo-fia-digitalizacion-agricola-2026/)

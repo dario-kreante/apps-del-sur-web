@@ -80,7 +80,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('es-CL', {
   day: 'numeric',
 });
 
-const canonicalUrl = `https://appsdelsur.cl/blog/${slug}`;
+const canonicalUrl = `https://appsdelsur.cl/blog/${slug}/`;
 const primaryImage = heroImage ? `https://appsdelsur.cl${heroImage}` : 'https://appsdelsur.cl/og-image-blog.png';
 const articleImages = Array.from(
   new Set([primaryImage, ...(images ?? []).map((image) => `https://appsdelsur.cl${image.url}`)])
@@ -238,7 +238,7 @@ const jsonLd = JSON.stringify({
           <div class="space-y-3">
             {relatedPosts.map((postSlug) => (
               <a
-                href={`/blog/${postSlug}`}
+                href={`/blog/${postSlug}/`}
                 class="block p-4 bg-gray-50 hover:bg-emerald-50 rounded-lg border-l-3 border-emerald-500 transition-colors"
               >
                 <span class="text-emerald-600 font-medium">{postSlug.replace(/-/g, ' ')}</span>

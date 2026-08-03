@@ -169,7 +169,7 @@ Si su tienda recibe más de 500 mensajes al mes por WhatsApp, el ROI está prác
 
 **Pruebe el agente real** escribiéndonos. Le contestamos con el mismo motor que después podría tener su tienda — verá la velocidad, el tono y las acciones reales antes de cotizar.
 
-**[Ver la landing del Agente de Atención WhatsApp →](/agentes/whatsapp-atencion)**
+**[Ver la landing del Agente de Atención WhatsApp →](/agentes/whatsapp-atencion/)**
 
 **[Probar el agente por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20tengo%20un%20e-commerce%20y%20quiero%20ver%20una%20demo%20del%20Agente%20de%20Atenci%C3%B3n%20WhatsApp)**
 

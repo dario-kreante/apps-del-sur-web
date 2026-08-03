@@ -39,7 +39,7 @@ const posts = (await getCollection('blog')).sort(
       <div class="space-y-6">
         {posts.map((post) => (
           <a
-            href={`/blog/${post.id}`}
+            href={`/blog/${post.id}/`}
             class="block group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-emerald-300 hover:shadow-md transition-all"
           >
             <!-- Visual accent bar -->

@@ -67,7 +67,7 @@ Lo que **no debe hacer**:
 - Conversar sobre síntomas en detalle.
 - Reutilizar datos para marketing sin nuevo consentimiento separado.
 
-Más sobre implementación práctica en nuestro post de [Agente IA de agendamiento para clínicas dentales en Chile](/blog/agente-ia-agendamiento-clinicas-dentales-chile/) y la landing [/agentes/agendamiento](/agentes/agendamiento).
+Más sobre implementación práctica en nuestro post de [Agente IA de agendamiento para clínicas dentales en Chile](/blog/agente-ia-agendamiento-clinicas-dentales-chile/) y la landing [/agentes/agendamiento](/agentes/agendamiento/).
 
 ## Sector 2: legal — estudios jurídicos, abogados independientes, áreas legales internas
 
@@ -98,7 +98,7 @@ Lo que **no debe hacer**:
 - Comunicarse con contraparte sin autorización.
 - Procesar casos de violencia intrafamiliar, abuso, identidad de género o NNA sin handoff humano inmediato.
 
-Ver landing [/agentes/abogados](/agentes/abogados).
+Ver landing [/agentes/abogados](/agentes/abogados/).
 
 ## Sector 3: financiero — cobranza, créditos, seguros, fintech
 
@@ -157,7 +157,7 @@ Lo que **no debe hacer**:
 - Reutilizar la base para marketing masivo sin consentimiento posterior al servicio.
 - Tomar decisiones sobre reclamos o casos delicados — siempre handoff humano.
 
-Ver landing [/agentes/cuota-mortuoria](/agentes/cuota-mortuoria) (powered by motor Lucerna, que consulta en vivo contra spensiones.cl con consentimiento explícito de la familia).
+Ver landing [/agentes/cuota-mortuoria](/agentes/cuota-mortuoria/) (powered by motor Lucerna, que consulta en vivo contra spensiones.cl con consentimiento explícito de la familia).
 
 ## Sector 5: retail y e-commerce
 
@@ -174,7 +174,7 @@ Ver landing [/agentes/cuota-mortuoria](/agentes/cuota-mortuoria) (powered by mot
 
 ### Cómo configurar un agente IA retail
 
-Ver landing [/agentes/whatsapp-atencion](/agentes/whatsapp-atencion). Lo que el agente puede hacer:
+Ver landing [/agentes/whatsapp-atencion](/agentes/whatsapp-atencion/). Lo que el agente puede hacer:
 
 - Atender consultas (tracking, FAQ, stock).
 - Recomendar productos (con base en historial, con consentimiento).
@@ -202,7 +202,7 @@ Lo que no debe hacer:
 
 ### Cómo configurar un agente IA turístico
 
-Ver landing [/agentes/whatsapp-atencion](/agentes/whatsapp-atencion) y [/agentes/agendamiento](/agentes/agendamiento). El agente puede:
+Ver landing [/agentes/whatsapp-atencion](/agentes/whatsapp-atencion/) y [/agentes/agendamiento](/agentes/agendamiento/). El agente puede:
 
 - Cotizar y reservar.
 - Confirmar y enviar voucher.
@@ -296,15 +296,15 @@ Régimen reforzado: consentimiento del padre/madre/tutor, no perfilamiento publi
 
 Si tu pyme está en uno de estos 6 sectores y maneja datos sensibles, el momento correcto para implementar IA con cumplimiento es ahora. En Apps del Sur diseñamos agentes IA específicos por vertical, con DPA firmados, EIPD documentada, handoff humano garantizado y consentimiento integrado en el flujo conversacional.
 
-**[Ver Agente IA de Compliance regulatorio →](/agentes/compliance)**
+**[Ver Agente IA de Compliance regulatorio →](/agentes/compliance/)**
 
-**[Ver Agente IA para Clínicas Dentales (agendamiento) →](/agentes/agendamiento)**
+**[Ver Agente IA para Clínicas Dentales (agendamiento) →](/agentes/agendamiento/)**
 
-**[Ver Agente IA Legal para Abogados →](/agentes/abogados)**
+**[Ver Agente IA Legal para Abogados →](/agentes/abogados/)**
 
-**[Ver Agente IA de Cuota Mortuoria (funerario) →](/agentes/cuota-mortuoria)**
+**[Ver Agente IA de Cuota Mortuoria (funerario) →](/agentes/cuota-mortuoria/)**
 
-**[Ver Agente IA Atención WhatsApp (retail/turismo) →](/agentes/whatsapp-atencion)**
+**[Ver Agente IA Atención WhatsApp (retail/turismo) →](/agentes/whatsapp-atencion/)**
 
 **[Diagnosticar la madurez IA y de datos de mi pyme (gratis · 6 min) →](/diagnostico-madurez-ia/?source=blog-ley-21719-sectores)**
 

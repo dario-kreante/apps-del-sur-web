@@ -191,7 +191,7 @@ Probar las 5 preguntas a ChatGPT, Gemini y Claude toma 10 minutos y te dice exac
 
 **[Hacer el Diagnóstico de Madurez IA de mi negocio (gratis · 6 min) →](/diagnostico-madurez-ia/?source=blog-geo-turismo)**
 
-**[Ver el Agente IA de Atención WhatsApp para turismo →](/agentes/whatsapp-atencion)**
+**[Ver el Agente IA de Atención WhatsApp para turismo →](/agentes/whatsapp-atencion/)**
 
 **[Conversar con nosotros por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20tengo%20un%20negocio%20tur%C3%ADstico%20y%20quiero%20aparecer%20en%20ChatGPT%20y%20Gemini)**
 

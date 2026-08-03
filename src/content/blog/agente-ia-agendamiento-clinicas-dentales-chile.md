@@ -156,7 +156,7 @@ Si llegó hasta acá es porque el dolor existe. No necesita comprar antes de pro
 
 **Pruebe el agente real** escribiéndonos por WhatsApp. Le respondemos con el mismo agente que después podría tener su clínica — verá la velocidad, el tono y las acciones reales.
 
-**[Ver la landing del Agente de Agendamiento →](/agentes/agendamiento)**
+**[Ver la landing del Agente de Agendamiento →](/agentes/agendamiento/)**
 
 **[Probar el agente por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20tengo%20una%20cl%C3%ADnica%20dental%20y%20quiero%20ver%20una%20demo%20del%20Agente%20de%20Agendamiento)**
 

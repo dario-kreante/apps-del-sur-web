@@ -24,7 +24,7 @@ const jsonLd = JSON.stringify({
   '@id': `https://appsdelsur.cl/regiones/${regionData.slug}#localbusiness`,
   name: 'Apps del Sur — GYS Activa SpA',
   description: meta.description,
-  url: `https://appsdelsur.cl/regiones/${regionData.slug}`,
+  url: `https://appsdelsur.cl/regiones/${regionData.slug}/`,
   telephone: '+56-9-4526-2335',
   email: 'contacto@appsdelsur.cl',
   address: {
@@ -59,13 +59,13 @@ const breadcrumbLd = JSON.stringify({
       '@type': 'ListItem',
       position: 2,
       name: 'Regiones',
-      item: 'https://appsdelsur.cl/regiones',
+      item: 'https://appsdelsur.cl/regiones/',
     },
     {
       '@type': 'ListItem',
       position: 3,
       name: regionData.name,
-      item: `https://appsdelsur.cl/regiones/${regionData.slug}`,
+      item: `https://appsdelsur.cl/regiones/${regionData.slug}/`,
     },
   ],
 });
@@ -74,7 +74,7 @@ const breadcrumbLd = JSON.stringify({
 <Layout
   title={meta.title}
   description={meta.description}
-  canonical={`https://appsdelsur.cl/regiones/${regionData.slug}`}
+  canonical={`https://appsdelsur.cl/regiones/${regionData.slug}/`}
   keywords={meta.keywords}
   ogTitle={meta.ogTitle}
   ogDescription={meta.ogDescription}
@@ -115,7 +115,7 @@ const breadcrumbLd = JSON.stringify({
               <Button href={`/#contacto`} size="lg">
                 Solicitar diagnóstico gratuito
               </Button>
-              <Button href="/enfoque" variant="outline" size="lg">
+              <Button href="/enfoque/" variant="outline" size="lg">
                 Ver cómo trabajamos
               </Button>
             </div>

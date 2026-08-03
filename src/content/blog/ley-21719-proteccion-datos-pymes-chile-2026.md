@@ -212,7 +212,7 @@ Sí. CORFO Digitalización Pyme y SERCOTEC CRECE pueden cubrir parte del costo d
 
 Adecuarse a la Ley 21.719 no es solo trámite legal: es ordenar cómo tu pyme guarda, usa y comparte datos de clientes. Si quieres saber en qué punto partes, en Apps del Sur trabajamos cumplimiento Ley 21.719 + automatización con agentes IA + software a medida para pymes chilenas.
 
-**[Ver Agente IA de Compliance (SAG, SII, ISP, Ley 21.719) →](/agentes/compliance)**
+**[Ver Agente IA de Compliance (SAG, SII, ISP, Ley 21.719) →](/agentes/compliance/)**
 
 **[Diagnosticar la madurez IA y de datos de mi pyme (gratis · 6 min) →](/diagnostico-madurez-ia/?source=blog-ley-21719-general)**
 
