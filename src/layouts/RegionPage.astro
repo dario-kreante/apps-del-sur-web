@@ -9,6 +9,7 @@ import Button from '../components/ui/Button.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import type { RegionData } from '../data/regiones/types';
 import { getRubrosForRegion } from '../data/rubros';
+import { sectorList } from '../data/sectores';
 
 interface Props {
   regionData: RegionData;
@@ -17,6 +18,12 @@ interface Props {
 const { regionData } = Astro.props;
 const { meta, hero, painPoints, process, stats, funding } = regionData;
 const regionRubros = getRubrosForRegion(regionData.rubroSlugs);
+
+// Sectores con página local en esta región — enlace inverso hacia la matriz
+// sector×región, para que esas páginas no dependan solo del sitemap.
+const sectoresEnRegion = sectorList.filter((s) =>
+  s.regions?.includes(regionData.slug),
+);
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -312,6 +319,42 @@ const breadcrumbLd = JSON.stringify({
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 6b — Soluciones por rubro en esta región            -->
+    <!-- Enlace inverso hacia la matriz sector×región                -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    {sectoresEnRegion.length > 0 && (
+      <section class="py-20 bg-gray-50">
+        <div class="max-w-[1200px] mx-auto px-6">
+          <SectionHeader
+            label="Soluciones por rubro"
+            title={`Qué implementamos en ${regionData.nameWithArticle}, según su rubro`}
+            description="Cada rubro tiene su versión local, con los fondos y las condiciones que aplican en esta región."
+            centered
+          />
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {sectoresEnRegion.map((s) => (
+              <a
+                href={`${s.url}/${regionData.slug}/`}
+                class="group rounded-xl bg-white border border-gray-200 p-5 hover:border-emerald-300 hover:shadow-sm transition-all"
+              >
+                <div class="text-2xl mb-2">{s.emoji}</div>
+                <div class="font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors mb-1">
+                  {s.name.replace(/^Agentes IA para /, '')}
+                </div>
+                <div class="text-sm text-gray-500 line-clamp-3">
+                  {s.shortDescription}
+                </div>
+                <div class="text-xs text-emerald-700 mt-3 font-medium">
+                  Ver en {regionData.name} →
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- Sección 7 — CTA final                                      -->
     <!-- ═══════════════════════════════════════════════════════════ -->
     <section class="py-20 bg-white">

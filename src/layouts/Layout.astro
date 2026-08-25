@@ -11,6 +11,7 @@ interface Props {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   /** When true, emits noindex,follow — used for thin sector×region pages without local differentiator yet. */
   noindex?: boolean;
   /** When true, skips the sitewide FAQPage schema — use on pages that define their own FAQPage (Google allows only one per page). */
@@ -24,7 +25,8 @@ const {
   keywords = siteConfig.keywords,
   ogTitle = siteConfig.ogTitle,
   ogDescription = siteConfig.ogDescription,
-  ogImage,
+  ogImage = siteConfig.ogImage,
+  ogImageAlt = siteConfig.ogImageAlt,
   noindex = false,
   omitFaqSchema = false,
 } = Astro.props;
@@ -52,7 +54,14 @@ const robotsContent = noindex
     <meta name="keywords" content={keywords} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    {ogImage === siteConfig.ogImage && (
+      <>
+        <meta property="og:image:width" content="1536" />
+        <meta property="og:image:height" content="1024" />
+      </>
+    )}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CL" />
     <link rel="canonical" href={canonical} />
@@ -67,7 +76,8 @@ const robotsContent = noindex
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content={ogTitle}>
     <meta name="twitter:description" content={ogDescription}>
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    <meta name="twitter:image" content={ogImage}>
+    <meta name="twitter:image:alt" content={ogImageAlt}>
 
     <!-- Open Graph -->
     <meta property="og:url" content={canonical}>

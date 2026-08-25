@@ -8,6 +8,9 @@ export const siteConfig = {
   ogDescription:
     'Diseñamos y desarrollamos sistemas web, apps móviles e integraciones a medida para empresas que ya no pueden seguir operando con Excel, papel y WhatsApp.',
   canonical: 'https://appsdelsur.cl/',
+  /** Imagen por defecto para Open Graph / Twitter Card. URL absoluta: los crawlers no resuelven rutas relativas. */
+  ogImage: 'https://appsdelsur.cl/brand/logo-horizontal.png',
+  ogImageAlt: 'Apps del Sur — software a medida e IA aplicada para pymes del centro-sur de Chile',
 } as const;
 
 export const navItems = [

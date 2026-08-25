@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import { siteConfig } from '../data/content';
 import LogoLockup from '../components/LogoLockup.astro';
 
 // Hero illustrations — imported statically for Astro SSG
@@ -81,7 +82,7 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('es-CL', {
 });
 
 const canonicalUrl = `https://appsdelsur.cl/blog/${slug}/`;
-const primaryImage = heroImage ? `https://appsdelsur.cl${heroImage}` : 'https://appsdelsur.cl/og-image-blog.png';
+const primaryImage = heroImage ? `https://appsdelsur.cl${heroImage}` : siteConfig.ogImage;
 const articleImages = Array.from(
   new Set([primaryImage, ...(images ?? []).map((image) => `https://appsdelsur.cl${image.url}`)])
 );

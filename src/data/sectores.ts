@@ -19,7 +19,7 @@ export const sectorPages: Record<string, AgentPage> = {
     targetIndustries: ['Viñas vitivinícolas', 'Fundos frutícolas', 'Cooperativas agrícolas', 'Packings'],
     sectorVocab: ['cuartel', 'temporeros', 'jornadas', 'trato', 'vendimia', 'cuaderno de campo', 'kilos/jornal', '$/ha'],
     relatedAgents: ['compliance', 'sdr-leads', 'agendamiento'],
-    regions: ['maule', 'ohiggins', 'nuble', 'biobio'],
+    regions: ['maule', 'ohiggins', 'nuble', 'biobio', 'araucania'],
     meta: {
       title: 'Software y Agentes IA para Viñas Chile | Cuaderno de Campo Digital | Apps del Sur',
       description:
@@ -456,7 +456,7 @@ export const sectorPages: Record<string, AgentPage> = {
     targetIndustries: ['Hoteles boutique', 'Cabañas y lodges', 'Tour operadores', 'Restaurantes', 'Termas y spas'],
     sectorVocab: ['RevPAR', 'OTA', 'Booking', 'Expedia', 'check-in', 'check-out', 'no-show', 'reseña', 'comisión'],
     relatedAgents: ['agendamiento', 'whatsapp-atencion', 'retencion'],
-    regions: ['araucania', 'biobio', 'maule', 'ohiggins'],
+    regions: ['araucania', 'biobio', 'maule', 'ohiggins', 'nuble'],
     meta: {
       title: 'Agentes IA para Hoteles, Cabañas y Tour Operadores Chile | Apps del Sur',
       description:
