@@ -328,6 +328,26 @@ export const aiTrainingCallout = {
   ctaHref: '#contacto',
 } as const;
 
+// Bloque de recursos de la home. Hasta hoy la home no enlazaba al blog en
+// absoluto: 34 artículos sin un solo enlace desde la página de más autoridad
+// del sitio. La selección prioriza intención de compra — quien busca precio
+// está comprando — e incluye a propósito el post de web profesional, que
+// Google tenía en "Rastreada: actualmente sin indexar" por falta de enlaces.
+export const blogHighlights = {
+  label: 'Recursos',
+  title: 'Cuánto cuesta, en cifras concretas',
+  description:
+    'Rangos de inversión reales para pymes chilenas, con los fondos públicos que los cubren. Escritos para que llegue informado a cualquier cotización — la nuestra incluida.',
+  ctaAll: 'Ver todos los artículos',
+  ctaAllHref: '/blog/',
+  slugs: [
+    'cuanto-cuesta-software-a-medida-chile',
+    'cuanto-cuesta-automatizar-whatsapp-empresa',
+    'cuanto-cuesta-web-profesional-empresa-chile',
+    'calcular-roi-proyecto-ia-pyme-chile',
+  ],
+} as const;
+
 export const footer = {
   companyName: 'Apps del Sur',
   companyLegal: 'GYS Activa SpA',
