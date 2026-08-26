@@ -84,6 +84,12 @@ export const araucania: RegionData = {
       status: 'abierto',
     },
   ],
+  relatedBlogSlugs: [
+    'como-aparecer-chatgpt-gemini-turismo-chile-pucon',
+    'cuanto-cuesta-web-profesional-empresa-chile',
+    'agente-ia-turismo-hoteles-restaurantes-tour-operadores-chile',
+    'cuanto-cuesta-implementar-ia-pyme-chile',
+  ],
   faq: [
     {
       q: '¿Qué fondo público me conviene si mi empresa está en La Araucanía?',

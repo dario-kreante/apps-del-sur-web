@@ -85,6 +85,12 @@ export const biobio: RegionData = {
       status: 'abierto',
     },
   ],
+  relatedBlogSlugs: [
+    'cuanto-cuesta-implementar-ia-pyme-chile',
+    'cuanto-cuesta-web-profesional-empresa-chile',
+    'cuanto-cuesta-software-a-medida-chile',
+    'modelo-madurez-ia-pymes-chile',
+  ],
   faq: [
     {
       q: '¿Qué fondo público me conviene si mi empresa está en el Biobío?',

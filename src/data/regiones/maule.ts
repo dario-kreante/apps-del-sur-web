@@ -93,6 +93,12 @@ export const maule: RegionData = {
       status: 'por abrir',
     },
   ],
+  relatedBlogSlugs: [
+    'software-agricola-chile-comparativa-2026',
+    'cuanto-cuesta-web-profesional-empresa-chile',
+    'cuanto-cuesta-implementar-ia-pyme-chile',
+    'cuanto-cuesta-sistema-gestion-vinas',
+  ],
   faq: [
     {
       q: '¿Qué fondo público me conviene si mi empresa está en el Maule?',

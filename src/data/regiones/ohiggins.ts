@@ -84,6 +84,12 @@ export const ohiggins: RegionData = {
       status: 'abierto',
     },
   ],
+  relatedBlogSlugs: [
+    'guia-financiamiento-corfo-fia-digitalizacion-agricola-2026',
+    'software-agricola-chile-comparativa-2026',
+    'cuanto-cuesta-web-profesional-empresa-chile',
+    'calcular-roi-proyecto-ia-pyme-chile',
+  ],
   faq: [
     {
       q: '¿Qué fondo público me conviene si mi empresa está en O’Higgins?',

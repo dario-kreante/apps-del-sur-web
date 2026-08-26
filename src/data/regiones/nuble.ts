@@ -84,6 +84,12 @@ export const nuble: RegionData = {
       status: 'por abrir',
     },
   ],
+  relatedBlogSlugs: [
+    'cuanto-cuesta-web-profesional-empresa-chile',
+    'cuanto-cuesta-implementar-ia-pyme-chile',
+    'fondos-financiamiento-ia-empresas-chile-2026',
+    'software-agricola-chile-comparativa-2026',
+  ],
   faq: [
     {
       q: '¿Qué fondo público me conviene si mi empresa está en Ñuble?',

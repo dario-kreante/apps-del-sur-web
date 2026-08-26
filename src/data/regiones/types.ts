@@ -46,6 +46,10 @@ export interface RegionData {
   };
   stats: RegionStat[];
   funding: RegionFund[];
+  /** Posts del blog relevantes para los rubros de ESTA región. Varían por
+   *  región a propósito: una lista idéntica en las 5 vuelve a introducir el
+   *  boilerplate compartido que estas páginas acaban de dejar atrás. */
+  relatedBlogSlugs: string[];
   /** Preguntas frecuentes propias de la región. Alimentan el FAQPage schema
    *  de la página; son la fuente principal de contenido no compartido, así que
    *  las respuestas deben citar datos de ESTA región, no copy genérico. */
