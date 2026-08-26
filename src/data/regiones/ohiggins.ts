@@ -84,4 +84,26 @@ export const ohiggins: RegionData = {
       status: 'abierto',
     },
   ],
+  faq: [
+    {
+      q: '¿Qué fondo público me conviene si mi empresa está en O’Higgins?',
+      a: 'Si es microempresa con ventas bajo 25.000 UF, SERCOTEC CRECE O’Higgins cubre hasta $5M con 98% de cofinanciamiento. Si su empresa es agrícola o agroindustrial, el instrumento más interesante es CORFO Digitalización Agro: entre $15M y $20M con 50 a 60% de cofinanciamiento, diseñado específicamente para pymes agrícolas de la región. Está por abrir, así que vale la pena tener el diagnóstico listo. Kit Digital, hasta $1,2M al 90%, funciona como primer paso si nunca ha digitalizado nada.',
+    },
+    {
+      q: '¿Por qué CORFO Digitalización Agro es tan relevante en esta región?',
+      a: 'Porque cerca del 45% de la economía regional es agropecuaria y el instrumento se creó pensando en eso. O’Higgins es la segunda región frutícola del país y la segunda vitivinícola. Las viñas familiares de Cachapoal y Colchagua son destinatarias directas: el cofinanciamiento de hasta 60% cambia por completo la conversación sobre el costo de digitalizar.',
+    },
+    {
+      q: '¿Atienden presencialmente en Rancagua, San Fernando o Santa Cruz?',
+      a: 'Sí, viajamos. Nuestro equipo está basado en el Maule y la atención presencial en O’Higgins se coordina desde allá: la reunión de diagnóstico y la capacitación se hacen en su empresa. El soporte posterior es en español y en horario de Chile.',
+    },
+    {
+      q: 'Tengo turismo enológico, no producción. ¿Aplica igual?',
+      a: 'Aplica. El turismo enológico viene creciendo con fuerza en la región y el problema suele ser el mismo: reservas por WhatsApp, disponibilidad en una planilla y ninguna trazabilidad de qué grupo vino, qué consumió y cuánto dejó. Un agente de agendamiento por WhatsApp resuelve la primera capa desde $80K mensuales, sin instalar nada.',
+    },
+    {
+      q: '¿Puedo postular a CORFO Digitalización Agro y a SERCOTEC al mismo tiempo?',
+      a: 'No para el mismo gasto — los fondos públicos no financian dos veces la misma factura. Lo que sí se hace es escalonarlos: Kit Digital o SERCOTEC CRECE para la primera etapa, y CORFO Digitalización Agro para la siguiente, con un alcance distinto y mayor. Conviene diseñar las dos etapas desde el principio para que la segunda no repita lo que ya financió la primera.',
+    },
+  ],
 };

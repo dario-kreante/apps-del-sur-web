@@ -84,4 +84,26 @@ export const araucania: RegionData = {
       status: 'abierto',
     },
   ],
+  faq: [
+    {
+      q: '¿Qué fondo público me conviene si mi empresa está en La Araucanía?',
+      a: 'SERCOTEC CRECE Araucanía cubre hasta $5M con 98% de cofinanciamiento para microempresas con ventas bajo 25.000 UF — con turismo y hotelería entre los rubros elegibles. Kit Digital, hasta $1,2M al 90%, es el primer paso si nunca ha digitalizado. Y CORFO Digitalización llega a $15M con 60% para pymes de cualquier sector. Ese último está por abrir, así que conviene tener el diagnóstico hecho antes.',
+    },
+    {
+      q: 'Tengo un hotel o cabañas. ¿Qué resuelve esto en temporada alta?',
+      a: 'La Araucanía recibe del orden de 4,5 millones de turistas al año y la operación se concentra en pocos meses. El cuello de botella típico es la reserva: consultas por WhatsApp a toda hora, disponibilidad en una planilla y sobreventas cuando entra volumen. Un agente de agendamiento por WhatsApp responde y reserva solo, 24/7, desde $80K mensuales. Es lo que más rápido se nota en temporada.',
+    },
+    {
+      q: '¿Y para gastronomía?',
+      a: 'Mismo patrón: reservas, confirmaciones y no-shows. El agente confirma la mesa el día anterior y libera el cupo cuando el cliente cancela, que es donde se pierde plata sin que nadie lo registre. Si además maneja pedidos, la atención por WhatsApp descarga al equipo en las horas peak.',
+    },
+    {
+      q: '¿Atienden presencialmente en Temuco, Villarrica o Pucón?',
+      a: 'Sí, viajamos desde el Maule, donde está nuestro equipo. El diagnóstico y la capacitación se hacen en su negocio. El soporte posterior es remoto, en español y en horario de Chile.',
+    },
+    {
+      q: 'Tengo una viña de clima frío en Malleco. ¿Es un caso demasiado chico?',
+      a: 'No. La superficie vitivinícola de la región es pequeña, del orden de unas 500 hectáreas entre Malleco y Cautín, pero son viñas boutique con Pinot Noir y Chardonnay orientadas a exportación, donde la trazabilidad no es un lujo sino un requisito de certificación. El volumen chico juega a favor: la implementación es más corta y el copago de un fondo como CRECE queda al alcance.',
+    },
+  ],
 };

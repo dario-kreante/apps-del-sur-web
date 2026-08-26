@@ -84,4 +84,26 @@ export const nuble: RegionData = {
       status: 'por abrir',
     },
   ],
+  faq: [
+    {
+      q: '¿Qué fondo público me conviene si mi empresa está en Ñuble?',
+      a: 'SERCOTEC CRECE Ñuble es la puerta de entrada: hasta $5M con 98% de cofinanciamiento para microempresas con ventas bajo 25.000 UF. Kit Digital, hasta $1,2M al 90%, sirve si el primer paso es más chico — facturación electrónica, por ejemplo. Y si su proyecto tiene componente innovador, CORFO Semilla llega a $25M con 75%. Ñuble es región autónoma desde 2018 y el volumen de fondos dirigidos a ella creció fuerte en ese período: hay más instrumentos disponibles que hace cinco años.',
+    },
+    {
+      q: '¿Es cierto que en Ñuble hay menos competencia por los fondos?',
+      a: 'Hay menos empresas postulando que en el Biobío o el Maule, simplemente porque el parque de pymes es más chico — cerca de 18.000 activas. Eso no significa que adjudicar sea fácil: la evaluación es igual de exigente y el proyecto tiene que estar bien formulado. Lo que sí ayuda es que alrededor del 42% de las empresas de la región todavía no tiene ningún sistema digital de gestión, así que el argumento de brecha digital es concreto y verificable.',
+    },
+    {
+      q: 'Tengo una viña patrimonial en el secano. ¿Esto me sirve?',
+      a: 'Ñuble concentra viñedos patrimoniales de País, Cinsault y Moscatel en el secano interior, entre Cauquenes e Itata, con manejo tradicional y sin sistemas de gestión. Justamente ahí el registro digital de terreno rinde más: saber cuánto costó la poda de cada cuartel, sin esperar a fin de mes. Y la trazabilidad abre la puerta a certificaciones que hoy quedan fuera de alcance.',
+    },
+    {
+      q: '¿Atienden presencialmente en Chillán?',
+      a: 'Sí, viajamos desde el Maule, donde está nuestro equipo. La reunión de diagnóstico y la capacitación se hacen en su empresa. El soporte posterior es remoto, en español y en horario de Chile.',
+    },
+    {
+      q: '¿Cuánto cuesta esto si no consigo fondo?',
+      a: 'Los agentes IA por WhatsApp parten en $80K mensuales y llegan a $250K según el agente, sin instalación ni desarrollo previo — es la opción de menor fricción cuando no hay fondo a la vista. Un sistema a medida es otra escala: se cotiza contra el alcance real después del diagnóstico, que no tiene costo.',
+    },
+  ],
 };

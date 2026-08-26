@@ -14,6 +14,11 @@ export interface RegionStat {
   source?: string;
 }
 
+export interface RegionFaqItem {
+  q: string;
+  a: string;
+}
+
 export interface RegionData {
   slug: string;
   name: string;
@@ -41,4 +46,8 @@ export interface RegionData {
   };
   stats: RegionStat[];
   funding: RegionFund[];
+  /** Preguntas frecuentes propias de la región. Alimentan el FAQPage schema
+   *  de la página; son la fuente principal de contenido no compartido, así que
+   *  las respuestas deben citar datos de ESTA región, no copy genérico. */
+  faq: RegionFaqItem[];
 }

@@ -9,7 +9,8 @@ import Button from '../components/ui/Button.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import type { RegionData } from '../data/regiones/types';
 import { getRubrosForRegion } from '../data/rubros';
-import { sectorList } from '../data/sectores';
+import { sectorList, sectorPages } from '../data/sectores';
+import { cellsByRegion } from '../data/sectores-regiones';
 
 interface Props {
   regionData: RegionData;
@@ -24,6 +25,18 @@ const regionRubros = getRubrosForRegion(regionData.rubroSlugs);
 const sectoresEnRegion = sectorList.filter((s) =>
   s.regions?.includes(regionData.slug),
 );
+
+// Diferenciadores locales por rubro. Viven en la matriz sector×región, cuyas
+// páginas quedaron en noindex por duplicación (ver sectores-regiones.ts).
+// Consolidarlos acá concentra en UNA página indexable el dato regional que
+// antes estaba repartido en 8 páginas que Google no indexaba.
+const rubrosConDatoLocal = cellsByRegion(regionData.slug)
+  .filter((c) => c.localDifferentiator)
+  .map((c) => ({
+    cell: c,
+    sector: sectorPages[c.sectorSlug],
+  }))
+  .filter((x) => x.sector);
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -51,6 +64,18 @@ const jsonLd = JSON.stringify({
     closes: '18:00',
   },
 });
+
+const faqLd = regionData.faq && regionData.faq.length > 0
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: regionData.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })
+  : null;
 
 const breadcrumbLd = JSON.stringify({
   '@context': 'https://schema.org',
@@ -85,9 +110,11 @@ const breadcrumbLd = JSON.stringify({
   keywords={meta.keywords}
   ogTitle={meta.ogTitle}
   ogDescription={meta.ogDescription}
+  omitFaqSchema={Boolean(faqLd)}
 >
   <script type="application/ld+json" set:html={jsonLd} />
   <script type="application/ld+json" set:html={breadcrumbLd} />
+  {faqLd && <script type="application/ld+json" set:html={faqLd} />}
 
   <Header />
 
@@ -323,32 +350,89 @@ const breadcrumbLd = JSON.stringify({
     <!-- Sección 6b — Soluciones por rubro en esta región            -->
     <!-- Enlace inverso hacia la matriz sector×región                -->
     <!-- ═══════════════════════════════════════════════════════════ -->
-    {sectoresEnRegion.length > 0 && (
+    {rubrosConDatoLocal.length > 0 && (
       <section class="py-20 bg-gray-50">
         <div class="max-w-[1200px] mx-auto px-6">
           <SectionHeader
             label="Soluciones por rubro"
-            title={`Qué implementamos en ${regionData.nameWithArticle}, según su rubro`}
-            description="Cada rubro tiene su versión local, con los fondos y las condiciones que aplican en esta región."
+            title={`Qué vemos en ${regionData.nameWithArticle}, rubro por rubro`}
+            description="No es la misma conversación en una viña que en una clínica. Esto es lo que encontramos en esta región, con el instrumento de financiamiento que aplica en cada caso."
             centered
           />
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {sectoresEnRegion.map((s) => (
-              <a
-                href={`${s.url}/${regionData.slug}/`}
-                class="group rounded-xl bg-white border border-gray-200 p-5 hover:border-emerald-300 hover:shadow-sm transition-all"
-              >
-                <div class="text-2xl mb-2">{s.emoji}</div>
-                <div class="font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors mb-1">
-                  {s.name.replace(/^Agentes IA para /, '')}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {rubrosConDatoLocal.map(({ cell, sector }) => (
+              <article class="rounded-xl bg-white border border-gray-200 p-6 flex flex-col">
+                <div class="flex items-start gap-3 mb-3">
+                  <span class="text-2xl leading-none shrink-0">{sector.emoji}</span>
+                  <div>
+                    <div class="text-xs uppercase tracking-wide text-emerald-700 font-semibold mb-1">
+                      {sector.name.replace(/^Agentes IA para /, '')}
+                    </div>
+                    <h3 class="font-semibold text-gray-900 leading-snug">
+                      {cell.localDifferentiator.headline}
+                    </h3>
+                  </div>
                 </div>
-                <div class="text-sm text-gray-500 line-clamp-3">
-                  {s.shortDescription}
+                <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                  {cell.localDifferentiator.body}
+                </p>
+                {cell.localDifferentiator.source && (
+                  <p class="text-xs text-gray-400 mb-4">
+                    Fuente: {cell.localDifferentiator.source}
+                  </p>
+                )}
+                {cell.regionalFunding && cell.regionalFunding.length > 0 && (
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {cell.regionalFunding.map((f) => (
+                      <span class="text-xs bg-emerald-50 text-emerald-800 rounded-full px-3 py-1">
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                <a
+                  href={`${sector.url}/${regionData.slug}/`}
+                  class="text-sm font-medium text-emerald-700 hover:text-emerald-800 transition-colors mt-auto"
+                >
+                  Ver la solución para {sector.name.replace(/^Agentes IA para /, '').toLowerCase()} en {regionData.name} →
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- Sección 6c — Preguntas frecuentes de la región              -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    {regionData.faq && regionData.faq.length > 0 && (
+      <section class="py-20 bg-white">
+        <div class="max-w-[720px] mx-auto px-6">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-10 text-center">
+            Preguntas frecuentes en {regionData.nameWithArticle}
+          </h2>
+          <div class="space-y-3">
+            {regionData.faq.map((item) => (
+              <details class="bg-gray-50 rounded-xl border border-gray-100 overflow-hidden group">
+                <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer min-h-[44px] select-none">
+                  <span class="font-medium text-gray-900 text-[15px]">{item.q}</span>
+                  <svg
+                    class="w-5 h-5 text-gray-400 transition-transform duration-200 shrink-0 ml-4 group-open:rotate-180"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <div class="px-6 pb-5">
+                  <p class="text-sm text-gray-600 leading-relaxed whitespace-pre-line">{item.a}</p>
                 </div>
-                <div class="text-xs text-emerald-700 mt-3 font-medium">
-                  Ver en {regionData.name} →
-                </div>
-              </a>
+              </details>
             ))}
           </div>
         </div>

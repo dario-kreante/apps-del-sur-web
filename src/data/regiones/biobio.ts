@@ -85,4 +85,26 @@ export const biobio: RegionData = {
       status: 'abierto',
     },
   ],
+  faq: [
+    {
+      q: '¿Qué fondo público me conviene si mi empresa está en el Biobío?',
+      a: 'SERCOTEC CRECE Biobío cubre hasta $5M con 98% de cofinanciamiento para microempresas con ventas bajo 25.000 UF. Kit Digital, hasta $1,2M al 90%, es el primer escalón. Si el proyecto tiene componente de innovación o desarrollo, CORFO Prototipos llega a $25M con 70%. El Biobío es el segundo polo económico del país después de Santiago y tiene cerca de 72.000 pymes activas, así que la competencia por cupo es real: el proyecto tiene que estar bien armado.',
+    },
+    {
+      q: 'Trabajo en logística. ¿Qué se digitaliza primero?',
+      a: 'Casi siempre lo mismo: la trazabilidad de la carga y la comunicación con el cliente. La operación va por WhatsApp y planillas, y nadie sabe dónde está cada cosa sin llamar por teléfono. El primer paso suele ser un agente de atención por WhatsApp que responda estado y horarios sin ocupar a una persona, y recién después el sistema de gestión que ordena la operación completa.',
+    },
+    {
+      q: 'Soy constructora. ¿Esto sirve para el control de obra?',
+      a: 'Sirve para la parte que hoy vive en el celular del jefe de obra: registro de avance, asistencia, incidencias y compliance documental. Lo que no hacemos es reemplazar su software de presupuestos ni su contabilidad — nos conectamos con lo que ya tiene. En construcción el retorno suele estar en el compliance: tener la documentación al día cuando llega la inspección.',
+    },
+    {
+      q: '¿Atienden presencialmente en Concepción y Los Ángeles?',
+      a: 'Sí, viajamos desde el Maule, donde está nuestro equipo. El diagnóstico y la capacitación se hacen en su empresa. El soporte posterior es remoto, en español y en horario de Chile.',
+    },
+    {
+      q: '¿Cuánto demora tener algo funcionando?',
+      a: 'Un agente IA por WhatsApp queda operativo en días, porque no requiere instalación. Un sistema a medida se entrega en semanas, no en los seis meses del desarrollo tradicional. Esa diferencia es la que hace que el presupuesto calce con lo que cubre un fondo como CRECE o Prototipos, en vez de quedar fuera de rango.',
+    },
+  ],
 };
