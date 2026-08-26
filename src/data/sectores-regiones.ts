@@ -1,8 +1,19 @@
 // ─── Matriz Sector × Región ──────────────────────────────────
 // 8 sectores × 5 regiones = 40 combinaciones.
-// Cada celda incluye al menos UN diferenciador local real.
-// Si no hay diferenciador poblado, la página se renderiza con noindex
-// para evitar penalización por thin content.
+//
+// POLÍTICA DE INDEXACIÓN (ago 2026): las 40 celdas se sirven con
+// `noindex, follow` y quedan FUERA del sitemap. Motivo medido: cada celda
+// hereda ~1.650 palabras del hub sectorial y aporta una mediana de 48
+// palabras propias — 97,2% de solape léxico promedio. Google ya las marcó
+// como "Rastreada: actualmente sin indexar" y la revalidación falló.
+//
+// Las páginas siguen online y enlazadas (sirven como landing de outreach y
+// como navegación para el usuario); `follow` devuelve el equity al hub.
+//
+// Para volver a indexar una celda NO basta con poblar `localDifferentiator`:
+// hay que escribirle 300-400 palabras propias (caso local, precios de la
+// región, fondos con montos y plazos) y recién ahí pasar `indexable: true`
+// como 5º argumento de `cell()`. El umbral es el contenido, no el campo.
 
 export interface SectorRegionCell {
   /** Hub sectorial del que hereda — slug en sectorPages */
@@ -20,7 +31,7 @@ export interface SectorRegionCell {
   } | null;
   /** Instrumentos de financiamiento específicos de la región para este sector */
   regionalFunding?: string[];
-  /** Si false, la página se renderiza con noindex */
+  /** Si false, la página se renderiza con noindex y sale del sitemap */
   indexable: boolean;
 }
 
@@ -29,15 +40,18 @@ const cell = (
   regionSlug: string,
   diff: SectorRegionCell['localDifferentiator'],
   funding?: string[],
+  /** Opt-in explícito. Solo true cuando la celda tiene contenido propio real
+   *  (300-400 palabras), no solo un diferenciador de 2 frases. Ver cabecera. */
+  indexable = false,
 ): SectorRegionCell => ({
   sectorSlug,
   regionSlug,
   localDifferentiator: diff,
   regionalFunding: funding,
-  indexable: diff !== null,
+  indexable: indexable && diff !== null,
 });
 
-// Helper para celdas vacías (thin → noindex)
+// Helper para celdas vacías (sin diferenciador poblado)
 const empty = (sectorSlug: string, regionSlug: string): SectorRegionCell =>
   cell(sectorSlug, regionSlug, null);
 
