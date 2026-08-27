@@ -59,8 +59,15 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
   const tieneMensaje = lead.borrador.trim().length > 0;
   const aprobado = lead.control === 'Aprobado para enviar';
 
-  // 1. Alguien contestó. Es lo único donde la velocidad decide el resultado.
-  if (lead.respondio || lead.etapa === 'Respondió') {
+  // 1. Contestaron y todavía no le respondimos. Es lo único donde la velocidad
+  //    decide el resultado.
+  //
+  //    La urgencia la marca la ETAPA, no la casilla `Respondió`: esa casilla es
+  //    la métrica del experimento y no se apaga nunca, así que usarla dejaba al
+  //    lead pidiendo "responder hoy mismo" para siempre, incluso después de
+  //    haberle contestado. Moverlo a Reunión, Propuesta o Negociación es
+  //    justamente la señal de que ya se actuó.
+  if (lead.etapa === 'Respondió') {
     return {
       estado: 'respondio',
       orden: 0,

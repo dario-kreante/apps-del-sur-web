@@ -1,0 +1,357 @@
+- generic [ref=e4]:
+  - complementary "Navegación principal" [ref=e5]:
+    - generic "Productividad FPS" [ref=e6]
+    - navigation [ref=e11]:
+      - button "Resumen" [ref=e12] [cursor=pointer]
+      - button "Publicaciones" [ref=e16] [cursor=pointer]
+      - button "Proyectos" [ref=e20] [cursor=pointer]
+      - button "Académicos" [ref=e24] [cursor=pointer]
+      - button "Colaboraciones" [ref=e28] [cursor=pointer]
+    - paragraph [ref=e32]: Puesta en marcha
+    - navigation [ref=e33]:
+      - button "Calidad de datos 8" [ref=e34] [cursor=pointer]:
+        - generic [ref=e37]: Calidad de datos
+        - generic [ref=e38]: "8"
+    - generic [ref=e39]:
+      - button "Configuración" [ref=e40] [cursor=pointer]
+      - button "Ayuda 8" [ref=e44] [cursor=pointer]:
+        - generic [ref=e47]: Ayuda
+        - generic [ref=e48]: "8"
+  - banner [ref=e49]:
+    - search [ref=e50]:
+      - generic [ref=e53]: Buscar en publicaciones y académicos
+      - searchbox "Buscar en publicaciones y académicos" [ref=e54]
+    - generic [ref=e55]:
+      - button "Mostrar contexto" [ref=e56] [cursor=pointer]
+      - generic [ref=e59]:
+        - generic [ref=e60]: Período
+        - combobox "Período" [ref=e61] [cursor=pointer]:
+          - option "2019–2025" [selected]
+          - option "2019"
+          - option "2020"
+          - option "2021"
+          - option "2022"
+          - option "2023"
+          - option "2024"
+          - option "2025"
+      - generic "Alcance de información" [ref=e62]:
+        - button "Decanatura" [ref=e63] [cursor=pointer]
+        - button "Docente" [ref=e64] [cursor=pointer]
+      - button "Ver notificaciones" [ref=e65] [cursor=pointer]
+      - button "Decanatura" [ref=e70] [cursor=pointer]
+  - region "Contexto del alcance activo" [ref=e78]:
+    - generic [ref=e79]:
+      - generic [ref=e80]:
+        - paragraph [ref=e85]: Vista institucional
+        - heading "Facultad de Psicología" [level=2] [ref=e86]
+        - paragraph [ref=e87]: Universidad de Talca
+      - generic [ref=e88]:
+        - button "Publicaciones" [ref=e89] [cursor=pointer]
+        - button "Calidad" [ref=e93] [cursor=pointer]
+        - button "Exportar" [ref=e97] [cursor=pointer]
+      - generic [ref=e101]: Datos consolidados hasta 2025
+      - tablist "Información contextual" [ref=e104]:
+        - tab "Actividad" [selected] [ref=e105] [cursor=pointer]
+        - tab "Cobertura" [ref=e106] [cursor=pointer]
+      - generic [ref=e107]:
+        - article [ref=e108]:
+          - generic [ref=e112]:
+            - generic [ref=e113]: Fuente histórica procesada
+            - generic [ref=e114]: 330 filas revisadas
+        - article [ref=e115]:
+          - generic [ref=e119]:
+            - generic [ref=e120]: Campos por completar
+            - generic [ref=e121]: RUT y proyectos pendientes
+        - article [ref=e122]:
+          - generic [ref=e126]:
+            - generic [ref=e127]: Relaciones normalizadas
+            - generic [ref=e128]: DOI, docentes e instituciones
+      - generic [ref=e129]:
+        - paragraph [ref=e130]:
+          - generic [ref=e131]: Publicaciones
+          - generic [ref=e132]: "324"
+        - paragraph [ref=e133]:
+          - generic [ref=e134]: Académicos
+          - generic [ref=e135]: "27"
+        - paragraph [ref=e136]:
+          - generic [ref=e137]: Proyectos
+          - generic [ref=e138]: Pendiente
+  - main [ref=e139]:
+    - generic [ref=e140]:
+      - generic [ref=e141]:
+        - button "Productividad" [ref=e142] [cursor=pointer]
+        - generic [ref=e143]: ›
+        - generic [ref=e144]: Decanatura
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - generic [ref=e148]: Fuente consolidada
+            - generic [ref=e151]: Publicaciones 2019–2025 · Proyectos en datos de demostración
+          - heading "Productividad académica" [level=1] [ref=e152]
+          - paragraph [ref=e153]: Publicaciones y proyectos de la Facultad, con el detalle que hoy vive en planillas separadas.
+        - button "Explorar publicaciones" [ref=e154] [cursor=pointer]
+      - region "Indicadores principales" [ref=e157]:
+        - article "Cuenta DOI únicos en el alcance activo." [ref=e158]:
+          - generic [ref=e159]: Publicaciones únicas
+          - strong [ref=e163]: "324"
+          - paragraph [ref=e164]: 325 registros en el alcance
+          - button "Ver detalle" [ref=e165] [cursor=pointer]
+        - article [ref=e168]:
+          - generic [ref=e169]: WOS Q1 + Q2
+          - strong [ref=e173]: "43"
+          - paragraph [ref=e174]: Sobre 64 publicaciones con indexación informada
+          - button "Ver detalle" [ref=e175] [cursor=pointer]
+        - article [ref=e178]:
+          - generic [ref=e179]: Scopus Q1 + Q2
+          - strong [ref=e183]: "52"
+          - paragraph [ref=e184]: 42 con Q1 en alguna fuente
+          - button "Ver detalle" [ref=e185] [cursor=pointer]
+        - article [ref=e188]:
+          - generic [ref=e189]: Proyectos en ejecución
+          - strong [ref=e193]: "15"
+          - paragraph [ref=e194]: $1,86 MM adjudicados en ejecución hoy
+          - button "Ver detalle" [ref=e195] [cursor=pointer]
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - heading "Evolución de publicaciones" [level=2] [ref=e202]
+              - paragraph [ref=e203]: Registros por año en el alcance activo
+            - button "Ver tabla" [ref=e204] [cursor=pointer]
+          - 'img "Publicaciones por año. 2019: 26, 2020: 27, 2021: 47, 2022: 58, 2023: 43, 2024: 56, 2025: 73." [ref=e208]':
+            - generic [ref=e209]: "0"
+            - generic [ref=e211]: "40"
+            - generic [ref=e213]: "80"
+            - generic [ref=e217]:
+              - generic [ref=e219]: "26"
+              - generic [ref=e220]: "2019"
+            - generic [ref=e221]:
+              - generic [ref=e223]: "27"
+              - generic [ref=e224]: "2020"
+            - generic [ref=e225]:
+              - generic [ref=e227]: "47"
+              - generic [ref=e228]: "2021"
+            - generic [ref=e229]:
+              - generic [ref=e231]: "58"
+              - generic [ref=e232]: "2022"
+            - generic [ref=e233]:
+              - generic [ref=e235]: "43"
+              - generic [ref=e236]: "2023"
+            - generic [ref=e237]:
+              - generic [ref=e239]: "56"
+              - generic [ref=e240]: "2024"
+            - generic [ref=e241]:
+              - generic [ref=e243]: "73"
+              - generic [ref=e244]: "2025"
+        - generic [ref=e245]:
+          - generic [ref=e247]:
+            - heading "Estructura de colaboración" [level=2] [ref=e248]
+            - paragraph [ref=e249]: Una publicación puede estar en más de una categoría
+          - generic [ref=e250]:
+            - 'img "Distribución de colaboración. Nacional: 174, Internacional: 146, Solo UTalca: 88, Sin clasificar: 19." [ref=e251]':
+              - generic [ref=e256]: 69%
+              - generic [ref=e257]: externa
+            - generic [ref=e258]:
+              - generic [ref=e259]:
+                - text: Nacional ·
+                - generic [ref=e261]: "174"
+                - generic [ref=e262]: 41%
+              - generic [ref=e263]:
+                - text: Internacional ·
+                - generic [ref=e265]: "146"
+                - generic [ref=e266]: 34%
+              - generic [ref=e267]:
+                - text: Solo UTalca ·
+                - generic [ref=e269]: "88"
+                - generic [ref=e270]: 21%
+              - generic [ref=e271]:
+                - text: Sin clasificar ·
+                - generic [ref=e273]: "19"
+                - generic [ref=e274]: 4%
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - generic [ref=e278]:
+            - heading "Cuartil WoS por año" [level=2] [ref=e279]
+            - paragraph [ref=e280]: Sólo 2025 trae indexación en la fuente entregada
+          - img "Publicaciones por cuartil WoS y año" [ref=e282]:
+            - generic [ref=e283]: "0"
+            - generic [ref=e285]: "28"
+            - generic [ref=e287]: "55"
+            - generic [ref=e289]: "2019"
+            - generic [ref=e291]: "2020"
+            - generic [ref=e293]: "2021"
+            - generic [ref=e295]: "2022"
+            - generic [ref=e297]: "2023"
+            - generic [ref=e299]: "2024"
+            - generic [ref=e301]: "2025"
+          - generic [ref=e307]:
+            - generic [ref=e308]: Q1
+            - generic [ref=e310]: Q2
+            - generic [ref=e312]: Q3
+            - generic [ref=e314]: Q4
+        - generic [ref=e316]:
+          - generic [ref=e317]:
+            - generic [ref=e318]:
+              - heading "Proyectos con ejecución por año" [level=2] [ref=e319]
+              - paragraph [ref=e320]: Cuántos proyectos estaban en curso en cada período
+            - button "Ver cartera" [ref=e321] [cursor=pointer]
+          - 'img "Proyectos con ejecución por año. 2019: 0, 2020: 0, 2021: 1, 2022: 3, 2023: 5, 2024: 12, 2025: 18." [ref=e325]':
+            - generic [ref=e326]: "0"
+            - generic [ref=e328]: "10"
+            - generic [ref=e330]: "20"
+            - generic [ref=e334]:
+              - generic [ref=e336]: "0"
+              - generic [ref=e337]: "2019"
+            - generic [ref=e338]:
+              - generic [ref=e340]: "0"
+              - generic [ref=e341]: "2020"
+            - generic [ref=e342]:
+              - generic [ref=e344]: "1"
+              - generic [ref=e345]: "2021"
+            - generic [ref=e346]:
+              - generic [ref=e348]: "3"
+              - generic [ref=e349]: "2022"
+            - generic [ref=e350]:
+              - generic [ref=e352]: "5"
+              - generic [ref=e353]: "2023"
+            - generic [ref=e354]:
+              - generic [ref=e356]: "12"
+              - generic [ref=e357]: "2024"
+            - generic [ref=e358]:
+              - generic [ref=e360]: "18"
+              - generic [ref=e361]: "2025"
+      - generic [ref=e362]:
+        - generic [ref=e363]:
+          - generic [ref=e365]:
+            - heading "Académicos con mayor producción" [level=2] [ref=e366]
+            - paragraph [ref=e367]: Relaciones docente-publicación del período
+          - generic [ref=e368]:
+            - button "01 Jiménez Psicología 42" [ref=e369] [cursor=pointer]:
+              - generic [ref=e370]: "01"
+              - generic [ref=e371]:
+                - generic [ref=e372]: Jiménez
+                - generic [ref=e373]: Psicología
+              - strong [ref=e374]: "42"
+            - button "02 Núñez Psicología 42" [ref=e375] [cursor=pointer]:
+              - generic [ref=e376]: "02"
+              - generic [ref=e377]:
+                - generic [ref=e378]: Núñez
+                - generic [ref=e379]: Psicología
+              - strong [ref=e380]: "42"
+            - button "03 Spencer Psicología 33" [ref=e381] [cursor=pointer]:
+              - generic [ref=e382]: "03"
+              - generic [ref=e383]:
+                - generic [ref=e384]: Spencer
+                - generic [ref=e385]: Psicología
+              - strong [ref=e386]: "33"
+            - button "04 Cárdenas Psicología 31" [ref=e387] [cursor=pointer]:
+              - generic [ref=e388]: "04"
+              - generic [ref=e389]:
+                - generic [ref=e390]: Cárdenas
+                - generic [ref=e391]: Psicología
+              - strong [ref=e392]: "31"
+            - button "05 Moyano Psicología 24" [ref=e393] [cursor=pointer]:
+              - generic [ref=e394]: "05"
+              - generic [ref=e395]:
+                - generic [ref=e396]: Moyano
+                - generic [ref=e397]: Psicología
+              - strong [ref=e398]: "24"
+            - button "06 Leiva Psicología 21" [ref=e399] [cursor=pointer]:
+              - generic [ref=e400]: "06"
+              - generic [ref=e401]:
+                - generic [ref=e402]: Leiva
+                - generic [ref=e403]: Psicología
+              - strong [ref=e404]: "21"
+        - generic [ref=e405]:
+          - generic [ref=e407]:
+            - heading "Estado de las fuentes" [level=2] [ref=e408]
+            - paragraph [ref=e409]: Condiciones para la solución institucional
+          - generic [ref=e410]:
+            - paragraph [ref=e411]:
+              - generic [ref=e415]:
+                - generic [ref=e416]: Publicaciones
+                - generic [ref=e417]: 330 registros 2019–2025, métricas de indexación sólo 2025
+              - strong [ref=e418]: Lista
+            - paragraph [ref=e419]:
+              - generic [ref=e423]:
+                - generic [ref=e424]: Proyectos
+                - generic [ref=e425]: Modelados como demostración; falta la base real
+              - strong [ref=e426]: Por definir
+            - paragraph [ref=e427]:
+              - generic [ref=e431]:
+                - generic [ref=e432]: RUT del docente
+                - generic [ref=e433]: 0 de 27 asignados · llave de vinculación entre ambas bases
+              - strong [ref=e434]:
+                - button "Asignar" [ref=e435] [cursor=pointer]
+            - paragraph [ref=e436]:
+              - generic [ref=e440]:
+                - generic [ref=e441]: Diagnóstico de la fuente
+                - generic [ref=e442]: 8 de 8 hallazgos abiertos; corregibles desde Calidad de datos
+              - strong [ref=e443]:
+                - button "Corregir" [ref=e444] [cursor=pointer]
+      - generic [ref=e445]:
+        - generic [ref=e446]:
+          - generic [ref=e447]:
+            - heading "Publicaciones recientes" [level=2] [ref=e448]
+            - paragraph [ref=e449]: Registros más nuevos dentro del alcance
+          - button "Ver todas" [ref=e450] [cursor=pointer]
+        - table [ref=e454]:
+          - rowgroup [ref=e455]:
+            - row [ref=e456]:
+              - columnheader "Publicación" [ref=e457]
+              - columnheader "Año" [ref=e458]
+              - columnheader "WOS" [ref=e459]
+              - columnheader "Scopus" [ref=e460]
+              - columnheader "Colaboración" [ref=e461]
+              - columnheader "Acción" [ref=e462]
+          - rowgroup [ref=e464]:
+            - row [ref=e465]:
+              - cell "J Korean Acad Child Adolesc Psychiatry 10.5765/jkacap.250017" [ref=e466]:
+                - generic [ref=e467]: J Korean Acad Child Adolesc Psychiatry
+                - generic [ref=e468]: 10.5765/jkacap.250017
+              - cell "2025" [ref=e469]
+              - cell "Q3" [ref=e470]
+              - cell "Q2" [ref=e472]
+              - cell "Nacional" [ref=e474]
+              - cell [ref=e475]:
+                - button "Abrir J Korean Acad Child Adolesc Psychiatry" [ref=e476] [cursor=pointer]
+            - row [ref=e479]:
+              - cell "Journal of Contextual Behavioral Science 10.1016/j.jcbs.2025.100933" [ref=e480]:
+                - generic [ref=e481]: Journal of Contextual Behavioral Science
+                - generic [ref=e482]: 10.1016/j.jcbs.2025.100933
+              - cell "2025" [ref=e483]
+              - cell "Q1" [ref=e484]
+              - cell "Q1" [ref=e486]
+              - cell "Mixta" [ref=e488]
+              - cell [ref=e489]:
+                - button "Abrir Journal of Contextual Behavioral Science" [ref=e490] [cursor=pointer]
+            - row [ref=e493]:
+              - cell "Ciencia Y Enfermería 10.29393/ce31-22pvmv50022" [ref=e494]:
+                - generic [ref=e495]: Ciencia Y Enfermería
+                - generic [ref=e496]: 10.29393/ce31-22pvmv50022
+              - cell "2025" [ref=e497]
+              - cell "Sin dato" [ref=e498]
+              - cell "Q4" [ref=e500]
+              - cell "Solo UTalca" [ref=e502]
+              - cell [ref=e503]:
+                - button "Abrir Ciencia Y Enfermería" [ref=e504] [cursor=pointer]
+            - row [ref=e507]:
+              - cell "Frontiers in Physiology 10.3389/fphys.2025.1675849" [ref=e508]:
+                - generic [ref=e509]: Frontiers in Physiology
+                - generic [ref=e510]: 10.3389/fphys.2025.1675849
+              - cell "2025" [ref=e511]
+              - cell "Q1" [ref=e512]
+              - cell "Q2" [ref=e514]
+              - cell "Mixta" [ref=e516]
+              - cell [ref=e517]:
+                - button "Abrir Frontiers in Physiology" [ref=e518] [cursor=pointer]
+            - row [ref=e521]:
+              - 'cell "INQUIRY: The Journal of Health Care Organization, Provision, and Financing 10.1177/00469580251372362" [ref=e522]':
+                - generic [ref=e523]: "INQUIRY: The Journal of Health Care Organization, Provision, and Financing"
+                - generic [ref=e524]: 10.1177/00469580251372362
+              - cell "2025" [ref=e525]
+              - cell "Q2" [ref=e526]
+              - cell "Q2" [ref=e528]
+              - cell "Mixta" [ref=e530]
+              - cell [ref=e531]:
+                - 'button "Abrir INQUIRY: The Journal of Health Care Organization, Provision, and Financing" [ref=e532] [cursor=pointer]'

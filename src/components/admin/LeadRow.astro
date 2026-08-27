@@ -35,7 +35,7 @@ interface Props {
 }
 
 const {
-  id, empresa, rubro, contacto, email, telefono, angulo, borrador,
+  id, empresa, rubro, etapa, contacto, email, telefono, angulo, borrador,
   toques, control, proximaAccion, canal, waHref, mailHref, consultaHref,
   textoConsulta, mockupUrl,
   dossier, senal, temperatura, abierta = false, busqueda, segmentos,
@@ -72,6 +72,11 @@ const yaRespondio = senal.estado === 'respondio';
 const hiloGmail = email
   ? `https://mail.google.com/mail/u/0/#search/${encodeURIComponent(email)}`
   : null;
+
+const ETAPAS = [
+  'Investigación', 'Contactado', 'Respondió', 'Reunión', 'Propuesta',
+  'Negociación', 'Cerrado Ganado', 'Cerrado Perdido', 'Descartado',
+] as const;
 
 const CANAL_LABEL: Record<Canal, string> = {
   email: 'correo',
@@ -257,9 +262,28 @@ const accion = yaContactado
       )}
     </dl>
 
+    <div class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3">
+      <form method="POST" action="/admin/acciones/lead/" class="flex items-center gap-2">
+        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="empresa" value={empresa} />
+        <input type="hidden" name="accion" value="mover-etapa" />
+        <label class="text-xs text-gray-500" for={`etapa-${id}`}>Etapa</label>
+        <select
+          id={`etapa-${id}`}
+          name="etapa"
+          onchange="this.form.requestSubmit()"
+          class="cursor-pointer rounded-lg border border-gray-200 bg-white px-2 py-1.5 text-xs font-medium text-gray-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none"
+        >
+          {ETAPAS.map((e) => (
+            <option value={e} selected={e === etapa}>{e}</option>
+          ))}
+        </select>
+      </form>
+    </div>
+
     <form
       method="POST" action="/admin/acciones/lead/"
-      class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3"
+      class="flex flex-wrap items-center gap-2 pt-1"
     >
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="empresa" value={empresa} />

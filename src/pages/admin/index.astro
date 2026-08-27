@@ -123,10 +123,12 @@ const destacado =
 const sinAcentos = (t: string) =>
   t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-const filas = leads
-  .filter((l) => l !== destacado)
-  .map((l) => ({
+const filas = leads.map((l) => ({
     ...l,
+    // El destacado se repite abajo a propósito: el hero resume y apunta, la
+    // fila es donde viven las acciones. Sin ella el lead más urgente era el
+    // único que no se podía tocar.
+    abierta: l === destacado,
     oculta: !segmento.incluye(l.senal),
     segmentos: SEGMENTOS.filter((s) => s.incluye(l.senal))
       .map((s) => s.id)
@@ -247,7 +249,7 @@ const aviso = Astro.url.searchParams.get('ok');
 
         {destacado.borrador.trim() && (
           <p class="mt-3 line-clamp-3 border-l-2 border-gray-200 pl-3 text-sm leading-relaxed text-gray-600">
-            {destacado.borrador.trim().split('\n').filter(Boolean).slice(0, 2).join(' ')}
+            {destacado.borrador.trim().split('\n').filter(Boolean).filter((l) => !/^asunto\s*:/i.test(l)).slice(0, 2).join(' ')}
           </p>
         )}
 
@@ -467,7 +469,9 @@ const aviso = Astro.url.searchParams.get('ok');
         ? `Ningún lead coincide con "${buscador?.value.trim()}".`
         : temperatura !== 'todas'
           ? `No hay leads ${temperatura.toLowerCase()}s en este segmento.`
-          : 'Nada en este segmento.';
+          : segmento === 'ahora'
+            ? 'Nada urgente. Mirá los otros segmentos.'
+            : 'Nada en este segmento.';
     }
   }
 

@@ -25,6 +25,13 @@ function sumarDias(dias: number): string {
   return iso(d);
 }
 
+export const ETAPAS = new Set([
+  'Investigación', 'Contactado', 'Respondió', 'Reunión', 'Propuesta',
+  'Negociación', 'Cerrado Ganado', 'Cerrado Perdido', 'Descartado',
+]);
+
+const CERRADAS = new Set(['Cerrado Ganado', 'Cerrado Perdido', 'Descartado']);
+
 const CANAL_ACTIVIDAD: Record<string, string> = {
   email: 'Email',
   whatsapp: 'WhatsApp',
@@ -62,7 +69,30 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   let mensaje = '';
 
   try {
-    if (accion === 'aprobar') {
+    if (accion === 'mover-etapa') {
+      const etapa = String(form.get('etapa') ?? '');
+      if (!ETAPAS.has(etapa)) {
+        return redirect('/admin', 302);
+      }
+      const antes = selectName(actual.fields[F.lead.etapa]);
+
+      await createRecord(token, TABLES.actividades, {
+        [F.actividad.actividad]: `Etapa: ${antes || '—'} → ${etapa} · ${empresa}`,
+        [F.actividad.leadRecordId]: id,
+        [F.actividad.empresa]: empresa,
+        [F.actividad.fechaHora]: new Date().toISOString(),
+        [F.actividad.tipo]: 'Cambio de etapa',
+        [F.actividad.resultado]: `Movido de "${antes || 'sin etapa'}" a "${etapa}" desde el panel.`,
+        [F.actividad.agente]: 'Panel Apps del Sur',
+      });
+
+      await updateRecord(token, TABLES.leads, id, {
+        [F.lead.etapa]: etapa,
+        ...(CERRADAS.has(etapa) ? { [F.lead.proximaAccion]: '' } : {}),
+      });
+
+      mensaje = `${empresa}: ${antes || 'sin etapa'} → ${etapa}.`;
+    } else if (accion === 'aprobar') {
       // La compuerta la mueve el usuario, nunca un agente. Este endpoint corre
       // por un click suyo en el panel, así que es él quien la mueve.
       await updateRecord(token, TABLES.leads, id, {
@@ -75,9 +105,16 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       // que el panel mintiera sobre lo que de verdad pasó.
 
       // Un segundo click el mismo día casi siempre es el mismo envío contado
-      // dos veces, no dos contactos. Y un contador inflado corrompe la métrica
-      // del experimento, que es lo único que este pipeline mide en serio.
-      if (String(actual.fields[F.lead.fechaUltimoContacto] ?? '') === hoy) {
+      // dos veces, y un contador inflado corrompe la tasa de respuesta por
+      // rubro. Pero marcar una respuesta también mueve la fecha, así que el
+      // freno solo aplica cuando lo último registrado fue un envío nuestro:
+      // de lo contrario bloquearía un contacto legítimo el día que contestan.
+      const ultimoFueEnvio =
+        selectName(actual.fields[F.lead.control]) === 'Enviado';
+      if (
+        ultimoFueEnvio &&
+        String(actual.fields[F.lead.fechaUltimoContacto] ?? '') === hoy
+      ) {
         return redirect(
           `/admin?ok=${encodeURIComponent(
             `${empresa}: ya había un toque registrado hoy, no se sumó otro.`,
