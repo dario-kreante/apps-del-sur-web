@@ -1,0 +1,230 @@
+---
+import type { Canal } from '../../lib/admin/canales';
+import type { Senal } from '../../lib/admin/prioridad';
+
+interface Props {
+  id: string;
+  empresa: string;
+  rubro: string;
+  etapa: string;
+  contacto: string;
+  email: string;
+  telefono: string;
+  angulo: string;
+  borrador: string;
+  toques: number;
+  control: string;
+  proximaAccion: string;
+  canal: Canal;
+  waHref: string | null;
+  mailHref: string | null;
+  mockupUrl: string | null;
+  dossier: string;
+  senal: Senal;
+  /** Abre la fila de entrada. Se usa en la primera, la que toca hacer. */
+  abierta?: boolean;
+}
+
+const {
+  id, empresa, rubro, contacto, email, telefono, angulo, borrador,
+  toques, control, proximaAccion, canal, waHref, mailHref, mockupUrl,
+  dossier, senal, abierta = false,
+} = Astro.props;
+
+// Color semántico, independiente del verde de marca.
+const TONO = {
+  urgente: { barra: 'bg-red-500', chip: 'bg-red-100 text-red-800' },
+  accion: { barra: 'bg-emerald-500', chip: 'bg-emerald-100 text-emerald-800' },
+  atencion: { barra: 'bg-amber-500', chip: 'bg-amber-100 text-amber-800' },
+  neutro: { barra: 'bg-gray-300', chip: 'bg-gray-100 text-gray-600' },
+} as const;
+
+const tono = TONO[senal.tono];
+const tieneMensaje = borrador.trim().length > 0;
+const listoParaEnviar = control === 'Aprobado para enviar';
+
+const CANAL_LABEL: Record<Canal, string> = {
+  email: 'correo',
+  whatsapp: 'WhatsApp',
+  llamada: 'teléfono',
+  manual: 'sin canal',
+};
+
+// Una sola acción principal por fila: la que corresponde al canal.
+const accion =
+  canal === 'email' && mailHref && tieneMensaje
+    ? { href: mailHref, label: 'Gmail', externa: true }
+    : canal === 'whatsapp' && waHref && tieneMensaje
+      ? { href: waHref, label: 'WhatsApp', externa: true }
+      : canal === 'llamada' && telefono
+        ? { href: `tel:${telefono.replace(/\s/g, '')}`, label: 'Llamar', externa: false }
+        : null;
+---
+
+<details
+  open={abierta}
+  class="group border-b border-gray-100 last:border-0"
+  data-lead
+>
+  <summary
+    class="flex cursor-pointer list-none items-center gap-3 py-3 pr-3 pl-0 transition-colors hover:bg-gray-50/80"
+  >
+    <span class={`h-8 w-0.5 shrink-0 rounded-full ${tono.barra}`} aria-hidden="true"></span>
+
+    <span class="min-w-0 flex-1">
+      <span class="flex items-baseline gap-2">
+        <span class="truncate text-sm font-medium text-gray-900">{empresa}</span>
+        <span class="hidden shrink-0 truncate text-xs text-gray-500 sm:inline">
+          {contacto || 'sin contacto nominal'}
+        </span>
+      </span>
+      <span class="mt-0.5 flex items-center gap-2 text-xs text-gray-500">
+        <span class={`rounded px-1.5 py-0.5 font-medium ${tono.chip}`}>{senal.etiqueta}</span>
+        <span class="truncate">{rubro}</span>
+        <span class="hidden text-gray-400 sm:inline">· {CANAL_LABEL[canal]}</span>
+        {toques > 0 && <span class="tabular-nums text-gray-400">· {toques} toques</span>}
+      </span>
+    </span>
+
+    {accion && (
+      <a
+        href={accion.href}
+        data-accion
+        target={accion.externa ? '_blank' : undefined}
+        rel={accion.externa ? 'noopener noreferrer' : undefined}
+        class="hidden shrink-0 items-center rounded-lg bg-emerald-700 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-emerald-800 sm:inline-flex"
+      >
+        {accion.label}
+      </a>
+    )}
+
+    <svg
+      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round"
+      class="h-4 w-4 shrink-0 text-gray-400 transition-transform group-open:rotate-180"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  </summary>
+
+  <div class="space-y-4 pb-5 pl-3.5">
+    <p class="text-sm text-gray-600">{senal.motivo}</p>
+
+    {angulo && (
+      <div class="rounded-lg border-l-2 border-emerald-600 bg-emerald-50/60 px-3 py-2">
+        <p class="text-[11px] font-medium tracking-wider text-emerald-800 uppercase">
+          Dónde aportamos valor
+        </p>
+        <p class="mt-1 text-sm leading-relaxed text-gray-800">{angulo}</p>
+      </div>
+    )}
+
+    {tieneMensaje ? (
+      <div>
+        <p class="mb-1.5 text-[11px] font-medium tracking-wider text-gray-500 uppercase">
+          Mensaje · {borrador.trim().split(/\s+/).length} palabras
+        </p>
+        <pre
+          class="max-h-64 overflow-auto rounded-lg bg-gray-50 p-3 text-sm leading-relaxed whitespace-pre-wrap text-gray-800"
+          data-mensaje>{borrador}</pre>
+      </div>
+    ) : (
+      <p class="rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-600">
+        Falta redactar el mensaje. Sin eso no hay nada que enviar.
+      </p>
+    )}
+
+    <div class="flex flex-wrap items-center gap-2">
+      {accion && (
+        <a
+          href={accion.href}
+          target={accion.externa ? '_blank' : undefined}
+          rel={accion.externa ? 'noopener noreferrer' : undefined}
+          class="inline-flex min-h-8 items-center rounded-lg bg-emerald-700 px-3 text-xs font-medium text-white transition-colors hover:bg-emerald-800"
+        >
+          Abrir en {accion.label}
+        </a>
+      )}
+      {tieneMensaje && (
+        <button
+          type="button" data-copiar
+          class="inline-flex min-h-8 cursor-pointer items-center rounded-lg border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+        >
+          Copiar
+        </button>
+      )}
+      {canal !== 'whatsapp' && waHref && tieneMensaje && (
+        <a
+          href={waHref} target="_blank" rel="noopener noreferrer"
+          class="inline-flex min-h-8 items-center rounded-lg border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+        >
+          WhatsApp
+        </a>
+      )}
+      {mockupUrl && (
+        <a
+          href={mockupUrl} target="_blank" rel="noopener noreferrer"
+          class="inline-flex min-h-8 items-center gap-2 rounded-lg border border-gray-200 bg-white px-2.5 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+        >
+          <img src={mockupUrl} alt="" class="h-5 w-8 rounded object-cover" />
+          Mockup
+        </a>
+      )}
+      {dossier && (
+        <a
+          href={dossier} target="_blank" rel="noopener noreferrer"
+          class="inline-flex min-h-8 items-center px-1.5 text-xs text-gray-500 transition-colors hover:text-gray-900"
+        >
+          Dossier
+        </a>
+      )}
+    </div>
+
+    {canal === 'whatsapp' && mockupUrl && tieneMensaje && (
+      <p class="text-xs text-gray-500">
+        El link deja el texto escrito; el mockup se adjunta a mano en la conversación.
+      </p>
+    )}
+
+    <dl class="flex flex-wrap gap-x-5 gap-y-1 text-xs text-gray-500">
+      {email && <div><dt class="inline">Correo: </dt><dd class="inline text-gray-700">{email}</dd></div>}
+      {telefono && <div><dt class="inline">Teléfono: </dt><dd class="inline text-gray-700">{telefono}</dd></div>}
+      <div><dt class="inline">Compuerta: </dt><dd class="inline text-gray-700">{control || 'Pendiente'}</dd></div>
+      {proximaAccion && (
+        <div class="w-full"><dt class="inline">Próxima acción: </dt><dd class="inline text-gray-700">{proximaAccion}</dd></div>
+      )}
+    </dl>
+
+    <form
+      method="POST" action="/admin/acciones/lead/"
+      class="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-3"
+    >
+      <input type="hidden" name="id" value={id} />
+      <input type="hidden" name="empresa" value={empresa} />
+      <input type="hidden" name="canal" value={canal} />
+      <button
+        type="submit" name="accion" value="registrar-toque"
+        disabled={!listoParaEnviar}
+        title={listoParaEnviar
+          ? 'Registra el toque y programa el siguiente'
+          : 'La compuerta no está en "Aprobado para enviar"'}
+        class="inline-flex min-h-8 cursor-pointer items-center rounded-lg border border-emerald-200 bg-emerald-50 px-3 text-xs font-medium text-emerald-800 transition-colors hover:bg-emerald-100 disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-400"
+      >
+        Marcar enviado
+      </button>
+      <button
+        type="submit" name="accion" value="marcar-respondio"
+        class="inline-flex min-h-8 cursor-pointer items-center rounded-lg border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
+      >
+        Respondió
+      </button>
+      <button
+        type="submit" name="accion" value="cerrar-perdido"
+        class="inline-flex min-h-8 cursor-pointer items-center rounded-lg px-3 text-xs text-gray-500 transition-colors hover:text-red-700"
+      >
+        Cerrar
+      </button>
+    </form>
+  </div>
+</details>

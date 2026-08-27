@@ -1,16 +1,12 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
-import LeadCard from '../../components/admin/LeadCard.astro';
+import LeadRow from '../../components/admin/LeadRow.astro';
 import {
-  F,
-  TABLES,
-  airtableToken,
-  attachmentUrl,
-  listAll,
-  selectName,
+  F, TABLES, airtableToken, attachmentUrl, listAll, selectName,
 } from '../../lib/admin/airtable';
-import { canalSugerido, gmailLink, waLink, type Canal } from '../../lib/admin/canales';
 import { serverEnv } from '../../lib/admin/env';
+import { canalSugerido, gmailLink, waLink } from '../../lib/admin/canales';
+import { SEGMENTOS, evaluar, type SegmentoId } from '../../lib/admin/prioridad';
 
 export const prerender = false;
 
@@ -31,107 +27,77 @@ if (!token) {
 
 const str = (r: any, f: string) => String(r.fields[f] ?? '');
 
-const leads = registros.map((r) => {
-  const email = str(r, F.lead.email);
-  const telefono = str(r, F.lead.telefono);
-  const borrador = str(r, F.lead.borrador);
-  const canal = canalSugerido({ email, telefono });
-  return {
-    id: r.id,
-    empresa: str(r, F.lead.empresa),
-    rubro: selectName(r.fields[F.lead.rubro]),
-    region: selectName(r.fields[F.lead.region]),
-    etapa: selectName(r.fields[F.lead.etapa]),
-    contacto: str(r, F.lead.contacto),
-    cargo: str(r, F.lead.cargo),
-    email,
-    telefono,
-    angulo: str(r, F.lead.valorAporte),
-    borrador,
-    toques: Number(r.fields[F.lead.toques] ?? 0),
-    respondio: Boolean(r.fields[F.lead.respondio]),
-    control: selectName(r.fields[F.lead.control]),
-    proximaAccion: str(r, F.lead.proximaAccion),
-    dossier: str(r, F.lead.dossier),
-    mockupUrl: attachmentUrl(r.fields[F.lead.mockup]),
-    fechaUltimoContacto: str(r, F.lead.fechaUltimoContacto),
-    canal,
-    waHref: waLink(telefono, borrador),
-    mailHref: gmailLink(email, borrador),
-  };
-});
+const CERRADAS = new Set(['Cerrado Ganado', 'Cerrado Perdido', 'Descartado']);
 
-const ETAPAS_CERRADAS = new Set([
-  'Cerrado Ganado',
-  'Cerrado Perdido',
-  'Descartado',
-]);
-const abiertos = leads.filter((l) => !ETAPAS_CERRADAS.has(l.etapa));
-
-const contactados = abiertos.filter((l) => l.toques > 0);
-const respondieron = abiertos.filter((l) => l.respondio);
-const tasa = contactados.length
-  ? Math.round((respondieron.length / contactados.length) * 100)
-  : null;
-
-const automatizables = abiertos.filter((l) => l.canal === 'email');
-const manuales = abiertos.filter((l) => l.canal !== 'email');
-const porcManual = abiertos.length
-  ? Math.round((manuales.length / abiertos.length) * 100)
-  : 0;
-
-/** Un lead con toques pero sin movimiento hace más de 14 días se está muriendo. */
-const HOY = new Date();
-const rancios = abiertos.filter((l) => {
-  if (l.toques === 0 || !l.fechaUltimoContacto) return false;
-  const dias =
-    (HOY.getTime() - new Date(l.fechaUltimoContacto).getTime()) / 86_400_000;
-  return dias > 14;
-});
-
-// El experimento: qué rubro responde. Sin denominador el porcentaje miente.
-const rubros = [...new Set(abiertos.map((l) => l.rubro).filter(Boolean))]
-  .map((rubro) => {
-    const enRubro = abiertos.filter((l) => l.rubro === rubro);
-    const cont = enRubro.filter((l) => l.toques > 0).length;
-    const resp = enRubro.filter((l) => l.respondio).length;
-    return {
-      rubro,
-      total: enRubro.length,
-      contactados: cont,
-      respondieron: resp,
-      tasa: cont ? Math.round((resp / cont) * 100) : null,
+const leads = registros
+  .map((r) => {
+    const email = str(r, F.lead.email);
+    const telefono = str(r, F.lead.telefono);
+    const borrador = str(r, F.lead.borrador);
+    const base = {
+      id: r.id,
+      empresa: str(r, F.lead.empresa),
+      rubro: selectName(r.fields[F.lead.rubro]),
+      etapa: selectName(r.fields[F.lead.etapa]),
+      contacto: str(r, F.lead.contacto),
+      email,
+      telefono,
+      angulo: str(r, F.lead.valorAporte),
+      borrador,
+      toques: Number(r.fields[F.lead.toques] ?? 0),
+      respondio: Boolean(r.fields[F.lead.respondio]),
+      control: selectName(r.fields[F.lead.control]),
+      proximaAccion: str(r, F.lead.proximaAccion),
+      dossier: str(r, F.lead.dossier),
+      mockupUrl: attachmentUrl(r.fields[F.lead.mockup]),
+      fechaUltimoContacto: str(r, F.lead.fechaUltimoContacto),
+      fechaProximaAccion: str(r, F.lead.fechaProximaAccion),
+      canal: canalSugerido({ email, telefono }),
     };
+    return {
+      ...base,
+      waHref: waLink(telefono, borrador),
+      mailHref: gmailLink(email, borrador),
+      senal: evaluar(base),
+    };
+  })
+  .filter((l) => !CERRADAS.has(l.etapa))
+  .sort((a, b) => a.senal.orden - b.senal.orden || a.empresa.localeCompare(b.empresa));
+
+const conteos = Object.fromEntries(
+  SEGMENTOS.map((s) => [s.id, leads.filter((l) => s.incluye(l.senal)).length]),
+) as Record<SegmentoId, number>;
+
+// Si no hay nada urgente, arrancar en "Todos" evita una pantalla vacía sin sentido.
+const pedido = Astro.url.searchParams.get('ver') as SegmentoId | null;
+const activo: SegmentoId =
+  pedido && SEGMENTOS.some((s) => s.id === pedido)
+    ? pedido
+    : conteos.ahora > 0
+      ? 'ahora'
+      : 'todos';
+
+const segmento = SEGMENTOS.find((s) => s.id === activo)!;
+const visibles = leads.filter((l) => segmento.incluye(l.senal));
+
+// El hero solo tiene sentido si de verdad hay algo que hacer.
+const destacado = conteos.ahora > 0 && activo === 'ahora' ? visibles[0] : null;
+const resto = destacado ? visibles.slice(1) : visibles;
+
+const manuales = leads.filter((l) => l.canal !== 'email').length;
+const porcManual = leads.length ? Math.round((manuales / leads.length) * 100) : 0;
+
+const rubros = [...new Set(leads.map((l) => l.rubro).filter(Boolean))]
+  .map((rubro) => {
+    const en = leads.filter((l) => l.rubro === rubro);
+    const cont = en.filter((l) => l.toques > 0).length;
+    const resp = en.filter((l) => l.respondio).length;
+    return { rubro, total: en.length, contactados: cont, respondieron: resp,
+             tasa: cont ? Math.round((resp / cont) * 100) : null };
   })
   .sort((a, b) => b.total - a.total);
 
-const grupos: { canal: Canal; titulo: string; nota: string; items: typeof abiertos }[] = [
-  {
-    canal: 'email',
-    titulo: 'Correo',
-    nota: 'Ciclo completo automatizable: se redacta, se envía y se lee la respuesta sin intervención.',
-    items: abiertos.filter((l) => l.canal === 'email'),
-  },
-  {
-    canal: 'whatsapp',
-    titulo: 'WhatsApp',
-    nota: 'El link abre la conversación con el texto escrito. El mockup se adjunta a mano.',
-    items: abiertos.filter((l) => l.canal === 'whatsapp'),
-  },
-  {
-    canal: 'llamada',
-    titulo: 'Teléfono',
-    nota: 'Fijo sin WhatsApp. La llamada es la única vía, y también es como se consigue el nombre.',
-    items: abiertos.filter((l) => l.canal === 'llamada'),
-  },
-  {
-    canal: 'manual',
-    titulo: 'Sin canal',
-    nota: 'Falta el dato de contacto. No se puede trabajar hasta resolverlo.',
-    items: abiertos.filter((l) => l.canal === 'manual'),
-  },
-].filter((g) => g.items.length > 0);
-
+const contactados = leads.filter((l) => l.toques > 0).length;
 const aviso = Astro.url.searchParams.get('ok');
 ---
 
@@ -149,132 +115,167 @@ const aviso = Astro.url.searchParams.get('ok');
     </p>
   )}
 
-  <div class="flex flex-wrap items-end justify-between gap-4">
-    <div>
-      <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Pipeline</h1>
-      <p class="mt-1 text-sm text-gray-600">
-        {abiertos.length} leads abiertos · {leads.length - abiertos.length} cerrados
-      </p>
-    </div>
+  <div class="flex flex-wrap items-baseline justify-between gap-3">
+    <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Pipeline</h1>
+    <p class="text-sm text-gray-500 tabular-nums">
+      {leads.length} abiertos · {contactados} contactados
+    </p>
   </div>
 
-  <section class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-    {[
-      { label: 'Contactados', valor: String(contactados.length), pie: `de ${abiertos.length} abiertos` },
-      { label: 'Respondieron', valor: String(respondieron.length), pie: tasa === null ? 'sin envíos aún' : `${tasa}% de los contactados` },
-      { label: 'Automatizables', valor: String(automatizables.length), pie: 'alcanzables por correo' },
-      { label: 'Cola manual', valor: String(manuales.length), pie: `${porcManual}% del pipeline` },
-    ].map((t) => (
-      <div class="rounded-xl border border-gray-200 bg-white p-4">
-        <p class="text-xs font-medium uppercase tracking-wider text-gray-500">{t.label}</p>
-        <p class="mt-1 text-2xl font-semibold tabular-nums text-gray-900">{t.valor}</p>
-        <p class="mt-0.5 text-xs text-gray-500">{t.pie}</p>
+  <!-- Lo que toca ahora: un nombre, no una lista -->
+  {destacado && (
+    <section class="mt-5 overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm">
+      <div class="border-b border-emerald-100 bg-emerald-50/70 px-5 py-2">
+        <p class="text-[11px] font-semibold tracking-wider text-emerald-800 uppercase">
+          Lo primero
+        </p>
       </div>
+      <div class="px-5 py-4">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="text-lg font-semibold tracking-tight text-gray-900">
+            {destacado.empresa}
+          </h2>
+          <span class="text-sm text-gray-500">
+            {destacado.contacto || 'sin contacto nominal'}
+          </span>
+        </div>
+        <p class="mt-1 text-sm text-gray-700">{destacado.senal.motivo}</p>
+
+        {destacado.borrador.trim() && (
+          <p class="mt-3 line-clamp-3 border-l-2 border-gray-200 pl-3 text-sm leading-relaxed text-gray-600">
+            {destacado.borrador.trim().split('\n').filter(Boolean).slice(0, 2).join(' ')}
+          </p>
+        )}
+
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          {destacado.canal === 'email' && destacado.mailHref && (
+            <a href={destacado.mailHref} target="_blank" rel="noopener noreferrer"
+              class="inline-flex min-h-9 items-center rounded-lg bg-emerald-700 px-4 text-sm font-medium text-white transition-colors hover:bg-emerald-800">
+              Abrir en Gmail
+            </a>
+          )}
+          {destacado.canal === 'whatsapp' && destacado.waHref && (
+            <a href={destacado.waHref} target="_blank" rel="noopener noreferrer"
+              class="inline-flex min-h-9 items-center rounded-lg bg-emerald-700 px-4 text-sm font-medium text-white transition-colors hover:bg-emerald-800">
+              Abrir WhatsApp
+            </a>
+          )}
+          {destacado.canal === 'llamada' && destacado.telefono && (
+            <a href={`tel:${destacado.telefono.replace(/\s/g, '')}`}
+              class="inline-flex min-h-9 items-center rounded-lg bg-orange-600 px-4 text-sm font-medium text-white transition-colors hover:bg-orange-700">
+              Llamar a {destacado.telefono}
+            </a>
+          )}
+          <a href="#lista" class="inline-flex min-h-9 items-center px-2 text-sm text-gray-500 transition-colors hover:text-gray-900">
+            Ver el detalle abajo
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Los segmentos filtran y a la vez son el resumen: un solo lugar que leer -->
+  <nav class="mt-6 flex flex-wrap gap-1.5" aria-label="Filtros">
+    {SEGMENTOS.map((s) => (
+      <a
+        href={`?ver=${s.id}`}
+        aria-current={activo === s.id ? 'page' : undefined}
+        class:list={[
+          'inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors',
+          activo === s.id
+            ? 'border-gray-900 bg-gray-900 text-white'
+            : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50',
+        ]}
+      >
+        {s.label}
+        <span class:list={[
+          'tabular-nums',
+          activo === s.id ? 'text-gray-400' : 'text-gray-400',
+        ]}>{conteos[s.id]}</span>
+      </a>
     ))}
+  </nav>
+
+  <section id="lista" class="mt-4 rounded-xl border border-gray-200 bg-white px-4 shadow-sm">
+    {resto.length > 0 ? (
+      resto.map((l) => <LeadRow {...l} />)
+    ) : (
+      <p class="py-10 text-center text-sm text-gray-500">
+        {activo === 'ahora' && destacado
+          ? 'Nada más urgente. Cuando termines con ese, mirá los otros segmentos.'
+          : 'Nada en este segmento.'}
+      </p>
+    )}
   </section>
 
-  {porcManual > 33 && abiertos.length > 0 && (
-    <div class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
-      <p class="text-sm font-medium text-amber-900">
-        El {porcManual}% del pipeline depende de un canal manual
-      </p>
-      <p class="mt-1 text-sm text-amber-800">
-        Pasado un tercio, el pipeline deja de avanzar al ritmo de un agente y pasa
-        a avanzar al de una persona con tiempo para llamar. Al abrir el próximo
-        rubro, apuntar a empresas con correo nominal obtenible.
-      </p>
-    </div>
-  )}
-
-  {rancios.length > 0 && (
-    <div class="mt-4 rounded-xl border border-red-200 bg-red-50 p-4">
-      <p class="text-sm font-medium text-red-900">
-        {rancios.length} {rancios.length === 1 ? 'lead lleva' : 'leads llevan'} más de 14 días sin toque
-      </p>
-      <p class="mt-1 text-sm text-red-800">
-        {rancios.map((l) => l.empresa).join(' · ')} — cerrar o dar el siguiente toque.
-      </p>
-    </div>
-  )}
-
-  {rubros.length > 0 && (
-    <section class="mt-8">
-      <h2 class="text-sm font-semibold tracking-tight text-gray-900">
-        El experimento: qué rubro responde
-      </h2>
-      <p class="mt-1 text-sm text-gray-600">
-        Ningún rubro con menos de 8 contactados dice nada todavía. El conteo crudo
-        va al lado del porcentaje justamente para no confundirse.
-      </p>
-      <div class="mt-3 overflow-x-auto rounded-xl border border-gray-200 bg-white">
-        <table class="w-full text-sm">
-          <thead class="border-b border-gray-200 bg-gray-50 text-left">
-            <tr class="text-xs font-medium uppercase tracking-wider text-gray-500">
-              <th class="px-4 py-2.5">Rubro</th>
-              <th class="px-4 py-2.5 text-right">Leads</th>
-              <th class="px-4 py-2.5 text-right">Contactados</th>
-              <th class="px-4 py-2.5 text-right">Respondieron</th>
-              <th class="px-4 py-2.5 text-right">Tasa</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100">
-            {rubros.map((r) => (
-              <tr>
-                <td class="px-4 py-2.5 font-medium text-gray-900">{r.rubro}</td>
-                <td class="px-4 py-2.5 text-right tabular-nums text-gray-700">{r.total}</td>
-                <td class="px-4 py-2.5 text-right tabular-nums text-gray-700">{r.contactados}</td>
-                <td class="px-4 py-2.5 text-right tabular-nums text-gray-700">{r.respondieron}</td>
-                <td class="px-4 py-2.5 text-right tabular-nums text-gray-500">
-                  {r.contactados < 8 ? (
-                    <span class="text-gray-400">sin datos</span>
-                  ) : (
-                    `${r.tasa}%`
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  )}
-
-  {grupos.map((g) => (
-    <section class="mt-10">
-      <div class="flex items-baseline gap-3">
-        <h2 class="text-sm font-semibold tracking-tight text-gray-900">{g.titulo}</h2>
-        <span class="text-xs tabular-nums text-gray-500">{g.items.length}</span>
-      </div>
-      <p class="mt-1 max-w-2xl text-sm text-gray-600">{g.nota}</p>
-      <div class="mt-4 grid gap-4 xl:grid-cols-2">
-        {g.items.map((l) => <LeadCard {...l} />)}
-      </div>
-    </section>
-  ))}
-
-  {!error && abiertos.length === 0 && (
-    <p class="mt-10 rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center text-sm text-gray-500">
-      No hay leads abiertos.
+  {porcManual > 33 && leads.length > 0 && (
+    <p class="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+      <span class="font-medium">El {porcManual}% del pipeline depende de un canal manual.</span>{' '}
+      Pasado un tercio, deja de avanzar al ritmo de un agente y pasa al de una persona
+      con tiempo para llamar. Al abrir el próximo rubro, apuntar a empresas con correo
+      nominal obtenible.
     </p>
   )}
+
+  <details class="mt-4 rounded-xl border border-gray-200 bg-white px-4 py-3">
+    <summary class="cursor-pointer list-none text-sm font-medium text-gray-900">
+      El experimento: qué rubro responde
+      <span class="ml-1 text-xs font-normal text-gray-500">
+        · {contactados} contactados de {leads.length}
+      </span>
+    </summary>
+    <p class="mt-2 text-sm text-gray-600">
+      Ningún rubro con menos de 8 contactados dice nada todavía. El conteo crudo va al
+      lado del porcentaje justamente para no confundirse.
+    </p>
+    <div class="mt-3 overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="border-b border-gray-200 text-left">
+          <tr class="text-xs font-medium tracking-wider text-gray-500 uppercase">
+            <th class="py-2 pr-4">Rubro</th>
+            <th class="py-2 pr-4 text-right">Leads</th>
+            <th class="py-2 pr-4 text-right">Contactados</th>
+            <th class="py-2 pr-4 text-right">Respondieron</th>
+            <th class="py-2 text-right">Tasa</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          {rubros.map((r) => (
+            <tr>
+              <td class="py-2 pr-4 font-medium text-gray-900">{r.rubro}</td>
+              <td class="py-2 pr-4 text-right tabular-nums text-gray-700">{r.total}</td>
+              <td class="py-2 pr-4 text-right tabular-nums text-gray-700">{r.contactados}</td>
+              <td class="py-2 pr-4 text-right tabular-nums text-gray-700">{r.respondieron}</td>
+              <td class="py-2 text-right tabular-nums text-gray-500">
+                {r.contactados < 8 ? <span class="text-gray-400">sin datos</span> : `${r.tasa}%`}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
 </AdminLayout>
 
 <script>
+  // El botón de acción vive dentro del <summary>: sin esto, cada click
+  // desplegaría la fila además de abrir WhatsApp o Gmail.
+  document.querySelectorAll('[data-accion]').forEach((el) => {
+    el.addEventListener('click', (e) => e.stopPropagation());
+  });
+
   document.querySelectorAll<HTMLButtonElement>('[data-copiar]').forEach((btn) => {
     btn.addEventListener('click', async () => {
-      const card = btn.closest('[data-lead-card]');
-      const texto = card?.querySelector('[data-mensaje]')?.textContent ?? '';
+      const texto = btn.closest('[data-lead]')?.querySelector('[data-mensaje]')?.textContent ?? '';
       if (!texto) return;
       const original = btn.textContent;
       try {
         await navigator.clipboard.writeText(texto.trim());
         btn.textContent = 'Copiado';
       } catch {
-        btn.textContent = 'No se pudo copiar';
+        btn.textContent = 'No se pudo';
       }
-      setTimeout(() => {
-        btn.textContent = original;
-      }, 1800);
+      setTimeout(() => { btn.textContent = original; }, 1800);
     });
   });
 </script>
