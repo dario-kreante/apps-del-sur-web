@@ -23,12 +23,18 @@ interface Props {
   senal: Senal;
   /** Abre la fila de entrada. Se usa en la primera, la que toca hacer. */
   abierta?: boolean;
+  /** Texto normalizado sobre el que busca el filtro del cliente. */
+  busqueda: string;
+  /** Segmentos a los que pertenece, separados por espacio. */
+  segmentos: string;
+  /** Fuera del segmento activo al cargar. Sin JS, el filtro igual funciona. */
+  oculta?: boolean;
 }
 
 const {
   id, empresa, rubro, contacto, email, telefono, angulo, borrador,
   toques, control, proximaAccion, canal, waHref, mailHref, mockupUrl,
-  dossier, senal, abierta = false,
+  dossier, senal, abierta = false, busqueda, segmentos, oculta = false,
 } = Astro.props;
 
 // Color semántico, independiente del verde de marca.
@@ -63,8 +69,13 @@ const accion =
 
 <details
   open={abierta}
-  class="group border-b border-gray-100 last:border-0"
+  class:list={[
+    'group border-b border-gray-100 last:border-0',
+    oculta && 'hidden',
+  ]}
   data-lead
+  data-buscar={busqueda}
+  data-segmentos={segmentos}
 >
   <summary
     class="flex cursor-pointer list-none items-center gap-3 py-3 pr-3 pl-0 transition-colors hover:bg-gray-50/80"

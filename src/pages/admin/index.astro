@@ -38,6 +38,8 @@ const leads = registros
       id: r.id,
       empresa: str(r, F.lead.empresa),
       rubro: selectName(r.fields[F.lead.rubro]),
+      region: selectName(r.fields[F.lead.region]),
+      comuna: str(r, F.lead.comuna),
       etapa: selectName(r.fields[F.lead.etapa]),
       contacto: str(r, F.lead.contacto),
       email,
@@ -78,11 +80,42 @@ const activo: SegmentoId =
       : 'todos';
 
 const segmento = SEGMENTOS.find((s) => s.id === activo)!;
-const visibles = leads.filter((l) => segmento.incluye(l.senal));
 
 // El hero solo tiene sentido si de verdad hay algo que hacer.
-const destacado = conteos.ahora > 0 && activo === 'ahora' ? visibles[0] : null;
-const resto = destacado ? visibles.slice(1) : visibles;
+const destacado =
+  conteos.ahora > 0 && activo === 'ahora'
+    ? (leads.find((l) => SEGMENTOS[0].incluye(l.senal)) ?? null)
+    : null;
+
+/**
+ * Se renderizan TODOS los leads, no solo los del segmento activo.
+ *
+ * Buscar a alguien y no encontrarlo porque estaba en otra pestana es
+ * exactamente el fracaso que una busqueda tiene que evitar, asi que el filtro
+ * de texto ignora el segmento; y para eso las filas tienen que estar en el
+ * DOM. Las que no corresponden al segmento nacen ocultas, de modo que el
+ * filtro por segmento siga funcionando aunque no cargue el JavaScript.
+ */
+const sinAcentos = (t: string) =>
+  t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+const filas = leads
+  .filter((l) => l !== destacado)
+  .map((l) => ({
+    ...l,
+    oculta: !segmento.incluye(l.senal),
+    segmentos: SEGMENTOS.filter((s) => s.incluye(l.senal))
+      .map((s) => s.id)
+      .join(' '),
+    busqueda: sinAcentos(
+      [
+        l.empresa, l.contacto, l.rubro, l.region, l.comuna,
+        l.etapa, l.email, l.telefono, l.senal.etiqueta,
+      ]
+        .filter(Boolean)
+        .join(' '),
+    ),
+  }));
 
 const manuales = leads.filter((l) => l.canal !== 'email').length;
 const porcManual = leads.length ? Math.round((manuales / leads.length) * 100) : 0;
@@ -124,7 +157,7 @@ const aviso = Astro.url.searchParams.get('ok');
 
   <!-- Lo que toca ahora: un nombre, no una lista -->
   {destacado && (
-    <section class="mt-5 overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm">
+    <section data-hero class="mt-5 overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm">
       <div class="border-b border-emerald-100 bg-emerald-50/70 px-5 py-2">
         <p class="text-[11px] font-semibold tracking-wider text-emerald-800 uppercase">
           Lo primero
@@ -174,8 +207,9 @@ const aviso = Astro.url.searchParams.get('ok');
     </section>
   )}
 
+  <div class="mt-6 flex flex-wrap items-center gap-3">
   <!-- Los segmentos filtran y a la vez son el resumen: un solo lugar que leer -->
-  <nav class="mt-6 flex flex-wrap gap-1.5" aria-label="Filtros">
+  <nav class="flex flex-wrap gap-1.5" aria-label="Filtros">
     {SEGMENTOS.map((s) => (
       <a
         href={`?ver=${s.id}`}
@@ -196,15 +230,38 @@ const aviso = Astro.url.searchParams.get('ok');
     ))}
   </nav>
 
+    <div class="relative ml-auto min-w-52 flex-1 sm:max-w-xs sm:flex-none">
+      <svg
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round"
+        class="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400"
+        aria-hidden="true"
+      >
+        <circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />
+      </svg>
+      <input
+        type="search"
+        id="buscador"
+        placeholder="Buscar empresa, persona, rubro..."
+        autocomplete="off"
+        aria-label="Buscar en todo el pipeline"
+        class="w-full rounded-lg border border-gray-200 bg-white py-1.5 pr-16 pl-9 text-sm text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none"
+      />
+      <kbd
+        data-atajo
+        class="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-[10px] text-gray-400"
+        >/</kbd
+      >
+    </div>
+  </div>
+
+  <p data-resultados class="mt-3 hidden text-sm text-gray-600"></p>
+
   <section id="lista" class="mt-4 rounded-xl border border-gray-200 bg-white px-4 shadow-sm">
-    {resto.length > 0 ? (
-      resto.map((l) => <LeadRow {...l} />)
-    ) : (
-      <p class="py-10 text-center text-sm text-gray-500">
-        {activo === 'ahora' && destacado
-          ? 'Nada más urgente. Cuando termines con ese, mirá los otros segmentos.'
-          : 'Nada en este segmento.'}
-      </p>
+    {filas.map((l) => <LeadRow {...l} />)}
+    <p data-vacio class="hidden py-10 text-center text-sm text-gray-500"></p>
+    {filas.length === 0 && (
+      <p class="py-10 text-center text-sm text-gray-500">No hay leads abiertos.</p>
     )}
   </section>
 
@@ -258,6 +315,90 @@ const aviso = Astro.url.searchParams.get('ok');
 </AdminLayout>
 
 <script>
+  const filas = Array.from(document.querySelectorAll<HTMLElement>('[data-lead]'));
+  const buscador = document.querySelector<HTMLInputElement>('#buscador');
+  const resultados = document.querySelector<HTMLElement>('[data-resultados]');
+  const vacio = document.querySelector<HTMLElement>('[data-vacio]');
+  const hero = document.querySelector<HTMLElement>('[data-hero]');
+  const tabs = Array.from(document.querySelectorAll<HTMLAnchorElement>('nav a[href^="?ver="]'));
+
+  const sinAcentos = (t: string) =>
+    t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+  let segmento =
+    new URLSearchParams(location.search).get('ver') ?? tabs.find((t) => t.getAttribute('aria-current'))?.href.split('=')[1] ?? 'todos';
+
+  function aplicar() {
+    const q = sinAcentos(buscador?.value.trim() ?? '');
+    let visibles = 0;
+
+    for (const fila of filas) {
+      // Buscar ignora el segmento a propósito: si sé a quién busco, no me
+      // importa en qué pestaña quedó clasificado.
+      const coincide = q
+        ? (fila.dataset.buscar ?? '').includes(q)
+        : (fila.dataset.segmentos ?? '').split(' ').includes(segmento);
+      fila.classList.toggle('hidden', !coincide);
+      if (coincide) visibles++;
+      // Una fila abierta que se oculta y vuelve deja la lista desprolija.
+      if (!coincide) fila.removeAttribute('open');
+    }
+
+    hero?.classList.toggle('hidden', q.length > 0);
+
+    if (resultados) {
+      resultados.classList.toggle('hidden', q.length === 0);
+      resultados.textContent =
+        visibles === 1
+          ? '1 lead encontrado, en todo el pipeline.'
+          : `${visibles} leads encontrados, en todo el pipeline.`;
+    }
+
+    if (vacio) {
+      const nada = visibles === 0 && filas.length > 0;
+      vacio.classList.toggle('hidden', !nada);
+      vacio.textContent = q
+        ? `Ningún lead coincide con "${buscador?.value.trim()}".`
+        : 'Nada en este segmento.';
+    }
+  }
+
+  buscador?.addEventListener('input', aplicar);
+
+  for (const tab of tabs) {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      segmento = new URL(tab.href).searchParams.get('ver') ?? 'todos';
+      for (const t of tabs) {
+        const activo = t === tab;
+        t.toggleAttribute('aria-current', activo);
+        t.className = activo
+          ? 'inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors border-gray-900 bg-gray-900 text-white'
+          : 'inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors border-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+      }
+      if (buscador) buscador.value = '';
+      history.replaceState(null, '', tab.href);
+      aplicar();
+    });
+  }
+
+  // "/" para buscar sin sacar las manos del teclado; Escape para salir.
+  document.addEventListener('keydown', (e) => {
+    const enCampo =
+      e.target instanceof HTMLElement &&
+      ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName);
+    if (e.key === '/' && !enCampo) {
+      e.preventDefault();
+      buscador?.focus();
+      buscador?.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === buscador) {
+      if (buscador) buscador.value = '';
+      buscador?.blur();
+      aplicar();
+    }
+  });
+
   // El botón de acción vive dentro del <summary>: sin esto, cada click
   // desplegaría la fila además de abrir WhatsApp o Gmail.
   document.querySelectorAll('[data-accion]').forEach((el) => {
