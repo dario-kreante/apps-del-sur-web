@@ -7,10 +7,11 @@ import {
   listAll,
   selectName,
 } from '../../lib/admin/airtable';
+import { serverEnv } from '../../lib/admin/env';
 
 export const prerender = false;
 
-const token = airtableToken(import.meta.env);
+const token = airtableToken(serverEnv());
 
 let error: string | null = null;
 let proyRaw: Awaited<ReturnType<typeof listAll>> = [];

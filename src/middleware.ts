@@ -1,5 +1,6 @@
 import { defineMiddleware } from 'astro:middleware';
 import { adminConfig, session, verifySession } from './lib/admin/auth';
+import { serverEnv } from './lib/admin/env';
 
 /** Rutas que se pueden alcanzar sin sesión. Todo lo demás bajo /admin exige login. */
 const PUBLICAS = new Set(['/admin/login', '/admin/acciones/login']);
@@ -24,7 +25,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Las páginas públicas se generan en build; el middleware no debe intervenir ahí.
   if (context.isPrerendered) return next();
 
-  const config = adminConfig(import.meta.env);
+  const config = adminConfig(serverEnv());
   if (!config) {
     // Falta configuración: se cierra, no se abre.
     return new Response(

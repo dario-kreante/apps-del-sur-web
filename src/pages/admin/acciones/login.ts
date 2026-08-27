@@ -5,11 +5,12 @@ import {
   session,
   verifyPassword,
 } from '../../../lib/admin/auth';
+import { esProduccion, serverEnv } from '../../../lib/admin/env';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
-  const config = adminConfig(import.meta.env);
+  const config = adminConfig(serverEnv());
   if (!config) return redirect('/admin/login?error=config', 302);
 
   const form = await request.formData();
@@ -28,7 +29,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   cookies.set(
     session.cookieName,
     createSession(config.secret),
-    session.options(import.meta.env.PROD),
+    session.options(esProduccion()),
   );
   return redirect('/admin', 302);
 };

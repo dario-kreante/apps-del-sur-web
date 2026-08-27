@@ -8,6 +8,7 @@ import {
   selectName,
   updateRecord,
 } from '../../../lib/admin/airtable';
+import { serverEnv } from '../../../lib/admin/env';
 
 export const prerender = false;
 
@@ -31,7 +32,7 @@ const CANAL_ACTIVIDAD: Record<string, string> = {
 };
 
 export const POST: APIRoute = async ({ request, redirect }) => {
-  const token = airtableToken(import.meta.env);
+  const token = airtableToken(serverEnv());
   if (!token) {
     return redirect(
       `/admin?ok=${encodeURIComponent('Falta el token de Airtable en el servidor.')}`,

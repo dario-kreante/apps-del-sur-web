@@ -5,13 +5,14 @@ import {
   airtableToken,
   updateRecord,
 } from '../../../lib/admin/airtable';
+import { serverEnv } from '../../../lib/admin/env';
 
 export const prerender = false;
 
 const ESTADOS = new Set(['Por hacer', 'En curso', 'Bloqueada', 'Hecha']);
 
 export const POST: APIRoute = async ({ request, redirect }) => {
-  const token = airtableToken(import.meta.env);
+  const token = airtableToken(serverEnv());
   const form = await request.formData();
   const id = String(form.get('id') ?? '');
   const estado = String(form.get('estado') ?? '');
