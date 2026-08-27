@@ -9,8 +9,21 @@ interface Props {
 const { title, activo } = Astro.props;
 
 const nav = [
-  { href: '/admin', label: 'Pipeline', key: 'pipeline' },
-  { href: '/admin/proyectos', label: 'Proyectos', key: 'proyectos' },
+  {
+    href: '/admin',
+    label: 'Pipeline',
+    key: 'pipeline',
+    detalle: 'Leads y primer contacto',
+    // Embudo: de muchos leads a pocas conversaciones.
+    icono: 'M3 5h18l-7 8v6l-4 2v-8L3 5Z',
+  },
+  {
+    href: '/admin/proyectos',
+    label: 'Proyectos',
+    key: 'proyectos',
+    detalle: 'Trabajo vendido y tareas',
+    icono: 'M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z',
+  },
 ] as const;
 ---
 
@@ -23,48 +36,135 @@ const nav = [
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="h-full bg-gray-50 text-gray-900 antialiased">
-    <header class="sticky top-0 z-20 border-b border-emerald-800 bg-emerald-900">
-      <div class="mx-auto flex max-w-7xl items-center gap-6 px-4 py-3 sm:px-6">
-        <a href="/admin" class="flex items-center gap-2 text-white">
-          <span class="text-sm font-semibold tracking-tight">Apps del Sur</span>
-          <span class="rounded bg-emerald-700 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-100">
-            Panel
+  <body class="min-h-full bg-gray-50 text-gray-900 antialiased">
+    <!-- Barra lateral: fija desde lg, donde hay ancho para sostenerla -->
+    <aside
+      class="fixed inset-y-0 left-0 z-30 hidden w-60 flex-col border-r border-emerald-900/60 bg-emerald-950 lg:flex"
+    >
+      <div class="flex items-center gap-2.5 px-5 py-5">
+        <span
+          class="grid h-8 w-8 place-items-center rounded-lg bg-emerald-700 text-sm font-semibold text-white"
+          aria-hidden="true">A</span
+        >
+        <span class="min-w-0">
+          <span class="block truncate text-sm font-semibold tracking-tight text-white">
+            Apps del Sur
           </span>
-        </a>
+          <span class="block text-[11px] tracking-wider text-emerald-400/80 uppercase">
+            Panel interno
+          </span>
+        </span>
+      </div>
 
-        <nav class="flex items-center gap-1" aria-label="Secciones">
-          {
-            nav.map((item) => (
+      <nav class="flex-1 space-y-1 px-3 py-2" aria-label="Secciones">
+        {
+          nav.map((item) => {
+            const activa = activo === item.key;
+            return (
               <a
                 href={item.href}
-                aria-current={activo === item.key ? 'page' : undefined}
+                aria-current={activa ? 'page' : undefined}
                 class:list={[
-                  'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
-                  activo === item.key
-                    ? 'bg-emerald-700 text-white'
-                    : 'text-emerald-100 hover:bg-emerald-800 hover:text-white',
+                  'group relative flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors',
+                  activa
+                    ? 'bg-emerald-900/70 text-white'
+                    : 'text-emerald-200/80 hover:bg-emerald-900/40 hover:text-white',
                 ]}
               >
-                {item.label}
+                {activa && (
+                  <span
+                    class="absolute top-2.5 bottom-2.5 -left-3 w-0.5 rounded-r bg-emerald-400"
+                    aria-hidden="true"
+                  />
+                )}
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class:list={[
+                    'mt-0.5 h-4.5 w-4.5 shrink-0',
+                    activa ? 'text-emerald-300' : 'text-emerald-400/70',
+                  ]}
+                  aria-hidden="true"
+                >
+                  <path d={item.icono} />
+                </svg>
+                <span class="min-w-0">
+                  <span class="block text-sm font-medium">{item.label}</span>
+                  <span class="block truncate text-[11px] text-emerald-400/70">
+                    {item.detalle}
+                  </span>
+                </span>
               </a>
-            ))
-          }
-        </nav>
+            );
+          })
+        }
+      </nav>
 
-        <form method="POST" action="/admin/acciones/logout/" class="ml-auto">
+      <div class="border-t border-emerald-900/60 p-3">
+        <form method="POST" action="/admin/acciones/logout/">
           <button
             type="submit"
-            class="cursor-pointer rounded-lg px-3 py-1.5 text-sm text-emerald-200 transition-colors hover:bg-emerald-800 hover:text-white"
+            class="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm text-emerald-200/80 transition-colors hover:bg-emerald-900/40 hover:text-white"
           >
-            Salir
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4.5 w-4.5 shrink-0 text-emerald-400/70"
+              aria-hidden="true"
+            >
+              <path d="M15 17l5-5-5-5M20 12H9M12 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6" />
+            </svg>
+            Cerrar sesión
           </button>
         </form>
       </div>
+    </aside>
+
+    <!-- Bajo lg no hay ancho para una lateral: la misma navegación en horizontal -->
+    <header
+      class="sticky top-0 z-20 flex items-center gap-2 border-b border-emerald-900/60 bg-emerald-950 px-4 py-2.5 lg:hidden"
+    >
+      <span class="mr-1 text-sm font-semibold tracking-tight text-white">
+        Apps del Sur
+      </span>
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={activo === item.key ? 'page' : undefined}
+            class:list={[
+              'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
+              activo === item.key
+                ? 'bg-emerald-900/70 text-white'
+                : 'text-emerald-200/80 hover:text-white',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <form method="POST" action="/admin/acciones/logout/" class="ml-auto">
+        <button
+          type="submit"
+          class="cursor-pointer rounded-lg px-2 py-1.5 text-sm text-emerald-300/80 transition-colors hover:text-white"
+        >
+          Salir
+        </button>
+      </form>
     </header>
 
-    <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-      <slot />
-    </main>
+    <div class="lg:pl-60">
+      <main class="mx-auto max-w-6xl px-4 py-8 sm:px-8">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>

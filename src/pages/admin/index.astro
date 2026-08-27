@@ -9,7 +9,7 @@ import {
   listAll,
   selectName,
 } from '../../lib/admin/airtable';
-import { canalSugerido, mailtoLink, waLink, type Canal } from '../../lib/admin/canales';
+import { canalSugerido, gmailLink, waLink, type Canal } from '../../lib/admin/canales';
 import { serverEnv } from '../../lib/admin/env';
 
 export const prerender = false;
@@ -57,7 +57,7 @@ const leads = registros.map((r) => {
     fechaUltimoContacto: str(r, F.lead.fechaUltimoContacto),
     canal,
     waHref: waLink(telefono, borrador),
-    mailHref: mailtoLink(email, borrador),
+    mailHref: gmailLink(email, borrador),
   };
 });
 

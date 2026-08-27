@@ -55,17 +55,24 @@ export function partirBorrador(borrador: string | undefined): {
   return { asunto: '', cuerpo: texto };
 }
 
-export function mailtoLink(
+/**
+ * Compositor de Gmail en el navegador, con destinatario, asunto y cuerpo ya
+ * puestos.
+ *
+ * Reemplaza a `mailto:`, que depende de que el sistema tenga un cliente de
+ * correo configurado. En un Mac que usa Gmail en el navegador, un `mailto:` no
+ * hace absolutamente nada al hacer click — parece que el botón está roto.
+ */
+export function gmailLink(
   email: string | undefined,
   borrador: string | undefined,
 ): string | null {
   if (!email) return null;
   const { asunto, cuerpo } = partirBorrador(borrador);
-  const qs = new URLSearchParams();
-  if (asunto) qs.set('subject', asunto);
+  const qs = new URLSearchParams({ view: 'cm', fs: '1', to: email });
+  if (asunto) qs.set('su', asunto);
   if (cuerpo) qs.set('body', cuerpo);
-  const q = qs.toString();
-  return q ? `mailto:${email}?${q}` : `mailto:${email}`;
+  return `https://mail.google.com/mail/?${qs}`;
 }
 
 export type Canal = 'email' | 'whatsapp' | 'llamada' | 'manual';
