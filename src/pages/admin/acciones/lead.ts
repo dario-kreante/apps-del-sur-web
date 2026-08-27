@@ -73,6 +73,19 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       // Sin compuerta: esta acción no envía nada, sólo anota que el contacto
       // ya ocurrió. Bloquear el registro por falta de aprobación obligaba a
       // que el panel mintiera sobre lo que de verdad pasó.
+
+      // Un segundo click el mismo día casi siempre es el mismo envío contado
+      // dos veces, no dos contactos. Y un contador inflado corrompe la métrica
+      // del experimento, que es lo único que este pipeline mide en serio.
+      if (String(actual.fields[F.lead.fechaUltimoContacto] ?? '') === hoy) {
+        return redirect(
+          `/admin?ok=${encodeURIComponent(
+            `${empresa}: ya había un toque registrado hoy, no se sumó otro.`,
+          )}`,
+          302,
+        );
+      }
+
       const toques = Number(actual.fields[F.lead.toques] ?? 0) + 1;
       const etapaActual = selectName(actual.fields[F.lead.etapa]);
       const primero = String(actual.fields[F.lead.fechaPrimerContacto] ?? '');

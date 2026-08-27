@@ -16,7 +16,8 @@ export type Estado =
   | 'rancio'
   | 'por-aprobar'
   | 'por-llamar'
-  | 'trabado'
+  | 'sin-canal'
+  | 'sin-material'
   | 'en-espera';
 
 export interface Senal {
@@ -114,7 +115,7 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
   // 5. Sin canal no hay nada que hacer, por bueno que sea el mensaje.
   if (lead.canal === 'manual') {
     return {
-      estado: 'trabado',
+      estado: 'sin-canal',
       orden: 6,
       etiqueta: 'Sin canal',
       motivo: 'No hay correo ni teléfono. Hay que conseguir un correo nominal.',
@@ -139,7 +140,7 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
   // 7. Sin ángulo el mensaje sale genérico, y un genérico quema el contacto.
   if (!lead.angulo.trim() || !tieneMensaje) {
     return {
-      estado: 'trabado',
+      estado: 'sin-material',
       orden: 6,
       etiqueta: !lead.angulo.trim() ? 'Sin ángulo' : 'Sin mensaje',
       motivo: !lead.angulo.trim()
@@ -204,16 +205,26 @@ export const ACCIONABLES: ReadonlySet<Estado> = new Set([
 ]);
 
 export const SEGMENTOS = [
-  { id: 'ahora', label: 'Ahora', incluye: (s: Senal) => ACCIONABLES.has(s.estado) },
   {
-    id: 'preparados',
-    label: 'Preparados',
-    incluye: (s: Senal) => s.estado === 'por-aprobar' || s.estado === 'en-espera',
+    id: 'ahora',
+    label: 'Ahora',
+    incluye: (s: Senal) => ACCIONABLES.has(s.estado),
+  },
+  {
+    id: 'esperando',
+    label: 'Esperando respuesta',
+    incluye: (s: Senal) => s.estado === 'en-espera',
+  },
+  {
+    id: 'preparar',
+    label: 'Por preparar',
+    incluye: (s: Senal) =>
+      s.estado === 'por-aprobar' || s.estado === 'sin-material',
   },
   {
     id: 'trabados',
     label: 'Trabados',
-    incluye: (s: Senal) => s.estado === 'trabado' || s.estado === 'por-llamar',
+    incluye: (s: Senal) => s.estado === 'sin-canal' || s.estado === 'por-llamar',
   },
   { id: 'todos', label: 'Todos', incluye: () => true },
 ] as const;

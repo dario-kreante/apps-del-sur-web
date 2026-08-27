@@ -51,6 +51,17 @@ const TONO = {
 const tono = TONO[senal.tono];
 const tieneMensaje = borrador.trim().length > 0;
 const listoParaEnviar = control === 'Aprobado para enviar';
+const yaContactado = toques > 0;
+const yaRespondio = senal.estado === 'respondio';
+
+/**
+ * Una vez contactado, el borrador es historia: volver a abrirlo en Gmail
+ * invitaría a mandar el mismo primer correo de nuevo. Lo útil pasa a ser el
+ * hilo.
+ */
+const hiloGmail = email
+  ? `https://mail.google.com/mail/u/0/#search/${encodeURIComponent(email)}`
+  : null;
 
 const CANAL_LABEL: Record<Canal, string> = {
   email: 'correo',
@@ -61,8 +72,11 @@ const CANAL_LABEL: Record<Canal, string> = {
 };
 
 // Una sola acción principal por fila: la que corresponde al canal.
-const accion =
-  canal === 'email' && mailHref && tieneMensaje
+const accion = yaContactado
+  ? hiloGmail
+    ? { href: hiloGmail, label: 'Ver el hilo', externa: true }
+    : null
+  : canal === 'email' && mailHref && tieneMensaje
     ? { href: mailHref, label: 'Gmail', externa: true }
     : canal === 'whatsapp' && waHref && tieneMensaje
       ? { href: waHref, label: 'WhatsApp', externa: true }
@@ -234,7 +248,7 @@ const accion =
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="empresa" value={empresa} />
       <input type="hidden" name="canal" value={canal} />
-    {!listoParaEnviar && tieneMensaje && (
+    {!yaContactado && !listoParaEnviar && tieneMensaje && (
       <button
         type="submit" name="accion" value="aprobar"
         title="Marca la compuerta como aprobada. La decisión es tuya, no del panel."
@@ -243,6 +257,8 @@ const accion =
         Aprobar para enviar
       </button>
     )}
+
+    {!yaContactado && (
       <button
         type="submit" name="accion" value="registrar-toque"
         title="Registra que ya saliste a contactar y programa el siguiente toque. No envía nada."
@@ -250,12 +266,27 @@ const accion =
       >
         Ya lo contacté
       </button>
+    )}
+
+    {yaContactado && !yaRespondio && (
       <button
         type="submit" name="accion" value="marcar-respondio"
+        class="inline-flex min-h-8 cursor-pointer items-center rounded-lg bg-emerald-700 px-3 text-xs font-medium text-white transition-colors hover:bg-emerald-800"
+      >
+        Contestó
+      </button>
+    )}
+
+    {yaContactado && (
+      <button
+        type="submit" name="accion" value="registrar-toque"
+        title="Suma un toque más de la cadencia"
         class="inline-flex min-h-8 cursor-pointer items-center rounded-lg border border-gray-200 bg-white px-3 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-50"
       >
-        Respondió
+        Otro toque
       </button>
+    )}
+
       <button
         type="submit" name="accion" value="cerrar-perdido"
         class="inline-flex min-h-8 cursor-pointer items-center rounded-lg px-3 text-xs text-gray-500 transition-colors hover:text-red-700"
