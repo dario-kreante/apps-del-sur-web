@@ -1,0 +1,231 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { F, TABLES, listAll, selectName } from '../../lib/admin/airtable';
+
+export const prerender = false;
+
+const token = import.meta.env.AIRTABLE_TOKEN;
+
+let error: string | null = null;
+let proyRaw: Awaited<ReturnType<typeof listAll>> = [];
+let tareasRaw: Awaited<ReturnType<typeof listAll>> = [];
+
+if (!token) {
+  error = 'Falta la variable de entorno AIRTABLE_TOKEN.';
+} else {
+  try {
+    [proyRaw, tareasRaw] = await Promise.all([
+      listAll(token, TABLES.proyectos),
+      listAll(token, TABLES.tareas),
+    ]);
+  } catch (e) {
+    error = e instanceof Error ? e.message : 'Error consultando Airtable.';
+  }
+}
+
+const str = (r: any, f: string) => String(r.fields[f] ?? '');
+const num = (r: any, f: string) => Number(r.fields[f] ?? 0);
+
+const tareas = tareasRaw.map((r) => ({
+  id: r.id,
+  tarea: str(r, F.tarea.tarea),
+  proyectoIds: (r.fields[F.tarea.proyecto] as string[]) ?? [],
+  estado: selectName(r.fields[F.tarea.estado]),
+  prioridad: selectName(r.fields[F.tarea.prioridad]),
+  responsable: str(r, F.tarea.responsable),
+  fechaLimite: str(r, F.tarea.fechaLimite),
+  bloqueadaPor: str(r, F.tarea.bloqueadaPor),
+  notas: str(r, F.tarea.notas),
+}));
+
+const ORDEN_ESTADO = ['En desarrollo', 'Oportunidad', 'Propuesta enviada', 'En pausa', 'Entregado', 'Cerrado'];
+
+const proyectos = proyRaw
+  .map((r) => ({
+    id: r.id,
+    proyecto: str(r, F.proyecto.proyecto),
+    cliente: str(r, F.proyecto.cliente),
+    estado: selectName(r.fields[F.proyecto.estado]),
+    tipo: selectName(r.fields[F.proyecto.tipo]),
+    contraparte: str(r, F.proyecto.contraparte),
+    email: str(r, F.proyecto.email),
+    monto: num(r, F.proyecto.monto),
+    facturado: num(r, F.proyecto.facturado),
+    avance: num(r, F.proyecto.avance),
+    proximoHito: str(r, F.proyecto.proximoHito),
+    bloqueadoPor: str(r, F.proyecto.bloqueadoPor),
+    tareas: tareas.filter((t) => t.proyectoIds.includes(r.id)),
+  }))
+  .sort(
+    (a, b) => ORDEN_ESTADO.indexOf(a.estado) - ORDEN_ESTADO.indexOf(b.estado),
+  );
+
+const CLP = new Intl.NumberFormat('es-CL', {
+  style: 'currency',
+  currency: 'CLP',
+  maximumFractionDigits: 0,
+});
+
+const facturadoTotal = proyectos.reduce((s, p) => s + p.facturado, 0);
+const enCurso = proyectos.filter((p) =>
+  ['En desarrollo', 'Propuesta enviada'].includes(p.estado),
+);
+const bloqueados = proyectos.filter((p) => p.bloqueadoPor);
+const tareasAbiertas = tareas.filter((t) => t.estado !== 'Hecha');
+const tareasBloqueadas = tareas.filter((t) => t.estado === 'Bloqueada');
+
+const ESTADO_CLASE: Record<string, string> = {
+  'En desarrollo': 'bg-blue-100 text-blue-800',
+  Oportunidad: 'bg-gray-100 text-gray-700',
+  'Propuesta enviada': 'bg-amber-100 text-amber-800',
+  'En pausa': 'bg-orange-100 text-orange-800',
+  Entregado: 'bg-emerald-100 text-emerald-800',
+  Cerrado: 'bg-emerald-600 text-white',
+};
+
+const TAREA_CLASE: Record<string, string> = {
+  'Por hacer': 'bg-gray-100 text-gray-700',
+  'En curso': 'bg-blue-100 text-blue-800',
+  Bloqueada: 'bg-red-100 text-red-800',
+  Hecha: 'bg-emerald-100 text-emerald-800',
+};
+
+const aviso = Astro.url.searchParams.get('ok');
+---
+
+<AdminLayout title="Proyectos" activo="proyectos">
+  {error && (
+    <div role="alert" class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4">
+      <p class="text-sm font-medium text-red-900">No se pudieron cargar los proyectos</p>
+      <p class="mt-1 text-sm text-red-800">{error}</p>
+    </div>
+  )}
+
+  {aviso && (
+    <p class="mb-6 rounded-lg bg-emerald-50 px-4 py-2.5 text-sm text-emerald-900">
+      {decodeURIComponent(aviso)}
+    </p>
+  )}
+
+  <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Proyectos</h1>
+  <p class="mt-1 text-sm text-gray-600">
+    {enCurso.length} en curso · {tareasAbiertas.length} tareas abiertas
+  </p>
+
+  <section class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+    {[
+      { label: 'Facturado', valor: CLP.format(facturadoTotal), pie: 'acumulado histórico' },
+      { label: 'En curso', valor: String(enCurso.length), pie: 'proyectos activos' },
+      { label: 'Bloqueados', valor: String(bloqueados.length), pie: 'esperando a un tercero' },
+      { label: 'Tareas trabadas', valor: String(tareasBloqueadas.length), pie: `de ${tareasAbiertas.length} abiertas` },
+    ].map((t) => (
+      <div class="rounded-xl border border-gray-200 bg-white p-4">
+        <p class="text-xs font-medium uppercase tracking-wider text-gray-500">{t.label}</p>
+        <p class="mt-1 text-2xl font-semibold tabular-nums text-gray-900">{t.valor}</p>
+        <p class="mt-0.5 text-xs text-gray-500">{t.pie}</p>
+      </div>
+    ))}
+  </section>
+
+  {bloqueados.length > 0 && (
+    <div class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
+      <p class="text-sm font-medium text-amber-900">Lo primero de la revisión semanal</p>
+      <ul class="mt-2 space-y-1 text-sm text-amber-800">
+        {bloqueados.map((p) => (
+          <li><span class="font-medium">{p.proyecto}</span> — {p.bloqueadoPor}</li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <div class="mt-8 space-y-5">
+    {proyectos.map((p) => (
+      <article class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+        <header class="flex flex-wrap items-start justify-between gap-3">
+          <div class="min-w-0">
+            <h2 class="text-base font-semibold tracking-tight text-gray-900">{p.proyecto}</h2>
+            <p class="mt-0.5 text-sm text-gray-600">
+              {p.cliente}
+              {p.contraparte && <span class="text-gray-400"> · {p.contraparte}</span>}
+            </p>
+          </div>
+          <div class="flex shrink-0 flex-wrap items-center gap-1.5">
+            <span class={`rounded-full px-2.5 py-0.5 text-xs font-medium ${ESTADO_CLASE[p.estado] ?? 'bg-gray-100 text-gray-700'}`}>
+              {p.estado}
+            </span>
+            {p.tipo && (
+              <span class="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700">{p.tipo}</span>
+            )}
+          </div>
+        </header>
+
+        <dl class="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs text-gray-500">
+          {p.monto > 0 && (
+            <div><dt class="inline">Contrato: </dt><dd class="inline font-medium tabular-nums text-gray-700">{CLP.format(p.monto)}</dd></div>
+          )}
+          {p.facturado > 0 && (
+            <div><dt class="inline">Facturado: </dt><dd class="inline font-medium tabular-nums text-gray-700">{CLP.format(p.facturado)}</dd></div>
+          )}
+          <div><dt class="inline">Avance: </dt><dd class="inline font-medium tabular-nums text-gray-700">{Math.round(p.avance * 100)}%</dd></div>
+        </dl>
+
+        <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
+          <div class="h-full rounded-full bg-emerald-600" style={`width:${Math.round(p.avance * 100)}%`}></div>
+        </div>
+
+        {p.bloqueadoPor && (
+          <p class="mt-4 rounded-lg border-l-2 border-amber-500 bg-amber-50/70 px-3 py-2 text-sm text-gray-800">
+            <span class="font-medium text-amber-900">Bloqueado: </span>{p.bloqueadoPor}
+          </p>
+        )}
+
+        {p.proximoHito && (
+          <p class="mt-3 text-sm text-gray-700">
+            <span class="text-xs font-medium uppercase tracking-wider text-gray-500">Próximo hito · </span>
+            {p.proximoHito}
+          </p>
+        )}
+
+        {p.tareas.length > 0 && (
+          <ul class="mt-4 divide-y divide-gray-100 border-t border-gray-100">
+            {p.tareas.map((t) => (
+              <li class="flex flex-wrap items-center gap-3 py-2.5">
+                <span class={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium ${TAREA_CLASE[t.estado] ?? 'bg-gray-100 text-gray-700'}`}>
+                  {t.estado}
+                </span>
+                <span class:list={['min-w-0 flex-1 text-sm', t.estado === 'Hecha' ? 'text-gray-400 line-through' : 'text-gray-800']}>
+                  {t.tarea}
+                  {t.bloqueadaPor && (
+                    <span class="block text-xs text-gray-500">Trabada por {t.bloqueadaPor}</span>
+                  )}
+                </span>
+                {t.responsable && (
+                  <span class="shrink-0 text-xs text-gray-500">{t.responsable}</span>
+                )}
+                <form method="POST" action="/api/admin/tarea" class="shrink-0">
+                  <input type="hidden" name="id" value={t.id} />
+                  <select
+                    name="estado"
+                    onchange="this.form.requestSubmit()"
+                    class="cursor-pointer rounded-lg border border-gray-200 bg-white px-2 py-1 text-xs text-gray-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none"
+                    aria-label={`Estado de ${t.tarea}`}
+                  >
+                    {['Por hacer', 'En curso', 'Bloqueada', 'Hecha'].map((e) => (
+                      <option value={e} selected={e === t.estado}>{e}</option>
+                    ))}
+                  </select>
+                </form>
+              </li>
+            ))}
+          </ul>
+        )}
+      </article>
+    ))}
+  </div>
+
+  {!error && proyectos.length === 0 && (
+    <p class="mt-10 rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center text-sm text-gray-500">
+      No hay proyectos todavía.
+    </p>
+  )}
+</AdminLayout>
