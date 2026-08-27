@@ -30,3 +30,8 @@ index.html.bak
 # Local env dumps con secretos (no commitear)
 .env.vercel.*
 .env.verify
+
+# Claude Code: se versiona settings.json (config compartida del proyecto);
+# lo local y los worktrees, no.
+.claude/settings.local.json
+.claude/worktrees/
