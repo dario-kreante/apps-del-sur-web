@@ -23,6 +23,7 @@ interface Props {
   mockupUrl: string | null;
   dossier: string;
   senal: Senal;
+  temperatura: string;
   /** Abre la fila de entrada. Se usa en la primera, la que toca hacer. */
   abierta?: boolean;
   /** Texto normalizado sobre el que busca el filtro del cliente. */
@@ -37,7 +38,8 @@ const {
   id, empresa, rubro, contacto, email, telefono, angulo, borrador,
   toques, control, proximaAccion, canal, waHref, mailHref, consultaHref,
   textoConsulta, mockupUrl,
-  dossier, senal, abierta = false, busqueda, segmentos, oculta = false,
+  dossier, senal, temperatura, abierta = false, busqueda, segmentos,
+  oculta = false,
 } = Astro.props;
 
 // Color semántico, independiente del verde de marca.
@@ -49,6 +51,14 @@ const TONO = {
 } as const;
 
 const tono = TONO[senal.tono];
+
+// La temperatura es una dimensión aparte del estado: mide cercanía al cierre,
+// no qué falta hacer. Un lead puede estar listo para enviar y ser frío.
+const TEMP: Record<string, string> = {
+  Caliente: 'bg-red-100 text-red-800',
+  Tibio: 'bg-orange-100 text-orange-800',
+  Frío: 'bg-blue-100 text-blue-700',
+};
 const tieneMensaje = borrador.trim().length > 0;
 const listoParaEnviar = control === 'Aprobado para enviar';
 const yaContactado = toques > 0;
@@ -96,6 +106,7 @@ const accion = yaContactado
   data-lead
   data-buscar={busqueda}
   data-segmentos={segmentos}
+  data-temp={temperatura || 'sin'}
 >
   <summary
     class="flex cursor-pointer list-none items-center gap-3 py-3 pr-3 pl-0 transition-colors hover:bg-gray-50/80"
@@ -110,6 +121,11 @@ const accion = yaContactado
         </span>
       </span>
       <span class="mt-0.5 flex items-center gap-2 text-xs text-gray-500">
+        {temperatura && (
+          <span class={`rounded px-1.5 py-0.5 font-medium ${TEMP[temperatura] ?? 'bg-gray-100 text-gray-600'}`}>
+            {temperatura}
+          </span>
+        )}
         <span class={`rounded px-1.5 py-0.5 font-medium ${tono.chip}`}>{senal.etiqueta}</span>
         <span class="truncate">{rubro}</span>
         <span class="hidden text-gray-400 sm:inline">· {CANAL_LABEL[canal]}</span>

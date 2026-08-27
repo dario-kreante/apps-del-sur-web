@@ -44,6 +44,8 @@ export const F = {
     borrador: 'fldiLrrLWNaO7YMtT',
     ultimoResultado: 'fldGfLgSnjSnommfR',
     control: 'fldLZ4Q9bmpuWlZq6',
+    tipoCorreo: 'fldo40z8g9HzfD7g8',
+    temperatura: 'fld0p9DljRdI6H3fI',
     capturaPresencia: 'fldz0IZtJmzC8D8xp',
     mockup: 'fld6SERtRMUBHWZGX',
   },

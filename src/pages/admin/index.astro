@@ -13,6 +13,11 @@ import {
   waLink,
 } from '../../lib/admin/canales';
 import { SEGMENTOS, evaluar, type SegmentoId } from '../../lib/admin/prioridad';
+import {
+  CAPACIDAD_TOTAL,
+  TONO_MODO,
+  evaluarCapacidad,
+} from '../../lib/admin/capacidad';
 
 export const prerender = false;
 
@@ -20,12 +25,19 @@ const token = airtableToken(serverEnv());
 
 let error: string | null = null;
 let registros: Awaited<ReturnType<typeof listAll>> = [];
+let proyRaw: Awaited<ReturnType<typeof listAll>> = [];
 
 if (!token) {
   error = 'Falta el token de Airtable (AIRTABLE_TOKEN o AIRTABLE_API_KEY).';
 } else {
   try {
-    registros = await listAll(token, TABLES.leads);
+    // Los proyectos se leen acá porque la capacidad de entrega es lo que
+    // decide cuánto empujar el embudo. Sin ese dato, el pipeline se mira solo
+    // a sí mismo y siempre concluye que hay que prospectar más.
+    [registros, proyRaw] = await Promise.all([
+      listAll(token, TABLES.leads),
+      listAll(token, TABLES.proyectos),
+    ]);
   } catch (e) {
     error = e instanceof Error ? e.message : 'Error consultando Airtable.';
   }
@@ -61,6 +73,7 @@ const leads = registros
       mockupUrl: attachmentUrl(r.fields[F.lead.mockup]),
       fechaUltimoContacto: str(r, F.lead.fechaUltimoContacto),
       fechaProximaAccion: str(r, F.lead.fechaProximaAccion),
+      temperatura: selectName(r.fields[F.lead.temperatura]),
       canal: canalSugerido({ email, telefono, respondio }),
     };
     return {
@@ -119,12 +132,19 @@ const filas = leads
     busqueda: sinAcentos(
       [
         l.empresa, l.contacto, l.rubro, l.region, l.comuna,
-        l.etapa, l.email, l.telefono, l.senal.etiqueta,
+        l.etapa, l.email, l.telefono, l.senal.etiqueta, l.temperatura,
       ]
         .filter(Boolean)
         .join(' '),
     ),
   }));
+
+const calientes = leads.filter((l) => l.temperatura === 'Caliente').length;
+const capacidad = evaluarCapacidad(
+  proyRaw.map((r) => ({ estado: selectName(r.fields[F.proyecto.estado]) })),
+  calientes,
+);
+const tonoModo = TONO_MODO[capacidad.modo];
 
 const manuales = leads.filter((l) => l.canal !== 'email').length;
 const porcManual = leads.length ? Math.round((manuales / leads.length) * 100) : 0;
@@ -163,6 +183,30 @@ const aviso = Astro.url.searchParams.get('ok');
       {leads.length} abiertos · {contactados} contactados
     </p>
   </div>
+
+  <!-- La capacidad de entrega manda sobre la velocidad del embudo -->
+  <section
+    class={`mt-5 rounded-xl border ${tonoModo.borde} ${tonoModo.fondo} px-5 py-4`}
+  >
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <span class={`rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase ${tonoModo.chip}`}>
+          {capacidad.modo}
+        </span>
+        <h2 class="text-base font-semibold tracking-tight text-gray-900">
+          {capacidad.titulo}
+        </h2>
+      </div>
+      <p class="text-sm tabular-nums text-gray-600">
+        {capacidad.enEjecucion} en ejecución
+        {capacidad.porCerrar > 0 && <> · {capacidad.porCerrar} por cerrar</>}
+        {' '}· {Math.max(capacidad.libre, 0)} de {CAPACIDAD_TOTAL} cupos libres
+        {' '}· {calientes} {calientes === 1 ? 'caliente' : 'calientes'}
+      </p>
+    </div>
+    <p class="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">{capacidad.regla}</p>
+    <p class="mt-1 text-xs text-gray-600">{capacidad.frios}</p>
+  </section>
 
   <!-- Lo que toca ahora: un nombre, no una lista -->
   {destacado && (
@@ -238,6 +282,23 @@ const aviso = Astro.url.searchParams.get('ok');
       </a>
     ))}
   </nav>
+
+    <div class="flex flex-wrap gap-1.5">
+      {[
+        { id: 'todas', label: 'Toda temperatura' },
+        { id: 'Caliente', label: 'Calientes' },
+        { id: 'Tibio', label: 'Tibios' },
+        { id: 'Frío', label: 'Fríos' },
+      ].map((t) => (
+        <button
+          type="button"
+          data-temp-filtro={t.id}
+          class="inline-flex cursor-pointer items-center rounded-lg border border-gray-200 bg-white px-2.5 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-50"
+        >
+          {t.label}
+        </button>
+      ))}
+    </div>
 
     <div class="relative ml-auto min-w-52 flex-1 sm:max-w-xs sm:flex-none">
       <svg
@@ -337,30 +398,48 @@ const aviso = Astro.url.searchParams.get('ok');
   let segmento =
     new URLSearchParams(location.search).get('ver') ?? tabs.find((t) => t.getAttribute('aria-current'))?.href.split('=')[1] ?? 'todos';
 
+  // La temperatura es un eje independiente del segmento: uno dice qué falta
+  // hacer, el otro qué tan cerca está del cierre. Se combinan con AND.
+  let temperatura = 'todas';
+  const chipsTemp = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('[data-temp-filtro]'),
+  );
+
+  const CLASE_TEMP_ON =
+    'inline-flex cursor-pointer items-center rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors border-gray-900 bg-gray-900 text-white';
+  const CLASE_TEMP_OFF =
+    'inline-flex cursor-pointer items-center rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors border-gray-200 bg-white text-gray-600 hover:bg-gray-50';
+
   function aplicar() {
     const q = sinAcentos(buscador?.value.trim() ?? '');
     let visibles = 0;
 
     for (const fila of filas) {
+      const pasaTemp =
+        temperatura === 'todas' || fila.dataset.temp === temperatura;
       // Buscar ignora el segmento a propósito: si sé a quién busco, no me
-      // importa en qué pestaña quedó clasificado.
-      const coincide = q
+      // importa en qué pestaña quedó clasificado. La temperatura sí se respeta.
+      const pasaBase = q
         ? (fila.dataset.buscar ?? '').includes(q)
         : (fila.dataset.segmentos ?? '').split(' ').includes(segmento);
+      const coincide = pasaBase && pasaTemp;
+
       fila.classList.toggle('hidden', !coincide);
       if (coincide) visibles++;
       // Una fila abierta que se oculta y vuelve deja la lista desprolija.
       if (!coincide) fila.removeAttribute('open');
     }
 
-    hero?.classList.toggle('hidden', q.length > 0);
+    hero?.classList.toggle('hidden', q.length > 0 || temperatura !== 'todas');
 
+    const filtrando = q.length > 0 || temperatura !== 'todas';
     if (resultados) {
-      resultados.classList.toggle('hidden', q.length === 0);
+      resultados.classList.toggle('hidden', !filtrando);
+      const donde = q ? ', en todo el pipeline' : '';
       resultados.textContent =
         visibles === 1
-          ? '1 lead encontrado, en todo el pipeline.'
-          : `${visibles} leads encontrados, en todo el pipeline.`;
+          ? `1 lead${donde}.`
+          : `${visibles} leads${donde}.`;
     }
 
     if (vacio) {
@@ -368,8 +447,24 @@ const aviso = Astro.url.searchParams.get('ok');
       vacio.classList.toggle('hidden', !nada);
       vacio.textContent = q
         ? `Ningún lead coincide con "${buscador?.value.trim()}".`
-        : 'Nada en este segmento.';
+        : temperatura !== 'todas'
+          ? `No hay leads ${temperatura.toLowerCase()}s en este segmento.`
+          : 'Nada en este segmento.';
     }
+  }
+
+  for (const chip of chipsTemp) {
+    chip.addEventListener('click', () => {
+      temperatura = chip.dataset.tempFiltro ?? 'todas';
+      for (const c of chipsTemp) {
+        c.className =
+          c === chip && temperatura !== 'todas' ? CLASE_TEMP_ON : CLASE_TEMP_OFF;
+      }
+      if (temperatura === 'todas') {
+        chipsTemp[0].className = CLASE_TEMP_ON;
+      }
+      aplicar();
+    });
   }
 
   buscador?.addEventListener('input', aplicar);
