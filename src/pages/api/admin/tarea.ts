@@ -1,12 +1,17 @@
 import type { APIRoute } from 'astro';
-import { F, TABLES, updateRecord } from '../../../lib/admin/airtable';
+import {
+  F,
+  TABLES,
+  airtableToken,
+  updateRecord,
+} from '../../../lib/admin/airtable';
 
 export const prerender = false;
 
 const ESTADOS = new Set(['Por hacer', 'En curso', 'Bloqueada', 'Hecha']);
 
 export const POST: APIRoute = async ({ request, redirect }) => {
-  const token = import.meta.env.AIRTABLE_TOKEN;
+  const token = airtableToken(import.meta.env);
   const form = await request.formData();
   const id = String(form.get('id') ?? '');
   const estado = String(form.get('estado') ?? '');

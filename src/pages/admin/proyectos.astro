@@ -1,17 +1,23 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
-import { F, TABLES, listAll, selectName } from '../../lib/admin/airtable';
+import {
+  F,
+  TABLES,
+  airtableToken,
+  listAll,
+  selectName,
+} from '../../lib/admin/airtable';
 
 export const prerender = false;
 
-const token = import.meta.env.AIRTABLE_TOKEN;
+const token = airtableToken(import.meta.env);
 
 let error: string | null = null;
 let proyRaw: Awaited<ReturnType<typeof listAll>> = [];
 let tareasRaw: Awaited<ReturnType<typeof listAll>> = [];
 
 if (!token) {
-  error = 'Falta la variable de entorno AIRTABLE_TOKEN.';
+  error = 'Falta el token de Airtable (AIRTABLE_TOKEN o AIRTABLE_API_KEY).';
 } else {
   try {
     [proyRaw, tareasRaw] = await Promise.all([

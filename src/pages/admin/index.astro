@@ -4,6 +4,7 @@ import LeadCard from '../../components/admin/LeadCard.astro';
 import {
   F,
   TABLES,
+  airtableToken,
   attachmentUrl,
   listAll,
   selectName,
@@ -12,13 +13,13 @@ import { canalSugerido, mailtoLink, waLink, type Canal } from '../../lib/admin/c
 
 export const prerender = false;
 
-const token = import.meta.env.AIRTABLE_TOKEN;
+const token = airtableToken(import.meta.env);
 
 let error: string | null = null;
 let registros: Awaited<ReturnType<typeof listAll>> = [];
 
 if (!token) {
-  error = 'Falta la variable de entorno AIRTABLE_TOKEN.';
+  error = 'Falta el token de Airtable (AIRTABLE_TOKEN o AIRTABLE_API_KEY).';
 } else {
   try {
     registros = await listAll(token, TABLES.leads);

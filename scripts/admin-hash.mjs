@@ -21,4 +21,4 @@ const hash = scryptSync(password, salt, 32).toString('hex');
 console.log('\nVariables para Vercel (Production, Preview y Development):\n');
 console.log(`ADMIN_PASSWORD_HASH=${salt}:${hash}`);
 console.log(`ADMIN_SESSION_SECRET=${randomBytes(32).toString('hex')}`);
-console.log('\nFaltan además ADMIN_USER y AIRTABLE_TOKEN.\n');
+console.log('\nFalta además ADMIN_USER, y el token de Airtable como AIRTABLE_TOKEN (o reutilizar AIRTABLE_API_KEY si se le amplía el alcance).\n');

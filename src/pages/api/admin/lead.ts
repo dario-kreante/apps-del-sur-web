@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import {
   F,
   TABLES,
+  airtableToken,
   createRecord,
   listAll,
   selectName,
@@ -30,10 +31,10 @@ const CANAL_ACTIVIDAD: Record<string, string> = {
 };
 
 export const POST: APIRoute = async ({ request, redirect }) => {
-  const token = import.meta.env.AIRTABLE_TOKEN;
+  const token = airtableToken(import.meta.env);
   if (!token) {
     return redirect(
-      `/admin?ok=${encodeURIComponent('Falta AIRTABLE_TOKEN en el servidor.')}`,
+      `/admin?ok=${encodeURIComponent('Falta el token de Airtable en el servidor.')}`,
       302,
     );
   }

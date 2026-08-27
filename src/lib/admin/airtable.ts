@@ -90,6 +90,23 @@ export const F = {
   },
 } as const;
 
+/**
+ * El token de Airtable. Acepta dos nombres a propósito:
+ *
+ * - `AIRTABLE_TOKEN` — token propio del panel. Es lo preferible: el endpoint
+ *   público del assessment y el panel no comparten credencial, así que un fallo
+ *   en el formulario público no expone el pipeline.
+ * - `AIRTABLE_API_KEY` — el token que ya existía para el assessment. Sirve si
+ *   se le amplía el alcance a la base del pipeline.
+ *
+ * Si están los dos, gana el específico del panel.
+ */
+export function airtableToken(
+  env: Record<string, string | undefined>,
+): string | undefined {
+  return env.AIRTABLE_TOKEN || env.AIRTABLE_API_KEY || undefined;
+}
+
 export interface AirtableRecord {
   id: string;
   createdTime: string;
