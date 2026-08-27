@@ -78,21 +78,35 @@ export function gmailLink(
 export type Canal = 'email' | 'whatsapp' | 'llamada' | 'manual';
 
 /**
- * Qué canal corresponde a este lead. El orden refleja el costo real por toque:
- * el correo se automatiza entero, WhatsApp necesita una persona, el teléfono
- * necesita una persona en horario hábil.
+ * Qué canal corresponde a este lead.
+ *
+ * POLÍTICA: el primer contacto en frío va SIEMPRE por correo.
+ *
+ * WhatsApp no se usa para prospectar, por tres razones que se refuerzan entre
+ * sí: es un canal personal donde nadie pidió recibir ofertas; la política de
+ * WhatsApp Business prohíbe el mensaje comercial no solicitado y lo castiga
+ * baneando el número —el mismo número del que depende una línea de negocio de
+ * la empresa—; y contradice el producto que vendemos, que existe para atender
+ * a quien eligió escribir.
+ *
+ * Por eso WhatsApp se habilita únicamente cuando el lead YA respondió. Ahí deja
+ * de ser intrusión y pasa a ser la conversación que él abrió. El primer correo
+ * ofrece el número; el lead decide si lo usa.
+ *
+ * La llamada queda como investigación, no como venta: sirve para preguntar el
+ * nombre y el correo de quien corresponde, no para ofrecer nada por teléfono.
  */
 export function canalSugerido(lead: {
   email?: string;
   telefono?: string;
+  respondio?: boolean;
 }): Canal {
+  const tel = normalizarTelefono(lead.telefono);
+  // Los móviles chilenos son 56 9 XXXXXXXX. Un fijo no tiene WhatsApp.
+  const esMovil = Boolean(tel && /^569\d{8}$/.test(tel));
+
+  if (lead.respondio && esMovil) return 'whatsapp';
   if (lead.email) return 'email';
-  if (lead.telefono) {
-    const tel = normalizarTelefono(lead.telefono);
-    // Los móviles chilenos son 56 9 XXXXXXXX: nueve dígitos tras el 56.
-    // Un fijo no tiene WhatsApp, así que ese lead solo se abre llamando.
-    if (tel && /^569\d{8}$/.test(tel)) return 'whatsapp';
-    return 'llamada';
-  }
+  if (tel) return 'llamada';
   return 'manual';
 }

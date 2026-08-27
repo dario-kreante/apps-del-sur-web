@@ -34,6 +34,7 @@ const leads = registros
     const email = str(r, F.lead.email);
     const telefono = str(r, F.lead.telefono);
     const borrador = str(r, F.lead.borrador);
+    const respondio = Boolean(r.fields[F.lead.respondio]);
     const base = {
       id: r.id,
       empresa: str(r, F.lead.empresa),
@@ -47,14 +48,14 @@ const leads = registros
       angulo: str(r, F.lead.valorAporte),
       borrador,
       toques: Number(r.fields[F.lead.toques] ?? 0),
-      respondio: Boolean(r.fields[F.lead.respondio]),
+      respondio,
       control: selectName(r.fields[F.lead.control]),
       proximaAccion: str(r, F.lead.proximaAccion),
       dossier: str(r, F.lead.dossier),
       mockupUrl: attachmentUrl(r.fields[F.lead.mockup]),
       fechaUltimoContacto: str(r, F.lead.fechaUltimoContacto),
       fechaProximaAccion: str(r, F.lead.fechaProximaAccion),
-      canal: canalSugerido({ email, telefono }),
+      canal: canalSugerido({ email, telefono, respondio }),
     };
     return {
       ...base,

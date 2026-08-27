@@ -117,7 +117,7 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
       estado: 'trabado',
       orden: 6,
       etiqueta: 'Sin canal',
-      motivo: 'No hay correo ni teléfono. Hay que conseguir por dónde escribirle.',
+      motivo: 'No hay correo ni teléfono. Hay que conseguir un correo nominal.',
       tono: 'neutro',
     };
   }
@@ -129,7 +129,9 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
       estado: 'por-llamar',
       orden: 5,
       etiqueta: 'Falta el nombre',
-      motivo: 'Solo hay un contacto genérico. Llamar y preguntar con quién hablar.',
+      motivo:
+        'Llamar solo para preguntar a nombre de quién y a qué correo escribir. ' +
+        'No es una llamada de venta.',
       tono: 'neutro',
     };
   }
@@ -163,8 +165,10 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
     return {
       estado: 'por-llamar',
       orden: 5,
-      etiqueta: 'Necesita una llamada',
-      motivo: 'Fijo sin WhatsApp: la llamada es la única vía.',
+      etiqueta: 'Falta el correo',
+      motivo:
+        'No hay correo nominal y el primer contacto va por ahí. Llamar para ' +
+        'pedirlo, no para ofrecer nada.',
       tono: 'neutro',
     };
   }
