@@ -208,7 +208,7 @@ const aviso = Astro.url.searchParams.get('ok');
                 {t.responsable && (
                   <span class="shrink-0 text-xs text-gray-500">{t.responsable}</span>
                 )}
-                <form method="POST" action="/api/admin/tarea" class="shrink-0">
+                <form method="POST" action="/admin/acciones/tarea/" class="shrink-0">
                   <input type="hidden" name="id" value={t.id} />
                   <select
                     name="estado"

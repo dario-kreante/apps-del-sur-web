@@ -1,0 +1,3 @@
+# Nunca subir entornos locales: el build usa las variables de Vercel.
+.env
+.env.*
