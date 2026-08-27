@@ -18,6 +18,8 @@ interface Props {
   canal: Canal;
   waHref: string | null;
   mailHref: string | null;
+  consultaHref: string | null;
+  textoConsulta: string;
   mockupUrl: string | null;
   dossier: string;
   senal: Senal;
@@ -33,7 +35,8 @@ interface Props {
 
 const {
   id, empresa, rubro, contacto, email, telefono, angulo, borrador,
-  toques, control, proximaAccion, canal, waHref, mailHref, mockupUrl,
+  toques, control, proximaAccion, canal, waHref, mailHref, consultaHref,
+  textoConsulta, mockupUrl,
   dossier, senal, abierta = false, busqueda, segmentos, oculta = false,
 } = Astro.props;
 
@@ -52,6 +55,7 @@ const listoParaEnviar = control === 'Aprobado para enviar';
 const CANAL_LABEL: Record<Canal, string> = {
   email: 'correo',
   whatsapp: 'WhatsApp',
+  consulta: 'pedir correo',
   llamada: 'teléfono',
   manual: 'sin canal',
 };
@@ -62,9 +66,11 @@ const accion =
     ? { href: mailHref, label: 'Gmail', externa: true }
     : canal === 'whatsapp' && waHref && tieneMensaje
       ? { href: waHref, label: 'WhatsApp', externa: true }
-      : canal === 'llamada' && telefono
-        ? { href: `tel:${telefono.replace(/\s/g, '')}`, label: 'Llamar', externa: false }
-        : null;
+      : canal === 'consulta' && consultaHref
+        ? { href: consultaHref, label: 'Pedir correo', externa: true }
+        : canal === 'llamada' && telefono
+          ? { href: `tel:${telefono.replace(/\s/g, '')}`, label: 'Llamar', externa: false }
+          : null;
 ---
 
 <details
@@ -128,6 +134,20 @@ const accion =
           Dónde aportamos valor
         </p>
         <p class="mt-1 text-sm leading-relaxed text-gray-800">{angulo}</p>
+      </div>
+    )}
+
+    {canal === 'consulta' && (
+      <div>
+        <p class="mb-1.5 text-[11px] font-medium tracking-wider text-gray-500 uppercase">
+          Consulta por WhatsApp · un solo mensaje, sin insistir
+        </p>
+        <pre
+          class="rounded-lg border border-amber-200 bg-amber-50/60 p-3 text-sm leading-relaxed whitespace-pre-wrap text-gray-800">{textoConsulta}</pre>
+        <p class="mt-1.5 text-xs text-gray-500">
+          Lo genera el panel y no se edita: así no puede convertirse en una propuesta.
+          El correo de abajo es el que va después, cuando den la dirección.
+        </p>
       </div>
     )}
 

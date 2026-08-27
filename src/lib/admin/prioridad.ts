@@ -149,18 +149,20 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
     };
   }
 
-  // 8. Todo listo salvo la decisión de mandarlo.
-  if (!aprobado && lead.toques === 0) {
+  // 8. Hay mensaje, pero no hay correo adonde mandarlo. Ese es el obstáculo
+  //    real, y decir "falta aprobar" acá sería mentir sobre qué falta.
+  if (lead.canal === 'consulta') {
     return {
-      estado: 'por-aprobar',
-      orden: 4,
-      etiqueta: 'Falta aprobar',
-      motivo: 'El mensaje está escrito. Falta tu visto bueno para enviarlo.',
-      tono: 'accion',
+      estado: 'por-llamar',
+      orden: 5,
+      etiqueta: 'Pedir el correo',
+      motivo:
+        'No publican correo. Excepción: un solo WhatsApp diciendo de dónde ' +
+        'salió el número y pidiendo una dirección. Sin propuesta y sin insistir.',
+      tono: 'neutro',
     };
   }
 
-  // 9. Se abre llamando. No es urgente, pero tampoco avanza solo.
   if (lead.canal === 'llamada') {
     return {
       estado: 'por-llamar',
@@ -170,6 +172,17 @@ export function evaluar(lead: LeadEvaluable, hoy = new Date()): Senal {
         'No hay correo nominal y el primer contacto va por ahí. Llamar para ' +
         'pedirlo, no para ofrecer nada.',
       tono: 'neutro',
+    };
+  }
+
+  // 9. Todo listo salvo la decisión de mandarlo.
+  if (!aprobado && lead.toques === 0) {
+    return {
+      estado: 'por-aprobar',
+      orden: 4,
+      etiqueta: 'Falta aprobar',
+      motivo: 'El mensaje está escrito. Falta tu visto bueno para enviarlo.',
+      tono: 'accion',
     };
   }
 

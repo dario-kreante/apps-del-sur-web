@@ -75,7 +75,7 @@ export function gmailLink(
   return `https://mail.google.com/mail/?${qs}`;
 }
 
-export type Canal = 'email' | 'whatsapp' | 'llamada' | 'manual';
+export type Canal = 'email' | 'whatsapp' | 'consulta' | 'llamada' | 'manual';
 
 /**
  * Qué canal corresponde a este lead.
@@ -107,6 +107,53 @@ export function canalSugerido(lead: {
 
   if (lead.respondio && esMovil) return 'whatsapp';
   if (lead.email) return 'email';
+  // Sin correo y con móvil publicado: la excepción de consulta (ver abajo).
+  if (esMovil) return 'consulta';
   if (tel) return 'llamada';
   return 'manual';
+}
+
+/** Primer nombre utilizable de un campo que puede traer cargos y varias personas. */
+function primerNombre(contacto: string): string {
+  const limpio = contacto
+    .split(/[·|,;/]/)[0]
+    .replace(/\([^)]*\)/g, '')
+    .trim();
+  const token = limpio.split(/\s+/)[0] ?? '';
+  return /^[A-Za-zÁÉÍÓÚÑáéíóúñ]{2,}$/.test(token) ? token : '';
+}
+
+/**
+ * Mensaje de consulta por WhatsApp: la única excepción a "el primer contacto va
+ * por correo", y solo cuando la empresa no publica ningún correo.
+ *
+ * No vende nada. Dice de dónde salió el número, pide una dirección, y explica
+ * por qué prefiere el correo. Un mensaje, sin insistir: si no contestan, esa
+ * es la respuesta.
+ *
+ * Se genera acá, en código, y NO sale del campo de borrador a propósito. Un
+ * texto editable termina convirtiéndose en pitch tarde o temprano; uno generado
+ * no puede.
+ */
+export function mensajeConsulta(empresa: string, contacto: string): string {
+  const nombre = primerNombre(contacto);
+  const saludo = nombre ? `Hola ${nombre}, buen día.` : 'Buen día.';
+  return `${saludo} Soy Darío Ramírez, de Apps del Sur, en Talca.
+
+Encontré este número publicado como contacto de ${empresa} y le escribo por acá porque no encontré un correo.
+
+No quiero ocuparle el chat con una propuesta: ¿a qué dirección se la puedo enviar? Prefiero mandársela por correo, donde la pueda leer con calma.
+
+Gracias.`;
+}
+
+/** Link de WhatsApp para la consulta, con el texto generado y no el borrador. */
+export function waConsultaLink(
+  telefono: string | undefined,
+  empresa: string,
+  contacto: string,
+): string | null {
+  const tel = normalizarTelefono(telefono);
+  if (!tel) return null;
+  return `https://wa.me/${tel}?text=${encodeURIComponent(mensajeConsulta(empresa, contacto))}`;
 }

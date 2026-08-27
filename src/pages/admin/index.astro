@@ -5,7 +5,13 @@ import {
   F, TABLES, airtableToken, attachmentUrl, listAll, selectName,
 } from '../../lib/admin/airtable';
 import { serverEnv } from '../../lib/admin/env';
-import { canalSugerido, gmailLink, waLink } from '../../lib/admin/canales';
+import {
+  canalSugerido,
+  gmailLink,
+  mensajeConsulta,
+  waConsultaLink,
+  waLink,
+} from '../../lib/admin/canales';
 import { SEGMENTOS, evaluar, type SegmentoId } from '../../lib/admin/prioridad';
 
 export const prerender = false;
@@ -61,6 +67,8 @@ const leads = registros
       ...base,
       waHref: waLink(telefono, borrador),
       mailHref: gmailLink(email, borrador),
+      consultaHref: waConsultaLink(telefono, base.empresa, base.contacto),
+      textoConsulta: mensajeConsulta(base.empresa, base.contacto),
       senal: evaluar(base),
     };
   })
