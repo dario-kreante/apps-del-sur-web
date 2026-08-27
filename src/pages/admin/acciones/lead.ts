@@ -62,18 +62,17 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   let mensaje = '';
 
   try {
-    if (accion === 'registrar-toque') {
-      // La compuerta se verifica en el servidor: el disabled del botón es
-      // comodidad visual, no una garantía.
-      if (selectName(actual.fields[F.lead.control]) !== 'Aprobado para enviar') {
-        return redirect(
-          `/admin?ok=${encodeURIComponent(
-            `${empresa}: la compuerta no está en "Aprobado para enviar".`,
-          )}`,
-          302,
-        );
-      }
-
+    if (accion === 'aprobar') {
+      // La compuerta la mueve el usuario, nunca un agente. Este endpoint corre
+      // por un click suyo en el panel, así que es él quien la mueve.
+      await updateRecord(token, TABLES.leads, id, {
+        [F.lead.control]: 'Aprobado para enviar',
+      });
+      mensaje = `${empresa}: aprobado para enviar.`;
+    } else if (accion === 'registrar-toque') {
+      // Sin compuerta: esta acción no envía nada, sólo anota que el contacto
+      // ya ocurrió. Bloquear el registro por falta de aprobación obligaba a
+      // que el panel mintiera sobre lo que de verdad pasó.
       const toques = Number(actual.fields[F.lead.toques] ?? 0) + 1;
       const etapaActual = selectName(actual.fields[F.lead.etapa]);
       const primero = String(actual.fields[F.lead.fechaPrimerContacto] ?? '');
