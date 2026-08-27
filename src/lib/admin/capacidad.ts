@@ -11,8 +11,49 @@
  * deja de depender de la sensación del día.
  */
 
-/** Proyectos simultáneos que se pueden entregar bien. Subirlo miente sobre la realidad. */
-export const CAPACIDAD_TOTAL = 2;
+/**
+ * Valor de arranque, solo por si la tabla Capacidad no responde.
+ *
+ * La capacidad real NO vive acá: vive en Airtable, como serie con fecha de
+ * vigencia y motivo. No es un número fijo — sube cuando mejoran los agentes,
+ * cuando mejora la práctica de correrlos en paralelo, o cuando entra gente
+ * nueva. Tenerlo en el código obligaría a un deploy para reconocer algo que
+ * cambia por sí solo, y peor: haría invisible el historial de por qué cambió.
+ */
+export const CAPACIDAD_POR_DEFECTO = 2;
+
+export interface Vigencia {
+  total: number;
+  operadores: number;
+  porOperador: number;
+  desde: string;
+}
+
+/** La fila vigente: la más reciente cuya fecha ya pasó. */
+export function capacidadVigente(
+  filas: { desde: string; operadores: number; porOperador: number }[],
+  hoy = new Date(),
+): Vigencia {
+  const iso = hoy.toISOString().slice(0, 10);
+  const vigentes = filas
+    .filter((f) => f.desde && f.desde <= iso)
+    .sort((a, b) => b.desde.localeCompare(a.desde));
+  const f = vigentes[0];
+  if (!f) {
+    return {
+      total: CAPACIDAD_POR_DEFECTO,
+      operadores: 1,
+      porOperador: CAPACIDAD_POR_DEFECTO,
+      desde: '',
+    };
+  }
+  return {
+    total: Math.max(f.operadores * f.porOperador, 0),
+    operadores: f.operadores,
+    porOperador: f.porOperador,
+    desde: f.desde,
+  };
+}
 
 /** Calientes que conviene sostener esperando cupo. Menos deja hueco; más se enfrían. */
 export const CALIENTES_OBJETIVO = { min: 1, max: 3 };
@@ -33,13 +74,21 @@ export interface Capacidad {
 export function evaluarCapacidad(
   proyectos: { estado: string }[],
   calientes = 0,
+  total = CAPACIDAD_POR_DEFECTO,
 ): Capacidad {
   const enEjecucion = proyectos.filter((p) => p.estado === 'En desarrollo').length;
   // Una propuesta enviada ya reserva cupo: si entra, entra con fecha.
   const porCerrar = proyectos.filter((p) => p.estado === 'Propuesta enviada').length;
-  const libre = CAPACIDAD_TOTAL - enEjecucion - porCerrar;
+  const libre = total - enEjecucion - porCerrar;
 
-  const modo: Modo = libre >= 2 ? 'abierto' : libre === 1 ? 'selectivo' : 'cerrado';
+  // El umbral es relativo: con capacidad 4, dos cupos libres no es "agenda
+  // libre". Abierto es tener la mitad o más disponible.
+  const modo: Modo =
+    libre >= Math.max(Math.ceil(total / 2), 2)
+      ? 'abierto'
+      : libre >= 1
+        ? 'selectivo'
+        : 'cerrado';
 
   const faltanCalientes = calientes < CALIENTES_OBJETIVO.min;
   const sobranCalientes = calientes > CALIENTES_OBJETIVO.max;

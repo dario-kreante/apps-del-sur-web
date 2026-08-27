@@ -14,6 +14,7 @@ export const TABLES = {
   actividades: 'tblCp4LE92jo3PNkh',
   proyectos: 'tblgh3n1thYLPRJ11',
   tareas: 'tblE37PCZGPtWHQg9',
+  capacidad: 'tbld1wCbTEG8cThYG',
 } as const;
 
 export const F = {
@@ -79,6 +80,13 @@ export const F = {
     bloqueadoPor: 'fldmpHT61wrI33zHu',
     notas: 'fldPf9I0qrITzDz2q',
     origen: 'fldMypdFtKrZbfm6O',
+  },
+  capacidad: {
+    vigenteDesde: 'fldY5Jx8jzdCgL3Fk',
+    operadores: 'fldd5hNryDcVJtiDK',
+    proyectosPorOperador: 'fldaqgD1HqcgKvCBY',
+    motivo: 'fldNWD31JUBc85SkR',
+    total: 'fldOmE8isnBwV1j5Q',
   },
   tarea: {
     tarea: 'fldWlOQ0SRjYemyj0',

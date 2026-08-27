@@ -14,8 +14,8 @@ import {
 } from '../../lib/admin/canales';
 import { SEGMENTOS, evaluar, type SegmentoId } from '../../lib/admin/prioridad';
 import {
-  CAPACIDAD_TOTAL,
   TONO_MODO,
+  capacidadVigente,
   evaluarCapacidad,
 } from '../../lib/admin/capacidad';
 
@@ -26,6 +26,7 @@ const token = airtableToken(serverEnv());
 let error: string | null = null;
 let registros: Awaited<ReturnType<typeof listAll>> = [];
 let proyRaw: Awaited<ReturnType<typeof listAll>> = [];
+let capRaw: Awaited<ReturnType<typeof listAll>> = [];
 
 if (!token) {
   error = 'Falta el token de Airtable (AIRTABLE_TOKEN o AIRTABLE_API_KEY).';
@@ -34,9 +35,10 @@ if (!token) {
     // Los proyectos se leen acá porque la capacidad de entrega es lo que
     // decide cuánto empujar el embudo. Sin ese dato, el pipeline se mira solo
     // a sí mismo y siempre concluye que hay que prospectar más.
-    [registros, proyRaw] = await Promise.all([
+    [registros, proyRaw, capRaw] = await Promise.all([
       listAll(token, TABLES.leads),
       listAll(token, TABLES.proyectos),
+      listAll(token, TABLES.capacidad),
     ]);
   } catch (e) {
     error = e instanceof Error ? e.message : 'Error consultando Airtable.';
@@ -140,9 +142,17 @@ const filas = leads
   }));
 
 const calientes = leads.filter((l) => l.temperatura === 'Caliente').length;
+const vigencia = capacidadVigente(
+  capRaw.map((r) => ({
+    desde: String(r.fields[F.capacidad.vigenteDesde] ?? ''),
+    operadores: Number(r.fields[F.capacidad.operadores] ?? 0),
+    porOperador: Number(r.fields[F.capacidad.proyectosPorOperador] ?? 0),
+  })),
+);
 const capacidad = evaluarCapacidad(
   proyRaw.map((r) => ({ estado: selectName(r.fields[F.proyecto.estado]) })),
   calientes,
+  vigencia.total,
 );
 const tonoModo = TONO_MODO[capacidad.modo];
 
@@ -200,12 +210,20 @@ const aviso = Astro.url.searchParams.get('ok');
       <p class="text-sm tabular-nums text-gray-600">
         {capacidad.enEjecucion} en ejecución
         {capacidad.porCerrar > 0 && <> · {capacidad.porCerrar} por cerrar</>}
-        {' '}· {Math.max(capacidad.libre, 0)} de {CAPACIDAD_TOTAL} cupos libres
+        {' '}· {Math.max(capacidad.libre, 0)} de {vigencia.total} cupos libres
         {' '}· {calientes} {calientes === 1 ? 'caliente' : 'calientes'}
       </p>
     </div>
     <p class="mt-2 max-w-3xl text-sm leading-relaxed text-gray-700">{capacidad.regla}</p>
     <p class="mt-1 text-xs text-gray-600">{capacidad.frios}</p>
+    <p class="mt-2 border-t border-gray-900/5 pt-2 text-xs text-gray-500">
+      Capacidad {vigencia.total} = {vigencia.operadores}
+      {vigencia.operadores === 1 ? ' operador' : ' operadores'} × {vigencia.porOperador}
+      {vigencia.porOperador === 1 ? ' proyecto' : ' proyectos'}
+      {vigencia.desde && <> · vigente desde {vigencia.desde}</>}. Sube cuando mejoran
+      los agentes, la práctica de correrlos en paralelo, o entra gente nueva —
+      se cambia en la tabla Capacidad, con su motivo.
+    </p>
   </section>
 
   <!-- Lo que toca ahora: un nombre, no una lista -->
