@@ -146,7 +146,13 @@ async function call(
   return res.json();
 }
 
-/** Trae todas las páginas. El pipeline es chico; no vale la pena paginar en la UI. */
+/**
+ * Trae todas las páginas. El pipeline es chico; no vale la pena paginar en la UI.
+ *
+ * `returnFieldsByFieldId` es obligatorio, no una preferencia: sin él la API
+ * devuelve los campos indexados por NOMBRE, y como acá todo se lee por ID el
+ * panel dibujaría tarjetas completamente vacías sin dar ningún error.
+ */
 export async function listAll(
   token: string,
   table: string,
@@ -155,12 +161,27 @@ export async function listAll(
   const out: AirtableRecord[] = [];
   let offset: string | undefined;
   do {
-    const qs = new URLSearchParams({ pageSize: '100', ...params });
+    const qs = new URLSearchParams({
+      pageSize: '100',
+      returnFieldsByFieldId: 'true',
+      ...params,
+    });
     if (offset) qs.set('offset', offset);
     const data = await call(token, `${table}?${qs}`);
     out.push(...(data.records ?? []));
     offset = data.offset;
   } while (offset);
+
+  // Si algún día la API deja de respetar el parámetro, es mejor un error claro
+  // que diez tarjetas en blanco que parecen un problema de datos.
+  const muestra = out.find((r) => Object.keys(r.fields).length > 0);
+  if (muestra && !Object.keys(muestra.fields).some((k) => k.startsWith('fld'))) {
+    throw new AirtableError(
+      'Airtable devolvió los campos por nombre y no por ID. El panel los lee por ID.',
+      500,
+    );
+  }
+
   return out;
 }
 
