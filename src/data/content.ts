@@ -113,10 +113,10 @@ export const solutions = {
     },
     {
       icon: 'sparkle',
-      name: 'Consultoría IA (Claude + Codex)',
+      name: 'IA para quien dirige',
       description:
-        'Diagnóstico e implementación multi-modelo: Claude (Anthropic) para análisis y razonamiento, Codex/GPT (OpenAI) para integración con Microsoft 365. Elegimos la herramienta correcta para cada caso.',
-      href: '/claude-ai-chile/',
+        'De la oportunidad al sistema funcionando. Conversemos sobre dónde puede generar valor la IA en tu empresa.',
+      href: '#ia',
     },
   ],
   whyLocalTitle: '¿Por qué elegir un software local?',
@@ -292,17 +292,17 @@ export const contactForm = {
 } as const;
 
 export const claudePartner = {
-  badge: 'Potenciado por IA',
-  title: 'Desarrollo asistido por IA para software a medida',
+  badge: 'De la oportunidad al sistema funcionando',
+  title: 'Potenciamos a líderes y equipos directivos para entender, decidir y ejecutar con inteligencia artificial',
   description:
-    'Usamos Claude (Anthropic) y Codex (OpenAI) para acelerar diagnóstico, arquitectura, desarrollo y pruebas. Trabajamos multi-modelo: elegimos la herramienta correcta para cada caso, no la de moda.',
+    'Si diriges una empresa y la IA está en la mesa sin hoja de ruta, partimos por esa conversación: dónde hay valor, qué conviene primero y qué no vale la pena. Después, si hay un caso, lo construimos.',
   bullets: [
-    'Entregar software custom en semanas, no meses',
-    'Ofrecer desarrollo a medida a precio accesible',
-    'Integrar inteligencia artificial directamente en su software',
+    'Dónde hay valor',
+    'Qué conviene primero',
+    'Qué no vale la pena',
   ],
-  cta: 'Conocer más sobre IA aplicada',
-  ctaHref: '/claude-ai-chile/',
+  cta: 'Conversemos sobre dónde puede generar valor la IA en tu empresa',
+  ctaHref: '#contacto',
 } as const;
 
 export const codexChile = {
