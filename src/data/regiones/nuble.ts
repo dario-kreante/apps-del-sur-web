@@ -109,7 +109,7 @@ export const nuble: RegionData = {
     },
     {
       q: '¿Cuánto cuesta esto si no consigo fondo?',
-      a: 'Los agentes IA por WhatsApp parten en $80K mensuales y llegan a $250K según el agente, sin instalación ni desarrollo previo — es la opción de menor fricción cuando no hay fondo a la vista. Un sistema a medida es otra escala: se cotiza contra el alcance real después del diagnóstico, que no tiene costo.',
+      a: 'Hay camino igual. Los agentes IA por WhatsApp se contratan como suscripción mensual, sin instalación ni desarrollo previo: es la opción de menor fricción cuando no hay fondo a la vista. Un sistema a medida es otra escala. En ambos casos la propuesta se arma contra el alcance real después del diagnóstico, que no tiene costo.',
     },
   ],
 };

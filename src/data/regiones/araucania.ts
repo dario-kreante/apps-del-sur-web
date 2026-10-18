@@ -97,7 +97,7 @@ export const araucania: RegionData = {
     },
     {
       q: 'Tengo un hotel o cabañas. ¿Qué resuelve esto en temporada alta?',
-      a: 'La Araucanía recibe del orden de 4,5 millones de turistas al año y la operación se concentra en pocos meses. El cuello de botella típico es la reserva: consultas por WhatsApp a toda hora, disponibilidad en una planilla y sobreventas cuando entra volumen. Un agente de agendamiento por WhatsApp responde y reserva solo, 24/7, desde $80K mensuales. Es lo que más rápido se nota en temporada.',
+      a: 'La Araucanía recibe del orden de 4,5 millones de turistas al año y la operación se concentra en pocos meses. El cuello de botella típico es la reserva: consultas por WhatsApp a toda hora, disponibilidad en una planilla y sobreventas cuando entra volumen. Un agente de agendamiento por WhatsApp responde y reserva solo, 24/7, como suscripción mensual. Es lo que más rápido se nota en temporada.',
     },
     {
       q: '¿Y para gastronomía?',

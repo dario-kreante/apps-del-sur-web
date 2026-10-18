@@ -105,7 +105,7 @@ export const ohiggins: RegionData = {
     },
     {
       q: 'Tengo turismo enológico, no producción. ¿Aplica igual?',
-      a: 'Aplica. El turismo enológico viene creciendo con fuerza en la región y el problema suele ser el mismo: reservas por WhatsApp, disponibilidad en una planilla y ninguna trazabilidad de qué grupo vino, qué consumió y cuánto dejó. Un agente de agendamiento por WhatsApp resuelve la primera capa desde $80K mensuales, sin instalar nada.',
+      a: 'Aplica. El turismo enológico viene creciendo con fuerza en la región y el problema suele ser el mismo: reservas por WhatsApp, disponibilidad en una planilla y ninguna trazabilidad de qué grupo vino, qué consumió y cuánto dejó. Un agente de agendamiento por WhatsApp resuelve la primera capa como suscripción mensual, sin instalar nada.',
     },
     {
       q: '¿Puedo postular a CORFO Digitalización Agro y a SERCOTEC al mismo tiempo?',

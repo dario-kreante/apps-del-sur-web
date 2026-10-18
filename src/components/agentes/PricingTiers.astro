@@ -17,7 +17,7 @@ const { intro, ventaUnica, saas, whatsappUrl } = Astro.props;
 <section class="py-20 bg-gray-50">
   <div class="max-w-[1200px] mx-auto px-6">
     <SectionHeader
-      label="Pricing"
+      label="Inversión"
       title="Dos formas de adquirirlo"
       description={intro}
       centered
@@ -62,13 +62,8 @@ const { intro, ventaUnica, saas, whatsappUrl } = Astro.props;
             </div>
           )}
           <h3 class="text-xl font-bold text-gray-900 mb-2">{tier.tier}</h3>
-          <div class="text-2xl font-bold text-emerald-700 mb-1">{tier.price}</div>
-          {tier.fondo && (
-            <div class="text-xs text-gray-500 mb-1">via {tier.fondo}</div>
-          )}
-          {tier.copago && (
-            <div class="text-sm font-medium text-emerald-700 mb-5">{tier.copago}</div>
-          )}
+          <div class="text-xs text-gray-500 mb-1">{tier.fondo ? 'Financiable con' : 'Inversión'}</div>
+          <div class="text-base font-semibold text-emerald-700 mb-5">{tier.fondo ?? 'Propuesta a la medida'}</div>
           <ul class="space-y-2.5 mb-7 flex-1">
             {tier.features.map((f) => (
               <li class="flex gap-2.5 text-sm text-gray-600">
@@ -83,7 +78,7 @@ const { intro, ventaUnica, saas, whatsappUrl } = Astro.props;
             variant={tier.highlight ? 'primary' : 'outline'}
             class="w-full"
           >
-            Cotizar este plan
+            Solicitar propuesta
           </Button>
         </div>
       ))}
@@ -106,7 +101,7 @@ const { intro, ventaUnica, saas, whatsappUrl } = Astro.props;
             </div>
           )}
           <h3 class="text-xl font-bold text-gray-900 mb-2">{tier.tier}</h3>
-          <div class="text-2xl font-bold text-emerald-700 mb-5">{tier.price}</div>
+          <div class="text-base font-semibold text-emerald-700 mb-5">Suscripción mensual a la medida</div>
           <ul class="space-y-2.5 mb-7 flex-1">
             {tier.features.map((f) => (
               <li class="flex gap-2.5 text-sm text-gray-600">
@@ -121,14 +116,14 @@ const { intro, ventaUnica, saas, whatsappUrl } = Astro.props;
             variant={tier.highlight ? 'primary' : 'outline'}
             class="w-full"
           >
-            Cotizar este plan
+            Solicitar propuesta
           </Button>
         </div>
       ))}
     </div>
 
     <p class="text-center text-sm text-gray-500 mt-8 max-w-[640px] mx-auto">
-      Precios referenciales en CLP, IVA excluido. Costos de WhatsApp Business API (Meta) se cobran aparte (~$10-30 CLP por conversación iniciada). Cotización final tras diagnóstico.
+      La inversión se define después de una conversación sobre su operación: alcance, volumen e integraciones. Los costos de WhatsApp Business API (Meta) se cobran aparte (~$10-30 CLP por conversación iniciada).
     </p>
   </div>
 </section>

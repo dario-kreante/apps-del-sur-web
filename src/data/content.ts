@@ -23,24 +23,24 @@ export const navItems = [
 ] as const;
 
 export const hero = {
-  badge: 'Software a medida · IA aplicada · Empresas del sur de Chile',
+  badge: 'Estudio de software e IA aplicada · Centro-sur de Chile',
   titleLine1: 'Software a medida para',
   titleHighlight: 'empresas que operan en terreno',
   description:
     'Creamos sistemas web, apps móviles e integraciones para pymes que gestionan operaciones reales con planillas, papel y WhatsApp. No vendemos un software genérico: construimos una solución adaptada a su proceso, su equipo y su forma de trabajar.',
-  ctaPrimary: 'Diagnosticar mi operación',
+  ctaPrimary: 'Conversemos',
   ctaPrimaryHref: '#contacto',
   ctaSecondary: 'Ver enfoque a medida',
   ctaSecondaryHref: '/enfoque/',
   subtext:
-    'Diagnóstico gratuito · Desarrollo asistido por IA · Financiamiento CORFO/FIA/SERCOTEC disponible',
+    'Conversación inicial sin costo · Pocos proyectos en paralelo · Financiamiento CORFO/FIA/SERCOTEC disponible',
 } as const;
 
 export const metrics = [
   { value: '8-12', label: 'Semanas de implementación' },
-  { value: '100%', label: 'Adaptado a su proceso' },
-  { value: 'Web + App', label: 'Sistemas integrados' },
-  { value: 'IA', label: 'Desarrollo acelerado' },
+  { value: '1 equipo', label: 'Del diagnóstico a la entrega' },
+  { value: '1:1', label: 'Trato directo con quien construye' },
+  { value: 'Local', label: 'Presencia en terreno en el centro-sur' },
 ] as const;
 
 export const features = {
@@ -121,6 +121,7 @@ export const solutions = {
   ],
   whyLocalTitle: '¿Por qué elegir un software local?',
   checklist: [
+    'Pocas empresas a la vez: el equipo que diagnostica es el que construye',
     'Soporte técnico en español, en tu zona horaria',
     'Levantamiento directo de procesos con el equipo que usa el sistema',
     'Configurado para las operaciones reales de su industria',
@@ -233,8 +234,8 @@ export const faq = {
       a: 'El proyecto de implementación toma entre 8 y 12 semanas, incluyendo el desarrollo a medida de la plataforma web y app móvil, configuración de procesos y estructura de costos, y capacitación del equipo. No es un sistema genérico que se configura en un día — es un sistema construido para su operación específica.',
     },
     {
-      q: '¿Cuánto cuesta y qué modalidades ofrecen?',
-      a: 'Ofrecemos dos modalidades: compra de licencia con implementación completa ($8-12M CLP, queda como propiedad del cliente) o suscripción mensual ($2.5M setup + $450K CLP/mes con actualizaciones incluidas). Ambas incluyen plataforma web, app móvil y capacitación. El sistema se paga solo en menos de 2 meses con el ahorro operativo que genera.',
+      q: '¿Cómo se define la inversión y qué modalidades ofrecen?',
+      a: 'Cada proyecto se cotiza después de una conversación inicial y un diagnóstico sin costo: la inversión depende del alcance, las integraciones y el tamaño del equipo. Hay dos modalidades: compra de licencia con implementación (el sistema queda como propiedad del cliente) o suscripción mensual con actualizaciones incluidas. Ambas son financiables con fondos públicos CORFO, FIA y SERCOTEC (50-98% del proyecto). Trabajamos con pocas empresas a la vez, por eso la propuesta llega cerrada y sin sorpresas.',
     },
     {
       q: '¿Existen fondos públicos para financiar la implementación?',
@@ -246,8 +247,8 @@ export const faq = {
 export const contactCTA = {
   title: 'Convierta su proceso manual en software a medida',
   description:
-    'Solicite un diagnóstico gratuito. Revisamos su operación actual y proponemos una solución concreta, financiable y construida por etapas.',
-  ctaPrimary: 'Solicitar diagnóstico',
+    'Conversemos sobre su operación. Tomamos pocos proyectos a la vez para dedicarles el equipo completo: revisamos su proceso actual y le proponemos una solución concreta, financiable y construida por etapas.',
+  ctaPrimary: 'Agendar conversación',
   ctaPrimaryHref: '#contact-form',
   ctaWhatsApp: 'Contactar por WhatsApp',
   whatsappUrl:
@@ -1068,7 +1069,7 @@ export const enfoquePage = {
         ],
       },
       {
-        name: 'Consultora tradicional',
+        name: 'Consultora grande',
         icon: 'clock',
         verdict: 'Caro y lento',
         items: [
@@ -1087,7 +1088,7 @@ export const enfoquePage = {
         items: [
           { label: 'Personalización', value: '100% a medida de su operación' },
           { label: 'Plazo', value: '8-12 semanas' },
-          { label: 'Costo', value: '$5-12M CLP (financiable 50-80%)' },
+          { label: 'Inversión', value: 'Propuesta a la medida (financiable 50-80%)' },
           { label: 'Propiedad', value: 'Del cliente — licencia perpetua' },
           { label: 'Soporte', value: 'Local, en español, presencial en su zona' },
         ],

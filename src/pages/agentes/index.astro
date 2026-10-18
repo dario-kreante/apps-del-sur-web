@@ -186,8 +186,8 @@ const jsonLd = JSON.stringify({
 
               <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                 <div>
-                  <div class="text-xs text-gray-500">Desde</div>
-                  <div class="font-semibold text-emerald-700">{a.pricing.saas[0]?.price || a.pricing.ventaUnica[0]?.price}</div>
+                  <div class="text-xs text-gray-500">Financiable con</div>
+                  <div class="font-semibold text-emerald-700">{a.pricing.ventaUnica[0]?.fondo ?? 'fondos públicos'}</div>
                 </div>
                 <div class="text-emerald-700 font-medium text-sm inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                   Ver landing

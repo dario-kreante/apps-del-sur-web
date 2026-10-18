@@ -119,12 +119,6 @@ const serviceLd: Record<string, any> = {
     url: 'https://appsdelsur.cl',
   },
   areaServed: areaServedSchema,
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'CLP',
-    lowPrice: data.pricing.saas[0]?.price.replace(/[^\d]/g, '') || '80000',
-    highPrice: '14000000',
-  },
   url: finalUrl,
 };
 if (isSector && data.targetIndustries.length) {

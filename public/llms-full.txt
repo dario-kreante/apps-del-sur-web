@@ -193,15 +193,15 @@ Apps del Sur publica páginas sector × región (`/agentes/sectores/{sector}/{re
 
 ## Precios y modalidades
 
+Apps del Sur trabaja como un estudio boutique: pocos proyectos en paralelo, el mismo equipo senior diagnostica y ejecuta, y no publica lista de precios. Cada propuesta se arma después de una conversación inicial y un diagnóstico sin costo, según alcance, volumen e integraciones.
+
 **Opción A — Compra de licencia con implementación**:
-- Precio referencial: $8M a $12M CLP según tamaño y complejidad
 - Incluye: desarrollo a medida, plataforma web, app móvil si aplica, capacitación, soporte inicial e implementación
 - El sistema queda como propiedad del cliente según contrato
 - Mantención posterior opcional
 
 **Opción B — Suscripción mensual**:
-- Setup inicial referencial: $2.5M CLP
-- Mensualidad referencial: $450K CLP/mes
+- Setup inicial y mensualidad según alcance
 - Incluye: hosting, actualizaciones, soporte continuo y mejoras acordadas
 
 ## Financiamiento con fondos públicos
