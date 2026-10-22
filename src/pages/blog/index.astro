@@ -1,59 +1,166 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import BlogHead from '../../components/blog/BlogHead.astro';
+import AuthorAvatar from '../../components/blog/AuthorAvatar.astro';
+import { heroComponents } from '../../components/blog-heroes';
 import { getCollection } from 'astro:content';
-import LogoLockup from '../../components/LogoLockup.astro';
 import { blogTopics, topicFor, blogTitle, blogDescription } from '../../lib/blog';
+import '../../styles/blog.css';
+
 const posts = (await getCollection('blog')).sort((a,b) => (b.data.updatedDate ?? b.data.pubDate).valueOf() - (a.data.updatedDate ?? a.data.pubDate).valueOf());
 const featured = ['calcular-roi-proyecto-ia-pyme-chile', 'cuaderno-de-campo-digital-vinas-chile', 'por-que-fallan-proyectos-ia-pymes'].map(id => posts.find(post => post.id === id)).filter(Boolean);
+const formatDate = (date: Date) => date.toLocaleDateString('es-CL', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).replace('.', '');
 const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': 'https://appsdelsur.cl/blog/#collection', url: 'https://appsdelsur.cl/blog/', name: blogTitle, description: blogDescription, inLanguage: 'es-CL', mainEntity: { '@type': 'ItemList', itemListElement: posts.map((post, i) => ({ '@type': 'ListItem', position: i + 1, name: post.data.title, url: `https://appsdelsur.cl/blog/${post.id}/` })) } }).replaceAll('<','\\u003c');
 ---
 <Layout title={blogTitle} description={blogDescription} canonical="https://appsdelsur.cl/blog/" ogTitle={blogTitle} ogDescription={blogDescription} omitFaqSchema>
+  <BlogHead slot="head" />
   <script type="application/ld+json" set:html={schema} />
-  <header class="blog-nav"><div class="shell"><a href="/" aria-label="Apps del Sur — Inicio"><LogoLockup class="h-14 w-auto" /></a><nav aria-label="Navegación principal"><a href="/enfoque/">Nuestro enfoque</a><a href="/#contacto" class="contact">Conversemos</a></nav></div></header>
-  <main id="main-content">
-    <section class="intro shell">
-      <p class="eyebrow">EL BLOG DE APPS DEL SUR · CHILE</p>
-      <h1>Menos tareas repetidas.<br /><em>Más tiempo para tu negocio.</em></h1>
-      <div class="intro-bottom"><p>¿Tu equipo vuelve a escribir lo mismo en Excel, papel y WhatsApp? Aquí encontrarás ideas para ordenar la operación, evaluar la IA y decidir qué vale la pena digitalizar.</p><a href="#lecturas" class="text-link">Encuentra tu próxima lectura <span aria-hidden="true">↓</span></a></div>
-    </section>
-    <section class="featured-band" aria-labelledby="start-title"><div class="shell">
-      <div class="section-title"><p class="eyebrow">PARA EMPEZAR</p><h2 id="start-title">Tres preguntas que abren una buena conversación</h2></div>
-      <div class="featured-grid">{featured.map((post,i) => post && <a class="feature" href={`/blog/${post.id}/`}><span class="feature-number" aria-hidden="true">0{i+1}</span><span class="eyebrow">{topicFor(post.id).label}</span><h3>{i===0 ? '¿Vale la pena esta inversión?' : i===1 ? '¿Cuánto costó hoy el trabajo en tu campo?' : '¿Qué revisar antes de empezar con IA?'}</h3><p>{i===0 ? 'Calcula el retorno con tus propios números y compara escenarios.' : i===1 ? 'Del registro en papel al costo por cuartel y por hectárea.' : 'Seis errores que puedes detectar antes de comprar una herramienta.'}</p><span class="feature-link">Leer guía · {post.data.readingTime} <span aria-hidden="true">↗</span></span></a>)}</div>
-    </div></section>
-    <section id="lecturas" class="shell library" aria-labelledby="library-title">
-      <div class="section-title"><p class="eyebrow">IDEAS PARA LLEVAR A LA PRÁCTICA</p><h2 id="library-title">¿Qué quieres resolver?</h2><p>IA para pymes, automatización, cuaderno de campo y financiamiento para empresas de Chile, con foco en el centro-sur.</p></div>
-      <form id="blog-search" role="search"><label for="search">Buscar una guía</label><div class="search-row"><input id="search" type="search" name="q" placeholder="Prueba con costos, WhatsApp o viñas…" autocomplete="off" /><button type="submit">Buscar</button></div></form>
-      <nav class="topics" aria-label="Filtrar artículos por tema"><a href="/blog/#lecturas" data-topic="todos" aria-current="true">Todos</a>{blogTopics.map(topic => <a href={`/blog/?tema=${topic.id}#lecturas`} data-topic={topic.id}>{topic.label}</a>)}</nav>
-      <p id="results" class="result-count" role="status" aria-live="polite">{posts.length} guías para explorar</p>
-      <div class="post-grid">{posts.map(post => <article class="post-card" data-category={topicFor(post.id).id} data-search={`${post.data.title} ${post.data.description} ${post.data.tags.join(' ')}`}><p class="eyebrow">{topicFor(post.id).label}</p><h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p><div class="post-meta"><span>{post.data.readingTime}</span><time datetime={(post.data.updatedDate ?? post.data.pubDate).toISOString()}>{post.data.updatedDate ? 'Actualizado ' : ''}{(post.data.updatedDate ?? post.data.pubDate).toLocaleDateString('es-CL',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})}</time></div><a class="text-link" href={`/blog/${post.id}/`} aria-label={`Leer: ${post.data.title}`}>Leer artículo <span aria-hidden="true">→</span></a></article>)}</div>
-      <div id="empty" hidden><h3>No encontramos una guía con esa búsqueda.</h3><p>Prueba con otra palabra o explora todos los temas.</p><button type="button" id="reset-search">Ver todas las guías</button></div>
-    </section>
-    <section class="about shell" aria-labelledby="about-title"><div><p class="eyebrow">DE LA LECTURA A TU OPERACIÓN</p><h2 id="about-title">Conoce Apps del Sur</h2><p>Somos la marca de GYS Activa SpA. Trabajamos en digitalización e IA aplicada a procesos de empresas chilenas. En terreno, nuestro enfoque es el cuaderno de campo digital: registrar labores y entender costos por hectárea.</p><p><strong>No reemplaza su contabilidad. Se conecta con ella y le envía los datos listos.</strong></p><p>También evaluamos opciones CORFO, FIA y Sercotec según las bases y convocatorias vigentes.</p></div><div class="about-actions"><a class="primary" href="/diagnostico-madurez-ia/">Explora tu madurez en IA →</a><a class="text-link" href="/cuaderno-de-campo/">Conoce el cuaderno de campo →</a><a class="text-link" href="/#contacto">Cuéntanos qué necesitas resolver →</a></div></section>
+  <Header />
+
+  <main id="main-content" class="blog pt-16">
+    <h1 class="sr-only">Blog de Apps del Sur</h1>
+
+    <nav class="blog-tabs" aria-label="Filtrar artículos por tema">
+      <div class="max-w-[1100px] mx-auto px-6">
+        <div class="blog-tabs__row">
+          <a href="/blog/" data-topic="todos" aria-current="true">Todos</a>
+          {blogTopics.map(topic => <a href={`/blog/?tema=${topic.id}`} data-topic={topic.id}>{topic.label}</a>)}
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-[1100px] mx-auto px-6 lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16">
+      <section aria-labelledby="feed-title" class="max-w-[700px]">
+        <h2 id="feed-title" class="sr-only">Artículos</h2>
+        <form id="blog-search" role="search" class="lg:hidden mt-6">
+          <label for="search-mobile" class="sr-only">Buscar en el blog</label>
+          <div class="blog-search">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="search-mobile" data-search-input type="search" placeholder="Buscar: costos, WhatsApp, viñas…" autocomplete="off" />
+          </div>
+        </form>
+
+        <p id="results" class="sr-only" role="status" aria-live="polite">{posts.length} artículos</p>
+
+        <div>
+          {posts.map(post => {
+            const Hero = heroComponents[post.id];
+            const topic = topicFor(post.id);
+            const date = post.data.updatedDate ?? post.data.pubDate;
+            return (
+              <article class="blog-feed-item" data-category={topic.id} data-search={`${post.data.title} ${post.data.description} ${post.data.tags.join(' ')}`}>
+                <div class="blog-feed-item__byline">
+                  <AuthorAvatar name={post.data.author} size="sm" />
+                  <strong>{post.data.author}</strong>
+                  <span>en {topic.label}</span>
+                </div>
+                <div>
+                  <h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2>
+                  <p class="blog-feed-item__summary">{post.data.description}</p>
+                  <div class="blog-feed-item__meta">
+                    <time datetime={date.toISOString()}>{post.data.updatedDate ? 'Actualizado el ' : ''}{formatDate(date)}</time>
+                    <span>{post.data.readingTime} de lectura</span>
+                  </div>
+                </div>
+                {Hero && (
+                  <a href={`/blog/${post.id}/`} class="blog-thumb" tabindex="-1" aria-hidden="true">
+                    <Hero />
+                  </a>
+                )}
+              </article>
+            );
+          })}
+        </div>
+
+        <div id="empty" class="py-16" hidden>
+          <h2 class="text-xl font-bold">No hay artículos con esa búsqueda</h2>
+          <p class="mt-2 text-[15px] text-[var(--muted)]">Prueba con otra palabra o vuelve a ver todos los temas.</p>
+          <button type="button" id="reset-search" class="mt-5 text-[15px] font-medium text-[var(--brand-deep)] underline underline-offset-4">Ver todos los artículos</button>
+        </div>
+      </section>
+
+      <aside class="blog-side hidden lg:block pt-10">
+        <div class="sticky top-32">
+          <section>
+            <form role="search" onsubmit="return false">
+              <label for="search-desktop" class="sr-only">Buscar en el blog</label>
+              <div class="blog-search">
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input id="search-desktop" data-search-input type="search" placeholder="Buscar en el blog" autocomplete="off" />
+              </div>
+            </form>
+          </section>
+
+          <section>
+            <h2>Lecturas recomendadas</h2>
+            {featured.map(post => post && (
+              <div class="blog-side__pick">
+                <div class="blog-feed-item__byline">
+                  <AuthorAvatar name={post.data.author} size="sm" />
+                  <span>{topicFor(post.id).label}</span>
+                </div>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              </div>
+            ))}
+          </section>
+
+          <section>
+            <h2>Sobre Apps del Sur</h2>
+            <p class="text-[15px] leading-relaxed text-[var(--muted)]">
+              Consultora boutique de software a medida e IA aplicada, con base en Talca. Escribimos sobre lo que vemos en terreno: costos, procesos y herramientas que sirven a una pyme.
+            </p>
+            <div class="mt-5 flex flex-wrap items-center gap-4">
+              <a href="/#contacto" class="inline-flex items-center rounded-full bg-[var(--brand)] px-5 py-2.5 text-sm font-medium text-white hover:bg-[var(--brand-deep)] transition-colors">Conversemos</a>
+              <a href="/nosotros/" class="text-sm font-medium text-[var(--brand-deep)] underline underline-offset-4">Quiénes somos</a>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </div>
   </main>
-  <footer class="blog-footer shell"><p><strong>Apps del Sur</strong> · Digitalización, cuaderno de campo e IA aplicada en Chile.</p><nav aria-label="Pie de página"><a href="/">Inicio</a><a href="/blog/">Blog</a><a href="/#contacto">Contacto</a></nav><p>© 2026 GYS Activa SpA.</p></footer>
+
+  <Footer />
 </Layout>
+
 <script>
-  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-  const input = document.querySelector<HTMLInputElement>('#search')!;
-  const cards = [...document.querySelectorAll<HTMLElement>('.post-card')];
+  const normalize = (value: string) => value.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  const inputs = [...document.querySelectorAll<HTMLInputElement>('[data-search-input]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('.blog-feed-item')];
   const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-topic]')];
   let topic = 'todos';
+  let query = '';
   const apply = () => {
-    let count=0;
-    for(const card of cards) { card.hidden = !((topic === 'todos' || card.dataset.category === topic) && normalize(card.dataset.search ?? '').includes(normalize(input.value.trim()))); if(!card.hidden) count++; }
+    let count = 0;
+    for (const card of cards) {
+      card.hidden = !((topic === 'todos' || card.dataset.category === topic) && normalize(card.dataset.search ?? '').includes(normalize(query.trim())));
+      if (!card.hidden) count++;
+    }
     links.forEach(link => link.setAttribute('aria-current', String(link.dataset.topic === topic)));
-    document.querySelector('#results')!.textContent = `${count} ${count === 1 ? 'guía disponible' : 'guías disponibles'}`;
+    document.querySelector('#results')!.textContent = `${count} ${count === 1 ? 'artículo' : 'artículos'}`;
     (document.querySelector('#empty') as HTMLElement).hidden = count > 0;
-    const url = new URL(location.href); topic==='todos' ? url.searchParams.delete('tema') : url.searchParams.set('tema',topic); input.value.trim() ? url.searchParams.set('q',input.value.trim()) : url.searchParams.delete('q'); history.replaceState(null,'',url);
+    const url = new URL(location.href);
+    topic === 'todos' ? url.searchParams.delete('tema') : url.searchParams.set('tema', topic);
+    query.trim() ? url.searchParams.set('q', query.trim()) : url.searchParams.delete('q');
+    history.replaceState(null, '', url);
   };
   const params = new URLSearchParams(location.search);
-  if(links.some(link => link.dataset.topic === params.get('tema'))) topic = params.get('tema')!;
-  input.value = params.get('q') ?? ''; apply();
-  links.forEach(link => link.addEventListener('click', event => { event.preventDefault(); topic=link.dataset.topic!; apply(); }));
-  input.addEventListener('input',apply);
-  document.querySelector('#blog-search')!.addEventListener('submit',event=>{event.preventDefault();apply();});
-  document.querySelector('#reset-search')!.addEventListener('click',()=>{topic='todos';input.value='';apply();input.focus();});
+  if (links.some(link => link.dataset.topic === params.get('tema'))) topic = params.get('tema')!;
+  query = params.get('q') ?? '';
+  inputs.forEach(input => { input.value = query; });
+  apply();
+  links.forEach(link => link.addEventListener('click', event => { event.preventDefault(); topic = link.dataset.topic!; apply(); }));
+  inputs.forEach(input => input.addEventListener('input', () => {
+    query = input.value;
+    inputs.forEach(other => { if (other !== input) other.value = query; });
+    apply();
+  }));
+  document.querySelector('#blog-search')!.addEventListener('submit', event => { event.preventDefault(); apply(); });
+  document.querySelector('#reset-search')!.addEventListener('click', () => {
+    topic = 'todos'; query = '';
+    inputs.forEach(input => { input.value = ''; });
+    apply();
+    inputs.find(input => input.offsetParent !== null)?.focus();
+  });
 </script>
-<style>
-  .shell{max-width:1160px;margin:auto;padding-inline:28px}.blog-nav{border-bottom:1px solid #dce5df;background:#fff}.blog-nav .shell{display:flex;justify-content:space-between;align-items:center;min-height:80px}.blog-nav nav{display:flex;align-items:center;gap:24px;font-size:14px}.contact,.primary{background:#144d3d;color:white;padding:13px 20px;border-radius:4px;font-weight:600;display:inline-block}main{background:#fbfcf8;color:#213c32}.intro{padding-top:76px;padding-bottom:64px}.eyebrow{font-size:11px;letter-spacing:.13em;font-weight:700;text-transform:uppercase;color:#386c53}.intro h1{font-family:Georgia,serif;font-size:clamp(38px,5.5vw,68px);line-height:1.08;letter-spacing:-.035em;margin:22px 0 30px;font-weight:400}.intro em{color:#397659}.intro-bottom{display:flex;align-items:end;justify-content:space-between;gap:35px}.intro-bottom p{max-width:630px;font-size:18px;line-height:1.65;color:#53675c}.text-link{font-size:14px;font-weight:600;color:#225d45;display:inline-flex;gap:12px;align-items:center;min-height:44px}.featured-band{background:#eaf0e4;border-block:1px solid #d7e2d1;padding-block:42px 52px}.section-title h2,.about h2{font:400 32px/1.2 Georgia,serif;letter-spacing:-.02em;margin:12px 0 18px}.section-title>p:last-child{max-width:640px;color:#53675c;line-height:1.7}.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:30px}.feature{position:relative;padding:34px 26px 26px;background:#fbfcf8;border:1px solid #d5dfce;display:flex;flex-direction:column;transition:transform .2s}.feature:hover{transform:translateY(-4px)}.feature-number{font:italic 48px Georgia,serif;color:#bacbb0;margin-bottom:24px}.feature h3{font:400 25px/1.2 Georgia,serif;margin:14px 0}.feature p{color:#53675c;font-size:14px;line-height:1.7;flex:1}.feature-link{display:flex;justify-content:space-between;margin-top:24px;font-size:12px;font-weight:700}.library{padding-top:64px;padding-bottom:60px;scroll-margin-top:24px}form{max-width:660px;margin:30px 0 22px}label{font-size:13px;font-weight:600;display:block;margin-bottom:8px}.search-row{display:flex;gap:8px}input{background:white;border:1px solid #8b9f8f;min-width:0;flex:1;padding:14px;border-radius:4px}.search-row button,#reset-search{background:#144d3d;color:white;padding:12px 22px;border-radius:4px}.topics{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.topics a{padding:10px 14px;border:1px solid #bacbbd;border-radius:4px;font-size:13px;background:white}.topics a[aria-current=true]{background:#144d3d;border-color:#144d3d;color:white}.result-count{color:#68776c;font-size:13px;margin:25px 0}.post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 42px}.post-card{border-top:1px solid #cbd7ca;padding:28px 0;display:flex;flex-direction:column}.post-card[hidden],[hidden]{display:none!important}.post-card h3{font:400 25px/1.25 Georgia,serif;margin:12px 0}.post-card>p:not(.eyebrow){font-size:14px;color:#53675c;line-height:1.7;flex:1}.post-card h3 a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}.post-meta{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:#68776c;margin:20px 0 8px}.about{background:#eaf0e4;padding-block:42px;display:grid;grid-template-columns:1.6fr 1fr;gap:60px;margin-bottom:50px}.about p:not(.eyebrow){font-size:14px;line-height:1.8;margin:14px 0;color:#53675c}.about-actions{display:flex;flex-direction:column;align-items:start;justify-content:center;gap:16px}.blog-footer{padding-block:30px 40px;border-top:1px solid #dce5df;font-size:12px;color:#53675c;display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}.blog-footer nav{display:flex;gap:20px}:is(a,button,input):focus-visible{outline:3px solid #976b28;outline-offset:4px}@media(max-width:700px){.shell{padding-inline:20px}.intro{padding-top:42px;padding-bottom:42px}.intro-bottom{display:block}.intro-bottom .text-link{margin-top:18px}.featured-grid,.post-grid,.about{grid-template-columns:1fr}.featured-grid{gap:16px}.feature{padding:22px}.feature-number{font-size:34px;margin-bottom:12px}.about{gap:22px;margin-inline:20px}.blog-nav nav{gap:12px}.blog-nav nav>a:first-child{display:none}.section-title h2{font-size:28px}}@media(prefers-reduced-motion:reduce){.feature{transition:none}.feature:hover{transform:none}}
-</style>
