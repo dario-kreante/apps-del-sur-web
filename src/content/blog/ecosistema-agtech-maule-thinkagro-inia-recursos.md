@@ -28,7 +28,7 @@ Por eso existen programas públicos muy generosos. El estado financia entre 50% 
 
 > **Thinkagro — Centro de Extensionismo Tecnológico (CET)**
 >
-> **¿Qué es?** Un centro especializado en transferencia tecnológica para pymes agrícolas de Maule y Ñuble, financiado por CORFO y operado por la Universidad de Talca.
+> **¿Qué es?** Un centro especializado en transferencia tecnológica para pymes agrícolas de Maule y [Ñuble](/regiones/nuble/), financiado por CORFO y operado por la Universidad de Talca.
 >
 > **¿Qué ofrecen? (Gratuito o casi gratuito)**
 >

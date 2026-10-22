@@ -3,6 +3,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/costo-mano-obra-hectarea-vinas",
+      "destination": "/blog/costo-mano-de-obra-por-hectarea-vinas-chile/",
+      "permanent": true
+    },
+    {
+      "source": "/costo-mano-obra-hectarea-vinas/",
+      "destination": "/blog/costo-mano-de-obra-por-hectarea-vinas-chile/",
+      "permanent": true
+    },
+    {
       "source": "/blog/agente-ia-constructoras-compliance-obras-chile/",
       "destination": "/agentes/sectores/constructoras/",
       "permanent": true
@@ -11,6 +21,26 @@
       "source": "/blog/agente-ia-constructoras-compliance-obras-chile",
       "destination": "/agentes/sectores/constructoras/",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
   ]
 }
