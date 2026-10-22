@@ -24,7 +24,7 @@ export const navItems = [
 ] as const;
 
 export const hero = {
-  badge: 'Estudio de software e IA aplicada · Centro-sur de Chile',
+  badge: 'Consultora boutique de software e IA · Centro-sur de Chile',
   titleLine1: 'Software a medida para',
   titleHighlight: 'empresas que operan en terreno',
   description:
