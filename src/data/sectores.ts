@@ -219,7 +219,7 @@ export const sectorPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Cuánto demora la implementación?',
-        a: 'Plan Starter (20-30 ha): 4-6 semanas. Pyme (50-100 ha): 8-10 semanas. Enterprise (100+ ha o cooperativas): 10-12 semanas dependiendo de integraciones.',
+        a: 'Depende del tamaño y las integraciones: entre 4-6 semanas para una viña de 20-30 ha y 10-12 semanas para operaciones de más de 100 ha o cooperativas. El plazo exacto queda en la propuesta.',
       },
       {
         q: '¿Sirve para frutícolas y packings o solo viñas?',
@@ -347,7 +347,7 @@ export const sectorPages: Record<string, AgentPage> = {
       { value: '-60%', label: 'No-shows', sublabel: 'con recordatorios 24h+2h' },
       { value: '<10s', label: 'Respuesta', sublabel: '24/7 por WhatsApp' },
       { value: '+30%', label: 'Citas captadas', sublabel: 'fuera de horario' },
-      { value: '2 sem', label: 'Implementación', sublabel: 'plan Starter' },
+      { value: '2 sem', label: 'Implementación', sublabel: 'primer agente' },
     ],
     pricing: {
       intro: 'Cada agente individual ($1.8M a $5M venta única). Combinación recomendada para clínicas: Agendamiento + Compliance + Retención. Financiable con Kit Digital SERCOTEC o CRECE.',
