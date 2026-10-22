@@ -62,7 +62,7 @@ const jsonLd = JSON.stringify({
       <div class="max-w-[1200px] mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center gap-12">
           <!-- Left: Content -->
-          <div class="lg:w-1/2">
+          <div class="w-full lg:w-1/2">
             <Badge class="mb-4">{hero.badge}</Badge>
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
               {hero.titleLine1}{' '}
@@ -73,7 +73,7 @@ const jsonLd = JSON.stringify({
             </p>
           </div>
           <!-- Right: Hero SVG -->
-          <div class="lg:w-1/2">
+          <div class="w-full lg:w-1/2">
             <div class="rounded-2xl overflow-hidden" role="img" aria-label="Ilustración nuestro enfoque">
               <HeroEnfoque class="w-full h-auto" />
             </div>
@@ -94,7 +94,7 @@ const jsonLd = JSON.stringify({
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 tablet-span-last gap-6">
           {comparison.columns.map((column) => (
             <div
               class:list={[

@@ -150,7 +150,7 @@ const jsonLd = isCuaderno
       <div class="max-w-[1200px] mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center gap-12">
           <!-- Left: Content -->
-          <div class="lg:w-1/2">
+          <div class="w-full lg:w-1/2">
             <Badge class="mb-4">{hero.badge}</Badge>
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
               {hero.titleLine1}{' '}
@@ -169,7 +169,7 @@ const jsonLd = isCuaderno
             </div>
           </div>
           <!-- Right: Hero SVG -->
-          <div class="lg:w-1/2">
+          <div class="w-full lg:w-1/2">
             {HeroComponent && (
               <div class="rounded-2xl overflow-hidden" role="img" aria-label={`Ilustraci\u00f3n ${sectorData.name}`}>
                 <HeroComponent class="w-full h-auto" />
@@ -188,7 +188,7 @@ const jsonLd = isCuaderno
           title="Desaf&iacute;os que enfrentan las empresas hoy"
           centered
         />
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 tablet-span-last gap-8">
           {painPoints.map((point) => {
             const IconComponent = iconMap[point.icon];
             return (

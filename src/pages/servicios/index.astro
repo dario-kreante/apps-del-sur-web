@@ -86,7 +86,7 @@ const jsonLd = JSON.stringify({
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 tablet-span-last gap-6 mb-12">
         {services.map((s) => (
           <a href={`/servicios/${s.slug}/`} class={`group block bg-white border-2 ${s.featured ? 'border-emerald-600 shadow-md' : 'border-gray-200'} rounded-2xl p-6 hover:shadow-lg hover:border-emerald-400 transition-all relative`}>
             {s.featured && (
