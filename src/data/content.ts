@@ -559,9 +559,9 @@ export const sectorPages = {
       },
     ],
     relatedBlogSlugs: [
-      'costo-mano-de-obra-por-hectarea-vinas-chile',
-      'calendario-agricola-2026-vinas-centro-sur-chile',
-      'senales-digitalizar-gestion-mano-obra-vina',
+      'sustentavid-globalg-a-p-registros-trazabilidad-software',
+      'vendimia-2026-gestion-temporeros-costos',
+      'planificar-poda-vinas-cuadrillas-trato',
     ],
   },
   agricola: {
@@ -945,94 +945,6 @@ export const softwareManoObraVinasPage = {
     'costo-mano-de-obra-por-hectarea-vinas-chile',
     'vendimia-2026-gestion-temporeros-costos',
     'senales-digitalizar-gestion-mano-obra-vina',
-  ],
-} as const;
-
-export const costoManoObraHectareaPage = {
-  slug: 'costo-mano-obra-hectarea',
-  url: '/costo-mano-obra-hectarea-vinas',
-  name: 'Costo de Mano de Obra por Hectárea',
-  meta: {
-    title: 'Costo de Mano de Obra por Hectárea en Viñas | Apps del Sur',
-    description:
-      'Calcule el costo real de mano de obra por hectárea en viñas. Apps del Sur registra labores, temporeros y cuarteles para mostrar costos en tiempo real.',
-    keywords:
-      'costo mano de obra por hectárea viñas, calcular costo mano de obra viña, costos por cuartel viñedo, gestión costos agrícolas, costos viñas chile',
-    ogTitle: 'Calcule el Costo de Mano de Obra por Hectárea en Viñas',
-    ogDescription:
-      'Deje de esperar al cierre de mes. Con Apps del Sur, cada registro de terreno alimenta costos por hectárea, cuartel y labor.',
-  },
-  hero: {
-    badge: 'Costos agrícolas',
-    titleLine1: 'Calcule el costo real de',
-    titleHighlight: 'mano de obra por hectárea',
-    description:
-      'Si la poda del cuartel 12 costó más de lo presupuestado, debería saberlo durante la semana, no al final del mes. Apps del Sur convierte cada registro de terreno en datos de costo accionables.',
-  },
-  painPoints: [
-    {
-      icon: 'dollar-sign',
-      title: 'El costo aparece cuando ya es tarde',
-      description:
-        'Con papel y Excel, los costos se reconstruyen después. Cuando aparece la desviación, la labor ya terminó.',
-    },
-    {
-      icon: 'layers',
-      title: 'No se compara por cuartel ni labor',
-      description:
-        'Sin datos ordenados, es difícil saber si el problema está en una cuadrilla, un cuartel, una variedad o una modalidad de pago.',
-    },
-    {
-      icon: 'clock',
-      title: 'Administración pierde horas consolidando',
-      description:
-        'La información llega por WhatsApp, papel y planillas. Consolidar costos consume tiempo que podría usarse para decidir.',
-    },
-  ],
-  features: [
-    {
-      icon: 'bar-chart',
-      title: 'Costo por hectárea en tiempo real',
-      description:
-        'Cada registro de trabajo se asigna a cuartel, labor y trabajador. El sistema calcula el costo por hectárea automáticamente.',
-    },
-    {
-      icon: 'layers',
-      title: 'Comparación por cuartel y temporada',
-      description:
-        'Identifique qué cuarteles, labores o cuadrillas están desviándose del presupuesto mientras aún puede ajustar.',
-    },
-    {
-      icon: 'smartphone',
-      title: 'Datos desde el origen',
-      description:
-        'El dato nace en terreno, no en una planilla reconstruida. Eso reduce errores y mejora la confianza en los reportes.',
-    },
-    {
-      icon: 'shield',
-      title: 'Base para financiamiento y ROI',
-      description:
-        'Con costos claros, puede justificar inversión, postular a fondos y demostrar ahorro frente al copago del proyecto.',
-    },
-  ],
-  faq: [
-    {
-      q: '¿Qué necesito para calcular costo por hectárea?',
-      a: 'Necesita registrar trabajador, labor, cuartel, horas o producción, modalidad de pago y superficie asociada. Apps del Sur ordena esos datos desde terreno.',
-    },
-    {
-      q: '¿Puedo partir con una sola labor?',
-      a: 'Sí. Muchas viñas comienzan con poda, vendimia o una labor crítica para probar el modelo de costos y luego amplían el sistema.',
-    },
-    {
-      q: '¿Esto sirve para justificar una inversión con CORFO o FIA?',
-      a: 'Sí. Un diagnóstico de pérdidas y ahorro esperado ayuda a defender el proyecto y mostrar compromiso económico del cliente.',
-    },
-  ],
-  relatedBlogSlugs: [
-    'costo-mano-de-obra-por-hectarea-vinas-chile',
-    'guia-financiamiento-corfo-fia-digitalizacion-agricola-2026',
-    'software-agricola-chile-comparativa-2026',
   ],
 } as const;
 

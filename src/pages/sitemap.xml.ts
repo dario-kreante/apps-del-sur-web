@@ -93,12 +93,6 @@ export const GET: APIRoute = async () => {
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/costo-mano-obra-hectarea-vinas/</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>${BASE_URL}/nosotros/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>

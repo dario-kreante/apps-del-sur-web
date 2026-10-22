@@ -13,9 +13,9 @@ relatedPosts: ["cuaderno-de-campo-digital-vinas-chile", "vendimia-2026-gestion-t
 
 El éxito de una viña no se mide solo por la calidad del vino, sino por la capacidad de **planificar y ejecutar cada labor en el tiempo correcto**. Un día de atraso en poda puede significar pérdidas de $500K-1.5M en rendimiento. Un error en control fitosanitario puede comprometer toda la cosecha.
 
-En el centro-sur de Chile (regiones de Maule, O'Higgins y Ñuble), el calendario agrícola está marcado por ciclos muy específicos: poda en invierno, desbrote en primavera, amarra en primavera, y vendimia en verano/otoño. Este artículo detalla mes a mes las labores, costos estimados y consideraciones de gestión de mano de obra para 2026.
+En el centro-sur de Chile (regiones de Maule, O'Higgins y [Ñuble](/regiones/nuble/)), el calendario agrícola está marcado por ciclos muy específicos: poda en invierno, desbrote en primavera, amarra en primavera, y vendimia en verano/otoño. Este artículo detalla mes a mes las labores, costos estimados y consideraciones de gestión de mano de obra para 2026.
 
-> **Nota sobre este calendario:** Los datos de costos y horas provienen de benchmarks de viñas del centro-sur compilados por [Thinkagro (CET UTalca/CORFO)](https://www.thinkagro.cl/) y [INIA](https://www.inia.cl/). Los tiempos pueden variar según variedad, altitud, edad de viña y prácticas locales. Adapta estos datos a tu realidad operativa.
+> **Nota sobre este calendario:** Los datos de costos y horas provienen de benchmarks de viñas del centro-sur compilados por [Thinkagro (CET UTalca/CORFO)](https://www.thinkagro.cl/) y [INIA](https://www.inia.cl/). Si quieres saber qué ofrece cada uno, lo explicamos en la guía del [ecosistema AgTech del Maule](/blog/ecosistema-agtech-maule-thinkagro-inia-recursos/). Los tiempos pueden variar según variedad, altitud, edad de viña y prácticas locales. Adapta estos datos a tu realidad operativa.
 
 ## Calendario Agrícola Mensual: Centro-Sur de Chile 2026
 

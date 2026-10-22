@@ -6,7 +6,7 @@ author: "Darío Ramírez"
 readingTime: "8 min"
 heroAlt: "Diagrama de instrumentos de financiamiento público CORFO, FIA y SERCOTEC para digitalización agrícola en Chile"
 tags: ["financiamiento", "CORFO", "FIA", "SERCOTEC", "digitalización", "fondos públicos"]
-relatedPosts: ["costo-mano-de-obra-por-hectarea-vinas-chile", "software-agricola-chile-comparativa-2026"]
+relatedPosts: ["costo-mano-de-obra-por-hectarea-vinas-chile", "software-agricola-chile-comparativa-2026", "ecosistema-agtech-maule-thinkagro-inia-recursos"]
 ---
 
 Accede hasta un 98% de financiamiento público para transformar tu operación agrícola. Comparativa detallada de SERCOTEC, CORFO y FIA, cálculo de ROI real, y pasos concretos para postular.

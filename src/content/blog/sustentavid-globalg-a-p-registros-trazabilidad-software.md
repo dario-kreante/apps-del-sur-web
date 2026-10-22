@@ -27,7 +27,7 @@ A diferencia de GlobalG.A.P., Sustentavid es **específicamente diseñado para v
 
 ## ¿Qué es GlobalG.A.P.?
 
-GlobalG.A.P. (Global Good Agricultural Practices) es un estándar internacional reconocido en 150+ países. Es la "certificación de facto" para viñas que exportan a Europa, Estados Unidos o Asia. Supermercados como Carrefour, Tesco y Walmart exigen a sus proveedores tener GlobalG.A.P.
+GlobalG.A.P. (Global Good Agricultural Practices) es un estándar internacional reconocido en 150+ países. Es la "certificación de facto" para viñas que exportan a Europa, Estados Unidos o Asia. Supermercados como Carrefour, Tesco y Walmart exigen a sus proveedores tener GlobalG.A.P. El mismo estándar pesa en la fruta fresca de exportación, por eso también es tema para las [frutícolas del centro-sur](/sectores/fruticola/).
 
 **Diferencia clave respecto a Sustentavid:** GlobalG.A.P. es más granular y técnico. No pregunta solo "¿tienes seguridad laboral?", sino "¿cómo certificas que cada trabajador recibió capacitación en uso de pesticidas? ¿Dónde está el registro firmado? ¿Cuánto tiempo lleva?"
 

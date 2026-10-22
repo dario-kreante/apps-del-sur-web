@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Assessment from '../../components/Assessment.astro';
+import assessments from '../../data/assessments.json';
 
 const title = 'Diagnóstico de Madurez en IA para empresas chilenas';
 const description = 'Responde 20 preguntas en 8 minutos, conoce la preparación de tu empresa para incorporar inteligencia artificial y obtén un primer foco de acción.';
@@ -11,11 +12,44 @@ const jsonLd = JSON.stringify({
   url: 'https://appsdelsur.cl/diagnostico-madurez-ia/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'CLP' }, provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' }, inLanguage: 'es-CL',
 });
+
+const { dimKeys, dimLabels, stages, questions } = assessments.ia;
+const dimensions = dimKeys.map((key) => ({
+  label: dimLabels[key as keyof typeof dimLabels],
+  count: questions.filter((question) => question.dim === key).length,
+}));
+const faqs = [
+  { q: '¿Cuánto tiempo toma?', a: `Son ${questions.length} preguntas de selección y la mayoría de las personas termina en unos 8 minutos. Tus respuestas quedan guardadas en el navegador, así que puedes continuar después.` },
+  { q: '¿Tiene costo?', a: 'No. El diagnóstico es gratuito y ves tu resultado al terminar, sin entregar tus datos. Solo si quieres conversarlo con nosotros puedes enviarnos el resultado.' },
+  { q: '¿Quién debería responderlo?', a: 'Quien conoce la operación y las decisiones de la empresa: dueño, gerente o jefatura. Si lo responden dos personas por separado, comparar resultados suele ser muy revelador.' },
+  { q: '¿Reemplaza una consultoría?', a: 'No. Es una autoevaluación orientativa para ordenar prioridades. Un diagnóstico en profundidad revisa procesos, datos y equipo en terreno.' },
+];
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+});
 ---
 
 <Layout title={`${title} | Apps del Sur`} description={description} canonical="https://appsdelsur.cl/diagnostico-madurez-ia/">
   <script type="application/ld+json" set:html={jsonLd} />
   <Header />
+  <script type="application/ld+json" set:html={faqJsonLd} />
   <Assessment type="ia" />
+  <section class="assessment-more" aria-labelledby="assessment-more-title">
+    <h2 id="assessment-more-title">¿Qué mide este diagnóstico?</h2>
+    <p>Evalúa qué tan preparada está tu empresa para incorporar inteligencia artificial con resultados, no solo con entusiasmo. Las preguntas describen situaciones cotidianas de una pyme chilena: cómo se decide una inversión, cómo reacciona el equipo ante una automatización, dónde viven los datos y qué herramientas ya se usan.</p>
+    <p>Son {questions.length} preguntas repartidas en cinco dimensiones:</p>
+    <ul>
+      {dimensions.map((dimension) => <li><strong>{dimension.label}</strong>: {dimension.count} preguntas</li>)}
+    </ul>
+
+    <h2>Qué obtienes al terminar</h2>
+    <p>Tu empresa queda ubicada en una de cuatro etapas de madurez: {stages.join(', ')}. Verás un puntaje y un gráfico por dimensión para identificar dónde está la brecha más grande, una lectura de tu resultado y acciones sugeridas para dar el siguiente paso. Puedes descargar el resultado en PDF para compartirlo con tu equipo.</p>
+    <p>La idea no es llegar a la etapa más alta en todo, sino elegir un primer proyecto que tenga sentido para tu punto de partida. Explicamos las etapas en detalle en el <a href="/blog/modelo-madurez-ia-pymes-chile/">modelo de madurez en IA para pymes chilenas</a>, y los errores más comunes al saltarse etapas en <a href="/blog/por-que-fallan-proyectos-ia-pymes/">por qué fallan los proyectos de IA en pymes</a>.</p>
+
+    <h2>Preguntas frecuentes</h2>
+    {faqs.map((faq) => <><h3>{faq.q}</h3><p>{faq.a}</p></>)}
+    <p>Si tu empresa todavía trabaja con papel, planillas y WhatsApp, puede servirte partir por el <a href="/diagnostico-madurez-digital/">Diagnóstico de Madurez Digital</a>. Puedes ver ambos en <a href="/diagnosticos/">Diagnósticos</a>.</p>
+  </section>
   <Footer />
 </Layout>

@@ -33,7 +33,7 @@ Apps del Sur diseña y desarrolla software a medida según el proceso real del c
 - https://appsdelsur.cl/sectores/viticola/ — Caso de uso vitivinícola/agro.
 - https://appsdelsur.cl/cuaderno-de-campo/ — Módulo agrícola de cuaderno de campo digital.
 - https://appsdelsur.cl/software-mano-obra-vinas-chile/ — Caso de uso para mano de obra en viñas.
-- https://appsdelsur.cl/costo-mano-obra-hectarea-vinas/ — Caso de uso para control de costos agrícolas por hectárea.
+- https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile/ — Guía para calcular el costo de mano de obra por hectárea en viñas.
 
 ## Qué lo diferencia
 
