@@ -16,6 +16,7 @@ export const siteConfig = {
 export const navItems = [
   { label: 'Agentes IA', href: '/agentes/' },
   { label: 'Servicios', href: '/servicios/' },
+  { label: 'Nosotros', href: '/nosotros/' },
   { label: 'Diagnóstico', href: '/diagnostico-madurez-ia/' },
   { label: 'Financiamiento', href: '/#financiamiento' },
   { label: 'Blog', href: '/blog/' },
@@ -1124,4 +1125,133 @@ export const enfoquePage = {
         'Empiece con lo que necesita hoy y agregue módulos cuando crezca. No paga por funcionalidades que no usa ni queda atrapado en un plan fijo.',
     },
   ],
+} as const;
+
+// ─── Nosotros Page ──────────────────────────────────────────────
+
+export const nosotrosPage = {
+  meta: {
+    title: 'Quiénes somos | Consultora boutique de software e IA en Talca — Apps del Sur',
+    description:
+      'Apps del Sur es una consultora boutique de software a medida e IA aplicada con base en Talca. Pocos proyectos a la vez, el mismo equipo de punta a punta y experiencia con empresas de Chile, Europa y Norteamérica.',
+    keywords:
+      'consultora boutique software chile, quiénes somos apps del sur, desarrollo de software talca, consultora ia maule, GYS Activa SpA',
+    ogTitle: 'Quiénes somos — Consultora boutique de software e IA aplicada',
+  },
+  hero: {
+    badge: 'Quiénes somos',
+    titleLine1: 'Una consultora boutique de',
+    titleHighlight: 'software e IA aplicada',
+    description:
+      'Somos un estudio del centro-sur de Chile, con base en Talca. Diseñamos y construimos software de punta a punta para empresas que necesitan algo hecho a su medida, no un sistema de catálogo.',
+    facts: [
+      { label: 'Base', value: 'Talca, Región del Maule' },
+      { label: 'Alcance', value: 'Chile y clientes en el extranjero' },
+      { label: 'Forma de trabajo', value: 'Pocos proyectos en paralelo' },
+      { label: 'Razón social', value: 'GYS Activa SpA' },
+    ],
+  },
+  principles: {
+    label: 'Por qué boutique',
+    title: 'Lo que significa trabajar con nosotros',
+    items: [
+      {
+        icon: 'layers',
+        title: 'Pocos proyectos a la vez',
+        description:
+          'Limitamos cuántos proyectos llevamos en paralelo. Así cada cliente tiene atención real, no un turno en la cola.',
+      },
+      {
+        icon: 'shield',
+        title: 'El mismo equipo de punta a punta',
+        description:
+          'Quien entiende su operación en la primera conversación es quien diseña, construye y acompaña la puesta en marcha.',
+      },
+      {
+        icon: 'sparkle',
+        title: 'Criterio antes que catálogo',
+        description:
+          'No partimos de un producto que haya que venderle. Partimos de su problema, y a veces la recomendación es no construir.',
+      },
+      {
+        icon: 'map-pin',
+        title: 'Cerca de la operación',
+        description:
+          'Levantamos procesos en terreno, con las personas que usarán el sistema. Desde el Maule atendemos de O’Higgins a Araucanía.',
+      },
+    ],
+  },
+  experience: {
+    label: 'Trayectoria',
+    title: 'Experiencia construyendo productos de punta a punta',
+    description:
+      'Antes de Apps del Sur, nuestro equipo diseñó y desarrolló productos digitales para startups y empresas de Europa y Norteamérica: desde primeras versiones para validar una idea hasta proyectos de gran escala para marcas internacionales como Decathlon, en Francia. Esa experiencia es la que hoy ponemos al servicio de empresas chilenas.',
+    highlights: [
+      { value: 'Europa y Norteamérica', label: 'Startups y empresas con las que hemos trabajado' },
+      { value: 'De la idea al producto', label: 'Descubrimiento, diseño, desarrollo y puesta en marcha' },
+      { value: 'Chile', label: 'Universidades, agroindustria y empresas de servicios' },
+    ],
+  },
+  projects: {
+    label: 'Proyectos en Chile',
+    title: 'Algunos proyectos que hemos desarrollado',
+    description: 'Sistemas construidos alrededor del proceso real de cada cliente.',
+    items: [
+      {
+        client: 'Universidad de Talca · Facultad de Psicología',
+        title: 'Sistema de reserva de salas',
+        description:
+          'Plataforma web para reservar salas con flujo de aprobación, calendario de disponibilidad, perfiles para administración, docentes y estudiantes, notificaciones y reportes de uso.',
+        tag: 'Educación superior',
+      },
+      {
+        client: 'Universidad de Talca',
+        title: 'Plataforma de gestión clínica y administrativa',
+        description:
+          'Sistema a medida para un centro de atención de la universidad: agenda, fichas, seguimiento de cada caso y reportería, con trazabilidad completa de cada acción.',
+        tag: 'Salud',
+        status: 'En curso',
+      },
+      {
+        client: 'Frutícola Frule León · Curicó',
+        title: 'Sistema de gestión de packing',
+        description:
+          'Sistema a medida para ordenar la operación del packing y tener la información del proceso al día, sin depender de planillas.',
+        tag: 'Agroindustria',
+      },
+      {
+        client: 'Oriencoop · Talca',
+        title: 'Modelo de continuidad de negocio',
+        description:
+          'Diseño del modelo de continuidad de negocio para que la operación pueda sostenerse y recuperarse ante incidentes.',
+        tag: 'Servicios financieros',
+      },
+    ],
+  },
+  products: {
+    label: 'Productos propios',
+    title: 'Lo que construimos por iniciativa propia',
+    description:
+      'Además de los proyectos a medida, desarrollamos productos propios. Nos mantienen al día con la tecnología y nos dejan piezas probadas que reutilizamos en cada proyecto. Hoy están en etapa demostrativa: se pueden ver funcionando en una demo.',
+    items: [
+      {
+        name: 'Kimün',
+        tagline: 'Cuaderno de campo digital para la mano de obra agrícola',
+        description:
+          'El capataz registra en terreno las labores de su cuadrilla, el avance y la productividad del día. La gestión ve los costos de mano de obra en un panel de administración, y Naku, un agente de IA por WhatsApp, responde a los trabajadores cuánto les toca en su próximo pago y al capataz sus consultas sobre la operación.',
+        points: ['Pensado para viñas, útil en otros rubros agrícolas', 'Agente Naku por WhatsApp', 'Próxima versión: control de insumos'],
+        href: '/cuaderno-de-campo/',
+        cta: 'Conocer Kimün',
+      },
+      {
+        name: 'INARÜ',
+        tagline: 'Inspección visual de obras e infraestructura',
+        description:
+          'Plataforma para registrar y dar seguimiento a incidentes a partir de recorridos con imágenes 360° georreferenciadas. Sirve para obras civiles, infraestructura vial, espacio público y viviendas: todo lo que hoy se inspecciona a la vista.',
+        points: ['Recorridos 360° sobre mapa', 'Incidentes con responsable, prioridad y evidencia de cierre', 'Demos aplicadas en distintos tipos de obra'],
+        href: '#contact-form',
+        cta: 'Pedir una demo',
+      },
+    ],
+  },
 } as const;
