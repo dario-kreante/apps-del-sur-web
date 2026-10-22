@@ -43,7 +43,7 @@ export const maule: RegionData = {
     {
       title: 'Digitalización cara y lenta — hasta ahora',
       description:
-        'Los desarrollos a medida tradicionales cuestan $20-50 millones y tardan 6 meses. Con inteligencia artificial, eso cambió: entregamos en semanas a una fracción del costo.',
+        'Los desarrollos a medida tradicionales cuestan $20-50 millones y tardan 6 meses. Con inteligencia artificial, eso cambió: entregamos en semanas, con un equipo pequeño que conoce su operación de principio a fin.',
     },
     {
       title: 'Decisiones con datos atrasados',

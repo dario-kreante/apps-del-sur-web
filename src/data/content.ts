@@ -173,33 +173,33 @@ export const financing = {
     {
       profile: 'Microempresa',
       instrument: 'SERCOTEC CRECE',
-      projectCost: '$5M',
+      fundCap: 'Hasta $5M',
       funded: '80%',
-      clientPays: '< $1M',
+      clientShare: '20%',
       highlight: true,
     },
     {
       profile: 'Pyme',
       instrument: 'CORFO Prototipos',
-      projectCost: '$15-20M',
+      fundCap: 'Según región',
       funded: '70%',
-      clientPays: '$4.5-6M',
+      clientShare: '30%',
       highlight: false,
     },
     {
       profile: 'Pyme mediana',
       instrument: 'FIA Innovación',
-      projectCost: '$50M',
+      fundCap: 'Según convocatoria',
       funded: '80%',
-      clientPays: '$10M',
+      clientShare: '20%',
       highlight: false,
     },
     {
       profile: 'Piloto de validación',
       instrument: 'CORFO Crea y Valida',
-      projectCost: 'Variable',
+      fundCap: 'Según convocatoria',
       funded: '100%',
-      clientPays: '$0',
+      clientShare: '0%',
       highlight: true,
     },
   ],
@@ -215,11 +215,11 @@ export const faq = {
   items: [
     {
       q: '¿Qué hace diferente a Apps del Sur de un sistema genérico?',
-      a: 'No ofrecemos un software genérico donde usted se adapta al sistema. Desarrollamos una plataforma a medida que se configura con sus procesos, equipos, áreas y estructura de costos reales. Gracias al desarrollo asistido por Claude AI, podemos ofrecer esta personalización a precios accesibles — como si fuera software hecho a medida, pero sin el costo tradicional de un proyecto custom.',
+      a: 'No ofrecemos un software genérico donde usted se adapta al sistema. Desarrollamos una plataforma a medida que se configura con sus procesos, equipos, áreas y estructura de costos reales. Trabajamos como un estudio boutique: tomamos pocos proyectos a la vez y el mismo equipo que diagnostica su operación es el que la construye y la acompaña.',
     },
     {
       q: '¿Qué es Claude AI y cómo lo usan?',
-      a: 'Claude AI es un modelo de inteligencia artificial desarrollado por Anthropic. Lo usamos como herramienta de desarrollo para acelerar cada etapa del proyecto: desde el análisis de su operación hasta la generación de código. Esto nos permite entregar software custom en 8-12 semanas en vez de 6+ meses, a una fracción del costo tradicional. También ofrecemos consultoría para integrar IA directamente en los procesos de su empresa.',
+      a: 'Claude AI es un modelo de inteligencia artificial desarrollado por Anthropic. Lo usamos como herramienta de desarrollo para acelerar cada etapa del proyecto: desde el análisis de su operación hasta la generación de código. Esto nos permite entregar software custom en 8-12 semanas en vez de 6+ meses, sin sacrificar el trato directo con quien construye su sistema. También ofrecemos consultoría para integrar IA directamente en los procesos de su empresa.',
     },
     {
       q: '¿Trabajan con Codex de OpenAI o solo con Claude?',
@@ -353,7 +353,7 @@ export const footer = {
   companyName: 'Apps del Sur',
   companyLegal: 'GYS Activa SpA',
   tagline:
-    'Software a medida para empresas del sur de Chile. Sistemas web, apps móviles, automatización e IA aplicada.',
+    'Estudio boutique de software a medida e IA aplicada para empresas del centro-sur de Chile. Pocos proyectos a la vez, trato directo con quien construye.',
   copyright:
     '© 2026 Apps del Sur — GYS Activa SpA. Todos los derechos reservados.',
   madeIn: 'Software hecho en Chile',
@@ -636,7 +636,7 @@ export const sectorPages = {
       },
       {
         q: '¿Qué diferencia hay con un software agrícola genérico?',
-        a: 'Un sistema genérico ofrece funcionalidades estándar que no se adaptan a su operación. Nosotros construimos un sistema a medida: con sus sectores, cultivos, estructura de costos y reglas de negocio. Gracias a Claude AI, lo entregamos en 8-12 semanas a precio accesible.',
+        a: 'Un sistema genérico ofrece funcionalidades estándar que no se adaptan a su operación. Nosotros construimos un sistema a medida: con sus sectores, cultivos, estructura de costos y reglas de negocio. Gracias a Claude AI, lo entregamos en 8-12 semanas, con el mismo equipo de principio a fin.',
       },
       {
         q: '¿Necesito infraestructura tecnológica especial?',
@@ -1038,19 +1038,19 @@ export const enfoquePage = {
   meta: {
     title: 'Nuestro Enfoque | Software a Medida vs Sistema Genérico — Apps del Sur',
     description:
-      'Por qué el software a medida potenciado por IA es mejor que un sistema genérico para empresas del sur de Chile. Comparamos costos, plazos y resultados.',
+      'Por qué un estudio boutique de software a medida con IA es mejor que un sistema genérico o una consultora grande para empresas del sur de Chile. Comparamos enfoque, plazos y resultados.',
     keywords:
-      'software a medida chile, desarrollo software IA, Claude AI desarrollo, software personalizado chile, por qué software a medida, software accesible chile',
-    ogTitle: 'Nuestro Enfoque — Software a Medida Accesible con IA',
+      'software a medida chile, desarrollo software IA, Claude AI desarrollo, software personalizado chile, por qué software a medida, estudio boutique de software chile',
+    ogTitle: 'Nuestro Enfoque — Estudio Boutique de Software a Medida con IA',
     ogDescription:
-      'Gracias a Claude AI, entregamos software custom en 8-12 semanas a una fracción del costo tradicional. Sin limitaciones genéricas, sin costos de consultora tradicional.',
+      'Pocos proyectos a la vez, el mismo equipo de principio a fin y software custom en 8-12 semanas gracias a Claude AI. Sin limitaciones genéricas, sin la distancia de una consultora grande.',
   },
   hero: {
     badge: 'Nuestro enfoque',
-    titleLine1: 'Software a medida, a',
-    titleHighlight: 'precio accesible',
+    titleLine1: 'Software a medida, con la atención de un',
+    titleHighlight: 'estudio boutique',
     description:
-      'Tradicionalmente, el software a medida era caro y lento. Los sistemas genéricos eran baratos pero limitados. Con Claude AI, eliminamos esa disyuntiva: entregamos software 100% personalizado en semanas, no meses.',
+      'Tradicionalmente, el software a medida era caro y lento. Los sistemas genéricos eran baratos pero limitados. Trabajamos distinto: pocos proyectos a la vez, trato directo con quien construye y Claude AI para entregar software 100% personalizado en semanas, no meses.',
   },
   comparison: {
     title: '¿Sistema genérico o software a medida?',
@@ -1066,6 +1066,7 @@ export const enfoquePage = {
           { label: 'Costo mensual', value: '$200-500K CLP/mes permanente' },
           { label: 'Propiedad', value: 'Del proveedor — si deja de pagar, pierde acceso' },
           { label: 'Soporte', value: 'Ticket remoto, en inglés, horario USA' },
+          { label: 'Equipo', value: 'Mesa de ayuda rotativa' },
         ],
       },
       {
@@ -1078,6 +1079,7 @@ export const enfoquePage = {
           { label: 'Costo', value: '$30-80M CLP' },
           { label: 'Propiedad', value: 'Del cliente' },
           { label: 'Soporte', value: 'Costoso, depende del contrato' },
+          { label: 'Equipo', value: 'Socios venden, equipos junior ejecutan' },
         ],
       },
       {
@@ -1091,6 +1093,7 @@ export const enfoquePage = {
           { label: 'Inversión', value: 'Propuesta a la medida (financiable 50-80%)' },
           { label: 'Propiedad', value: 'Del cliente — licencia perpetua' },
           { label: 'Soporte', value: 'Local, en español, presencial en su zona' },
+          { label: 'Equipo', value: 'El mismo equipo de principio a fin' },
         ],
       },
     ],

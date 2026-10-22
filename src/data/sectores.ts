@@ -168,18 +168,18 @@ export const sectorPages: Record<string, AgentPage> = {
         {
           tier: 'SaaS Starter',
           price: '$200.000 CLP/mes',
-          features: ['Setup $1.5M', 'Hasta 30 ha', 'Soporte por email'],
+          features: ['Hasta 30 ha', 'Soporte por email'],
         },
         {
           tier: 'SaaS Pyme',
           price: '$350.000 CLP/mes',
           highlight: true,
-          features: ['Setup $2.5M', '50-100 ha', 'Soporte WhatsApp', 'Reportes avanzados'],
+          features: ['50-100 ha', 'Soporte WhatsApp', 'Reportes avanzados'],
         },
         {
           tier: 'SaaS Enterprise',
           price: '$450.000 CLP/mes',
-          features: ['Setup $3.5M', '100+ ha', 'Multi-fundo', 'Soporte prioritario'],
+          features: ['100+ ha', 'Multi-fundo', 'Soporte prioritario'],
         },
       ],
     },
