@@ -1,6 +1,6 @@
 ---
-title: "Datos sensibles bajo Ley 21.719: guía sectorial 2026 para clínicas, estudios jurídicos, financieras, funerarias, retail y turismo en Chile"
-description: "Guía sectorial 2026 para empresas chilenas que manejan datos sensibles bajo Ley 21.719: salud (clínicas dentales, médicas), legal (estudios jurídicos), financiero (cobranza, créditos), funerario (cuota mortuoria), retail y turismo. Obligaciones específicas, EIPD, consentimiento reforzado y agentes IA. Santiago, Maule, O'Higgins y todo Chile."
+title: "Ley 21.719: datos sensibles y preguntas clave por sector"
+description: "Guía para identificar riesgos al manejar datos personales en salud, servicios legales, finanzas, retail y turismo en Chile."
 pubDate: 2026-05-18T08:20:00-04:00
 author: "Darío Ramírez"
 readingTime: "14 min"

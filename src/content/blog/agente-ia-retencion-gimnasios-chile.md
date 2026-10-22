@@ -1,6 +1,6 @@
 ---
-title: "Agente IA de retención para gimnasios en Chile: cómo rescatar socios antes de que cancelen en 2026"
-description: "Guía 2026 para gimnasios chilenos: cómo un agente IA detecta socios en riesgo, los contacta por WhatsApp con la oferta correcta y recupera entre 8% y 15% del churn mensual. Modelo % éxito disponible. Financiable con CORFO Digitalización Pyme."
+title: "IA para gimnasios: cómo detectar y abordar la pérdida de socios"
+description: "Explora señales de abandono, seguimiento y medición de retención antes de implementar un agente de IA en tu gimnasio."
 pubDate: 2026-05-17T15:30:00-04:00
 author: "Darío Ramírez"
 readingTime: "10 min"

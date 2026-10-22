@@ -1,6 +1,6 @@
 ---
-title: "Ecosistema AgTech del Maule: Thinkagro, INIA y recursos gratuitos para digitalizar tu viña"
-description: "Guía completa del ecosistema de innovación agrícola en el Maule: Thinkagro, INIA, CORFO, FIA y otras organizaciones para digitalizar tu operación."
+title: "Digitalización agrícola en el Maule: aliados y recursos"
+description: "Explora organizaciones y recursos del ecosistema agrícola. Confirma servicios disponibles antes de planificar tu proyecto."
 pubDate: 2026-03-10
 author: "Darío Ramírez"
 readingTime: "7 min"

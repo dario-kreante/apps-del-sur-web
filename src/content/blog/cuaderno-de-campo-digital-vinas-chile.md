@@ -1,158 +1,110 @@
 ---
-title: "Qué es un cuaderno de campo digital y por qué tu viña lo necesita en 2026"
-description: "Qué es un cuaderno de campo digital y por qué tu viña lo necesita en 2026. Guía sobre apps de registro de labores, trazabilidad, cumplimiento Sustentavid/GlobalG.A.P. y gestión de costos agrícolas."
+title: "Cuaderno de campo digital para viñas en Chile: qué registrar y cómo empezar"
+description: "¿Cuánto costó la poda de ese cuartel? Aprende qué registrar, cómo calcular costos por hectárea y qué probar antes de digitalizar el trabajo en tu viña."
 pubDate: 2026-01-08
+updatedDate: 2026-10-08
 author: "Darío Ramírez"
-readingTime: "8 min"
-heroAlt: "Mockup de aplicación móvil de cuaderno de campo digital para viñas"
-tags: ["cuaderno de campo", "app móvil", "trazabilidad", "viñas", "registro labores"]
-relatedPosts: ["guia-financiamiento-corfo-fia-digitalizacion-agricola-2026", "software-agricola-chile-comparativa-2026", "senales-digitalizar-gestion-mano-obra-vina"]
+readingTime: "6 min"
+heroAlt: "Ilustración de un cuaderno de campo digital para registrar labores, trabajadores y costos"
+tags: ["cuaderno de campo", "viñas", "Chile", "costos por hectárea", "trazabilidad"]
+relatedPosts: ["costo-mano-de-obra-por-hectarea-vinas-chile", "senales-digitalizar-gestion-mano-obra-vina", "calcular-roi-proyecto-ia-pyme-chile"]
 ---
 
-## ¿Qué es un cuaderno de campo digital?
+Son las 7 de la mañana. Hay que distribuir la cuadrilla, revisar el trabajo pendiente y anotar quién llegó. Al terminar la jornada, todavía falta pasar esos registros a una planilla. **¿Cuánto costó la poda del cuartel 12?** La respuesta depende de reunir datos que quedaron separados.
 
-Un **cuaderno de campo digital** es una aplicación móvil o web que reemplaza los registros en papel o Excel que se usan en el campo agrícola. Permite registrar en tiempo real las labores realizadas en una viña: qué se hizo, dónde, quién lo hizo, cuántas horas tomó, y otros datos relevantes para la operación y la trazabilidad.
+Un cuaderno de campo digital ayuda a capturar esa información mientras ocurre el trabajo. La decisión de implementarlo empieza por una pregunta operativa: qué necesitas saber al cierre del día y qué datos faltan hoy para responderla.
 
-A diferencia de una planilla Excel que se llena al final de la jornada (o peor, al final del mes), un cuaderno de campo digital captura los datos **mientras ocurren** las labores. Esto genera un registro exacto, verificable y listo para auditorías, certificaciones y análisis de costos.
+> **Qué es:** un cuaderno de campo digital es una herramienta para registrar labores, trabajadores, tiempos y ubicación del trabajo. Con tarifas y superficies definidas, permite calcular costos por cuartel, labor y hectárea.
 
-### Componentes clave de un cuaderno de campo digital
+**No reemplaza su contabilidad. Se conecta con ella y le envía los datos listos.** La forma de integración depende del sistema existente y debe validarse para cada implementación.
 
-- **Registro de labores por cuartel:** Identifica qué labor se realizó en qué parcela específica (cuartel, bloque).
-- **Datos del trabajador:** Nombre, RUT, cargo, y registro de asistencia.
-- **Geolocalización con GPS:** Confirma dónde se realizó el trabajo (importante para trazabilidad).
-- **Horas trabajadas y costo:** Permite calcular costo por hectárea, costo por labor, costo por trabajador.
-- **Tipo de labor:** Poda, raleo, amarra, desbrote, cosecha, control fitosanitario, etc.
-- **Notas y observaciones:** Registra incidencias, calidad del trabajo, condiciones climáticas.
-- **Funcionamiento offline:** Registra datos aunque no haya conexión a internet; sincroniza cuando vuelve la conectividad.
+## Qué datos conviene registrar en una viña
 
-## Cuaderno de campo digital vs. papel vs. Excel: Comparativa
+| Dato | Para qué sirve | Qué debes acordar |
+|---|---|---|
+| Fecha y jornada | Agrupar trabajo del día | Cuándo inicia y cierra el registro |
+| Trabajador o cuadrilla | Atribuir trabajo y revisar registros | Identificadores y permisos de acceso |
+| Cuartel | Ubicar el costo | Nombres y superficie usada en el cálculo |
+| Labor | Comparar actividades equivalentes | Catálogo: poda, amarra, desbrote, cosecha |
+| Horas, jornadas o unidades | Valorar la actividad | Unidad de pago y regla de conversión |
+| Tarifa | Calcular costo directo | Vigencia y quién puede modificarla |
+| Observaciones y aprobación | Corregir excepciones | Responsable de revisar antes de exportar |
 
-| Característica | Papel/Cuaderno | Excel | Digital (App/Web) |
+Fotos y geolocalización pueden ayudar en tareas concretas. Recoge solo los datos necesarios para el proceso y define finalidad, acceso y conservación. Más datos no implican automáticamente mejores decisiones.
+
+## Cómo calcular el costo por hectárea
+
+Para una labor y periodo definidos:
+
+**Costo directo de mano de obra por hectárea = costo de mano de obra registrado / superficie correspondiente.**
+
+Ejemplo ilustrativo: una cuadrilla realiza una labor en un cuartel de 4 hectáreas y el costo directo registrado es $320.000. El resultado es **$80.000 por hectárea**. No es el costo total de producción: equipos, insumos, transporte y otros componentes se agregan solo si están dentro del alcance del cálculo.
+
+Si la intervención cubre únicamente parte del cuartel, aclara si divides por superficie intervenida o superficie total. Usa el mismo criterio al comparar periodos. Encontrarás más detalle en la [guía de costos por hectárea](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/).
+
+## Papel, Excel o app: qué cambia realmente
+
+| Criterio | Papel | Excel | Cuaderno digital |
 |---|---|---|---|
-| **Tiempo de registro** | Durante o después de jornada | Al final de jornada o mes | En tiempo real |
-| **Exactitud de datos** | Baja (memoria fallible) | Media (depende de rigor del usuario) | Alta (timestamp, GPS automático) |
-| **Trazabilidad** | Manual y difícil de auditar | Posible pero sin geolocalización | Completa: cuartel, trabajador, hora, ubicación |
-| **Cálculo de costos** | Manual, propenso a errores | Automático pero con retrasos | Automático, en tiempo real |
-| **Conformidad normativa** | Débil (no es verificable) | Media (sin auditoría) | Total (auditable, respaldado digitalmente) |
-| **Pérdida de datos** | Alto riesgo (lluvia, extravío) | Bajo (respaldo en nube) | Muy bajo (redundancia) |
-| **Funcionamiento sin internet** | Sí (sin sincronización) | Sí (sin sincronización) | Sí (sincronización posterior) |
-| **Reportes y análisis** | Manual, lento | Semi-automático | Automático, visualizaciones en tiempo real |
+| Captura en terreno | Directa, requiere consolidación posterior | Depende del dispositivo y flujo | Puede registrar por labor y cuartel |
+| Cálculos | Manuales | Fórmulas configurables | Requiere tarifas y reglas configuradas |
+| Revisión | Firma y correcciones manuales | Control según el archivo | Puede incorporar permisos e historial |
+| Sin conexión | Sí | Posible con archivos locales | Debe probarse el modo offline |
+| Exportación | Transcripción | Archivo compartido | Debe acordarse formato o integración |
 
-## Por qué las viñas necesitan un cuaderno de campo digital en 2026
+La calidad depende también del uso: una app no corrige por sí sola una tarifa equivocada ni un registro omitido. Diseña la revisión junto con la captura.
 
-### 1. Cumplimiento de certificaciones (Sustentavid, GlobalG.A.P.)
+## Qué probar cuando no hay señal
 
-Las certificaciones de sustentabilidad como [Sustentavid](https://www.sustentavid.cl/) y [GlobalG.A.P.](https://www.globalgap.org/) exigen trazabilidad total de labores. Un registro digital con timestamp, GPS y firma del supervisor es prácticamente obligatorio para auditar. Las viñas que usan papel pierden puntos o no pasan auditoría.
+Antes de elegir, pide una demostración del flujo completo:
 
-### 2. Ley de Jornadas Agrícolas y Protección del Trabajador
+1. Abrir la aplicación y registrar una labor sin conexión.
+2. Cerrar y volver a abrir: el registro debe seguir disponible.
+3. Recuperar conexión y sincronizar.
+4. Revisar que no se creen duplicados.
+5. Corregir un dato y comprobar quién puede aprobar el cambio.
+6. Exportar y comparar el resultado con el registro original.
 
-La legislación chilena requiere registros verificables de asistencia, horas trabajadas y tipos de labor. Un cuaderno de campo digital proporciona evidencia irrefutable en caso de reclamo laboral y facilita el cumplimiento de la Inspección del Trabajo.
+La pregunta útil no es solo “¿funciona offline?”, sino **“¿qué pasa con mis registros cuando vuelve la señal?”**.
 
-### 3. Conocer el costo real de cada hectárea, cada mes
+## Trazabilidad y certificaciones: valida el requisito específico
 
-El principal dolor de las viñas es que "solo saben costos a fin de mes". Un cuaderno digital permite saber cada día cuánto cuesta cada labor, cada cuartel, cada hectárea. Eso permite tomar decisiones rápidas: si un cuartel cuesta demasiado, se pueden ajustar métodos. Si una labor es más cara que lo presupuestado, se corrige a tiempo.
+Un registro ordenado puede facilitar auditorías, pero **usar software no acredita automáticamente cumplimiento**. Antes de configurarlo, revisa qué evidencias exige el estándar aplicable y cómo se verifican.
 
-### 4. Maximizar productividad del equipo
+Para [Sustentavid](https://www.sustentavid.cl/) y [GLOBALG.A.P.](https://www.globalgap.org/), consulta documentación vigente y confirma el alcance con quien evalúa la certificación. No asumas que GPS, firma o registro digital son requisitos universales. Para control de asistencia, revisa además las exigencias correspondientes de la [Dirección del Trabajo](https://www.dt.gob.cl/).
 
-Con datos de tiempo real, un gerente agrícola puede ver dónde están los cuellos de botella. ¿Cuál cuartel requiere más horas? ¿Qué trabajadores son más eficientes? Un cuaderno digital transforma esa información en acciones concretas.
+## Un piloto acotado antes de digitalizar toda la viña
 
-### 5. Facilitar auditorías y financiamiento
+Empieza con una labor y un cuartel. Define quién registra, quién revisa y qué exporta administración. Mide tiempo de captura, tiempo de consolidación, errores y porcentaje de registros completos.
 
-Si la viña busca acceder a fondos CORFO, FIA o crédito bancario, un registro digital es una señal de profesionalización. Los evaluadores de proyectos ven que la viña tiene datos reales para sustentar proyecciones de costos y rentabilidad.
+Compara jornadas equivalentes. Si una jornada tuvo menos trabajadores o una labor distinta, no atribuyas automáticamente la mejora al sistema. La meta del piloto es comprobar que el flujo funciona y que la información ayuda a decidir.
 
-> **Dato clave:** Según [Thinkagro (CET UTalca/CORFO)](https://www.thinkagro.cl/), las viñas que adoptaron digitalización reducen tiempo de registro en 70% y mejoran trazabilidad en 100%. Estas métricas son clave para proyectos de financiamiento público.
+## Costos y opciones de financiamiento
 
-## Tipos de datos que captura un cuaderno digital
+Solicita un alcance que distinga licencia, configuración, integración, capacitación, soporte y mantenimiento. Para Apps del Sur, la compra con implementación es el modelo principal; la suscripción puede ser una alternativa según el alcance. La cotización debe indicar exactamente qué incluye.
 
-### Datos operacionales
+CORFO, FIA y Sercotec pueden tener instrumentos pertinentes según la región, beneficiario y convocatoria. Verifica bases, gastos elegibles y copago antes de incluir un aporte en tu presupuesto. Una postulación no equivale a financiamiento adjudicado.
 
-- Fecha y hora de inicio/fin de labor
-- Cuartel o parcela trabajada
-- Tipo de labor (poda, raleo, amarra, cosecha, etc.)
-- Trabajador asignado (nombre, RUT)
-- Supervisor o verificador
-- Horas totales trabajadas
-
-### Datos de trazabilidad
-
-- Coordenadas GPS (inicio y final)
-- Firma digital del supervisor
-- Foto(s) de la labor realizada
-- Notas sobre incidencias o cambios
-- Timestamp automático (no editable)
-
-### Datos financieros
-
-- Costo unitario por hora (según contrato del trabajador)
-- Costo total de la labor
-- Costo por hectárea trabajada
-- Proyección de costo mensual/anual
-
-## Cómo elige una viña qué cuaderno de campo digital usar
-
-No todas las soluciones digitales son iguales. Algunas recomendaciones al evaluar:
-
-- **Funciona sin internet:** En el campo muchas viñas no tienen cobertura. La app debe registrar offline y sincronizar después.
-- **Compatible con certificaciones:** Pregunta si genera reportes que cumplan con Sustentavid, GlobalG.A.P., o estándares que usa tu viña.
-- **Integración con sistemas existentes:** Si ya usas SAP, QuickBooks o algún ERP, verifica que el cuaderno digital sea compatible o fácil de integrar.
-- **Soporte local en Chile:** Es importante contar con equipo técnico que entienda regulaciones agrícolas chilenas y contexto regional.
-- **Costo razonable:** Algunos cuadernos digitales se venden como módulos de sistemas grandes ($8-15M CLP). Otros son más accesibles. Evalúa tu presupuesto y ROI.
-- **Facilidad de uso en campo:** El trabajador debe entender la interfaz en segundos. Si es compleja, no se usa.
-
-> **Oportunidad de financiamiento:** En 2026, CORFO mantiene convocatorias abiertas para **Digitalización Agrícola** (hasta 60% de cofinanciamiento). Muchos cuadernos de campo digitales califican. Consulta con tu consultor CORFO local o revisa [corfo.cl](https://www.corfo.cl/).
-
-## Relación entre cuaderno de campo y cumplimiento regulatorio
-
-En Chile, las autoridades agrícolas (SAG, Inspección del Trabajo) cada vez exigen más trazabilidad. Un cuaderno de campo digital cumple múltiples regulaciones simultáneamente:
-
-- **SAG (Servicio Agrícola y Ganadero):** Requiere trazabilidad de uso de plaguicidas y fitosanitarios. Un cuaderno digital con foto y GPS facilita auditorías.
-- **Inspección del Trabajo:** Necesita comprobar jornadas, descansos, horas extras. Los datos automáticos son prueba irrefutable.
-- **INIA (Instituto de Investigaciones Agropecuarias):** En proyectos conjuntos de investigación o variedad, requiere datos detallados de manejo cultural.
-- **Certificaciones privadas:** Sustentavid y GlobalG.A.P. demandan registros auditables de cada intervención en el viñedo.
-
-Un cuaderno de campo digital unifica todos estos requisitos en una sola plataforma.
-
-## Primeros pasos para implementar en tu viña
-
-1. **Evalúa tu proceso actual:** ¿Qué datos registras hoy? ¿En qué formato? ¿Quién lo revisa?
-2. **Identifica el problema principal:** ¿Es costo por hectárea desconocido? ¿Problemas con cumplimiento normativo? ¿Eficiencia del equipo?
-3. **Prueba con un cuartel piloto:** Implementa el cuaderno digital en un cuartel por 1-2 semanas para ver qué funciona y qué no.
-4. **Capacita a supervisores y trabajadores:** El éxito depende de la adopción en el terreno. Dedicar tiempo a capacitación reduce fricción.
-5. **Integra con tu ERP o finanzas:** Los datos deben fluir a contabilidad para que el beneficio sea integral.
-6. **Solicita fondos públicos:** Si el ROI te convence, evalúa CORFO Digitalización Agrícola o Sercotec CRECE para amortizar la inversión.
-
-### ¿Necesitas implementar un cuaderno de campo digital en tu viña?
-
-En Apps del Sur contamos con una plataforma completa que funciona offline, integra trazabilidad total y cumple con certificaciones Sustentavid y GlobalG.A.P.
-
-[Solicita una demostración](/#contacto)
+Usa la [calculadora de ROI](/blog/calcular-roi-proyecto-ia-pyme-chile/#calculadora) para comparar una inversión con tus propios datos.
 
 ## Preguntas frecuentes
 
-### ¿Qué diferencia hay entre un cuaderno de campo digital y un software de gestión agrícola?
+### ¿Se integra con el sistema contable de mi viña?
 
-Un cuaderno de campo digital es una herramienta enfocada en registrar labores en tiempo real: qué se hizo, dónde, quién, cuánto tiempo. Un software de gestión agrícola es más amplio: incluye planificación, inventario, finanzas, reportes y análisis. Muchas viñas comienzan con un cuaderno digital y luego expanden a un software integral.
+Debe evaluarse con el sistema que ya usas: formato de exportación, API disponible, campos y validación. No basta con que ambos programas puedan exportar una planilla. Pide probar el intercambio con datos representativos.
 
-### ¿Cuánto cuesta un cuaderno de campo digital en Chile?
+### ¿Quién debería registrar: trabajador, supervisor o administración?
 
-Los precios varían según el modelo de negocio. Algunas opciones son módulos de sistemas grandes ($8-15M CLP, pago único o anual). Otras son más accesibles ($1-3M CLP anuales). Existen soluciones por suscripción mensual ($150-400K CLP) que permiten probar sin compromiso grande. En 2026, muchas viñas pueden amortizar estos costos hasta 80% con fondos CORFO o Sercotec.
+Depende de la labor y del flujo. En un primer piloto, una persona responsable por cuadrilla puede simplificar captura y revisión. Evita exigir el mismo registro a varias personas si luego nadie resuelve las diferencias.
 
-### ¿Un cuaderno de campo digital requiere internet en el campo?
+### ¿Cuándo tendré costos en tiempo real?
 
-Las mejores soluciones funcionan sin internet (offline). El supervisor registra datos con la app instalada en una tablet o smartphone. Cuando vuelve a la oficina y se conecta a wifi, la información sincroniza automáticamente. Esto es crítico para viñas en sectores sin cobertura celular, que es la mayoría en el centro-sur de Chile.
+Cuando los registros, tarifas y superficies estén disponibles y validados. Durante trabajo offline, la información consolidada de otros dispositivos puede actualizarse recién al sincronizar. Define qué significa “en tiempo real” para tu operación.
 
-### ¿Cuánto tiempo toma implementar un cuaderno de campo digital?
+## Conoce el enfoque de Apps del Sur
 
-Un piloto en un cuartel o parcela puede iniciar en 1-2 semanas. Una implementación completa en toda la viña depende del tamaño: viñas pequeñas (20-30 ha) en 2-4 semanas, viñas medianas (50-100 ha) en 4-8 semanas. Lo crítico es la capacitación del equipo en terreno. Algunos proveedores incluyen este servicio; otros requieren inversión adicional en capacitación.
+Nuestro punto de partida es el trabajo del jefe de campo: registrar lo necesario y convertirlo en información útil para administración. Conoce el [cuaderno de campo digital](/cuaderno-de-campo/) y [cuéntanos cómo registras hoy](/#contacto). Podemos revisar un primer alcance para tu viña del Maule, O'Higgins, Ñuble u otra región de Chile.
 
-## Conclusión
+## Fuentes y alcance
 
-Un cuaderno de campo digital no es un lujo en 2026, es una herramienta fundamental para viñas que quieren profesionalizar sus operaciones, cumplir regulaciones, reducir costos y acceder a financiamiento público. La inversión inicial se recupera rápidamente con mejor visibilidad de costos y ganancias en eficiencia operacional.
-
-Si tu viña aún usa papel o Excel para registros de labores, es momento de evaluar una solución digital. El mercado chileno ofrece varias opciones, desde soluciones especializadas hasta módulos de sistemas grandes. La clave es elegir algo que funcione sin internet, sea fácil de usar en terreno y esté respaldado por soporte técnico local.
-
-**Artículos relacionados:**
-
-- [Calendario agrícola 2026: Labores por temporada en viñas del centro-sur](/blog/calendario-agricola-2026-vinas-centro-sur-chile/)
-- [Sustentavid y GlobalG.A.P.: Cómo el software asegura trazabilidad total](/blog/sustentavid-globalg-a-p-registros-trazabilidad-software/)
-- [Costo de mano de obra por hectárea en viñas del centro-sur: Benchmarks 2026](/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
+Los enlaces institucionales permiten consultar estándares y requisitos vigentes; no acreditan certificación del producto. El cálculo de costo por hectárea es un ejemplo propio, reproducible y sin resultados de cliente asociados. Revisión editorial: 8 de octubre de 2026.

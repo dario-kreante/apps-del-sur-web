@@ -1,6 +1,6 @@
 ---
-title: "Cómo calcular el costo real de mano de obra por hectárea en viñas chilenas"
-description: "Guía completa: cómo calcular el costo real de mano de obra por hectárea en viñas chilenas. Metodología, datos de referencia y cómo digitalizarlo."
+title: "Costo de mano de obra por hectárea: guía para viñas chilenas"
+description: "Qué datos reunir para calcular costos por labor y cuartel, comparar periodos y mejorar el registro agrícola."
 pubDate: 2026-03-16
 author: "Darío Ramírez"
 readingTime: "9 min"

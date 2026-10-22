@@ -1,6 +1,6 @@
 ---
-title: "¿Cuánto cuesta implementar IA en una PyME chilena?"
-description: "Rangos de inversión para implementar inteligencia artificial en PyMEs de Chile: desde chatbots básicos hasta sistemas inteligentes completos."
+title: "¿Cuánto cuesta implementar IA en una pyme chilena?"
+description: "Qué compone el presupuesto de un proyecto de IA: diagnóstico, implementación, integración y operación."
 pubDate: 2026-03-22
 author: "Darío Ramírez"
 readingTime: "10 min"

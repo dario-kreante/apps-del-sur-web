@@ -1,6 +1,6 @@
 ---
-title: "Codex es lo que está atrás de ChatGPT cuando ejecuta tareas. Te cuento cómo te sirve sin que sepas código"
-description: "OpenAI Codex pasó de copiloto de programadores a agente que ejecuta tareas dentro de tus apps. Cómo aplicarlo a tu pyme chilena, ejemplos por rubro y los tres pasos para esta semana."
+title: "Codex para pymes: de la idea a una tarea concreta"
+description: "Explora usos de Codex para tareas digitales de tu empresa y qué preparar antes de dar acceso a herramientas y datos."
 pubDate: 2026-05-16
 author: "Darío Ramírez"
 readingTime: "8 min"

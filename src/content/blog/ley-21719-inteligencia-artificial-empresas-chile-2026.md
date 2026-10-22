@@ -1,6 +1,6 @@
 ---
-title: "Ley 21.719 + IA en Chile 2026: cómo cumplir cuando usas ChatGPT, Claude o agentes IA en tu pyme"
-description: "Guía 2026 para pymes chilenas que usan inteligencia artificial: cómo cumplir la Ley 21.719 con OpenAI, Anthropic, Google y agentes IA por WhatsApp. DPA, transferencia internacional, EIPD, opt-out de entrenamiento, decisiones automatizadas. Para empresas en Santiago, Maule, O'Higgins, Ñuble, Biobío y todo Chile."
+title: "Ley 21.719 e IA: qué revisar antes de usar datos de tu empresa"
+description: "Privacidad, proveedores y decisiones automatizadas: preguntas para revisar el uso de IA con datos personales en una pyme chilena."
 pubDate: 2026-05-18T08:10:00-04:00
 author: "Darío Ramírez"
 readingTime: "13 min"

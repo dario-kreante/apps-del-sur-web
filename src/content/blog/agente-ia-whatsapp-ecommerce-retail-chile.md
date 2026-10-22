@@ -1,6 +1,6 @@
 ---
-title: "Agente IA por WhatsApp para e-commerce y retail en Chile: cómo deflectar el 70% de los tickets y vender mientras conversa"
-description: "Guía 2026 para tiendas online y retailers chilenos: cómo un agente IA por WhatsApp responde tracking de pedidos, FAQs y vende 24/7. Integración con Shopify, WooCommerce, Tiendanube, Bsale y Defontana. Financiable con CRECE SERCOTEC."
+title: "IA por WhatsApp para tiendas: consultas, pedidos y atención"
+description: "Qué evaluar al automatizar consultas de pedidos y atención en e-commerce: integraciones, revisión humana y métricas de servicio."
 pubDate: 2026-05-17T15:10:00-04:00
 author: "Darío Ramírez"
 readingTime: "11 min"

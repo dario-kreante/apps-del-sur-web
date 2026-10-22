@@ -1,6 +1,12 @@
 const DEFAULT_TABLE_NAME = 'Assessment Leads';
 
 export default async function handler(req, res) {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    res.statusCode = 405;
+    res.setHeader('Allow', 'GET, HEAD');
+    res.end('Metodo no permitido');
+    return;
+  }
   const id = new URL(req.url, 'https://appsdelsur.cl').searchParams.get('id');
   if (!id || !/^rec[a-zA-Z0-9]+$/.test(id)) {
     res.statusCode = 400;
@@ -43,8 +49,13 @@ async function fetchRecord(config, id) {
 }
 
 function renderReport(fields, id) {
-  const answers = parseAnswers(fields['Respuestas JSON']);
+  const stored = parseAssessmentData(fields['Respuestas JSON']);
+  const assessmentType = stored.assessmentType || (/digital/i.test(fields.Fuente || '') ? 'digital' : 'ia');
+  const assessmentTitle = assessmentType === 'digital' ? 'Diagnóstico de Madurez Digital' : 'Diagnóstico de Madurez en IA';
+  const answers = stored.answers;
+  const dimensions = stored.dimensions.length ? stored.dimensions : legacyDimensions(fields, assessmentType);
   const rows = [
+    ['Tipo de diagnóstico', assessmentTitle],
     ['Empresa', fields.Empresa],
     ['Contacto', fields.Nombre],
     ['Email', fields.Email],
@@ -60,7 +71,7 @@ function renderReport(fields, id) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Reporte Diagnóstico IA - ${esc(fields.Empresa || id)}</title>
+    <title>Reporte ${esc(assessmentTitle)} - ${esc(fields.Empresa || id)}</title>
   <style>
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: #111827; background: #f0fdf4; }
     main { max-width: 920px; margin: 0 auto; padding: 40px 20px; }
@@ -76,15 +87,18 @@ function renderReport(fields, id) {
     .metric strong { display: block; font-size: 20px; margin-top: 4px; }
     .answer { border-bottom: 1px solid #e5e7eb; padding: 12px 0; }
     .answer:last-child { border-bottom: 0; }
+    .summary { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.6; margin: 0; }
+    .no-print { display: inline-flex; margin: 16px 0 0; padding: 10px 16px; border: 0; border-radius: 999px; background: #047857; color: white; font: inherit; font-weight: 700; cursor: pointer; }
     .muted { color: #6b7280; }
-    @media print { body { background: white; } main { padding: 0; } section { break-inside: avoid; } }
+    @media print { body { background: white; } main { padding: 0; } section { break-inside: avoid; } .no-print { display: none; } }
   </style>
 </head>
 <body>
   <main>
-    <p class="muted">Apps del Sur - Diagnóstico de madurez en IA</p>
-    <h1>Reporte automático</h1>
+    <p class="muted">Apps del Sur - ${esc(assessmentTitle)}</p>
+    <h1>Tu resultado y próximos pasos</h1>
     <p class="muted">ID Airtable: ${esc(id)}</p>
+    <button class="no-print" type="button" onclick="window.print()">Imprimir o guardar como PDF</button>
     <section>
       <div class="grid">
         <div class="metric"><span>Etapa global</span><strong>${esc(fields['Etapa Global'] || '-')}</strong></div>
@@ -93,18 +107,21 @@ function renderReport(fields, id) {
       </div>
     </section>
     <section>
-      <h2>Resumen del lead</h2>
+      <h2>Datos de tu empresa</h2>
       <table>${rows.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v || '-')}</td></tr>`).join('')}</table>
+    </section>
+    <section>
+      <h2>Tu ruta de mejora</h2>
+      <pre class="summary">${esc(fields.Resumen || 'No hay una ruta de mejora guardada para este informe.')}</pre>
     </section>
     <section>
       <h2>Resultado por dimensión</h2>
       <table>
-        ${['Estrategia y liderazgo','Personas y cultura','Procesos y operación','Datos y gobernanza','Tecnología e integración']
-          .map((field) => `<tr><th>${esc(field)}</th><td>${esc(fields[field] || '-')}</td></tr>`).join('')}
+        ${dimensions.map((dimension) => `<tr><th>${esc(dimension.name)}</th><td>${esc(dimension.result || '-')}</td></tr>`).join('') || '<tr><td colspan="2" class="muted">Sin resultados por dimensión.</td></tr>'}
       </table>
     </section>
     <section>
-      <h2>Respuestas</h2>
+      <h2>Respuestas del diagnóstico</h2>
       ${answers.map((answer, index) => `<div class="answer"><strong>${index + 1}. ${esc(answer.dimension || answer.dim || '')}</strong><p>${esc(answer.question || '')}</p><p class="muted">Respuesta: ${esc(answer.stage || '-')} ${answer.stageName ? `- ${esc(answer.stageName)}` : ''}</p></div>`).join('') || '<p class="muted">Sin respuestas registradas.</p>'}
     </section>
   </main>
@@ -112,12 +129,26 @@ function renderReport(fields, id) {
 </html>`;
 }
 
-function parseAnswers(value) {
+function parseAssessmentData(value) {
   try {
-    return JSON.parse(value || '[]');
+    const parsed = JSON.parse(value || '[]');
+    if (Array.isArray(parsed)) return { assessmentType: '', dimensions: [], answers: parsed };
+    if (!parsed || typeof parsed !== 'object') return { assessmentType: '', dimensions: [], answers: [] };
+    return {
+      assessmentType: parsed.assessmentType === 'digital' ? 'digital' : parsed.assessmentType === 'ia' ? 'ia' : '',
+      dimensions: Array.isArray(parsed.dimensions) ? parsed.dimensions : [],
+      answers: Array.isArray(parsed.answers) ? parsed.answers : [],
+    };
   } catch (_error) {
-    return [];
+    return { assessmentType: '', dimensions: [], answers: [] };
   }
+}
+
+function legacyDimensions(fields, assessmentType) {
+  if (assessmentType === 'digital') return [];
+  return ['Estrategia y liderazgo', 'Personas y cultura', 'Procesos y operación', 'Datos y gobernanza', 'Tecnología e integración']
+    .map((name) => ({ name, result: fields[name] || '' }))
+    .filter((dimension) => dimension.result);
 }
 
 function esc(value) {

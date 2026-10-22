@@ -1,6 +1,6 @@
 ---
-title: "¿Cuánto cuesta un software a medida para mi negocio en Chile?"
-description: "Guía de rangos de inversión para software a medida en Chile: desde MVP básico hasta plataforma SaaS completa. Factores que afectan el precio y cómo elegir."
+title: "Software en Chile: qué explica el costo de una implementación"
+description: "Alcance, integraciones y soporte: criterios para comparar propuestas y entender qué incluye cada presupuesto."
 pubDate: 2026-03-22
 author: "Darío Ramírez"
 readingTime: "11 min"

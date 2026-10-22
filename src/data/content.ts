@@ -17,7 +17,7 @@ export const navItems = [
   { label: 'Agentes IA', href: '/agentes/' },
   { label: 'Servicios', href: '/servicios/' },
   { label: 'Nosotros', href: '/nosotros/' },
-  { label: 'Diagnóstico', href: '/diagnostico-madurez-ia/' },
+  { label: 'Diagnósticos', href: '/diagnosticos/' },
   { label: 'Financiamiento', href: '/#financiamiento' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contacto', href: '/#contacto' },
@@ -367,6 +367,7 @@ export const footer = {
       'https://wa.me/56945262335?text=Hola%2C%20me%20interesa%20conocer%20Apps%20del%20Sur',
   },
   solutionLinks: [
+    { label: 'Diagnósticos gratuitos', href: '/diagnosticos/' },
     { label: 'Vitivinícola', href: '/sectores/viticola/' },
     { label: 'Frutícola', href: '/sectores/fruticola/' },
     { label: 'Agrícola', href: '/sectores/agricola/' },

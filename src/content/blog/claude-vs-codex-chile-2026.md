@@ -1,6 +1,6 @@
 ---
-title: "Claude vs Codex 2026: Comparativa honesta para PyMEs chilenas"
-description: "Comparativa real entre Claude (Anthropic) y Codex (OpenAI) para empresas chilenas. Precio, fortalezas, debilidades y cuándo elegir cada uno. Desde alguien que usa ambos."
+title: "Claude vs. Codex: cómo elegir según el trabajo de tu pyme"
+description: "Compara enfoques y usos de Claude y Codex. Verifica planes y capacidades vigentes antes de contratar."
 pubDate: 2026-05-16
 author: "Darío Ramírez"
 readingTime: "10 min"

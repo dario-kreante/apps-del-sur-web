@@ -1,6 +1,6 @@
 ---
-title: "Ley 21.719 de Protección de Datos Personales: guía 2026 para pymes chilenas (qué cambia, qué hacer y cómo no caer en multas de hasta 20.000 UTM)"
-description: "Guía práctica 2026 para pymes en Chile: qué exige la nueva Ley 21.719 que entra en vigencia el 1 de diciembre de 2026. Plazos, multas, derechos ARCO, DPO, EIPD y checklist de cumplimiento. Para empresas en Santiago, Maule, O'Higgins, Ñuble, Biobío y todo Chile."
+title: "Ley 21.719 para pymes chilenas: guía de protección de datos"
+description: "Conceptos, obligaciones y un checklist para preparar la gestión de datos personales de tu empresa en Chile."
 pubDate: 2026-05-18T08:00:00-04:00
 author: "Darío Ramírez"
 readingTime: "13 min"

@@ -1,6 +1,6 @@
 ---
-title: "Framework de IA para pymes chilenas: 6 pilares y 4 fases para no fracasar en el intento"
-description: "Guía práctica para implementar inteligencia artificial en pymes de Chile sin perder tiempo ni plata. Los 6 pilares, las 4 fases del proyecto y cómo financiarlo con CORFO, FIA o SERCOTEC."
+title: "Implementar IA en tu pyme: un método para empezar con criterio"
+description: "Seis pilares y cuatro fases para ordenar procesos, evaluar un piloto y conectar una implementación de IA con objetivos de negocio."
 pubDate: 2026-05-17
 author: "Darío Ramírez"
 readingTime: "12 min"

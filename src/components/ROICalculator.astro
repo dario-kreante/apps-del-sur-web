@@ -1,0 +1,42 @@
+<section class="roi-tool not-prose" aria-labelledby="roi-tool-title" id="calculadora">
+  <p class="roi-label">PRUEBA CON TUS NÚMEROS · CLP</p>
+  <h2 id="roi-tool-title">¿Cuándo recuperarías la inversión?</h2>
+  <p>Compara el escenario sin subsidio y uno hipotético con financiamiento. Los resultados son estimaciones, no una promesa de ahorro.</p>
+  <form id="roi-form">
+    <div class="roi-inputs">
+      <label>Inversión inicial total ($)<input name="investment" type="number" min="1" max="1000000000000" step="any" value="8000000" required /></label>
+      <label>Beneficio anual antes de operación ($)<input name="benefit" type="number" min="0" max="1000000000000" step="any" value="6000000" required /></label>
+      <label>Costo anual de operación ($)<input name="operating" type="number" min="0" max="1000000000000" step="any" value="1200000" required /></label>
+      <label>Subsidio hipotético sobre inversión (%)<input name="subsidy" type="number" min="0" max="100" step="any" value="0" required /></label>
+    </div>
+    <button type="submit">Calcular escenarios</button>
+  </form>
+  <div id="roi-result" aria-live="polite" aria-atomic="true"></div>
+  <p class="roi-note">El beneficio anual incluye ahorro realizable y margen adicional, sin duplicaciones. El subsidio ingresado se aplica al total inicial solo para simular; las bases reales pueden cubrir únicamente parte de los gastos.</p>
+</section>
+<script>
+  import { calculateROI } from '../lib/roi.mjs';
+  const form = document.querySelector<HTMLFormElement>('#roi-form');
+  const result = document.querySelector<HTMLElement>('#roi-result');
+  if(form && result) form.addEventListener('submit', event => {
+    event.preventDefault(); if(!form.reportValidity()) return;
+    const data = new FormData(form);
+    const values = ['investment','benefit','operating','subsidy'].map(key=>Number(data.get(key)));
+    const [investment,benefit,operating,subsidy] = values;
+    const clp = new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0});
+    const number = new Intl.NumberFormat('es-CL',{maximumFractionDigits:1});
+    const scenarios = [calculateROI(investment,benefit,operating,0),calculateROI(investment,benefit,operating,subsidy)];
+    result.replaceChildren();
+    scenarios.forEach((scenario,index)=>{
+      const panel=document.createElement('div');
+      const title=document.createElement('h3');title.textContent=index===0?'Sin subsidio':`Con subsidio hipotético de ${number.format(subsidy)}%`;
+      const detail=document.createElement('p');detail.textContent=`Inversión a cargo de la empresa: ${clp.format(scenario.initial)}. Beneficio neto anual: ${clp.format(scenario.net)}.`;
+      const metrics=document.createElement('p');metrics.textContent=scenario.roi===null ? 'ROI no definido: la inversión inicial a cargo de la empresa es cero.' : `ROI año 1: ${number.format(scenario.roi*100)}%.`;
+      const payback=document.createElement('p');payback.textContent=scenario.initial===0 ? 'Sin desembolso inicial en esta simulación; revisa gastos no cubiertos y operación.' : scenario.payback===null ? 'Con estos datos no se recupera la inversión.' : `Recuperación estimada: ${number.format(scenario.payback)} meses desde la puesta en marcha.`;
+      panel.append(title,detail,metrics,payback);result.append(panel);
+    });
+  });
+</script>
+<style>
+.roi-tool{margin:32px 0;padding:26px;background:#eef4e8;border:1px solid #c5d6bc;border-radius:8px;color:#213c32}.roi-label{font-size:11px;letter-spacing:.12em;font-weight:700}.roi-tool h2{font:400 29px/1.2 Georgia,serif;margin:12px 0}.roi-tool>p{font-size:14px;line-height:1.7}.roi-inputs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}.roi-inputs label{font-size:13px;font-weight:600}.roi-inputs input{display:block;width:100%;min-width:0;background:white;border:1px solid #7b967e;border-radius:4px;padding:12px;margin-top:8px}.roi-tool button{background:#144d3d;color:white;padding:12px 22px;border-radius:4px}.roi-note{margin-top:20px}.roi-tool :is(input,button):focus-visible{outline:3px solid #976b28;outline-offset:3px}#roi-result{margin-top:22px;display:grid;gap:20px}#roi-result :global(h3){font-size:18px;font-weight:700;margin-bottom:8px}#roi-result :global(p){font-size:14px;line-height:1.7}@media(max-width:550px){.roi-inputs{grid-template-columns:1fr}.roi-tool{padding:20px}}
+</style>

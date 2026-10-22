@@ -1,6 +1,6 @@
 ---
-title: "¿Cuánto cuesta una web profesional para mi empresa en Chile?"
-description: "Rangos reales de inversión en sitios web profesionales en Chile: landing page, sitio corporativo y e-commerce. Factores de precio y cómo elegir."
+title: "¿Cuánto cuesta una web profesional para tu empresa en Chile?"
+description: "Qué cambia entre una landing, un sitio corporativo y una tienda online. Revisa contenido, mantenimiento e integraciones."
 pubDate: 2026-03-22
 author: "Darío Ramírez"
 readingTime: "10 min"

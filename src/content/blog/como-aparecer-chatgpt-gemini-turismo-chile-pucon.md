@@ -1,6 +1,6 @@
 ---
-title: "Cómo lograr que ChatGPT, Gemini y Claude recomienden tu hotel, restaurante o tour en Pucón (y todo el sur de Chile) — guía 2026"
-description: "Guía práctica 2026 para hoteles, hostales, cabañas, restaurantes y tour operadores en Pucón, Villarrica, Puerto Varas, Frutillar, Valle de Elqui y todo Chile. Cómo aparecer cuando un viajero le pregunta a ChatGPT, Gemini o Claude 'qué hacer y dónde comer'."
+title: "SEO y GEO para turismo en Chile: cómo mejorar tu visibilidad"
+description: "Cómo presentar información útil sobre tu hotel, restaurante o tour para buscadores y asistentes de IA, sin prometer recomendaciones."
 pubDate: 2026-05-17T20:00:00-04:00
 author: "Darío Ramírez"
 readingTime: "13 min"

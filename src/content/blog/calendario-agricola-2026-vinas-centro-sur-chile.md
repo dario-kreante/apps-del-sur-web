@@ -1,6 +1,6 @@
 ---
-title: "Calendario agrícola 2026: Labores por temporada en viñas del centro-sur de Chile"
-description: "Calendario agrícola 2026: Labores por temporada en viñas del centro-sur de Chile (Maule, O'Higgins, Ñuble). Poda, vendimia, control fitosanitario, costos y gestión de temporeros."
+title: "Calendario agrícola de viñas: cómo planificar labores y registros"
+description: "Una referencia estacional para el centro-sur de Chile. Ajusta fechas a tu zona, variedad y condiciones del año."
 pubDate: 2026-01-22
 author: "Darío Ramírez"
 readingTime: "9 min"

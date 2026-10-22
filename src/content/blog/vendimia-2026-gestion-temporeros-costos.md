@@ -1,6 +1,6 @@
 ---
-title: "Vendimia 2026: Cómo gestionar 100+ temporeros sin perder el control de costos"
-description: "Estrategias y herramientas digitales para gestionar el costo de mano de obra durante la vendimia 2026 en viñas chilenas. Datos reales, tablas comparativas y soluciones probadas."
+title: "Vendimia: cómo ordenar registros de temporeros y costos"
+description: "Criterios para registrar jornadas, labores y costos durante la cosecha, con foco en revisión y consolidación de información."
 pubDate: 2026-03-03
 author: "Darío Ramírez"
 readingTime: "8 min"

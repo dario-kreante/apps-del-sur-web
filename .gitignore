@@ -35,3 +35,6 @@ index.html.bak
 # lo local y los worktrees, no.
 .claude/settings.local.json
 .claude/worktrees/
+
+# Local browser validation evidence
+output/playwright/

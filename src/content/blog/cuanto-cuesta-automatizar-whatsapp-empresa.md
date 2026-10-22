@@ -1,6 +1,6 @@
 ---
-title: "¿Cuánto cuesta automatizar la atención por WhatsApp en tu empresa?"
-description: "Rangos de inversión para automatizar WhatsApp en empresas chilenas: respuestas automáticas, integración CRM y agentes IA completos."
+title: "¿Cuánto cuesta automatizar WhatsApp en una empresa chilena?"
+description: "Distingue respuestas básicas, integración con sistemas y agentes de IA. Revisa alcance, costos recurrentes y soporte."
 pubDate: 2026-03-22
 author: "Darío Ramírez"
 readingTime: "9 min"
