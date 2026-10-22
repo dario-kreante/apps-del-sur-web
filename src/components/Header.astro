@@ -14,7 +14,7 @@ import X from './icons/X.astro';
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center gap-1" aria-label="Navegación principal">
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
       {navItems.map((item) => (
         <a
           href={item.href}
@@ -26,14 +26,14 @@ import X from './icons/X.astro';
     </nav>
 
     <!-- Desktop CTA -->
-    <div class="hidden md:flex items-center">
+    <div class="hidden lg:flex items-center">
       <Button href="/#contacto" size="sm">Contactar</Button>
     </div>
 
     <!-- Mobile Menu Button -->
     <button
       id="menu-toggle"
-      class="md:hidden p-2 text-gray-600 min-w-[44px] min-h-[44px] flex items-center justify-center"
+      class="lg:hidden p-2 text-gray-600 min-w-[44px] min-h-[44px] flex items-center justify-center"
       aria-label="Abrir menú de navegación"
       aria-expanded="false"
     >
@@ -43,7 +43,7 @@ import X from './icons/X.astro';
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1 hidden">
+  <div id="mobile-menu" class="lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1 hidden">
     {navItems.map((item) => (
       <a
         href={item.href}

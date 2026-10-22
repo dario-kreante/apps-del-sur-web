@@ -168,18 +168,18 @@ export const sectorPages: Record<string, AgentPage> = {
         {
           tier: 'SaaS Starter',
           price: '$200.000 CLP/mes',
-          features: ['Setup $1.5M', 'Hasta 30 ha', 'Soporte por email'],
+          features: ['Hasta 30 ha', 'Soporte por email'],
         },
         {
           tier: 'SaaS Pyme',
           price: '$350.000 CLP/mes',
           highlight: true,
-          features: ['Setup $2.5M', '50-100 ha', 'Soporte WhatsApp', 'Reportes avanzados'],
+          features: ['50-100 ha', 'Soporte WhatsApp', 'Reportes avanzados'],
         },
         {
           tier: 'SaaS Enterprise',
           price: '$450.000 CLP/mes',
-          features: ['Setup $3.5M', '100+ ha', 'Multi-fundo', 'Soporte prioritario'],
+          features: ['100+ ha', 'Multi-fundo', 'Soporte prioritario'],
         },
       ],
     },
@@ -206,7 +206,7 @@ export const sectorPages: Record<string, AgentPage> = {
         'Jefe de campo registra en 30 segundos desde el celular (offline)',
         'Ahorro estimado año 1: $17M. ROI 4-7x sobre copago',
       ],
-      roi: 'Ahorro estimado $17M/año. Copago $3.4M (CORFO 60%). ROI año 1: 5x',
+      roi: 'Ahorro estimado $17M/año. ROI año 1: 5x',
     },
     faq: [
       {
@@ -219,7 +219,7 @@ export const sectorPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Cuánto demora la implementación?',
-        a: 'Plan Starter (20-30 ha): 4-6 semanas. Pyme (50-100 ha): 8-10 semanas. Enterprise (100+ ha o cooperativas): 10-12 semanas dependiendo de integraciones.',
+        a: 'Depende del tamaño y las integraciones: entre 4-6 semanas para una viña de 20-30 ha y 10-12 semanas para operaciones de más de 100 ha o cooperativas. El plazo exacto queda en la propuesta.',
       },
       {
         q: '¿Sirve para frutícolas y packings o solo viñas?',
@@ -347,7 +347,7 @@ export const sectorPages: Record<string, AgentPage> = {
       { value: '-60%', label: 'No-shows', sublabel: 'con recordatorios 24h+2h' },
       { value: '<10s', label: 'Respuesta', sublabel: '24/7 por WhatsApp' },
       { value: '+30%', label: 'Citas captadas', sublabel: 'fuera de horario' },
-      { value: '2 sem', label: 'Implementación', sublabel: 'plan Starter' },
+      { value: '2 sem', label: 'Implementación', sublabel: 'primer agente' },
     ],
     pricing: {
       intro: 'Cada agente individual ($1.8M a $5M venta única). Combinación recomendada para clínicas: Agendamiento + Compliance + Retención. Financiable con Kit Digital SERCOTEC o CRECE.',
@@ -392,7 +392,7 @@ export const sectorPages: Record<string, AgentPage> = {
       monto: '$1.2M - $5M CLP',
       cofinanciamiento: '95-100% para microempresas',
       descripcion:
-        'Una clínica dental o veterinaria pyme accede a Kit Digital ($1.2M, ~100% cubierto) o SERCOTEC CRECE ($5M, 95% cubierto). El copago real para la clínica queda entre $250K y $1.5M, lo que se recupera en 1-2 meses por reducción de no-shows.',
+        'Una clínica dental o veterinaria pyme accede a Kit Digital ($1.2M, ~100% cubierto) o SERCOTEC CRECE ($5M, 95% cubierto). El copago real para la clínica es acotado y se recupera en 1-2 meses por reducción de no-shows.',
       quienPostula: 'La clínica beneficiaria',
     },
     caseStudy: {
@@ -410,7 +410,7 @@ export const sectorPages: Record<string, AgentPage> = {
         '0 consultas sin respuesta + 18 citas nuevas/mes captadas de noche',
         'Cumple Ley 21.719 con consentimiento documentado',
       ],
-      roi: 'Ahorro estimado $2.3M/mes. Copago $1.5M (CRECE 70%). ROI mes 1.',
+      roi: 'Ahorro estimado $2.3M/mes. ROI mes 1.',
     },
     faq: [
       {
@@ -611,7 +611,7 @@ export const sectorPages: Record<string, AgentPage> = {
         '187 reseñas Google (4.7★) — +0.5★ en 6 meses',
         'Captura reservas argentinas y brasileñas que antes se iban',
       ],
-      roi: 'Ahorro estimado $11M/año. Copago $1.4M (CRECE). ROI año 1: 7.8x',
+      roi: 'Ahorro estimado $11M/año. ROI año 1: 7.8x',
     },
     faq: [
       {
@@ -804,7 +804,7 @@ export const sectorPages: Record<string, AgentPage> = {
         '~1h/semana por abogado revisando casos calificados',
         '+$5M/año en honorarios captados que antes se iban',
       ],
-      roi: 'Ahorro + ingresos extras: ~$11M/año. Copago $1.5M. ROI año 1: 7x',
+      roi: 'Ahorro + ingresos extras: ~$11M/año. ROI año 1: 7x',
     },
     faq: [
       {
@@ -993,7 +993,7 @@ export const sectorPages: Record<string, AgentPage> = {
         '16 promesas/mes; 11 cierres reales (+37%)',
         'Corredores liberan 12h/sem para cerrar',
       ],
-      roi: 'Incremento ingresos: ~$15M/año por mayor cierre. Copago $1.4M. ROI año 1: 10x',
+      roi: 'Incremento ingresos: ~$15M/año por mayor cierre. ROI año 1: 10x',
     },
     faq: [
       {
@@ -1184,7 +1184,7 @@ export const sectorPages: Record<string, AgentPage> = {
         'EE.CC. de septiembre cobrado en octubre (45 días)',
         'Jefe de obra 30 min/día en el sistema',
       ],
-      roi: 'Ahorro multas + caja recuperada: ~$25M/año. Copago $3.8M. ROI año 1: 6.5x',
+      roi: 'Ahorro multas + caja recuperada: ~$25M/año. ROI año 1: 6.5x',
     },
     faq: [
       {
@@ -1378,7 +1378,7 @@ export const sectorPages: Record<string, AgentPage> = {
         'Captura $2.8M/año extra en cuotas + LTV',
         'Reactivación proactiva basada en caída de asistencia',
       ],
-      roi: 'Ingresos recuperados: ~$6M/año. Copago $1.5M. ROI año 1: 4x',
+      roi: 'Ingresos recuperados: ~$6M/año. ROI año 1: 4x',
     },
     faq: [
       {
@@ -1569,7 +1569,7 @@ export const sectorPages: Record<string, AgentPage> = {
         'Facturación electrónica + reportes SII/ChileCompra automáticos',
         'Dueño descansa, agente filtra y agente humano de turno coordina',
       ],
-      roi: 'Servicios extras + ahorro tiempo: ~$28M/año. Copago $800K (CRECE). ROI año 1: 35x',
+      roi: 'Servicios extras + ahorro tiempo: ~$28M/año. ROI año 1: 35x',
     },
     faq: [
       {

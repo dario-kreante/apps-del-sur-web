@@ -61,7 +61,7 @@ import ArrowRight from './icons/ArrowRight.astro';
             <div class="space-y-2">
               <div class="flex justify-between text-sm">
                 <span class={card.highlight ? 'text-emerald-200' : 'text-gray-400'}>
-                  Proyecto
+                  Tope del fondo
                 </span>
                 <span
                   class:list={[
@@ -69,12 +69,12 @@ import ArrowRight from './icons/ArrowRight.astro';
                     card.highlight ? 'text-white' : 'text-gray-900',
                   ]}
                 >
-                  {card.projectCost}
+                  {card.fundCap}
                 </span>
               </div>
               <div class="flex justify-between text-sm">
                 <span class={card.highlight ? 'text-emerald-200' : 'text-gray-400'}>
-                  Usted paga
+                  Su aporte
                 </span>
                 <span
                   class:list={[
@@ -82,7 +82,7 @@ import ArrowRight from './icons/ArrowRight.astro';
                     card.highlight ? 'text-white' : 'text-emerald-700',
                   ]}
                 >
-                  {card.clientPays}
+                  {card.clientShare}
                 </span>
               </div>
             </div>

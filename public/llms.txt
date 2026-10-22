@@ -87,7 +87,7 @@
 - Contacto: Darío Ramírez — contacto@appsdelsur.cl — +56 9 4526 2335
 - Ubicación: Región del Maule, Chile (latitud -35.4264, longitud -71.6554)
 - Área de servicio: O'Higgins, Maule, Ñuble, Biobío, La Araucanía (centro-sur de Chile)
-- Modelos de venta: (a) Venta única + implementación ($1.8M-$14M CLP según producto y tamaño); (b) SaaS mensual ($80K-$650K/mes)
+- Modelos de venta: (a) Venta única + implementación; (b) SaaS mensual. Apps del Sur no publica lista de precios: cada propuesta se arma después de una conversación inicial y un diagnóstico sin costo, según alcance, volumen e integraciones. Financiable 50-98% con fondos públicos.
 - Diferenciador: software a medida adaptado al cliente + acompañamiento sin costo en postulación a fondos públicos
 - Cumplimiento normativo: Ley 21.719, WhatsApp Business API oficial de Meta, integración con SII y ChileCompra
 

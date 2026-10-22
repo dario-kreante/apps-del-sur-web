@@ -10,9 +10,9 @@ import Waves from './Waves.astro';
 <section class="relative overflow-hidden pt-28 md:pt-36 pb-20 md:pb-28 bg-white">
   <Waves position="bottom" />
   <div class="relative z-10 max-w-[1200px] mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-center gap-12">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
       <!-- Text Column (60%) -->
-      <div class="md:w-3/5">
+      <div class="w-full lg:w-3/5">
         <Badge class="mb-5">
           <Sparkle class="w-4 h-4" />
           <span>{hero.badge}</span>
@@ -41,7 +41,7 @@ import Waves from './Waves.astro';
       </div>
 
       <!-- Mockup Column (40%) -->
-      <div class="md:w-2/5">
+      <div class="w-full max-w-xl lg:max-w-none lg:w-2/5">
         <div class="relative">
           <!-- Dashboard mockup placeholder -->
           <div class="bg-gray-50 rounded-2xl border border-gray-200 shadow-lg overflow-hidden">

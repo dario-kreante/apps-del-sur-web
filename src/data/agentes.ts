@@ -307,7 +307,7 @@ export const agentPages: Record<string, AgentPage> = {
       monto: 'Hasta $1.200.000 CLP',
       cofinanciamiento: '~100% para microempresas',
       descripcion:
-        'El Kit Digital de SERCOTEC cubre prácticamente el costo total del plan Starter para microempresas formalizadas con ventas menores a UF 25.000 anuales. Nosotros le ayudamos a postular sin costo.',
+        'El Kit Digital de SERCOTEC cubre prácticamente el costo total de un primer agente para microempresas formalizadas con ventas menores a UF 25.000 anuales. Nosotros le ayudamos a postular sin costo.',
       quienPostula: 'La microempresa beneficiaria',
     },
     caseStudy: {
@@ -336,11 +336,11 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Cuánto demora la implementación?',
-        a: 'Plan Starter: 2 semanas. Plan Pro: 3-4 semanas. Plan Enterprise: 6-8 semanas dependiendo de las integraciones.',
+        a: 'Entre 2 semanas para un primer agente sin integraciones y 6-8 semanas cuando se conecta con varios sistemas. El plazo exacto queda en la propuesta.',
       },
       {
         q: '¿Se conecta con mi sistema actual (Reservo, Defontana, Bsale)?',
-        a: 'Sí. Tenemos integraciones nativas con Google Calendar, Reservo, Bsale y Defontana. Para sistemas propios desarrollamos la integración vía API (incluido en plan Enterprise).',
+        a: 'Sí. Tenemos integraciones nativas con Google Calendar, Reservo, Bsale y Defontana. Para sistemas propios desarrollamos la integración vía API.',
       },
       {
         q: '¿El agente puede equivocarse?',
@@ -574,7 +574,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Se integra con Shopify / WooCommerce / Tiendanube / Bsale / Defontana?',
-        a: 'Sí. Tenemos integraciones nativas con las plataformas más usadas en Chile. Para sistemas propios desarrollamos la conexión vía API en el plan Pro/Enterprise.',
+        a: 'Sí. Tenemos integraciones nativas con las plataformas más usadas en Chile. Para sistemas propios desarrollamos la conexión vía API.',
       },
       {
         q: '¿Qué pasa si el agente no sabe responder?',
@@ -816,7 +816,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Se integra con HubSpot / Salesforce / Pipedrive?',
-        a: 'Sí, integración nativa con los CRMs más usados. Para Salesforce Enterprise hacemos integración custom (incluida en plan Enterprise).',
+        a: 'Sí, integración nativa con los CRMs más usados. Para Salesforce Enterprise hacemos integración custom.',
       },
       {
         q: '¿Cómo sé que no espanta leads?',
@@ -828,7 +828,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Cuánto demora en estar productivo?',
-        a: 'Plan Pro: 4-6 semanas (incluye definición ICP, configuración, training, integraciones). Las primeras 2 semanas son de aprendizaje supervisado — su equipo revisa cada conversación y nosotros ajustamos.',
+        a: '4-6 semanas (incluye definición ICP, configuración, training, integraciones). Las primeras 2 semanas son de aprendizaje supervisado — su equipo revisa cada conversación y nosotros ajustamos.',
       },
     ],
     relatedBlogSlugs: [
@@ -1044,11 +1044,11 @@ export const agentPages: Record<string, AgentPage> = {
     faq: [
       {
         q: '¿El modelo % éxito tiene mínimos?',
-        a: 'Sí. En el plan Pro pagamos sobre clientes rescatados que duran al menos 3 meses después del rescate (para evitar incentivos perversos). El % se cobra una sola vez por cliente rescatado.',
+        a: 'Sí. En la modalidad por éxito cobramos sobre clientes rescatados que duran al menos 3 meses después del rescate (para evitar incentivos perversos). El % se cobra una sola vez por cliente rescatado.',
       },
       {
         q: '¿Cómo detecta quién va a cancelar?',
-        a: 'Usamos señales conductuales: frecuencia de uso, días sin login, pagos rechazados, tickets de soporte, encuestas NPS. En el plan Pro entrenamos un modelo predictivo con sus datos históricos de churn.',
+        a: 'Usamos señales conductuales: frecuencia de uso, días sin login, pagos rechazados, tickets de soporte, encuestas NPS. Cuando el alcance lo justifica, entrenamos un modelo predictivo con sus datos históricos de churn.',
       },
       {
         q: '¿No molesta al cliente recibir un mensaje "preventivo"?',
@@ -1056,7 +1056,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Se integra con mi sistema de gym / SaaS / billing?',
-        a: 'Plan Starter: integración con Stripe, MercadoPago, GymManager y los más usados en Chile. Plan Pro/Enterprise: integración custom con su sistema vía API.',
+        a: 'Sí. Nos integramos con Stripe, MercadoPago, GymManager y los sistemas más usados en Chile, y si usa otro sistema hacemos la integración a medida vía API.',
       },
       {
         q: '¿Qué pasa si el cliente igual cancela?',
@@ -1568,7 +1568,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Funciona para abogado independiente, no estudio?',
-        a: 'Sí. Plan Starter está calibrado exactamente para 1-2 abogados. De hecho ahí es donde más se nota: un abogado solo que pierde clientes por no responder fines de semana y gasta horas en NDAs estandarizados.',
+        a: 'Sí. El alcance se ajusta a estudios de 1-2 abogados. De hecho ahí es donde más se nota: un abogado solo que pierde clientes por no responder fines de semana y gasta horas en NDAs estandarizados.',
       },
       {
         q: '¿Cuánto demora la implementación?',
@@ -1817,7 +1817,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Funciona también para servicios funerarios completos, no solo cuota mortuoria?',
-        a: 'Sí. Plan Pro incluye agendamiento de servicios (velatorio, traslado, cremación), pre-pago, seguimiento post-servicio. El módulo Cuota Mortuoria es la **puerta de entrada** que diferencia comercialmente — atrae familias que después contratan servicios.',
+        a: 'Sí. El alcance puede incluir agendamiento de servicios (velatorio, traslado, cremación), pre-pago, seguimiento post-servicio. El módulo Cuota Mortuoria es la **puerta de entrada** que diferencia comercialmente — atrae familias que después contratan servicios.',
       },
       {
         q: '¿Cómo maneja el agente conversaciones sensibles (familia en duelo)?',
@@ -1829,11 +1829,11 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Puede atender también la **asignación familiar por fallecimiento** y otros beneficios?',
-        a: 'Sí, en plan Pro/Enterprise agregamos otros beneficios relevantes: asignación familiar por fallecimiento (régimen IPS), pensión de sobrevivencia (AFP), seguro de vida obligatorio en créditos hipotecarios y de consumo, beneficios CCAF. Ampliamos el alcance del asistente según el perfil de su clientela.',
+        a: 'Sí, según el alcance del proyecto agregamos otros beneficios relevantes: asignación familiar por fallecimiento (régimen IPS), pensión de sobrevivencia (AFP), seguro de vida obligatorio en créditos hipotecarios y de consumo, beneficios CCAF. Ampliamos el alcance del asistente según el perfil de su clientela.',
       },
       {
         q: '¿Cuánto demora la implementación?',
-        a: 'Starter: 2-3 semanas. Pro con integración con sistema interno: 4-6 semanas. Las primeras 2 semanas son de aprendizaje supervisado: usted o un encargado revisa cada conversación para validar tono y precisión.',
+        a: '2-3 semanas para un primer agente; 4-6 semanas si se integra con su sistema interno. Las primeras 2 semanas son de aprendizaje supervisado: usted o un encargado revisa cada conversación para validar tono y precisión.',
       },
     ],
     relatedBlogSlugs: [

@@ -43,7 +43,7 @@ export const maule: RegionData = {
     {
       title: 'Digitalización cara y lenta — hasta ahora',
       description:
-        'Los desarrollos a medida tradicionales cuestan $20-50 millones y tardan 6 meses. Con inteligencia artificial, eso cambió: entregamos en semanas a una fracción del costo.',
+        'Los desarrollos a medida tradicionales cuestan $20-50 millones y tardan 6 meses. Con inteligencia artificial, eso cambió: entregamos en semanas, con un equipo pequeño que conoce su operación de principio a fin.',
     },
     {
       title: 'Decisiones con datos atrasados',
@@ -102,7 +102,7 @@ export const maule: RegionData = {
   faq: [
     {
       q: '¿Qué fondo público me conviene si mi empresa está en el Maule?',
-      a: 'Depende del tamaño. Si es microempresa con ventas bajo 25.000 UF, SERCOTEC CRECE Maule cubre hasta $5M con 98% de cofinanciamiento — es el camino más corto y el copago queda entre $700K y $1M. Si ya es pyme establecida y el proyecto es de inversión, CORFO Desarrolla Inversión Maule va de $10M a $50M con 50%. Si recién parte en digital, Kit Digital cubre hasta $1,2M al 90% y sirve como primer paso. Y si su empresa es agrícola o agroindustrial, FIA Innovación llega a $80M con 80%, pero abre por ventanilla y hay que preparar la postulación con meses de anticipación.',
+      a: 'Depende del tamaño. Si es microempresa con ventas bajo 25.000 UF, SERCOTEC CRECE Maule cubre hasta $5M con 98% de cofinanciamiento — es el camino más corto y el copago es mínimo. Si ya es pyme establecida y el proyecto es de inversión, CORFO Desarrolla Inversión Maule va de $10M a $50M con 50%. Si recién parte en digital, Kit Digital cubre hasta $1,2M al 90% y sirve como primer paso. Y si su empresa es agrícola o agroindustrial, FIA Innovación llega a $80M con 80%, pero abre por ventanilla y hay que preparar la postulación con meses de anticipación.',
     },
     {
       q: '¿Atienden presencialmente en Talca, Curicó y Linares?',

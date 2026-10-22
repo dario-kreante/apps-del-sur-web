@@ -119,12 +119,6 @@ const serviceLd: Record<string, any> = {
     url: 'https://appsdelsur.cl',
   },
   areaServed: areaServedSchema,
-  offers: {
-    '@type': 'AggregateOffer',
-    priceCurrency: 'CLP',
-    lowPrice: data.pricing.saas[0]?.price.replace(/[^\d]/g, '') || '80000',
-    highPrice: '14000000',
-  },
   url: finalUrl,
 };
 if (isSector && data.targetIndustries.length) {
@@ -231,7 +225,7 @@ const llmTripleta = isSector
     <section class="pt-4 pb-16">
       <div class="max-w-[1200px] mx-auto px-6">
         <div class="flex flex-col lg:flex-row items-center gap-12">
-          <div class="lg:w-1/2">
+          <div class="w-full lg:w-1/2">
             <Badge class="mb-4">{data.hero.badge}</Badge>
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
               {data.hero.titleLine1}{' '}
@@ -257,7 +251,7 @@ const llmTripleta = isSector
               ))}
             </div>
           </div>
-          <div class="lg:w-1/2">
+          <div class="w-full lg:w-1/2">
             {HeroComponent ? (
               <div class="rounded-2xl overflow-hidden" role="img" aria-label={`Ilustración ${data.name}`}>
                 <HeroComponent class="w-full h-auto" />
@@ -333,7 +327,7 @@ const llmTripleta = isSector
           title="Lo que está costando no tener un agente"
           centered
         />
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 tablet-span-last gap-6">
           {data.painPoints.map((point) => {
             const IconComponent = iconMap[point.icon];
             return (
@@ -383,9 +377,7 @@ const llmTripleta = isSector
 
     <!-- Pricing -->
     <PricingTiers
-      intro={data.pricing.intro}
       ventaUnica={data.pricing.ventaUnica}
-      saas={data.pricing.saas}
       whatsappUrl={data.hero.ctaPrimaryHref}
     />
 
@@ -567,7 +559,7 @@ const llmTripleta = isSector
           <SectionHeader
             label="Combinación recomendada"
             title={`Agentes que usa el rubro ${data.name.replace(/^Agentes? IA para /i, '').toLowerCase()}`}
-            description="Los agentes individuales abajo se combinan para resolver el dolor completo del sector. Haga clic para ver detalles, casos y precios de cada uno."
+            description="Los agentes individuales abajo se combinan para resolver el dolor completo del sector. Haga clic para ver detalles y casos de cada uno."
             centered
           />
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

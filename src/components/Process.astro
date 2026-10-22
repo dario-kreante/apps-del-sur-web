@@ -23,7 +23,7 @@ const stepIcons = [
     />
 
     <!-- Desktop: horizontal stepper with icon cards -->
-    <div class="hidden md:grid md:grid-cols-4 gap-6 relative">
+    <div class="hidden lg:grid lg:grid-cols-4 gap-6 relative">
       <!-- Connecting line -->
       <div class="absolute top-8 left-[calc(12.5%+24px)] right-[calc(12.5%+24px)] h-0.5 bg-emerald-200 z-0"></div>
 
@@ -45,7 +45,7 @@ const stepIcons = [
     </div>
 
     <!-- Mobile: vertical timeline -->
-    <div class="md:hidden space-y-0">
+    <div class="lg:hidden space-y-0 max-w-2xl">
       {process.steps.map((step, i) => (
         <div class="flex gap-5">
           <!-- Timeline -->

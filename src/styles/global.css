@@ -65,3 +65,12 @@ details[open] > .faq-answer {
 .skip-link:focus {
   top: 1rem;
 }
+
+/* Tablet grid: in a 2-column grid an odd last card spans the full row instead of sitting alone */
+@utility tablet-span-last {
+  @media (width >= 48rem) and (width < 64rem) {
+    & > :last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+}
