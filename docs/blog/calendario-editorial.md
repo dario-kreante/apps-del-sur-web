@@ -19,12 +19,12 @@ La rutina semanal toma la primera fila con estado `pendiente` cuya fecha ya lleg
 
 | Fecha | Slug | Tema | Tipo | Sector | Estado |
 |---|---|---|---|---|---|
-| 2026-04-14 | `cierre-vendimia-costos-por-cuartel` | Post-vendimia: cerrar la temporada con el costo real por cuartel | Guía sectorial | Viñas | en revisión |
-| 2026-06-16 | `planificar-poda-vinas-cuadrillas-trato` | Cómo planificar la poda: cuadrillas, trato y control de avance diario | Guía sectorial | Viñas / Agrícola | en revisión |
-| 2026-07-14 | `ia-para-comercio-pyme-chile` | IA para el comercio de barrio: 4 tareas que puedes automatizar | Guía sectorial | Comercio / Retail | en revisión |
-| 2026-08-18 | `software-taller-mecanico-chile` | Talleres mecánicos: órdenes de trabajo, presupuestos y avisos por WhatsApp | Guía sectorial | Talleres | en revisión |
-| 2026-09-22 | `ia-farmacias-independientes-chile` | IA para farmacias independientes: inventario, vencimientos y atención | Guía sectorial | Farmacias | en revisión |
-| 2026-10-13 | `consultora-boutique-vs-gran-consultora-vs-freelancer` | Consultora boutique, gran consultora o freelancer: cómo elegir quién desarrolla tu software | Comparación | Transversal | en revisión |
+| 2026-04-14 | `cierre-vendimia-costos-por-cuartel` | Post-vendimia: cerrar la temporada con el costo real por cuartel | Guía sectorial | Viñas | publicado |
+| 2026-06-16 | `planificar-poda-vinas-cuadrillas-trato` | Cómo planificar la poda: cuadrillas, trato y control de avance diario | Guía sectorial | Viñas / Agrícola | publicado |
+| 2026-07-14 | `ia-para-comercio-pyme-chile` | IA para el comercio de barrio: 4 tareas que puedes automatizar | Guía sectorial | Comercio / Retail | publicado |
+| 2026-08-18 | `software-taller-mecanico-chile` | Talleres mecánicos: órdenes de trabajo, presupuestos y avisos por WhatsApp | Guía sectorial | Talleres | publicado |
+| 2026-09-22 | `ia-farmacias-independientes-chile` | IA para farmacias independientes: inventario, vencimientos y atención | Guía sectorial | Farmacias | publicado |
+| 2026-10-13 | `consultora-boutique-vs-gran-consultora-vs-freelancer` | Consultora boutique, gran consultora o freelancer: cómo elegir quién desarrolla tu software | Comparación | Transversal | publicado |
 
 ## Próximas semanas
 
