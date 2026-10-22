@@ -1,0 +1,710 @@
+{
+  "ia": {
+    "dimKeys": [
+      "estrategia",
+      "personas",
+      "procesos",
+      "datos",
+      "tecnologia"
+    ],
+    "dimLabels": {
+      "estrategia": "Estrategia y liderazgo",
+      "personas": "Personas y cultura",
+      "procesos": "Procesos y operación",
+      "datos": "Datos y gobernanza",
+      "tecnologia": "Tecnología e integración"
+    },
+    "stages": [
+      "Analógica",
+      "Principiante",
+      "Intermedia",
+      "Líder en IA"
+    ],
+    "questions": [
+      {
+        "dim": "estrategia",
+        "q": "¿Cómo se define hoy una prioridad digital o de IA en tu empresa?",
+        "a": [
+          "Aparece como idea puntual cuando hay un problema urgente",
+          "Se conversa entre dueños o jefaturas, pero sin plan ni responsables claros",
+          "Tiene objetivos, responsables, presupuesto y seguimiento mensual",
+          "Forma parte de la estrategia del negocio, con metas medibles y revisión directiva"
+        ]
+      },
+      {
+        "dim": "estrategia",
+        "q": "Cuando evalúan invertir en tecnología, ¿qué criterio pesa más?",
+        "a": [
+          "El costo inicial o la urgencia del momento",
+          "La recomendación de alguien cercano o del proveedor",
+          "El retorno esperado, el impacto operacional y la capacidad de integración",
+          "Un caso de negocio con impacto, riesgos, adopción y aprendizaje esperado"
+        ]
+      },
+      {
+        "dim": "estrategia",
+        "q": "¿Qué tan claro está el problema de negocio que la IA debería resolver?",
+        "a": [
+          "No está claro; se habla de IA en general",
+          "Hay ideas, pero todavía son amplias o poco priorizadas",
+          "Hay 1 a 3 casos de uso priorizados por dolor, ahorro o venta potencial",
+          "Existe un portafolio de casos de uso, con dueños, métricas y roadmap"
+        ]
+      },
+      {
+        "dim": "estrategia",
+        "q": "¿Quién lidera la adopción digital y de IA en la práctica?",
+        "a": [
+          "Nadie formalmente; depende de quien tenga tiempo",
+          "Una persona interesada empuja algunos cambios por iniciativa propia",
+          "Un responsable definido coordina con operaciones, administración y gerencia",
+          "Un equipo transversal lidera pilotos, adopción, medición y mejora continua"
+        ]
+      },
+      {
+        "dim": "personas",
+        "q": "¿Cómo reacciona el equipo cuando se propone automatizar una tarea repetitiva?",
+        "a": [
+          "Con temor, resistencia o dudas sobre pérdida de trabajo",
+          "Con curiosidad, pero esperando que otro lo pruebe primero",
+          "Con disposición a participar si el beneficio es concreto",
+          "Con propuestas activas de mejora y aprendizaje compartido"
+        ]
+      },
+      {
+        "dim": "personas",
+        "q": "¿Qué nivel de uso real tiene la IA generativa en el equipo?",
+        "a": [
+          "Casi nadie la usa o se usa solo por curiosidad personal",
+          "Algunas personas usan ChatGPT u otra herramienta para tareas simples",
+          "Hay usos definidos para redactar, analizar, resumir o responder mejor",
+          "Hay prácticas compartidas, controles y casos de uso integrados al trabajo diario"
+        ]
+      },
+      {
+        "dim": "personas",
+        "q": "¿Cómo se capacita el equipo en habilidades digitales y de IA?",
+        "a": [
+          "No hay capacitación formal; se aprende sobre la marcha",
+          "Hay capacitaciones puntuales cuando aparece una herramienta nueva",
+          "Existe un plan anual o trimestral con tiempo y presupuesto asignado",
+          "El aprendizaje es continuo: se prueban herramientas, se documenta y se comparte"
+        ]
+      },
+      {
+        "dim": "personas",
+        "q": "¿Qué tan preparados están los mandos medios para sostener el cambio?",
+        "a": [
+          "No tienen tiempo ni herramientas para impulsar cambios",
+          "Apoyan, pero dependen de instrucciones del dueño o gerencia",
+          "Pueden priorizar mejoras y acompañar al equipo en la adopción",
+          "Actúan como champions internos y convierten pilotos en hábitos operativos"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "Si revisamos el trabajo diario de terreno, ventas o atención, ¿dónde queda registrado?",
+        "a": [
+          "En papel, WhatsApp, llamadas o memoria de las personas",
+          "En Excel o formularios digitales, pero luego alguien vuelve a transcribir",
+          "En un sistema digital que ordena el flujo y reduce doble digitación",
+          "En un flujo automatizado donde la IA ayuda a capturar, clasificar o alertar"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "¿Cuánto cuesta realmente una actividad, cliente, cuadrilla o servicio?",
+        "a": [
+          "Se estima tarde, con información incompleta o a fin de mes",
+          "Se calcula en planillas, con bastante trabajo manual",
+          "Se obtiene desde registros digitales con poco esfuerzo",
+          "Se monitorea casi en tiempo real y el sistema alerta desviaciones"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "¿Qué ocurre cuando un cliente, trabajador o proveedor entrega información por WhatsApp?",
+        "a": [
+          "Queda en el chat y alguien debe acordarse de hacer seguimiento",
+          "Se copia manualmente a una planilla o sistema",
+          "Existe un proceso claro para registrar y asignar la solicitud",
+          "La información se clasifica automáticamente y genera tareas o respuestas sugeridas"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "¿Cómo se gestionan las excepciones o errores operativos?",
+        "a": [
+          "Se detectan tarde, cuando alguien reclama o falta información",
+          "Se revisan en reuniones o planillas cuando hay tiempo",
+          "El sistema muestra pendientes, atrasos o inconsistencias",
+          "La IA anticipa riesgos y propone acciones antes de que escalen"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "¿Dónde vive la información crítica del negocio?",
+        "a": [
+          "En cuadernos, archivos sueltos, chats y conocimiento de personas clave",
+          "En planillas separadas por área, no siempre consistentes",
+          "En sistemas o bases compartidas con responsables definidos",
+          "En una fuente integrada y gobernada que alimenta reportes e IA"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "Si necesitas saber tus 10 clientes, labores o actividades más rentables, ¿cuánto toma?",
+        "a": [
+          "Días o varias consultas a distintas personas",
+          "Entre 30 minutos y algunas horas usando planillas",
+          "Minutos, desde un dashboard o reporte confiable",
+          "El sistema lo muestra automáticamente y explica cambios relevantes"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "¿Qué tan confiables son los datos para tomar decisiones?",
+        "a": [
+          "Se discute cuál número es correcto antes de decidir",
+          "Sirven, pero hay errores frecuentes de digitación o versiones distintas",
+          "Son suficientemente confiables para decisiones operativas recurrentes",
+          "Tienen controles, trazabilidad y reglas claras para uso con IA"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "¿Qué datos sensibles o personales maneja la empresa?",
+        "a": [
+          "No están identificados ni clasificados",
+          "Se conocen de forma informal, pero sin reglas escritas",
+          "Hay criterios básicos de acceso, respaldo y privacidad",
+          "Existe gobernanza: permisos, trazabilidad, consentimiento y criterios para IA"
+        ]
+      },
+      {
+        "dim": "tecnologia",
+        "q": "¿Qué herramientas sostienen la operación diaria?",
+        "a": [
+          "Celular, WhatsApp, papel y archivos locales",
+          "WhatsApp, Excel, correo y alguna nube o app simple",
+          "Sistemas digitales conectados con contabilidad, ventas u operación",
+          "Sistemas integrados con copilotos o agentes que ejecutan tareas específicas"
+        ]
+      },
+      {
+        "dim": "tecnologia",
+        "q": "¿Qué tan conectados están los sistemas entre sí?",
+        "a": [
+          "No se conectan; las personas mueven la información manualmente",
+          "Hay exportaciones/importaciones o copias manuales entre sistemas",
+          "Hay integraciones estables para los flujos principales",
+          "Hay APIs, automatizaciones y monitoreo de calidad del flujo de datos"
+        ]
+      },
+      {
+        "dim": "tecnologia",
+        "q": "¿Cómo prueban una nueva herramienta digital o de IA?",
+        "a": [
+          "Se compra o descarta sin piloto formal",
+          "Se prueba informalmente con 1 o 2 personas",
+          "Se hace un piloto corto con criterios de éxito definidos",
+          "Existe un método de experimentación: hipótesis, métricas, seguridad y escalamiento"
+        ]
+      },
+      {
+        "dim": "tecnologia",
+        "q": "¿Qué tan viable es financiar la próxima mejora digital?",
+        "a": [
+          "Depende de caja disponible y no hay ruta de financiamiento",
+          "Se han mirado fondos como Kit Digital o SERCOTEC, pero sin plan cerrado",
+          "Hay opciones identificadas como SERCOTEC, CORFO o FIA según el proyecto",
+          "La empresa arma proyectos financiables con aliados, métricas y cofinanciamiento definido"
+        ]
+      }
+    ],
+    "matrix": {
+      "estrategia": [
+        "Sin plan formal",
+        "Iniciativas aisladas",
+        "Roadmap con responsables",
+        "IA como estrategia medible"
+      ],
+      "personas": [
+        "Resistencia o baja adopción",
+        "Curiosidad individual",
+        "Capacitación y champions",
+        "Cultura de experimentación"
+      ],
+      "procesos": [
+        "Papel, chat y retrabajo",
+        "Digitalización parcial",
+        "Flujos conectados",
+        "IA asiste y anticipa"
+      ],
+      "datos": [
+        "Datos dispersos",
+        "Planillas por área",
+        "Fuente confiable",
+        "Gobernanza para IA"
+      ],
+      "tecnologia": [
+        "Herramientas básicas",
+        "Nube y apps simples",
+        "Sistemas integrados",
+        "Copilotos y agentes"
+      ]
+    },
+    "recommendations": {
+      "estrategia": {
+        "1": {
+          "now": "La IA todavía aparece como reacción a problemas puntuales. Sin foco estratégico, se vuelve una compra de herramientas más que una mejora del negocio.",
+          "next": "Define un dolor medible para los próximos 30 días: horas perdidas, errores, ventas no atendidas o costos sin visibilidad. Ese dolor debe guiar el primer caso de uso."
+        },
+        "2": {
+          "now": "Existe interés, pero el avance depende de iniciativas aisladas. La empresa necesita convertir intención en responsables, presupuesto y criterio de éxito.",
+          "next": "Elige un sponsor interno, un caso de uso y una métrica de ROI. Formalízalo en una hoja simple antes de comprar tecnología."
+        },
+        "3": {
+          "now": "Hay una base directiva para decidir con criterios de impacto. Esta es una buena etapa para pilotos cortos de IA con aprendizaje controlado.",
+          "next": "Ejecuta un piloto de 4 semanas con hipótesis clara: qué tarea se mejora, cuánto tiempo ahorra y qué riesgo se controla."
+        },
+        "4": {
+          "now": "La IA ya está conectada a la estrategia y se mide como capacidad competitiva. La prioridad pasa a escalar sin perder control.",
+          "next": "Arma un portafolio de casos de uso con gobierno, métricas y presupuesto. Documenta resultados para financiamiento CORFO/FIA o alianzas."
+        }
+      },
+      "personas": {
+        "1": {
+          "now": "La barrera principal no es técnica, sino cultural. Si el equipo percibe la IA como amenaza, cualquier piloto tendrá baja adopción.",
+          "next": "Partir por tareas que alivien trabajo repetitivo, no por reemplazo. Levanta 3 frustraciones del equipo y conviértelas en casos de uso seguros."
+        },
+        "2": {
+          "now": "Hay curiosidad, pero depende de usuarios individuales. Falta convertir la experimentación en práctica compartida.",
+          "next": "Nombra 1 o 2 champions internos y dales tiempo explícito para probar, documentar y enseñar usos simples de IA."
+        },
+        "3": {
+          "now": "El equipo tiene disposición y cierta capacidad de adopción. Esta base permite mover pilotos a hábitos operativos.",
+          "next": "Crea una rutina quincenal de aprendizaje: qué se probó, qué funcionó, qué dato faltó y qué proceso conviene automatizar."
+        },
+        "4": {
+          "now": "La cultura ya empuja la mejora continua. Ese aprendizaje colectivo es una ventaja difícil de copiar.",
+          "next": "Estandariza buenas prácticas, prompts, criterios de privacidad y onboarding para que la madurez no dependa de personas puntuales."
+        }
+      },
+      "procesos": {
+        "1": {
+          "now": "La operación todavía depende de papel, chat o memoria. La IA no puede crear valor estable si primero no existe un registro confiable.",
+          "next": "Digitaliza un flujo crítico completo, no todos a la vez. Prioriza el que genere más retrabajo o pérdida de información."
+        },
+        "2": {
+          "now": "Hay digitalización parcial, pero la doble digitación sigue consumiendo tiempo y generando errores.",
+          "next": "Elimina un traspaso manual entre WhatsApp, Excel, operación o contabilidad. Esa conexión suele ser el ROI más rápido."
+        },
+        "3": {
+          "now": "Los flujos principales ya están ordenados. Esto permite aplicar IA en clasificación, alertas, respuestas o análisis.",
+          "next": "Identifica una tarea repetitiva con volumen semanal y prueba un asistente o automatización con supervisión humana."
+        },
+        "4": {
+          "now": "Los procesos están listos para IA aplicada. La empresa puede anticipar desviaciones y operar por excepción.",
+          "next": "Mide ahorro, calidad y tiempo de respuesta. Esos datos alimentan el caso de negocio para escalar o postular a fondos."
+        }
+      },
+      "datos": {
+        "1": {
+          "now": "La información crítica está dispersa. Antes de IA, el riesgo es decidir con datos incompletos o versiones contradictorias.",
+          "next": "Define una fuente única para clientes, costos o actividades. Parte con el dato que más afecta margen o servicio."
+        },
+        "2": {
+          "now": "Los datos existen, pero se fragmentan entre áreas. El problema es consistencia, no falta de información.",
+          "next": "Asigna dueño a cada dato crítico y acuerda reglas básicas: dónde se registra, quién corrige y cuándo se actualiza."
+        },
+        "3": {
+          "now": "La empresa ya tiene datos suficientemente confiables para casos de uso de IA acotados.",
+          "next": "Prueba análisis predictivo o generación de reportes con datos internos, cuidando permisos y trazabilidad."
+        },
+        "4": {
+          "now": "La gobernanza de datos permite usar IA con menor riesgo. Esta es una posición avanzada para empresas chilenas.",
+          "next": "Formaliza políticas de privacidad, consentimiento, acceso y monitoreo de calidad para sostener la ventaja."
+        }
+      },
+      "tecnologia": {
+        "1": {
+          "now": "El stack actual limita la escalabilidad. WhatsApp y Excel pueden ayudar, pero no bastan para IA operacional.",
+          "next": "Define stack mínimo: nube, registro digital del proceso crítico y conexión con contabilidad o ventas."
+        },
+        "2": {
+          "now": "La empresa tiene herramientas, pero aún no funcionan como sistema. Comprar más software sin integración puede aumentar la carga.",
+          "next": "Conecta dos herramientas que hoy obligan a copiar datos. Prioriza integración antes que nuevas licencias."
+        },
+        "3": {
+          "now": "La base tecnológica permite pilotos de IA con bajo riesgo. El foco debe estar en integración y seguridad.",
+          "next": "Implementa un copiloto o agente para una tarea específica: responder, clasificar, resumir, generar reportes o alertar."
+        },
+        "4": {
+          "now": "La empresa está cerca de un modelo aumentado por IA. La prioridad es gobernar, monitorear y financiar el escalamiento.",
+          "next": "Arma una ruta financiable con aliados: SERCOTEC para primera digitalización, CORFO para integración o FIA para innovación aplicada."
+        }
+      }
+    },
+    "narrative": {
+      "1": "Etapa 1 — Analógica. La empresa opera con información dispersa, decisiones reactivas y baja base de datos. La prioridad no es comprar IA todavía: es ordenar el proceso crítico, capturar datos confiables y reducir retrabajo.",
+      "2": "Etapa 2 — Principiante. Ya hay herramientas digitales y curiosidad, pero la adopción es parcial. La prioridad es conectar sistemas, asignar responsables y elegir un primer caso de uso de IA con retorno visible.",
+      "3": "Etapa 3 — Intermedia. La empresa cuenta con procesos y datos suficientes para pilotos de IA. La prioridad es experimentar de forma controlada, medir impacto y preparar una ruta financiable.",
+      "4": "Etapa 4 — Líder en IA. La IA se integra a la estrategia, la operación y la cultura. La prioridad es gobernar datos, escalar casos de uso y convertir la madurez en ventaja comercial y acceso a fondos."
+    }
+  },
+  "digital": {
+    "dimKeys": [
+      "estrategia",
+      "clientes",
+      "procesos",
+      "datos",
+      "herramientas"
+    ],
+    "dimLabels": {
+      "estrategia": "Estrategia y liderazgo digital",
+      "clientes": "Clientes y ventas digitales",
+      "procesos": "Procesos y operación",
+      "datos": "Datos e información",
+      "herramientas": "Herramientas y seguridad"
+    },
+    "stages": [
+      "Papel y WhatsApp",
+      "Digital Básica",
+      "Digital Conectada",
+      "Digital Optimizada"
+    ],
+    "questions": [
+      {
+        "dim": "estrategia",
+        "q": "Cuando algo se hace \"a la antigua\" en la empresa y alguien propone digitalizarlo, ¿qué pasa?",
+        "a": [
+          "Se conversa, pero al final todo sigue igual porque \"así ha funcionado siempre\"",
+          "Se hacen cambios puntuales cuando algo ya se volvió insostenible",
+          "Hay una persona que empuja mejoras y logra concretar algunas al año",
+          "Existe un plan: sabemos qué vamos a digitalizar este año, quién lo lidera y cuánto costará"
+        ]
+      },
+      {
+        "dim": "estrategia",
+        "q": "¿Cómo deciden si comprar o contratar una herramienta digital (app, sistema, página web)?",
+        "a": [
+          "Casi no compramos herramientas digitales; nos arreglamos con lo que hay",
+          "Por recomendación de un conocido o porque el proveedor insistió",
+          "Comparamos 2 o 3 opciones y evaluamos precio versus lo que resuelve",
+          "Calculamos cuánto tiempo o plata nos ahorra antes de decidir, y medimos después si se cumplió"
+        ]
+      },
+      {
+        "dim": "estrategia",
+        "q": "¿La empresa ha usado fondos públicos (SERCOTEC, CORFO, Kit Digital) para digitalizarse?",
+        "a": [
+          "No sabíamos que existían fondos para esto",
+          "Los conocemos, pero nunca hemos postulado — parece complicado",
+          "Hemos postulado al menos una vez (con o sin éxito)",
+          "Hemos usado fondos públicos y sabemos cuál corresponde a nuestro próximo paso"
+        ]
+      },
+      {
+        "dim": "estrategia",
+        "q": "Si el dueño o administrador se enferma una semana, ¿qué pasa con la información del negocio?",
+        "a": [
+          "Se complica todo: los números y contactos clave están en su cabeza o su teléfono",
+          "Alguien más puede sacar adelante lo urgente, pero con llamadas y preguntas constantes",
+          "La información principal está en sistemas o planillas que otros saben usar",
+          "La operación sigue casi normal: la información vive en sistemas, no en personas"
+        ]
+      },
+      {
+        "dim": "clientes",
+        "q": "Si un cliente nuevo busca tu empresa en Google, ¿qué encuentra?",
+        "a": [
+          "Nada, o solo menciones sueltas (no tenemos presencia propia)",
+          "Una página de Facebook o Instagram que actualizamos de vez en cuando",
+          "Página web propia con información vigente de contacto y servicios",
+          "Página web activa que genera consultas o ventas todos los meses"
+        ]
+      },
+      {
+        "dim": "clientes",
+        "q": "¿Cómo se hace una cotización o presupuesto para un cliente?",
+        "a": [
+          "Se dice de palabra o se manda un mensaje de WhatsApp con el precio",
+          "Alguien la arma a mano en Word o Excel cada vez, desde cero",
+          "Usamos plantillas o un sistema que las genera con formato y numeración",
+          "Se generan desde un sistema, quedan registradas y sabemos cuántas se convierten en venta"
+        ]
+      },
+      {
+        "dim": "clientes",
+        "q": "Cuando un cliente escribe (WhatsApp, teléfono, correo), ¿cómo se maneja esa consulta?",
+        "a": [
+          "La responde quien la vio, y si estaba ocupado, se puede perder",
+          "Se responde casi siempre, pero no queda registro de qué se prometió",
+          "Hay responsables definidos y las consultas importantes quedan anotadas en un sistema o planilla",
+          "Toda consulta queda registrada, con seguimiento y tiempos de respuesta que medimos"
+        ]
+      },
+      {
+        "dim": "clientes",
+        "q": "¿Cómo pueden pagarte tus clientes?",
+        "a": [
+          "Efectivo o transferencia que confirmamos mirando el banco",
+          "Transferencia y tarjeta presencial (Redcompra / POS)",
+          "Varias opciones (tarjeta, link de pago, transferencia) y cuadramos contra las ventas",
+          "El pago queda amarrado automáticamente a la venta o factura, sin cuadraturas manuales"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "El trabajo del día a día (ventas, terreno, servicios, producción), ¿dónde queda registrado?",
+        "a": [
+          "En cuadernos, papeles o en la memoria del equipo",
+          "En planillas Excel o notas del celular que alguien pasa en limpio después",
+          "En un sistema o app donde se registra una sola vez",
+          "En un sistema, y además nos avisa si falta algo o hay un error"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "¿Cuántas veces se escribe el mismo dato antes de llegar al contador o a la factura?",
+        "a": [
+          "Varias: papel, luego planilla, luego otra planilla, luego contador",
+          "Dos veces: se registra digital, pero después alguien lo vuelve a tipear en otro lado",
+          "Una vez: el registro llega casi directo a facturación o contabilidad",
+          "Cero retrabajo: los sistemas se pasan la información solos"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "¿Cómo se coordina el equipo para el trabajo de la semana?",
+        "a": [
+          "De palabra o por grupos de WhatsApp que nadie ordena",
+          "WhatsApp más alguna planilla o pizarra que se actualiza a mano",
+          "Un calendario o sistema compartido donde todos ven tareas y responsables",
+          "Un sistema que asigna, recuerda vencimientos y muestra qué está atrasado"
+        ]
+      },
+      {
+        "dim": "procesos",
+        "q": "Si te preguntan cuánto costó un trabajo, servicio o cliente específico del mes pasado, ¿puedes saberlo?",
+        "a": [
+          "No con precisión; se sabe \"más o menos\" o a fin de año con el contador",
+          "Sí, pero tomaría días armar el número juntando papeles y planillas",
+          "Sí, en menos de una hora, desde nuestras planillas o sistema",
+          "Sí, al momento: el sistema muestra costos por trabajo o cliente actualizados"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "La información de tus clientes (contactos, historial, deudas), ¿dónde vive?",
+        "a": [
+          "En el teléfono y la memoria de una o dos personas",
+          "En una planilla que alguien mantiene cuando puede",
+          "En una planilla compartida o sistema, con un responsable de mantenerla al día",
+          "En un sistema que todo el equipo usa y que muestra el historial completo por cliente"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "Si se pierde o roban el computador (o teléfono) principal del negocio, ¿qué pierdes?",
+        "a": [
+          "Muchísimo: archivos, contactos y números que no están en otra parte",
+          "Algo se salva porque hay copias antiguas, pero perderíamos semanas de trabajo",
+          "Poco: lo importante está en la nube (Drive, sistema) y se recupera",
+          "Casi nada: todo está en la nube con respaldo automático y accesos por persona"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "Cuando necesitan un número para decidir (ventas del mes, deuda de clientes, stock), ¿qué pasa?",
+        "a": [
+          "Se le pregunta a la persona que \"sabe\" y se confía en su respuesta",
+          "Alguien lo arma en Excel y demora horas o días",
+          "Se saca de un sistema o planilla confiable en minutos",
+          "Está siempre disponible en un panel o reporte que se actualiza solo"
+        ]
+      },
+      {
+        "dim": "datos",
+        "q": "Cuando dos fuentes muestran números distintos (la planilla dice una cosa y el banco otra), ¿qué pasa?",
+        "a": [
+          "Pasa seguido y a veces nunca se sabe cuál era el correcto",
+          "Se corrige a mano cuando alguien lo detecta",
+          "Es poco frecuente: hay revisiones periódicas que lo detectan a tiempo",
+          "Casi no ocurre: los sistemas están conectados y cuadran solos"
+        ]
+      },
+      {
+        "dim": "herramientas",
+        "q": "¿Cuáles son las herramientas principales con las que funciona el negocio hoy?",
+        "a": [
+          "Teléfono, WhatsApp, papel y calculadora",
+          "WhatsApp, Excel, correo y la factura electrónica del SII",
+          "Sistemas digitales para las áreas principales (ventas, operación o inventario)",
+          "Sistemas conectados entre sí que cubren casi toda la operación"
+        ]
+      },
+      {
+        "dim": "herramientas",
+        "q": "¿Tus herramientas digitales \"conversan\" entre sí?",
+        "a": [
+          "No tenemos herramientas que conectar",
+          "No: las personas copian la información de una a otra",
+          "Algunas sí: las principales están conectadas o se traspasan con un clic",
+          "Sí: la información fluye sola entre ventas, operación y contabilidad"
+        ]
+      },
+      {
+        "dim": "herramientas",
+        "q": "¿Quién puede entrar a la información del negocio y con qué claves?",
+        "a": [
+          "Todos usan las mismas claves o las cuentas personales de alguien",
+          "Hay claves distintas, pero anotadas en cualquier parte y nunca se cambian",
+          "Cada persona tiene su acceso y se elimina cuando alguien se va",
+          "Accesos por persona con permisos según rol, y revisamos quién tiene acceso a qué"
+        ]
+      },
+      {
+        "dim": "herramientas",
+        "q": "Si mañana se corta internet en tu local u oficina, ¿qué pasa con la operación?",
+        "a": [
+          "Nada cambia — casi todo es en papel (y eso es justamente el problema)",
+          "Se complica: no podemos facturar ni responder, y no hay plan B",
+          "Seguimos con el teléfono como respaldo y nos ponemos al día después",
+          "Tenemos plan B definido (datos móviles, modo offline) y la operación casi no se detiene"
+        ]
+      }
+    ],
+    "matrix": {
+      "estrategia": [
+        "Sin rumbo digital",
+        "Cambios reactivos",
+        "Responsable y plan anual",
+        "Digital en la estrategia"
+      ],
+      "clientes": [
+        "Boca a boca y WhatsApp",
+        "Redes sociales básicas",
+        "Web + registro de clientes",
+        "Canales digitales que venden"
+      ],
+      "procesos": [
+        "Papel y memoria",
+        "Excel y retrabajo",
+        "Registro único digital",
+        "Flujos automatizados"
+      ],
+      "datos": [
+        "Datos en personas",
+        "Planillas dispersas",
+        "Fuente confiable en nube",
+        "Información en tiempo real"
+      ],
+      "herramientas": [
+        "Teléfono y papel",
+        "Islas digitales",
+        "Sistemas conectados",
+        "Operación digital completa"
+      ]
+    },
+    "recommendations": {
+      "estrategia": {
+        "1": {
+          "now": "La digitalización avanza solo cuando un problema explota. Así, cada peso invertido en tecnología es gasto reactivo, no mejora del negocio.",
+          "next": "Anota los 3 dolores que más tiempo o plata cuestan al mes. Elige UNO y define qué te gustaría que pasara en 90 días. Consulta si una convocatoria vigente de Kit Digital de SERCOTEC permite financiar ese primer paso; requisitos y cobertura dependen de sus bases."
+        },
+        "2": {
+          "now": "Hay voluntad de mejorar, pero sin responsable ni presupuesto los cambios dependen del entusiasmo del momento.",
+          "next": "Nombra un responsable de digitalización (puede ser part-time) y fija un presupuesto anual aunque sea pequeño. Revisa si SERCOTEC CRECE tiene una convocatoria vigente y si tu empresa cumple sus requisitos."
+        },
+        "3": {
+          "now": "Existe liderazgo digital real: hay quien empuja, se evalúa antes de comprar y se han explorado fondos. Se observa liderazgo digital y criterios para evaluar inversiones.",
+          "next": "Formaliza un plan digital a 12 meses con máximo 3 iniciativas, cada una con métrica de éxito en pesos u horas. Revisa las convocatorias de CORFO Digitalización y sus requisitos para evaluar si pueden apoyar este salto."
+        },
+        "4": {
+          "now": "Lo digital es parte de la estrategia y se decide con datos. El desafío ya no es digitalizar: es optimizar y prepararse para IA.",
+          "next": "Documenta tus resultados (ahorros, tiempos): son la base para postular a fondos mayores (CORFO, FIA) y el insumo perfecto para el Diagnóstico de Madurez en IA."
+        }
+      },
+      "clientes": {
+        "1": {
+          "now": "Los clientes nuevos llegan solo por contactos y boca a boca. Cada consulta perdida en WhatsApp es una venta que nadie vio.",
+          "next": "Parte simple: ficha de Google Business (gratis, 1 hora) para aparecer en búsquedas y mapas. Luego una página web básica con qué haces, dónde y cómo contactarte."
+        },
+        "2": {
+          "now": "Hay presencia digital, pero el proceso comercial sigue siendo manual: cotizaciones desde cero, consultas sin registro, pagos que hay que cuadrar a mano.",
+          "next": "Estandariza la cotización (plantilla con numeración) y registra cada consulta entrante en una planilla compartida: fecha, quién, qué pidió, en qué quedó. Con eso dejas de perder ventas por olvido."
+        },
+        "3": {
+          "now": "El ciclo comercial está ordenado: los clientes te encuentran, las cotizaciones tienen formato y las consultas se registran. Lo que falta es medir y automatizar.",
+          "next": "Mide 2 números al mes: cuántas cotizaciones envías y cuántas se cierran. Y automatiza el recordatorio de seguimiento — la mayoría de las ventas se pierde por no volver a escribir."
+        },
+        "4": {
+          "now": "Tus canales digitales generan ventas y todo queda registrado. Este nivel comercial es exactamente donde un agente IA de atención o agendamiento rinde de inmediato.",
+          "next": "Evalúa automatizar la primera respuesta por WhatsApp (calificación + agenda). Toma el Diagnóstico de Madurez en IA para dimensionarlo."
+        }
+      },
+      "procesos": {
+        "1": {
+          "now": "La operación vive en papel, chat y memoria. Cada traspaso manual agrega horas y errores, y nadie sabe el costo real de nada hasta fin de mes.",
+          "next": "Elige UN proceso (el que más retrabajo genera) y digitalízalo completo: que se registre una sola vez, en el momento, desde el celular. No intentes digitalizar todo a la vez."
+        },
+        "2": {
+          "now": "Hay registro digital, pero la doble digitación sigue: lo que se escribe en terreno o en ventas se vuelve a tipear después. Ese retrabajo es tu costo oculto más grande.",
+          "next": "Identifica el traspaso manual más frecuente (planilla a factura, WhatsApp a Excel) y elimínalo conectando o reemplazando esas dos piezas. Suele ser el ROI más rápido de toda la digitalización."
+        },
+        "3": {
+          "now": "El registro es único y el equipo se coordina con herramientas compartidas. La operación es visible: se puede saber qué pasó y cuánto costó sin arqueología de planillas.",
+          "next": "Agrega alertas: que el sistema avise atrasos, faltantes o desviaciones de costo en vez de esperar a que alguien las descubra."
+        },
+        "4": {
+          "now": "Los procesos están digitalizados de punta a punta con mínimo retrabajo. Tienes la materia prima que la IA necesita: procesos ordenados y datos al día.",
+          "next": "Elige una tarea repetitiva con volumen semanal (clasificar, responder, resumir, cotizar) y pilotea su automatización con supervisión humana."
+        }
+      },
+      "datos": {
+        "1": {
+          "now": "La información crítica vive en personas, no en sistemas. Si alguien clave se va o pierde el teléfono, el negocio pierde memoria. Es el riesgo más silencioso de la etapa analógica.",
+          "next": "Crea UNA fuente única en la nube (basta Google Drive y una planilla bien hecha) para el dato más crítico: clientes o costos. Define quién la mantiene."
+        },
+        "2": {
+          "now": "Los datos existen pero están repartidos en planillas que no siempre calzan. El problema no es falta de información: es que no es confiable ni rápida de consultar.",
+          "next": "Asigna un dueño a cada dato importante (clientes, ventas, inventario) y acuerda una regla simple: dónde se registra, quién corrige, cada cuánto se respalda."
+        },
+        "3": {
+          "now": "Hay una fuente confiable y respaldada: las decisiones ya se pueden tomar con números y no con intuición. La información disponible permite tomar decisiones con mayor confianza.",
+          "next": "Arma un panel simple con los 5 números que miras cada semana (ventas, caja, deuda de clientes, costos, pendientes), actualizado solo desde tus sistemas."
+        },
+        "4": {
+          "now": "La información fluye en tiempo real y cuadra sola. Este es el activo que diferencia a las empresas listas para IA: datos limpios, conectados y accesibles.",
+          "next": "Formaliza respaldos, permisos y privacidad. Con esa base, la IA puede analizar información con mejores controles."
+        }
+      },
+      "herramientas": {
+        "1": {
+          "now": "El stack actual (papel, WhatsApp, calculadora) pone techo al crecimiento: todo depende de personas presentes y de memoria.",
+          "next": "Stack mínimo para partir: factura electrónica bien usada, una planilla en la nube y un sistema simple para tu proceso crítico. Kit Digital financia exactamente esto."
+        },
+        "2": {
+          "now": "Hay herramientas digitales, pero funcionan como islas: las personas son el \"cable\" que mueve la información entre ellas. Comprar más software sin conectar lo existente solo agrega carga.",
+          "next": "Antes de cualquier compra nueva, conecta las dos herramientas que más te obligan a copiar datos. Y ordena accesos: una clave por persona, nunca compartidas."
+        },
+        "3": {
+          "now": "Los sistemas principales están conectados y los accesos son por persona. La operación digital es estable; el foco pasa a seguridad y continuidad.",
+          "next": "Prueba tu plan B: qué pasa si se corta internet, falla el sistema o se va la persona que más sabe. Documenta la respuesta en una página."
+        },
+        "4": {
+          "now": "La operación digital es completa, conectada y con seguridad básica resuelta. La operación digital completa abre espacio para optimizar y mejorar continuamente.",
+          "next": "El siguiente diferencial es la capa inteligente: copilotos y agentes sobre tus sistemas actuales. Toma el Diagnóstico de Madurez en IA y revisa la ruta CORFO/FIA para financiarlo."
+        }
+      }
+    },
+    "narrative": {
+      "1": "Etapa 1 — Papel y WhatsApp. La operación vive en cuadernos, chats y en la memoria de personas clave. Cada dato se escribe varias veces y los errores se descubren tarde. La prioridad no es comprar tecnología cara: es digitalizar UN proceso crítico y dar el primer paso con fondos como Kit Digital (~100% subsidiado).",
+      "2": "Etapa 2 — Digital Básica. Ya hay herramientas digitales (factura electrónica, Excel, alguna app), pero funcionan como islas: la información se copia a mano de un lado a otro. La prioridad es conectar lo que ya existe y eliminar la doble digitación — el ROI más rápido de toda la digitalización.",
+      "3": "Etapa 3 — Digital Conectada. Los sistemas principales conversan entre sí y las decisiones se apoyan en datos. La empresa cuenta con sistemas conectados y decisiones apoyadas en datos. La prioridad es automatizar tareas repetitivas, profesionalizar la seguridad de la información y preparar el salto a IA.",
+      "4": "Etapa 4 — Digital Optimizada. La operación es digital de punta a punta y el equipo mejora sus procesos continuamente. Esta base es exactamente lo que la IA necesita para generar valor real. El siguiente paso natural: el Diagnóstico de Madurez en IA y proyectos financiables CORFO/FIA."
+    }
+  }
+}

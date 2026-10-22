@@ -1,6 +1,6 @@
 ---
-title: "Agente IA por WhatsApp para peluquerías y barberías en Chile: agenda 24/7 sin perder clientes en 2026"
-description: "Guía 2026 para peluquerías, barberías y centros de belleza chilenos: cómo un agente IA agenda citas por WhatsApp 24/7, reduce no-shows 60% y libera a la recepcionista. Implementación 2 semanas, financiable con Kit Digital SERCOTEC."
+title: "IA por WhatsApp para peluquerías: cómo ordenar tu agenda"
+description: "Consultas, reservas y recordatorios: qué automatizar en una peluquería y qué mantener bajo revisión del equipo."
 pubDate: 2026-05-17T15:40:00-04:00
 author: "Darío Ramírez"
 readingTime: "9 min"

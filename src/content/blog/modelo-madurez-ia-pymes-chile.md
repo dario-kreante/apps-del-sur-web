@@ -1,6 +1,6 @@
 ---
-title: "Modelo de madurez en IA para pymes chilenas: 4 etapas, 6 dimensiones y ejemplos reales por sector"
-description: "Cómo saber en qué etapa de adopción de IA está tu pyme (Papel y WhatsApp, Digitalizado, Conectado, Aumentado por IA), qué hacer en cada una y ejemplos concretos en viñas, farmacias, funerarias y talleres."
+title: "Madurez en IA para pymes: identifica tu próximo paso"
+description: "Cuatro etapas y seis dimensiones para revisar procesos, datos y capacidades antes de invertir en inteligencia artificial."
 pubDate: 2026-05-18
 author: "Darío Ramírez"
 readingTime: "14 min"

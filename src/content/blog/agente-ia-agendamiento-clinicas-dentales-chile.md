@@ -1,6 +1,6 @@
 ---
-title: "Agente IA de agendamiento por WhatsApp para clínicas dentales en Chile: cómo reducir no-shows 60% en 2026"
-description: "Guía 2026 para clínicas dentales chilenas: cómo un agente IA por WhatsApp agenda citas 24/7, confirma con recordatorios y reduce las inasistencias en 60%. Implementación 2 semanas, financiable con Kit Digital SERCOTEC."
+title: "IA por WhatsApp para clínicas dentales: agenda y recordatorios"
+description: "Cómo diseñar reservas y recordatorios con IA, definir derivación al equipo y medir asistencia en una clínica dental."
 pubDate: 2026-05-17T15:00:00-04:00
 author: "Darío Ramírez"
 readingTime: "10 min"

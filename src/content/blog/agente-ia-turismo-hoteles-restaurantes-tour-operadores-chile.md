@@ -1,6 +1,6 @@
 ---
-title: "Agente IA por WhatsApp para hoteles, hostales, tour operadores y restaurantes en Chile: cómo automatizar reservas, FAQ y atención multi-idioma 2026"
-description: "Guía 2026 para empresas turísticas chilenas: cómo un agente IA por WhatsApp responde reservas, tracking, FAQs y recomienda actividades 24/7 en español, inglés y portugués. Para hoteles, hostales, cabañas, tour operadores y restaurantes en Pucón, Villarrica, Frutillar, Puerto Varas, Chiloé, San Pedro de Atacama, Valle de Elqui y todo Chile. Financiable con SERCOTEC y CORFO."
+title: "IA por WhatsApp en turismo: reservas y atención a viajeros"
+description: "Explora usos de IA para hoteles, restaurantes y tours en Chile: consultas, idiomas, disponibilidad y coordinación de reservas."
 pubDate: 2026-05-17T20:10:00-04:00
 author: "Darío Ramírez"
 readingTime: "11 min"

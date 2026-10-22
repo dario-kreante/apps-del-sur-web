@@ -1,6 +1,6 @@
 ---
-title: "Fondos para proyectos de IA en empresas chilenas: guía 2026 para postular con CORFO, FIA, Sercotec y Ley I+D"
-description: "Guía práctica 2026 de fondos públicos para financiar proyectos de inteligencia artificial en empresas chilenas: CORFO, FIA, Sercotec, SENCE, Ley I+D, ideas financiables y cómo postular."
+title: "Financiamiento de IA en Chile: qué revisar en CORFO, FIA y Sercotec"
+description: "Guía para explorar instrumentos y preparar un proyecto digital. Confirma requisitos y disponibilidad en las bases vigentes."
 pubDate: 2026-05-17T12:00:00-04:00
 author: "Darío Ramírez"
 readingTime: "11 min"

@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = 'Diagnósticos gratuitos para empresas | Apps del Sur';
+const description =
+  'Elige por dónde empezar: conoce la madurez digital de tu empresa si aún depende de papel, Excel o WhatsApp, o evalúa su preparación para aplicar inteligencia artificial.';
+
+const assessments = [
+  {
+    number: '01',
+    label: 'Ordenar la operación',
+    title: 'Madurez digital',
+    description:
+      'Para empresas que todavía resuelven procesos con papel, planillas o herramientas que no se conectan. Identifica dónde se pierde tiempo y cuál sería un siguiente paso digital útil.',
+    fit: 'Parte por aquí si tu información está repartida entre cuadernos, Excel, correo y WhatsApp.',
+    output: 'Una lectura de tu etapa digital, las brechas principales y acciones concretas para avanzar.',
+    duration: 'Aproximadamente 8 minutos',
+    href: '/diagnostico-madurez-digital/',
+    cta: 'Comenzar diagnóstico digital',
+    accent: 'emerald',
+  },
+  {
+    number: '02',
+    label: 'Encontrar oportunidades',
+    title: 'Madurez en IA',
+    description:
+      'Para empresas que ya cuentan con una base digital y quieren distinguir dónde la inteligencia artificial puede aportar valor y qué condiciones deben preparar.',
+    fit: 'Parte por aquí si ya gestionas información digital y tienes un proceso o desafío concreto en mente.',
+    output: 'Una evaluación de preparación para IA, dimensiones prioritarias y próximos pasos recomendados.',
+    duration: 'Aproximadamente 8 minutos',
+    href: '/diagnostico-madurez-ia/',
+    cta: 'Comenzar diagnóstico de IA',
+    accent: 'teal',
+  },
+];
+
+const jsonLd = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Diagnósticos gratuitos de Apps del Sur',
+    description,
+    url: 'https://appsdelsur.cl/diagnosticos/',
+    inLanguage: 'es-CL',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: assessments.map((assessment, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: `Diagnóstico de ${assessment.title}`,
+        url: `https://appsdelsur.cl${assessment.href}`,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://appsdelsur.cl/' },
+      { '@type': 'ListItem', position: 2, name: 'Diagnósticos', item: 'https://appsdelsur.cl/diagnosticos/' },
+    ],
+  },
+]);
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical="https://appsdelsur.cl/diagnosticos/"
+  ogTitle="Diagnósticos gratuitos para empresas — Apps del Sur"
+  ogDescription={description}
+>
+  <script type="application/ld+json" set:html={jsonLd} />
+  <Header />
+
+  <main id="main-content" class="pt-24 pb-16 md:pb-24">
+    <div class="max-w-[1100px] min-w-0 mx-auto px-6">
+      <nav class="text-sm text-gray-500 mb-7" aria-label="Ruta de navegación">
+        <a href="/" class="text-emerald-700 hover:text-emerald-800">Inicio</a>
+        <span class="mx-2" aria-hidden="true">/</span>
+        <span aria-current="page">Diagnósticos</span>
+      </nav>
+
+      <section class="max-w-3xl mb-10 md:mb-12">
+        <span class="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-full mb-4">
+          <span class="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+          Gratis · Sin conocimientos técnicos
+        </span>
+        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
+          Encuentra el diagnóstico que le sirve hoy a tu empresa
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Puedes responder ambos, pero conviene empezar por la situación actual de tu operación. Primero ordena la base digital; después evalúa dónde la IA puede ayudar.
+        </p>
+      </section>
+
+      <section aria-labelledby="elige-diagnostico" class="grid min-w-0 grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <h2 id="elige-diagnostico" class="sr-only">Elige un diagnóstico</h2>
+        {assessments.map((assessment) => (
+          <article class="flex min-w-0 flex-col bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex min-w-0 flex-col gap-2 mb-5 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+              <span class="inline-flex w-fit max-w-full items-center gap-2 whitespace-normal text-xs font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-full">
+                <span aria-hidden="true">{assessment.number}</span>
+                {assessment.label}
+              </span>
+              <span class="text-sm text-gray-500">{assessment.duration}</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">Diagnóstico de {assessment.title}</h2>
+            <p class="text-gray-600 leading-relaxed mb-5">{assessment.description}</p>
+
+            <div class="rounded-xl bg-emerald-50/70 border border-emerald-100 p-4 mb-4">
+              <h3 class="text-sm font-semibold text-emerald-950 mb-1">¿Te conviene si…?</h3>
+              <p class="text-sm text-gray-700 leading-relaxed">{assessment.fit}</p>
+            </div>
+
+            <div class="mb-6">
+              <h3 class="text-sm font-semibold text-gray-900 mb-1">Al terminar tendrás</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{assessment.output}</p>
+            </div>
+
+            <a
+              href={assessment.href}
+              class="mt-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-emerald-700 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700"
+            >
+              {assessment.cta}
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </section>
+
+      <section class="mt-8 md:mt-10 rounded-2xl bg-gray-50 border border-gray-200 p-6 md:p-8" aria-labelledby="orden-recomendado">
+        <div class="max-w-3xl">
+          <p class="text-xs font-bold tracking-wider uppercase text-emerald-700 mb-2">Un recorrido posible</p>
+          <h2 id="orden-recomendado" class="text-xl md:text-2xl font-bold text-gray-900 mb-3">De procesos digitales a oportunidades de IA</h2>
+          <p class="text-gray-600 leading-relaxed">
+            La inteligencia artificial funciona mejor cuando hay procesos claros y datos disponibles. Si el primer diagnóstico muestra que todavía falta conectar herramientas o digitalizar registros, puedes priorizar eso y volver a evaluar IA más adelante.
+          </p>
+        </div>
+      </section>
+
+      <p class="mt-8 text-center text-sm text-gray-500">
+        ¿Prefieres conversar antes de responder? <a href="/#contacto" class="font-medium text-emerald-700 underline underline-offset-2 hover:text-emerald-900">Cuéntanos qué necesita tu empresa</a>.
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

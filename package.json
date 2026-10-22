@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test:assessment-api": "node --test tests/assessment-api.test.js",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -16,6 +17,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.4",
+    "jspdf": "^4.2.1",
     "tailwindcss": "^4.2.1"
   }
 }

@@ -1,6 +1,6 @@
 ---
-title: "Claude lanzó IA para pymes esta semana. Te cuento qué cambia (sea cual sea tu rubro)"
-description: "Anthropic lanzó Claude for Small Business el 13 de mayo de 2026. Cómo te afecta si tienes consulta médica, taller, farmacia, viña, cabañas o despacho, y tres acciones para esta semana."
+title: "Claude para pymes chilenas: usos y preguntas antes de empezar"
+description: "Ideas para evaluar Claude en tareas de tu empresa y decidir qué información, controles e integraciones necesita cada uso."
 pubDate: 2026-05-16
 author: "Darío Ramírez"
 readingTime: "8 min"

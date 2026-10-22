@@ -1,6 +1,6 @@
 ---
-title: "5 señales de que tu viña necesita digitalizar la gestión de mano de obra"
-description: "Descubre 5 señales claras de que tu viña necesita digitalizar la gestión de mano de obra. Incluye checklist, datos de pérdidas económicas y soluciones prácticas."
+title: "5 señales de que tu viña necesita ordenar el registro de labores"
+description: "Costos tardíos, doble digitación y registros incompletos: identifica cuándo vale la pena evaluar un cuaderno de campo digital."
 pubDate: 2026-02-05
 author: "Darío Ramírez"
 readingTime: "7 min"

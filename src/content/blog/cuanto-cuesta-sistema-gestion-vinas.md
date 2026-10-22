@@ -1,6 +1,6 @@
 ---
-title: "¿Cuánto cuesta un sistema de gestión para viñas en Chile?"
-description: "Comparativa de costos de sistemas de gestión vitivinícola en Chile: soluciones genéricas, plataformas especializadas y desarrollo a medida."
+title: "Software para viñas en Chile: cómo comparar costos y alcance"
+description: "Qué evaluar al presupuestar registros de terreno y costos agrícolas, y cómo distinguirlos de contabilidad y nómina."
 pubDate: 2026-03-22
 author: "Darío Ramírez"
 readingTime: "11 min"

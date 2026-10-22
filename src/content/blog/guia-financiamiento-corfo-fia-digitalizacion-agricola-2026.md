@@ -1,6 +1,6 @@
 ---
-title: "Guía completa: Cómo financiar la digitalización de tu viña con CORFO y FIA en 2026"
-description: "Guía completa 2026: cómo financiar digitalización agrícola con CORFO y FIA. SERCOTEC, CORFO Digitalización, FIA hasta 80% fondos. Viñas, frutícola, cooperativas."
+title: "Digitalizar tu viña: cómo evaluar financiamiento CORFO y FIA"
+description: "Qué revisar antes de presupuestar un proyecto agrícola con fondos públicos: beneficiario, gastos, copago y convocatoria."
 pubDate: 2026-03-16
 author: "Darío Ramírez"
 readingTime: "8 min"

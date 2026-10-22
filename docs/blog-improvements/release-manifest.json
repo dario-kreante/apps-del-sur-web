@@ -1,0 +1,25 @@
+{
+  "releaseDirectory": "/tmp/apps-del-sur-blog-release-20261008",
+  "baseCommit": "0a1207e15cce8c0fdcc383d7aa4a1810e47bb4b2",
+  "includedPaths": [
+    "src/content/blog",
+    "src/lib/blog.ts",
+    "src/lib/roi.mjs",
+    "src/components/ROICalculator.astro",
+    "src/components/blog-heroes/HeroROI.astro",
+    "src/components/blog-heroes/HeroPorQueFallan.astro",
+    "src/layouts/BlogPost.astro",
+    "src/layouts/Layout.astro",
+    "src/pages/blog/index.astro",
+    "src/pages/blog/[slug].astro",
+    "scripts/verify-blog.mjs",
+    "docs/blog-improvements"
+  ],
+  "excludedUnrelatedChangesVerified": true,
+  "productionBaseline": "dpl_GHkdPELDid93nraxpNvuFbnyxf3x",
+  "productionFilesPreserved": 209,
+  "baseCommitIsNotFullProductionBaseline": true,
+  "finalDeployment": "dpl_73H3TqyvAJ9XJ9jAVeFTNpCjxdD6",
+  "publicUrl": "https://appsdelsur.cl/blog/",
+  "status": "published_verified"
+}

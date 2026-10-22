@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   canonical?: string;
   keywords?: string;
+  ogType?: 'website' | 'article';
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
@@ -23,6 +24,7 @@ const {
   description = siteConfig.description,
   canonical = siteConfig.canonical,
   keywords = siteConfig.keywords,
+  ogType = 'website',
   ogTitle = siteConfig.ogTitle,
   ogDescription = siteConfig.ogDescription,
   ogImage = siteConfig.ogImage,
@@ -62,7 +64,7 @@ const robotsContent = noindex
         <meta property="og:image:height" content="1024" />
       </>
     )}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="es_CL" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

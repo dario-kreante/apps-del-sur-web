@@ -1,0 +1,33 @@
+---
+import assessments from '../data/assessments.json';
+
+interface Props {
+  type: 'ia' | 'digital';
+}
+
+const { type } = Astro.props;
+const assessment = assessments[type];
+const assessmentJson = JSON.stringify({ type, ...assessment }).replace(/</g, '\\u003c');
+const title = type === 'ia' ? 'Diagnóstico de Madurez en IA' : 'Diagnóstico de Madurez Digital';
+---
+
+<link rel="stylesheet" href="/assessment.css" />
+<main id="main-content" class="assessment-page">
+  <div class="assessment-wrap">
+    <nav class="assessment-breadcrumb" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/diagnosticos/">Diagnósticos</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span>
+    </nav>
+    <div id="assessment-app" class="assessment-card" data-assessment-type={type}>
+      <noscript>
+        <h1>{title} para empresas chilenas</h1>
+        <p>Este diagnóstico interactivo requiere JavaScript. Si prefieres, <a href="/#contacto">contáctanos</a> y te orientamos.</p>
+      </noscript>
+    </div>
+    <p class="assessment-privacy">Tus respuestas se guardan en este navegador para que puedas continuar después. Solo se envían si completas y aceptas el formulario final.</p>
+  </div>
+</main>
+<script id="assessment-data" type="application/json" set:html={assessmentJson}></script>
+<script src="/assessment-app.js" is:inline></script>
+<script>
+  import '../scripts/assessment-pdf';
+</script>

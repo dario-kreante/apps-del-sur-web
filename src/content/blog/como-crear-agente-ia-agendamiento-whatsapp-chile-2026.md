@@ -1,6 +1,6 @@
 ---
-title: "Cómo crear un agente IA de agendamiento por WhatsApp paso a paso con n8n — guía 2026 para pymes en Chile"
-description: "Paso a paso simple para crear un agente IA que agende citas por WhatsApp usando n8n, Google Calendar y ChatGPT. Pensada para dueños y dueñas de peluquerías, clínicas dentales, talleres, spa o cualquier pyme chilena sin conocimientos técnicos. Maule, O'Higgins, Santiago, Concepción y todo Chile."
+title: "Agendamiento por WhatsApp con n8n: guía para un primer prototipo"
+description: "Recorre un flujo de agenda con n8n, calendario e IA. Identifica las integraciones y pruebas necesarias antes de atender clientes."
 pubDate: 2026-05-17T19:00:00-04:00
 author: "Darío Ramírez"
 readingTime: "12 min"

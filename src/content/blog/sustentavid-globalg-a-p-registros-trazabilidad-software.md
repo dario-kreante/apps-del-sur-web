@@ -1,6 +1,6 @@
 ---
-title: "Sustentavid y GlobalG.A.P.: Qué registros exigen y cómo cumplir con software de trazabilidad"
-description: "Requisitos de registros y trazabilidad en Sustentavid y GlobalG.A.P. Cómo cumplir con software de trazabilidad agrícola. Comparativa de exigencias de certificación."
+title: "Sustentavid y GLOBALG.A.P.: cómo preparar tus registros"
+description: "Qué revisar al organizar evidencias y trazabilidad para una auditoría. El software debe configurarse según el estándar aplicable."
 pubDate: 2026-02-19
 author: "Darío Ramírez"
 readingTime: "8 min"

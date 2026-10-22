@@ -1,5 +1,24 @@
-const DEFAULT_NOTIFY_EMAIL = 'dramirez.gysactiva@gmail.com';
 const DEFAULT_TABLE_NAME = 'Assessment Leads';
+const ASSESSMENT_DIMENSIONS = {
+  ia: [
+    'Estrategia y liderazgo',
+    'Personas y cultura',
+    'Procesos y operación',
+    'Datos y gobernanza',
+    'Tecnología e integración',
+  ],
+  digital: [
+    'Estrategia y liderazgo digital',
+    'Clientes y ventas digitales',
+    'Procesos y operación',
+    'Datos e información',
+    'Herramientas y seguridad',
+  ],
+};
+const DIMENSION_KEYS = {
+  ia: { estrategia: ASSESSMENT_DIMENSIONS.ia[0], personas: ASSESSMENT_DIMENSIONS.ia[1], procesos: ASSESSMENT_DIMENSIONS.ia[2], datos: ASSESSMENT_DIMENSIONS.ia[3], tecnologia: ASSESSMENT_DIMENSIONS.ia[4] },
+  digital: { estrategia: ASSESSMENT_DIMENSIONS.digital[0], clientes: ASSESSMENT_DIMENSIONS.digital[1], procesos: ASSESSMENT_DIMENSIONS.digital[2], datos: ASSESSMENT_DIMENSIONS.digital[3], herramientas: ASSESSMENT_DIMENSIONS.digital[4] },
+};
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -11,56 +30,31 @@ export default async function handler(req, res) {
     const lead = normalizePayload(payload);
     const config = readConfig(req);
 
-    if (!lead.email || !lead.nombre || !lead.empresa) {
-      return sendJson(res, 400, { ok: false, error: 'missing_required_fields' });
+    const validationError = validateLead(lead);
+    if (validationError) {
+      return sendJson(res, 400, { ok: false, error: validationError });
     }
 
-    let airtable = { configured: Boolean(config.airtableKey && config.airtableBaseId), recordId: null, reportUrl: null };
-    let hubspot = { configured: Boolean(config.hubspotToken), contactId: null, companyId: null, dealId: null };
-    const warnings = [];
-
-    if (airtable.configured) {
-      try {
-        airtable = await createAirtableRecord(config, lead);
-      } catch (error) {
-        console.error('airtable sync failed', error);
-        warnings.push('airtable_sync_failed');
-      }
-    } else {
-      warnings.push('airtable_not_configured');
+    const airtableConfigured = Boolean(config.airtableKey && config.airtableBaseId);
+    if (!airtableConfigured) {
+      return sendJson(res, 503, { ok: false, error: 'report_storage_not_configured' });
     }
 
-    if (hubspot.configured) {
-      try {
-        hubspot = await syncHubSpot(config, lead, airtable.reportUrl);
-        if (airtable.configured && airtable.recordId) {
-          await updateAirtableRecord(config, airtable.recordId, {
-            'HubSpot Contact ID': hubspot.contactId || '',
-            'HubSpot Company ID': hubspot.companyId || '',
-            'HubSpot Deal ID': hubspot.dealId || '',
-            'Estado CRM': 'Sincronizado',
-          });
-        }
-      } catch (error) {
-        console.error('hubspot sync failed', error);
-        warnings.push('hubspot_sync_failed');
-      }
-    } else {
-      warnings.push('hubspot_not_configured');
+    let airtable;
+    try {
+      airtable = await createAirtableRecord(config, lead);
+    } catch (error) {
+      console.error('airtable sync failed', error);
+      return sendJson(res, 502, { ok: false, error: 'report_storage_failed' });
     }
-
-    const email = await sendNotification(config, lead, airtable.reportUrl);
-    if (!email.sent && !email.skipped) warnings.push('email_notification_failed');
 
     return sendJson(res, 200, {
       ok: true,
+      storage: 'airtable',
       airtableRecordId: airtable.recordId,
       reportUrl: airtable.reportUrl,
-      hubspotContactId: hubspot.contactId,
-      hubspotCompanyId: hubspot.companyId,
-      hubspotDealId: hubspot.dealId,
-      emailSent: email.sent,
-      warnings,
+      emailSent: false,
+      emailStatus: 'not_sent_by_api',
     });
   } catch (error) {
     console.error('assessment-submit failed', error);
@@ -76,14 +70,9 @@ function readConfig(req) {
   const siteUrl = process.env.PUBLIC_SITE_URL || getOrigin(req);
   return {
     siteUrl: siteUrl.replace(/\/$/, ''),
-    notifyEmail: normalizeEnv(process.env.ASSESSMENT_NOTIFY_EMAIL) || DEFAULT_NOTIFY_EMAIL,
     airtableKey: normalizeEnv(process.env.AIRTABLE_API_KEY),
     airtableBaseId: normalizeEnv(process.env.AIRTABLE_BASE_ID),
     airtableTable: normalizeEnv(process.env.AIRTABLE_ASSESSMENT_TABLE) || DEFAULT_TABLE_NAME,
-    hubspotToken: normalizeEnv(process.env.HUBSPOT_PRIVATE_APP_TOKEN),
-    hubspotOwnerId: normalizeEnv(process.env.HUBSPOT_OWNER_ID),
-    hubspotDealPipeline: process.env.HUBSPOT_DEAL_PIPELINE,
-    hubspotDealStage: process.env.HUBSPOT_DEAL_STAGE,
   };
 }
 
@@ -107,6 +96,13 @@ function normalizePayload(payload) {
   let answers = [];
   try { answers = JSON.parse(answersJson); } catch (_error) {}
 
+  const fuente = clean(fields.Fuente || fields.source || 'diagnostico-madurez-ia');
+  const assessmentType = normalizeAssessmentType(fuente);
+  const dimensions = Object.entries(fields)
+    .filter(([key]) => /^Etapa\s+(?!Global\b)/i.test(key))
+    .map(([key, value]) => ({ name: key.replace(/^Etapa\s+/i, ''), result: clean(value) }))
+    .filter((item) => item.result);
+
   return {
     leadId: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`,
     submittedAt: new Date().toISOString(),
@@ -117,7 +113,9 @@ function normalizePayload(payload) {
     sector: clean(fields.Sector || fields.sector),
     tamano: clean(fields.Tamano || fields.size),
     region: clean(fields.Region || fields.region),
-    fuente: clean(fields.Fuente || fields.source || 'diagnostico-madurez-ia'),
+    fuente,
+    assessmentType,
+    assessmentTitle: assessmentType === 'digital' ? 'Diagnóstico de Madurez Digital' : 'Diagnóstico de Madurez en IA',
     etapaGlobal: clean(fields['Etapa Global']),
     puntajePromedio: clean(fields['Puntaje Promedio']),
     puntajeNormalizado: clean(fields['Puntaje Normalizado']),
@@ -125,21 +123,42 @@ function normalizePayload(payload) {
     prioridad: clean(fields.Prioridad),
     brechaInterna: clean(fields['Brecha Interna']),
     resumen: clean(fields['Resumen del Diagnostico']),
+    consentimiento: clean(fields.Consentimiento),
     answers,
+    dimensions,
     rawFields: fields,
   };
 }
 
-function clean(value) {
-  return String(value || '').trim().slice(0, 15000);
+function normalizeAssessmentType(source) {
+  return /digital/i.test(source) ? 'digital' : 'ia';
 }
 
-function splitName(fullName) {
-  const parts = fullName.split(/\s+/).filter(Boolean);
-  return {
-    firstname: parts.slice(0, 1).join(' '),
-    lastname: parts.slice(1).join(' '),
-  };
+function validateLead(lead) {
+  if (!lead.email || !lead.nombre || !lead.empresa) return 'missing_required_fields';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) return 'invalid_email';
+  if (lead.consentimiento !== 'Aceptado') return 'consent_required';
+  if (!Array.isArray(lead.answers) || lead.answers.length !== 20) return 'invalid_assessment_answers';
+  const expectedDimensions = ASSESSMENT_DIMENSIONS[lead.assessmentType];
+  const dimensionCounts = new Map(expectedDimensions.map((dimension) => [dimension, 0]));
+  const seenQuestionIndexes = new Set();
+  for (const answer of lead.answers) {
+    const dimension = clean(answer && (answer.dimension || DIMENSION_KEYS[lead.assessmentType][answer.dim]));
+    const stage = Number(answer && answer.stage);
+    const qIdx = Number(answer && answer.qIdx);
+    if (!dimensionCounts.has(dimension) || !Number.isInteger(qIdx) || qIdx < 0 || qIdx > 19 || seenQuestionIndexes.has(qIdx)) {
+      return 'invalid_assessment_answers';
+    }
+    if (!Number.isInteger(stage) || stage < 1 || stage > 4) return 'invalid_assessment_answers';
+    seenQuestionIndexes.add(qIdx);
+    dimensionCounts.set(dimension, dimensionCounts.get(dimension) + 1);
+  }
+  if (seenQuestionIndexes.size !== 20 || [...dimensionCounts.values()].some((count) => count !== 4)) return 'invalid_assessment_answers';
+  return null;
+}
+
+function clean(value) {
+  return String(value || '').trim().slice(0, 15000);
 }
 
 async function createAirtableRecord(config, lead) {
@@ -152,9 +171,8 @@ async function createAirtableRecord(config, lead) {
   const recordId = created.records?.[0]?.id;
   const reportUrl = recordId ? `${config.siteUrl}/api/assessment-report?id=${encodeURIComponent(recordId)}` : '';
 
-  if (recordId && reportUrl) {
-    await updateAirtableRecord(config, recordId, { 'Reporte URL': reportUrl });
-  }
+  if (!recordId || !reportUrl) throw new Error('Airtable did not return a record ID');
+  await updateAirtableRecord(config, recordId, { 'Reporte URL': reportUrl });
 
   return { configured: true, recordId, reportUrl };
 }
@@ -167,7 +185,7 @@ async function updateAirtableRecord(config, recordId, fields) {
 }
 
 function airtableFields(lead, reportUrl) {
-  return {
+  const fields = {
     'Lead ID': lead.leadId,
     'Fecha': lead.submittedAt,
     'Nombre': lead.nombre,
@@ -185,15 +203,20 @@ function airtableFields(lead, reportUrl) {
     'Prioridad': lead.prioridad,
     'Brecha Interna': Number.parseFloat(lead.brechaInterna) || null,
     'Reporte URL': reportUrl,
-    'Respuestas JSON': JSON.stringify(lead.answers),
+    'Respuestas JSON': JSON.stringify({ version: 1, assessmentType: lead.assessmentType, consentimiento: lead.consentimiento, dimensions: lead.dimensions, answers: lead.answers }),
     'Resumen': lead.resumen,
     'Estado CRM': 'Nuevo',
-    'Estrategia y liderazgo': clean(lead.rawFields['Etapa Estrategia y liderazgo']),
-    'Personas y cultura': clean(lead.rawFields['Etapa Personas y cultura']),
-    'Procesos y operación': clean(lead.rawFields['Etapa Procesos y operación']),
-    'Datos y gobernanza': clean(lead.rawFields['Etapa Datos y gobernanza']),
-    'Tecnología e integración': clean(lead.rawFields['Etapa Tecnología e integración']),
   };
+  // These existing Airtable columns are specific to the IA assessment. Keep
+  // them accurate for legacy reports and store Digital dimensions in Respuestas JSON.
+  if (lead.assessmentType === 'ia') {
+    fields['Estrategia y liderazgo'] = clean(lead.rawFields['Etapa Estrategia y liderazgo']);
+    fields['Personas y cultura'] = clean(lead.rawFields['Etapa Personas y cultura']);
+    fields['Procesos y operación'] = clean(lead.rawFields['Etapa Procesos y operación']);
+    fields['Datos y gobernanza'] = clean(lead.rawFields['Etapa Datos y gobernanza']);
+    fields['Tecnología e integración'] = clean(lead.rawFields['Etapa Tecnología e integración']);
+  }
+  return fields;
 }
 
 async function airtableRequest(config, method, path, body) {
@@ -212,143 +235,6 @@ async function airtableRequest(config, method, path, body) {
     throw new Error(`Airtable ${response.status}: ${text}`);
   }
   return response.json();
-}
-
-async function syncHubSpot(config, lead, reportUrl) {
-  const name = splitName(lead.nombre);
-  // Create/upsert the company FIRST (with its email domain) so that when the
-  // contact is created HubSpot's auto-association matches this company by domain
-  // instead of creating a duplicate company.
-  const companyId = await upsertHubSpotCompany(config, lead);
-  const contactId = await upsertHubSpotContact(config, lead, name);
-
-  // Explicitly associate contact <-> company (the endpoint used to leave them orphaned).
-  if (contactId && companyId) {
-    await associateObjects(config, 'contacts', contactId, 'companies', companyId);
-  }
-
-  const dealId = await maybeCreateHubSpotDeal(config, lead, reportUrl);
-  if (dealId) {
-    if (companyId) await associateObjects(config, 'deals', dealId, 'companies', companyId);
-    if (contactId) await associateObjects(config, 'deals', dealId, 'contacts', contactId);
-  }
-
-  return { configured: true, contactId, companyId, dealId };
-}
-
-function emailDomain(email) {
-  const at = String(email || '').split('@')[1];
-  return at ? at.trim().toLowerCase() : '';
-}
-
-// Creates a default (unlabeled) association between two CRM objects via the v4 API.
-// Failures are non-fatal: the lead is still captured even if the association call fails.
-async function associateObjects(config, fromType, fromId, toType, toId) {
-  try {
-    await hubspotRequest(
-      config,
-      'PUT',
-      `/crm/v4/objects/${fromType}/${fromId}/associations/default/${toType}/${toId}`,
-    );
-  } catch (error) {
-    console.error('hubspot association failed', fromType, '->', toType, error);
-  }
-}
-
-async function upsertHubSpotContact(config, lead, name) {
-  const existing = await hubspotSearch(config, 'contacts', 'email', lead.email, ['email']);
-  const properties = {
-    email: lead.email,
-    firstname: name.firstname,
-    lastname: name.lastname,
-    phone: lead.telefono,
-    company: lead.empresa,
-  };
-  if (config.hubspotOwnerId) properties.hubspot_owner_id = config.hubspotOwnerId;
-
-  if (existing) {
-    await hubspotRequest(config, 'PATCH', `/crm/v3/objects/contacts/${existing.id}`, { properties });
-    return existing.id;
-  }
-  const created = await hubspotRequest(config, 'POST', '/crm/v3/objects/contacts', { properties });
-  return created.id;
-}
-
-async function upsertHubSpotCompany(config, lead) {
-  if (!lead.empresa) return null;
-  const domain = emailDomain(lead.email);
-
-  // Prefer matching by domain (this is also how HubSpot auto-creates companies,
-  // so matching here prevents duplicates). Fall back to an exact name match.
-  let existing = null;
-  if (domain) existing = await hubspotSearch(config, 'companies', 'domain', domain, ['name', 'domain']);
-  if (!existing) existing = await hubspotSearch(config, 'companies', 'name', lead.empresa, ['name']);
-
-  const properties = {
-    name: lead.empresa,
-    phone: lead.telefono,
-  };
-  // Setting the domain is what lets HubSpot associate the contact to THIS company
-  // instead of spawning a domain-based duplicate.
-  if (domain) properties.domain = domain;
-  if (config.hubspotOwnerId) properties.hubspot_owner_id = config.hubspotOwnerId;
-
-  if (existing) {
-    await hubspotRequest(config, 'PATCH', `/crm/v3/objects/companies/${existing.id}`, { properties });
-    return existing.id;
-  }
-  const created = await hubspotRequest(config, 'POST', '/crm/v3/objects/companies', { properties });
-  return created.id;
-}
-
-async function maybeCreateHubSpotDeal(config, lead, reportUrl) {
-  if (!config.hubspotDealPipeline || !config.hubspotDealStage) return null;
-  const properties = {
-    dealname: `Diagnóstico IA - ${lead.empresa}`,
-    pipeline: config.hubspotDealPipeline,
-    dealstage: config.hubspotDealStage,
-    description: [
-      `Lead magnet: Diagnóstico Madurez IA`,
-      `Etapa: ${lead.etapaGlobal}`,
-      `Puntaje: ${lead.puntajeNormalizado}`,
-      `Prioridad: ${lead.prioridad}`,
-      reportUrl ? `Reporte: ${reportUrl}` : '',
-    ].filter(Boolean).join('\n'),
-  };
-  if (config.hubspotOwnerId) properties.hubspot_owner_id = config.hubspotOwnerId;
-  const created = await hubspotRequest(config, 'POST', '/crm/v3/objects/deals', { properties });
-  return created.id;
-}
-
-async function hubspotSearch(config, objectType, propertyName, value, properties) {
-  const result = await hubspotRequest(config, 'POST', `/crm/v3/objects/${objectType}/search`, {
-    filterGroups: [{ filters: [{ propertyName, operator: 'EQ', value }] }],
-    properties,
-    limit: 1,
-  });
-  return result.results?.[0] || null;
-}
-
-async function hubspotRequest(config, method, path, body) {
-  const response = await fetch(`https://api.hubapi.com${path}`, {
-    method,
-    headers: {
-      Authorization: `Bearer ${config.hubspotToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`HubSpot ${response.status}: ${text}`);
-  }
-  return response.json();
-}
-
-async function sendNotification(_config, _lead, _reportUrl) {
-  // FormSubmit validates browser-origin requests and rejects server-side calls from Vercel.
-  // Email alerts are sent from the browser after a successful CRM sync in diagnostico-app.js.
-  return { sent: false, skipped: true, reason: 'formsubmit_requires_browser' };
 }
 
 function sendJson(res, statusCode, body) {

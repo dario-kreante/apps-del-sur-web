@@ -1,6 +1,6 @@
 ---
-title: "Agente IA SDR para calificar leads B2B en Chile: cómo responder en 30 segundos y triplicar el pipeline en 2026"
-description: "Guía 2026 para empresas B2B chilenas: cómo un agente IA SDR califica leads inbound 24/7, agenda demos en su calendario y multiplica el pipeline. Integración con HubSpot, Pipedrive, Salesforce. Financiable con CORFO Digitalización Pyme."
+title: "Agente IA para leads B2B: qué automatizar y cómo medirlo"
+description: "Calificación, seguimiento y agenda de reuniones: criterios para diseñar un agente de IA y evaluar su aporte al proceso comercial."
 pubDate: 2026-05-17T15:20:00-04:00
 author: "Darío Ramírez"
 readingTime: "11 min"

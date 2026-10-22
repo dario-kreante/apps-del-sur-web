@@ -1,6 +1,6 @@
 ---
-title: "Software agrícola en Chile: Comparativa de soluciones para gestión de mano de obra (2026)"
-description: "Comparativa honesta de 6 softwares agrícolas: AGROsmart, AGRI, Agroprime, Agroptima, eVineyard, Apps del Sur. Pros, contras y cómo elegir para tu viña en 2026."
+title: "Software agrícola en Chile: criterios para elegir en tu viña"
+description: "Compara enfoques de registro, costos, soporte e integración. Valida funciones y precios directamente con cada proveedor."
 pubDate: 2026-03-16
 author: "Darío Ramírez"
 readingTime: "8 min"
