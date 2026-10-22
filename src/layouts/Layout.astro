@@ -15,7 +15,7 @@ interface Props {
   ogImageAlt?: string;
   /** When true, emits noindex,follow — used for thin sector×region pages without local differentiator yet. */
   noindex?: boolean;
-  /** When true, skips the sitewide FAQPage schema — use on pages that define their own FAQPage (Google allows only one per page). */
+  /** When true, skips the home FAQPage schema. It defaults to true everywhere except the home page, the only page that shows those questions. */
   omitFaqSchema?: boolean;
 }
 
@@ -30,7 +30,7 @@ const {
   ogImage = siteConfig.ogImage,
   ogImageAlt = siteConfig.ogImageAlt,
   noindex = false,
-  omitFaqSchema = false,
+  omitFaqSchema = Astro.url.pathname !== '/',
 } = Astro.props;
 
 const robotsContent = noindex
