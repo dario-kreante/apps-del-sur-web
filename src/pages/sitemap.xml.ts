@@ -99,6 +99,12 @@ export const GET: APIRoute = async () => {
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>${BASE_URL}/nosotros/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>${BASE_URL}/enfoque/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
