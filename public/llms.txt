@@ -63,6 +63,8 @@
 - [Multas Ley 21.719: cuánto arriesga tu empresa](https://appsdelsur.cl/blog/ley-21719-multas-cuanto-arriesga-empresa/)
 - [Política de privacidad Ley 21.719: los 12 puntos exigidos](https://appsdelsur.cl/blog/ley-21719-politica-privacidad-que-debe-incluir/)
 - [¿Es obligatorio el delegado de protección de datos en Chile?](https://appsdelsur.cl/blog/ley-21719-delegado-proteccion-datos-obligatorio/)
+- [Excel y la Ley 21.719: ¿puedes seguir usando tu planilla?](https://appsdelsur.cl/blog/ley-21719-excel-planilla-clientes/)
+- [Tu CRM y la Ley 21.719: qué revisar en los datos de clientes](https://appsdelsur.cl/blog/ley-21719-crm-datos-clientes/)
 - [Software agrícola Chile: comparativa 2026](https://appsdelsur.cl/blog/software-agricola-chile-comparativa-2026/)
 - [Costo de mano de obra por hectárea en viñas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
 - [Vendimia 2026: gestión de temporeros y costos](https://appsdelsur.cl/blog/vendimia-2026-gestion-temporeros-costos/)

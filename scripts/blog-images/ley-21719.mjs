@@ -1,6 +1,6 @@
 // Genera las imágenes del clúster Ley 21.719. Las cifras y el estado de la prórroga
 // viven aquí: si la Cámara vota o cambia la UTM, editar `datos` y volver a correr.
-// Uso: node scripts/blog-images/ley-21719.mjs
+// Uso: node scripts/blog-images/ley-21719.mjs [parte-del-nombre]
 import { chromium } from '@playwright/test';
 import { resolve } from 'node:path';
 
@@ -117,6 +117,51 @@ const paginas = {
     <p class="nota">Geolocalización y menores no están en esta lista: tienen reglas propias</p>
     ${pie('Ley 21.719, artículo 2°, letra g)')}`,
 
+  'ley-21719-excel-planilla-ordenada': `
+    <h1>Tu Excel puede seguir, con orden</h1>
+    <div class="hoja" role="img">
+      <div class="fila cab"><span>Dato</span><span>Para qué</span><span>Origen</span><span>Hasta cuándo</span></div>
+      <div class="fila"><span>Teléfono</span><span>Despacho</span><span>Compra</span><span>Fin garantía</span></div>
+      <div class="fila"><span>Correo</span><span>Boleta</span><span>Compra</span><span>Plazo legal</span></div>
+      <div class="fila"><span>Correo</span><span>Promociones</span><span>Formulario</span><span>Hasta su baja</span></div>
+    </div>
+    <p class="nota">La ley no prohíbe Excel. Importa cómo tratas los datos</p>
+    ${pie('Ejemplo ilustrativo. Plazos según tu caso')}`,
+
+  'ley-21719-excel-cinco-riesgos': `
+    <h1>Lo que te complica de la planilla</h1>
+    <ol class="seis">
+      <li><strong>Copias sueltas</strong><span>No borras en todas</span></li>
+      <li><strong>Acceso abierto</strong><span>Ex trabajadores o enlaces</span></li>
+      <li><strong>Columnas de más</strong><span>Datos que no necesitas</span></li>
+      <li><strong>Sin fecha de salida</strong><span>Datos que nunca se van</span></li>
+      <li><strong>Sin origen</strong><span>Nadie sabe de dónde salió</span></li>
+      <li><strong>Sin dueño</strong><span>Nadie responde solicitudes</span></li>
+    </ol>
+    ${pie('Ley 21.719, artículos 3°, 7°, 11 y 14 quinquies')}`,
+
+  'ley-21719-crm-que-revisar': `
+    <h1>Qué revisar en tu CRM</h1>
+    <ol class="seis">
+      <li><strong>De dónde salió</strong><span>Listas e importaciones</span></li>
+      <li><strong>Qué guardas</strong><span>Campos y notas libres</span></li>
+      <li><strong>Para qué lo usas</strong><span>Ventas, marketing, perfiles</span></li>
+      <li><strong>Quién entra</strong><span>Usuarios e integraciones</span></li>
+      <li><strong>Dónde está</strong><span>Proveedor y país</span></li>
+      <li><strong>Cuándo sale</strong><span>Bajas y contactos antiguos</span></li>
+    </ol>
+    ${pie('Tener CRM no equivale a cumplir la Ley 21.719')}`,
+
+  'ley-21719-crm-ciclo-contacto': `
+    <h1>La vida de un contacto en tu CRM</h1>
+    <div class="pasos">
+      <div class="paso"><i>1</i><div><strong>Entra</strong><span>¿Fuente lícita y base legal? Arts. 12, 13 y 14</span></div></div>
+      <div class="paso"><i>2</i><div><strong>Se usa</strong><span>¿Es el mismo fin que informaste? Art. 3°</span></div></div>
+      <div class="paso"><i>3</i><div><strong>Se comparte</strong><span>¿Hay contrato o cesión válida? Arts. 15 y 15 bis</span></div></div>
+      <div class="paso"><i>4</i><div><strong>Sale</strong><span>¿Atiendes bajas y plazos? Arts. 3°, 7° y 8°</span></div></div>
+    </div>
+    ${pie('Ley 21.719')}`,
+
   'ley-21719-delegado-decision': `
     <h1>¿Necesitas delegado de datos?</h1>
     <div class="pregunta">¿Vas a adoptar un modelo de prevención de infracciones?</div>
@@ -189,6 +234,12 @@ const css = `
   .seis span { display:block; font-size:31px; color:var(--muted); margin-top:6px; }
   .sensibles { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:16px 30px; }
   .sensibles li { font-size:33px; line-height:1.08; font-weight:500; padding-left:22px; border-left:7px solid var(--brand); min-height:60px; display:flex; align-items:center; }
+  .hoja { border:3px solid var(--deep); border-radius:6px; overflow:hidden; }
+  .fila { display:grid; grid-template-columns:.8fr 1.05fr .85fr 1.1fr; font-size:32px; }
+  .fila span { padding:20px 16px; border-right:2px solid var(--rule); border-top:2px solid var(--rule); white-space:nowrap; }
+  .fila span:last-child { border-right:0; }
+  .fila.cab { background:var(--deep); color:#fff; font-weight:700; }
+  .fila.cab span { border-color:transparent; }
   .pregunta { font-size:44px; line-height:1.15; font-weight:600; background:var(--tint); padding:24px 30px; border-radius:8px; margin-bottom:26px; }
   .ramas section { padding:24px 30px; border:3px solid var(--rule); border-radius:8px; }
   .ramas strong { display:block; font-size:46px; font-weight:700; line-height:1.1; margin-bottom:10px; }
@@ -197,9 +248,11 @@ const css = `
   .no h2 { color:var(--muted); }
 `;
 
+const filtro = process.argv[2];
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: SCALE });
 for (const [nombre, cuerpo] of Object.entries(paginas)) {
+  if (filtro && !nombre.includes(filtro)) continue;
   await page.setContent(
     `<!doctype html><html lang="es"><head><meta charset="utf-8">
      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
