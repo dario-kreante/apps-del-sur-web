@@ -3,6 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 
+import { LEY_21719_ESTADO } from '../../../data/ley21719';
+
 const title = 'Diagnóstico técnico de datos personales para pymes: Ley 21.719';
 const description = 'Sepa qué datos personales tiene su empresa, dónde están y quién puede verlos. Parta con un autodiagnóstico gratis y siga con un mapa de sus datos y un plan priorizado para la Ley 21.719.';
 const canonical = 'https://appsdelsur.cl/servicios/diagnostico-datos-personales/';
@@ -46,14 +48,14 @@ const reasons = [
   'Lo que construimos sale preparado para la Ley 21.719 desde el diseño.',
 ];
 const faqs = [
-  { q: '¿La ley no se va a postergar?', a: 'El Congreso discute moverla a 2027. Cambiaría la fecha, no las obligaciones. Prepararse con tiempo sale más barato.' },
-  { q: '¿Mi empresa es muy chica para esto?', a: 'La ley aplica a todas. Las pymes tienen un primer año con amonestaciones en vez de multas, pero las obligaciones son las mismas.' },
+  { q: '¿La ley no se va a postergar?', a: `${LEY_21719_ESTADO} La postergación movería la fecha, no las obligaciones.` },
+  { q: '¿Mi empresa es muy chica para esto?', a: 'La ley aplica a todas. Durante los primeros 12 meses de vigencia, la Agencia puede aplicar a las empresas de menor tamaño una amonestación escrita en lugar de una multa. Es una facultad de la Agencia, no una exención, y las obligaciones son las mismas.' },
   { q: '¿Esto reemplaza a un abogado?', a: 'No. Es orientativo y nosotros revisamos la parte técnica. La interpretación legal, las políticas y los contratos los ve un abogado.' },
   { q: '¿Cuánto cuesta el diagnóstico técnico?', a: 'Depende del tamaño y de los procesos a revisar. Lo conversamos después del autodiagnóstico.' },
 ];
 const privacyFaq = {
   q: '¿Qué hacen con mis respuestas?',
-  a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo.',
+  a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo. Participar en el estudio y recibir información comercial son opciones separadas y voluntarias.',
 };
 
 const jsonLd = JSON.stringify({
@@ -155,7 +157,8 @@ const eyebrow = 'text-sm font-semibold text-emerald-700';
         <div class="min-w-0 flex flex-col gap-4">
           <span class="text-sm font-semibold text-emerald-300">Qué exige la ley</span>
           <h2 class="text-3xl md:text-4xl font-bold leading-tight tracking-tight text-emerald-50">Lo que la Ley 21.719 le pide a su empresa</h2>
-          <p class="leading-relaxed text-emerald-200">La ley aplica a todas las empresas, sin importar su tamaño. Las multas llegan hasta 20.000 UTM y las sanciones quedan en un registro público.</p>
+          <p class="leading-relaxed text-emerald-200">La ley aplica a todas las empresas, sin importar su tamaño. Las multas pueden llegar hasta 20.000 UTM según la gravedad de la infracción, y las sanciones quedan en un registro público.</p>
+          <p class="text-sm leading-relaxed text-emerald-300">{LEY_21719_ESTADO}</p>
         </div>
         <ol class="min-w-0 flex flex-col gap-3">
           {obligations.map((obligation, index) => (

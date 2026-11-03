@@ -149,7 +149,7 @@ Asesoramos la postulación sin costo si el fondo le sirve a tu negocio.
 
 ## Marco legal: Ley 21.719 + datos del huésped
 
-Desde diciembre 2026 rige la nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1208515) en Chile. Para un negocio turístico significa:
+La nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) tiene como fecha vigente el 1 de diciembre de 2026, con una prórroga en trámite. Para un negocio turístico significa:
 
 - Consentimiento explícito al guardar datos del huésped (nombre, RUT/pasaporte, email).
 - Base legal documentada para enviar mensajes proactivos (reservas, recordatorios, post-estadía).

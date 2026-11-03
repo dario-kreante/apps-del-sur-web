@@ -54,6 +54,7 @@ Configurar en Vercel:
 AIRTABLE_API_KEY=
 AIRTABLE_BASE_ID=
 AIRTABLE_ASSESSMENT_TABLE=Assessment Leads
+ASSESSMENT_REPORT_SECRET=
 PUBLIC_SITE_URL=https://appsdelsur.cl
 BREVO_API_KEY=
 TURNSTILE_SECRET_KEY=
@@ -101,3 +102,11 @@ npm run test:assessment-api
 Antes de un despliegue, confirmar en el entorno de Vercel que las variables obligatorias tengan valores utilizables, no solo que sus nombres estén configurados.
 
 `GET /api/integrations-health` comprueba solo lectura de Airtable, sin crear registros ni mostrar datos personales o credenciales.
+
+## Enlace del informe y bajas
+
+`ASSESSMENT_REPORT_SECRET` firma los enlaces nuevos del informe. Un enlace firmado no abre sin su token, y los enlaces antiguos siguen abriendo. Sin esta variable los enlaces se generan sin firma.
+
+`/api/baja/?t=<Token opaco>` da de baja a un destinatario de `Invitaciones del estudio`: abrir el enlace solo pide confirmar, y al confirmar se agrega el correo a `Bajas` y la invitación queda en estado `Baja`. Aceptar `POST` en la misma URL permite usarla en `List-Unsubscribe` con `List-Unsubscribe-Post: List-Unsubscribe=One-Click`. Revisar `Bajas` antes de cada envío.
+
+Las casillas opcionales del formulario se guardan en `Consentimiento Estudio`, `Consentimiento Comercial` y `Version Consentimiento`. No hacer seguimiento comercial sin `Consentimiento Comercial`.

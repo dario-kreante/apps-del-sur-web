@@ -14,6 +14,8 @@ tags: ["Ley 21.719", "datos sensibles", "salud", "clínicas dentales", "estudios
 relatedPosts: ["ley-21719-proteccion-datos-pymes-chile-2026", "ley-21719-inteligencia-artificial-empresas-chile-2026", "agente-ia-agendamiento-clinicas-dentales-chile", "agente-ia-turismo-hoteles-restaurantes-tour-operadores-chile"]
 ---
 
+> **Actualización, 3 de noviembre de 2026:** la fecha vigente sigue siendo el 1 de diciembre de 2026, pero el Senado aprobó postergar la entrada en vigencia al 15 de octubre de 2027 (boletín 18.623-07). El proyecto todavía debe pasar por la Cámara y publicarse como ley. Las fechas de esta guía usan la fecha vigente. Este contenido es informativo y no constituye asesoría legal.
+
 No todos los datos personales tienen el mismo peso bajo la **Ley 21.719**. La ley distingue entre **datos comunes** (nombre, RUT, email, teléfono, historial de compra) y **datos sensibles**, que tienen un régimen reforzado: consentimiento expreso, medidas de seguridad reforzadas y, en muchos casos, **Evaluación de Impacto en Protección de Datos (EIPD) obligatoria** antes de iniciar el tratamiento.
 
 Para una pyme chilena que automatiza con IA, conocer qué sector estás y qué dato sensible manejas marca la diferencia entre cumplir bien o exponerte a multas de hasta **20.000 UTM (~$1.480 millones de pesos)**.

@@ -69,7 +69,7 @@ No estás solo en esto. Según un estudio de SAP publicado en mayo de 2025, el �
 3. Elige una, ajusta el tono a como hablas tú y define una fecha de término clara.
 4. Si tienes una lista de clientes, envía solo a quienes aceptaron recibir tus mensajes.
 
-**Resultado esperado.** Más promociones hechas a tiempo, con mensajes coherentes entre canales. Sobre la lista de clientes: la Ley 21.719 de protección de datos, que entra en vigencia en diciembre de 2026, exige cuidar cómo usas teléfonos y correos, y no conviene pegar bases completas de clientes en una herramienta de IA. Lo explicamos en [Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
+**Resultado esperado.** Más promociones hechas a tiempo, con mensajes coherentes entre canales. Sobre la lista de clientes: la Ley 21.719 de protección de datos, cuya fecha vigente es el 1 de diciembre de 2026, con una prórroga en trámite, exige cuidar cómo usas teléfonos y correos, y no conviene pegar bases completas de clientes en una herramienta de IA. Lo explicamos en [Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
 
 ## Cómo partir sin complicarte
 
