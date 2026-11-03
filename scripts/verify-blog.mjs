@@ -15,6 +15,7 @@ for(const file of files){
  const schemas=[...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map(x=>JSON.parse(x[1]));
  assert.ok(!schemas.some(x=>x['@type']==='FAQPage'),`${path}: no unrelated FAQ schema`);
  if(path!='/blog/'){
+  if(path.startsWith('/blog/ley-'))assert.ok(html.includes('No somos abogados'),`${path}: aviso de que no somos abogados`);
   const article=schemas.find(x=>x['@type']==='BlogPosting');
   assert.ok(article?.headline && article?.dateModified,`${path}: article metadata`);
   assert.ok(schemas.some(x=>x['@type']==='BreadcrumbList'),`${path}: breadcrumb`);

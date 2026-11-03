@@ -2,301 +2,300 @@
 title: "Ley 21.719: datos sensibles y preguntas clave por sector"
 description: "Guía para identificar riesgos al manejar datos personales en salud, servicios legales, finanzas, retail y turismo en Chile."
 pubDate: 2026-05-18T08:20:00-04:00
+updatedDate: 2026-11-03T13:00:00-03:00
 author: "Darío Ramírez"
-readingTime: "14 min"
-heroAlt: "Infografía Ley 21.719 datos sensibles por sector en Chile 2026: salud, legal, financiero, funerario, retail, turismo con obligaciones específicas y agentes IA"
-heroImage: "/blog/ley-21719-datos-sensibles-sectores-chile-2026.svg"
+readingTime: "15 min"
+heroAlt: "Datos sensibles según la Ley 21.719: origen étnico o racial, afiliación política, sindical o gremial, situación socioeconómica, convicciones ideológicas o filosóficas, creencias religiosas, salud, perfil biológico, datos biométricos, vida sexual, orientación sexual e identidad de género"
+heroImage: "/blog/ley-21719-datos-sensibles-categorias.png"
 images:
-  - url: "/blog/ley-21719-datos-sensibles-sectores-chile-2026.svg"
-    title: "Ley 21.719 — Datos sensibles por sector en Chile 2026"
-    caption: "Cumplimiento sectorial con agentes IA: salud, legal, financiero, funerario, retail, turismo."
-tags: ["Ley 21.719", "datos sensibles", "salud", "clínicas dentales", "estudios jurídicos", "cobranza", "funerario", "cuota mortuoria", "retail", "turismo", "pymes Chile", "Santiago", "Maule", "EIPD", "agentes IA"]
-relatedPosts: ["ley-21719-proteccion-datos-pymes-chile-2026", "ley-21719-inteligencia-artificial-empresas-chile-2026", "agente-ia-agendamiento-clinicas-dentales-chile", "agente-ia-turismo-hoteles-restaurantes-tour-operadores-chile"]
+  - url: "/blog/ley-21719-datos-sensibles-categorias.png"
+    title: "Qué datos son sensibles según la Ley 21.719"
+    caption: "Categorías de la letra g) del artículo 2°. La geolocalización y los datos de menores tienen reglas propias."
+tags: ["Ley 21.719", "datos sensibles", "salud", "clínicas dentales", "estudios jurídicos", "cobranza", "funerario", "cuota mortuoria", "retail", "turismo", "pymes Chile", "Santiago", "Maule", "evaluación de impacto", "agentes IA"]
+relatedPosts: ["ley-21719-proteccion-datos-pymes-chile-2026", "ley-21719-inteligencia-artificial-empresas-chile-2026", "ley-21719-multas-cuanto-arriesga-empresa", "agente-ia-agendamiento-clinicas-dentales-chile"]
 ---
 
-> **Actualización, 3 de noviembre de 2026:** la fecha vigente sigue siendo el 1 de diciembre de 2026, pero el Senado aprobó postergar la entrada en vigencia al 15 de octubre de 2027 (boletín 18.623-07). El proyecto todavía debe pasar por la Cámara y publicarse como ley. Las fechas de esta guía usan la fecha vigente. Este contenido es informativo y no constituye asesoría legal.
+> **Actualización, 3 de noviembre de 2026:** revisamos esta guía contra el texto oficial de la ley. Corregimos la definición de datos sensibles, que incluía categorías que no aparecen en ella, y las obligaciones por sector. La fecha vigente sigue siendo el 1 de diciembre de 2026. El Senado aprobó postergarla al 15 de octubre de 2027, pero el proyecto (boletín 18.623-07) aún debe pasar por la Cámara y publicarse como ley. Este contenido es informativo y no constituye asesoría legal.
 
-No todos los datos personales tienen el mismo peso bajo la **Ley 21.719**. La ley distingue entre **datos comunes** (nombre, RUT, email, teléfono, historial de compra) y **datos sensibles**, que tienen un régimen reforzado: consentimiento expreso, medidas de seguridad reforzadas y, en muchos casos, **Evaluación de Impacto en Protección de Datos (EIPD) obligatoria** antes de iniciar el tratamiento.
+No todos los datos personales pesan lo mismo bajo la **Ley 21.719**. Para los **datos sensibles**, la regla general es el consentimiento expreso, y su mal uso puede terminar en las sanciones más altas, de hasta **20.000 UTM**, unos $1.449 millones con la UTM de noviembre de 2026.
 
-Para una pyme chilena que automatiza con IA, conocer qué sector estás y qué dato sensible manejas marca la diferencia entre cumplir bien o exponerte a multas de hasta **20.000 UTM (~$1.480 millones de pesos)**.
+Esta guía recorre seis sectores: salud, legal, financiero, funerario, retail y turismo. En cada uno verás qué revisar y qué cuidar si usas un agente IA.
 
-Esta guía recorre los 6 sectores donde más vemos uso de IA con datos sensibles: salud, legal, financiero, funerario, retail y turismo. Cada uno con sus obligaciones específicas y cómo configurar un agente IA correctamente.
-
-> **Resumen ejecutivo:** la Ley 21.719 (art. 2) define como datos sensibles aquellos que se refieren a salud, biometría, origen étnico o racial, creencias religiosas o filosóficas, ideología, afiliación sindical, vida sexual, geolocalización precisa, y datos de niños, niñas y adolescentes (NNA). Su tratamiento requiere **consentimiento expreso**, **medidas de seguridad reforzadas** y, para tratamiento masivo o de alto riesgo, **EIPD obligatoria**. Las multas por incumplimiento llegan a 20.000 UTM. Las pymes tienen 12 meses de gracia (dic 2026 – dic 2027) con amonestación en vez de multa.
+> **Resumen ejecutivo:** la ley define como sensibles los datos que revelen origen étnico o racial, afiliación política, sindical o gremial, situación socioeconómica, convicciones ideológicas o filosóficas, creencias religiosas, salud, perfil biológico, biometría, vida sexual, orientación sexual e identidad de género. La geolocalización y los datos de niños, niñas y adolescentes no están en esa lista, pero tienen reglas propias. La regla general es **consentimiento expreso**, con excepciones. Para empresas de menor tamaño, durante los primeros 12 meses de vigencia la Agencia puede aplicar una amonestación en vez de multa, pero no está obligada.
 
 ## Qué es un "dato sensible" bajo la Ley 21.719
 
-El artículo 2 letra g) de la Ley 21.719 los define:
+La letra g) del artículo 2° los define así:
 
-> *"Datos personales sensibles: aquellos referidos a características físicas o morales de las personas o a hechos o circunstancias de su vida privada o intimidad, tales como los relativos al origen racial o étnico, las opiniones políticas, las convicciones religiosas o filosóficas, los datos biométricos y de salud, los relativos a la vida sexual y orientación sexual, los datos de la niñez y adolescencia, los relativos a la situación socioeconómica..."*
+> *"Datos personales sensibles: tendrán esta condición aquellos datos personales que se refieren a las características físicas o morales de las personas o a hechos o circunstancias de su vida privada o intimidad, que revelen el origen étnico o racial, la afiliación política, sindical o gremial, la situación socioeconómica, las convicciones ideológicas o filosóficas, las creencias religiosas, los datos relativos a la salud, al perfil biológico humano, los datos biométricos, y la información relativa a la vida sexual, a la orientación sexual y a la identidad de género de una persona natural."*
 
-Implicaciones operativas:
+Qué implica en la práctica:
 
-1. **Consentimiento expreso** (no basta la aceptación implícita o por contexto).
-2. **Medidas de seguridad reforzadas**: cifrado en tránsito y en reposo, control de accesos por roles, logs auditables.
-3. **EIPD obligatoria** si el tratamiento es masivo o de alto riesgo.
-4. **Prohibición de tratamiento** en ciertos contextos (publicidad dirigida basada en salud, por ejemplo).
-5. **Transferencia internacional** sujeta a salvaguardas más estrictas.
+1. **Consentimiento expreso** (art. 16), por declaración escrita, verbal o medio tecnológico equivalente. Hay excepciones, por ejemplo, si es necesario para defender un derecho ante tribunales o para cumplir obligaciones laborales o de seguridad social en el marco de la ley.
+2. **Salud y perfil biológico** (art. 16 bis): solo para los fines previstos por las leyes sanitarias, con excepciones propias. Se prohíbe tratar y ceder estos datos cuando se recolectaron en el ámbito laboral, educativo, deportivo, social, de seguros, de seguridad o identificación, salvo que la ley lo autorice en casos calificados.
+3. **Biometría** (art. 16 ter): además debes informar el sistema usado, la finalidad, el período y cómo ejercer derechos.
+4. **Seguridad**: las medidas deben ser adecuadas al riesgo (art. 14 quinquies). Cifrado, control de accesos por roles y registros de acceso son formas razonables de cumplir, aunque la ley no fija una tecnología.
+5. **Evaluación de impacto**: cuando sea probable un alto riesgo, siempre si el tratamiento es masivo o a gran escala, y también si tratas datos sensibles sin consentimiento porque aplica una excepción (art. 15 ter).
 
-Veamos qué significa esto en cada sector.
+**Reglas propias fuera de esa lista:**
+
+- **Niños, niñas y adolescentes** (art. 16 quáter): siempre su interés superior. Para menores de 14 años se requiere consentimiento de padres, representantes o quien tenga su cuidado personal, salvo que la ley autorice otra cosa. También para datos sensibles de adolescentes menores de 16.
+- **Geolocalización** (art. 16 sexies): puede tratarse con las bases generales de los artículos 12 y 13. Debes informar qué datos, para qué, por cuánto tiempo y si se ceden a terceros.
 
 ## Sector 1: salud — clínicas dentales, médicas, isapres, laboratorios
 
-**Datos sensibles típicos**: diagnósticos, tratamientos, recetas, exámenes, alergias, antecedentes familiares, datos de salud mental, embarazo, discapacidades.
+**Datos sensibles típicos**: diagnósticos, tratamientos, recetas, exámenes, alergias, antecedentes familiares, salud mental, embarazo, discapacidades.
 
-### Obligaciones específicas
+### Qué revisar
 
-- **Consentimiento expreso por escrito** (físico o digital con autenticación clara) antes de iniciar tratamiento del dato.
-- **Historia clínica** = dato sensible: cifrado obligatorio, acceso solo a profesional tratante y personal autorizado.
-- **EIPD obligatoria** si tratas masivamente datos clínicos o usas IA para apoyo clínico.
-- **Plazos de conservación** definidos por la ley sanitaria chilena ([Reglamento de la Ficha Clínica](https://www.bcn.cl/leychile/navegar?idNorma=1051397) y Ley 20.584 de Derechos del Paciente).
-- **Prohibición** de usar diagnósticos para publicidad dirigida.
+- **Base legal**: consentimiento expreso o alguna excepción del artículo 16 bis, como prestación de asistencia sanitaria o diagnóstico médico.
+- **Ficha clínica**: restringe el acceso a quienes corresponda. Aplican también la [Ley 20.584 de Derechos del Paciente](https://www.bcn.cl/leychile/navegar?idNorma=1039348) y su reglamento.
+- **Evaluación de impacto**: revisa si tu tratamiento es a gran escala o de alto riesgo, y si usas IA como apoyo clínico.
+- **Finalidad**: un diagnóstico entregado para atenderte no puede convertirse en una base para publicidad.
 
-### Cómo configurar un agente IA en salud
+### Qué cuidar con un agente IA en salud
 
-Lo que un agente IA en clínica chilena **sí puede hacer**:
+Lo que un agente IA en una clínica **sí puede hacer**:
 
 - Agendar citas y recordar.
-- Responder preguntas administrativas (precios, convenios isapres, horarios, ubicación).
+- Responder preguntas administrativas (convenios, horarios, ubicación).
 - Solicitar documentos.
-- Derivar a recepción humana.
+- Derivar a recepción.
 
-Lo que **no debe hacer**:
+Lo que **no debería hacer**:
 
 - Dar diagnósticos.
 - Interpretar exámenes.
 - Recomendar medicación.
 - Conversar sobre síntomas en detalle.
-- Reutilizar datos para marketing sin nuevo consentimiento separado.
+- Reutilizar datos para marketing.
 
-Más sobre implementación práctica en nuestro post de [Agente IA de agendamiento para clínicas dentales en Chile](/blog/agente-ia-agendamiento-clinicas-dentales-chile/) y la landing [/agentes/agendamiento](/agentes/agendamiento/).
+Más en nuestro post de [Agente IA de agendamiento para clínicas dentales en Chile](/blog/agente-ia-agendamiento-clinicas-dentales-chile/) y la página de [agendamiento](/agentes/agendamiento/).
 
 ## Sector 2: legal — estudios jurídicos, abogados independientes, áreas legales internas
 
-**Datos sensibles típicos**: información de causas (especialmente penal, familia, alimentos, violencia intrafamiliar, identidad de género, salud), antecedentes patrimoniales, comunicaciones cliente-abogado, identidad de testigos, datos de NNA en juicios.
+**Datos que pueden ser sensibles**: información de causas sobre salud, violencia intrafamiliar, identidad de género, situación patrimonial o datos de menores. Los datos sobre infracciones penales, civiles, administrativas y disciplinarias tienen además reglas específicas (art. 25).
 
-### Obligaciones específicas
+### Qué revisar
 
-- **Secreto profesional** + Ley 21.719 actúan en simultáneo. Cumplir ambos.
-- **Consentimiento expreso** para tratamiento + para uso de IA en revisión de documentos.
-- **DPA con cualquier IA** que use el estudio (Claude, GPT, herramientas de e-discovery).
-- **Datos de NNA en juicio**: protección reforzada, prohibido publicar identidad.
-- **Auditoría del Colegio de Abogados**: el estudio debe demostrar trazabilidad.
+- **Secreto profesional y Ley 21.719** aplican en simultáneo.
+- **Base legal**: el contrato con el cliente y la defensa de un derecho ante tribunales pueden sustentar parte del tratamiento (arts. 13 y 16).
+- **Contrato con cualquier IA** que uses, y evaluación de si puedes ingresar esos datos según tus deberes profesionales.
+- **Menores en juicio**: protege especialmente su identidad.
 
-### Cómo configurar un agente IA en estudio jurídico
+### Qué cuidar con un agente IA en un estudio jurídico
 
-Lo que un agente IA en estudio chileno **sí puede hacer**:
+Lo que **sí puede hacer**:
 
-- Atender consulta inicial (calificación de caso).
-- Redactar NDA, cartas formales, mandatos básicos, contratos tipo (con revisión del abogado antes de firmar).
-- Resumir documentos legales largos.
-- Vigilar plazos de causas en la [Oficina Judicial Virtual](https://oficinajudicialvirtual.pjud.cl/).
+- Atender la consulta inicial y clasificar el caso.
+- Preparar borradores de cartas, mandatos y contratos tipo, con revisión de un abogado.
+- Resumir documentos largos.
+- Ayudar a vigilar plazos de causas en la [Oficina Judicial Virtual](https://oficinajudicialvirtual.pjud.cl/).
 - Agendar reuniones.
 
-Lo que **no debe hacer**:
+Lo que **no debería hacer**:
 
 - Dar opiniones legales vinculantes.
 - Decidir estrategia procesal.
-- Comunicarse con contraparte sin autorización.
-- Procesar casos de violencia intrafamiliar, abuso, identidad de género o NNA sin handoff humano inmediato.
+- Comunicarse con la contraparte sin autorización.
+- Tramitar casos de violencia intrafamiliar, abuso o menores sin derivación inmediata a una persona.
 
-Ver landing [/agentes/abogados](/agentes/abogados/).
+Ver la página del [agente para abogados](/agentes/abogados/).
 
 ## Sector 3: financiero — cobranza, créditos, seguros, fintech
 
-**Datos sensibles típicos**: historial de deuda, scoring crediticio, ingreso real, situación patrimonial detallada, datos de cobranza judicializada, datos de salud para seguros.
+**Datos típicos**: historial de deuda, scoring, ingresos, situación patrimonial, cobranza judicial. La situación socioeconómica está en la lista de datos sensibles, pero el artículo 13 letra a) permite tratar sin consentimiento datos económicos, financieros, bancarios o comerciales, incluidos los referidos a la situación socioeconómica, conforme al Título III de la ley. Revisa con un abogado cómo aplica a tu caso.
 
-### Obligaciones específicas
+### Qué revisar
 
-- **Decisión automatizada con efectos significativos** (otorgar/denegar crédito, fijar prima de seguro) **requiere derecho explícito a revisión humana**.
-- **EIPD obligatoria** para scoring crediticio masivo.
-- **CMF** (Comisión para el Mercado Financiero) fiscaliza adicionalmente bajo Ley 21.521 (Fintech).
-- **Boletín Comercial** y **DICOM**: tratamiento de deuda regulado por Ley 20.575 además de 21.719.
-- **Cobranza ética**: horarios, frecuencia, tono respetuoso (Ley 19.496 del Consumidor + ahora 21.719).
+- **Decisiones automatizadas** con efectos significativos, como aprobar un crédito: derecho a explicación, intervención humana y revisión (art. 8° bis).
+- **Evaluación de impacto**: probable en scoring sistemático o tratamiento a gran escala.
+- **Otras normas**: la CMF y la [Ley 21.521 Fintech](https://www.bcn.cl/leychile/navegar?idNorma=1184323), si te aplican, la [Ley 20.575](https://www.bcn.cl/leychile/navegar?idNorma=1037506) sobre datos económicos, y las reglas de cobranza de la [Ley 19.496](https://www.bcn.cl/leychile/navegar?idNorma=61438).
+- **Vulneraciones**: si afectan datos económicos, financieros, bancarios o comerciales, también debes comunicarlo a los titulares.
+- **Seguros y salud**: el artículo 16 bis restringe tratar datos de salud recolectados en el ámbito de seguros. Revísalo antes de usarlos.
 
-### Cómo configurar un agente IA financiero
+### Qué cuidar con un agente IA financiero
 
-Lo que un agente IA en cobranza/crédito **sí puede hacer**:
+Lo que **sí puede hacer**:
 
-- Notificar deudas en horarios hábiles.
-- Negociar planes de pago dentro de parámetros definidos.
+- Notificar deudas en horarios permitidos.
+- Proponer planes de pago dentro de parámetros definidos.
 - Generar links de pago.
-- Recordatorios de vencimientos.
-- Atención al cliente para consultas básicas (saldo, próximo vencimiento).
+- Recordar vencimientos.
+- Responder consultas básicas (saldo, próximo vencimiento), con verificación de identidad.
 
-Lo que **no debe hacer**:
+Lo que **no debería hacer**:
 
-- Tomar decisión final de crédito sin humano.
-- Aplicar prácticas agresivas de cobranza.
-- Llamar en horario nocturno o fines de semana sin solicitud.
+- Tomar la decisión final de crédito sin posibilidad de intervención humana.
+- Aplicar prácticas de cobranza agresivas.
 - Compartir datos de deuda con terceros no autorizados.
-- Usar datos de salud para fijar prima sin consentimiento expreso y EIPD.
 
 ## Sector 4: funerario — funerarias, cementerios, seguros de vida
 
-**Datos sensibles típicos**: datos del causante (incluido RUT, AFP, historia previsional), datos de la familia en duelo, causa de fallecimiento (en algunos casos), beneficiarios.
+**Datos típicos**: datos del fallecido (RUT, AFP, historia previsional), de la familia, causa de fallecimiento en algunos casos y beneficiarios.
 
-### Obligaciones específicas
+### Qué revisar
 
-- **Consentimiento de la familia** debe ser claro a pesar del contexto emocional.
-- **Datos del causante**: técnicamente, los datos de personas fallecidas tienen un tratamiento especial (la Ley 21.719 protege "datos de personas naturales identificadas o identificables", y el régimen post-mortem se regula vía derechos de la familia).
-- **Consulta a spensiones.cl** (Superintendencia de Pensiones) para cuota mortuoria: debe hacerse con consentimiento de quien tramita.
-- **No reutilizar datos** del fallecido o de la familia para marketing (ej: ofertas de seguros, cementerios) sin consentimiento separado y posterior al duelo.
+- **Familia en duelo**: pide e informa con claridad, sin presión.
+- **Datos del fallecido**: la ley permite que sus herederos ejerzan los derechos del titular, salvo que la persona lo haya prohibido expresamente o lo establezca una ley.
+- **Causa de fallecimiento**: trátala como dato de salud.
+- **Consultas a spensiones.cl** para cuota mortuoria: hazlas con la autorización de quien tramita.
+- **Marketing**: no reutilices estos datos para ofrecer seguros, cementerios u otros servicios sin una base legal clara. Lo prudente es pedir consentimiento separado y dar tiempo después del servicio.
 
-### Cómo configurar un agente IA en funeraria
+### Qué cuidar con un agente IA en una funeraria
 
-Lo que un agente IA en funeraria **sí puede hacer**:
+Lo que **sí puede hacer**:
 
-- Orientar sobre cuota mortuoria (verificar AFP/régimen, listar documentos, plazos).
+- Orientar sobre cuota mortuoria (AFP o régimen, documentos, plazos).
 - Recibir consultas de servicios funerarios.
-- Coordinar visita o llamada con un asesor humano.
-- Solicitar reseña post-servicio (con tiempo prudente y opt-out claro).
+- Coordinar una llamada o visita con un asesor.
+- Solicitar una reseña posterior, con tiempo prudente y opción de no recibir más mensajes.
 
-Lo que **no debe hacer**:
+Lo que **no debería hacer**:
 
-- Sonar comercial o agresivo con familia en duelo.
-- Compartir datos del fallecido con terceros (cementerios, seguros) sin autorización.
-- Reutilizar la base para marketing masivo sin consentimiento posterior al servicio.
-- Tomar decisiones sobre reclamos o casos delicados — siempre handoff humano.
+- Sonar comercial o insistente con una familia en duelo.
+- Compartir datos con terceros sin autorización.
+- Reutilizar la base para marketing masivo.
+- Resolver reclamos o casos delicados sin una persona.
 
-Ver landing [/agentes/cuota-mortuoria](/agentes/cuota-mortuoria/) (powered by motor Lucerna, que consulta en vivo contra spensiones.cl con consentimiento explícito de la familia).
+Ver la página de [cuota mortuoria](/agentes/cuota-mortuoria/), con motor Lucerna, que consulta en vivo contra spensiones.cl con consentimiento explícito de la familia.
 
 ## Sector 5: retail y e-commerce
 
-**Datos sensibles potenciales**: geolocalización precisa, biometría (reconocimiento facial en tiendas físicas), historial de compra correlacionable con orientación sexual o religión (libros, ropa, alimentos), datos de NNA si la tienda vende productos infantiles.
+**Datos sensibles posibles**: biometría (reconocimiento facial en tiendas), e historial de compra o perfiles que revelen salud, religión u orientación sexual.
 
-### Obligaciones específicas
+### Qué revisar
 
-- **Carrito + historial de compra** = datos personales **comunes** (no sensibles per se), pero el **perfilamiento profundo** puede caer en categoría sensible.
-- **Geolocalización precisa** (GPS, no solo "Santiago") = dato sensible. Apps de delivery, retail con tracking de cliente.
-- **Marketing dirigido** requiere consentimiento separado y específico (no enterrado en T&C).
-- **Opt-out fácil** obligatorio en cada comunicación.
-- **Sernac** fiscaliza adicionalmente bajo Ley 19.496 del Consumidor.
-- **Cookies y tracking web**: aviso claro + consentimiento, similar a GDPR.
+- **Carrito e historial de compra**: en general son datos personales no sensibles, pero un perfil puede llegar a revelar información que sí lo es.
+- **Geolocalización**: no es sensible por definición, pero debes informar el tipo de dato, la finalidad, la duración y si se cede a terceros (art. 16 sexies).
+- **Marketing directo**: las personas pueden oponerse siempre (art. 8°). Define su base legal. Un consentimiento específico, separado de los términos de compra, es la vía más clara.
+- **Perfiles**: si producen efectos significativos, aplica el artículo 8° bis. Debes informar su existencia y lógica.
+- **Otras normas**: el Sernac y la Ley 19.496.
+- **Cookies y seguimiento web**: la ley no les dedica un artículo específico, pero siguen siendo tratamiento si identifican personas. Infórmalas y define su base.
 
-### Cómo configurar un agente IA retail
+### Qué cuidar con un agente IA en retail
 
-Ver landing [/agentes/whatsapp-atencion](/agentes/whatsapp-atencion/). Lo que el agente puede hacer:
+Ver la página de [atención por WhatsApp](/agentes/whatsapp-atencion/). Lo que el agente **sí puede hacer**:
 
-- Atender consultas (tracking, FAQ, stock).
-- Recomendar productos (con base en historial, con consentimiento).
+- Atender consultas (seguimiento, preguntas frecuentes, stock).
+- Recomendar productos, con base legal e información clara.
 - Generar links de pago.
 - Manejar devoluciones simples.
-- Rescatar carritos abandonados (con consentimiento de marketing).
+- Rescatar carritos abandonados, si tienes base para ese contacto.
 
-Lo que no debe hacer:
+Lo que **no debería hacer**:
 
-- Vender datos del cliente a terceros.
-- Hacer perfilamiento de hábitos sensibles (creencias, salud) sin consentimiento expreso.
-- Enviar mensajes promocionales sin opt-in claro.
+- Entregar datos del cliente a terceros sin base legal.
+- Perfilar hábitos sensibles, como creencias o salud, sin consentimiento expreso.
+- Seguir enviando promociones a quien se opuso.
 
 ## Sector 6: turismo — hoteles, hostales, cabañas, tour operadores
 
-**Datos sensibles potenciales**: pasaporte, datos de pago internacionales, geolocalización, preferencias alimentarias (a veces revelan religión o salud), datos de NNA en familias.
+**Datos típicos**: pasaporte o RUT, pago, reservas. **Sensibles posibles**: preferencias alimentarias que revelen religión o salud, necesidades de accesibilidad. También datos de menores en familias.
 
-### Obligaciones específicas
+### Qué revisar
 
-- **Pasaporte/RUT/email del huésped** = dato personal común, pero el **registro de pasajeros** que pide la ley turística chilena (DT 1.094 y normas Sernatur) genera obligación legal de tratamiento.
-- **Huéspedes extranjeros** = transferencia internacional cuando se sincroniza con OTAs (Booking, Airbnb, Hostelworld) ubicados fuera de Chile.
-- **Geolocalización** (apps turísticas con tracking, beacons en hotel) = sensible.
-- **Preferencias alimentarias** especiales (vegano, kosher, halal, sin gluten médico) pueden revelar creencias religiosas o salud — pedir con consentimiento y separar.
-- **Plazos de conservación** según SII y normativa Sernatur.
+- **Pasaporte, RUT y email**: en general no son sensibles. Si una norma te exige registrarlos, esa obligación puede ser tu base legal.
+- **OTA y sistemas extranjeros** (Booking, Airbnb y similares): revisa qué rol tiene cada uno y si los datos salen de Chile.
+- **Geolocalización** en apps o beacons: informa según el artículo 16 sexies.
+- **Preferencias alimentarias**: *"sin gluten por celiaquía"*, *"kosher"* o *"halal"* pueden revelar salud o creencias. Pregunta solo lo necesario, con consentimiento expreso cuando corresponda.
+- **Plazos de conservación**: considera lo que exijan las normas tributarias y sectoriales, y publica tu plazo.
 
-### Cómo configurar un agente IA turístico
+### Qué cuidar con un agente IA en turismo
 
-Ver landing [/agentes/whatsapp-atencion](/agentes/whatsapp-atencion/) y [/agentes/agendamiento](/agentes/agendamiento/). El agente puede:
+Ver las páginas de [atención por WhatsApp](/agentes/whatsapp-atencion/) y [agendamiento](/agentes/agendamiento/). El agente **sí puede**:
 
 - Cotizar y reservar.
 - Confirmar y enviar voucher.
 - Recomendar actividades de la zona.
 - Atender en español, inglés y portugués.
-- Recordar check-in y solicitar reseña post-estadía.
+- Recordar check-in y solicitar reseña después de la estadía.
 
-Lo que no debe hacer:
+Lo que **no debería hacer**:
 
-- Compartir datos del huésped con OTAs sin contrato de encargado.
-- Geolocalizar al huésped dentro del hotel sin consentimiento.
-- Vender datos a publicistas locales o tour operadores aliados sin autorización.
+- Compartir datos del huésped con terceros sin contrato o base legal.
+- Geolocalizar al huésped dentro del hotel sin una base clara e información previa.
+- Entregar datos a publicistas o tour operadores aliados sin autorización.
 
 Más detalles en nuestro post de [Agente IA para hoteles, hostales y restaurantes en Chile](/blog/agente-ia-turismo-hoteles-restaurantes-tour-operadores-chile/).
 
-## Checklist universal para tratar datos sensibles con IA en cualquier sector
-
-Si tu pyme cae en alguno de los sectores anteriores y usa o quiere usar IA, antes del 1 de diciembre de 2026:
+## Checklist para tratar datos sensibles con IA en cualquier sector
 
 - [ ] Identifica qué dato sensible exacto procesas y por qué.
-- [ ] Documenta base legal (consentimiento expreso suele ser la única vía válida para sensible).
-- [ ] Verifica que tu agente IA tiene DPA firmado con el proveedor (OpenAI, Anthropic, Google).
-- [ ] Configura opt-out de entrenamiento del proveedor IA.
-- [ ] Habilita handoff humano garantizado.
-- [ ] Realiza EIPD si el tratamiento es masivo o de alto riesgo.
-- [ ] Implementa cifrado en tránsito (TLS) y reposo (AES-256 mínimo).
-- [ ] Control de acceso por roles + autenticación multifactor (MFA).
-- [ ] Logs auditables de quién accedió a qué dato cuándo.
-- [ ] Procedimiento ARCO documentado (correo `privacidad@tuempresa.cl`).
-- [ ] Capacita al equipo en buenas prácticas con datos sensibles.
-- [ ] Designa DPO interno o externo si aplica.
+- [ ] Documenta la base legal: consentimiento expreso o una excepción de los artículos 16 y siguientes.
+- [ ] Revisa el contrato con tu proveedor de IA.
+- [ ] Confirma las condiciones sobre entrenamiento de modelos.
+- [ ] Revisa si los datos salen de Chile.
+- [ ] Asegura la derivación a una persona.
+- [ ] Haz la evaluación de impacto si corresponde.
+- [ ] Aplica medidas proporcionales al riesgo, como cifrado, control de acceso por roles y autenticación multifactor.
+- [ ] Mantén registros de quién accede a qué dato y cuándo.
+- [ ] Ten un canal para solicitudes, con respuesta en 30 días corridos.
+- [ ] Capacita al equipo.
+- [ ] Define quién está a cargo. El [delegado de protección de datos es voluntario](/blog/ley-21719-delegado-proteccion-datos-obligatorio/), salvo que adoptes un modelo de prevención.
 
-## Errores comunes en datos sensibles (que veo cada semana)
+## Errores comunes con datos sensibles
 
-**1. Subir historias clínicas a ChatGPT cuenta personal para resumir.** Falta clínica grave. Migra a API + DPA + anonimización previa.
+**1. Subir fichas clínicas a una cuenta personal de IA para resumirlas.** Datos de salud en un servicio sin contrato para ese uso. Usa un plan con contrato, reduce los datos y revisa la base legal.
 
-**2. Estudio jurídico que comparte borradores de demanda con identificación del cliente vía email no cifrado.** Riesgo de filtración. Usa carpetas cifradas + intercambio vía PMS legal.
+**2. Enviar borradores de demanda con la identificación del cliente por canales sin protección.** Riesgo de filtración y de vulnerar el secreto profesional. Usa carpetas con acceso controlado.
 
-**3. Funeraria que usa la base de fallecidos para vender lápidas o seguros sin consentimiento de la familia.** Tratamiento ilegal post-mortem. Pide consentimiento separado, posterior al servicio.
+**3. Usar la base de fallecidos para vender lápidas o seguros.** Es una finalidad distinta de la original. Revisa la base legal y evita este contacto sin autorización clara.
 
-**4. Tienda online con beacon de geolocalización en su app sin consentimiento explícito.** Sensible. Aviso + opt-in obligatorio.
+**4. Activar seguimiento de ubicación en una app sin informar.** Aunque no sea un dato sensible, la ley exige informar tipo de dato, finalidad, duración y cesión.
 
-**5. Hotel que comparte preferencias alimentarias del huésped con su agencia de marketing.** Si la preferencia revela salud o religión, es sensible y requiere consentimiento separado.
+**5. Compartir preferencias alimentarias del huésped con una agencia de marketing.** Si revelan salud o religión, son sensibles y no deberían salir de la operación sin consentimiento expreso.
 
-**6. Cobranza que llama o escribe en horarios nocturnos a deudores.** Práctica antiética + sensible (situación socioeconómica). Aplica horario hábil y tono respetuoso.
+**6. Cobrar con insistencia o fuera de horario.** Además de la ley de datos, revisa las reglas de cobranza de la Ley 19.496.
 
 ## Preguntas frecuentes
 
 ### ¿La situación socioeconómica es dato sensible?
 
-Sí. La Ley 21.719 lo define expresamente como sensible. Tratamiento (scoring, cobranza, ofertas dirigidas a estratos) requiere consentimiento + EIPD.
+Sí, está en la definición. Pero el artículo 13 letra a) permite tratar sin consentimiento datos económicos, financieros, bancarios o comerciales, incluidos los de situación socioeconómica, conforme al Título III. Pide asesoría si tu negocio depende de esto.
 
 ### ¿Los datos de personas fallecidas siguen estando protegidos?
 
-Sí, indirectamente, a través de derechos de la familia. No puedes reutilizar libremente datos del fallecido sin consentimiento de los herederos. Aplica especialmente al sector funerario y a seguros de vida.
+La ley permite que los herederos ejerzan los derechos del fallecido, salvo que esa persona lo haya prohibido expresamente o lo establezca una ley.
 
 ### ¿Las imágenes de CCTV de mi negocio son dato sensible?
 
-Las imágenes en sí son datos personales (identifican a personas). Si capturas biometría facial procesable, son sensibles. CCTV con aviso visible y plazo de conservación corto (30-60 días típico) es manejable.
+Son datos personales, si identifican a personas. Si haces reconocimiento facial, son biométricos y sensibles. Si hay monitoreo sistemático de una zona de acceso público, la ley exige evaluación de impacto. Avisa, limita el acceso y define un plazo de conservación.
 
-### ¿Puedo usar IA para analizar reseñas de clientes (opiniones)?
+### ¿Puedo usar IA para analizar reseñas de clientes?
 
-Sí, con limitaciones. Opiniones políticas, religiosas o de salud que aparezcan en reseñas son sensibles. Anonimiza antes de procesar o ten consentimiento.
+Sí, con cuidado. Una reseña puede incluir opiniones políticas, religiosas o de salud. Lo más simple es quitar la identificación antes de procesarlas.
 
 ### ¿Las preferencias alimentarias siempre son sensibles?
 
-No siempre. *"Soy vegano por elección"* es preferencia, no sensible. *"Soy vegano por motivos religiosos"* o *"sin gluten por enfermedad celíaca"* sí pueden ser sensibles (revelan creencia o salud). En la duda, trata como sensible y pide consentimiento separado.
+No siempre. *"Soy vegano por elección"* probablemente no lo sea. *"Vegano por motivos religiosos"* o *"sin gluten por enfermedad celíaca"* pueden serlo. Ante la duda, trátalas como sensibles.
 
-### ¿Mis empleados tienen los mismos derechos que mis clientes?
+### ¿Mis trabajadores tienen los mismos derechos que mis clientes?
 
-Sí. La relación laboral no exime de la Ley 21.719. Datos de salud laboral (licencias, accidentes), evaluaciones de desempeño, monitoreo de productividad: todo aplica.
+Sus datos también están protegidos. El artículo 16 considera el tratamiento de datos sensibles necesario para derechos y obligaciones laborales o de seguridad social, en el marco de la ley. Fuera de eso, revisa bien: el consentimiento en una relación laboral puede ser discutible.
 
-### ¿La biometría para control de asistencia laboral está permitida?
+### ¿La biometría para control de asistencia está permitida?
 
-Sí, pero requiere consentimiento expreso del trabajador + EIPD + medidas reforzadas. La Dirección del Trabajo se ha pronunciado sobre la voluntariedad del trabajador para sistemas biométricos.
+Requiere consentimiento expreso e información específica sobre el sistema (art. 16 ter), salvo los casos que la ley exceptúa. Revisa también lo que ha dicho la Dirección del Trabajo y ofrece una alternativa.
 
-### ¿Cómo manejar datos de NNA en mi negocio (colegio, pediatría, ropa infantil)?
+### ¿Cómo manejar datos de menores en mi negocio?
 
-Régimen reforzado: consentimiento del padre/madre/tutor, no perfilamiento publicitario, no transferencia a terceros sin autorización expresa. EIPD obligatoria si el tratamiento es masivo.
+Actúa siempre según su interés superior. Para menores de 14 años necesitas consentimiento de padres, representantes o de quien tenga su cuidado, salvo que la ley autorice otra cosa. Para adolescentes, aplican las reglas de adultos, salvo los datos sensibles de menores de 16, que también requieren ese consentimiento.
 
 ## Fuentes oficiales
 
-- [Ley 21.719 — Biblioteca del Congreso Nacional](https://www.bcn.cl/leychile/navegar?idNorma=1209272)
-- [Ley 20.584 de Derechos del Paciente — BCN](https://www.bcn.cl/leychile/navegar?idNorma=1039348)
-- [Ley 20.575 Tratamiento de Datos de Carácter Económico — BCN](https://www.bcn.cl/leychile/navegar?idNorma=1037506)
-- [Ley 19.496 del Consumidor (Sernac) — BCN](https://www.bcn.cl/leychile/navegar?idNorma=61438)
-- [Ley 21.521 Fintech (CMF) — BCN](https://www.bcn.cl/leychile/navegar?idNorma=1184323)
-- [Guía Práctica Ley 21.719 — Gobierno Digital](https://wikiguias.digital.gob.cl/datos-personales/guia-practica-implementacion-nueva-ley-datos-personales)
+- [Ley 21.719, Biblioteca del Congreso Nacional](https://www.bcn.cl/leychile/navegar?idNorma=1209272)
+- [Ley 20.584 de Derechos del Paciente, BCN](https://www.bcn.cl/leychile/navegar?idNorma=1039348)
+- [Ley 20.575 sobre Tratamiento de Datos de Carácter Económico, BCN](https://www.bcn.cl/leychile/navegar?idNorma=1037506)
+- [Ley 19.496 del Consumidor, BCN](https://www.bcn.cl/leychile/navegar?idNorma=61438)
+- [Ley 21.521 Fintech, BCN](https://www.bcn.cl/leychile/navegar?idNorma=1184323)
+- [Guía práctica de implementación, Gobierno Digital](https://wikiguias.digital.gob.cl/datos-personales/guia-practica-implementacion-nueva-ley-datos-personales)
 
-## Siguiente paso: agente IA por sector con cumplimiento desde el día 1
+## Siguiente paso: revisar tus datos antes de automatizar
 
-Si tu pyme está en uno de estos 6 sectores y maneja datos sensibles, el momento correcto para implementar IA con cumplimiento es ahora. En Apps del Sur diseñamos agentes IA específicos por vertical, con DPA firmados, EIPD documentada, handoff humano garantizado y consentimiento integrado en el flujo conversacional.
+Si tu pyme está en uno de estos sectores y maneja datos sensibles, conviene revisarlos antes de implementar IA. En Apps del Sur diseñamos agentes por sector considerando información a las personas, derivación humana y contratos con proveedores. La parte técnica la resolvemos nosotros; la legal debe verla un abogado.
+
+**[Hacer el diagnóstico de datos personales →](/diagnostico-datos-personales/?source=blog-ley-21719-sectores)**
 
 **[Ver Agente IA de Compliance regulatorio →](/agentes/compliance/)**
 
@@ -308,10 +307,8 @@ Si tu pyme está en uno de estos 6 sectores y maneja datos sensibles, el momento
 
 **[Ver Agente IA Atención WhatsApp (retail/turismo) →](/agentes/whatsapp-atencion/)**
 
-**[Diagnosticar la madurez IA y de datos de mi pyme (gratis · 6 min) →](/diagnostico-madurez-ia/?source=blog-ley-21719-sectores)**
-
 **[Conversar con nosotros por WhatsApp →](https://wa.me/56945262335?text=Hola%2C%20quiero%20asesor%C3%ADa%20en%20datos%20sensibles%20Ley%2021.719%20para%20mi%20sector)**
 
 ---
 
-*Apps del Sur · GYS Activa SpA · Agentes IA con cumplimiento sectorial Ley 21.719 para pymes chilenas en Santiago, Maule, O'Higgins, Ñuble, Biobío, La Araucanía y todo Chile. Este artículo es informativo, no constituye asesoría legal.*
+*Apps del Sur · GYS Activa SpA · Agentes IA por sector para pymes chilenas en Santiago, Maule, O'Higgins, Ñuble, Biobío, La Araucanía y todo Chile. Este artículo es informativo y no constituye asesoría legal.*

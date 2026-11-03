@@ -8,6 +8,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BlogHead from '../components/blog/BlogHead.astro';
 import AuthorAvatar from '../components/blog/AuthorAvatar.astro';
+import AvisoNoSomosAbogados from '../components/blog/AvisoNoSomosAbogados.astro';
 import { heroComponents } from '../components/blog-heroes';
 import '../styles/blog.css';
 
@@ -193,6 +194,8 @@ const shareUrl = encodeURIComponent(canonicalUrl);
         </div>
 
         {slug === 'calcular-roi-proyecto-ia-pyme-chile' && <div class="mt-10"><ROICalculator /></div>}
+
+        {topic.id === 'datos' && <AvisoNoSomosAbogados />}
 
         <div class="blog-tags">
           {tags.map((tag) => <span class="blog-chip">{tag}</span>)}
