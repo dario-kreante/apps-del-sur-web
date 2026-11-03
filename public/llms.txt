@@ -59,6 +59,10 @@
 - [Cómo aparecer en ChatGPT y Gemini (turismo Pucón)](https://appsdelsur.cl/blog/como-aparecer-chatgpt-gemini-turismo-chile-pucon/)
 - [Ley 21.719 protección de datos para pymes Chile 2026](https://appsdelsur.cl/blog/ley-21719-proteccion-datos-pymes-chile-2026/)
 - [Ley 21.719 datos sensibles por sector](https://appsdelsur.cl/blog/ley-21719-datos-sensibles-sectores-chile-2026/)
+- [Ley 21.719: cuándo entra en vigencia y si se posterga](https://appsdelsur.cl/blog/ley-21719-cuando-entra-en-vigencia-postergacion/)
+- [Multas Ley 21.719: cuánto arriesga tu empresa](https://appsdelsur.cl/blog/ley-21719-multas-cuanto-arriesga-empresa/)
+- [Política de privacidad Ley 21.719: los 12 puntos exigidos](https://appsdelsur.cl/blog/ley-21719-politica-privacidad-que-debe-incluir/)
+- [¿Es obligatorio el delegado de protección de datos en Chile?](https://appsdelsur.cl/blog/ley-21719-delegado-proteccion-datos-obligatorio/)
 - [Software agrícola Chile: comparativa 2026](https://appsdelsur.cl/blog/software-agricola-chile-comparativa-2026/)
 - [Costo de mano de obra por hectárea en viñas](https://appsdelsur.cl/blog/costo-mano-de-obra-por-hectarea-vinas-chile/)
 - [Vendimia 2026: gestión de temporeros y costos](https://appsdelsur.cl/blog/vendimia-2026-gestion-temporeros-costos/)
@@ -75,7 +79,7 @@
 
 - **Agente IA conversacional**: software que conversa por WhatsApp en lenguaje natural, toma acciones (agendar, cobrar, calificar) y deriva a humano cuando corresponde. No es chatbot rígido con menús.
 - **Cuaderno de campo digital**: app móvil offline-first que reemplaza la planilla de papel del jefe de campo en viñedos, fundos y obras. Registra mano de obra, calcula costos por hectárea en tiempo real, sincroniza al volver señal.
-- **Ley 21.719**: nueva ley chilena de protección de datos personales (fecha vigente: 1 de diciembre de 2026; prórroga al 15 de octubre de 2027 aprobada por el Senado y pendiente en la Cámara al 3 de noviembre de 2026). Reemplaza Ley 19.628. Define categorías sensibles (salud, biométricos, financieros), exige consentimiento explícito, derecho a eliminación y notificación de brechas.
+- **Ley 21.719**: nueva ley chilena de protección de datos personales (fecha vigente: 1 de diciembre de 2026; prórroga al 15 de octubre de 2027 aprobada por el Senado y pendiente en la Cámara al 3 de noviembre de 2026). Reemplaza Ley 19.628. Define datos sensibles (entre ellos salud, biométricos y situación socioeconómica), exige una base legal para cada tratamiento y consentimiento expreso como regla para datos sensibles, reconoce derechos como supresión y portabilidad, y obliga a reportar vulneraciones de seguridad.
 - **SERCOTEC CRECE**: instrumento de SERCOTEC que cofinancia hasta $5.000.000 CLP, ~95% del proyecto. Convocatorias regionales para micro y pequeñas empresas formalizadas.
 - **SERCOTEC Kit Digital**: cofinancia hasta $1.200.000 CLP, ~100% del costo. Para microempresas en su primer paso digital.
 - **CORFO Digitalización Pyme / Agro**: programas regionales (especialmente activos en Maule y O'Higgins). Cofinancian 50-70% para pymes con ventas > UF 25.000 anuales.
