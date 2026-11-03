@@ -117,12 +117,12 @@ Para cadenas con ventas anuales mayores a UF 25.000. Permite proyectos más gran
 
 ## Marco legal chileno: Ley 21.719
 
-Aunque las peluquerías no manejan "datos sensibles" (a diferencia de clínicas), sí manejan datos personales: nombre, teléfono, historial de servicios. La nueva Ley 21.719 (vigencia diciembre 2026) exige:
+Aunque las peluquerías no manejan "datos sensibles" (a diferencia de clínicas), sí manejan datos personales: nombre, teléfono, historial de servicios. La nueva Ley 21.719 (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite) exige:
 
 - **Consentimiento al pedir el dato** ("¿Acepta recibir recordatorios y promociones?").
 - **Opt-out fácil** en cualquier mensaje.
 - **No vender bases de datos** a terceros.
-- **Multas hasta 20.000 UTM** si no cumple.
+- **Multas que pueden llegar a 20.000 UTM**, según la gravedad de la infracción.
 
 Use solo soluciones con WhatsApp Business API oficial (Meta Cloud API). Las opciones grises (whatsapp-web.js, baileys) violan Términos de Servicio de Meta y no cumplen la ley chilena.
 

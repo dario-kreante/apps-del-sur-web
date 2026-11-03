@@ -14,11 +14,13 @@ tags: ["Ley 21.719", "protección de datos", "datos personales", "pymes Chile", 
 relatedPosts: ["ley-21719-inteligencia-artificial-empresas-chile-2026", "ley-21719-datos-sensibles-sectores-chile-2026", "framework-ia-pymes-chile", "fondos-financiamiento-ia-empresas-chile-2026"]
 ---
 
+> **Actualización, 3 de noviembre de 2026:** la fecha vigente sigue siendo el 1 de diciembre de 2026, pero el Senado aprobó postergar la entrada en vigencia al 15 de octubre de 2027 (boletín 18.623-07). El proyecto todavía debe pasar por la Cámara y publicarse como ley. Las fechas de esta guía usan la fecha vigente. Este contenido es informativo y no constituye asesoría legal.
+
 El 13 de diciembre de 2024 se publicó en el Diario Oficial la **Ley 21.719**, que reforma íntegramente la antigua Ley 19.628 y crea por primera vez en Chile una **Agencia de Protección de Datos Personales** con facultades reales para fiscalizar, interpretar y sancionar. Entra en vigencia el **1 de diciembre de 2026**.
 
-Para una pyme chilena —retail, clínica, hotel, gimnasio, estudio jurídico, agencia, software, restaurante, agro— esto no es un trámite legal de "lo veo el próximo año": es un cambio operativo que toca cómo guardas datos de clientes, cómo cobras, cómo haces marketing, cómo respondes WhatsApp y cómo contratas a tus proveedores tecnológicos. Las multas pueden llegar a **20.000 UTM** (unos $1.480 millones de pesos) por infracción gravísima, más hasta **4% de tus ingresos anuales en Chile** si la Agencia detecta reincidencia.
+Para una pyme chilena —retail, clínica, hotel, gimnasio, estudio jurídico, agencia, software, restaurante, agro— esto no es un trámite legal de "lo veo el próximo año": es un cambio operativo que toca cómo guardas datos de clientes, cómo cobras, cómo haces marketing, cómo respondes WhatsApp y cómo contratas a tus proveedores tecnológicos. Las multas pueden llegar a **20.000 UTM** (unos $1.480 millones de pesos) por infracción gravísima, más hasta **4% de tus ingresos anuales en Chile** si hay reincidencia en empresas que no son de menor tamaño.
 
-> **Resumen ejecutivo:** la Ley 21.719 entra en vigencia el 1 de diciembre de 2026 y aplica a todas las empresas chilenas que traten datos personales (prácticamente todas). Crea la Agencia de Protección de Datos como autoridad fiscalizadora independiente, establece 7 obligaciones operativas clave (registro de tratamiento, consentimiento, DPO, EIPD, notificación de brechas, derechos ARCO ampliados, contratos con encargados), y multas hasta 20.000 UTM. **Excepción transitoria para pymes**: durante los primeros 12 meses (dic 2026 – dic 2027) la Agencia puede reemplazar multas por amonestación escrita en empresas de menor tamaño. Aprovecha esa ventana para ordenar la casa.
+> **Resumen ejecutivo:** la Ley 21.719 entra en vigencia el 1 de diciembre de 2026 y aplica a todas las empresas chilenas que traten datos personales (prácticamente todas). Crea la Agencia de Protección de Datos como autoridad fiscalizadora independiente, establece 7 obligaciones operativas clave (registro de tratamiento, consentimiento, DPO, EIPD, notificación de brechas, derechos ARCO ampliados, contratos con encargados), y multas hasta 20.000 UTM. **Excepción transitoria para pymes**: durante los primeros 12 meses de vigencia, la Agencia puede aplicar una amonestación escrita a empresas de menor tamaño. Es una facultad, no una exención: aprovecha para ordenar la casa.
 
 ## A quién aplica (probablemente a ti)
 
@@ -127,7 +129,7 @@ La Agencia clasifica infracciones en tres niveles:
 | Gravísimas | Tratamiento ilegal de datos sensibles, vulnerar derechos ARCO sistemáticamente | Hasta **20.000 UTM** (~$1.480M CLP) |
 | Reincidencia | Repetir gravísimas | Hasta **4% ingresos anuales en Chile** |
 
-**Excepción transitoria para pymes (art. 6° transitorio)**: durante los **primeros 12 meses** (1 dic 2026 – 1 dic 2027), la Agencia podrá reemplazar la multa por una **amonestación escrita** cuando el infractor sea empresa de menor tamaño. Es una ventana de gracia: úsala para corregir, no para postergar.
+**Excepción transitoria para pymes (art. 6° transitorio)**: durante los **primeros 12 meses de vigencia**, la Agencia podrá aplicar una **amonestación escrita** cuando el infractor sea empresa de menor tamaño. Es una facultad de la Agencia, no una exención: úsala para corregir, no para postergar. El proyecto de postergación la extendería a todas las empresas.
 
 ## Checklist 30-60-90 días para tu pyme
 
@@ -171,7 +173,7 @@ La Agencia clasifica infracciones en tres niveles:
 
 ### ¿La Agencia de Protección de Datos ya está operando?
 
-La ley se publicó en diciembre 2024 pero la Agencia se constituye y entra plenamente en operación con la vigencia el 1 de diciembre de 2026. La etapa previa la está liderando el Ministerio de Hacienda y la [Secretaría de Gobierno Digital](https://wikiguias.digital.gob.cl/datos-personales/guia-practica-implementacion-nueva-ley-datos-personales).
+La ley se publicó en diciembre 2024 y la Agencia debe constituirse antes de su entrada en vigencia. Al 3 de noviembre de 2026, su consejo directivo seguía pendiente y el proyecto de postergación cambia las reglas para designarlo. La etapa previa la está liderando el Ministerio de Hacienda y la [Secretaría de Gobierno Digital](https://wikiguias.digital.gob.cl/datos-personales/guia-practica-implementacion-nueva-ley-datos-personales).
 
 ### ¿Aplica a empresas con sitio web pero sin presencia física en Chile?
 

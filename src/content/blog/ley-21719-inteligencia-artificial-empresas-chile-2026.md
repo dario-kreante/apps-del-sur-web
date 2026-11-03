@@ -14,6 +14,8 @@ tags: ["Ley 21.719", "inteligencia artificial", "IA", "ChatGPT", "Claude", "Open
 relatedPosts: ["ley-21719-proteccion-datos-pymes-chile-2026", "ley-21719-datos-sensibles-sectores-chile-2026", "framework-ia-pymes-chile", "claude-pymes-chile-2026"]
 ---
 
+> **Actualización, 3 de noviembre de 2026:** la fecha vigente sigue siendo el 1 de diciembre de 2026, pero el Senado aprobó postergar la entrada en vigencia al 15 de octubre de 2027 (boletín 18.623-07). El proyecto todavía debe pasar por la Cámara y publicarse como ley. Las fechas de esta guía usan la fecha vigente. Este contenido es informativo y no constituye asesoría legal.
+
 Tu pyme ya usa inteligencia artificial: alguien del equipo pegó la base de clientes en ChatGPT para generar emails, instalaste un agente IA por WhatsApp para atender consultas, conectaste un copiloto en Excel para categorizar facturas, o estás evaluando implementar Claude para resumir contratos. En paralelo, el **1 de diciembre de 2026 entra en vigencia la Ley 21.719**, que regula con dientes (multas hasta 20.000 UTM ≈ $1.480M CLP) cómo tu empresa trata datos personales en Chile.
 
 La intersección de ambos es el **"doble desafío"**: usar IA bien, sin romper la ley. Y a diferencia de la regulación europea (donde el AI Act y el GDPR son piezas distintas), en Chile la Ley 21.719 cubre tanto la protección de datos como las **decisiones automatizadas** de los sistemas IA. Es decir: tu agente IA y los datos que procesa están bajo el mismo marco.
@@ -166,7 +168,7 @@ El cliente puede pedir hablar con una persona en cualquier momento. Tu agente IA
 
 **2. "Mi agente IA solo agenda citas, no necesita EIPD."** Para agendamiento simple, correcto. Pero verifica si guarda datos sensibles (motivos médicos, preferencias religiosas, etc.) — si los guarda, sube el riesgo.
 
-**3. "Estoy bajo el régimen de pymes, las multas no aplican."** Aplican desde diciembre 2027 (12 meses después de la vigencia). Antes de eso, amonestación escrita. Pero las obligaciones aplican desde el día 1.
+**3. "Estoy bajo el régimen de pymes, las multas no aplican."** Falso. Durante los primeros 12 meses de vigencia, la Agencia puede aplicar una amonestación escrita en vez de una multa, pero no está obligada a hacerlo. Las obligaciones aplican desde el día 1.
 
 **4. "Le pedí a ChatGPT que escribiera mi política de privacidad."** Mal punto de partida: muchas políticas generadas por IA copian formato GDPR europeo, no Ley 21.719 chilena. Ajusta con asesoría local.
 
@@ -186,7 +188,7 @@ Ambos tienen DPA, ambos cumplen estándares similares. Las diferencias práctica
 
 ### ¿El agente IA me sirve si todavía no tengo todo el cumplimiento listo?
 
-Sí, pero implementa **simultáneamente** el cumplimiento. Tienes hasta el 1 de diciembre de 2026 para fase obligatoria, y 12 meses adicionales como pyme con amonestación en vez de multa. Pero empieza ya.
+Sí, pero implementa **simultáneamente** el cumplimiento. Tienes hasta la entrada en vigencia para la fase obligatoria. Como pyme, durante los primeros 12 meses la Agencia puede aplicar una amonestación escrita en vez de una multa, pero no es una exención. Empieza ya.
 
 ### ¿Necesito EIPD para cada producto IA que use?
 

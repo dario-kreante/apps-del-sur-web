@@ -122,7 +122,7 @@ Para gimnasios grandes (>3.000 socios) podemos estructurar un modelo **100% perf
 
 ## Marco legal en Chile
 
-Bajo la nueva [Ley 21.719 de Protección de Datos](https://www.bcn.cl/leychile/navegar?idNorma=1208515) (vigencia diciembre 2026), contactar a un socio para retenerlo requiere base legal documentada:
+Bajo la nueva [Ley 21.719 de Protección de Datos](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite), contactar a un socio para retenerlo requiere base legal documentada:
 
 - **Interés legítimo**: relación comercial activa permite mensajes de servicio (recordatorios, ofertas en el contrato existente).
 - **Consentimiento explícito**: necesario para envío masivo de ofertas promocionales nuevas.

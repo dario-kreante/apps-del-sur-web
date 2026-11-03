@@ -554,3 +554,58 @@ test('health checks only read Airtable and expose no credentials or record data'
   assert.equal(result.hubspot, undefined);
   assert.ok(!/test-airtable-token|private@example.test|legacy-token/.test(res.body));
 });
+
+test('stores optional study and commercial consent separately from the required one', async () => {
+  const accepted = { ...makeFields('datos'), 'Consentimiento Estudio': 'Aceptado', 'Consentimiento Comercial': 'No' };
+  const { mock, res } = await submitFields(accepted);
+  assert.equal(res.statusCode, 200);
+  const saved = JSON.parse(mock.fields['Respuestas JSON']);
+  assert.equal(saved.consentimiento, 'Aceptado');
+  assert.equal(saved.consentimientoEstudio, true);
+  assert.equal(saved.consentimientoComercial, false);
+  assert.ok(saved.consentimientoVersion);
+});
+
+test('optional consents default to false and never block the submission', async () => {
+  const { mock, res } = await submitFields(makeFields('ia'));
+  assert.equal(res.statusCode, 200);
+  const saved = JSON.parse(mock.fields['Respuestas JSON']);
+  assert.equal(saved.consentimientoEstudio, false);
+  assert.equal(saved.consentimientoComercial, false);
+});
+
+test('writes optional consents to their own Airtable columns', async () => {
+  const { mock } = await submitFields({ ...makeFields('datos'), 'Consentimiento Estudio': 'Aceptado', 'Consentimiento Comercial': 'No' });
+  assert.equal(mock.fields['Consentimiento Estudio'], true);
+  assert.equal(mock.fields['Consentimiento Comercial'], false);
+  assert.ok(mock.fields['Version Consentimiento']);
+});
+
+test('signed report links reject missing or wrong tokens and keep old links working', async () => {
+  process.env.ASSESSMENT_REPORT_SECRET = 'secreto-de-prueba';
+  try {
+    const mock = airtableMock();
+    const res = responseRecorder();
+    await submitHandler({ method: 'POST', headers: { host: 'example.test' }, body: { fields: makeFields('datos') } }, res);
+    const { reportUrl } = JSON.parse(res.body);
+    const url = new URL(reportUrl);
+    const token = url.searchParams.get('t');
+    assert.ok(token);
+    const open = async (query) => {
+      const out = responseRecorder();
+      await reportHandler({ method: 'GET', url: `/api/assessment-report?${query}` }, out);
+      return out;
+    };
+    const id = url.searchParams.get('id');
+    const ok = await open(`id=${id}&t=${token}`);
+    assert.equal(ok.statusCode, 200);
+    assert.match(ok.headers['Cache-Control'], /no-store/);
+    assert.equal(ok.headers['Referrer-Policy'], 'no-referrer');
+    assert.equal((await open(`id=${id}`)).statusCode, 404);
+    assert.equal((await open(`id=${id}&t=incorrecto`)).statusCode, 404);
+    mock.fields['Reporte URL'] = `https://example.test/api/assessment-report?id=${id}`;
+    assert.equal((await open(`id=${id}`)).statusCode, 200, 'enlaces antiguos sin token siguen abriendo');
+  } finally {
+    delete process.env.ASSESSMENT_REPORT_SECRET;
+  }
+});

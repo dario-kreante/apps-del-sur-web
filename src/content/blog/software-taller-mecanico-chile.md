@@ -51,7 +51,7 @@ En la práctica, un buen sistema para un taller de 2 a 15 mecánicos hace cuatro
 
 **El resultado esperado.** Respondes en segundos si esa bomba de agua ya se cambió y cuándo. Puedes avisarle a un cliente que le toca la mantención por kilometraje o fecha, lo que trae al cliente de vuelta. El control de repuestos funciona solo si se registra cada salida; si el equipo saca piezas "por mientras" sin anotarlas, el stock del sistema deja de servir en semanas.
 
-Un detalle importante: patentes, nombres y teléfonos son datos personales. La Ley 21.719 de protección de datos, que entra en vigencia en diciembre de 2026, exige cuidarlos y usarlos solo para lo que el cliente autorizó. Lo revisamos en nuestra guía sobre [la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
+Un detalle importante: patentes, nombres y teléfonos son datos personales. La Ley 21.719 de protección de datos, cuya fecha vigente es el 1 de diciembre de 2026, con una prórroga en trámite, exige cuidarlos y usarlos solo para lo que el cliente autorizó. Lo revisamos en nuestra guía sobre [la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
 
 ## ¿Software genérico de talleres o algo a medida?
 

@@ -125,7 +125,7 @@ Nosotros le asesoramos la postulación sin costo si el fondo le sirve.
 
 ## Marco legal: Ley 21.719 de Protección de Datos
 
-Desde diciembre 2026 rige la nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1208515) en Chile. Para un retailer significa:
+La nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) tiene como fecha vigente el 1 de diciembre de 2026, con una prórroga en trámite. Para un retailer significa:
 
 - Necesita base legal documentada para enviar mensajes proactivos (carritos abandonados, post-venta).
 - Debe ofrecer derechos ARCO (Acceso, Rectificación, Cancelación, Oposición).
