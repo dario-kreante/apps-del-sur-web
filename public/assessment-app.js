@@ -11,7 +11,6 @@
   const defaultSource = { ia: 'diagnostico-madurez-ia', digital: 'diagnostico-madurez-digital', datos: 'diagnostico-datos-personales' }[type];
   const formal = type === 'datos';
   const voice = (informalText, formalText) => (formal ? formalText : informalText);
-  const headingTag = formal ? 'h2' : 'h1';
   const storageKey = `apps-del-sur-assessment-v3-${type}`;
   const legacyKeys = { ia: ['apps-del-sur-madurez-ia-v2'], digital: ['apps-del-sur-madurez-digital-v1'], datos: [] }[type];
   const $ = (selector, root) => (root || app).querySelector(selector);
@@ -176,7 +175,7 @@
     else renderResults();
   }
   function renderIntro() {
-    const title = { ia: '¿Qué tan preparada está tu empresa para incorporar IA?', digital: '¿Qué tan digital está la operación de tu empresa?', datos: 'Haga el autodiagnóstico de datos personales' }[type];
+    const title = { ia: '¿Qué tan preparada está tu empresa para incorporar IA?', digital: '¿Qué tan digital está la operación de tu empresa?', datos: '¿Qué tan preparada está su empresa para la Ley 21.719?' }[type];
     const description = {
       ia: 'Descubre qué está funcionando, dónde conviene avanzar y por qué acción empezar. Completa cinco etapas y llévate una ruta de mejora para los próximos 90 días.',
       digital: 'Descubre dónde se pierde tiempo en tu operación y cuál es tu siguiente paso digital. Completa cinco etapas y llévate una ruta de mejora para los próximos 90 días.',
@@ -192,7 +191,7 @@
     const previewMedals = data.dimKeys.map((key, index) => medal(key, example.perDim[index].stage, 44, index > 2)).join('');
     app.innerHTML = `<section class="assessment-hero"><div>
         <span class="assessment-eyebrow">Diagnóstico gratuito · 20 preguntas · ~8 min</span>
-        <${headingTag} class="assessment-title">${title}</${headingTag}><p class="assessment-lede">${description}</p>
+        <h1 class="assessment-title">${title}</h1><p class="assessment-lede">${description}</p>
         <ul class="assessment-benefits">${benefits.map((benefit) => `<li><span aria-hidden="true">✓</span>${esc(benefit)}</li>`).join('')}</ul>
         <div class="assessment-actions"><button class="assessment-button" id="assessment-start">${answeredCount() ? 'Continuar mi diagnóstico' : 'Comenzar mi diagnóstico'} →</button><span class="assessment-small">Resultado inmediato · ${voice('puedes verlo sin dejar tus datos', 'puede verlo sin dejar sus datos')}</span></div>
         ${answeredCount() && answeredCount() < data.questions.length ? `<div class="assessment-note" role="status">${voice('Tienes', 'Tiene')} ${answeredCount()} de 20 respuestas guardadas en este navegador. <button type="button" id="assessment-restart" class="assessment-inline-link">Empezar de cero</button></div>` : ''}
@@ -229,7 +228,7 @@
     const question = data.questions[state.idx];
     const selected = Number(state.answers[state.idx]) || 0;
     const options = question.a.map((answer, index) => `<label class="assessment-option"><input type="radio" name="answer-${state.idx}" value="${index + 1}" ${selected === index + 1 ? 'checked' : ''}><span>${esc(answer)}</span></label>`).join('');
-    app.innerHTML = `${renderSticky()}<p class="assessment-dimension">${esc(data.dimLabels[question.dim])}</p><${headingTag} class="assessment-question" id="assessment-question" tabindex="-1">${esc(question.q)}</${headingTag}>
+    app.innerHTML = `${renderSticky()}<p class="assessment-dimension">${esc(data.dimLabels[question.dim])}</p><h1 class="assessment-question" id="assessment-question" tabindex="-1">${esc(question.q)}</h1>
       <p class="assessment-small">${voice('Elige', 'Elija')} la opción que más se parece a lo que pasa hoy.</p><fieldset class="assessment-option-list" aria-labelledby="assessment-question"><legend class="sr-only">${voice('Elige', 'Elija')} una respuesta</legend>${options}</fieldset>
       <div class="assessment-nav"><button id="assessment-back" class="assessment-button-secondary" ${state.idx === 0 ? 'disabled aria-disabled="true"' : ''}>← Atrás</button><button id="assessment-next" class="assessment-button" ${selected ? '' : 'disabled aria-disabled="true"'}>${state.idx === data.questions.length - 1 ? 'Ver resultado' : 'Siguiente'} →</button></div>`;
     app.querySelectorAll('input[type=radio]').forEach((input) => input.addEventListener('change', (event) => {
@@ -336,7 +335,7 @@
       ? '<a class="assessment-link-button" href="/diagnostico-madurez-ia/">Explorar madurez en IA →</a>'
       : '<a class="assessment-link-button" href="/diagnostico-madurez-digital/">Explorar madurez digital →</a>';
     app.innerHTML = `<div class="assessment-eyebrow">Recorrido completado · ${new Date().toLocaleDateString('es-CL')}</div>
-      <section class="assessment-result-hero"><div class="assessment-result-top">${scoreRing(result.scorePercent)}<div><span class="assessment-small" style="color:#d8e9dc">RUTA COMPLETADA · 5 DE 5 ETAPAS</span><${headingTag} class="assessment-title" style="color:white;margin:.25rem 0">${esc(stages[result.overallStage - 1])}</${headingTag}><p style="color:#e8f2eb;line-height:1.6;margin:.4rem 0 0">${esc(data.narrative[result.overallStage])}</p></div></div><div class="assessment-ladder">${ladder}</div><div class="assessment-next-hint">${result.overallStage < 4 ? voice(`Tu siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empieza por una mejora real en tu operación.`, `Su siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empiece por una mejora concreta en el manejo de sus datos.`) : voice('Estás en la etapa más alta. Enfoca tu plan en sostener los avances.', 'Está en la etapa más alta. Enfoque su plan en sostener los avances.')}</div></section>
+      <section class="assessment-result-hero"><div class="assessment-result-top">${scoreRing(result.scorePercent)}<div><span class="assessment-small" style="color:#d8e9dc">RUTA COMPLETADA · 5 DE 5 ETAPAS</span><h1 class="assessment-title" style="color:white;margin:.25rem 0">${esc(stages[result.overallStage - 1])}</h1><p style="color:#e8f2eb;line-height:1.6;margin:.4rem 0 0">${esc(data.narrative[result.overallStage])}</p></div></div><div class="assessment-ladder">${ladder}</div><div class="assessment-next-hint">${result.overallStage < 4 ? voice(`Tu siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empieza por una mejora real en tu operación.`, `Su siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empiece por una mejora concreta en el manejo de sus datos.`) : voice('Estás en la etapa más alta. Enfoca tu plan en sostener los avances.', 'Está en la etapa más alta. Enfoque su plan en sostener los avances.')}</div></section>
       <div class="assessment-result-grid">${insightsMarkup}</div>
       <section class="assessment-first-action"><strong>${balanced ? 'Un perfil equilibrado' : voice('Tu siguiente movimiento', 'Su siguiente movimiento')}</strong><h3>${balanced ? voice('Elige dónde empezar', 'Elija dónde empezar') : `${voice('Empieza', 'Empiece')} por ${esc(focusDim.label)}`}</h3><p style="margin:.4rem 0 0;color:#554a37;line-height:1.55">${balanced ? 'El puntaje quedó igual en todas las dimensiones. ' : voice('Esta dimensión tuvo la puntuación más baja en tus respuestas. ', 'Esta dimensión tuvo la puntuación más baja en sus respuestas. ')}${esc(priority)}${esc(tieText)}</p></section>
       <div class="assessment-no-print" style="display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0 1.4rem"><button class="assessment-button" id="assessment-print">Descargar resultado en PDF</button><button class="assessment-button-secondary" id="assessment-copy">Copiar resumen</button>${crossLink}</div>
@@ -367,7 +366,7 @@
       state = blank(); render();
     });
     $('#assessment-lead-form').addEventListener('submit', (event) => submitLead(event, result));
-    const heading = app.querySelector(headingTag);
+    const heading = app.querySelector('h1');
     heading.tabIndex = -1; heading.focus({preventScroll:true});
     window.scrollTo({top: app.getBoundingClientRect().top + window.scrollY - 82, behavior:'auto'});
   }

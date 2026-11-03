@@ -34,22 +34,48 @@ test('personal data assessment defines stages, narrative, matrix and recommendat
   }
 });
 
-test('landing sends every diagnostic CTA to the embedded questionnaire', async () => {
-  const page = await readSource('src/pages/diagnostico-datos-personales/index.astro');
-  assert.match(page, /<Assessment type="datos"/);
-  assert.match(page, /href="#autodiagnostico"/);
-  assert.doesNotMatch(page, /href="#(empezar|inicio|contacto)"/);
+const SERVICE_PAGE = 'src/pages/servicios/diagnostico-datos-personales/index.astro';
+const QUIZ_PAGE = 'src/pages/diagnostico-datos-personales/index.astro';
+
+test('service page sends every diagnostic CTA to the questionnaire page', async () => {
+  const page = await readSource(SERVICE_PAGE);
+  assert.doesNotMatch(page, /<Assessment/);
+  assert.match(page, /href="\/diagnostico-datos-personales\/"/);
+  assert.doesNotMatch(page, /href="#/);
 });
 
-test('landing keeps to what the service can promise today', async () => {
-  const page = await readSource('src/pages/diagnostico-datos-personales/index.astro');
+test('service page keeps to what the service can promise today', async () => {
+  const page = await readSource(SERVICE_PAGE);
   assert.doesNotMatch(page, /abogado aliado|trabajamos con un abogado/i);
   assert.doesNotMatch(page, /enviarle su resultado/i);
   assert.doesNotMatch(page, /certificaci[oó]n|auditor[ií]a legal/i);
   assert.doesNotMatch(page, /formsubmit/i);
   assert.match(page, /no constituye asesoría legal/);
   assert.match(page, /wa\.me\/56945262335/);
-  assert.match(page, /\/diagnostico-madurez-digital\//);
+});
+
+test('questionnaire page follows the structure of the other assessments', async () => {
+  const page = await readSource(QUIZ_PAGE);
+  const other = await readSource('src/pages/diagnostico-madurez-ia/index.astro');
+  assert.match(other, /<Assessment type="ia" \/>/);
+  assert.match(page, /<Assessment type="datos" \/>/);
+  assert.match(page, /class="assessment-more"/);
+  assert.match(page, /no constituye asesoría legal/);
+  assert.match(page, /href="\/servicios\/diagnostico-datos-personales\/"/);
+  assert.match(page, /href="\/diagnostico-madurez-digital\/"/);
+  assert.doesNotMatch(page, /certificaci[oó]n|auditor[ií]a legal/i);
+});
+
+test('assessment component has a single page layout for every type', async () => {
+  const component = await readSource('src/components/Assessment.astro');
+  assert.doesNotMatch(component, /embedded/);
+  assert.match(component, /<main id="main-content" class="assessment-page">/);
+});
+
+test('sitemap lists the questionnaire and the service page', async () => {
+  const sitemap = await readSource('src/pages/sitemap.xml.ts');
+  assert.match(sitemap, /\/diagnostico-datos-personales\//);
+  assert.match(sitemap, /\/servicios\/diagnostico-datos-personales\//);
 });
 
 test('diagnostics index links the third assessment', async () => {

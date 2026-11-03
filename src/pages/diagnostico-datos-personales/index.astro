@@ -5,265 +5,52 @@ import Footer from '../../components/Footer.astro';
 import Assessment from '../../components/Assessment.astro';
 import assessments from '../../data/assessments.json';
 
-const title = 'Diagnóstico de datos personales para pymes: Ley 21.719';
+const title = 'Diagnóstico de Datos Personales para empresas chilenas';
 const description = 'Responda 20 preguntas en 8 minutos y vea cómo está su empresa frente a la Ley 21.719: qué datos tiene, dónde los guarda y quién puede verlos. Gratis y orientativo.';
-const canonical = 'https://appsdelsur.cl/diagnostico-datos-personales/';
-const whatsappUrl = 'https://wa.me/56945262335';
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Diagnóstico de Datos Personales — Apps del Sur', description,
+  url: 'https://appsdelsur.cl/diagnostico-datos-personales/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'CLP' }, provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' }, inLanguage: 'es-CL',
+});
 
-const { dimKeys, dimLabels, questions } = assessments.datos;
+const { dimKeys, dimLabels, stages, questions } = assessments.datos;
 const dimensions = dimKeys.map((key) => ({
   label: dimLabels[key as keyof typeof dimLabels],
   count: questions.filter((question) => question.dim === key).length,
 }));
-
-const exampleDimensions = [
-  { label: 'Conocimiento de sus datos', pct: 50 },
-  { label: 'Transparencia y consentimiento', pct: 67 },
-  { label: 'Accesos y seguridad', pct: 8, low: true },
-  { label: 'Derechos de las personas', pct: 33 },
-  { label: 'Proveedores, IA e incidentes', pct: 58 },
-];
-const exampleStages = ['Expuesta', 'Inicial', 'Encaminada', 'Preparada'];
-
-const problems = [
-  'Un ex trabajador todavía tiene acceso a la planilla de clientes',
-  'Un cliente pide que borren sus datos y nadie sabe dónde están todos',
-  'El agente de WhatsApp envía conversaciones a un proveedor fuera de Chile y no hay contrato que lo cubra',
-];
-const obligations = [
-  'Tener una razón válida para cada dato que pide',
-  'Informar con claridad qué hace con esos datos',
-  'Responder en 30 días cuando alguien pide ver, corregir o borrar sus datos',
-  'Proteger los datos y avisar si hay una filtración',
-];
-const steps = [
-  { label: 'Paso 1 · Gratis', title: 'Autodiagnóstico', text: '20 preguntas, 8 minutos. Recibe su etapa, un gráfico por dimensión y acciones sugeridas.' },
-  { label: 'Paso 2', title: 'Diagnóstico técnico', text: 'Revisamos sus sistemas, planillas y proveedores. Entregamos un mapa de sus datos y un plan priorizado.', featured: true },
-  { label: 'Paso 3', title: 'Implementación', text: 'Corregimos lo encontrado: accesos, formularios, flujos de borrado y registros. La parte legal la ve un abogado.' },
-];
-const deliverables = [
-  'Inventario de dónde están sus datos',
-  'Mapa de cómo se mueven entre sistemas y personas',
-  'Registro de tratamientos inicial, listo para completar',
-  'Lista de riesgos ordenada por prioridad',
-  'Plan de acción a 30, 60 y 90 días',
-];
-const reasons = [
-  'Conocemos por dentro los sistemas, planillas y agentes de IA que usan las pymes, porque los construimos.',
-  'Trato directo con quien hace el diagnóstico, en su zona y en su horario.',
-  'Lo que construimos sale preparado para la Ley 21.719 desde el diseño.',
-];
 const faqs = [
-  { q: '¿Cuánto tiempo toma?', a: 'Son 20 preguntas de selección y toma unos 8 minutos. Sus respuestas quedan guardadas en el navegador, así que puede continuar después.' },
-  { q: '¿Tiene costo?', a: 'No. El autodiagnóstico es gratis y ve su resultado al terminar, sin entregar sus datos.' },
+  { q: '¿Cuánto tiempo toma?', a: `Son ${questions.length} preguntas de selección y toma unos 8 minutos. Sus respuestas quedan guardadas en el navegador, así que puede continuar después.` },
+  { q: '¿Tiene costo?', a: 'No. El diagnóstico es gratuito y ve su resultado al terminar, sin entregar sus datos. Si quiere recibir el informe en su correo, puede completar el formulario final.' },
   { q: '¿Quién debería responderlo?', a: 'El dueño, el gerente o quien administra los sistemas. Si lo responden dos personas por separado, comparar los resultados suele ser revelador.' },
-  { q: '¿La ley no se va a postergar?', a: 'El Congreso discute moverla a 2027. Cambiaría la fecha, no las obligaciones. Prepararse con tiempo sale más barato.' },
-  { q: '¿Mi empresa es muy chica para esto?', a: 'La ley aplica a todas. Las pymes tienen un primer año con amonestaciones en vez de multas, pero las obligaciones son las mismas.' },
-  { q: '¿Esto reemplaza a un abogado?', a: 'No. Es orientativo y nosotros revisamos la parte técnica. La interpretación legal, las políticas y los contratos los ve un abogado.' },
-  { q: '¿Cuánto cuesta el diagnóstico técnico?', a: 'Depende del tamaño y de los procesos a revisar. Lo conversamos después del autodiagnóstico.' },
+  { q: '¿Reemplaza una revisión técnica o a un abogado?', a: 'No. Es una autoevaluación orientativa y no constituye asesoría legal. La interpretación legal, las políticas y los contratos los ve un abogado.' },
+  { q: '¿Qué hacen con mis respuestas?', a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo.' },
 ];
-const privacyFaq = {
-  q: '¿Qué hacen con mis respuestas?',
-  a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo.',
-};
-
-const jsonLd = JSON.stringify({
-  '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Diagnóstico de Datos Personales — Apps del Sur', description,
-  url: canonical, applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'CLP' }, provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' }, inLanguage: 'es-CL',
-});
 const faqJsonLd = JSON.stringify({
   '@context': 'https://schema.org', '@type': 'FAQPage',
-  mainEntity: [...faqs, privacyFaq].map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+  mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
 });
-const sectionHeading = 'text-3xl md:text-4xl font-bold leading-tight tracking-tight text-emerald-950';
-const eyebrow = 'text-sm font-semibold text-emerald-700';
 ---
 
-<Layout title={`${title} | Apps del Sur`} description={description} canonical={canonical}>
+<Layout title={`${title} | Apps del Sur`} description={description} canonical="https://appsdelsur.cl/diagnostico-datos-personales/">
   <script type="application/ld+json" set:html={jsonLd} />
-  <script type="application/ld+json" set:html={faqJsonLd} />
   <Header />
+  <script type="application/ld+json" set:html={faqJsonLd} />
+  <Assessment type="datos" />
+  <section class="assessment-more" aria-labelledby="assessment-more-title">
+    <h2 id="assessment-more-title">¿Qué mide este diagnóstico?</h2>
+    <p>Evalúa qué tan preparada está su empresa para cumplir la Ley 21.719 de protección de datos personales. Las preguntas describen situaciones cotidianas de una pyme chilena: dónde guarda los datos, quién puede verlos, qué pasa si un cliente pide borrarlos o si se pierde un celular.</p>
+    <p>Son {questions.length} preguntas repartidas en cinco dimensiones:</p>
+    <ul>
+      {dimensions.map((dimension) => <li><strong>{dimension.label}</strong>: {dimension.count} preguntas</li>)}
+    </ul>
 
-  <main id="main-content">
-    <section class="bg-[#F6FBF8] border-b border-[#E3F1EA] pt-24">
-      <div class="max-w-[1200px] mx-auto px-6 pb-16 md:pb-20">
-        <nav class="text-sm text-gray-500 mb-8" aria-label="Ruta de navegación">
-          <a href="/" class="text-emerald-700 hover:text-emerald-800">Inicio</a>
-          <span class="mx-2" aria-hidden="true">/</span>
-          <a href="/diagnosticos/" class="text-emerald-700 hover:text-emerald-800">Diagnósticos</a>
-          <span class="mx-2" aria-hidden="true">/</span>
-          <span aria-current="page">Diagnóstico de Datos Personales</span>
-        </nav>
-        <div class="grid min-w-0 lg:grid-cols-[1.15fr_1fr] gap-12 items-center">
-          <div class="min-w-0 flex flex-col gap-6">
-            <span class="self-start inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-900">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-700" aria-hidden="true"></span>
-              Ley 21.719 · Diagnóstico gratuito
-            </span>
-            <h1 class="text-4xl md:text-[56px] font-bold leading-[1.08] tracking-tight text-emerald-950">¿Sabe dónde están los datos de sus clientes?</h1>
-            <p class="text-lg md:text-xl leading-relaxed text-gray-600 max-w-xl">La nueva ley de protección de datos exige que su empresa sepa qué datos tiene, dónde los guarda y quién puede verlos. En 8 minutos le mostramos cómo está hoy.</p>
-            <div class="flex flex-wrap gap-3 pt-1">
-              <a href="#autodiagnostico" class="inline-flex min-h-12 items-center justify-center rounded-xl bg-emerald-900 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-emerald-950">Hacer el autodiagnóstico gratis</a>
-              <a href={whatsappUrl} class="inline-flex min-h-12 items-center justify-center rounded-xl border border-[#C7DFD3] bg-white px-6 py-3 text-center font-semibold text-emerald-900 transition-colors hover:bg-emerald-50">Conversar con nosotros</a>
-            </div>
-            <p class="text-sm text-[#5B6B66]">Gratis · Sin conocimientos técnicos · Resultado inmediato</p>
-          </div>
+    <h2>Qué obtiene al terminar</h2>
+    <p>Su empresa queda ubicada en una de cuatro etapas: {stages.join(', ')}. Verá un puntaje y un gráfico por dimensión para identificar la brecha más grande, una lectura de su resultado y acciones sugeridas. Puede descargar el resultado en PDF para compartirlo con su equipo.</p>
+    <p>Si quiere llevarlo más allá, revisamos sus sistemas, planillas y proveedores en el <a href="/servicios/diagnostico-datos-personales/">diagnóstico técnico de datos personales</a>.</p>
 
-          <div class="min-w-0 flex justify-center">
-            <div role="img" aria-label="Ejemplo de resultado del autodiagnóstico: etapa Inicial, 43%, con accesos y seguridad como prioridad" class="w-full max-w-[440px] rounded-[20px] border border-[#E3F1EA] bg-white p-6 md:p-7 shadow-[0_20px_40px_-16px_rgba(6,78,59,0.18)] flex flex-col gap-5">
-              <div class="flex items-center justify-between">
-                <span class="text-sm font-semibold text-gray-600">Su resultado</span>
-                <span class="text-[13px] text-[#5B6B66]">Ejemplo</span>
-              </div>
-              <div class="flex flex-col gap-3">
-                <div class="flex items-baseline justify-between gap-3">
-                  <div class="flex flex-col gap-0.5">
-                    <span class="text-[13px] font-semibold text-emerald-700">Etapa 2 de 4</span>
-                    <span class="text-[28px] font-bold tracking-tight text-emerald-950">Inicial</span>
-                  </div>
-                  <span class="text-[22px] font-bold text-gray-900">43%</span>
-                </div>
-                <div class="grid grid-cols-4 gap-1.5">
-                  {exampleStages.map((_, index) => <div class:list={['h-2 rounded-full', index < 2 ? 'bg-emerald-600' : 'bg-emerald-100']}></div>)}
-                </div>
-                <div class="grid grid-cols-4 gap-1.5 text-xs text-[#5B6B66]">
-                  {exampleStages.map((stage) => <span class:list={[stage === 'Inicial' && 'font-semibold text-emerald-900']}>{stage}</span>)}
-                </div>
-              </div>
-              <div class="flex flex-col gap-3">
-                {exampleDimensions.map((dimension) => (
-                  <div class="flex flex-col gap-1.5">
-                    <div class="flex justify-between gap-3 text-sm"><span class="text-gray-700">{dimension.label}</span><span class="text-[#5B6B66]">{dimension.pct}%</span></div>
-                    <div class="h-2 rounded-full bg-emerald-50"><div class:list={['h-2 rounded-full', dimension.low ? 'bg-amber-700' : 'bg-emerald-600']} style={`width:${dimension.pct}%`}></div></div>
-                  </div>
-                ))}
-              </div>
-              <div class="rounded-xl border border-[#E3F1EA] bg-[#F6FBF8] px-4 py-3.5 text-sm leading-relaxed text-gray-700">
-                <strong class="text-emerald-900">Prioridad: accesos y seguridad.</strong> Quite hoy los accesos de ex trabajadores y cambie las claves compartidas.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-[1200px] mx-auto px-6 pt-20 md:pt-24 flex flex-col gap-10">
-      <div class="flex flex-col gap-4 max-w-[760px]">
-        <span class={eyebrow}>El problema</span>
-        <h2 class={sectionHeading}>Los datos de su empresa están en más lugares de los que cree</h2>
-        <p class="text-lg leading-relaxed text-gray-600">Fichas en planillas, conversaciones en WhatsApp, correos con documentos, formularios web, sistemas de proveedores. Cada lugar es una puerta abierta si nadie lo tiene controlado.</p>
-      </div>
-      <div class="grid min-w-0 md:grid-cols-3 gap-6">
-        {problems.map((problem) => (
-          <div class="rounded-2xl border border-gray-200 bg-white p-7"><p class="text-[17px] font-medium leading-relaxed text-gray-900">{problem}</p></div>
-        ))}
-      </div>
-    </section>
-
-    <section id="ley" class="max-w-[1200px] mx-auto px-6 pt-20 md:pt-24">
-      <div class="rounded-3xl bg-emerald-950 p-7 md:p-12 grid min-w-0 lg:grid-cols-[1fr_1.3fr] gap-10">
-        <div class="min-w-0 flex flex-col gap-4">
-          <span class="text-sm font-semibold text-emerald-300">Qué exige la ley</span>
-          <h2 class="text-3xl md:text-4xl font-bold leading-tight tracking-tight text-emerald-50">Lo que la Ley 21.719 le pide a su empresa</h2>
-          <p class="leading-relaxed text-emerald-200">La ley aplica a todas las empresas, sin importar su tamaño. Las multas llegan hasta 20.000 UTM y las sanciones quedan en un registro público.</p>
-        </div>
-        <ol class="min-w-0 flex flex-col gap-3">
-          {obligations.map((obligation, index) => (
-            <li class="flex items-start gap-4 rounded-xl bg-emerald-900 px-5 py-4">
-              <span class="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-emerald-100 text-sm font-bold text-emerald-900">{index + 1}</span>
-              <span class="text-[17px] leading-normal text-emerald-50">{obligation}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-
-    <section id="como" class="max-w-[1200px] mx-auto px-6 pt-20 md:pt-24 flex flex-col gap-10">
-      <div class="flex flex-col gap-4 max-w-[720px]">
-        <span class={eyebrow}>Cómo funciona</span>
-        <h2 class={sectionHeading}>Tres pasos, de saber cómo está a tenerlo en orden</h2>
-      </div>
-      <div class="grid min-w-0 md:grid-cols-3 gap-6">
-        {steps.map((step) => (
-          <div class:list={['flex flex-col gap-3.5 rounded-2xl p-8', step.featured ? 'border-2 border-emerald-600 bg-white' : 'border border-[#E3F1EA] bg-[#F6FBF8]']}>
-            <span class="text-sm font-bold text-emerald-700">{step.label}</span>
-            <h3 class="text-[22px] font-bold text-emerald-950">{step.title}</h3>
-            <p class="leading-relaxed text-gray-600">{step.text}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <section class="max-w-[1200px] mx-auto px-6 pt-20 md:pt-24 grid min-w-0 lg:grid-cols-2 gap-14 items-start">
-      <div class="min-w-0 flex flex-col gap-6">
-        <span class={eyebrow}>Qué recibe</span>
-        <h2 class={sectionHeading}>Con el diagnóstico técnico</h2>
-        <ul class="flex flex-col gap-3.5">
-          {deliverables.map((item) => (
-            <li class="flex items-start gap-3 text-[17px] leading-normal text-gray-700">
-              <svg class="mt-0.5 flex-none" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="min-w-0 flex flex-col gap-6 rounded-[20px] border border-[#E3F1EA] bg-[#F6FBF8] p-7 md:p-10">
-        <p class="text-[26px] font-semibold leading-snug tracking-tight text-emerald-950">El abogado le dice qué exige la ley. Nosotros le mostramos dónde están sus datos</p>
-        <div class="h-px bg-[#D5E9DE]"></div>
-        <ul class="flex flex-col gap-3.5 leading-relaxed text-gray-600">
-          {reasons.map((reason) => <li>{reason}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    <section class="max-w-[1200px] mx-auto px-6 pt-20 md:pt-24 flex flex-col gap-8">
-      <div class="flex flex-col gap-4 max-w-[760px]">
-        <span class={eyebrow}>Qué mide el autodiagnóstico</span>
-        <h2 class={sectionHeading}>{questions.length} preguntas sobre situaciones cotidianas de una pyme chilena</h2>
-        <p class="text-lg leading-relaxed text-gray-600">Al terminar ve su etapa, su puntaje, un gráfico por dimensión con la brecha más grande, acciones sugeridas y un PDF para compartir con su equipo.</p>
-      </div>
-      <ul class="grid min-w-0 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        {dimensions.map((dimension) => (
-          <li class="rounded-xl border border-gray-200 bg-white p-4"><strong class="block text-gray-900">{dimension.label}</strong><span class="text-sm text-[#5B6B66]">{dimension.count} preguntas</span></li>
-        ))}
-      </ul>
-      <p class="text-gray-600">Si su empresa todavía trabaja con papel y planillas, puede servirle partir por el <a href="/diagnostico-madurez-digital/" class="font-medium text-emerald-700 underline underline-offset-2 hover:text-emerald-900">Diagnóstico de Madurez Digital</a>.</p>
-    </section>
-
-    <section id="faq" class="max-w-[880px] mx-auto px-6 pt-20 md:pt-24 flex flex-col gap-8">
-      <div class="flex flex-col gap-3 items-center text-center">
-        <span class={eyebrow}>Preguntas frecuentes</span>
-        <h2 class={sectionHeading}>Lo que suelen preguntarnos</h2>
-      </div>
-      <div class="flex flex-col border-t border-gray-200">
-        {faqs.map((faq) => (
-          <div class="flex flex-col gap-2 border-b border-gray-200 py-6">
-            <h3 class="text-lg font-semibold text-gray-900">{faq.q}</h3>
-            <p class="leading-relaxed text-gray-600">{faq.a}</p>
-          </div>
-        ))}
-        <div class="flex flex-col gap-2 border-b border-gray-200 py-6">
-          <h3 class="text-lg font-semibold text-gray-900">{privacyFaq.q}</h3>
-          <p class="leading-relaxed text-gray-600">{privacyFaq.a} Vea nuestra <a href="/privacidad/" class="font-medium text-emerald-700 underline underline-offset-2 hover:text-emerald-900">política de privacidad</a>.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-[1200px] mx-auto px-6 pt-20 md:pt-24">
-      <div class="flex flex-col items-center gap-5 rounded-3xl bg-emerald-900 px-6 py-14 md:px-8 md:py-16 text-center">
-        <h2 class="text-3xl md:text-[40px] font-bold leading-tight tracking-tight text-white">Empiece por saber cómo está</h2>
-        <p class="max-w-[560px] text-lg leading-relaxed text-emerald-200">Ocho minutos, sin costo y sin conocimientos técnicos. Recibe su resultado al instante.</p>
-        <div class="flex flex-wrap justify-center gap-3 pt-2">
-          <a href="#autodiagnostico" class="inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-center font-semibold text-emerald-900 transition-colors hover:bg-emerald-50">Hacer el autodiagnóstico gratis</a>
-          <a href={whatsappUrl} class="inline-flex min-h-12 items-center justify-center rounded-xl border border-emerald-400 px-6 py-3 text-center font-semibold text-emerald-50 transition-colors hover:bg-emerald-800">Escribir por WhatsApp</a>
-        </div>
-        <p class="pt-3 text-[13px] text-emerald-200">Este diagnóstico es orientativo y no constituye asesoría legal</p>
-      </div>
-    </section>
-
-    <Assessment type="datos" embedded />
-  </main>
-
+    <h2>Preguntas frecuentes</h2>
+    {faqs.map((faq) => <><h3>{faq.q}</h3><p>{faq.a}</p></>)}
+    <p>Si su empresa todavía trabaja con papel y planillas, puede servirle partir por el <a href="/diagnostico-madurez-digital/">Diagnóstico de Madurez Digital</a>. Puede ver todos en <a href="/diagnosticos/">Diagnósticos</a>.</p>
+  </section>
   <Footer />
 </Layout>

@@ -8,6 +8,8 @@ Los diagnósticos de madurez en IA, madurez digital y datos personales comparten
 | Madurez Digital | `diagnostico-madurez-digital` | Diagnóstico de Madurez Digital |
 | Datos Personales | `diagnostico-datos-personales` | Diagnóstico de Datos Personales |
 
+El cuestionario de datos personales vive en `/diagnostico-datos-personales/`, como los otros dos. La página del servicio está en `/servicios/diagnostico-datos-personales/` y enlaza hacia él.
+
 ## Comportamiento de envío
 
 1. El navegador envía los datos del lead, `Consentimiento: Aceptado`, las 20 respuestas y los resultados de cada dimensión a `POST /api/assessment-submit`.
