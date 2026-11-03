@@ -2,6 +2,7 @@
 title: "IA para farmacias independientes en Chile: cómo competir con las cadenas"
 description: "Guía práctica para farmacias de barrio: control de vencimientos, reposición, consultas de stock por WhatsApp y recordatorios a crónicos, cuidando los datos de salud."
 pubDate: 2026-09-22
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "9 min"
 heroAlt: "Ilustración de una farmacia de barrio con un celular mostrando consultas de stock por WhatsApp y un estante con alertas de vencimiento"
@@ -66,7 +67,7 @@ Dos cuidados importantes. Primero, el asistente no recomienda medicamentos ni re
 
 ## Datos de salud: lo que cambia con la Ley 21.719
 
-Una farmacia maneja datos de salud todos los días: recetas, tratamientos, historial de compras de medicamentos. Bajo la Ley 21.719, los datos de salud son **datos sensibles**, con exigencias reforzadas de consentimiento y seguridad. La ley tiene como fecha vigente el 1 de diciembre de 2026, con una prórroga en trámite. El Gobierno ingresó el 1 de septiembre de 2026 un proyecto (boletín 18.623-07) para postergarla un año, pero mientras no se apruebe y publique, la fecha vigente sigue siendo diciembre de 2026.
+Una farmacia maneja datos de salud todos los días: recetas, tratamientos, historial de compras de medicamentos. Bajo la Ley 21.719, los datos de salud son **datos sensibles**, con exigencias reforzadas de consentimiento y seguridad. Al 3 de noviembre de 2026, la fecha vigente sigue siendo el 1 de diciembre de 2026. El Senado aprobó postergarla al 15 de octubre de 2027 (boletín 18.623-07), pero el proyecto aún debe pasar por la Cámara y publicarse como ley.
 
 En la práctica, antes de implementar cualquier herramienta:
 

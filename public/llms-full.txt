@@ -111,7 +111,7 @@ Apps del Sur organiza su oferta de agentes IA en dos ejes complementarios: **por
 
 - Sector: clínicas dentales, centros médicos pyme, clínicas veterinarias, consultas estéticas.
 - Dolor principal: 70% de las consultas para agendar llegan fuera de horario; 22% no-shows; riesgo Ley 21.719 con datos sensibles.
-- Solución: Agendamiento + Recordatorios automáticos + Compliance Ley 21.719 + Retención de pacientes.
+- Solución: Agendamiento + Recordatorios automáticos + apoyo técnico para la Ley 21.719 + Retención de pacientes.
 - Agentes funcionales aplicables: agendamiento, compliance, retencion, whatsapp-atencion.
 - ROI típico: $2.3M/mes ahorro en clínica de 4 boxes. ROI mes 1 con CRECE.
 - Financiamiento: Kit Digital SERCOTEC 100% ($1.2M) o CRECE 95% ($5M).
@@ -131,7 +131,7 @@ Apps del Sur organiza su oferta de agentes IA en dos ejes complementarios: **por
 
 - Sector: estudios jurídicos pyme, abogados independientes, notarías.
 - Dolor principal: abogado dedica 4-6h/sem a consultas que no califican; casos de alto valor llegan tarde; datos sensibles en WhatsApp personal.
-- Solución: Calificación de consultas con criterios jurídicos + Agendamiento + Compliance Ley 21.719 + Seguimiento de causas.
+- Solución: Calificación de consultas con criterios jurídicos + Agendamiento + apoyo técnico para la Ley 21.719 + Seguimiento de causas.
 - Agentes funcionales aplicables: sdr-leads, agendamiento, compliance, abogados.
 - ROI típico: +$11M/año (ahorro + honorarios captados) en estudio de 3 abogados. ROI año 1: 7x.
 - Financiamiento: SERCOTEC CRECE 95%, CORFO Digitalización 60%.
@@ -183,7 +183,7 @@ Apps del Sur organiza su oferta de agentes IA en dos ejes complementarios: **por
 - **Atención WhatsApp** — Responde tracking, FAQ y vende 24/7. Deflexión 70% de tickets. https://appsdelsur.cl/agentes/whatsapp-atencion
 - **SDR Calificador de Leads** — Filtra leads B2B con criterios reales antes de pasarlos a comercial. https://appsdelsur.cl/agentes/sdr-leads
 - **Retención** — Detecta caída de uso/asistencia y reactiva clientes en el momento óptimo. https://appsdelsur.cl/agentes/retencion
-- **Compliance Ley 21.719** — Maneja consentimientos, derechos de datos personales y notificación de brechas. https://appsdelsur.cl/agentes/compliance
+- **Compliance Regulatorio** — Monitorea SAG, SII, ISP, Sernac y normativa chilena, alerta vencimientos y prepara fiscalizaciones. No reemplaza a un abogado ni certifica cumplimiento. https://appsdelsur.cl/agentes/compliance
 - **Abogados** — Filtro de consultas + agendamiento para estudios jurídicos. https://appsdelsur.cl/agentes/abogados
 - **Cuota Mortuoria** — Trámite AFP/IPS automatizado para funerarias. https://appsdelsur.cl/agentes/cuota-mortuoria
 

@@ -3,6 +3,8 @@
 // Modelo: WhatsApp como canal principal (98% apertura en Chile),
 // CTA primario a WhatsApp, CTA secundario a /diagnostico-madurez-ia/.
 
+import { LEY_21719_ESTADO } from './ley21719';
+
 export interface ChatMessage {
   from: 'cliente' | 'agente';
   text: string;
@@ -331,8 +333,8 @@ export const agentPages: Record<string, AgentPage> = {
         a: 'Sí, se requiere WhatsApp Business API (gratis para abrir, Meta cobra por conversación iniciada por la empresa — ~$15-30 CLP por conversación dependiendo del tipo). Nosotros le ayudamos a configurarlo. El cliente que escribe primero no genera costo Meta.',
       },
       {
-        q: '¿Qué pasa con la Ley de Protección de Datos (Ley 19.628)?',
-        a: 'El agente cumple con la nueva Ley 21.719 (entrada en vigencia 2026). Los datos se almacenan en servidores con consentimiento explícito, no se comparten con terceros, y el cliente puede pedir su eliminación en cualquier momento.',
+        q: '¿Qué pasa con la Ley de Protección de Datos (Ley 21.719)?',
+        a: `El agente se configura pensando en la ley: pide consentimiento cuando corresponde, permite atender solicitudes de las personas, como la de borrar sus datos, y solo entrega datos a los proveedores que operan el servicio, como Meta y el proveedor de IA. Su empresa sigue siendo la responsable de esos datos, y la parte legal debe revisarla un abogado. ${LEY_21719_ESTADO}`,
       },
       {
         q: '¿Cuánto demora la implementación?',
@@ -566,7 +568,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Mi WhatsApp se va a bloquear?',
-        a: 'No, porque usamos la API oficial de WhatsApp Business (Meta Cloud API). Nunca usamos métodos no oficiales (whatsapp-web.js, baileys). Esto es lo único que garantiza estabilidad y cumplimiento.',
+        a: 'No, porque usamos la API oficial de WhatsApp Business (Meta Cloud API). Nunca usamos métodos no oficiales (whatsapp-web.js, baileys). Es la vía que Meta permite para operar el número con estabilidad.',
       },
       {
         q: '¿Cuánto cuesta Meta por mensaje?',
@@ -581,8 +583,8 @@ export const agentPages: Record<string, AgentPage> = {
         a: 'Configuramos un umbral de confianza. Si el agente no está seguro, deriva la conversación a su equipo con un resumen del contexto. Su equipo siempre tiene la última palabra.',
       },
       {
-        q: '¿Cumple con Ley de Protección de Datos chilena (21.719)?',
-        a: 'Sí. Datos almacenados con consentimiento explícito, base legal documentada, ARCO (Acceso, Rectificación, Cancelación, Oposición) implementado. Le entregamos toda la documentación para cumplir auditorías.',
+        q: '¿El agente cumple con la Ley de Protección de Datos chilena (21.719)?',
+        a: 'Un agente no deja cumpliendo a una empresa por sí solo: la responsable de los datos sigue siendo la suya. Nosotros resolvemos la parte técnica: consentimiento cuando corresponde, un canal para solicitudes de acceso, rectificación, supresión u oposición, y registro de lo que se hizo. Documentamos cómo funciona para que lo revise su abogado. No somos abogados ni certificamos cumplimiento.',
       },
     ],
     relatedBlogSlugs: [
@@ -1293,6 +1295,10 @@ export const agentPages: Record<string, AgentPage> = {
         a: 'No. Reemplaza la **consulta operativa de día a día** ("¿qué dosis puedo aplicar?", "¿cuándo vence Sustentavid?", "¿qué documentos necesito para fiscalización?"). Los temas estratégicos, defensa ante una multa o interpretación de normativa nueva siguen siendo del especialista humano.',
       },
       {
+        q: '¿Este agente deja a mi empresa cumpliendo la Ley 21.719?',
+        a: `No por sí solo, y no certificamos cumplimiento. Apps del Sur no es un estudio jurídico: hacemos diagnóstico e implementación técnica, como accesos, formularios, flujos de borrado y registros. La interpretación de la ley para su caso y el texto de sus políticas y contratos debe verlos un abogado. ${LEY_21719_ESTADO}`,
+      },
+      {
         q: '¿Cubre solo SAG o también otras instituciones?',
         a: 'Depende del plan. Starter cubre 1 área (ej: solo SAG agrícola). Pro cubre multi-área (SAG + Sustentavid + GlobalG.A.P. + SII, o lo que aplique a su empresa). Para industrias específicas (farma con ISP, laboratorios CMF, etc.) hacemos carga custom.',
       },
@@ -1556,7 +1562,7 @@ export const agentPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Cumple con el secreto profesional?',
-        a: 'Sí. Datos cifrados en tránsito y en reposo, sin entrenamiento con sus conversaciones, base legal documentada bajo Ley 21.719, y handoff humano para casos sensibles (familia, penal, alimentos, violencia intrafamiliar). Le entregamos toda la documentación para auditoría del Colegio de Abogados.',
+        a: 'Esa evaluación le corresponde a su estudio, porque el secreto profesional es un deber suyo. Nosotros ayudamos con las medidas técnicas: datos cifrados en tránsito y en reposo, sin entrenamiento con sus conversaciones, y handoff humano para casos sensibles (familia, penal, alimentos, violencia intrafamiliar). Le documentamos el flujo para que revise si se ajusta a sus deberes profesionales y a la Ley 21.719.',
       },
       {
         q: '¿Se integra con la Oficina Judicial Virtual (PJUD)?',

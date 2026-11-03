@@ -2,6 +2,7 @@
 title: "IA para gimnasios: cómo detectar y abordar la pérdida de socios"
 description: "Explora señales de abandono, seguimiento y medición de retención antes de implementar un agente de IA en tu gimnasio."
 pubDate: 2026-05-17T15:30:00-04:00
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "10 min"
 heroAlt: "Pantalla de WhatsApp con agente IA rescatando socio de gimnasio chileno antes de cancelar membresía"
@@ -122,13 +123,13 @@ Para gimnasios grandes (>3.000 socios) podemos estructurar un modelo **100% perf
 
 ## Marco legal en Chile
 
-Bajo la nueva [Ley 21.719 de Protección de Datos](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite), contactar a un socio para retenerlo requiere base legal documentada:
+Bajo la nueva [Ley 21.719 de Protección de Datos](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite), contactar a un socio para retenerlo requiere una base legal:
 
-- **Interés legítimo**: relación comercial activa permite mensajes de servicio (recordatorios, ofertas en el contrato existente).
-- **Consentimiento explícito**: necesario para envío masivo de ofertas promocionales nuevas.
-- **Derecho de oposición**: el socio puede pedir no recibir mensajes y debemos respetarlo de inmediato.
+- **Contrato o interés legítimo**: pueden sustentar mensajes de servicio (recordatorios, beneficios del plan contratado), si no afectan los derechos del socio.
+- **Consentimiento específico**: es la vía más clara para ofertas promocionales nuevas.
+- **Derecho de oposición**: el socio siempre puede oponerse al marketing directo, y hay que respetarlo.
 
-El agente respeta opt-outs automáticamente y mantiene log auditable.
+Configuramos el agente para respetar esas solicitudes y dejar registro. La base legal de cada mensaje la define su gimnasio, idealmente con un abogado. Lo explicamos en [la guía de la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
 
 ## Preguntas frecuentes
 

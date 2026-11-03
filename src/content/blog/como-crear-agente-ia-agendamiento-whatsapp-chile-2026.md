@@ -2,6 +2,7 @@
 title: "Agendamiento por WhatsApp con n8n: guía para un primer prototipo"
 description: "Recorre un flujo de agenda con n8n, calendario e IA. Identifica las integraciones y pruebas necesarias antes de atender clientes."
 pubDate: 2026-05-17T19:00:00-04:00
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "12 min"
 heroAlt: "Pantalla de WhatsApp con agente IA agendando una cita y panel visual de n8n conectando las piezas"
@@ -208,7 +209,7 @@ Mejor encárgalo cuando:
 - Tienes 2+ sucursales con horarios distintos.
 - Quieres que el agente cobre por WhatsApp (Webpay, MercadoPago, Flow).
 - Necesitas integración con Bsale, Defontana, Reservo, HubSpot o un sistema propio.
-- Atiendes datos sensibles (salud, financiero, legal) y necesitas cumplir Ley 21.719.
+- Atiendes datos sensibles (como salud o situación socioeconómica) y quieres apoyo técnico para prepararte frente a la Ley 21.719.
 - Quieres entrenar al agente con tus propios documentos y procedimientos.
 
 En esos casos, lo que pagas se recupera el primer mes en citas que no perderías.
@@ -237,7 +238,7 @@ Eso requiere integrar Webpay, MercadoPago Chile o Flow. n8n se puede conectar, p
 
 ### ¿Esto cumple la Ley 21.719 de Protección de Datos?
 
-Si usas la API oficial de WhatsApp, pides consentimiento explícito para guardar datos, y das opción al cliente de pedir eliminación, **sí**. Pero documenta todo (base legal, política de privacidad, log de consentimientos). Si manejas datos sensibles (salud, financiero), te recomendamos asesoría especializada.
+La herramienta por sí sola no lo asegura: depende de cómo trates los datos. Como mínimo, define la base legal de cada uso, publica tu política de privacidad, pide consentimiento cuando corresponda, atiende las solicitudes de las personas y ten contrato con los proveedores que tratan datos por encargo. Si manejas datos sensibles o tienes dudas, revísalo con un abogado. Lo explicamos en [la guía de la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
 
 ### ¿Puedo hacerlo con Make o Zapier en vez de n8n?
 

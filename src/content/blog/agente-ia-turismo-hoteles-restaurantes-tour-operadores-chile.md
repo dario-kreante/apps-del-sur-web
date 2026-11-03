@@ -2,6 +2,7 @@
 title: "IA por WhatsApp en turismo: reservas y atención a viajeros"
 description: "Explora usos de IA para hoteles, restaurantes y tours en Chile: consultas, idiomas, disponibilidad y coordinación de reservas."
 pubDate: 2026-05-17T20:10:00-04:00
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "11 min"
 heroAlt: "Agente IA atendiendo reservas y consultas de turistas por WhatsApp en hotel boutique de Pucón Chile"
@@ -151,12 +152,12 @@ Asesoramos la postulación sin costo si el fondo le sirve a tu negocio.
 
 La nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) tiene como fecha vigente el 1 de diciembre de 2026, con una prórroga en trámite. Para un negocio turístico significa:
 
-- Consentimiento explícito al guardar datos del huésped (nombre, RUT/pasaporte, email).
-- Base legal documentada para enviar mensajes proactivos (reservas, recordatorios, post-estadía).
-- Derecho del huésped a pedir eliminación de sus datos (excepto los obligatorios por SII/Sernatur por X años).
-- Datos de pago bajo estándares PCI-DSS.
+- Una base legal para guardar los datos del huésped (nombre, RUT/pasaporte, email). La reserva puede sustentar lo necesario para prestar el servicio, así que no todo requiere consentimiento.
+- Una base legal propia para cada mensaje proactivo. Un recordatorio de reserva no es lo mismo que una promoción post-estadía, y el huésped siempre puede oponerse al marketing directo.
+- Derecho del huésped a pedir la supresión de sus datos, en los casos que indica la ley y salvo los que deba conservar por obligación legal.
+- Medidas de seguridad adecuadas al riesgo para los datos de pago. PCI-DSS es un estándar de la industria de tarjetas, no un requisito de esta ley, pero sirve de referencia.
 
-Use solo la **API oficial de WhatsApp Business** (no whatsapp-web.js, baileys, ni soluciones grises). Es lo único que garantiza cumplimiento + estabilidad del número.
+Use solo la **API oficial de WhatsApp Business** (no whatsapp-web.js, baileys, ni soluciones grises). Da estabilidad al número, pero no asegura por sí sola que cumpla la ley. Más detalle en [datos sensibles por sector](/blog/ley-21719-datos-sensibles-sectores-chile-2026/).
 
 ## Errores comunes en turismo
 
