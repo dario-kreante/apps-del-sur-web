@@ -401,8 +401,12 @@
     turnstileToken = null;
     if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
   }
+  const WHATSAPP_LINK = '<a href="https://wa.me/56945262335" target="_blank" rel="noopener noreferrer">WhatsApp</a>';
+  function verificationFallback() {
+    return voice(`Tu resultado sigue aquí. Si no logras enviarlo, escríbenos por ${WHATSAPP_LINK}.`, `Su resultado sigue aquí. Si no logra enviarlo, escríbanos por ${WHATSAPP_LINK}.`);
+  }
   function submitErrorMessage(code) {
-    if (code === 'bot_check_failed' || code === 'bot_check_unavailable') return voice('No pudimos hacer la verificación de seguridad. Tus respuestas y el resultado siguen aquí; inténtalo nuevamente.', 'No pudimos hacer la verificación de seguridad. Sus respuestas y el resultado siguen aquí; inténtelo nuevamente.');
+    if (code === 'bot_check_failed' || code === 'bot_check_unavailable') return `${voice('No pudimos hacer la verificación de seguridad. Inténtalo nuevamente.', 'No pudimos hacer la verificación de seguridad. Inténtelo nuevamente.')} ${verificationFallback()}`;
     if (code === 'too_many_requests') return voice('Ya recibimos varios envíos con este correo hoy. Tu resultado sigue aquí; inténtalo mañana o escríbenos.', 'Ya recibimos varios envíos con este correo hoy. Su resultado sigue aquí; inténtelo mañana o escríbanos.');
     return voice('No pudimos guardar tus datos en este momento. Tus respuestas y el resultado siguen aquí; revisa tu conexión e inténtalo nuevamente.', 'No pudimos guardar sus datos en este momento. Sus respuestas y el resultado siguen aquí; revise su conexión e inténtelo nuevamente.');
   }
@@ -420,7 +424,7 @@
     if (!form.reportValidity()) return;
     if (turnstileSiteKey && !turnstileToken) {
       message.className = 'assessment-error';
-      message.textContent = voice('Falta completar la verificación de seguridad. Si no aparece, revisa si un bloqueador la está impidiendo.', 'Falta completar la verificación de seguridad. Si no aparece, revise si un bloqueador la está impidiendo.');
+      message.innerHTML = `${voice('Falta completar la verificación de seguridad. Si no aparece, revisa si un bloqueador la está impidiendo.', 'Falta completar la verificación de seguridad. Si no aparece, revise si un bloqueador la está impidiendo.')} ${verificationFallback()}`;
       return;
     }
     const formValues = Object.fromEntries(new FormData(form).entries());
@@ -461,7 +465,7 @@
     } catch (error) {
       console.error('Assessment submission failed', error);
       message.className = 'assessment-error';
-      message.textContent = submitErrorMessage(error.message);
+      message.innerHTML = submitErrorMessage(error.message);
       resetTurnstile();
       button.disabled = false; button.textContent = 'Reintentar envío';
     }

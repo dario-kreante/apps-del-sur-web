@@ -88,3 +88,11 @@ test('email stage names match the assessment data', async () => {
     for (const stage of stages) assert.ok(source.includes(`'${stage}'`), `${type}: ${stage}`);
   }
 });
+
+test('a failed security check offers WhatsApp as a way out', async () => {
+  const app = await readSource('public/assessment-app.js');
+  const failure = app.slice(app.indexOf('function submitErrorMessage'), app.indexOf('function announce'));
+  assert.match(app, /WHATSAPP_LINK = '<a href="https:\/\/wa\.me\/56945262335"/);
+  assert.match(failure, /verificationFallback\(\)/);
+  assert.match(app.slice(app.indexOf('!turnstileToken'), app.indexOf('const formValues')), /verificationFallback\(\)/);
+});
