@@ -45,6 +45,15 @@ for (const command of [
   'echo "vercel --prod" | bash',
   'bash <<< "vercel --prod"',
   'printf "vercel promote x" | sh -s',
+  "git -c alias.x='!vercel --prod' x",
+  'git --config-env=alias.x=CMD x vercel --prod',
+  'ksh -c "vercel --prod"',
+  'busybox sh -c "vercel --prod"',
+  'cat <<EOF | bash\nvercel --prod\nEOF',
+  'echo "<<X"\nvercel --prod\nX',
+  'echo hola # <<X\nvercel --prod\nX',
+  'node -e "require(\'child_process\').execSync(\'vercel --prod\')"',
+  'python3 -c "import os; os.system(\'vercel --prod\')"',
 ]) {
   test(`guard blocks: ${command.replace(/\n/g, ' ')}`, () => {
     assert.ok(findProductionDeploy(command));
@@ -68,6 +77,9 @@ for (const command of [
   'bash scripts/build.sh',
   'cat deploy.sh | grep vercel',
   'echo vercel --prod',
+  'git log --grep="vercel --prod"',
+  'node -e "console.log(1)"',
+  "git commit -F - <<'EOF' && git push\nvercel --prod\nEOF",
 ]) {
   test(`guard allows: ${command.replace(/\n/g, ' ')}`, () => {
     assert.equal(findProductionDeploy(command), null);

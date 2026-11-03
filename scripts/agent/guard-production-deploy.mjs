@@ -8,7 +8,8 @@ import { pathToFileURL } from 'node:url';
 
 // These only read or print their arguments, so a mention of vercel there is text.
 const TEXT_COMMANDS = new Set(['echo', 'printf', 'grep', 'rg', 'cat', 'ls', 'git']);
-const SHELLS = new Set(['sh', 'bash', 'zsh', 'dash']);
+const SHELLS = new Set(['sh', 'bash', 'zsh', 'dash', 'ksh', 'ash', 'fish', 'csh', 'tcsh']);
+const INTERPRETERS = new Set(['node', 'python', 'python3', 'perl', 'ruby']);
 const PRODUCTION_SUBCOMMANDS = new Set(['promote', 'rollback', 'alias', 'redeploy', 'rolling-release']);
 const UNREADABLE = 'comando con comillas sin cerrar que menciona vercel';
 const STDIN_SHELL = 'un shell lee por entrada estándar un comando que menciona vercel';
@@ -39,7 +40,7 @@ export function findProductionDeploy(command) {
 
 function readsScriptFromStdin(tokens) {
   const index = tokens.findIndex((token) => SHELLS.has(baseName(token)));
-  if (index < 0 || TEXT_COMMANDS.has(baseName(firstCommand(tokens)))) return false;
+  if (index < 0 || isTextCommand(tokens)) return false;
   const args = tokens.slice(index + 1);
   if (args.some((arg) => /^-[a-z]*c$/.test(arg))) return false;
   return args.includes('-s') || args.every((arg) => arg.startsWith('-') || arg.startsWith('<') || args.includes('<<<'));
@@ -49,8 +50,18 @@ function firstCommand(tokens) {
   return tokens.find((token) => !/^[A-Za-z_][A-Za-z0-9_]*=/.test(token)) || '';
 }
 
+function isTextCommand(tokens) {
+  const first = baseName(firstCommand(tokens));
+  if (first === 'git') return !tokens.some((token) => token === '-c' || token.startsWith('--config-env'));
+  return TEXT_COMMANDS.has(first);
+}
+
 function inspectSegment(tokens) {
-  if (TEXT_COMMANDS.has(baseName(firstCommand(tokens)))) return null;
+  if (isTextCommand(tokens)) return null;
+  // git aliases and inline interpreter code can run anything, so any production mention stops them.
+  const first = baseName(firstCommand(tokens));
+  if ((first === 'git' || (INTERPRETERS.has(first) && tokens.some((token) => /^-[a-zA-Z]*[ce]$/.test(token))))
+    && tokens.some((token) => /\b(vercel|vc)\b/.test(token))) return `${first} ejecuta código que menciona vercel`;
   const start = tokens.findIndex((token) => {
     const name = baseName(token);
     return SHELLS.has(name) || name === 'eval' || VERCEL_BINARY.test(name) || VERCEL_SCRIPT.test(token);
@@ -85,15 +96,29 @@ function extractHeredocs(text) {
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
     visible.push(line);
-    const match = line.match(/<<-?\s*['"]?([A-Za-z_][A-Za-z0-9_]*)['"]?/);
-    if (!match) continue;
-    const end = lines.findIndex((candidate, position) => position > index && candidate.trim() === match[1]);
+    const delimiter = findHeredocDelimiter(line);
+    if (!delimiter) continue;
+    const end = lines.findIndex((candidate, position) => position > index && candidate.trim() === delimiter);
     if (end < 0) continue;
-    const before = line.slice(0, match.index).trim().split(/\s+/).map(baseName);
-    if (before.some((word) => SHELLS.has(word))) executedBodies.push(lines.slice(index + 1, end).join('\n'));
+    const words = line.split(/[\s|;&()]+/).map(baseName);
+    if (words.some((word) => SHELLS.has(word))) executedBodies.push(lines.slice(index + 1, end).join('\n'));
     index = end;
   }
   return { visible: visible.join('\n'), executedBodies };
+}
+
+// Only an unquoted << outside a comment opens a heredoc; <<< is a here-string.
+function findHeredocDelimiter(line) {
+  let quote = null;
+  for (let index = 0; index < line.length; index += 1) {
+    const char = line[index];
+    if (quote) { if (char === quote) quote = null; continue; }
+    if (char === "'" || char === '"') { quote = char; continue; }
+    if (char === '#' && (index === 0 || /\s/.test(line[index - 1]))) return null;
+    if (line.startsWith('<<<', index)) { index += 2; continue; }
+    if (line.startsWith('<<', index)) return line.slice(index + 2).match(/^-?\s*['"]?([A-Za-z_][A-Za-z0-9_]*)['"]?/)?.[1] || null;
+  }
+  return null;
 }
 
 // $(...) and backticks run even inside double quotes; single quotes keep them literal.

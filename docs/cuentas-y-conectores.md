@@ -41,6 +41,7 @@ En la vista previa, el envío de formularios no guarda porque `AIRTABLE_BASE_ID`
 - La sesión de la CLI de Vercel usada por una persona o por otra herramienta: tiene permiso para publicar.
 - Scripts que despliegan por dentro, por ejemplo `bash deploy.sh` o `cat deploy.sh | bash` si el comando no menciona vercel, o un script del proyecto que llame a `vercel --prod`.
 - Conectores MCP y llamadas directas a la API de Vercel.
+- Cualquier forma de ejecutar código que no se reconozca: es una lista de patrones, no un análisis completo del shell.
 - Sesiones que no carguen la configuración de este repo.
 
 Un control real exige quitarle a la sesión del agente el permiso de producción en Vercel.
