@@ -37,6 +37,7 @@ const ASSESSMENT_TITLES = {
 const ASSESSMENT_STAGES = { ia: ['Analógica', 'Principiante', 'Intermedia', 'Líder en IA'], digital: ['Papel y WhatsApp', 'Digital Básica', 'Digital Conectada', 'Digital Optimizada'], datos: ['Expuesta', 'Inicial', 'Encaminada', 'Preparada'] };
 // Version of the consent wording shown in the form; lets us prove what each person accepted.
 const CONSENT_VERSION = '2026-11-03';
+const CAMPAIGN_SOURCE = /^[A-Za-z0-9._:-]{1,120}$/;
 
 const EMAIL_COPY = {
   ia: { heading: 'Tu informe está listo', stage: 'Tu etapa', score: 'Puntaje', cta: 'Abrir mi informe', closing: 'Puedes responder este correo si quieres conversar sobre los próximos pasos.', disclaimer: 'Este diagnóstico es una autoevaluación orientativa.' },
@@ -172,6 +173,7 @@ function normalizePayload(payload) {
     consentimiento: clean(fields.Consentimiento),
     consentimientoEstudio: clean(fields['Consentimiento Estudio']) === 'Aceptado',
     consentimientoComercial: clean(fields['Consentimiento Comercial']) === 'Aceptado',
+    fuenteCampana: CAMPAIGN_SOURCE.test(clean(fields['Fuente campaña'])) ? clean(fields['Fuente campaña']) : '',
     answers,
     dimensions,
     rawFields: fields,
@@ -294,6 +296,7 @@ function airtableFields(lead, reportUrl) {
     'Consentimiento Estudio': lead.consentimientoEstudio,
     'Consentimiento Comercial': lead.consentimientoComercial,
     'Version Consentimiento': CONSENT_VERSION,
+    ...(lead.fuenteCampana ? { 'Fuente campaña': lead.fuenteCampana } : {}),
   };
   // These existing Airtable columns are specific to the IA assessment. Keep
   // them accurate for legacy reports and store Digital dimensions in Respuestas JSON.

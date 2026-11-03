@@ -1,7 +1,11 @@
+import { isSignedBajaToken, readSignedBajaToken } from './_lib/baja-token.js';
+
 const INVITATIONS_TABLE = 'Invitaciones del estudio';
 const OPT_OUT_TABLE = 'Bajas';
 const TOKEN_PATTERN = /^[A-Za-z0-9_-]{16,128}$/;
 const CONTACT_EMAIL = 'contacto@appsdelsur.cl';
+const CONFIRMED_TITLE = 'Listo, ya no recibirás más correos';
+const CONFIRMED_MESSAGE = '<p>Registramos tu baja. Si quieres que eliminemos tus datos, responde a cualquiera de nuestros correos.</p>';
 
 export default async function handler(req, res) {
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
@@ -14,19 +18,26 @@ export default async function handler(req, res) {
     return send(res, 405, 'Método no permitido', '');
   }
 
+  const normalizeEnv = (value) => String(value || '').trim().replace(/^['"]|['"]$/g, '');
   const token = new URL(req.url, 'https://appsdelsur.cl').searchParams.get('t') || '';
-  if (!TOKEN_PATTERN.test(token)) return send(res, 400, 'Enlace no válido', fallbackMessage());
+  const isSigned = isSignedBajaToken(token);
+  if (!isSigned && !TOKEN_PATTERN.test(token)) return send(res, 400, 'Enlace no válido', fallbackMessage());
+  const prospectId = isSigned ? readSignedBajaToken(normalizeEnv(process.env.BAJA_TOKEN_SECRET), token) : null;
+  if (isSigned && !prospectId) return send(res, 404, 'Enlace no válido', fallbackMessage());
 
   // Mail scanners follow links, so opening the link only asks for confirmation.
   if (req.method !== 'POST') {
     return send(res, 200, 'Dejar de recibir correos', `<p>Confirma para dejar de recibir invitaciones y correos de Apps del Sur.</p><form method="post" action="/api/baja/?t=${token}"><button type="submit">Confirmar baja</button></form>`);
   }
 
-  const normalizeEnv = (value) => String(value || '').trim().replace(/^['"]|['"]$/g, '');
   const config = { key: normalizeEnv(process.env.AIRTABLE_API_KEY), baseId: normalizeEnv(process.env.AIRTABLE_BASE_ID) };
   if (!config.key || !config.baseId) return send(res, 503, 'No pudimos registrar tu baja', fallbackMessage());
 
   try {
+    if (isSigned) {
+      await recordProspectOptOut(config, prospectId);
+      return send(res, 200, CONFIRMED_TITLE, CONFIRMED_MESSAGE);
+    }
     const invitation = await findInvitation(config, token);
     if (!invitation) return send(res, 404, 'Enlace no válido', fallbackMessage());
     if (invitation.fields.Estado !== 'Baja') {
@@ -35,7 +46,7 @@ export default async function handler(req, res) {
       });
       await airtable(config, INVITATIONS_TABLE, 'PATCH', `/${invitation.id}`, { fields: { Estado: 'Baja' } });
     }
-    return send(res, 200, 'Listo, ya no recibirás más correos', '<p>Registramos tu baja. Si quieres que eliminemos tus datos, responde a cualquiera de nuestros correos.</p>');
+    return send(res, 200, CONFIRMED_TITLE, CONFIRMED_MESSAGE);
   } catch (error) {
     console.error('opt-out failed', error);
     return send(res, 502, 'No pudimos registrar tu baja', fallbackMessage());
@@ -51,6 +62,16 @@ async function findInvitation(config, token) {
   const formula = encodeURIComponent(`{Token opaco}='${token}'`);
   const data = await airtable(config, INVITATIONS_TABLE, 'GET', `?maxRecords=1&filterByFormula=${formula}`);
   return data.records?.[0] || null;
+}
+
+async function recordProspectOptOut(config, prospectId) {
+  // The id only reaches this formula after its signature was verified.
+  const formula = encodeURIComponent(`{ID prospección}='${prospectId}'`);
+  const existing = await airtable(config, OPT_OUT_TABLE, 'GET', `?maxRecords=1&filterByFormula=${formula}`);
+  if (existing.records?.length) return;
+  await airtable(config, OPT_OUT_TABLE, 'POST', '', {
+    records: [{ fields: { 'ID prospección': prospectId, 'Fecha UTC': new Date().toISOString(), Origen: 'Enlace de baja' } }],
+  });
 }
 
 async function airtable(config, table, method, suffix, body) {

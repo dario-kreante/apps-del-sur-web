@@ -109,4 +109,8 @@ Antes de un despliegue, confirmar en el entorno de Vercel que las variables obli
 
 `/api/baja/?t=<Token opaco>` da de baja a un destinatario de `Invitaciones del estudio`: abrir el enlace solo pide confirmar, y al confirmar se agrega el correo a `Bajas` y la invitación queda en estado `Baja`. Aceptar `POST` en la misma URL permite usarla en `List-Unsubscribe` con `List-Unsubscribe-Post: List-Unsubscribe=One-Click`. Revisar `Bajas` antes de cada envío.
 
+Los envíos gestionados en Google Sheets usan `/api/baja/?t=<ID de prospección>.<firma>`. La firma es HMAC-SHA256 en base64url de `baja:<ID de prospección>` con `BAJA_TOKEN_SECRET`. La baja no consulta la planilla: registra el ID en la columna `ID prospección` de `Bajas`, sin correo, y el envío cruza esa tabla con su cola. Sin la variable, estos enlaces responden 404.
+
+Un enlace con `?source=<campaña>` guarda ese valor en `Fuente campaña` de `Assessment Leads`, sin tocar `Fuente`. Solo se aceptan letras, números y `._:-`, hasta 120 caracteres.
+
 Las casillas opcionales del formulario se guardan en `Consentimiento Estudio`, `Consentimiento Comercial` y `Version Consentimiento`. No hacer seguimiento comercial sin `Consentimiento Comercial`.

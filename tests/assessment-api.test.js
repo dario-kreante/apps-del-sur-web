@@ -609,3 +609,18 @@ test('signed report links reject missing or wrong tokens and keep old links work
     delete process.env.ASSESSMENT_REPORT_SECRET;
   }
 });
+
+test('stores the campaign source when the invitation link carries one', async () => {
+  const { mock, res } = await submitFields({ ...makeFields('digital'), 'Fuente campaña': 'ADS-2026-01-A-a3290fe5492d7eec' });
+  assert.equal(res.statusCode, 200);
+  assert.equal(mock.fields['Fuente campaña'], 'ADS-2026-01-A-a3290fe5492d7eec');
+  assert.equal(mock.fields.Fuente, 'diagnostico-madurez-digital');
+});
+
+test('ignores a malformed campaign source and leaves the column out without one', async () => {
+  const malformed = await submitFields({ ...makeFields('ia'), 'Fuente campaña': '<script>alert(1)</script>' });
+  assert.equal(malformed.res.statusCode, 200);
+  assert.equal('Fuente campaña' in malformed.mock.fields, false);
+  const absent = await submitFields(makeFields('ia'));
+  assert.equal('Fuente campaña' in absent.mock.fields, false);
+});
