@@ -7,12 +7,15 @@
 
   let data;
   try { data = JSON.parse(dataNode.textContent || '{}'); } catch (_) { return; }
-  const type = data.type === 'digital' ? 'digital' : 'ia';
-  const defaultSource = type === 'ia' ? 'diagnostico-madurez-ia' : 'diagnostico-madurez-digital';
+  const type = ['digital', 'datos'].includes(data.type) ? data.type : 'ia';
+  const defaultSource = { ia: 'diagnostico-madurez-ia', digital: 'diagnostico-madurez-digital', datos: 'diagnostico-datos-personales' }[type];
+  const formal = type === 'datos';
+  const voice = (informalText, formalText) => (formal ? formalText : informalText);
+  const turnstileSiteKey = app.dataset.turnstileSiteKey || '';
+  let turnstileToken = null;
+  let turnstileWidget = null;
   const storageKey = `apps-del-sur-assessment-v3-${type}`;
-  const legacyKeys = type === 'ia'
-    ? ['apps-del-sur-madurez-ia-v2']
-    : ['apps-del-sur-madurez-digital-v1'];
+  const legacyKeys = { ia: ['apps-del-sur-madurez-ia-v2'], digital: ['apps-del-sur-madurez-digital-v1'], datos: [] }[type];
   const $ = (selector, root) => (root || app).querySelector(selector);
   const esc = (value) => String(value == null ? '' : value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const blank = () => ({ screen: 'intro', idx: 0, answers: {}, milestones: [], planDone: {}, started: null, finished: null, source: defaultSource, reportUrl: null });
@@ -77,6 +80,11 @@
     tecnologia: '<rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/>',
     clientes: '<path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
     herramientas: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+    inventario: '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/>',
+    transparencia: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',
+    seguridad: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',
+    derechos: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+    terceros: '<circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.7 10.7l6.6-3.4M8.7 13.3l6.6 3.4"/>',
   };
   const medalTiers = [
     { fill: '#f3f4f6', stroke: '#9ca3af', ink: '#6b7280' },
@@ -84,9 +92,11 @@
     { fill: '#d1fae5', stroke: '#047857', ink: '#047857' },
     { fill: '#fef3c7', stroke: '#b45309', ink: '#b45309' },
   ];
-  const exampleAnswers = type === 'ia'
-    ? { estrategia: [3, 3, 4, 3], personas: [2, 2, 3, 2], procesos: [3, 2, 3, 3], datos: [2, 2, 2, 1], tecnologia: [3, 3, 2, 3] }
-    : { estrategia: [2, 3, 2, 2], clientes: [3, 3, 2, 3], procesos: [2, 1, 2, 2], datos: [1, 2, 2, 1], herramientas: [2, 3, 2, 2] };
+  const exampleAnswers = {
+    ia: { estrategia: [3, 3, 4, 3], personas: [2, 2, 3, 2], procesos: [3, 2, 3, 3], datos: [2, 2, 2, 1], tecnologia: [3, 3, 2, 3] },
+    digital: { estrategia: [2, 3, 2, 2], clientes: [3, 3, 2, 3], procesos: [2, 1, 2, 2], datos: [1, 2, 2, 1], herramientas: [2, 3, 2, 2] },
+    datos: { inventario: [3, 2, 3, 2], transparencia: [3, 3, 3, 3], seguridad: [1, 1, 1, 2], derechos: [2, 2, 2, 2], terceros: [3, 3, 3, 2] },
+  }[type];
 
   function medal(key, stage, size, locked) {
     const tier = locked ? { fill: '#f3f4f6', stroke: '#d1d5db', ink: '#9ca3af' } : medalTiers[Math.max(0, Math.min(3, stage - 1))];
@@ -149,13 +159,14 @@
   }
   function buildSummary(result) {
     return [
-      `DIAGNÓSTICO ${type === 'ia' ? 'DE MADUREZ EN IA' : 'DE MADUREZ DIGITAL'} — APPS DEL SUR`, '',
+      `DIAGNÓSTICO ${{ ia: 'DE MADUREZ EN IA', digital: 'DE MADUREZ DIGITAL', datos: 'DE DATOS PERSONALES' }[type]} — APPS DEL SUR`, '',
       `Etapa global: ${result.overallStage} — ${stages[result.overallStage - 1]}`,
       `Puntaje promedio: ${result.overallAvg.toFixed(2)} / 4`, '', 'Por dimensión:',
       ...result.perDim.map((dim) => `• ${dim.label}: Etapa ${dim.stage} (${stages[dim.stage - 1]}) — ${dim.avg.toFixed(2)}/4`), '',
-      'Tu ruta de 90 días:',
+      voice('Tu ruta de 90 días:', 'Su ruta de 90 días:'),
       ...result.perDim.slice().sort((a,b)=>a.avg-b.avg).slice(0,3).map((dim,index) => `• Días ${index*30+1}–${(index+1)*30} · ${dim.label}: ${data.recommendations[dim.key][dim.stage].next}`), '',
       ...(state.campaignSource ? [`Fuente de campaña: ${state.campaignSource}`, ''] : []),
+      ...(formal ? ['Este diagnóstico es orientativo y no constituye asesoría legal.', ''] : []),
       `Generado: ${new Date().toLocaleDateString('es-CL')} · ${location.origin}/${defaultSource}/`,
     ].join('\n');
   }
@@ -167,13 +178,17 @@
     else renderResults();
   }
   function renderIntro() {
-    const title = type === 'ia' ? '¿Qué tan preparada está tu empresa para incorporar IA?' : '¿Qué tan digital está la operación de tu empresa?';
-    const description = type === 'ia'
-      ? 'Descubre qué está funcionando, dónde conviene avanzar y por qué acción empezar. Completa cinco etapas y llévate una ruta de mejora para los próximos 90 días.'
-      : 'Descubre dónde se pierde tiempo en tu operación y cuál es tu siguiente paso digital. Completa cinco etapas y llévate una ruta de mejora para los próximos 90 días.';
-    const benefits = type === 'ia'
-      ? ['Tu nivel entre 4 etapas, de Analógica a Líder en IA', 'Mapa de 5 dimensiones con fortalezas relativas y brechas', 'Tres acciones concretas para iniciar una mejora']
-      : ['Tu nivel entre 4 etapas, de Papel y WhatsApp a Digital Optimizada', 'Mapa de 5 dimensiones de madurez digital', 'Tres acciones concretas para avanzar en tu operación'];
+    const title = { ia: '¿Qué tan preparada está tu empresa para incorporar IA?', digital: '¿Qué tan digital está la operación de tu empresa?', datos: '¿Qué tan preparada está su empresa para la Ley 21.719?' }[type];
+    const description = {
+      ia: 'Descubre qué está funcionando, dónde conviene avanzar y por qué acción empezar. Completa cinco etapas y llévate una ruta de mejora para los próximos 90 días.',
+      digital: 'Descubre dónde se pierde tiempo en tu operación y cuál es tu siguiente paso digital. Completa cinco etapas y llévate una ruta de mejora para los próximos 90 días.',
+      datos: 'Vea qué tan preparada está su empresa para cumplir la Ley 21.719 y por dónde empezar. Complete cinco etapas y llévese una ruta de mejora para los próximos 90 días.',
+    }[type];
+    const benefits = {
+      ia: ['Tu nivel entre 4 etapas, de Analógica a Líder en IA', 'Mapa de 5 dimensiones con fortalezas relativas y brechas', 'Tres acciones concretas para iniciar una mejora'],
+      digital: ['Tu nivel entre 4 etapas, de Papel y WhatsApp a Digital Optimizada', 'Mapa de 5 dimensiones de madurez digital', 'Tres acciones concretas para avanzar en tu operación'],
+      datos: ['Su nivel entre 4 etapas, de Expuesta a Preparada', 'Mapa de 5 dimensiones de protección de datos', 'Tres acciones concretas para ordenar sus datos'],
+    }[type];
     const example = examplePreview();
     const route = data.dimKeys.map((key, index) => `<div class="assessment-route-node">${medal(key, 1, 44, true)}<b>${esc(data.dimLabels[key].split(' y ')[0])}</b></div>${index < data.dimKeys.length - 1 ? '<span class="assessment-route-link" aria-hidden="true"></span>' : ''}`).join('');
     const previewMedals = data.dimKeys.map((key, index) => medal(key, example.perDim[index].stage, 44, index > 2)).join('');
@@ -181,11 +196,11 @@
         <span class="assessment-eyebrow">Diagnóstico gratuito · 20 preguntas · ~8 min</span>
         <h1 class="assessment-title">${title}</h1><p class="assessment-lede">${description}</p>
         <ul class="assessment-benefits">${benefits.map((benefit) => `<li><span aria-hidden="true">✓</span>${esc(benefit)}</li>`).join('')}</ul>
-        <div class="assessment-actions"><button class="assessment-button" id="assessment-start">${answeredCount() ? 'Continuar mi diagnóstico' : 'Comenzar mi diagnóstico'} →</button><span class="assessment-small">Resultado inmediato · puedes verlo sin dejar tus datos</span></div>
-        ${answeredCount() && answeredCount() < data.questions.length ? `<div class="assessment-note" role="status">Tienes ${answeredCount()} de 20 respuestas guardadas en este navegador. <button type="button" id="assessment-restart" class="assessment-inline-link">Empezar de cero</button></div>` : ''}
-      </div><aside class="assessment-preview" aria-label="Vista de ejemplo del reporte"><div class="assessment-preview-top"><span>Esto te llevas al terminar</span><span class="assessment-example-tag">EJEMPLO</span></div><div class="assessment-preview-body">${radarSVG(example.perDim, 176, false)}<div><span class="assessment-eyebrow">Tu nivel</span><div class="assessment-preview-level">${esc(stages[example.stage - 1])}</div><div class="assessment-small">Nivel ${example.stage} de 4 · ${example.pct} / 100</div><div class="assessment-xp"><span style="width:${example.pct}%"></span></div><p class="assessment-small">La siguiente acción importa más que el puntaje.</p></div></div><div class="assessment-small" style="font-weight:700;margin:.7rem 0 .4rem">Insignias de ejemplo · 3 de 5</div><div class="assessment-medal-row">${previewMedals}</div></aside></section>
-      <section class="assessment-route" aria-label="Tu ruta de cinco etapas"><h2 class="assessment-route-title">Tu ruta: 5 etapas cortas <span class="assessment-small" style="font-weight:400">· una medalla por cada etapa completada</span></h2><div class="assessment-route-track">${route}</div></section>
-      <div class="assessment-note"><strong>Responde según la realidad actual.</strong> No hay respuestas buenas o malas. Este diagnóstico es una autoevaluación orientativa, útil para decidir qué mejorar primero.</div>`;
+        <div class="assessment-actions"><button class="assessment-button" id="assessment-start">${answeredCount() ? 'Continuar mi diagnóstico' : 'Comenzar mi diagnóstico'} →</button><span class="assessment-small">Resultado inmediato · ${voice('puedes verlo sin dejar tus datos', 'puede verlo sin dejar sus datos')}</span></div>
+        ${answeredCount() && answeredCount() < data.questions.length ? `<div class="assessment-note" role="status">${voice('Tienes', 'Tiene')} ${answeredCount()} de 20 respuestas guardadas en este navegador. <button type="button" id="assessment-restart" class="assessment-inline-link">Empezar de cero</button></div>` : ''}
+      </div><aside class="assessment-preview" aria-label="Vista de ejemplo del reporte"><div class="assessment-preview-top"><span>${voice('Esto te llevas al terminar', 'Esto se lleva al terminar')}</span><span class="assessment-example-tag">EJEMPLO</span></div><div class="assessment-preview-body">${radarSVG(example.perDim, 176, false)}<div><span class="assessment-eyebrow">${voice('Tu nivel', 'Su nivel')}</span><div class="assessment-preview-level">${esc(stages[example.stage - 1])}</div><div class="assessment-small">Nivel ${example.stage} de 4 · ${example.pct} / 100</div><div class="assessment-xp"><span style="width:${example.pct}%"></span></div><p class="assessment-small">La siguiente acción importa más que el puntaje.</p></div></div><div class="assessment-small" style="font-weight:700;margin:.7rem 0 .4rem">Insignias de ejemplo · 3 de 5</div><div class="assessment-medal-row">${previewMedals}</div></aside></section>
+      <section class="assessment-route" aria-label="${voice('Tu ruta', 'Su ruta')} de cinco etapas"><h2 class="assessment-route-title">${voice('Tu ruta', 'Su ruta')}: 5 etapas cortas <span class="assessment-small" style="font-weight:400">· una medalla por cada etapa completada</span></h2><div class="assessment-route-track">${route}</div></section>
+      <div class="assessment-note"><strong>${voice('Responde', 'Responda')} según la realidad actual.</strong> No hay respuestas buenas o malas. ${voice('Este diagnóstico es una autoevaluación orientativa, útil para decidir qué mejorar primero.', 'Este diagnóstico es orientativo y no constituye asesoría legal.')}</div>`;
     $('#assessment-start').addEventListener('click', () => {
       if (!state.started) state.started = Date.now();
       state.screen = 'quiz';
@@ -195,7 +210,7 @@
       render();
     });
     $('#assessment-restart')?.addEventListener('click', () => {
-      if (!window.confirm('¿Borrar tus respuestas guardadas y empezar de nuevo?')) return;
+      if (!window.confirm(voice('¿Borrar tus respuestas guardadas y empezar de nuevo?', '¿Borrar sus respuestas guardadas y empezar de nuevo?'))) return;
       state = blank(); render();
     });
   }
@@ -217,7 +232,7 @@
     const selected = Number(state.answers[state.idx]) || 0;
     const options = question.a.map((answer, index) => `<label class="assessment-option"><input type="radio" name="answer-${state.idx}" value="${index + 1}" ${selected === index + 1 ? 'checked' : ''}><span>${esc(answer)}</span></label>`).join('');
     app.innerHTML = `${renderSticky()}<p class="assessment-dimension">${esc(data.dimLabels[question.dim])}</p><h1 class="assessment-question" id="assessment-question" tabindex="-1">${esc(question.q)}</h1>
-      <p class="assessment-small">Elige la opción que más se parece a lo que pasa hoy.</p><fieldset class="assessment-option-list" aria-labelledby="assessment-question"><legend class="sr-only">Elige una respuesta</legend>${options}</fieldset>
+      <p class="assessment-small">${voice('Elige', 'Elija')} la opción que más se parece a lo que pasa hoy.</p><fieldset class="assessment-option-list" aria-labelledby="assessment-question"><legend class="sr-only">${voice('Elige', 'Elija')} una respuesta</legend>${options}</fieldset>
       <div class="assessment-nav"><button id="assessment-back" class="assessment-button-secondary" ${state.idx === 0 ? 'disabled aria-disabled="true"' : ''}>← Atrás</button><button id="assessment-next" class="assessment-button" ${selected ? '' : 'disabled aria-disabled="true"'}>${state.idx === data.questions.length - 1 ? 'Ver resultado' : 'Siguiente'} →</button></div>`;
     app.querySelectorAll('input[type=radio]').forEach((input) => input.addEventListener('change', (event) => {
       const value = Number(event.currentTarget.value);
@@ -254,7 +269,7 @@
     const overlay = document.createElement('div');
     overlay.className = 'assessment-overlay'; overlay.id = 'assessment-medal-dialog';
     overlay.setAttribute('role', 'dialog'); overlay.setAttribute('aria-modal', 'true'); overlay.setAttribute('aria-labelledby', 'assessment-milestone-title');
-    overlay.innerHTML = `<section class="assessment-mcard"><div class="assessment-medal-big">${medal(key, stage, 120, false)}</div><div class="assessment-eyebrow">Etapa completada · ${done} de 5</div><h2 id="assessment-milestone-title">${esc(label)}</h2><span class="assessment-stage-pill">Tu punto de partida: ${esc(stages[stage - 1])}</span><div class="assessment-milestone-insight"><span class="assessment-eyebrow">Lo que muestran tus respuestas</span><p>${esc(insight)}</p></div><div class="assessment-milestone-progress" aria-label="${done} de 5 dimensiones completadas">${data.dimKeys.map((_, item) => `<i class="${item < done ? 'is-done' : ''}"></i>`).join('')}<span>${done * 20}%</span></div><button class="assessment-button" id="assessment-continue">${esc(nextLabel)}</button><span class="assessment-small">Enter para continuar · Esc para revisar esta respuesta</span></section>`;
+    overlay.innerHTML = `<section class="assessment-mcard"><div class="assessment-medal-big">${medal(key, stage, 120, false)}</div><div class="assessment-eyebrow">Etapa completada · ${done} de 5</div><h2 id="assessment-milestone-title">${esc(label)}</h2><span class="assessment-stage-pill">${voice('Tu punto de partida', 'Su punto de partida')}: ${esc(stages[stage - 1])}</span><div class="assessment-milestone-insight"><span class="assessment-eyebrow">${voice('Lo que muestran tus respuestas', 'Qué hacer ahora')}</span><p>${esc(insight)}</p></div><div class="assessment-milestone-progress" aria-label="${done} de 5 dimensiones completadas">${data.dimKeys.map((_, item) => `<i class="${item < done ? 'is-done' : ''}"></i>`).join('')}<span>${done * 20}%</span></div><button class="assessment-button" id="assessment-continue">${esc(nextLabel)}</button><span class="assessment-small">Enter para continuar · Esc para revisar esta respuesta</span></section>`;
     modalInertState = Array.from(document.body.children).filter((child) => child !== overlay).map((child) => ({ child, inert: child.inert }));
     modalInertState.forEach(({ child }) => { child.inert = true; });
     document.body.appendChild(overlay);
@@ -288,7 +303,7 @@
   }
   function resultDimCard(dim) {
     const recommendation = data.recommendations[dim.key][dim.stage];
-    return `<article class="assessment-result-dim"><h3>${esc(dim.label)}</h3><span class="assessment-small">Etapa ${dim.stage} · ${esc(stages[dim.stage - 1])} · ${dim.avg.toFixed(1)} / 4</span><div class="assessment-bar" aria-label="Nivel de ${esc(dim.label)}"><span style="width:${Math.round((dim.avg - 1) / 3 * 100)}%"></span></div><p>${esc(recommendation.now)}</p></article>`;
+    return `<article class="assessment-result-dim"><h3>${esc(dim.label)}</h3><span class="assessment-small">Etapa ${dim.stage} · ${esc(stages[dim.stage - 1])} · ${dim.avg.toFixed(1)} / 4</span><div class="assessment-bar" aria-label="Nivel de ${esc(dim.label)}"><span style="width:${Math.round((dim.avg - 1) / 3 * 100)}%"></span></div>${formal ? `<p>${esc(data.matrix[dim.key][dim.stage - 1])}</p>` : ''}<p>${formal ? '<b>Ahora:</b> ' : ''}${esc(recommendation.now)}</p></article>`;
   }
   function renderResults() {
     if (answeredCount() !== data.questions.length) { state.screen = 'quiz'; state.idx = data.questions.findIndex((_, index) => state.answers[index] == null); render(); focusQuestion(); return; }
@@ -300,7 +315,7 @@
     const focusDim = result.weakest[0];
     const priority = data.recommendations[focusDim.key][focusDim.stage].next;
     const balanced = result.spread < 0.001;
-    const tieText = !balanced && tieFocus ? ` Tus dimensiones prioritarias están empatadas (${result.weakest.map((dim) => dim.label).join(' y ')}); puedes comenzar por la acción sugerida y elegir según la urgencia de tu operación.` : '';
+    const tieText = !balanced && tieFocus ? voice(` Tus dimensiones prioritarias están empatadas (${result.weakest.map((dim) => dim.label).join(' y ')}); puedes comenzar por la acción sugerida y elegir según la urgencia de tu operación.`, ` Sus dimensiones prioritarias están empatadas (${result.weakest.map((dim) => dim.label).join(' y ')}); puede comenzar por la acción sugerida y elegir según la urgencia de su operación.`) : '';
     const dimensions = result.perDim.map(resultDimCard).join('');
     const quests = result.perDim.slice().sort((a, b) => a.avg - b.avg).slice(0, 3);
     const tasks = quests.map((dim, index) => {
@@ -310,36 +325,36 @@
       return `<label class="assessment-task"><input type="checkbox" data-plan-key="${esc(key)}" ${state.planDone[key] ? 'checked' : ''}><span><b>${dayRange} · ${esc(dim.label)}:</b> ${esc(task)}</span></label>`;
     }).join('');
     const insightsMarkup = balanced
-      ? '<div class="assessment-result-dim" style="grid-column:1/-1"><span class="assessment-eyebrow">Lectura del perfil</span><h3 style="margin:.4rem 0">Perfil equilibrado</h3><p>Todas las dimensiones obtuvieron el mismo puntaje. No hay una fortaleza ni una brecha relativa clara; prioriza el proceso que hoy más tiempo, errores o trabajo duplicado genera.</p></div>'
+      ? '<div class="assessment-result-dim" style="grid-column:1/-1"><span class="assessment-eyebrow">Lectura del perfil</span><h3 style="margin:.4rem 0">Perfil equilibrado</h3><p>Todas las dimensiones obtuvieron el mismo puntaje. No hay una fortaleza ni una brecha relativa clara; ' + voice('prioriza el proceso que hoy más tiempo, errores o trabajo duplicado genera.', 'priorice el proceso que maneja más datos de clientes o trabajadores.') + '</p></div>'
       : `<div class="assessment-result-dim"><span class="assessment-eyebrow">Fortaleza relativa</span><h3 style="margin:.4rem 0">${esc(strongestLabel)}</h3><p>Etapa ${result.strongest[0].stage} · ${tieStrength ? 'Dimensiones con mayor puntaje' : esc(stages[result.strongest[0].stage - 1])}</p></div><div class="assessment-result-dim"><span class="assessment-eyebrow">Área a priorizar</span><h3 style="margin:.4rem 0">${esc(weakestLabel)}</h3><p>${result.spread.toFixed(1)} puntos de diferencia entre dimensiones. Aquí conviene iniciar la mejora.</p></div>`;
     const resultMedals = result.perDim.map((dim) => `<article class="assessment-result-medal ${!balanced && result.weakest.some((weak) => weak.key === dim.key) ? 'is-focus' : ''}">${medal(dim.key, dim.stage, 60, false)}<b>${esc(dim.label)}</b><span>${esc(stages[dim.stage - 1])} · ${dim.avg.toFixed(1)}/4</span></article>`).join('');
     const ladder = stages.map((stageName, index) => {
       const stageNum = index + 1;
       const className = stageNum < result.overallStage ? 'past' : stageNum === result.overallStage ? 'current' : stageNum === result.overallStage + 1 ? 'next' : 'future';
-      const eyebrow = className === 'current' ? `Tu nivel · ${stageNum}` : className === 'next' ? `Siguiente · ${stageNum}` : `Etapa ${stageNum}`;
+      const eyebrow = className === 'current' ? `${voice('Tu nivel', 'Su nivel')} · ${stageNum}` : className === 'next' ? `Siguiente · ${stageNum}` : `Etapa ${stageNum}`;
       return `<div class="assessment-rung ${className}"><small>${eyebrow}</small><b>${esc(stageName)}</b></div>`;
     }).join('');
-    const crossLink = type === 'ia'
-      ? '<a class="assessment-link-button" href="/diagnostico-madurez-digital/">Explorar madurez digital →</a>'
-      : '<a class="assessment-link-button" href="/diagnostico-madurez-ia/">Explorar madurez en IA →</a>';
+    const crossLink = type === 'digital'
+      ? '<a class="assessment-link-button" href="/diagnostico-madurez-ia/">Explorar madurez en IA →</a>'
+      : '<a class="assessment-link-button" href="/diagnostico-madurez-digital/">Explorar madurez digital →</a>';
     app.innerHTML = `<div class="assessment-eyebrow">Recorrido completado · ${new Date().toLocaleDateString('es-CL')}</div>
-      <section class="assessment-result-hero"><div class="assessment-result-top">${scoreRing(result.scorePercent)}<div><span class="assessment-small" style="color:#d8e9dc">RUTA COMPLETADA · 5 DE 5 ETAPAS</span><h1 class="assessment-title" style="color:white;margin:.25rem 0">${esc(stages[result.overallStage - 1])}</h1><p style="color:#e8f2eb;line-height:1.6;margin:.4rem 0 0">${esc(data.narrative[result.overallStage])}</p></div></div><div class="assessment-ladder">${ladder}</div><div class="assessment-next-hint">${result.overallStage < 4 ? `Tu siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empieza por una mejora real en tu operación.` : 'Estás en la etapa más alta. Enfoca tu plan en sostener los avances.'}</div></section>
+      <section class="assessment-result-hero"><div class="assessment-result-top">${scoreRing(result.scorePercent)}<div><span class="assessment-small" style="color:#d8e9dc">RUTA COMPLETADA · 5 DE 5 ETAPAS</span><h1 class="assessment-title" style="color:white;margin:.25rem 0">${esc(stages[result.overallStage - 1])}</h1><p style="color:#e8f2eb;line-height:1.6;margin:.4rem 0 0">${esc(data.narrative[result.overallStage])}</p></div></div><div class="assessment-ladder">${ladder}</div><div class="assessment-next-hint">${result.overallStage < 4 ? voice(`Tu siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empieza por una mejora real en tu operación.`, `Su siguiente etapa es <b>${esc(stages[result.overallStage])}</b>. Empiece por una mejora concreta en el manejo de sus datos.`) : voice('Estás en la etapa más alta. Enfoca tu plan en sostener los avances.', 'Está en la etapa más alta. Enfoque su plan en sostener los avances.')}</div></section>
       <div class="assessment-result-grid">${insightsMarkup}</div>
-      <section class="assessment-first-action"><strong>${balanced ? 'Un perfil equilibrado' : 'Tu siguiente movimiento'}</strong><h3>${balanced ? 'Elige dónde empezar' : `Empieza por ${esc(focusDim.label)}`}</h3><p style="margin:.4rem 0 0;color:#554a37;line-height:1.55">${balanced ? 'El puntaje quedó igual en todas las dimensiones. ' : 'Esta dimensión tuvo la puntuación más baja en tus respuestas. '}${esc(priority)}${esc(tieText)}</p></section>
+      <section class="assessment-first-action"><strong>${balanced ? 'Un perfil equilibrado' : voice('Tu siguiente movimiento', 'Su siguiente movimiento')}</strong><h3>${balanced ? voice('Elige dónde empezar', 'Elija dónde empezar') : `${voice('Empieza', 'Empiece')} por ${esc(focusDim.label)}`}</h3><p style="margin:.4rem 0 0;color:#554a37;line-height:1.55">${balanced ? 'El puntaje quedó igual en todas las dimensiones. ' : voice('Esta dimensión tuvo la puntuación más baja en tus respuestas. ', 'Esta dimensión tuvo la puntuación más baja en sus respuestas. ')}${esc(priority)}${esc(tieText)}</p></section>
       <div class="assessment-no-print" style="display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0 1.4rem"><button class="assessment-button" id="assessment-print">Descargar resultado en PDF</button><button class="assessment-button-secondary" id="assessment-copy">Copiar resumen</button>${crossLink}</div>
-      <h2 style="font-size:1.35rem;margin:1.5rem 0 .6rem">Tu mapa de avances</h2><p class="assessment-small">Cinco medallas · una lectura por dimensión. El borde ámbar señala las brechas con menor puntaje.</p><div class="assessment-result-medals">${resultMedals}</div>
-      <section class="assessment-result-charts"><div class="assessment-chart-card"><span class="assessment-eyebrow">Mapa de madurez</span>${radarSVG(result.perDim.map((dim) => ({ ...dim, pct: Math.round((dim.avg - 1) / 3 * 100) })), 250, true, 'Radar de las cinco dimensiones de tu resultado')}</div><div class="assessment-chart-card"><span class="assessment-eyebrow">Puntaje por dimensión</span>${result.perDim.map((dim) => `<div class="assessment-chart-row"><div><span>${esc(dim.label)}</span><b>${Math.round((dim.avg - 1) / 3 * 100)}%</b></div><div class="assessment-bar"><span style="width:${Math.round((dim.avg - 1) / 3 * 100)}%"></span></div></div>`).join('')}</div></section>
-      <section class="assessment-plan"><h2 style="font-size:1.25rem;margin:.1rem 0 .3rem">Tu ruta de 90 días</h2><p class="assessment-small">Tres acciones iniciales para los próximos meses. Marca las que completes; el avance queda guardado en este navegador.</p>${tasks}</section>
+      <h2 style="font-size:1.35rem;margin:1.5rem 0 .6rem">${voice('Tu mapa de avances', 'Su mapa de avances')}</h2><p class="assessment-small">Cinco medallas · una lectura por dimensión. El borde ámbar señala las brechas con menor puntaje.</p><div class="assessment-result-medals">${resultMedals}</div>
+      <section class="assessment-result-charts"><div class="assessment-chart-card"><span class="assessment-eyebrow">Mapa de madurez</span>${radarSVG(result.perDim.map((dim) => ({ ...dim, pct: Math.round((dim.avg - 1) / 3 * 100) })), 250, true, voice('Radar de las cinco dimensiones de tu resultado', 'Radar de las cinco dimensiones de su resultado'))}</div><div class="assessment-chart-card"><span class="assessment-eyebrow">Puntaje por dimensión</span>${result.perDim.map((dim) => `<div class="assessment-chart-row"><div><span>${esc(dim.label)}</span><b>${Math.round((dim.avg - 1) / 3 * 100)}%</b></div><div class="assessment-bar"><span style="width:${Math.round((dim.avg - 1) / 3 * 100)}%"></span></div></div>`).join('')}</div></section>
+      <section class="assessment-plan"><h2 style="font-size:1.25rem;margin:.1rem 0 .3rem">${voice('Tu ruta de 90 días', 'Su ruta de 90 días')}</h2><p class="assessment-small">Tres acciones iniciales para los próximos meses. ${voice('Marca las que completes', 'Marque las que complete')}; el avance queda guardado en este navegador.</p>${tasks}</section>
       ${state.reportUrl ? `<p class="assessment-success">El envío quedó registrado y el reporte está disponible aquí: <a href="${esc(state.reportUrl)}" target="_blank" rel="noopener noreferrer">abrir reporte</a>.</p>` : ''}
-      <section class="assessment-form" aria-labelledby="assessment-form-title"><h2 id="assessment-form-title" style="font-size:1.25rem">¿Quieres dejar tus datos?</h2><p class="assessment-small">Puedes enviarnos tus resultados para registrarlos y conversar sobre próximos pasos. El resultado y el PDF siguen disponibles aunque no completes este formulario. No enviamos el informe por correo automáticamente.</p><form id="assessment-lead-form" novalidate><div class="assessment-form-grid">
+      <section class="assessment-form" aria-labelledby="assessment-form-title"><h2 id="assessment-form-title" style="font-size:1.25rem">${voice('¿Quieres recibir el informe en tu correo?', '¿Quiere recibir el informe en su correo?')}</h2><p class="assessment-small">${voice('Déjanos tus datos y te enviamos el informe a tu correo. También podremos conversar sobre próximos pasos. El resultado y el PDF siguen disponibles aunque no completes este formulario.', 'Déjenos sus datos y le enviamos el informe a su correo. También podremos conversar sobre próximos pasos. El resultado y el PDF siguen disponibles aunque no complete este formulario.')}</p><form id="assessment-lead-form" novalidate><div class="assessment-form-grid">
         <div class="assessment-field"><label for="lead-name">Nombre completo *</label><input id="lead-name" name="Nombre" autocomplete="name" required></div>
         <div class="assessment-field"><label for="lead-email">Correo electrónico *</label><input id="lead-email" name="Email" type="email" autocomplete="email" required></div>
         <div class="assessment-field"><label for="lead-company">Empresa *</label><input id="lead-company" name="Empresa" autocomplete="organization" required></div>
         <div class="assessment-field"><label for="lead-phone">Teléfono / WhatsApp</label><input id="lead-phone" name="Telefono" type="tel" autocomplete="tel"></div>
-        <div class="assessment-field"><label for="lead-sector">Sector *</label><select id="lead-sector" name="Sector" required><option value="">Selecciona…</option><option>Agrícola / Viticultura</option><option>Frutícola</option><option>Servicios</option><option>Comercio / Retail</option><option>Industrial / Manufactura</option><option>Construcción</option><option>Salud</option><option>Educación</option><option>Otro</option></select></div>
-        <div class="assessment-field"><label for="lead-size">Tamaño de empresa *</label><select id="lead-size" name="Tamano" required><option value="">Selecciona…</option><option>Microempresa (1-9 personas)</option><option>Pequeña (10-49 personas)</option><option>Mediana (50-199 personas)</option><option>Grande (200+ personas)</option></select></div>
-        <div class="assessment-field"><label for="lead-region">Región</label><select id="lead-region" name="Region"><option value="">Selecciona…</option><option>Metropolitana</option><option>Valparaíso</option><option>O'Higgins</option><option>Maule</option><option>Ñuble</option><option>Biobío</option><option>Araucanía</option><option>Los Ríos</option><option>Los Lagos</option><option>Otra</option></select></div>
-      </div><label class="assessment-consent"><input name="Consentimiento" type="checkbox" required><span>Acepto que Apps del Sur procese estos datos para registrar mi diagnóstico y contactarme respecto de esta solicitud. Puedo pedir que eliminen mis datos.</span></label><p id="assessment-form-message" aria-live="polite" role="status"></p><div class="assessment-actions" style="margin-top:1rem"><button type="submit" class="assessment-button">Enviar mis datos</button></div></form></section>
+        <div class="assessment-field"><label for="lead-sector">Sector *</label><select id="lead-sector" name="Sector" required><option value="">${voice('Selecciona', 'Seleccione')}…</option><option>Agrícola / Viticultura</option><option>Frutícola</option><option>Servicios</option><option>Comercio / Retail</option><option>Industrial / Manufactura</option><option>Construcción</option><option>Salud</option>${formal ? '<option>Legal</option>' : ''}<option>Educación</option><option>Otro</option></select></div>
+        <div class="assessment-field"><label for="lead-size">Tamaño de empresa *</label><select id="lead-size" name="Tamano" required><option value="">${voice('Selecciona', 'Seleccione')}…</option><option>Microempresa (1-9 personas)</option><option>Pequeña (10-49 personas)</option><option>Mediana (50-199 personas)</option><option>Grande (200+ personas)</option></select></div>
+        <div class="assessment-field"><label for="lead-region">Región</label><select id="lead-region" name="Region"><option value="">${voice('Selecciona', 'Seleccione')}…</option><option>Metropolitana</option><option>Valparaíso</option><option>O'Higgins</option><option>Maule</option><option>Ñuble</option><option>Biobío</option><option>Araucanía</option><option>Los Ríos</option><option>Los Lagos</option><option>Otra</option></select></div>
+      </div><label class="assessment-consent"><input name="Consentimiento" type="checkbox" required><span>Acepto que Apps del Sur procese estos datos para registrar mi diagnóstico, enviarme el informe por correo y contactarme respecto de esta solicitud. Puedo pedir que eliminen mis datos.</span></label>${turnstileSiteKey ? '<div id="assessment-turnstile" style="margin-top:.85rem"></div>' : ''}<p id="assessment-form-message" aria-live="polite" role="status"></p><div class="assessment-actions" style="margin-top:1rem"><button type="submit" class="assessment-button">Enviar mis datos</button></div></form></section>
       <div class="assessment-actions assessment-no-print" style="justify-content:flex-end;margin-top:1rem"><button id="assessment-review" class="assessment-button-secondary">← Revisar respuestas</button><button id="assessment-reset" class="assessment-button-secondary">Empezar de nuevo</button></div>`;
 
     app.querySelectorAll('[data-plan-key]').forEach((input) => input.addEventListener('change', (event) => { state.planDone[event.currentTarget.dataset.planKey] = event.currentTarget.checked; save(); }));
@@ -354,9 +369,46 @@
       state = blank(); render();
     });
     $('#assessment-lead-form').addEventListener('submit', (event) => submitLead(event, result));
+    mountTurnstile();
     const heading = app.querySelector('h1');
     heading.tabIndex = -1; heading.focus({preventScroll:true});
     window.scrollTo({top: app.getBoundingClientRect().top + window.scrollY - 82, behavior:'auto'});
+  }
+  function mountTurnstile() {
+    if (!turnstileSiteKey) return;
+    turnstileToken = null;
+    const renderWidget = () => {
+      const container = $('#assessment-turnstile');
+      if (!container || !window.turnstile) return;
+      turnstileWidget = window.turnstile.render(container, {
+        sitekey: turnstileSiteKey, language: 'es', theme: 'light',
+        callback: (token) => { turnstileToken = token; },
+        'expired-callback': () => { turnstileToken = null; },
+        'error-callback': () => { turnstileToken = null; },
+      });
+    };
+    if (window.turnstile) { renderWidget(); return; }
+    const existing = document.getElementById('assessment-turnstile-script');
+    if (existing) { existing.addEventListener('load', renderWidget); return; }
+    const script = document.createElement('script');
+    script.id = 'assessment-turnstile-script';
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.addEventListener('load', renderWidget);
+    document.head.appendChild(script);
+  }
+  function resetTurnstile() {
+    turnstileToken = null;
+    if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
+  }
+  const WHATSAPP_LINK = '<a href="https://wa.me/56945262335" target="_blank" rel="noopener noreferrer">WhatsApp</a>';
+  function verificationFallback() {
+    return voice(`Tu resultado sigue aquí. Si no logras enviarlo, escríbenos por ${WHATSAPP_LINK}.`, `Su resultado sigue aquí. Si no logra enviarlo, escríbanos por ${WHATSAPP_LINK}.`);
+  }
+  function submitErrorMessage(code) {
+    if (code === 'bot_check_failed' || code === 'bot_check_unavailable') return `${voice('No pudimos hacer la verificación de seguridad. Inténtalo nuevamente.', 'No pudimos hacer la verificación de seguridad. Inténtelo nuevamente.')} ${verificationFallback()}`;
+    if (code === 'too_many_requests') return voice('Ya recibimos varios envíos con este correo hoy. Tu resultado sigue aquí; inténtalo mañana o escríbenos.', 'Ya recibimos varios envíos con este correo hoy. Su resultado sigue aquí; inténtelo mañana o escríbanos.');
+    return voice('No pudimos guardar tus datos en este momento. Tus respuestas y el resultado siguen aquí; revisa tu conexión e inténtalo nuevamente.', 'No pudimos guardar sus datos en este momento. Sus respuestas y el resultado siguen aquí; revise su conexión e inténtelo nuevamente.');
   }
   function announce(message) {
     let status = $('#assessment-announce');
@@ -370,6 +422,11 @@
     const button = form.querySelector('[type="submit"]');
     message.className = ''; message.textContent = '';
     if (!form.reportValidity()) return;
+    if (turnstileSiteKey && !turnstileToken) {
+      message.className = 'assessment-error';
+      message.innerHTML = `${voice('Falta completar la verificación de seguridad. Si no aparece, revisa si un bloqueador la está impidiendo.', 'Falta completar la verificación de seguridad. Si no aparece, revise si un bloqueador la está impidiendo.')} ${verificationFallback()}`;
+      return;
+    }
     const formValues = Object.fromEntries(new FormData(form).entries());
     const insights = result;
     const answersDetail = data.questions.map((question, qIdx) => {
@@ -393,19 +450,23 @@
     try {
       const response = await fetch('/api/assessment-submit', {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ fields }),
+        body: JSON.stringify({ fields, ...(turnstileToken ? { turnstileToken } : {}) }),
       });
       const responseData = await response.json().catch(() => ({}));
       if (!response.ok || responseData.ok !== true) throw new Error(responseData.error || 'submit_failed');
       if (!responseData.reportUrl) throw new Error('report_url_missing');
       state.reportUrl = responseData.reportUrl; save();
       message.className = 'assessment-success';
-      message.innerHTML = `Tus datos quedaron registrados. El informe está disponible en <a href="${esc(responseData.reportUrl)}" target="_blank" rel="noopener noreferrer">este enlace</a>. No se envió correo automáticamente.`;
+      const reportLink = `<a href="${esc(responseData.reportUrl)}" target="_blank" rel="noopener noreferrer">este enlace</a>`;
+      message.innerHTML = responseData.emailSent
+        ? `${voice('Listo. Te enviamos el informe a', 'Listo. Le enviamos el informe a')} ${esc(formValues.Email)}. ${voice('También puedes abrirlo en', 'También puede abrirlo en')} ${reportLink}.`
+        : `${voice('Tus datos quedaron registrados, pero no pudimos enviar el correo. Puedes abrir el informe en', 'Sus datos quedaron registrados, pero no pudimos enviar el correo. Puede abrir el informe en')} ${reportLink}.`;
       button.textContent = 'Envío registrado';
     } catch (error) {
       console.error('Assessment submission failed', error);
       message.className = 'assessment-error';
-      message.textContent = 'No pudimos guardar tus datos en este momento. Tus respuestas y el resultado siguen aquí; revisa tu conexión e inténtalo nuevamente.';
+      message.innerHTML = submitErrorMessage(error.message);
+      resetTurnstile();
       button.disabled = false; button.textContent = 'Reintentar envío';
     }
   }

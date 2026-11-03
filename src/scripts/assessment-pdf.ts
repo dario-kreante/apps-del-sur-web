@@ -1,6 +1,9 @@
 import { jsPDF } from 'jspdf';
 
-type ReportRequest = { summary: string; type: 'ia' | 'digital' };
+type ReportRequest = { summary: string; type: 'ia' | 'digital' | 'datos' };
+
+const PDF_TITLES = { ia: 'Diagnóstico de madurez en IA', digital: 'Diagnóstico de madurez digital', datos: 'Diagnóstico de datos personales' };
+const PDF_FILE_PREFIXES = { ia: 'diagnostico-madurez-ia', digital: 'diagnostico-madurez-digital', datos: 'diagnostico-datos-personales' };
 
 document.addEventListener('assessment:download-pdf', (event) => {
   const { summary, type } = (event as CustomEvent<ReportRequest>).detail;
@@ -8,7 +11,7 @@ document.addEventListener('assessment:download-pdf', (event) => {
   if (button) button.disabled = true;
   try {
     const pdf = new jsPDF();
-    pdf.setProperties({ title: `Diagnóstico de madurez ${type === 'ia' ? 'en IA' : 'digital'}`, author: 'Apps del Sur' });
+    pdf.setProperties({ title: PDF_TITLES[type], author: 'Apps del Sur' });
     const pageHeader = () => {
       pdf.setFillColor(6, 78, 59);
       pdf.rect(0, 0, 210, 25, 'F');
@@ -34,10 +37,10 @@ document.addEventListener('assessment:download-pdf', (event) => {
       pdf.setPage(page);
       pdf.setTextColor(90, 105, 98);
       pdf.setFontSize(9);
-      pdf.text('Autoevaluación orientativa · No es una certificación', 20, 288);
+      pdf.text(type === 'datos' ? 'Autoevaluación orientativa · No constituye asesoría legal' : 'Autoevaluación orientativa · No es una certificación', 20, 288);
       pdf.text(`${page} / ${pages}`, 190, 288, { align: 'right' });
     }
-    const name = `diagnostico-madurez-${type}-${new Date().toLocaleDateString('sv-SE')}.pdf`;
+    const name = `${PDF_FILE_PREFIXES[type]}-${new Date().toLocaleDateString('sv-SE')}.pdf`;
     const previous = document.getElementById('assessment-pdf-link') as HTMLAnchorElement | null;
     if (previous) previous.remove();
     const link = document.createElement('a');

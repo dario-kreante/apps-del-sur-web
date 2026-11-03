@@ -135,6 +135,12 @@ export const GET: APIRoute = async () => {
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>${BASE_URL}/diagnostico-datos-personales/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>${BASE_URL}/servicios/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
@@ -202,6 +208,12 @@ export const GET: APIRoute = async () => {
   </url>
   <url>
     <loc>${BASE_URL}/servicios/acompanamiento-copiloto-estrategico/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${BASE_URL}/servicios/diagnostico-datos-personales/</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

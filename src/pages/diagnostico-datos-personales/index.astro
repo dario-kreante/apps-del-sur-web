@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Assessment from '../../components/Assessment.astro';
+import assessments from '../../data/assessments.json';
+
+const title = 'Diagnóstico de Datos Personales para empresas chilenas';
+const description = 'Responda 20 preguntas en 8 minutos y vea cómo está su empresa frente a la Ley 21.719: qué datos tiene, dónde los guarda y quién puede verlos. Gratis y orientativo.';
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Diagnóstico de Datos Personales — Apps del Sur', description,
+  url: 'https://appsdelsur.cl/diagnostico-datos-personales/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'CLP' }, provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' }, inLanguage: 'es-CL',
+});
+
+const { dimKeys, dimLabels, stages, questions } = assessments.datos;
+const dimensions = dimKeys.map((key) => ({
+  label: dimLabels[key as keyof typeof dimLabels],
+  count: questions.filter((question) => question.dim === key).length,
+}));
+const faqs = [
+  { q: '¿Cuánto tiempo toma?', a: `Son ${questions.length} preguntas de selección y toma unos 8 minutos. Sus respuestas quedan guardadas en el navegador, así que puede continuar después.` },
+  { q: '¿Tiene costo?', a: 'No. El diagnóstico es gratuito y ve su resultado al terminar, sin entregar sus datos. Si quiere recibir el informe en su correo, puede completar el formulario final.' },
+  { q: '¿Quién debería responderlo?', a: 'El dueño, el gerente o quien administra los sistemas. Si lo responden dos personas por separado, comparar los resultados suele ser revelador.' },
+  { q: '¿Reemplaza una revisión técnica o a un abogado?', a: 'No. Es una autoevaluación orientativa y no constituye asesoría legal. La interpretación legal, las políticas y los contratos los ve un abogado.' },
+  { q: '¿Qué hacen con mis respuestas?', a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo.' },
+];
+const faqJsonLd = JSON.stringify({
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })),
+});
+---
+
+<Layout title={`${title} | Apps del Sur`} description={description} canonical="https://appsdelsur.cl/diagnostico-datos-personales/">
+  <script type="application/ld+json" set:html={jsonLd} />
+  <Header />
+  <script type="application/ld+json" set:html={faqJsonLd} />
+  <Assessment type="datos" />
+  <section class="assessment-more" aria-labelledby="assessment-more-title">
+    <h2 id="assessment-more-title">¿Qué mide este diagnóstico?</h2>
+    <p>Evalúa qué tan preparada está su empresa para cumplir la Ley 21.719 de protección de datos personales. Las preguntas describen situaciones cotidianas de una pyme chilena: dónde guarda los datos, quién puede verlos, qué pasa si un cliente pide borrarlos o si se pierde un celular.</p>
+    <p>Son {questions.length} preguntas repartidas en cinco dimensiones:</p>
+    <ul>
+      {dimensions.map((dimension) => <li><strong>{dimension.label}</strong>: {dimension.count} preguntas</li>)}
+    </ul>
+
+    <h2>Qué obtiene al terminar</h2>
+    <p>Su empresa queda ubicada en una de cuatro etapas: {stages.join(', ')}. Verá un puntaje y un gráfico por dimensión para identificar la brecha más grande, una lectura de su resultado y acciones sugeridas. Puede descargar el resultado en PDF para compartirlo con su equipo.</p>
+    <p>Si quiere llevarlo más allá, revisamos sus sistemas, planillas y proveedores en el <a href="/servicios/diagnostico-datos-personales/">diagnóstico técnico de datos personales</a>.</p>
+
+    <h2>Preguntas frecuentes</h2>
+    {faqs.map((faq) => <><h3>{faq.q}</h3><p>{faq.a}</p></>)}
+    <p>Si su empresa todavía trabaja con papel y planillas, puede servirle partir por el <a href="/diagnostico-madurez-digital/">Diagnóstico de Madurez Digital</a>. Puede ver todos en <a href="/diagnosticos/">Diagnósticos</a>.</p>
+  </section>
+  <Footer />
+</Layout>

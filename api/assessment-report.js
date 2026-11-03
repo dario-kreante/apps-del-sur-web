@@ -1,4 +1,9 @@
 const DEFAULT_TABLE_NAME = 'Assessment Leads';
+const REPORT_COPY = {
+  ia: { title: 'Diagnóstico de Madurez en IA', heading: 'Tu resultado y próximos pasos', company: 'Datos de tu empresa', route: 'Tu ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: '' },
+  digital: { title: 'Diagnóstico de Madurez Digital', heading: 'Tu resultado y próximos pasos', company: 'Datos de tu empresa', route: 'Tu ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: '' },
+  datos: { title: 'Diagnóstico de Datos Personales', heading: 'Su resultado y próximos pasos', company: 'Datos de su empresa', route: 'Su ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: 'Este diagnóstico es orientativo y no constituye asesoría legal.' },
+};
 
 export default async function handler(req, res) {
   if (req.method !== 'GET' && req.method !== 'HEAD') {
@@ -31,6 +36,7 @@ export default async function handler(req, res) {
     const record = await fetchRecord(config, id);
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.end(renderReport(record.fields || {}, id));
   } catch (error) {
     console.error('assessment-report failed', error);
@@ -50,8 +56,9 @@ async function fetchRecord(config, id) {
 
 function renderReport(fields, id) {
   const stored = parseAssessmentData(fields['Respuestas JSON']);
-  const assessmentType = stored.assessmentType || (/digital/i.test(fields.Fuente || '') ? 'digital' : 'ia');
-  const assessmentTitle = assessmentType === 'digital' ? 'Diagnóstico de Madurez Digital' : 'Diagnóstico de Madurez en IA';
+  const assessmentType = stored.assessmentType || typeFromSource(fields.Fuente);
+  const copy = REPORT_COPY[assessmentType];
+  const assessmentTitle = copy.title;
   const answers = stored.answers;
   const dimensions = stored.dimensions.length ? stored.dimensions : legacyDimensions(fields, assessmentType);
   const rows = [
@@ -71,6 +78,7 @@ function renderReport(fields, id) {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
     <title>Reporte ${esc(assessmentTitle)} - ${esc(fields.Empresa || id)}</title>
   <style>
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: #111827; background: #f0fdf4; }
@@ -96,8 +104,9 @@ function renderReport(fields, id) {
 <body>
   <main>
     <p class="muted">Apps del Sur - ${esc(assessmentTitle)}</p>
-    <h1>Tu resultado y próximos pasos</h1>
+    <h1>${esc(copy.heading)}</h1>
     <p class="muted">ID Airtable: ${esc(id)}</p>
+    ${copy.disclaimer ? `<p class="muted">${esc(copy.disclaimer)}</p>` : ''}
     <button class="no-print" type="button" onclick="window.print()">Imprimir o guardar como PDF</button>
     <section>
       <div class="grid">
@@ -107,12 +116,12 @@ function renderReport(fields, id) {
       </div>
     </section>
     <section>
-      <h2>Datos de tu empresa</h2>
+      <h2>${esc(copy.company)}</h2>
       <table>${rows.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v || '-')}</td></tr>`).join('')}</table>
     </section>
     <section>
-      <h2>Tu ruta de mejora</h2>
-      <pre class="summary">${esc(fields.Resumen || 'No hay una ruta de mejora guardada para este informe.')}</pre>
+      <h2>${esc(copy.route)}</h2>
+      <pre class="summary">${esc(fields.Resumen || copy.noRoute)}</pre>
     </section>
     <section>
       <h2>Resultado por dimensión</h2>
@@ -121,7 +130,7 @@ function renderReport(fields, id) {
       </table>
     </section>
     <section>
-      <h2>Respuestas del diagnóstico</h2>
+      <h2>${esc(copy.answers)}</h2>
       ${answers.map((answer, index) => `<div class="answer"><strong>${index + 1}. ${esc(answer.dimension || answer.dim || '')}</strong><p>${esc(answer.question || '')}</p><p class="muted">Respuesta: ${esc(answer.stage || '-')} ${answer.stageName ? `- ${esc(answer.stageName)}` : ''}</p></div>`).join('') || '<p class="muted">Sin respuestas registradas.</p>'}
     </section>
   </main>
@@ -135,7 +144,7 @@ function parseAssessmentData(value) {
     if (Array.isArray(parsed)) return { assessmentType: '', dimensions: [], answers: parsed };
     if (!parsed || typeof parsed !== 'object') return { assessmentType: '', dimensions: [], answers: [] };
     return {
-      assessmentType: parsed.assessmentType === 'digital' ? 'digital' : parsed.assessmentType === 'ia' ? 'ia' : '',
+      assessmentType: Object.hasOwn(REPORT_COPY, parsed.assessmentType) ? parsed.assessmentType : '',
       dimensions: Array.isArray(parsed.dimensions) ? parsed.dimensions : [],
       answers: Array.isArray(parsed.answers) ? parsed.answers : [],
     };
@@ -144,8 +153,13 @@ function parseAssessmentData(value) {
   }
 }
 
+function typeFromSource(source) {
+  if (/datos-personales/i.test(source || '')) return 'datos';
+  return /digital/i.test(source || '') ? 'digital' : 'ia';
+}
+
 function legacyDimensions(fields, assessmentType) {
-  if (assessmentType === 'digital') return [];
+  if (assessmentType !== 'ia') return [];
   return ['Estrategia y liderazgo', 'Personas y cultura', 'Procesos y operación', 'Datos y gobernanza', 'Tecnología e integración']
     .map((name) => ({ name, result: fields[name] || '' }))
     .filter((dimension) => dimension.result);
