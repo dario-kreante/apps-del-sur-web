@@ -82,6 +82,12 @@ test('diagnostics index links the third assessment', async () => {
   assert.match(await readSource('src/pages/diagnosticos/index.astro'), /href: '\/diagnostico-datos-personales\/'/);
 });
 
+test('privacy policy names the providers that receive assessment data', async () => {
+  const policy = await readSource('src/pages/privacidad.astro');
+  for (const provider of ['Airtable', 'Brevo', 'Cloudflare']) assert.match(policy, new RegExp(provider));
+  assert.match(policy, /informe.*correo|correo.*informe/);
+});
+
 test('email stage names match the assessment data', async () => {
   const source = await readSource('api/assessment-submit.js');
   for (const [type, { stages }] of Object.entries(assessments)) {
