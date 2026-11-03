@@ -38,3 +38,7 @@ index.html.bak
 
 # Local browser validation evidence
 output/playwright/
+
+# playwright
+test-results/
+playwright-report/
