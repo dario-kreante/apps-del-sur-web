@@ -293,7 +293,7 @@ Actúa siempre según su interés superior. Para menores de 14 años necesitas c
 
 ## Siguiente paso: revisar tus datos antes de automatizar
 
-Si tu pyme está en uno de estos sectores y maneja datos sensibles, conviene revisarlos antes de implementar IA. En Apps del Sur diseñamos agentes por sector considerando información a las personas, derivación humana y contratos con proveedores, y coordinamos la revisión legal cuando el caso lo requiere.
+Si tu pyme está en uno de estos sectores y maneja datos sensibles, conviene revisarlos antes de implementar IA. En Apps del Sur diseñamos agentes por sector considerando información a las personas, derivación humana y contratos con proveedores. La parte técnica la resolvemos nosotros; la legal debe verla un abogado.
 
 **[Hacer el diagnóstico de datos personales →](/diagnostico-datos-personales/?source=blog-ley-21719-sectores)**
 

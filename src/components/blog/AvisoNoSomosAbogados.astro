@@ -1,0 +1,43 @@
+---
+// Aviso para los artículos sobre datos personales: quiénes somos, qué no somos y qué ofrecemos.
+const ofrecemos = [
+  'Autodiagnóstico gratuito y orientativo, para saber en qué punto partes',
+  'Diagnóstico técnico: revisamos tus sistemas, planillas y proveedores, y te entregamos un mapa de tus datos y un plan priorizado',
+  'Implementación técnica: accesos, formularios, flujos de borrado y registros, también en tu software y tus agentes de IA',
+];
+---
+
+<aside class="blog-aviso" aria-labelledby="aviso-title">
+  <h2 id="aviso-title">Quiénes somos y qué no somos</h2>
+  <p>
+    Apps del Sur es la marca de GYS Activa SpA, un equipo de software e IA aplicada con base en Talca.
+    <strong>No somos abogados ni un estudio jurídico.</strong> Este artículo resume nuestra lectura de la ley para ayudarte a ordenarte: no es asesoría legal y no certifica que tu empresa cumpla.
+  </p>
+  <h3>En qué sí podemos ayudarte</h3>
+  <ul>
+    {ofrecemos.map((item) => <li>{item}</li>)}
+  </ul>
+  <p>
+    <strong>Lo que debe ver un abogado:</strong> la interpretación de la ley para tu caso, y el texto final de tus políticas y contratos.
+  </p>
+  <a href="/servicios/diagnostico-datos-personales/">Ver cómo funciona el diagnóstico</a>
+</aside>
+
+<style>
+  .blog-aviso {
+    margin-top: 48px;
+    padding: 24px;
+    background: var(--tint);
+    border-left: 4px solid var(--brand);
+    border-radius: 4px;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .blog-aviso h2 { font-size: 20px; font-weight: 700; line-height: 1.25; margin-bottom: 10px; }
+  .blog-aviso h3 { font-size: 16px; font-weight: 700; margin: 18px 0 6px; }
+  .blog-aviso ul { list-style: disc; padding-left: 20px; margin-bottom: 16px; }
+  .blog-aviso li + li { margin-top: 6px; }
+  .blog-aviso a { display: inline-block; margin-top: 12px; color: var(--brand-deep); font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
+</style>

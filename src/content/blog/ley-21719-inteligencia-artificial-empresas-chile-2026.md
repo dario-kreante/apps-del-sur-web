@@ -204,7 +204,7 @@ Depende de cada convocatoria. SERCOTEC CRECE y CORFO Digitalización Pyme pueden
 
 ## Siguiente paso: implementar IA con estos puntos resueltos
 
-Si tu pyme ya usa IA o planea hacerlo, conviene ordenar esto antes de escalar. En Apps del Sur diseñamos agentes IA considerando contratos con proveedores, información a las personas, derivación humana y condiciones de uso de datos, y coordinamos la revisión legal cuando el caso lo requiere.
+Si tu pyme ya usa IA o planea hacerlo, conviene ordenar esto antes de escalar. En Apps del Sur diseñamos agentes IA considerando contratos con proveedores, información a las personas, derivación humana y condiciones de uso de datos. La parte técnica la resolvemos nosotros; la legal debe verla un abogado.
 
 **[Hacer el diagnóstico de datos personales →](/diagnostico-datos-personales/?source=blog-ley-21719-ia)**
 
