@@ -17,7 +17,8 @@ process.env.BREVO_API_KEY ||= 'qa-fixture-only';
 // Cloudflare's published test secrets: one always passes, the other always fails.
 const TURNSTILE_PASS = '1x0000000000000000000000000000000AA';
 const TURNSTILE_FAIL = '2x0000000000000000000000000000000AA';
-process.env.TURNSTILE_SECRET_KEY = TURNSTILE_PASS;
+// QA_TURNSTILE=off: the e2e run blocks third parties, so the widget cannot produce a token.
+process.env.TURNSTILE_SECRET_KEY = process.env.QA_TURNSTILE === 'off' ? '' : TURNSTILE_PASS;
 process.env.PUBLIC_SITE_URL = 'http://127.0.0.1:4322';
 globalThis.fetch = async (url, options={}) => {
  const target = new URL(url);

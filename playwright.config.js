@@ -15,6 +15,6 @@ export default defineConfig({
     command: 'node scripts/qa-assessment-server.mjs',
     url: `${baseURL}/__qa/status`,
     reuseExistingServer: !process.env.CI,
-    env: { QA_STATIC: '1' },
+    env: { QA_STATIC: '1', QA_TURNSTILE: 'off' },
   },
 });
