@@ -9,9 +9,9 @@
 ### Por sector (hubs verticales)
 
 - [Viñas y Agro](https://appsdelsur.cl/agentes/sectores/vinas/): Cuaderno de campo digital, mano de obra, costos por hectárea en tiempo real. Para viñas, frutícolas, cooperativas y packings.
-- [Clínicas](https://appsdelsur.cl/agentes/sectores/clinicas/): Agendamiento 24/7 WhatsApp, recordatorios, cumplimiento Ley 21.719, retención. Para clínicas dentales, médicas, veterinarias y estética.
+- [Clínicas](https://appsdelsur.cl/agentes/sectores/clinicas/): Agendamiento 24/7 WhatsApp, recordatorios, apoyo técnico para la Ley 21.719, retención. Para clínicas dentales, médicas, veterinarias y estética.
 - [Hoteles y Turismo](https://appsdelsur.cl/agentes/sectores/hoteles-turismo/): Reservas directas multilingües, atención 24/7, gestión de reseñas. Para hoteles boutique, cabañas, tour operadores y restaurantes.
-- [Abogados y Estudios Jurídicos](https://appsdelsur.cl/agentes/sectores/abogados/): Calificación de consultas, agendamiento, seguimiento de causas, compliance Ley 21.719.
+- [Abogados y Estudios Jurídicos](https://appsdelsur.cl/agentes/sectores/abogados/): Calificación de consultas, agendamiento, seguimiento de causas, apoyo técnico para la Ley 21.719.
 - [Inmobiliarias](https://appsdelsur.cl/agentes/sectores/inmobiliarias/): Califica leads de portales, envía fichas, agenda visitas, hace seguimiento. +40% conversión lead→visita.
 - [Constructoras](https://appsdelsur.cl/agentes/sectores/constructoras/): Control de mano de obra en obra (offline), compliance subcontratos DT, cobranza de estados de pago.
 - [Clubes Deportivos y Gimnasios](https://appsdelsur.cl/agentes/sectores/clubes-deportivos/): Retención de socios, agendamiento clases, cobranza de cuotas. Reduce churn 20-30%.
@@ -23,7 +23,7 @@
 - [Agente de Atención WhatsApp](https://appsdelsur.cl/agentes/whatsapp-atencion/): Atiende, vende y resuelve por WhatsApp 24/7. Deflexión 70%.
 - [Agente SDR Calificador de Leads](https://appsdelsur.cl/agentes/sdr-leads/): Califica leads B2B con criterios reales.
 - [Agente de Retención](https://appsdelsur.cl/agentes/retencion/): Detecta caída de uso y reactiva clientes. -25% churn.
-- [Agente de Compliance Ley 21.719](https://appsdelsur.cl/agentes/compliance/): Cumple protección de datos personales.
+- [Agente de Compliance Regulatorio](https://appsdelsur.cl/agentes/compliance/): Monitorea SAG, SII, ISP, Sernac y normativa chilena, alerta vencimientos y prepara fiscalizaciones. No reemplaza a un abogado ni certifica cumplimiento.
 - [Agente para Abogados](https://appsdelsur.cl/agentes/abogados/): Atención calificada para estudios jurídicos.
 - [Agente Cuota Mortuoria](https://appsdelsur.cl/agentes/cuota-mortuoria/): Trámite AFP/IPS automatizado para funerarias.
 
@@ -96,7 +96,7 @@
 - Área de servicio: O'Higgins, Maule, Ñuble, Biobío, La Araucanía (centro-sur de Chile)
 - Modelos de venta: (a) Venta única + implementación; (b) SaaS mensual. Apps del Sur no publica lista de precios: cada propuesta se arma después de una conversación inicial y un diagnóstico sin costo, según alcance, volumen e integraciones. Financiable 50-98% con fondos públicos.
 - Diferenciador: software a medida adaptado al cliente + acompañamiento sin costo en postulación a fondos públicos
-- Cumplimiento normativo: Ley 21.719, WhatsApp Business API oficial de Meta, integración con SII y ChileCompra
+- Normativa: soluciones diseñadas considerando la Ley 21.719 (Apps del Sur no es un estudio jurídico ni certifica cumplimiento; la parte legal la ve un abogado), WhatsApp Business API oficial de Meta, integración con SII y ChileCompra
 
 ## Licencia de citación
 

@@ -2,6 +2,7 @@
 title: "IA por WhatsApp para tiendas: consultas, pedidos y atención"
 description: "Qué evaluar al automatizar consultas de pedidos y atención en e-commerce: integraciones, revisión humana y métricas de servicio."
 pubDate: 2026-05-17T15:10:00-04:00
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "11 min"
 heroAlt: "Múltiples conversaciones de WhatsApp con clientes de e-commerce chileno atendidas en paralelo por agente IA"
@@ -127,11 +128,11 @@ Nosotros le asesoramos la postulación sin costo si el fondo le sirve.
 
 La nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) tiene como fecha vigente el 1 de diciembre de 2026, con una prórroga en trámite. Para un retailer significa:
 
-- Necesita base legal documentada para enviar mensajes proactivos (carritos abandonados, post-venta).
-- Debe ofrecer derechos ARCO (Acceso, Rectificación, Cancelación, Oposición).
-- Los datos de pago deben cumplir estándares de seguridad.
+- Necesita una base legal para enviar mensajes proactivos (carritos abandonados, post-venta), y las personas siempre pueden oponerse al marketing directo.
+- Debe atender solicitudes de acceso, rectificación, supresión, oposición, portabilidad y bloqueo temporal.
+- Los datos de pago requieren medidas de seguridad adecuadas al riesgo.
 
-Use solo la **API oficial de WhatsApp Business** (no whatsapp-web.js, baileys ni soluciones grises). Eso garantiza cumplimiento y evita bloqueos del número.
+Use solo la **API oficial de WhatsApp Business** (no whatsapp-web.js, baileys ni soluciones grises). Eso evita bloqueos del número por métodos no oficiales, pero no asegura por sí solo que cumpla la ley. Más detalle en [datos sensibles por sector](/blog/ley-21719-datos-sensibles-sectores-chile-2026/).
 
 ## Preguntas frecuentes
 

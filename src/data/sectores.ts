@@ -5,6 +5,7 @@
 
 import type { AgentPage } from './agentes';
 import { wa, diagnostico } from './agentes';
+import { LEY_21719_ESTADO } from './ley21719';
 
 export const sectorPages: Record<string, AgentPage> = {
   // ─── 1. Viñas y agro ─────────────────────────────────────────
@@ -227,7 +228,7 @@ export const sectorPages: Record<string, AgentPage> = {
       },
       {
         q: '¿Qué pasa con la nueva Ley de Protección de Datos 21.719?',
-        a: 'Cumple Ley 21.719 (entrada 2026). Datos de temporeros se almacenan con consentimiento explícito, no se comparten con terceros, y el trabajador puede pedir su eliminación.',
+        a: `El sistema se configura pensando en la ley: informa para qué se usan los datos de los temporeros, solo los entrega a los proveedores que operan el servicio y permite atender solicitudes de supresión, en los casos que la ley indica. Su empresa sigue siendo la responsable de esos datos, y la parte legal debe revisarla un abogado. ${LEY_21719_ESTADO}`,
       },
     ],
     relatedBlogSlugs: [
@@ -248,7 +249,7 @@ export const sectorPages: Record<string, AgentPage> = {
     emoji: '🦷',
     kind: 'sector',
     shortDescription:
-      'Agendamiento 24/7 por WhatsApp, recordatorios, cumplimiento Ley 21.719 y retención de pacientes. Para clínicas dentales, médicas y veterinarias.',
+      'Agendamiento 24/7 por WhatsApp, recordatorios, apoyo técnico para la Ley 21.719 y retención de pacientes. Para clínicas dentales, médicas y veterinarias.',
     targetIndustries: ['Clínicas dentales', 'Centros médicos', 'Clínicas veterinarias', 'Consultas estéticas'],
     sectorVocab: ['ficha del paciente', 'no-show', 'box', 'profesional', 'tratamiento', 'presupuesto', 'consentimiento informado', 'agenda'],
     relatedAgents: ['agendamiento', 'compliance', 'retencion', 'whatsapp-atencion'],
@@ -256,19 +257,19 @@ export const sectorPages: Record<string, AgentPage> = {
     meta: {
       title: 'Agentes IA para Clínicas Chile | Agendamiento, Ley 21.719, Retención | Apps del Sur',
       description:
-        'Agentes de IA para clínicas dentales, médicas y veterinarias en Chile. Agendamiento por WhatsApp 24/7, recordatorios automáticos, cumplimiento Ley 21.719 de datos sensibles y retención de pacientes. Implementación 2-6 semanas. Financiable con Kit Digital y CRECE SERCOTEC.',
+        'Agentes de IA para clínicas dentales, médicas y veterinarias en Chile. Agendamiento por WhatsApp 24/7, recordatorios automáticos, apoyo técnico para datos sensibles bajo la Ley 21.719 y retención de pacientes. Implementación 2-6 semanas. Financiable con Kit Digital y CRECE SERCOTEC.',
       keywords:
         'agente IA clínica dental Chile, agendamiento WhatsApp clínica, software clínica veterinaria, Ley 21.719 datos pacientes, no-show clínicas Chile, recordatorio cita médica',
       ogTitle: 'Agentes IA para Clínicas — Apps del Sur',
       ogDescription:
-        '-60% no-shows. Agendamiento 24/7 por WhatsApp. Cumple Ley 21.719. Financiable con Kit Digital SERCOTEC.',
+        '-60% no-shows. Agendamiento 24/7 por WhatsApp. Pensado para datos sensibles (Ley 21.719). Financiable con Kit Digital SERCOTEC.',
     },
     hero: {
       badge: '🦷 Clínicas dentales · médicas · veterinarias',
       titleLine1: 'Cero no-shows. Cero pacientes perdidos',
       titleHighlight: 'fuera de horario',
       description:
-        'En clínicas, el 22% de las horas se pierden por no-shows y el 70% de las consultas para agendar llegan después del cierre. Nuestros agentes IA agendan, confirman y reagendan por WhatsApp 24/7, cumplen Ley 21.719 sobre datos sensibles y trabajan retención del paciente que dejó de venir.',
+        'En clínicas, el 22% de las horas se pierden por no-shows y el 70% de las consultas para agendar llegan después del cierre. Nuestros agentes IA agendan, confirman y reagendan por WhatsApp 24/7, se configuran considerando los datos sensibles de la Ley 21.719 y trabajan retención del paciente que dejó de venir.',
       ctaPrimary: 'Probar el agente por WhatsApp',
       ctaPrimaryHref: wa('clinicas', 'Hola, tengo una clínica y quiero ver los agentes IA de Apps del Sur'),
       ctaSecondary: 'Diagnosticar mi madurez IA (gratis · 6 min)',
@@ -287,7 +288,7 @@ export const sectorPages: Record<string, AgentPage> = {
         { from: 'cliente', text: 'Mañana a las 10:30 está perfecto', time: '22:19' },
         {
           from: 'agente',
-          text: 'Listo ✅ Mañana 10:30 con Dra. Pérez.\n¿Me confirma nombre y RUT para la ficha?\n(Sus datos se manejan según Ley 21.719: solo para uso clínico)',
+          text: 'Listo ✅ Mañana 10:30 con Dra. Pérez.\n¿Me confirma nombre y RUT para la ficha?\n(Usamos sus datos para gestionar su atención. Detalle y derechos en nuestra política de privacidad)',
           time: '22:19',
         },
         { from: 'cliente', text: 'María González, 15.234.567-8', time: '22:20' },
@@ -317,7 +318,7 @@ export const sectorPages: Record<string, AgentPage> = {
         icon: 'shield',
         title: 'Ley 21.719: datos de paciente son sensibles',
         description:
-          'WhatsApp informal mezcla datos clínicos con consultas. Riesgo de multa por mal manejo de datos sensibles desde 2026.',
+          'WhatsApp informal mezcla datos clínicos con consultas. La ley contempla multas por mal manejo de datos sensibles, y su fecha vigente es el 1 de diciembre de 2026, con prórroga en trámite.',
         metric: 'Ley',
       },
     ],
@@ -339,8 +340,8 @@ export const sectorPages: Record<string, AgentPage> = {
       },
       {
         step: 4,
-        title: 'Datos del paciente conforme Ley 21.719',
-        description: 'Consentimiento explícito, almacenamiento cifrado, derecho a eliminación. Cero riesgo regulatorio.',
+        title: 'Datos del paciente, considerando la Ley 21.719',
+        description: 'Consentimiento expreso cuando corresponde, almacenamiento cifrado y solicitudes de supresión registradas. La responsable de los datos sigue siendo la clínica.',
       },
     ],
     metrics: [
@@ -366,7 +367,7 @@ export const sectorPages: Record<string, AgentPage> = {
           fondo: 'SERCOTEC CRECE',
           highlight: true,
           features: [
-            'Agendamiento + Compliance Ley 21.719',
+            'Agendamiento + apoyo técnico Ley 21.719',
             'Recordatorios 24h+2h',
             'Hasta 3 profesionales',
             'Integración Reservo/Bsale',
@@ -408,14 +409,14 @@ export const sectorPages: Record<string, AgentPage> = {
         'Recepcionista dedica 3h/sem a WhatsApp (resto atención presencial)',
         '8% no-shows con recordatorios automáticos: $900K/mes recuperados',
         '0 consultas sin respuesta + 18 citas nuevas/mes captadas de noche',
-        'Cumple Ley 21.719 con consentimiento documentado',
+        'Consentimientos documentados, listos para revisión legal',
       ],
       roi: 'Ahorro estimado $2.3M/mes. ROI mes 1.',
     },
     faq: [
       {
-        q: '¿Cumple con la Ley 21.719 sobre datos sensibles de pacientes?',
-        a: 'Sí. Datos clínicos se manejan como categoría sensible: consentimiento explícito al inicio de la conversación, almacenamiento cifrado, no compartidos con terceros, derecho a eliminación en cualquier momento. Le entregamos el documento de cumplimiento para auditoría.',
+        q: '¿El agente cumple con la Ley 21.719 sobre datos sensibles de pacientes?',
+        a: 'No lo certificamos: la responsable de los datos es la clínica, y la evaluación legal debe hacerla un abogado. Lo técnico sí lo resolvemos: los datos clínicos se tratan como sensibles, con consentimiento expreso cuando corresponde, almacenamiento cifrado, acceso solo para los proveedores que operan el servicio y un canal para solicitudes de supresión. Le entregamos la documentación técnica del flujo para esa revisión.',
       },
       {
         q: '¿Se conecta con Reservo, Bsale, Defontana o mi sistema?',
@@ -647,7 +648,7 @@ export const sectorPages: Record<string, AgentPage> = {
     emoji: '⚖️',
     kind: 'sector',
     shortDescription:
-      'Calificación de consultas, agendamiento de reuniones, seguimiento de causas y cumplimiento Ley 21.719. Para estudios jurídicos pyme.',
+      'Calificación de consultas, agendamiento de reuniones, seguimiento de causas y apoyo técnico para la Ley 21.719. Para estudios jurídicos pyme.',
     targetIndustries: ['Estudios jurídicos', 'Abogados independientes', 'Notarías', 'Asesorías legales'],
     sectorVocab: ['causa', 'audiencia', 'diligencia', 'patrocinio', 'mandato', 'consulta gratuita', 'tribunales'],
     relatedAgents: ['sdr-leads', 'agendamiento', 'compliance', 'abogados'],
@@ -655,12 +656,12 @@ export const sectorPages: Record<string, AgentPage> = {
     meta: {
       title: 'Agentes IA para Abogados y Estudios Jurídicos Chile | Apps del Sur',
       description:
-        'Agente IA para estudios jurídicos: filtra consultas, agenda primera reunión, hace seguimiento de causas y cumple Ley 21.719. Califica leads B2B con criterios jurídicos. Implementación 3-4 semanas. Financiable con CRECE SERCOTEC.',
+        'Agente IA para estudios jurídicos: filtra consultas, agenda primera reunión, hace seguimiento de causas y se configura considerando la Ley 21.719. Califica leads B2B con criterios jurídicos. Implementación 3-4 semanas. Financiable con CRECE SERCOTEC.',
       keywords:
         'agente IA abogados Chile, software estudio jurídico, agendamiento abogado WhatsApp, seguimiento causa, calificación consulta legal',
       ogTitle: 'Agentes IA para Abogados — Apps del Sur',
       ogDescription:
-        'Filtra consultas, agenda primera reunión, hace seguimiento de causas. Cumple Ley 21.719.',
+        'Filtra consultas, agenda primera reunión, hace seguimiento de causas. Pensado para datos sensibles (Ley 21.719).',
     },
     hero: {
       badge: '⚖️ Estudios jurídicos · Abogados pyme',
@@ -692,7 +693,7 @@ export const sectorPages: Record<string, AgentPage> = {
         { from: 'cliente', text: 'Mañana 17:00 Zoom', time: '20:18' },
         {
           from: 'agente',
-          text: 'Confirmado ✅ Le envío link Zoom y le pido por favor que traiga finiquito, contrato y últimas 3 liquidaciones. (Datos manejados según Ley 21.719)',
+          text: 'Confirmado ✅ Le envío link Zoom y le pido por favor que traiga finiquito, contrato y últimas 3 liquidaciones. (Usamos sus datos para gestionar su consulta)',
           time: '20:18',
         },
       ],
@@ -713,7 +714,7 @@ export const sectorPages: Record<string, AgentPage> = {
       {
         icon: 'shield',
         title: 'Datos sensibles en WhatsApp personal',
-        description: 'Información clínica, financiera y procesal en chats sin cifrar ni respaldar. Riesgo Ley 21.719.',
+        description: 'Información clínica, financiera y procesal en chats personales, sin control de acceso ni respaldo formal. Riesgo frente a la Ley 21.719.',
         metric: 'Ley',
       },
     ],
@@ -762,7 +763,7 @@ export const sectorPages: Record<string, AgentPage> = {
           fondo: 'SERCOTEC CRECE',
           highlight: true,
           features: [
-            'Calificación + Agendamiento + Compliance Ley 21.719',
+            'Calificación + Agendamiento + apoyo técnico Ley 21.719',
             'Integración Google Calendar',
             'Hasta 4 abogados',
             'Seguimiento causas básico',
@@ -812,8 +813,8 @@ export const sectorPages: Record<string, AgentPage> = {
         a: 'No. Está configurado explícitamente para NO dar opiniones jurídicas. Recopila información, explica condiciones generales del estudio (honorarios, modalidades) y deriva al abogado para todo lo sustantivo.',
       },
       {
-        q: '¿Cumple secreto profesional y Ley 21.719?',
-        a: 'Sí. Conversaciones cifradas, almacenamiento conforme a Ley 21.719, no compartidas con terceros, eliminación a solicitud.',
+        q: '¿Cumple con el secreto profesional y la Ley 21.719?',
+        a: 'Esa evaluación le corresponde a su estudio. Lo técnico lo resolvemos: conversaciones cifradas, acceso solo para los proveedores que operan el servicio y un canal para solicitudes de supresión, documentado para su revisión.',
       },
       {
         q: '¿Se conecta con LegisChile, Vlex, sistema de causas?',

@@ -2,6 +2,7 @@
 title: "IA por WhatsApp para peluquerías: cómo ordenar tu agenda"
 description: "Consultas, reservas y recordatorios: qué automatizar en una peluquería y qué mantener bajo revisión del equipo."
 pubDate: 2026-05-17T15:40:00-04:00
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "9 min"
 heroAlt: "Pantalla de WhatsApp con agente IA agendando cita en peluquería chilena con calendario de profesionales"
@@ -117,14 +118,14 @@ Para cadenas con ventas anuales mayores a UF 25.000. Permite proyectos más gran
 
 ## Marco legal chileno: Ley 21.719
 
-Aunque las peluquerías no manejan "datos sensibles" (a diferencia de clínicas), sí manejan datos personales: nombre, teléfono, historial de servicios. La nueva Ley 21.719 (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite) exige:
+Aunque las peluquerías normalmente no manejan "datos sensibles" (a diferencia de clínicas), sí manejan datos personales: nombre, teléfono, historial de servicios. La nueva Ley 21.719 (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite) pide, entre otras cosas:
 
-- **Consentimiento al pedir el dato** ("¿Acepta recibir recordatorios y promociones?").
-- **Opt-out fácil** en cualquier mensaje.
-- **No vender bases de datos** a terceros.
+- **Una base legal para cada uso.** Atender una reserva no es lo mismo que enviar promociones. Para promociones, lo más claro es un consentimiento aparte ("¿Acepta recibir promociones?").
+- **Respetar la oposición.** La persona siempre puede oponerse al marketing directo, así que conviene darle una salida fácil en cada mensaje.
+- **No ceder bases de datos** a terceros sin una base legal.
 - **Multas que pueden llegar a 20.000 UTM**, según la gravedad de la infracción.
 
-Use solo soluciones con WhatsApp Business API oficial (Meta Cloud API). Las opciones grises (whatsapp-web.js, baileys) violan Términos de Servicio de Meta y no cumplen la ley chilena.
+Use solo soluciones con WhatsApp Business API oficial (Meta Cloud API). Las opciones grises (whatsapp-web.js, baileys) violan Términos de Servicio de Meta. La API oficial tampoco asegura por sí sola que cumpla la ley: eso depende de cómo su negocio trate los datos. Lo explicamos en [la guía de la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/). No somos abogados: esto es informativo y no reemplaza una asesoría legal.
 
 ## Preguntas frecuentes
 

@@ -2,6 +2,7 @@
 title: "IA por WhatsApp para clínicas dentales: agenda y recordatorios"
 description: "Cómo diseñar reservas y recordatorios con IA, definir derivación al equipo y medir asistencia en una clínica dental."
 pubDate: 2026-05-17T15:00:00-04:00
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "10 min"
 heroAlt: "Pantalla de WhatsApp con agente IA agendando hora dental y calendario digital de clínica chilena"
@@ -98,14 +99,14 @@ Use SaaS si quiere probar antes de comprar, o si no califica para fondos públic
 
 ## Marco legal en Chile: Ley 21.719 de Datos Personales
 
-Las clínicas dentales manejan datos de salud, considerados "datos sensibles" bajo la nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite). Un agente bien implementado:
+Las clínicas dentales manejan datos de salud, considerados "datos sensibles" bajo la nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite). Un agente bien implementado puede ayudarle a:
 
-- Solicita consentimiento explícito en la primera conversación.
-- Almacena datos en servidores con base legal documentada.
-- Permite al paciente ejercer derechos ARCO (Acceso, Rectificación, Cancelación, Oposición).
-- No comparte datos con terceros sin autorización.
+- Informar para qué se usan los datos y pedir consentimiento expreso cuando corresponda.
+- Proteger los datos con medidas adecuadas al riesgo, como cifrado y control de accesos.
+- Recibir y registrar solicitudes de acceso, rectificación, supresión u oposición.
+- No compartir datos con terceros sin una base legal, y tener contrato con los proveedores que los tratan por encargo.
 
-Esto no es opcional. Si su clínica usa una herramienta que no cumple, las multas pueden llegar a 20.000 UTM. Asegúrese de que el proveedor le entregue la documentación de cumplimiento.
+La responsable de los datos es la clínica, no el proveedor, y una herramienta por sí sola no la deja cumpliendo. Las multas por infracciones gravísimas pueden llegar a 20.000 UTM. Pida al proveedor que documente cómo trata los datos y revise la parte legal con un abogado. Más detalle en [datos sensibles por sector](/blog/ley-21719-datos-sensibles-sectores-chile-2026/).
 
 ## Integraciones que importan en el mundo dental chileno
 

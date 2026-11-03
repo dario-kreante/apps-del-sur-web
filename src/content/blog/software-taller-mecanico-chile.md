@@ -2,6 +2,7 @@
 title: "Software para taller mecánico en Chile: deja el cuaderno y la pizarra"
 description: "Órdenes de trabajo con fotos, presupuestos aprobados por WhatsApp e historial por patente. Cuándo basta un software genérico y cuándo uno a medida."
 pubDate: 2026-08-18
+updatedDate: 2026-11-03T17:00:00-03:00
 author: "Darío Ramírez"
 readingTime: "9 min"
 heroAlt: "Mecánico en un taller registrando una orden de trabajo con fotos desde el celular junto a un auto en el elevador"
@@ -51,7 +52,7 @@ En la práctica, un buen sistema para un taller de 2 a 15 mecánicos hace cuatro
 
 **El resultado esperado.** Respondes en segundos si esa bomba de agua ya se cambió y cuándo. Puedes avisarle a un cliente que le toca la mantención por kilometraje o fecha, lo que trae al cliente de vuelta. El control de repuestos funciona solo si se registra cada salida; si el equipo saca piezas "por mientras" sin anotarlas, el stock del sistema deja de servir en semanas.
 
-Un detalle importante: patentes, nombres y teléfonos son datos personales. La Ley 21.719 de protección de datos, cuya fecha vigente es el 1 de diciembre de 2026, con una prórroga en trámite, exige cuidarlos y usarlos solo para lo que el cliente autorizó. Lo revisamos en nuestra guía sobre [la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
+Un detalle importante: patentes, nombres y teléfonos son datos personales. La Ley 21.719 de protección de datos, cuya fecha vigente es el 1 de diciembre de 2026, con una prórroga en trámite, exige cuidarlos, tener una base legal para cada uso e informar para qué los usas. Lo revisamos en nuestra guía sobre [la Ley 21.719 para pymes](/blog/ley-21719-proteccion-datos-pymes-chile-2026/).
 
 ## ¿Software genérico de talleres o algo a medida?
 
