@@ -98,7 +98,7 @@ Use SaaS si quiere probar antes de comprar, o si no califica para fondos públic
 
 ## Marco legal en Chile: Ley 21.719 de Datos Personales
 
-Las clínicas dentales manejan datos de salud, considerados "datos sensibles" bajo la nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1208515) (entrada en vigencia diciembre 2026). Un agente bien implementado:
+Las clínicas dentales manejan datos de salud, considerados "datos sensibles" bajo la nueva [Ley 21.719](https://www.bcn.cl/leychile/navegar?idNorma=1209272) (fecha vigente: 1 de diciembre de 2026, con prórroga en trámite). Un agente bien implementado:
 
 - Solicita consentimiento explícito en la primera conversación.
 - Almacena datos en servidores con base legal documentada.

@@ -98,6 +98,8 @@
 .assessment-field input, .assessment-field select { min-height: 45px; width: 100%; padding: .65rem .75rem; border: 1px solid #ccd9ce; border-radius: .55rem; background: #fff; color: #24332b; font: inherit; }
 .assessment-consent { display: flex; align-items: flex-start; gap: .6rem; color: #5d6b61; font-size: .79rem; line-height: 1.45; }
 .assessment-consent input { margin-top: .15rem; accent-color: var(--assessment-green); }
+.assessment-consent + .assessment-consent { margin-top: .6rem; }
+.assessment-consent a { text-decoration: underline; }
 .assessment-error { margin: .8rem 0 0; color: #9a3412; background: #fff7ed; border: 1px solid #fed7aa; border-radius: .6rem; padding: .7rem; font-size: .86rem; }
 .assessment-success { margin: .8rem 0 0; color: #14532d; background: #effaf1; border: 1px solid #bbdfc1; border-radius: .6rem; padding: .8rem; font-size: .88rem; }
 .assessment-more { width: min(calc(100% - 2.5rem), 850px); margin: 0 auto 3rem; color: #58675e; line-height: 1.7; }

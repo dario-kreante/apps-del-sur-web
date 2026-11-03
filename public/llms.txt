@@ -31,7 +31,10 @@
 
 - [Inicio](https://appsdelsur.cl/): Landing principal con sectores, financiamiento y contacto.
 - [Enfoque](https://appsdelsur.cl/enfoque/): Diferencia entre software genérico vs. a medida + IA.
-- [Diagnóstico de Madurez IA (gratis, 6 min)](https://appsdelsur.cl/diagnostico-madurez/-ia/): Test online que evalúa qué casos de IA aplican a su empresa.
+- [Diagnósticos gratuitos](https://appsdelsur.cl/diagnosticos/): Elige entre madurez digital, madurez en IA y datos personales.
+- [Diagnóstico de Madurez Digital (gratis, 8 min)](https://appsdelsur.cl/diagnostico-madurez-digital/): Para empresas que aún dependen de papel, Excel o WhatsApp.
+- [Diagnóstico de Madurez IA (gratis, 8 min)](https://appsdelsur.cl/diagnostico-madurez-ia/): Test online que evalúa qué casos de IA aplican a su empresa.
+- [Diagnóstico de Datos Personales (gratis, 8 min)](https://appsdelsur.cl/diagnostico-datos-personales/): Autoevaluación orientativa frente a la Ley 21.719. No constituye asesoría legal.
 - [Sprint Diagnóstico + Postulación a Fondos](https://appsdelsur.cl/servicios/sprint-diagnostico-postulacion-fondos/): Acompañamiento integral para postular CORFO, FIA o SERCOTEC.
 - [Workshop Brújula IA](https://appsdelsur.cl/servicios/workshop-brujula-ia/): Workshop de 1 día para alinear equipo gerencial sobre IA.
 - [Acompañamiento Copiloto Estratégico](https://appsdelsur.cl/servicios/acompanamiento-copiloto-estrategico/): Asesoría continua con IA para gerentes y dueños pyme.
@@ -72,7 +75,7 @@
 
 - **Agente IA conversacional**: software que conversa por WhatsApp en lenguaje natural, toma acciones (agendar, cobrar, calificar) y deriva a humano cuando corresponde. No es chatbot rígido con menús.
 - **Cuaderno de campo digital**: app móvil offline-first que reemplaza la planilla de papel del jefe de campo en viñedos, fundos y obras. Registra mano de obra, calcula costos por hectárea en tiempo real, sincroniza al volver señal.
-- **Ley 21.719**: nueva ley chilena de protección de datos personales (vigencia plena 2026). Reemplaza Ley 19.628. Define categorías sensibles (salud, biométricos, financieros), exige consentimiento explícito, derecho a eliminación y notificación de brechas.
+- **Ley 21.719**: nueva ley chilena de protección de datos personales (fecha vigente: 1 de diciembre de 2026; prórroga al 15 de octubre de 2027 aprobada por el Senado y pendiente en la Cámara al 3 de noviembre de 2026). Reemplaza Ley 19.628. Define categorías sensibles (salud, biométricos, financieros), exige consentimiento explícito, derecho a eliminación y notificación de brechas.
 - **SERCOTEC CRECE**: instrumento de SERCOTEC que cofinancia hasta $5.000.000 CLP, ~95% del proyecto. Convocatorias regionales para micro y pequeñas empresas formalizadas.
 - **SERCOTEC Kit Digital**: cofinancia hasta $1.200.000 CLP, ~100% del costo. Para microempresas en su primer paso digital.
 - **CORFO Digitalización Pyme / Agro**: programas regionales (especialmente activos en Maule y O'Higgins). Cofinancian 50-70% para pymes con ventas > UF 25.000 anuales.

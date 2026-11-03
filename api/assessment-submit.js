@@ -1,3 +1,5 @@
+import { signReportId } from './_lib/report-token.js';
+
 const DEFAULT_TABLE_NAME = 'Assessment Leads';
 const ASSESSMENT_DIMENSIONS = {
   ia: [
@@ -33,10 +35,13 @@ const ASSESSMENT_TITLES = {
   datos: 'Diagnóstico de Datos Personales',
 };
 const ASSESSMENT_STAGES = { ia: ['Analógica', 'Principiante', 'Intermedia', 'Líder en IA'], digital: ['Papel y WhatsApp', 'Digital Básica', 'Digital Conectada', 'Digital Optimizada'], datos: ['Expuesta', 'Inicial', 'Encaminada', 'Preparada'] };
+// Version of the consent wording shown in the form; lets us prove what each person accepted.
+const CONSENT_VERSION = '2026-11-03';
+
 const EMAIL_COPY = {
   ia: { heading: 'Tu informe está listo', stage: 'Tu etapa', score: 'Puntaje', cta: 'Abrir mi informe', closing: 'Puedes responder este correo si quieres conversar sobre los próximos pasos.', disclaimer: 'Este diagnóstico es una autoevaluación orientativa.' },
   digital: { heading: 'Tu informe está listo', stage: 'Tu etapa', score: 'Puntaje', cta: 'Abrir mi informe', closing: 'Puedes responder este correo si quieres conversar sobre los próximos pasos.', disclaimer: 'Este diagnóstico es una autoevaluación orientativa.' },
-  datos: { heading: 'Su informe está listo', stage: 'Su etapa', score: 'Puntaje', cta: 'Abrir mi informe', closing: 'Puede responder este correo si quiere conversar sobre los próximos pasos.', disclaimer: 'Este diagnóstico es orientativo y no constituye asesoría legal.' },
+  datos: { heading: 'Su informe está listo', stage: 'Su etapa', score: 'Puntaje', cta: 'Abrir mi informe', closing: 'Puede responder este correo si quiere conversar sobre los próximos pasos.', disclaimer: 'Este diagnóstico es orientativo, no constituye asesoría legal y no certifica el cumplimiento de la Ley 21.719.' },
 };
 const BREVO_EMAIL_URL = 'https://api.brevo.com/v3/smtp/email';
 const DEFAULT_EMAIL_FROM = 'contacto@appsdelsur.cl';
@@ -113,6 +118,7 @@ function readConfig(req) {
     brevoKey: normalizeEnv(process.env.BREVO_API_KEY),
     emailFrom: normalizeEnv(process.env.ASSESSMENT_EMAIL_FROM) || DEFAULT_EMAIL_FROM,
     turnstileSecret: normalizeEnv(process.env.TURNSTILE_SECRET_KEY),
+    reportSecret: normalizeEnv(process.env.ASSESSMENT_REPORT_SECRET),
   };
 }
 
@@ -164,6 +170,8 @@ function normalizePayload(payload) {
     brechaInterna: clean(fields['Brecha Interna']),
     resumen: clean(fields['Resumen del Diagnostico']),
     consentimiento: clean(fields.Consentimiento),
+    consentimientoEstudio: clean(fields['Consentimiento Estudio']) === 'Aceptado',
+    consentimientoComercial: clean(fields['Consentimiento Comercial']) === 'Aceptado',
     answers,
     dimensions,
     rawFields: fields,
@@ -245,7 +253,8 @@ async function createAirtableRecord(config, lead) {
   });
 
   const recordId = created.records?.[0]?.id;
-  const reportUrl = recordId ? `${config.siteUrl}/api/assessment-report?id=${encodeURIComponent(recordId)}` : '';
+  const reportToken = recordId && config.reportSecret ? `&t=${signReportId(config.reportSecret, recordId)}` : '';
+  const reportUrl = recordId ? `${config.siteUrl}/api/assessment-report?id=${encodeURIComponent(recordId)}${reportToken}` : '';
 
   if (!recordId || !reportUrl) throw new Error('Airtable did not return a record ID');
   await updateAirtableRecord(config, recordId, { 'Reporte URL': reportUrl });
@@ -279,9 +288,12 @@ function airtableFields(lead, reportUrl) {
     'Prioridad': lead.prioridad,
     'Brecha Interna': Number.parseFloat(lead.brechaInterna) || null,
     'Reporte URL': reportUrl,
-    'Respuestas JSON': JSON.stringify({ version: 1, assessmentType: lead.assessmentType, consentimiento: lead.consentimiento, dimensions: lead.dimensions, answers: lead.answers }),
+    'Respuestas JSON': JSON.stringify({ version: 1, assessmentType: lead.assessmentType, consentimiento: lead.consentimiento, consentimientoEstudio: lead.consentimientoEstudio, consentimientoComercial: lead.consentimientoComercial, consentimientoVersion: CONSENT_VERSION, dimensions: lead.dimensions, answers: lead.answers }),
     'Resumen': lead.resumen,
     'Estado CRM': 'Nuevo',
+    'Consentimiento Estudio': lead.consentimientoEstudio,
+    'Consentimiento Comercial': lead.consentimientoComercial,
+    'Version Consentimiento': CONSENT_VERSION,
   };
   // These existing Airtable columns are specific to the IA assessment. Keep
   // them accurate for legacy reports and store Digital dimensions in Respuestas JSON.

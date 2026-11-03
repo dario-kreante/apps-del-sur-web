@@ -66,7 +66,7 @@ Dos cuidados importantes. Primero, el asistente no recomienda medicamentos ni re
 
 ## Datos de salud: lo que cambia con la Ley 21.719
 
-Una farmacia maneja datos de salud todos los días: recetas, tratamientos, historial de compras de medicamentos. Bajo la Ley 21.719, los datos de salud son **datos sensibles**, con exigencias reforzadas de consentimiento y seguridad. La ley entra en vigencia el 1 de diciembre de 2026. El Gobierno ingresó el 1 de septiembre de 2026 un proyecto (boletín 18.623-07) para postergarla un año, pero mientras no se apruebe y publique, la fecha vigente sigue siendo diciembre de 2026.
+Una farmacia maneja datos de salud todos los días: recetas, tratamientos, historial de compras de medicamentos. Bajo la Ley 21.719, los datos de salud son **datos sensibles**, con exigencias reforzadas de consentimiento y seguridad. La ley tiene como fecha vigente el 1 de diciembre de 2026, con una prórroga en trámite. El Gobierno ingresó el 1 de septiembre de 2026 un proyecto (boletín 18.623-07) para postergarla un año, pero mientras no se apruebe y publique, la fecha vigente sigue siendo diciembre de 2026.
 
 En la práctica, antes de implementar cualquier herramienta:
 

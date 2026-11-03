@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import submit from '../api/assessment-submit.js';
 import report from '../api/assessment-report.js';
+import baja from '../api/baja.js';
 const actualFetch = globalThis.fetch;
 const records = new Map();
 const emails = [];
@@ -59,6 +60,7 @@ http.createServer(async (req,res)=>{
   if(req.url.startsWith('/__qa/status')) { res.setHeader('Content-Type','application/json'); res.end(JSON.stringify({records:[...records.values()],emails})); return; }
   if(req.url.startsWith('/api/assessment-submit')) { await submit(req,res); return; }
   if(req.url.startsWith('/api/assessment-report')) { await report(req,res); return; }
+  if(req.url.startsWith('/api/baja')) { await baja(req,res); return; }
   if (process.env.QA_STATIC === '1') {
    const root = resolve('.vercel/output/static');
    let path = resolve(root, '.' + new URL(req.url, 'http://localhost').pathname);

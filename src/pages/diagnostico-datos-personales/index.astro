@@ -4,6 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import Assessment from '../../components/Assessment.astro';
 import assessments from '../../data/assessments.json';
+import { LEY_21719_ESTADO } from '../../data/ley21719';
 
 const title = 'Diagnóstico de Datos Personales para empresas chilenas';
 const description = 'Responda 20 preguntas en 8 minutos y vea cómo está su empresa frente a la Ley 21.719: qué datos tiene, dónde los guarda y quién puede verlos. Gratis y orientativo.';
@@ -19,11 +20,12 @@ const dimensions = dimKeys.map((key) => ({
   count: questions.filter((question) => question.dim === key).length,
 }));
 const faqs = [
+  { q: '¿Cuándo entra en vigencia la ley?', a: `${LEY_21719_ESTADO} La postergación movería la fecha, no las obligaciones.` },
   { q: '¿Cuánto tiempo toma?', a: `Son ${questions.length} preguntas de selección y toma unos 8 minutos. Sus respuestas quedan guardadas en el navegador, así que puede continuar después.` },
   { q: '¿Tiene costo?', a: 'No. El diagnóstico es gratuito y ve su resultado al terminar, sin entregar sus datos. Si quiere recibir el informe en su correo, puede completar el formulario final.' },
   { q: '¿Quién debería responderlo?', a: 'El dueño, el gerente o quien administra los sistemas. Si lo responden dos personas por separado, comparar los resultados suele ser revelador.' },
-  { q: '¿Reemplaza una revisión técnica o a un abogado?', a: 'No. Es una autoevaluación orientativa y no constituye asesoría legal. La interpretación legal, las políticas y los contratos los ve un abogado.' },
-  { q: '¿Qué hacen con mis respuestas?', a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo.' },
+  { q: '¿Reemplaza una revisión técnica o a un abogado?', a: 'No. Es una autoevaluación orientativa basada en sus propias respuestas: no constituye asesoría legal y no certifica el cumplimiento de la ley. Un puntaje alto no garantiza que su empresa cumpla. La interpretación legal, las políticas y los contratos los ve un abogado.' },
+  { q: '¿Qué hacen con mis respuestas?', a: 'Quedan en su navegador. Solo las recibimos si completa y acepta el formulario final, para registrar su diagnóstico, enviarle el informe por correo y contactarlo. Participar en el estudio y recibir información comercial son opciones separadas y voluntarias.' },
 ];
 const faqJsonLd = JSON.stringify({
   '@context': 'https://schema.org', '@type': 'FAQPage',

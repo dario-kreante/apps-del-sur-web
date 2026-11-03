@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "test:assessment-api": "node --test tests/assessment-api.test.js tests/assessment-content.test.js",
+    "test:assessment-api": "node --test tests/assessment-api.test.js tests/assessment-content.test.js tests/baja.test.js",
     "preview": "astro preview",
     "astro": "astro",
     "test:agent": "node --test tests/agent-tooling.test.js",

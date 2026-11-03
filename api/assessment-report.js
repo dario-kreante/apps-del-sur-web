@@ -1,8 +1,10 @@
+import { isValidReportToken } from './_lib/report-token.js';
+
 const DEFAULT_TABLE_NAME = 'Assessment Leads';
 const REPORT_COPY = {
   ia: { title: 'Diagnóstico de Madurez en IA', heading: 'Tu resultado y próximos pasos', company: 'Datos de tu empresa', route: 'Tu ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: '' },
   digital: { title: 'Diagnóstico de Madurez Digital', heading: 'Tu resultado y próximos pasos', company: 'Datos de tu empresa', route: 'Tu ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: '' },
-  datos: { title: 'Diagnóstico de Datos Personales', heading: 'Su resultado y próximos pasos', company: 'Datos de su empresa', route: 'Su ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: 'Este diagnóstico es orientativo y no constituye asesoría legal.' },
+  datos: { title: 'Diagnóstico de Datos Personales', heading: 'Su resultado y próximos pasos', company: 'Datos de su empresa', route: 'Su ruta de mejora', noRoute: 'No hay una ruta de mejora guardada para este informe.', answers: 'Respuestas del diagnóstico', disclaimer: 'Este diagnóstico es orientativo, no constituye asesoría legal y no certifica el cumplimiento de la Ley 21.719.' },
 };
 
 export default async function handler(req, res) {
@@ -12,7 +14,8 @@ export default async function handler(req, res) {
     res.end('Metodo no permitido');
     return;
   }
-  const id = new URL(req.url, 'https://appsdelsur.cl').searchParams.get('id');
+  const params = new URL(req.url, 'https://appsdelsur.cl').searchParams;
+  const id = params.get('id');
   if (!id || !/^rec[a-zA-Z0-9]+$/.test(id)) {
     res.statusCode = 400;
     res.end('Reporte no encontrado');
@@ -24,6 +27,7 @@ export default async function handler(req, res) {
     airtableKey: normalizeEnv(process.env.AIRTABLE_API_KEY),
     airtableBaseId: normalizeEnv(process.env.AIRTABLE_BASE_ID),
     airtableTable: normalizeEnv(process.env.AIRTABLE_ASSESSMENT_TABLE) || DEFAULT_TABLE_NAME,
+    reportSecret: normalizeEnv(process.env.ASSESSMENT_REPORT_SECRET),
   };
 
   if (!config.airtableKey || !config.airtableBaseId) {
@@ -34,9 +38,18 @@ export default async function handler(req, res) {
 
   try {
     const record = await fetchRecord(config, id);
+    // Links issued before signing have no token in their stored URL and must keep opening.
+    const isSigned = /[?&]t=/.test(String(record.fields?.['Reporte URL'] || ''));
+    if (config.reportSecret && isSigned && !isValidReportToken(config.reportSecret, id, params.get('t'))) {
+      res.statusCode = 404;
+      res.end('Reporte no encontrado');
+      return;
+    }
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    res.setHeader('Cache-Control', 'private, no-store');
+    res.setHeader('Referrer-Policy', 'no-referrer');
     res.end(renderReport(record.fields || {}, id));
   } catch (error) {
     console.error('assessment-report failed', error);
