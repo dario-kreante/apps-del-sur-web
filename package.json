@@ -10,7 +10,11 @@
     "build": "astro build",
     "test:assessment-api": "node --test tests/assessment-api.test.js tests/assessment-content.test.js",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:agent": "node --test tests/agent-tooling.test.js",
+    "test:e2e": "playwright test",
+    "preview:deploy": "node scripts/agent/preview-deploy.mjs",
+    "worktree:new": "node scripts/agent/new-worktree.mjs"
   },
   "dependencies": {
     "@astrojs/vercel": "^10.0.8",
@@ -19,5 +23,8 @@
     "astro": "^6.0.4",
     "jspdf": "^4.2.1",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
   }
 }
