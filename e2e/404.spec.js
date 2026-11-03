@@ -6,6 +6,19 @@ test.beforeEach(async ({ page }) => {
 
 test.use({ viewport: { width: 375, height: 667 } });
 
+test('la página 404 no aparece en el sitemap generado por el build', async ({ request }) => {
+  const response = await request.get('/sitemap.xml');
+  expect(response.ok()).toBe(true);
+  const xml = await response.text();
+
+  // Guarda contra un sitemap vacío: debe listar URLs reales.
+  const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  expect(locs).toContain('https://appsdelsur.cl/');
+
+  const paths = locs.map((loc) => new URL(loc).pathname.replace(/\/$/, '').replace(/\.html$/, ''));
+  expect(paths).not.toContain('/404');
+});
+
 test('la página 404 muestra título, enlaces, contacto y no desborda en teléfono', async ({ page }) => {
   await page.goto('/404.html');
 
