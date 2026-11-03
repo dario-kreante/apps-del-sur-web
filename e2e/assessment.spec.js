@@ -96,6 +96,16 @@ for (const assessment of ASSESSMENTS) {
   });
 }
 
+test('the invitation link is stored with the submitted lead', async ({ page, request }) => {
+  await completeAssessment(page, '/diagnostico-madurez-digital/?source=ADS-2026-01-A-abc123', 2);
+  const form = await fillLead(page);
+  const submitted = page.waitForResponse('**/api/assessment-submit');
+  await form.getByRole('button', { name: 'Enviar mis datos' }).click();
+  expect((await submitted).status()).toBe(200);
+  const { records } = await (await request.get('/__qa/status')).json();
+  expect(records.at(-1).fields['Fuente campaña']).toBe('ADS-2026-01-A-abc123');
+});
+
 test('one assessment does not touch the progress of another', async ({ page }) => {
   await start(page, '/diagnostico-madurez-ia/');
   await answerQuestions(page, 3, 2);

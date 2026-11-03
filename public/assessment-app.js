@@ -211,7 +211,7 @@
     });
     $('#assessment-restart')?.addEventListener('click', () => {
       if (!window.confirm(voice('¿Borrar tus respuestas guardadas y empezar de nuevo?', '¿Borrar sus respuestas guardadas y empezar de nuevo?'))) return;
-      state = blank(); render();
+      state = { ...blank(), campaignSource: state.campaignSource }; render();
     });
   }
   function renderSticky() {
@@ -367,7 +367,7 @@
     $('#assessment-review').addEventListener('click', () => { state.screen = 'quiz'; state.idx = 0; render(); focusQuestion(); });
     $('#assessment-reset').addEventListener('click', () => {
       if (!window.confirm('¿Borrar las respuestas y el plan guardado en este navegador?')) return;
-      state = blank(); render();
+      state = { ...blank(), campaignSource: state.campaignSource }; render();
     });
     $('#assessment-lead-form').addEventListener('submit', (event) => submitLead(event, result));
     mountTurnstile();
@@ -447,6 +447,7 @@
       Consentimiento: 'Aceptado',
       'Consentimiento Estudio': formValues.ConsentimientoEstudio ? 'Aceptado' : 'No',
       'Consentimiento Comercial': formValues.ConsentimientoComercial ? 'Aceptado' : 'No',
+      ...(state.campaignSource ? { 'Fuente campaña': state.campaignSource } : {}),
     };
     result.perDim.forEach((dim) => { fields[`Etapa ${dim.label}`] = `${dim.stage} — ${stages[dim.stage - 1]} (avg ${dim.avg.toFixed(2)})`; });
     button.disabled = true; button.textContent = 'Enviando…';
