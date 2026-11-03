@@ -31,7 +31,20 @@ El reporte se entrega como página HTML con los datos de empresa, la ruta de mej
 | `failed` | Brevo rechazó el envío o no respondió en 8 segundos. El lead queda guardado y la interfaz muestra el enlace |
 | `not_sent_by_api` | `BREVO_API_KEY` no está configurada |
 
-La interfaz solo afirma el envío con `emailSent: true`. El contenido se calcula en el servidor y no incluye texto libre del formulario, porque el endpoint es público. Aún no tiene límite de envíos por IP ni captcha.
+La interfaz solo afirma el envío con `emailSent: true`. El contenido se calcula en el servidor y no incluye texto libre del formulario, porque el endpoint es público.
+
+## Protección contra abuso
+
+Antes de tocar Airtable o Brevo, el endpoint comprueba dos cosas:
+
+| Control | Si falla |
+| --- | --- |
+| Token de Cloudflare Turnstile, verificado en el servidor | 403 `bot_check_failed`, o 503 `bot_check_unavailable` si Cloudflare no responde |
+| Máximo 5 envíos por correo en 24 horas, contados en Airtable | 429 `too_many_requests` |
+
+Ninguno de esos casos guarda el lead ni envía correo. Sin `TURNSTILE_SECRET_KEY` el lead se guarda, pero no sale correo: `emailStatus` queda en `not_sent_by_api`. Publica las dos variables juntas: con el secreto y sin `PUBLIC_TURNSTILE_SITE_KEY` en el build, el formulario no muestra el widget y todo envío recibe 403.
+
+No hay límite por IP: una persona podría enviar a direcciones distintas una por una.
 
 ## Variables de entorno
 
@@ -43,6 +56,8 @@ AIRTABLE_BASE_ID=
 AIRTABLE_ASSESSMENT_TABLE=Assessment Leads
 PUBLIC_SITE_URL=https://appsdelsur.cl
 BREVO_API_KEY=
+TURNSTILE_SECRET_KEY=
+PUBLIC_TURNSTILE_SITE_KEY=
 ASSESSMENT_EMAIL_FROM=contacto@appsdelsur.cl
 ```
 

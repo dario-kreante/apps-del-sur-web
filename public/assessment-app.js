@@ -11,6 +11,9 @@
   const defaultSource = { ia: 'diagnostico-madurez-ia', digital: 'diagnostico-madurez-digital', datos: 'diagnostico-datos-personales' }[type];
   const formal = type === 'datos';
   const voice = (informalText, formalText) => (formal ? formalText : informalText);
+  const turnstileSiteKey = app.dataset.turnstileSiteKey || '';
+  let turnstileToken = null;
+  let turnstileWidget = null;
   const storageKey = `apps-del-sur-assessment-v3-${type}`;
   const legacyKeys = { ia: ['apps-del-sur-madurez-ia-v2'], digital: ['apps-del-sur-madurez-digital-v1'], datos: [] }[type];
   const $ = (selector, root) => (root || app).querySelector(selector);
@@ -351,7 +354,7 @@
         <div class="assessment-field"><label for="lead-sector">Sector *</label><select id="lead-sector" name="Sector" required><option value="">${voice('Selecciona', 'Seleccione')}…</option><option>Agrícola / Viticultura</option><option>Frutícola</option><option>Servicios</option><option>Comercio / Retail</option><option>Industrial / Manufactura</option><option>Construcción</option><option>Salud</option>${formal ? '<option>Legal</option>' : ''}<option>Educación</option><option>Otro</option></select></div>
         <div class="assessment-field"><label for="lead-size">Tamaño de empresa *</label><select id="lead-size" name="Tamano" required><option value="">${voice('Selecciona', 'Seleccione')}…</option><option>Microempresa (1-9 personas)</option><option>Pequeña (10-49 personas)</option><option>Mediana (50-199 personas)</option><option>Grande (200+ personas)</option></select></div>
         <div class="assessment-field"><label for="lead-region">Región</label><select id="lead-region" name="Region"><option value="">${voice('Selecciona', 'Seleccione')}…</option><option>Metropolitana</option><option>Valparaíso</option><option>O'Higgins</option><option>Maule</option><option>Ñuble</option><option>Biobío</option><option>Araucanía</option><option>Los Ríos</option><option>Los Lagos</option><option>Otra</option></select></div>
-      </div><label class="assessment-consent"><input name="Consentimiento" type="checkbox" required><span>Acepto que Apps del Sur procese estos datos para registrar mi diagnóstico, enviarme el informe por correo y contactarme respecto de esta solicitud. Puedo pedir que eliminen mis datos.</span></label><p id="assessment-form-message" aria-live="polite" role="status"></p><div class="assessment-actions" style="margin-top:1rem"><button type="submit" class="assessment-button">Enviar mis datos</button></div></form></section>
+      </div><label class="assessment-consent"><input name="Consentimiento" type="checkbox" required><span>Acepto que Apps del Sur procese estos datos para registrar mi diagnóstico, enviarme el informe por correo y contactarme respecto de esta solicitud. Puedo pedir que eliminen mis datos.</span></label>${turnstileSiteKey ? '<div id="assessment-turnstile" style="margin-top:.85rem"></div>' : ''}<p id="assessment-form-message" aria-live="polite" role="status"></p><div class="assessment-actions" style="margin-top:1rem"><button type="submit" class="assessment-button">Enviar mis datos</button></div></form></section>
       <div class="assessment-actions assessment-no-print" style="justify-content:flex-end;margin-top:1rem"><button id="assessment-review" class="assessment-button-secondary">← Revisar respuestas</button><button id="assessment-reset" class="assessment-button-secondary">Empezar de nuevo</button></div>`;
 
     app.querySelectorAll('[data-plan-key]').forEach((input) => input.addEventListener('change', (event) => { state.planDone[event.currentTarget.dataset.planKey] = event.currentTarget.checked; save(); }));
@@ -366,9 +369,42 @@
       state = blank(); render();
     });
     $('#assessment-lead-form').addEventListener('submit', (event) => submitLead(event, result));
+    mountTurnstile();
     const heading = app.querySelector('h1');
     heading.tabIndex = -1; heading.focus({preventScroll:true});
     window.scrollTo({top: app.getBoundingClientRect().top + window.scrollY - 82, behavior:'auto'});
+  }
+  function mountTurnstile() {
+    if (!turnstileSiteKey) return;
+    turnstileToken = null;
+    const renderWidget = () => {
+      const container = $('#assessment-turnstile');
+      if (!container || !window.turnstile) return;
+      turnstileWidget = window.turnstile.render(container, {
+        sitekey: turnstileSiteKey, language: 'es', theme: 'light',
+        callback: (token) => { turnstileToken = token; },
+        'expired-callback': () => { turnstileToken = null; },
+        'error-callback': () => { turnstileToken = null; },
+      });
+    };
+    if (window.turnstile) { renderWidget(); return; }
+    const existing = document.getElementById('assessment-turnstile-script');
+    if (existing) { existing.addEventListener('load', renderWidget); return; }
+    const script = document.createElement('script');
+    script.id = 'assessment-turnstile-script';
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.addEventListener('load', renderWidget);
+    document.head.appendChild(script);
+  }
+  function resetTurnstile() {
+    turnstileToken = null;
+    if (window.turnstile && turnstileWidget !== null) window.turnstile.reset(turnstileWidget);
+  }
+  function submitErrorMessage(code) {
+    if (code === 'bot_check_failed' || code === 'bot_check_unavailable') return voice('No pudimos hacer la verificación de seguridad. Tus respuestas y el resultado siguen aquí; inténtalo nuevamente.', 'No pudimos hacer la verificación de seguridad. Sus respuestas y el resultado siguen aquí; inténtelo nuevamente.');
+    if (code === 'too_many_requests') return voice('Ya recibimos varios envíos con este correo hoy. Tu resultado sigue aquí; inténtalo mañana o escríbenos.', 'Ya recibimos varios envíos con este correo hoy. Su resultado sigue aquí; inténtelo mañana o escríbanos.');
+    return voice('No pudimos guardar tus datos en este momento. Tus respuestas y el resultado siguen aquí; revisa tu conexión e inténtalo nuevamente.', 'No pudimos guardar sus datos en este momento. Sus respuestas y el resultado siguen aquí; revise su conexión e inténtelo nuevamente.');
   }
   function announce(message) {
     let status = $('#assessment-announce');
@@ -382,6 +418,11 @@
     const button = form.querySelector('[type="submit"]');
     message.className = ''; message.textContent = '';
     if (!form.reportValidity()) return;
+    if (turnstileSiteKey && !turnstileToken) {
+      message.className = 'assessment-error';
+      message.textContent = voice('Falta completar la verificación de seguridad. Si no aparece, revisa si un bloqueador la está impidiendo.', 'Falta completar la verificación de seguridad. Si no aparece, revise si un bloqueador la está impidiendo.');
+      return;
+    }
     const formValues = Object.fromEntries(new FormData(form).entries());
     const insights = result;
     const answersDetail = data.questions.map((question, qIdx) => {
@@ -405,7 +446,7 @@
     try {
       const response = await fetch('/api/assessment-submit', {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ fields }),
+        body: JSON.stringify({ fields, ...(turnstileToken ? { turnstileToken } : {}) }),
       });
       const responseData = await response.json().catch(() => ({}));
       if (!response.ok || responseData.ok !== true) throw new Error(responseData.error || 'submit_failed');
@@ -420,7 +461,8 @@
     } catch (error) {
       console.error('Assessment submission failed', error);
       message.className = 'assessment-error';
-      message.textContent = voice('No pudimos guardar tus datos en este momento. Tus respuestas y el resultado siguen aquí; revisa tu conexión e inténtalo nuevamente.', 'No pudimos guardar sus datos en este momento. Sus respuestas y el resultado siguen aquí; revise su conexión e inténtelo nuevamente.');
+      message.textContent = submitErrorMessage(error.message);
+      resetTurnstile();
       button.disabled = false; button.textContent = 'Reintentar envío';
     }
   }

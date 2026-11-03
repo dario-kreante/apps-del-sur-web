@@ -41,6 +41,9 @@ const EMAIL_COPY = {
 const BREVO_EMAIL_URL = 'https://api.brevo.com/v3/smtp/email';
 const DEFAULT_EMAIL_FROM = 'contacto@appsdelsur.cl';
 const EMAIL_TIMEOUT_MS = 8000;
+const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const TURNSTILE_TIMEOUT_MS = 5000;
+const MAX_SUBMISSIONS_PER_EMAIL = 5;
 const EXPOSED_STAGE_MAX_AVG = 1.6;
 const WHATSAPP_QUESTION_INDEX = 10;
 
@@ -64,15 +67,23 @@ export default async function handler(req, res) {
       return sendJson(res, 503, { ok: false, error: 'report_storage_not_configured' });
     }
 
+    const botCheck = await verifyBotCheck(config, payload.turnstileToken, req);
+    if (botCheck === 'rejected') return sendJson(res, 403, { ok: false, error: 'bot_check_failed' });
+    if (botCheck === 'unavailable') return sendJson(res, 503, { ok: false, error: 'bot_check_unavailable' });
+
     let airtable;
     try {
+      if (await countRecentSubmissions(config, lead.email) >= MAX_SUBMISSIONS_PER_EMAIL) {
+        return sendJson(res, 429, { ok: false, error: 'too_many_requests' });
+      }
       airtable = await createAirtableRecord(config, lead);
     } catch (error) {
       console.error('airtable sync failed', error);
       return sendJson(res, 502, { ok: false, error: 'report_storage_failed' });
     }
 
-    const emailStatus = await sendReportEmail(config, lead, airtable.reportUrl);
+    // Without the bot check the endpoint could send mail to anyone, so no check means no mail.
+    const emailStatus = botCheck === 'passed' ? await sendReportEmail(config, lead, airtable.reportUrl) : 'not_sent_by_api';
 
     return sendJson(res, 200, {
       ok: true,
@@ -101,6 +112,7 @@ function readConfig(req) {
     airtableTable: normalizeEnv(process.env.AIRTABLE_ASSESSMENT_TABLE) || DEFAULT_TABLE_NAME,
     brevoKey: normalizeEnv(process.env.BREVO_API_KEY),
     emailFrom: normalizeEnv(process.env.ASSESSMENT_EMAIL_FROM) || DEFAULT_EMAIL_FROM,
+    turnstileSecret: normalizeEnv(process.env.TURNSTILE_SECRET_KEY),
   };
 }
 
@@ -194,6 +206,35 @@ function validateLead(lead) {
 
 function clean(value) {
   return String(value || '').trim().slice(0, 15000);
+}
+
+async function verifyBotCheck(config, token, req) {
+  if (!config.turnstileSecret) return 'not_configured';
+  if (!token || typeof token !== 'string') return 'rejected';
+  const remoteip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim();
+  try {
+    const response = await fetch(TURNSTILE_VERIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret: config.turnstileSecret, response: token, ...(remoteip ? { remoteip } : {}) }),
+      signal: AbortSignal.timeout(TURNSTILE_TIMEOUT_MS),
+    });
+    if (!response.ok) throw new Error(`Turnstile ${response.status}`);
+    const result = await response.json();
+    return result.success === true ? 'passed' : 'rejected';
+  } catch (error) {
+    console.error('bot check unavailable', error);
+    return 'unavailable';
+  }
+}
+
+async function countRecentSubmissions(config, email) {
+  const escaped = email.toLowerCase().replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  const formula = `AND(LOWER({Email})='${escaped}', IS_AFTER({Fecha}, DATEADD(NOW(), -1, 'days')))`;
+  const query = new URLSearchParams({ filterByFormula: formula, maxRecords: String(MAX_SUBMISSIONS_PER_EMAIL) });
+  query.append('fields[]', 'Email');
+  const result = await airtableRequest(config, 'GET', `?${query}`);
+  return (result.records || []).length;
 }
 
 async function createAirtableRecord(config, lead) {

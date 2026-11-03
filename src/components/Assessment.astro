@@ -20,7 +20,7 @@ const privacyNote = type === 'datos'
     <nav class="assessment-breadcrumb" aria-label="Ruta de navegación">
       <a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/diagnosticos/">Diagnósticos</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span>
     </nav>
-    <div id="assessment-app" class="assessment-card" data-assessment-type={type}>
+    <div id="assessment-app" class="assessment-card" data-assessment-type={type} data-turnstile-site-key={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || ''}>
       <noscript>
         <h1>{title} para empresas chilenas</h1>
         <p>Este diagnóstico interactivo requiere JavaScript. Si prefieres, <a href="/#contacto">contáctanos</a> y te orientamos.</p>

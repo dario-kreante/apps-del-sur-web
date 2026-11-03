@@ -14,6 +14,10 @@ process.env.AIRTABLE_BASE_ID = 'appQaFixture';
 process.env.AIRTABLE_ASSESSMENT_TABLE = 'Assessment Leads';
 process.env.HUBSPOT_PRIVATE_APP_TOKEN = '';
 process.env.BREVO_API_KEY ||= 'qa-fixture-only';
+// Cloudflare's published test secrets: one always passes, the other always fails.
+const TURNSTILE_PASS = '1x0000000000000000000000000000000AA';
+const TURNSTILE_FAIL = '2x0000000000000000000000000000000AA';
+process.env.TURNSTILE_SECRET_KEY = TURNSTILE_PASS;
 process.env.PUBLIC_SITE_URL = 'http://127.0.0.1:4322';
 globalThis.fetch = async (url, options={}) => {
  const target = new URL(url);
@@ -30,8 +34,13 @@ globalThis.fetch = async (url, options={}) => {
    if (body.records) { for (const record of body.records) Object.assign(records.get(record.id).fields,record.fields); return Response.json({records:body.records.map(r=>records.get(r.id))}); }
    const id=target.pathname.split('/').pop(); Object.assign(records.get(id).fields,body.fields); return Response.json(records.get(id));
   }
+  if (target.searchParams.has('filterByFormula')) {
+   const email = target.searchParams.get('filterByFormula').match(/LOWER\(\{Email\}\)='([^']*)'/)?.[1];
+   return Response.json({records:[...records.values()].filter((record)=>String(record.fields.Email).toLowerCase()===email)});
+  }
   const id=target.pathname.split('/').pop(); return records.has(id) ? Response.json(records.get(id)) : Response.json({}, {status:404});
  }
+ if (target.hostname === 'challenges.cloudflare.com') return actualFetch(url,options);
  if (target.hostname === 'api.brevo.com') {
   if (process.env.QA_REAL_EMAIL === '1') return actualFetch(url,options);
   if (emailFailing) return Response.json({message:'QA intentional failure'}, {status:401});
@@ -45,6 +54,7 @@ http.createServer(async (req,res)=>{
  try {
   if(req.url.startsWith('/__qa/failure')) { failing=req.url.includes('enabled=1'); res.end(JSON.stringify({failing})); return; }
   if(req.url.startsWith('/__qa/email-failure')) { emailFailing=req.url.includes('enabled=1'); res.end(JSON.stringify({emailFailing})); return; }
+  if(req.url.startsWith('/__qa/turnstile')) { process.env.TURNSTILE_SECRET_KEY=req.url.includes('reject=1')?TURNSTILE_FAIL:TURNSTILE_PASS; res.end(JSON.stringify({reject:req.url.includes('reject=1')})); return; }
   if(req.url.startsWith('/__qa/status')) { res.setHeader('Content-Type','application/json'); res.end(JSON.stringify({records:[...records.values()],emails})); return; }
   if(req.url.startsWith('/api/assessment-submit')) { await submit(req,res); return; }
   if(req.url.startsWith('/api/assessment-report')) { await report(req,res); return; }

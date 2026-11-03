@@ -8,7 +8,7 @@ const envKeys = [
   'AIRTABLE_API_KEY', 'AIRTABLE_BASE_ID', 'AIRTABLE_ASSESSMENT_TABLE',
   'HUBSPOT_PRIVATE_APP_TOKEN', 'HUBSPOT_OWNER_ID', 'HUBSPOT_DEAL_PIPELINE',
   'HUBSPOT_DEAL_STAGE', 'PUBLIC_SITE_URL', 'ASSESSMENT_NOTIFY_EMAIL',
-  'BREVO_API_KEY', 'ASSESSMENT_EMAIL_FROM',
+  'BREVO_API_KEY', 'ASSESSMENT_EMAIL_FROM', 'TURNSTILE_SECRET_KEY',
 ];
 const originalEnv = Object.fromEntries(envKeys.map((key) => [key, process.env[key]]));
 const originalFetch = globalThis.fetch;
@@ -25,6 +25,7 @@ beforeEach(() => {
   delete process.env.HUBSPOT_DEAL_STAGE;
   delete process.env.BREVO_API_KEY;
   delete process.env.ASSESSMENT_EMAIL_FROM;
+  delete process.env.TURNSTILE_SECRET_KEY;
 });
 
 afterEach(() => {
@@ -112,6 +113,7 @@ function airtableMock() {
       return jsonResponse({ records: [{ id: 'recTest123', fields: storedFields }] });
     }
     if (String(url).includes('/recTest123')) return jsonResponse({ id: 'recTest123', fields: storedFields });
+    if (String(url).includes('filterByFormula=')) return jsonResponse({ records: [] });
     return new Response('Unexpected mocked request', { status: 500 });
   };
   return { calls, get createBody() { return createBody; }, get fields() { return storedFields; } };
@@ -261,30 +263,48 @@ for (const type of ['ia', 'digital']) {
   });
 }
 
-function emailMock({ brevoStatus = 201, airtableFails = false } = {}) {
+function emailMock({ brevoStatus = 201, airtableFails = false, recentRecords = 0, countFails = false, turnstile = { success: true } } = {}) {
   const emails = [];
+  const verifications = [];
+  const writes = [];
+  const counts = [];
   let keyHeader;
   const airtable = airtableMock();
   const airtableFetch = globalThis.fetch;
   globalThis.fetch = async (url, options = {}) => {
-    if (String(url) === 'https://api.brevo.com/v3/smtp/email') {
+    const target = String(url);
+    if (target === 'https://challenges.cloudflare.com/turnstile/v0/siteverify') {
+      verifications.push(JSON.parse(options.body));
+      if (turnstile === 'down') throw new Error('network down');
+      return jsonResponse(turnstile);
+    }
+    if (target === 'https://api.brevo.com/v3/smtp/email') {
       keyHeader = options.headers['api-key'];
       emails.push(JSON.parse(options.body));
       return new Response('{}', { status: brevoStatus });
     }
+    if (target.includes('filterByFormula=')) {
+      counts.push(decodeURIComponent(target.replace(/\+/g, ' ')));
+      if (countFails) return new Response('down', { status: 500 });
+      return jsonResponse({ records: Array.from({ length: recentRecords }, (_, index) => ({ id: `rec${index}` })) });
+    }
+    if ((options.method || 'GET') === 'POST') writes.push(target);
     if (airtableFails) return new Response('limit', { status: 422 });
     return airtableFetch(url, options);
   };
-  return { emails, airtable, get keyHeader() { return keyHeader; } };
+  return { emails, verifications, writes, counts, airtable, get keyHeader() { return keyHeader; } };
 }
 
-async function submitWithEmail(fields, mockOptions) {
+async function submitProtected(fields, mockOptions, { token = 'token-valido', headers = {} } = {}) {
   process.env.BREVO_API_KEY = 'test-brevo-key';
+  process.env.TURNSTILE_SECRET_KEY = 'test-turnstile-secret';
   const mock = emailMock(mockOptions);
   const res = responseRecorder();
-  await submitHandler({ method: 'POST', headers: { host: 'example.test' }, body: { fields } }, res);
+  const body = token ? { fields, turnstileToken: token } : { fields };
+  await submitHandler({ method: 'POST', headers: { host: 'example.test', ...headers }, body }, res);
   return { ...mock, emails: mock.emails, keyHeader: mock.keyHeader, res, body: JSON.parse(res.body) };
 }
+const submitWithEmail = submitProtected;
 
 for (const [type, title] of [['ia', 'Diagnóstico de Madurez en IA'], ['digital', 'Diagnóstico de Madurez Digital'], ['datos', 'Diagnóstico de Datos Personales']]) {
   test(`${type} sends the report by email to the submitted address`, async () => {
@@ -342,6 +362,89 @@ test('configured sender overrides the default address', async () => {
   process.env.ASSESSMENT_EMAIL_FROM = 'hola@appsdelsur.cl';
   const { emails } = await submitWithEmail(makeFields('ia'));
   assert.equal(emails[0].sender.email, 'hola@appsdelsur.cl');
+});
+
+test('a submission without a bot check token is rejected before storing or emailing', async () => {
+  const { res, body, emails, writes, verifications } = await submitProtected(makeFields('ia'), undefined, { token: null });
+  assert.equal(res.statusCode, 403);
+  assert.equal(body.error, 'bot_check_failed');
+  assert.equal(writes.length, 0);
+  assert.equal(emails.length, 0);
+  assert.equal(verifications.length, 0);
+});
+
+test('a token Cloudflare rejects stops the submission before storing or emailing', async () => {
+  const { res, body, emails, writes } = await submitProtected(makeFields('ia'), { turnstile: { success: false, 'error-codes': ['invalid-input-response'] } });
+  assert.equal(res.statusCode, 403);
+  assert.equal(body.error, 'bot_check_failed');
+  assert.equal(writes.length, 0);
+  assert.equal(emails.length, 0);
+});
+
+test('the token is verified on the server with the secret and the client IP', async () => {
+  const { verifications } = await submitProtected(makeFields('ia'), undefined, { headers: { 'x-forwarded-for': '203.0.113.9, 10.0.0.1' } });
+  assert.deepEqual(verifications, [{ secret: 'test-turnstile-secret', response: 'token-valido', remoteip: '203.0.113.9' }]);
+});
+
+test('an unreachable Cloudflare rejects with a retryable error', async () => {
+  const { res, body, emails, writes } = await submitProtected(makeFields('ia'), { turnstile: 'down' });
+  assert.equal(res.statusCode, 503);
+  assert.equal(body.error, 'bot_check_unavailable');
+  assert.equal(writes.length, 0);
+  assert.equal(emails.length, 0);
+});
+
+test('the token is not stored in Airtable', async () => {
+  const { airtable } = await submitProtected(makeFields('ia'));
+  assert.doesNotMatch(JSON.stringify(airtable.fields), /token-valido/);
+});
+
+test('without the Turnstile secret the lead is stored but no email leaves', async () => {
+  process.env.BREVO_API_KEY = 'test-brevo-key';
+  const mock = emailMock();
+  const res = responseRecorder();
+  await submitHandler({ method: 'POST', headers: { host: 'example.test' }, body: { fields: makeFields('ia') } }, res);
+  const body = JSON.parse(res.body);
+  assert.equal(res.statusCode, 200);
+  assert.equal(body.ok, true);
+  assert.equal(body.emailSent, false);
+  assert.equal(body.emailStatus, 'not_sent_by_api');
+  assert.equal(mock.emails.length, 0);
+  assert.equal(mock.writes.length, 1);
+});
+
+test('the sixth submission for an address in 24 hours is refused', async () => {
+  const { res, body, emails, writes } = await submitProtected(makeFields('ia'), { recentRecords: 5 });
+  assert.equal(res.statusCode, 429);
+  assert.equal(body.error, 'too_many_requests');
+  assert.equal(writes.length, 0);
+  assert.equal(emails.length, 0);
+});
+
+test('the fifth submission for an address in 24 hours still passes', async () => {
+  const { res, emails } = await submitProtected(makeFields('ia'), { recentRecords: 4 });
+  assert.equal(res.statusCode, 200);
+  assert.equal(emails.length, 1);
+});
+
+test('a failed count stores nothing and sends nothing', async () => {
+  const { res, emails, writes } = await submitProtected(makeFields('ia'), { countFails: true });
+  assert.equal(res.statusCode, 502);
+  assert.equal(writes.length, 0);
+  assert.equal(emails.length, 0);
+});
+
+test('the count looks at the same address in the last 24 hours', async () => {
+  const { counts } = await submitProtected({ ...makeFields('ia'), Email: 'QA@Example.test' });
+  assert.equal(counts.length, 1);
+  assert.match(counts[0], /LOWER\(\{Email\}\)='qa@example\.test'/);
+  assert.match(counts[0], /IS_AFTER\(\{Fecha\},\s*DATEADD\(NOW\(\),\s*-1,\s*'days'\)\)/);
+});
+
+test('quotes in the address cannot alter the count formula', async () => {
+  const { counts, res } = await submitProtected({ ...makeFields('ia'), Email: "o'x',1)=1@example.test" });
+  assert.equal(res.statusCode, 200);
+  assert.ok(counts[0].includes("LOWER({Email})='o\\'x\\',1)=1@example.test'"), counts[0]);
 });
 
 test('rejects incomplete assessment data before any external request', async () => {
@@ -426,7 +529,7 @@ for (const type of ['ia', 'digital']) {
     assert.equal(result.storage, 'airtable');
     assert.equal(result.airtableRecordId, 'recTest123');
     assert.equal(mock.fields['Reporte URL'], result.reportUrl);
-    assert.deepEqual(mock.calls.map(call => call.method), ['POST', 'PATCH']);
+    assert.deepEqual(mock.calls.map(call => call.method), ['GET', 'POST', 'PATCH']);
     assert.ok(mock.calls.every(call => new URL(call.url).hostname === 'api.airtable.com'));
     assert.ok(!Object.keys(result).some(key => /hubspot/i.test(key)));
     assert.ok(!Object.keys(mock.fields).some(key => /hubspot/i.test(key)));
