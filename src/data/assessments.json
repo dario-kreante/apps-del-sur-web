@@ -706,5 +706,359 @@
       "3": "Etapa 3 — Digital Conectada. Los sistemas principales conversan entre sí y las decisiones se apoyan en datos. La empresa cuenta con sistemas conectados y decisiones apoyadas en datos. La prioridad es automatizar tareas repetitivas, profesionalizar la seguridad de la información y preparar el salto a IA.",
       "4": "Etapa 4 — Digital Optimizada. La operación es digital de punta a punta y el equipo mejora sus procesos continuamente. Esta base es exactamente lo que la IA necesita para generar valor real. El siguiente paso natural: el Diagnóstico de Madurez en IA y proyectos financiables CORFO/FIA."
     }
+  },
+  "datos": {
+    "dimKeys": [
+      "inventario",
+      "transparencia",
+      "seguridad",
+      "derechos",
+      "terceros"
+    ],
+    "dimLabels": {
+      "inventario": "Conocimiento de sus datos",
+      "transparencia": "Transparencia y consentimiento",
+      "seguridad": "Accesos y seguridad",
+      "derechos": "Derechos de las personas",
+      "terceros": "Proveedores, IA e incidentes"
+    },
+    "stages": [
+      "Expuesta",
+      "Inicial",
+      "Encaminada",
+      "Preparada"
+    ],
+    "questions": [
+      {
+        "dim": "inventario",
+        "q": "¿Sabe en qué lugares guarda datos de clientes y trabajadores?",
+        "a": [
+          "No lo tenemos claro; están repartidos en celulares, correos y planillas.",
+          "Conocemos los lugares principales, pero seguro hay más.",
+          "Tenemos una lista de sistemas y planillas, aunque no está al día.",
+          "Tenemos un inventario actualizado con cada lugar y su responsable."
+        ]
+      },
+      {
+        "dim": "inventario",
+        "q": "¿Sabe para qué usa cada dato que pide? Ejemplo: si pide la fecha de nacimiento, sabe por qué la necesita.",
+        "a": [
+          "Pedimos lo que el formulario trae por defecto o \"por si acaso\".",
+          "Sabemos para qué sirven los datos principales, no todos.",
+          "Revisamos que cada dato tenga un uso, pero no está escrito.",
+          "Cada dato tiene una finalidad escrita y no pedimos nada que no usemos."
+        ]
+      },
+      {
+        "dim": "inventario",
+        "q": "¿Cuánto tiempo guarda los datos?",
+        "a": [
+          "Nunca borramos nada.",
+          "Borramos a veces, cuando alguien se acuerda o falta espacio.",
+          "Tenemos plazos para algunos datos, por ejemplo los contables.",
+          "Cada tipo de dato tiene un plazo y se elimina o anonimiza al cumplirse."
+        ]
+      },
+      {
+        "dim": "inventario",
+        "q": "¿Maneja datos sensibles (salud, menores de edad, huellas o fotos para identificar) y los trata distinto?",
+        "a": [
+          "No sabemos si los manejamos.",
+          "Los manejamos, pero igual que cualquier otro dato.",
+          "Los tenemos identificados y limitamos quién los ve.",
+          "Identificados, con acceso restringido y medidas adicionales; o confirmamos que no los manejamos."
+        ]
+      },
+      {
+        "dim": "transparencia",
+        "q": "¿Su sitio web y formularios informan qué hace con los datos?",
+        "a": [
+          "No tenemos aviso de privacidad.",
+          "Tenemos un texto genérico copiado de otro sitio.",
+          "Tenemos un aviso propio, pero no lo hemos revisado con la nueva ley.",
+          "Aviso actualizado y visible en cada formulario, con finalidades, plazos y cómo ejercer derechos."
+        ]
+      },
+      {
+        "dim": "transparencia",
+        "q": "¿Cómo obtiene autorización para enviar publicidad?",
+        "a": [
+          "Enviamos a toda nuestra base de contactos.",
+          "Asumimos que si la persona nos escribió, acepta.",
+          "Pedimos aceptación en algunos canales.",
+          "Pedimos aceptación explícita y separada, y darse de baja es fácil."
+        ]
+      },
+      {
+        "dim": "transparencia",
+        "q": "¿Puede demostrar que una persona aceptó entregar sus datos?",
+        "a": [
+          "No queda registro.",
+          "Quedaría en algún correo o chat, difícil de encontrar.",
+          "El sistema guarda la aceptación, pero sin fecha ni el texto que vio.",
+          "Registramos quién aceptó, cuándo y qué texto vio."
+        ]
+      },
+      {
+        "dim": "transparencia",
+        "q": "¿Usa los datos para algo distinto de lo que se pidieron? Ejemplo: usar datos de pacientes para una campaña de ventas.",
+        "a": [
+          "Sí, usamos la base para lo que necesitemos.",
+          "A veces, sin preguntar.",
+          "Solo después de avisar a las personas.",
+          "Nunca sin una base legal o una nueva autorización."
+        ]
+      },
+      {
+        "dim": "seguridad",
+        "q": "¿Cómo entran las personas a sus sistemas y planillas?",
+        "a": [
+          "Compartimos usuarios y contraseñas.",
+          "Algunas cuentas son personales y otras compartidas.",
+          "Cada persona tiene su propia cuenta.",
+          "Cuenta propia, permisos según el cargo y doble verificación en lo importante."
+        ]
+      },
+      {
+        "dim": "seguridad",
+        "q": "Cuando alguien deja la empresa, ¿qué pasa con sus accesos?",
+        "a": [
+          "Nadie lo revisa; pueden quedar activos.",
+          "Cambiamos algunas claves cuando nos acordamos.",
+          "Revisamos una lista, a veces con días de atraso.",
+          "Se quitan todos los accesos el mismo día, con una lista de verificación."
+        ]
+      },
+      {
+        "dim": "seguridad",
+        "q": "¿Desde dónde atienden a clientes por WhatsApp?",
+        "a": [
+          "Desde los celulares personales del equipo.",
+          "Número de la empresa en un celular compartido sin clave.",
+          "Número de la empresa con WhatsApp Business, en un celular con clave.",
+          "Plataforma de la empresa con usuario por persona; o no usamos WhatsApp con datos de clientes."
+        ]
+      },
+      {
+        "dim": "seguridad",
+        "q": "Si se pierde un celular o computador con datos de clientes, ¿qué pasa?",
+        "a": [
+          "Los datos quedarían expuestos.",
+          "Tiene clave, pero no podemos hacer nada a distancia.",
+          "Tienen clave y algunos se pueden bloquear a distancia.",
+          "Todos tienen clave, cifrado y bloqueo o borrado a distancia."
+        ]
+      },
+      {
+        "dim": "derechos",
+        "q": "¿Tiene un canal para que las personas pidan ver, corregir o borrar sus datos?",
+        "a": [
+          "No.",
+          "Llegaría por cualquier canal y no sabríamos a quién derivarlo.",
+          "Un correo general que alguien revisa.",
+          "Un canal definido y publicado en el aviso de privacidad."
+        ]
+      },
+      {
+        "dim": "derechos",
+        "q": "Si un cliente pide que borren sus datos, ¿podría hacerlo?",
+        "a": [
+          "No sabríamos dónde buscar.",
+          "Borraríamos del sistema principal, pero quedarían copias.",
+          "Encontraríamos casi todo en unos días.",
+          "Encontramos y borramos todo en menos de 30 días, y queda registro."
+        ]
+      },
+      {
+        "dim": "derechos",
+        "q": "¿Quién responde estas solicitudes?",
+        "a": [
+          "Nadie en particular.",
+          "El dueño, cuando tiene tiempo.",
+          "Una persona definida, sin procedimiento escrito.",
+          "Una persona responsable, con procedimiento y plazos."
+        ]
+      },
+      {
+        "dim": "derechos",
+        "q": "¿Lleva registro de las solicitudes recibidas y cómo se respondieron?",
+        "a": [
+          "No.",
+          "Quedan en el correo.",
+          "En una planilla que no siempre se completa.",
+          "Registro con fecha, respuesta y plazo de cada solicitud."
+        ]
+      },
+      {
+        "dim": "terceros",
+        "q": "¿Sabe qué proveedores (CRM, correo, nube, IA) reciben datos de sus clientes y en qué país los guardan?",
+        "a": [
+          "No.",
+          "Conocemos los principales.",
+          "Tenemos la lista, pero no sabemos dónde guardan los datos.",
+          "Lista completa con el país y la finalidad de cada uno."
+        ]
+      },
+      {
+        "dim": "terceros",
+        "q": "¿Sus contratos con proveedores dicen cómo deben proteger los datos?",
+        "a": [
+          "No hay contratos; solo términos aceptados en línea.",
+          "Hay contratos, pero sin cláusulas sobre datos.",
+          "Algunos tienen cláusulas sobre datos.",
+          "Todos los que reciben datos tienen cláusulas revisadas."
+        ]
+      },
+      {
+        "dim": "terceros",
+        "q": "¿Usan herramientas de IA con datos de clientes o trabajadores?",
+        "a": [
+          "Sí, el equipo pega información en herramientas gratuitas sin reglas.",
+          "Sí, con herramientas pagadas, pero sin reglas definidas.",
+          "Hay reglas sobre qué se puede ingresar, pero poco control.",
+          "Reglas claras, herramientas aprobadas y solo los datos necesarios; o no usamos IA con datos personales."
+        ]
+      },
+      {
+        "dim": "terceros",
+        "q": "Si se filtran o pierden datos, ¿qué harían?",
+        "a": [
+          "No lo hemos pensado.",
+          "Lo resolveríamos sobre la marcha.",
+          "Sabemos a quién avisar dentro de la empresa.",
+          "Procedimiento escrito: contener, evaluar el daño y avisar a la Agencia y a los afectados."
+        ]
+      }
+    ],
+    "matrix": {
+      "inventario": [
+        "Nadie sabe con certeza dónde hay datos personales",
+        "Se conocen los sistemas principales, sin registro",
+        "Hay inventario, pero desactualizado o sin plazos",
+        "Inventario vivo con finalidades y plazos"
+      ],
+      "transparencia": [
+        "No hay aviso de privacidad y la base se usa para todo",
+        "Aviso genérico y aceptación supuesta",
+        "Aviso propio, sin evidencia de aceptación",
+        "Aviso actualizado y aceptaciones demostrables"
+      ],
+      "seguridad": [
+        "Claves compartidas y accesos que nunca se revisan",
+        "Algunas cuentas personales; salidas sin control",
+        "Cuentas personales; faltan permisos por cargo y bloqueo remoto",
+        "Accesos controlados y equipos protegidos"
+      ],
+      "derechos": [
+        "No hay canal ni nadie a cargo",
+        "Las solicitudes llegan, pero nadie sabe cómo responder",
+        "Hay responsable, sin procedimiento ni registro",
+        "Procedimiento, plazos y registro funcionando"
+      ],
+      "terceros": [
+        "No se sabe qué proveedores reciben datos ni qué hacer ante una filtración",
+        "Proveedores conocidos, sin contratos ni reglas de IA",
+        "Lista y algunas cláusulas; IA con poco control",
+        "Proveedores con cláusulas, IA controlada y plan ante incidentes"
+      ]
+    },
+    "recommendations": {
+      "inventario": {
+        "1": {
+          "now": "Haga una lista de todo lugar con datos: sistemas, planillas, correos, celulares",
+          "next": "Anote qué datos hay en cada lugar y quién es el responsable"
+        },
+        "2": {
+          "now": "Complete la lista con lo que falta: WhatsApp, respaldos, formularios web",
+          "next": "Defina para qué sirve cada dato y deje de pedir los que no usa"
+        },
+        "3": {
+          "now": "Agregue plazos de conservación por tipo de dato",
+          "next": "Convierta el inventario en un registro de tratamientos (RAT)"
+        },
+        "4": {
+          "now": "Revise el registro cada vez que suma un sistema o proceso",
+          "next": "Programe una revisión anual y elimine lo que venció"
+        }
+      },
+      "transparencia": {
+        "1": {
+          "now": "Publique un aviso básico y deje de enviar publicidad sin aceptación",
+          "next": "Separe los contactos que aceptaron publicidad de los que no"
+        },
+        "2": {
+          "now": "Reescriba el aviso con sus finalidades reales, con apoyo legal",
+          "next": "Agregue una casilla de aceptación separada para publicidad"
+        },
+        "3": {
+          "now": "Guarde fecha y texto aceptado en cada formulario",
+          "next": "Revise que ningún uso de datos se salga de lo informado"
+        },
+        "4": {
+          "now": "Revise el aviso cuando cambien procesos o proveedores",
+          "next": "Pruebe darse de baja usted mismo, en cada canal"
+        }
+      },
+      "seguridad": {
+        "1": {
+          "now": "Cree cuentas personales y cambie las claves compartidas",
+          "next": "Haga una lista de accesos por persona para revisarla al salir alguien"
+        },
+        "2": {
+          "now": "Quite hoy los accesos de ex trabajadores",
+          "next": "Ponga clave a todos los equipos y mueva WhatsApp a un número de empresa"
+        },
+        "3": {
+          "now": "Ajuste permisos según lo que cada cargo necesita",
+          "next": "Active doble verificación y bloqueo a distancia de equipos"
+        },
+        "4": {
+          "now": "Revise accesos cada trimestre",
+          "next": "Deje registro de cada revisión como evidencia"
+        }
+      },
+      "derechos": {
+        "1": {
+          "now": "Defina un correo para solicitudes y publíquelo",
+          "next": "Nombre a una persona responsable de responderlas"
+        },
+        "2": {
+          "now": "Haga una prueba: busque todos los datos de un cliente",
+          "next": "Escriba el paso a paso para responder en menos de 30 días"
+        },
+        "3": {
+          "now": "Lleve un registro con fecha y respuesta de cada solicitud",
+          "next": "Prepare plantillas de respuesta para cada tipo de solicitud"
+        },
+        "4": {
+          "now": "Revise tiempos de respuesta cada trimestre",
+          "next": "Repita la prueba de borrado una vez al año"
+        }
+      },
+      "terceros": {
+        "1": {
+          "now": "Liste los proveedores que reciben datos y defina reglas mínimas para usar IA",
+          "next": "Escriba qué hacer y a quién avisar si se pierden datos"
+        },
+        "2": {
+          "now": "Averigüe en qué país guarda datos cada proveedor",
+          "next": "Revise con un abogado los contratos de los proveedores principales"
+        },
+        "3": {
+          "now": "Defina qué herramientas de IA están aprobadas y con qué datos",
+          "next": "Complete cláusulas en todos los contratos y ensaye una filtración simulada"
+        },
+        "4": {
+          "now": "Revise proveedores al contratar uno nuevo",
+          "next": "Ensaye el plan ante incidentes una vez al año"
+        }
+      }
+    },
+    "narrative": {
+      "1": "Su empresa trata datos personales sin control sobre dónde están ni quién los ve. Hoy varias prácticas serían infracciones. Lo bueno: la mayoría se corrige con orden, no con grandes inversiones.",
+      "2": "Hay conciencia del tema y algunas prácticas buenas, pero dependen de personas y no de procesos. Ante una solicitud o una fiscalización, no podría demostrar lo que hace.",
+      "3": "Tiene una base sólida. Faltan documentación y algunos controles para poder demostrar cumplimiento con evidencia.",
+      "4": "Sus datos están ordenados y controlados. El desafío es mantenerlo: revisar accesos, proveedores y registros de forma periódica."
+    }
   }
 }

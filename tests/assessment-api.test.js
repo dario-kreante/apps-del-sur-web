@@ -8,6 +8,7 @@ const envKeys = [
   'AIRTABLE_API_KEY', 'AIRTABLE_BASE_ID', 'AIRTABLE_ASSESSMENT_TABLE',
   'HUBSPOT_PRIVATE_APP_TOKEN', 'HUBSPOT_OWNER_ID', 'HUBSPOT_DEAL_PIPELINE',
   'HUBSPOT_DEAL_STAGE', 'PUBLIC_SITE_URL', 'ASSESSMENT_NOTIFY_EMAIL',
+  'BREVO_API_KEY', 'ASSESSMENT_EMAIL_FROM',
 ];
 const originalEnv = Object.fromEntries(envKeys.map((key) => [key, process.env[key]]));
 const originalFetch = globalThis.fetch;
@@ -22,6 +23,8 @@ beforeEach(() => {
   delete process.env.HUBSPOT_PRIVATE_APP_TOKEN;
   delete process.env.HUBSPOT_DEAL_PIPELINE;
   delete process.env.HUBSPOT_DEAL_STAGE;
+  delete process.env.BREVO_API_KEY;
+  delete process.env.ASSESSMENT_EMAIL_FROM;
 });
 
 afterEach(() => {
@@ -32,14 +35,26 @@ afterEach(() => {
   }
 });
 
+const FIELD_SETS = {
+  ia: {
+    source: 'diagnostico-madurez-ia',
+    labels: ['Estrategia y liderazgo', 'Personas y cultura', 'Procesos y operación', 'Datos y gobernanza', 'Tecnología e integración'],
+    keys: ['estrategia', 'personas', 'procesos', 'datos', 'tecnologia'],
+  },
+  digital: {
+    source: 'diagnostico-madurez-digital',
+    labels: ['Estrategia y liderazgo digital', 'Clientes y ventas digitales', 'Procesos y operación', 'Datos e información', 'Herramientas y seguridad'],
+    keys: ['estrategia', 'clientes', 'procesos', 'datos', 'herramientas'],
+  },
+  datos: {
+    source: 'diagnostico-datos-personales',
+    labels: ['Conocimiento de sus datos', 'Transparencia y consentimiento', 'Accesos y seguridad', 'Derechos de las personas', 'Proveedores, IA e incidentes'],
+    keys: ['inventario', 'transparencia', 'seguridad', 'derechos', 'terceros'],
+  },
+};
+
 function makeFields(type) {
-  const digital = type === 'digital';
-  const labels = digital
-    ? ['Estrategia y liderazgo digital', 'Clientes y ventas digitales', 'Procesos y operación', 'Datos e información', 'Herramientas y seguridad']
-    : ['Estrategia y liderazgo', 'Personas y cultura', 'Procesos y operación', 'Datos y gobernanza', 'Tecnología e integración'];
-  const keys = digital
-    ? ['estrategia', 'clientes', 'procesos', 'datos', 'herramientas']
-    : ['estrategia', 'personas', 'procesos', 'datos', 'tecnologia'];
+  const { source, labels, keys } = FIELD_SETS[type];
   const answers = Array.from({ length: 20 }, (_, index) => {
     const dimensionIndex = Math.floor(index / 4);
     return {
@@ -55,7 +70,7 @@ function makeFields(type) {
     Nombre: 'Persona QA',
     Email: 'qa@example.test',
     Empresa: 'Empresa QA',
-    Fuente: `diagnostico-madurez-${type}`,
+    Fuente: source,
     Consentimiento: 'Aceptado',
     'Respuestas Detalladas': JSON.stringify(answers),
     'Etapa Global': '2 — En desarrollo',
@@ -156,6 +171,177 @@ test('stores digital dimensions without labeling them as IA and serves a digital
   assert.match(reportRes.body, /Clientes y ventas digitales/);
   assert.match(reportRes.body, /Ruta de mejora digital/);
   assert.doesNotMatch(reportRes.body, /Diagnóstico de Madurez en IA/);
+});
+
+function withStages(fields, stageFor) {
+  const answers = JSON.parse(fields['Respuestas Detalladas']).map((answer) => ({ ...answer, stage: stageFor(answer.qIdx) }));
+  return { ...fields, 'Respuestas Detalladas': JSON.stringify(answers) };
+}
+
+async function submitFields(fields) {
+  const mock = airtableMock();
+  const res = responseRecorder();
+  await submitHandler({ method: 'POST', headers: { host: 'example.test' }, body: { fields } }, res);
+  return { mock, res };
+}
+
+test('stores the personal data assessment and serves its own report', async () => {
+  const { mock, res } = await submitFields(makeFields('datos'));
+
+  assert.equal(res.statusCode, 200);
+  assert.equal(mock.fields.Fuente, 'diagnostico-datos-personales');
+  assert.equal(mock.fields['Estrategia y liderazgo'], undefined);
+  const saved = JSON.parse(mock.fields['Respuestas JSON']);
+  assert.equal(saved.assessmentType, 'datos');
+  assert.equal(saved.dimensions[2].name, 'Accesos y seguridad');
+
+  const reportRes = responseRecorder();
+  await reportHandler({ method: 'GET', url: '/api/assessment-report?id=recTest123' }, reportRes);
+  assert.equal(reportRes.statusCode, 200);
+  assert.match(reportRes.body, /Diagnóstico de Datos Personales/);
+  assert.match(reportRes.body, /Datos de su empresa/);
+  assert.match(reportRes.body, /no constituye asesoría legal/);
+  assert.doesNotMatch(reportRes.body, /Madurez/);
+});
+
+test('rejects personal data answers that use another assessment dimensions', async () => {
+  const fields = { ...makeFields('ia'), Fuente: 'diagnostico-datos-personales' };
+  const { mock, res } = await submitFields(fields);
+  assert.equal(res.statusCode, 400);
+  assert.equal(JSON.parse(res.body).error, 'invalid_assessment_answers');
+  assert.equal(mock.calls.length, 0);
+});
+
+for (const type of ['ia', 'digital', 'datos']) {
+  test(`${type} report is excluded from search engines`, async () => {
+    await submitFields(makeFields(type));
+    const reportRes = responseRecorder();
+    await reportHandler({ method: 'GET', url: '/api/assessment-report?id=recTest123' }, reportRes);
+    assert.equal(reportRes.headers['X-Robots-Tag'], 'noindex, nofollow');
+    assert.match(reportRes.body, /<meta name="robots" content="noindex, nofollow"/);
+  });
+}
+
+test('personal data lead is not urgent without any urgency condition', async () => {
+  const { mock } = await submitFields({ ...makeFields('datos'), Sector: 'Servicios' });
+  assert.equal(mock.fields.Urgente, false);
+});
+
+for (const sector of ['Salud', 'Legal']) {
+  test(`personal data lead from ${sector} sector is urgent`, async () => {
+    const { mock } = await submitFields({ ...makeFields('datos'), Sector: sector });
+    assert.equal(mock.fields.Urgente, true);
+  });
+}
+
+test('personal data lead in Expuesta stage is urgent, computed from its answers', async () => {
+  const fields = withStages({ ...makeFields('datos'), Sector: 'Servicios' }, (qIdx) => (qIdx === 10 ? 4 : 1));
+  const { mock } = await submitFields(fields);
+  assert.equal(mock.fields.Urgente, true);
+});
+
+for (const stage of [1, 2]) {
+  test(`personal data lead answering ${stage} on the WhatsApp question is urgent`, async () => {
+    const fields = withStages({ ...makeFields('datos'), Sector: 'Servicios' }, (qIdx) => (qIdx === 10 ? stage : 4));
+    const { mock } = await submitFields(fields);
+    assert.equal(mock.fields.Urgente, true);
+  });
+}
+
+test('personal data urgency ignores a value sent by the browser', async () => {
+  const fields = withStages({ ...makeFields('datos'), Sector: 'Servicios', Urgente: true }, () => 4);
+  const { mock } = await submitFields(fields);
+  assert.equal(mock.fields.Urgente, false);
+});
+
+for (const type of ['ia', 'digital']) {
+  test(`${type} leads do not send the urgency field`, async () => {
+    const { mock } = await submitFields({ ...makeFields(type), Sector: 'Salud' });
+    assert.equal('Urgente' in mock.fields, false);
+  });
+}
+
+function emailMock({ brevoStatus = 201, airtableFails = false } = {}) {
+  const emails = [];
+  let keyHeader;
+  const airtable = airtableMock();
+  const airtableFetch = globalThis.fetch;
+  globalThis.fetch = async (url, options = {}) => {
+    if (String(url) === 'https://api.brevo.com/v3/smtp/email') {
+      keyHeader = options.headers['api-key'];
+      emails.push(JSON.parse(options.body));
+      return new Response('{}', { status: brevoStatus });
+    }
+    if (airtableFails) return new Response('limit', { status: 422 });
+    return airtableFetch(url, options);
+  };
+  return { emails, airtable, get keyHeader() { return keyHeader; } };
+}
+
+async function submitWithEmail(fields, mockOptions) {
+  process.env.BREVO_API_KEY = 'test-brevo-key';
+  const mock = emailMock(mockOptions);
+  const res = responseRecorder();
+  await submitHandler({ method: 'POST', headers: { host: 'example.test' }, body: { fields } }, res);
+  return { ...mock, emails: mock.emails, keyHeader: mock.keyHeader, res, body: JSON.parse(res.body) };
+}
+
+for (const [type, title] of [['ia', 'Diagnóstico de Madurez en IA'], ['digital', 'Diagnóstico de Madurez Digital'], ['datos', 'Diagnóstico de Datos Personales']]) {
+  test(`${type} sends the report by email to the submitted address`, async () => {
+    const { emails, keyHeader, body } = await submitWithEmail(makeFields(type));
+    assert.equal(emails.length, 1);
+    assert.deepEqual(emails[0].to, [{ email: 'qa@example.test' }]);
+    assert.equal(emails[0].sender.email, 'contacto@appsdelsur.cl');
+    assert.equal(keyHeader, 'test-brevo-key');
+    assert.match(emails[0].subject, new RegExp(title));
+    assert.match(emails[0].htmlContent, /https:\/\/example\.test\/api\/assessment-report\?id=recTest123/);
+    assert.match(emails[0].textContent, /https:\/\/example\.test\/api\/assessment-report\?id=recTest123/);
+    assert.equal(body.emailSent, true);
+    assert.equal(body.emailStatus, 'sent');
+  });
+}
+
+test('personal data email uses formal voice and the legal disclaimer', async () => {
+  const { emails } = await submitWithEmail(makeFields('datos'));
+  assert.match(emails[0].htmlContent, /Su informe/);
+  assert.match(emails[0].htmlContent, /no constituye asesoría legal/);
+  assert.doesNotMatch(emails[0].htmlContent, /\bTu\b/);
+});
+
+test('email states the stage and score computed from the answers, not the browser values', async () => {
+  const fields = withStages({ ...makeFields('datos'), 'Etapa Global': 'Visita sitio-falso.test', 'Puntaje Normalizado': '999%' }, () => 2);
+  const { emails } = await submitWithEmail(fields);
+  assert.match(emails[0].htmlContent, /Inicial/);
+  assert.match(emails[0].htmlContent, /33%/);
+  assert.doesNotMatch(emails[0].htmlContent, /sitio-falso|999%/);
+});
+
+test('email carries no free text from the form', async () => {
+  const fields = { ...makeFields('datos'), Nombre: 'Gane en sitio-falso.test', Empresa: '<a href="https://sitio-falso.test">Premio</a>' };
+  const { emails } = await submitWithEmail(fields);
+  assert.doesNotMatch(JSON.stringify(emails[0]), /sitio-falso|Premio/);
+});
+
+test('a failed email keeps the lead and reports the failure', async () => {
+  const { res, body, airtable } = await submitWithEmail(makeFields('ia'), { brevoStatus: 401 });
+  assert.equal(res.statusCode, 200);
+  assert.equal(body.ok, true);
+  assert.equal(body.emailSent, false);
+  assert.equal(body.emailStatus, 'failed');
+  assert.ok(body.reportUrl);
+  assert.equal(airtable.fields.Email, 'qa@example.test');
+});
+
+test('no email is sent when the lead could not be stored', async () => {
+  const { res, emails } = await submitWithEmail(makeFields('ia'), { airtableFails: true });
+  assert.equal(res.statusCode, 502);
+  assert.equal(emails.length, 0);
+});
+
+test('configured sender overrides the default address', async () => {
+  process.env.ASSESSMENT_EMAIL_FROM = 'hola@appsdelsur.cl';
+  const { emails } = await submitWithEmail(makeFields('ia'));
+  assert.equal(emails[0].sender.email, 'hola@appsdelsur.cl');
 });
 
 test('rejects incomplete assessment data before any external request', async () => {

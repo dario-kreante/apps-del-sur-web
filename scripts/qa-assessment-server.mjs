@@ -6,11 +6,14 @@ import submit from '../api/assessment-submit.js';
 import report from '../api/assessment-report.js';
 const actualFetch = globalThis.fetch;
 const records = new Map();
+const emails = [];
 let failing = false;
+let emailFailing = false;
 process.env.AIRTABLE_API_KEY = 'qa-fixture-only';
 process.env.AIRTABLE_BASE_ID = 'appQaFixture';
 process.env.AIRTABLE_ASSESSMENT_TABLE = 'Assessment Leads';
 process.env.HUBSPOT_PRIVATE_APP_TOKEN = '';
+process.env.BREVO_API_KEY ||= 'qa-fixture-only';
 process.env.PUBLIC_SITE_URL = 'http://127.0.0.1:4322';
 globalThis.fetch = async (url, options={}) => {
  const target = new URL(url);
@@ -29,13 +32,20 @@ globalThis.fetch = async (url, options={}) => {
   }
   const id=target.pathname.split('/').pop(); return records.has(id) ? Response.json(records.get(id)) : Response.json({}, {status:404});
  }
+ if (target.hostname === 'api.brevo.com') {
+  if (process.env.QA_REAL_EMAIL === '1') return actualFetch(url,options);
+  if (emailFailing) return Response.json({message:'QA intentional failure'}, {status:401});
+  emails.push(JSON.parse(options.body));
+  return Response.json({messageId:'qa-fixture'}, {status:201});
+ }
  if (target.hostname !== '127.0.0.1' && target.hostname !== 'localhost') throw Error('QA prevents external request');
  return actualFetch(url,options);
 };
 http.createServer(async (req,res)=>{
  try {
   if(req.url.startsWith('/__qa/failure')) { failing=req.url.includes('enabled=1'); res.end(JSON.stringify({failing})); return; }
-  if(req.url.startsWith('/__qa/status')) { res.setHeader('Content-Type','application/json'); res.end(JSON.stringify({records:[...records.values()]})); return; }
+  if(req.url.startsWith('/__qa/email-failure')) { emailFailing=req.url.includes('enabled=1'); res.end(JSON.stringify({emailFailing})); return; }
+  if(req.url.startsWith('/__qa/status')) { res.setHeader('Content-Type','application/json'); res.end(JSON.stringify({records:[...records.values()],emails})); return; }
   if(req.url.startsWith('/api/assessment-submit')) { await submit(req,res); return; }
   if(req.url.startsWith('/api/assessment-report')) { await report(req,res); return; }
   if (process.env.QA_STATIC === '1') {

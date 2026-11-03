@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 
 const title = 'Diagnósticos gratuitos para empresas | Apps del Sur';
 const description =
-  'Elige por dónde empezar: conoce la madurez digital de tu empresa si aún depende de papel, Excel o WhatsApp, o evalúa su preparación para aplicar inteligencia artificial.';
+  'Elige por dónde empezar: conoce la madurez digital de tu empresa si aún depende de papel, Excel o WhatsApp, evalúa su preparación para aplicar inteligencia artificial o revisa cómo están sus datos personales frente a la Ley 21.719.';
 
 const assessments = [
   {
@@ -33,6 +33,19 @@ const assessments = [
     href: '/diagnostico-madurez-ia/',
     cta: 'Comenzar diagnóstico de IA',
     accent: 'teal',
+  },
+  {
+    number: '03',
+    label: 'Ordenar los datos',
+    title: 'Datos Personales',
+    description:
+      'Para empresas que manejan datos de clientes o trabajadores y quieren saber cómo están frente a la Ley 21.719: qué datos tienen, dónde los guardan y quién puede verlos.',
+    fit: 'Parte por aquí si los datos de tus clientes viven en planillas, correos o WhatsApp y no sabes dónde están todos.',
+    output: 'Una lectura de tu etapa, las brechas por dimensión y acciones concretas. Es orientativo y no constituye asesoría legal.',
+    duration: 'Aproximadamente 8 minutos',
+    href: '/diagnostico-datos-personales/',
+    cta: 'Comenzar diagnóstico de datos',
+    accent: 'emerald',
   },
 ];
 
@@ -92,11 +105,11 @@ const jsonLd = JSON.stringify([
           Encuentra el diagnóstico que le sirve hoy a tu empresa
         </h1>
         <p class="text-lg text-gray-600 leading-relaxed">
-          Puedes responder ambos, pero conviene empezar por la situación actual de tu operación. Primero ordena la base digital; después evalúa dónde la IA puede ayudar.
+          Puedes responder los tres, pero conviene empezar por la situación actual de tu operación. Primero ordena la base digital; después evalúa dónde la IA puede ayudar. Si manejas datos de clientes o trabajadores, revisa también cómo están frente a la Ley 21.719.
         </p>
       </section>
 
-      <section aria-labelledby="elige-diagnostico" class="grid min-w-0 grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+      <section aria-labelledby="elige-diagnostico" class="grid min-w-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
         <h2 id="elige-diagnostico" class="sr-only">Elige un diagnóstico</h2>
         {assessments.map((assessment) => (
           <article class="flex min-w-0 flex-col bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">

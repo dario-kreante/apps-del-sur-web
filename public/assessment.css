@@ -13,6 +13,7 @@
   background: #f7faf7;
   color: #24332b;
 }
+.assessment-page-embedded { padding-top: 3rem; min-height: 0; scroll-margin-top: 4.5rem; }
 .assessment-wrap { width: min(100%, 850px); margin: 0 auto; }
 .assessment-breadcrumb {
   display: flex; flex-wrap: wrap; align-items: center; gap: .55rem;
