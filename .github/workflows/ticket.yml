@@ -1,0 +1,52 @@
+name: Ticket de la fábrica
+run-name: ${{ inputs.identifier }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_id:
+        description: ID del ticket en Linear
+        required: true
+      identifier:
+        description: Identificador visible, por ejemplo APP-1
+        required: true
+      model:
+        description: Modelo del generador
+        type: choice
+        default: claude-sonnet-5-5
+        options:
+          - claude-sonnet-5-5
+          - claude-haiku-5-5
+
+# Un solo ticket escribiendo a la vez en este repo.
+concurrency:
+  group: fabrica-repo
+
+permissions: {}
+
+jobs:
+  # Lleva el ticket hasta staging. Nunca toca master ni publica a producción.
+  motor:
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: dario-kreante/fabrica/.github/workflows/motor-ticket.yml@main
+    secrets: inherit
+    with:
+      issue_id: ${{ inputs.issue_id }}
+      identifier: ${{ inputs.identifier }}
+      model: ${{ inputs.model }}
+      trusted_ref: master
+      allowed_dirs: api,src,public,tests,e2e,docs
+      vercel_project_id: prj_lWUsAMQFZPAf38fCbx3gyrWxL3UE
+      staging_alias: apps-del-sur-staging.vercel.app
+      node_version: '24'
+      setup: npm ci
+      generator_tests: npm run test:assessment-api y npm run test:agent
+      generator_bash: Bash(npm run test:assessment-api),Bash(npm run test:agent),Bash(npm run build)
+      verify: |
+        npm run test:assessment-api
+        npm run test:agent
+        npm run build
+        npx playwright install --with-deps chromium
+        npm run test:e2e
