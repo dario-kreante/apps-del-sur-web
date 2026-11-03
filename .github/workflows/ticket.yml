@@ -41,6 +41,7 @@ jobs:
       vercel_project_id: prj_lWUsAMQFZPAf38fCbx3gyrWxL3UE
       staging_alias: apps-del-sur-staging.vercel.app
       node_version: '24'
+      generator_setup: npm ci --ignore-scripts
       setup: npm ci
       generator_tests: npm run test:assessment-api y npm run test:agent
       generator_bash: Bash(npm run test:assessment-api),Bash(npm run test:agent),Bash(npm run build)
