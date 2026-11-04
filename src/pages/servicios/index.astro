@@ -3,124 +3,287 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Button from '../../components/ui/Button.astro';
+import ArrowRight from '../../components/icons/ArrowRight.astro';
+import { nosotrosPage } from '../../data/content';
 
-const title = 'Servicios de consultoría e implementación de IA para pymes chilenas';
-const description = 'Tres servicios para implementar el framework Apps del Sur: workshop de 1 día, sprint de diagnóstico con postulación a fondos públicos, y acompañamiento estratégico de 6-12 meses. CORFO, FIA y SERCOTEC.';
+const title = 'Servicios de software a medida, agentes IA y consultoría para pymes';
+const description = 'Software a medida, agentes de IA por WhatsApp, integraciones, diagnósticos, consultoría y postulación a fondos públicos para pymes del centro-sur de Chile.';
+const canonical = 'https://appsdelsur.cl/servicios/';
 
-const services = [
+const situations = [
+  { problem: 'Seguimos con papel, planillas o sistemas que no se conectan', service: 'Software a medida', href: '/enfoque/' },
+  { problem: 'No damos abasto con las consultas por WhatsApp', service: 'Agentes IA', href: '/agentes/' },
+  { problem: 'La IA está en la mesa, pero no tenemos un plan', service: 'Workshop Brújula IA', href: '/servicios/workshop-brujula-ia/' },
+  { problem: 'No sabemos cómo estamos frente a la Ley 21.719', service: 'Diagnóstico de datos personales', href: '/servicios/diagnostico-datos-personales/' },
+  { problem: 'Queremos postular a un fondo público', service: 'Sprint de postulación', href: '/servicios/sprint-diagnostico-postulacion-fondos/' },
+  { problem: 'Tenemos el plan, pero nos falta quién lo ejecute', service: 'Copiloto Estratégico', href: '/servicios/acompanamiento-copiloto-estrategico/' },
+];
+
+const stages = [
   {
-    slug: 'workshop-brujula-ia',
-    badge: 'WORKSHOP',
-    title: 'Brújula IA',
-    subtitle: 'Workshop intensivo de 1 día',
-    description: 'Tu equipo directivo sale con la matriz de madurez de su empresa, 3 quick wins identificados y un plan de 90 días para empezar a moverse. Hecho en formato taller, no presentación.',
-    duration: '1 día (8 horas)',
-    price: 'A la medida',
-    subsidy: 'Gasto operativo (no subsidiable)',
-    target: 'Equipos directivos en Etapa 1-2 que recién están explorando IA',
-    color: 'amber',
+    id: 'entender',
+    verb: 'Entender',
+    summary: 'Saber cómo está su empresa antes de invertir',
+    services: [
+      {
+        name: 'Diagnósticos gratuitos',
+        description: 'Madurez digital, madurez en IA y datos personales. Responde en línea y recibe su resultado al terminar.',
+        meta: 'Gratis · Unos 8 minutos',
+        href: '/diagnosticos/',
+        cta: 'Elegir un diagnóstico',
+      },
+      {
+        name: 'Diagnóstico técnico de datos personales',
+        description: 'Revisamos sistemas, planillas y proveedores. Recibe un mapa de sus datos y un plan priorizado frente a la Ley 21.719.',
+        meta: 'Según tamaño y procesos a revisar',
+        href: '/servicios/diagnostico-datos-personales/',
+        cta: 'Ver el diagnóstico',
+      },
+    ],
   },
   {
-    slug: 'sprint-diagnostico-postulacion-fondos',
-    badge: 'CONSULTORÍA',
-    title: 'Sprint Diagnóstico + Postulación a Fondo',
-    subtitle: '4 a 6 semanas',
-    description: 'Aplicamos el framework completo en tu empresa, construimos el business case en CLP y dejamos lista la postulación al fondo público que aplica (Kit Digital, SERCOTEC, CORFO o FIA). Parte de la tarifa es success-based.',
-    duration: '4 a 6 semanas',
-    price: 'A la medida',
-    subsidy: 'Parte success-based al adjudicar el fondo',
-    target: 'Pymes Etapa 2-3 listas para invertir y postular',
-    color: 'emerald',
-    featured: true,
+    id: 'decidir',
+    verb: 'Decidir',
+    summary: 'Definir qué conviene hacer primero y qué no vale la pena',
+    services: [
+      {
+        name: 'Workshop Brújula IA',
+        description: 'Su equipo directivo trabaja sobre su propia empresa y sale con una matriz de madurez, 3 mejoras rápidas y un plan de 90 días.',
+        meta: '1 día · 4 a 12 personas',
+        href: '/servicios/workshop-brujula-ia/',
+        cta: 'Ver el workshop',
+      },
+    ],
   },
   {
-    slug: 'acompanamiento-copiloto-estrategico',
-    badge: 'IMPLEMENTACIÓN',
-    title: 'Copiloto Estratégico',
-    subtitle: 'Acompañamiento de 6 a 12 meses',
-    description: 'Implementamos el roadmap completo: integración con proveedores tecnológicos, gestión del cambio, capacitación al equipo, medición trimestral del ROI. Trabajamos como tu equipo de transformación, sin que tengas que contratar gente interna.',
-    duration: '6 a 12 meses',
-    price: 'A la medida',
-    subsidy: '60-80% financiable con CORFO o FIA',
-    target: 'Pymes con fondo aprobado o capacidad propia de inversión',
-    color: 'teal',
+    id: 'construir',
+    verb: 'Construir',
+    summary: 'Convertir la decisión en un sistema que su equipo use a diario',
+    note: 'Cada implementación incluye un taller práctico de IA y 3 meses de Claude Pro para cada participante.',
+    services: [
+      {
+        name: 'Software a medida',
+        description: 'Sistemas web y apps móviles construidos alrededor de su proceso, con modo offline cuando la operación lo requiere.',
+        meta: '8 a 12 semanas',
+        href: '/enfoque/',
+        cta: 'Ver cómo trabajamos',
+      },
+      {
+        name: 'Agentes IA por WhatsApp',
+        description: 'Agendan, responden consultas, califican contactos y hacen seguimiento, según lo que necesite su rubro.',
+        meta: '2 a 6 semanas',
+        href: '/agentes/',
+        cta: 'Ver los agentes',
+      },
+      {
+        name: 'Automatización e integraciones',
+        description: 'Reducimos la doble digitación y conectamos su ERP, contabilidad, RRHH o planillas, sin obligarlo a partir desde cero.',
+        meta: 'Según alcance',
+        href: '#contact-form',
+        cta: 'Contarnos su caso',
+      },
+    ],
+  },
+  {
+    id: 'financiar',
+    verb: 'Financiar',
+    summary: 'Buscar cofinanciamiento público cuando el proyecto lo permite',
+    services: [
+      {
+        name: 'Sprint Diagnóstico + Postulación a Fondo',
+        description: 'Construimos el caso de negocio en pesos, elegimos el fondo que aplica y dejamos la postulación entregada. La adjudicación no está garantizada.',
+        meta: '4 a 6 semanas · Parte del pago al adjudicarse',
+        href: '/servicios/sprint-diagnostico-postulacion-fondos/',
+        cta: 'Ver el sprint',
+      },
+    ],
+  },
+  {
+    id: 'evolucionar',
+    verb: 'Evolucionar',
+    summary: 'Sostener lo construido y seguir avanzando',
+    services: [
+      {
+        name: 'Copiloto Estratégico',
+        description: 'Ejecutamos el plan junto a su equipo: proveedores, gestión del cambio, capacitación y medición trimestral de resultados.',
+        meta: '6, 9 o 12 meses',
+        href: '/servicios/acompanamiento-copiloto-estrategico/',
+        cta: 'Ver el copiloto',
+      },
+      {
+        name: 'Soporte y mejora continua',
+        description: 'Mantención, ajustes y nuevos módulos o reportes para el sistema que ya tiene funcionando.',
+        meta: 'Según alcance',
+        href: '#contact-form',
+        cta: 'Consultar soporte',
+      },
+    ],
   },
 ];
+
+const investmentSteps = [
+  { title: 'Conversación inicial', description: 'Sin costo. Entendemos su operación y le decimos si podemos ayudarle.' },
+  { title: 'Diagnóstico', description: 'Revisamos alcance, integraciones y tamaño del equipo.' },
+  { title: 'Propuesta cerrada', description: 'Con inversión, plazos y los fondos públicos que podrían aplicar.' },
+];
+
+const costGuides = [
+  { label: 'Software a medida', href: '/blog/cuanto-cuesta-software-a-medida-chile/' },
+  { label: 'Automatizar WhatsApp', href: '/blog/cuanto-cuesta-automatizar-whatsapp-empresa/' },
+  { label: 'Implementar IA en una pyme', href: '/blog/cuanto-cuesta-implementar-ia-pyme-chile/' },
+];
+
+const needOptions = stages.flatMap((stage) => stage.services.map((service) => service.name));
+
+const { projects } = nosotrosPage;
 
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   name: 'Servicios Apps del Sur',
   description,
-  itemListElement: services.map((s, i) => ({
-    '@type': 'Service',
-    position: i + 1,
-    name: s.title,
-    description: s.description,
-    provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' },
-    areaServed: { '@type': 'Country', name: 'Chile' },
-    url: `https://appsdelsur.cl/servicios/${s.slug}/`,
-  })),
+  itemListElement: stages
+    .flatMap((stage) => stage.services)
+    .map((service, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: service.name,
+        description: service.description,
+        provider: { '@type': 'Organization', name: 'Apps del Sur', url: 'https://appsdelsur.cl' },
+        areaServed: { '@type': 'Country', name: 'Chile' },
+        url: service.href.startsWith('#') ? `${canonical}${service.href}` : `https://appsdelsur.cl${service.href}`,
+      },
+    })),
 });
 ---
 
-<Layout title={`${title} | Apps del Sur`} description={description}>
+<Layout title={`${title} | Apps del Sur`} description={description} canonical={canonical}>
   <script type="application/ld+json" set:html={jsonLd} />
   <Header />
 
-  <main id="main-content" class="pt-24 pb-16">
+  <main id="main-content" class="pt-24">
     <div class="max-w-[1100px] mx-auto px-6">
       <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
-        <a href="/" class="text-emerald-600 hover:text-emerald-700">Inicio</a>
+        <a href="/" class="text-emerald-700 hover:text-emerald-800">Inicio</a>
         <span class="mx-2">/</span>
-        <span class="text-gray-400">Servicios</span>
+        <span class="text-gray-500">Servicios</span>
       </nav>
 
-      <div class="max-w-3xl mb-12">
-        <span class="inline-block text-xs font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full mb-4">3 servicios · 1 framework</span>
-        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">Tres formas de implementar el framework Apps del Sur en tu pyme</h1>
-        <p class="text-lg text-gray-600 leading-relaxed">Workshop intensivo para alinear al equipo directivo. Sprint de consultoría que termina con la postulación al fondo público. Acompañamiento estratégico para ejecutar el roadmap completo. Cada servicio se conecta con el siguiente — entras por donde tu pyme lo necesita.</p>
-        <div class="flex flex-wrap gap-3 mt-6">
-          <a href="/diagnosticos/" class="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-2.5 rounded-full transition-colors shadow-sm text-sm">¿No sabes por dónde empezar? Elige un diagnóstico gratuito →</a>
-          <a href="/blog/framework-ia-pymes-chile/" class="text-emerald-700 border border-gray-200 hover:bg-emerald-50 font-medium px-5 py-2.5 rounded-full transition-colors text-sm">Conocer el framework</a>
+      <header class="max-w-3xl mb-14">
+        <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">Del problema en su operación al sistema funcionando</h1>
+        <p class="text-lg text-gray-600 leading-relaxed">Diagnosticamos, definimos con usted qué conviene hacer y lo construimos: software a medida, agentes de IA por WhatsApp e integraciones con lo que ya usa. Puede entrar por la etapa que necesite.</p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-6">
+          <Button href="#contact-form" size="lg">Conversemos</Button>
+          <Button href="/diagnosticos/" variant="outline" size="lg">Hacer un diagnóstico gratuito</Button>
         </div>
-      </div>
+        <p class="mt-4 text-sm text-gray-500">Conversación inicial sin costo · Pocos proyectos en paralelo</p>
+      </header>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 tablet-span-last gap-6 mb-12">
-        {services.map((s) => (
-          <a href={`/servicios/${s.slug}/`} class={`group block bg-white border-2 ${s.featured ? 'border-emerald-600 shadow-md' : 'border-gray-200'} rounded-2xl p-6 hover:shadow-lg hover:border-emerald-400 transition-all relative`}>
-            {s.featured && (
-              <span class="absolute -top-3 right-4 bg-emerald-600 text-white text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full shadow-sm">Recomendado</span>
-            )}
-            <span class={`inline-block text-xs font-bold tracking-wider uppercase mb-3 px-2.5 py-1 rounded-full ${s.color === 'amber' ? 'text-amber-700 bg-amber-50' : s.color === 'emerald' ? 'text-emerald-700 bg-emerald-50' : 'text-teal-700 bg-teal-50'}`}>{s.badge}</span>
-            <h2 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-emerald-700 transition-colors">{s.title}</h2>
-            <p class="text-sm font-medium text-gray-500 mb-3">{s.subtitle}</p>
-            <p class="text-sm text-gray-600 leading-relaxed mb-4">{s.description}</p>
-            <dl class="space-y-1.5 text-xs mb-5">
-              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Duración</dt><dd class="text-gray-700 font-medium">{s.duration}</dd></div>
-              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Inversión</dt><dd class="text-gray-700 font-medium">{s.price}</dd></div>
-              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Subsidio</dt><dd class="text-gray-700">{s.subsidy}</dd></div>
-              <div class="flex gap-2"><dt class="text-gray-400 w-20 shrink-0">Para</dt><dd class="text-gray-700">{s.target}</dd></div>
-            </dl>
-            <span class="inline-flex items-center gap-1.5 text-emerald-700 font-semibold text-sm group-hover:gap-2 transition-all">
-              Ver detalle <span aria-hidden="true">→</span>
-            </span>
-          </a>
-        ))}
-      </div>
-
-      <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-7 mb-12">
-        <h2 class="text-2xl font-bold text-emerald-900 mb-3">¿Cuál servicio necesita tu pyme?</h2>
-        <p class="text-gray-700 leading-relaxed mb-4">Los tres servicios se alimentan entre sí. La mayoría de nuestros clientes empieza con Workshop o Sprint, y avanzan a Copiloto cuando el fondo está aprobado. Pero también puedes entrar directo al servicio que mejor calza con tu situación actual.</p>
-        <ul class="space-y-2 text-gray-700 text-sm leading-relaxed">
-          <li><strong class="text-emerald-700">→ Si estás explorando IA y no sabes por dónde empezar:</strong> Workshop "Brújula IA"</li>
-          <li><strong class="text-emerald-700">→ Si ya tienes claridad y quieres acceder a un fondo público:</strong> Sprint Diagnóstico + Postulación</li>
-          <li><strong class="text-emerald-700">→ Si ya tienes fondo aprobado o presupuesto y quieres ejecutar:</strong> Copiloto Estratégico</li>
+      <section aria-labelledby="situaciones" class="mb-20">
+        <h2 id="situaciones" class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-6">¿Qué le está pasando hoy?</h2>
+        <ul class="grid md:grid-cols-2 gap-3">
+          {situations.map((situation) => (
+            <li>
+              <a href={situation.href} class="group flex h-full items-center justify-between gap-4 rounded-xl border border-gray-200 bg-white p-4 transition-colors hover:border-emerald-500 hover:bg-emerald-50/50">
+                <span>
+                  <span class="block font-medium text-gray-900">{situation.problem}</span>
+                  <span class="block mt-1 text-sm text-emerald-700">{situation.service}</span>
+                </span>
+                <ArrowRight class="w-5 h-5 shrink-0 text-gray-400 transition-colors group-hover:text-emerald-700" />
+              </a>
+            </li>
+          ))}
         </ul>
-      </div>
+      </section>
+
+      <section aria-labelledby="oferta" class="mb-20">
+        <h2 id="oferta" class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-2">Todo lo que hacemos</h2>
+        <p class="text-gray-600 mb-8">No necesita recorrer todas las etapas: cada servicio sirve por sí solo</p>
+
+        <div class="divide-y divide-gray-200 border-y border-gray-200">
+          {stages.map((stage, index) => (
+            <section id={stage.id} aria-labelledby={`${stage.id}-titulo`} class="grid lg:grid-cols-[230px_1fr] gap-5 lg:gap-8 py-8 scroll-mt-24">
+              <div>
+                <p class="text-sm font-medium text-emerald-700 mb-1">{String(index + 1).padStart(2, '0')}</p>
+                <h3 id={`${stage.id}-titulo`} class="text-xl font-bold text-gray-900 mb-1">{stage.verb}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">{stage.summary}</p>
+              </div>
+              <div>
+                <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                  {stage.services.map((service) => (
+                    <article class="flex flex-col rounded-xl border border-gray-200 bg-white p-5">
+                      <h4 class="font-semibold text-gray-900 mb-2">{service.name}</h4>
+                      <p class="text-sm text-gray-600 leading-relaxed mb-4">{service.description}</p>
+                      <p class="mt-auto text-xs text-gray-500 mb-3">{service.meta}</p>
+                      <a href={service.href} class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800">
+                        {service.cta}
+                        <ArrowRight class="w-4 h-4" />
+                      </a>
+                    </article>
+                  ))}
+                </div>
+                {stage.note && <p class="mt-4 text-sm text-gray-600">{stage.note}</p>}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="proyectos" class="mb-20">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+          <h2 id="proyectos" class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{projects.title}</h2>
+          <a href="/nosotros/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800 shrink-0">
+            Conocer al equipo
+            <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {projects.items.map((project) => (
+            <li class="rounded-xl bg-gray-50 border border-gray-100 p-5">
+              <p class="text-xs font-medium text-emerald-700 mb-2">{'status' in project ? `${project.tag} · ${project.status}` : project.tag}</p>
+              <p class="font-semibold text-gray-900 mb-1">{project.title}</p>
+              <p class="text-sm text-gray-600">{project.client}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="inversion" class="mb-20">
+        <h2 id="inversion" class="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight mb-6">Cómo se define la inversión</h2>
+        <ol class="grid md:grid-cols-3 gap-4 mb-6">
+          {investmentSteps.map((step, index) => (
+            <li class="rounded-xl border border-gray-200 p-5">
+              <p class="text-sm font-medium text-emerald-700 mb-1">Paso {index + 1}</p>
+              <p class="font-semibold text-gray-900 mb-1">{step.title}</p>
+              <p class="text-sm text-gray-600 leading-relaxed">{step.description}</p>
+            </li>
+          ))}
+        </ol>
+        <p class="text-sm text-gray-600">
+          ¿Quiere una referencia antes de conversar? Revise cuánto cuesta:
+          {costGuides.map((guide, index) => (
+            <>
+              {index > 0 && ' · '}
+              <a href={guide.href} class="font-medium text-emerald-700 underline underline-offset-2 hover:text-emerald-800">{guide.label}</a>
+            </>
+          ))}
+        </p>
+      </section>
     </div>
   </main>
 
-  <ContactCTA />
+  <ContactCTA
+    title="Cuéntenos qué necesita resolver"
+    description="Revisamos su situación y le decimos por dónde partir, incluso si la recomendación es no construir nada todavía."
+  />
+  <ContactForm
+    title="Conversemos sobre su empresa"
+    description="Cuéntenos qué quiere resolver y qué herramientas usa hoy. Le contactaremos en menos de 24 horas."
+    needOptions={needOptions}
+  />
   <Footer />
 </Layout>
