@@ -30,9 +30,9 @@ La rutina semanal toma la primera fila con estado `pendiente` cuya fecha ya lleg
 
 | Fecha | Slug sugerido | Tema | Tipo | Sector | Estado |
 |---|---|---|---|---|---|
-| 2026-10-27 | `brotacion-control-labores-primavera-vinas` | Brotación y labores de primavera: cómo controlar avance y costo por cuartel | Guía sectorial | Viñas | en revisión |
-| 2026-11-03 | `cuanto-cuesta-app-movil-empresa-chile` | ¿Cuánto cuesta una app móvil para tu empresa en Chile? | Costos | Transversal | en revisión |
-| 2026-11-10 | `sistema-gestion-packing-fruticola-chile` | Gestión de packing en frutícolas: recepción, proceso y trazabilidad sin planillas | Guía sectorial | Packings | pendiente |
+| 2026-10-27 | `brotacion-control-labores-primavera-vinas` | Brotación y labores de primavera: cómo controlar avance y costo por cuartel | Guía sectorial | Viñas | publicado |
+| 2026-11-03 | `cuanto-cuesta-app-movil-empresa-chile` | ¿Cuánto cuesta una app móvil para tu empresa en Chile? | Costos | Transversal | publicado |
+| 2026-11-10 | `sistema-gestion-packing-fruticola-chile` | Gestión de packing en frutícolas: recepción, proceso y trazabilidad sin planillas | Guía sectorial | Packings | en revisión |
 | 2026-11-17 | `whatsapp-cyber-day-pymes-chile` | Cyber y fin de año: cómo atender el peak de consultas por WhatsApp sin contratar | Guía sectorial | Comercio / Retail | pendiente |
 | 2026-11-24 | `ia-constructoras-pymes-chile` | IA para constructoras pyme: control de obra, subcontratos y estados de pago | Guía sectorial | Constructoras | pendiente |
 | 2026-12-01 | `continuidad-de-negocio-pymes-chile` | Continuidad de negocio para pymes: qué hacer si mañana se cae tu sistema | Guía sectorial | Transversal | pendiente |
